@@ -1789,6 +1789,29 @@ bool8 ScrCmd_messageautoscroll(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_harikoautoscroll(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    gTextFlags.autoScroll = TRUE;
+    gTextFlags.forceHarikoTextSpeed = TRUE;
+    ShowFieldAutoScrollMessage(msg);
+    return FALSE;
+}
+
+bool8 ScrCmd_harikofinish(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    gTextFlags.autoScroll = FALSE;
+    gTextFlags.forceHarikoTextSpeed = FALSE;
+    return FALSE;
+}
+
 // Prints all at once. Skips waiting for player input. Only used by link contests
 bool8 ScrCmd_messageinstant(struct ScriptContext *ctx)
 {
@@ -3752,4 +3775,16 @@ void BufferOriginalTrainerName(struct ScriptContext *ctx)
     GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_OT_NAME, otName);
 
     StringCopy(sScriptStringVars[stringVarIndex], otName);
+}
+
+//updatequest by mudskipper
+bool8 ScrCmd_updatequest(struct ScriptContext *ctx)
+{
+    u8 questId = VarGet(ScriptReadByte(ctx));
+    u32 varId = QuestMenu_GetQuestVariableId(questId); // VAR_UNUSED_XXXX
+    u32 varValue = QuestMenu_GetQuestVariable(questId); // the value that VAR_UNUSED_XXXX holds
+
+    VarSet(varId, varValue + 1);
+
+    return FALSE;
 }

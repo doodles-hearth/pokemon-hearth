@@ -34,7 +34,7 @@
 #include "event_object_movement.h"
 #include "pokemon_icon.h"
 
-#include "complex_quests.h"
+
 
 #include "random.h"
 
@@ -159,8 +159,8 @@ static void DetermineSpriteType(s32 questId);
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType);
 static void ResetSpriteState(void);
 static void QuestMenu_DestroySprite(u8 idx);
-static u16 GetSpriteId_Complex(s32 questId);
-static u8 GetSpriteType_Complex(s32 questId);
+static u32 GetQuestSprite(s32 questId);
+static u32 GetQuestSpriteType(s32 questId);
 
 static void GenerateStateAndPrint(u8 windowId, u32 itemId, u8 y);
 static u8 GenerateSubquestState(u8 questId);
@@ -207,11 +207,11 @@ static void Task_QuestMenuTurnOff2(u8 taskId);
 
 // Tiles, palettes and tilemaps for the Quest Menu
 static const u32 sQuestMenuTiles[] =
-        INCBIN_U32("graphics/quest_menu/menu.4bpp.smol");
+        INCGFX_U32("graphics/quest_menu/tiles.png", ".4bpp.smol");
 static const u16 sQuestMenuBgPals[] =
-        INCBIN_U16("graphics/quest_menu/menu.gbapal");
+        INCGFX_U16("graphics/quest_menu/tiles.png", ".gbapal");
 static const u32 sQuestMenuTilemap[] =
-        INCBIN_U32("graphics/quest_menu/menu.bin.smolTM");
+        INCBIN_U32("graphics/quest_menu/tiles.bin.smolTM");
 
 //Strings used for the Quest Menu
 static const u8 sText_Empty[] = _("");
@@ -228,7 +228,7 @@ static const u8 sText_Active[] = _("Active");
 static const u8 sText_Reward[] = _("Reward");
 static const u8 sText_Complete[] = _("Done");
 static const u8 sText_ShowLocation[] =
-      _("Location: {STR_VAR_2}");
+      _("{STR_VAR_2}");
 static const u8 sText_StartForMore[] =
       _("Start for more details.");
 static const u8 sText_ReturnRecieveReward[] =
@@ -251,7 +251,7 @@ static const u8 gText_PokedexQuestMap[] = _("Toku Region");
 //////////////////////BEGIN SUBQUEST CUSTOMIZATION/////////////////////////////
 
 //Declaration of subquest structures. Edits to subquests are made here.
-#define sub_quest(i, n, d, m, s, st, t) {.id = i, .name = n, .desc = d, .map = m, .sprite = s, .spritetype = st, .type = t}
+#define sub_quest(i, n, d, m, s, st, t) {.id = i, .name = n, .desc = d, .map = m, .sprite = s, .spriteType = st, .type = t}
 
 static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 {
@@ -304,309 +304,416 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 ////////////////////////BEGIN QUEST CUSTOMIZATION//////////////////////////////
 
 //Declaration of side quest structures. Edits to quests are made here.
-#define side_quest(n, d, dd, m, s, st, sq, ns) {.name = n, .desc = d, .donedesc = dd, .map = m, .sprite = s, .spritetype = st, .subquests = sq, .numSubquests = ns}
+
 static const struct SideQuest sSideQuests[QUEST_COUNT] =
 {
-	side_quest(
-		COMPOUND_STRING("Heart of the Hearth"),
-		COMPOUND_STRING("Vanilla Description"),
-		COMPOUND_STRING("You've saved the Toku Region!"),
-		COMPOUND_STRING("Quest 1 Map"),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING("The Toku Pokédex"),
-		COMPOUND_STRING("Fill the pages of the PokéDex!"),
-		COMPOUND_STRING("You've completed the PokéDex!"),
-		gText_PokedexQuestMap,
-		ITEM_POKE_BALL,
-		ITEM,
-		sPokedexSubQuests,
-		QUEST_2_SUB_COUNT
-	),
-	side_quest(
-		COMPOUND_STRING("Star-Crossed Lovers"),
-		COMPOUND_STRING("Reunite the lovers separated by\nvillage rivalry!"),
-		COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
-		COMPOUND_STRING("Saku & Kura Villages"),
-		ITEM_ASHIIS_SCARF,
-		ITEM,
-		NULL,
-		0
-	),
-	side_quest(
- 		COMPOUND_STRING("The Lost Eevee"),
- 		COMPOUND_STRING("Find the Eevee missed in the thunderstorm!"),
- 		COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
- 		COMPOUND_STRING("Saku & Kura Villages"),
-		OBJ_EVENT_GFX_SPECIES(EEVEE),
-		OBJECT,
-		NULL,
-		0
-  ),
-  side_quest(
- 		COMPOUND_STRING("The Wisened Healer"),
- 		COMPOUND_STRING("Find a cure for the ailing Scyther!"),
- 		COMPOUND_STRING("Cured the Scyther to full health!"),
- 		COMPOUND_STRING("Saku & Kura Villages"),
-		OBJ_EVENT_GFX_SPECIES(SCYTHER),
-		OBJECT,
-		NULL,
-		0
-  ),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
-	side_quest(
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		COMPOUND_STRING(""),
-		OBJ_EVENT_GFX_WALLY,
-		OBJECT,
-		NULL,
-		0
-	),
+	[QUEST_HEARTH_MAIN_CAMPAIGN] = 
+	{
+		.name = COMPOUND_STRING("Heart of the Hearth"),
+		.desc = {
+			COMPOUND_STRING("Go see Elder Kaba and become\na Pokémon wielder!"),
+			COMPOUND_STRING("Deliver Elder Kaba's letter to\nElder Iwa in Silveridge!"),
+			COMPOUND_STRING("Investigate on the Decay in\nUume Forest!"),
+		},
+		.donedesc = COMPOUND_STRING("You've saved the Toku Region!"),
+		.map = {
+			COMPOUND_STRING("Elder Kaba's House"),
+			COMPOUND_STRING("Silveridge"),
+			COMPOUND_STRING("Uume Forest"),
+		},
+		.sprite = {
+			OBJ_EVENT_GFX_KABA,
+			OBJ_EVENT_GFX_ELDER2,
+			ITEM_LUM_BERRY,
+		},
+		.spriteType = {
+			OBJECT,
+			OBJECT,
+			ITEM,
+		},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = VAR_MAIN_CAMPAIGN_QUEST,
+	},
+	[QUEST_POKEDEX] = 
+	{
+		.name = COMPOUND_STRING("The Toku Pokédex"),
+		.desc = {COMPOUND_STRING("Fill the pages of the PokéDex!")},
+		.donedesc = COMPOUND_STRING("You've completed the PokéDex!"),
+		.map = {gText_PokedexQuestMap},
+		.sprite = {ITEM_POKE_BALL},
+		.spriteType = {ITEM},
+		.subquests = sPokedexSubQuests,
+		.numSubquests = QUEST_2_SUB_COUNT,
+		.questVariable = 0,
+	},
+	[QUEST_SAKURALOVERS] = 
+	{
+		.name = COMPOUND_STRING("Star-Crossed Lovers"),
+		.desc = {
+			sText_Unk, //Var at 0
+			COMPOUND_STRING("Deliver the scarf to Tama!"),
+			COMPOUND_STRING("Report back to Ashii!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			sText_Unk, //Var at 9
+		},
+		.donedesc = COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
+		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.sprite = {ITEM_ASHIIS_SCARF},
+		.spriteType = {ITEM},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE,
+	},
+	[QUEST_SAKURAESPEON] = 
+	{
+		.name = COMPOUND_STRING("The Lost Eevee"),
+		.desc = {COMPOUND_STRING("Find the Eevee missed in the thunderstorm!")},
+		.donedesc = COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
+		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.sprite = {OBJ_EVENT_GFX_SPECIES(EEVEE)},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = VAR_SAKU_KURA_QUEST_ESPEON_STATE,
+	},
+	[QUEST_SAKURASCYTHER] = 
+	{
+		.name = COMPOUND_STRING("The Wisened Healer"),
+		.desc = {COMPOUND_STRING("Find a cure for the ailing Scyther!")},
+		.donedesc = COMPOUND_STRING("Cured the Scyther to full health!"),
+		.map = {COMPOUND_STRING("Saku & Kura Villages")},
+		.sprite = {OBJ_EVENT_GFX_SPECIES(SCYTHER)},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = VAR_SAKU_KURA_QUEST_SCYTHER_STATE,
+	},
+	[QUEST_6] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+	[QUEST_7] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+	[QUEST_8] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+	[QUEST_9] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_10] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_11] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_12] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_13] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_14] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_15] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_16] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_17] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_18] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_19] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_20] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_21] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_22] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_23] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_24] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_25] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_26] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_27] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_28] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_29] = 
+	{
+		.name = COMPOUND_STRING(""),
+		.desc = {COMPOUND_STRING("")},
+		.donedesc = COMPOUND_STRING(""),
+		.map = {COMPOUND_STRING("")},
+		.sprite = {OBJ_EVENT_GFX_WALLY},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
+
+	[QUEST_30] = 
+	{
+			.name = COMPOUND_STRING(""),
+			.desc = {COMPOUND_STRING("")},
+			.donedesc = COMPOUND_STRING(""),
+			.map = {COMPOUND_STRING("")},
+			.sprite = {OBJ_EVENT_GFX_WALLY},
+			.spriteType = {OBJECT},
+			.subquests = NULL,
+			.numSubquests = 0,
+			.questVariable = 0,
+		}
 };
 ////////////////////////END QUEST CUSTOMIZATION////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -614,12 +721,12 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 //BG layer defintions
 static const struct BgTemplate sQuestMenuBgTemplates[2] =
 {
-	{
-		//All text and content is loaded to this window
-		.bg = 0,
-		.charBaseIndex = 0,
-		.mapBaseIndex = 31,
-		.priority = 1
+{
+	//All text and content is loaded to this window
+	.bg = 0,
+	.charBaseIndex = 0,
+	.mapBaseIndex = 31,
+	.priority = 1
 	},
 	{
 		///Backgrounds and UI elements are loaded to this window
@@ -634,34 +741,34 @@ static const struct BgTemplate sQuestMenuBgTemplates[2] =
 static const struct WindowTemplate sQuestMenuHeaderWindowTemplates[] =
 {
 	{
-		//0: Content window
-		.bg = 0,
-		.tilemapLeft = 0,
-		.tilemapTop = 2,
-		.width = 30,
-		.height = 8,
-		.paletteNum = 15,
-		.baseBlock = 1
+	//0: Content window (Location, Quest Description)
+	.bg = 0,
+	.tilemapLeft = 0,
+	.tilemapTop = 2,
+	.width = 30,
+	.height = 8,
+	.paletteNum = 15,
+	.baseBlock = 1
 	},
 	{
-		//1: Footer window
-		.bg = 0,
-		.tilemapLeft = 0,
-		.tilemapTop = 12,
-		.width = 30,
-		.height = 12,
-		.paletteNum = 15,
-		.baseBlock = 361
+	//1: Footer window (Quest Names, Status)
+	.bg = 0,
+	.tilemapLeft = 0,
+	.tilemapTop = 12,
+	.width = 30,
+	.height = 12,
+	.paletteNum = 15,
+	.baseBlock = 361
 	},
 	{
-		// 2: Header window
-		.bg = 0,
-		.tilemapLeft = 0,
-		.tilemapTop = 0,
-		.width = 30,
-		.height = 2,
-		.paletteNum = 15,
-		.baseBlock = 721
+	// 2: Header window (Very Top, header)
+	.bg = 0,
+	.tilemapLeft = 0,
+	.tilemapTop = 18,
+	.width = 30,
+	.height = 2,
+	.paletteNum = 15,
+	.baseBlock = 721
 	},
 	DUMMY_WIN_TEMPLATE
 };
@@ -673,31 +780,31 @@ static const u8 sQuestMenuWindowFontColors[][4] =
 		//Header of Quest Menu
 		TEXT_COLOR_TRANSPARENT,
 		TEXT_COLOR_DARK_GRAY,
-		TEXT_COLOR_TRANSPARENT
+		TEXT_COLOR_LIGHT_GRAY
 	},
 	{
 		//Reward state progress indicator
 		TEXT_COLOR_TRANSPARENT,
 		TEXT_COLOR_RED,
-		TEXT_COLOR_TRANSPARENT
+		TEXT_COLOR_LIGHT_RED
 	},
 	{
 		//Done state progress indicator
 		TEXT_COLOR_TRANSPARENT,
 		TEXT_COLOR_GREEN,
-		TEXT_COLOR_TRANSPARENT
+		TEXT_COLOR_LIGHT_GREEN
 	},
 	{
 		//Active state progress indicator
 		TEXT_COLOR_TRANSPARENT,
 		TEXT_COLOR_BLUE,
-		TEXT_COLOR_TRANSPARENT
+		TEXT_COLOR_LIGHT_BLUE
 	},
 	{
 		//Footer flavor text
 		TEXT_COLOR_TRANSPARENT,
-		TEXT_COLOR_WHITE,
-		TEXT_COLOR_TRANSPARENT
+		TEXT_COLOR_DARK_GRAY,
+		TEXT_COLOR_LIGHT_GRAY
 	},
 };
 
@@ -759,7 +866,7 @@ static void RunSetup(void)
 	while (1)
 	{
 		if (SetupGraphics() == TRUE)
-		{
+	{
 			break;
 		}
 	}
@@ -801,19 +908,19 @@ static bool8 SetupGraphics(void)
 			break;
  		case 7:
 			if (InitBackgrounds())
-			{
+		{
 				sStateDataPtr->data[0] = 0;
 				gMain.state++;
 			}
 			else
-			{
+		{
 				FadeAndBail();
 				return TRUE;
 			}
 			break;
  		case 8:
 			if (LoadGraphics() == TRUE)
-			{
+		{
 				gMain.state++;
 			}
 			break;
@@ -830,11 +937,11 @@ static bool8 SetupGraphics(void)
 			break;
  		case 11:
 			if (AllocateResourcesForListMenu())
-			{
+		{
 				gMain.state++;
 			}
 			else
-			{
+		{
 				FadeAndBail();
 				return TRUE;
 			}
@@ -867,18 +974,18 @@ static bool8 SetupGraphics(void)
 			break;
  		case 18:
 			if (sListMenuState.initialized == 1)
-			{
+		{
 				BlendPalettes(0xFFFFFFFF, 16, RGB_BLACK);
 			}
 			gMain.state++;
 			break;
  		case 19:
 			if (sListMenuState.initialized == 1)
-			{
+		{
 				BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
 			}
 			else
-			{
+		{
 
 				BeginNormalPaletteFade(0xFFFFFFFF, 0, 16, 0, RGB_BLACK);
 				SetInitializedFlag(1);
@@ -904,7 +1011,7 @@ static bool8 LoadGraphics(void )
 			break;
 		case 1:
 			if (FreeTempTileDataBuffersIfPossible() != TRUE)
-			{
+		{
 				DecompressDataWithHeaderWram(sQuestMenuTilemap, sBg1TilemapBuffer);
 				sStateDataPtr->data[0]++;
 			}
@@ -973,7 +1080,7 @@ static void InitItems(void)
 		void ** ptr = (void **)&(ptr__);             \
 		*ptr = Alloc(size);                 \
 		if (*ptr == NULL)                   \
-		{                                   \
+	{                                   \
 			FreeResources();                  \
 			FadeAndBail();                  \
 			return FALSE;                   \
@@ -1035,11 +1142,11 @@ static void SetCursorPosition(void)
 	if (IfRowIsOutOfBounds())
 	{
 		if (sStateDataPtr->nItems + 1 < 2)
-		{
+	{
 			sListMenuState.row = 0;
 		}
 		else
-		{
+	{
 			sListMenuState.row = sStateDataPtr->nItems;
 		}
 	}
@@ -1054,10 +1161,10 @@ static void SetScrollPosition(void)
 	{
 		for (i = 0; i <= sListMenuState.row - 3;
 		            sListMenuState.row--, sListMenuState.scroll++, i++)
-		{
+	{
 			if (sListMenuState.scroll + sStateDataPtr->maxShowed ==
 			            sStateDataPtr->nItems + 1)
-			{
+		{
 				break;
 			}
 		}
@@ -1287,12 +1394,12 @@ u8 *DefineQuestOrder()
 	if (IsAlphaMode())
 	{
 		for (c = 0; c < QUEST_COUNT; c++)
-		{
+	{
 			for (d = c + 1; d < QUEST_COUNT; d++)
-			{
+		{
 				if (StringCompare(sSideQuests[sortedList[c]].name,
 				                  sSideQuests[sortedList[d]].name) > 0)
-				{
+			{
 					placeholderVariable = sortedList[c];
 					sortedList[c] = sortedList[d];
 					sortedList[d] = placeholderVariable;
@@ -1335,20 +1442,20 @@ u8 GenerateList(bool8 isFiltered)
 		selectedQuestId = *(sortedQuestList + countQuest);
 
 		if (isFiltered && !QuestMenu_GetSetQuestState(selectedQuestId, mode))
-		{
+	{
 	 		continue;
 		}
 
 		PopulateEmptyRow(selectedQuestId);
 
 		if (QuestMenu_GetSetQuestState(selectedQuestId, FLAG_GET_FAVORITE))
-		{
+	{
 			SetFavoriteQuest(selectedQuestId);
 			newRow = numRow;
 			numRow++;
 		}
 		else
-		{
+	{
 			newRow = CountFavoriteQuests() + offset;
 			offset++;
 		}
@@ -1455,12 +1562,12 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
 			index3 = index;
 
 			if (bit2 >= 8)
-			{
+		{
 				index2 += 1;
 				bit2 %= 8;
 			}
 			if (bit3 >= 8)
-			{
+		{
 				index3 += 1;
 				bit3 %= 8;
 			}
@@ -1473,7 +1580,7 @@ u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId)
  		case FLAG_GET_ACTIVE:
 			return gSaveBlock2Ptr->questData[index] & mask;
  		case FLAG_SET_ACTIVE:
-			DebugPrintf("set active!");
+			// DebugPrintf("set active!");
 			gSaveBlock2Ptr->questData[index] |= mask;
 			return 1;
  		case FLAG_REMOVE_ACTIVE:
@@ -1511,7 +1618,7 @@ u8 CountUnlockedQuests(void)
 	for (i = 0; i < QUEST_COUNT; i++)
 	{
 		if (QuestMenu_GetSetQuestState(i, FLAG_GET_UNLOCKED))
-		{
+	{
 			q++;
 		}
 	}
@@ -1525,7 +1632,7 @@ u8 CountInactiveQuests(void)
 	for (i = 0; i < QUEST_COUNT; i++)
 	{
 		if (QuestMenu_GetSetQuestState(i, FLAG_GET_INACTIVE))
-		{
+	{
 			q++;
 		}
 	}
@@ -1539,7 +1646,7 @@ u8 CountActiveQuests(void)
 	for (i = 0; i < QUEST_COUNT; i++)
 	{
 		if (QuestMenu_GetSetQuestState(i, FLAG_GET_ACTIVE))
-		{
+	{
 			q++;
 		}
 	}
@@ -1553,7 +1660,7 @@ u8 CountRewardQuests(void)
 	for (i = 0; i < QUEST_COUNT; i++)
 	{
 		if (QuestMenu_GetSetQuestState(i, FLAG_GET_REWARD))
-		{
+	{
 			q++;
 		}
 	}
@@ -1569,9 +1676,9 @@ u8 CountCompletedQuests(void)
 	if (IsSubquestMode())
 	{
 		for (i = 0; i < sSideQuests[parentQuest].numSubquests; i++)
-		{
+	{
 			if (QuestMenu_GetSetSubquestState(parentQuest, FLAG_GET_COMPLETED, i))
-			{
+		{
 				q++;
 			}
 		}
@@ -1579,9 +1686,9 @@ u8 CountCompletedQuests(void)
 	else
 	{
 		for (i = 0; i < QUEST_COUNT; i++)
-		{
+	{
 			if (QuestMenu_GetSetQuestState(i, FLAG_GET_COMPLETED))
-			{
+		{
 				q++;
 			}
 		}
@@ -1598,9 +1705,9 @@ u8 CountFavoriteQuests(void)
 	for (i = 0; i < QUEST_COUNT; i++)
 	{
 		if (QuestMenu_GetSetQuestState(i, FLAG_GET_FAVORITE))
-		{
+	{
 			if (QuestMenu_GetSetQuestState(i, mode))
-			{
+		{
 				x++;
 			}
 			q++;
@@ -1712,11 +1819,11 @@ static void MoveCursorFunc(s32 questId, bool8 onInit,
 		sStateDataPtr->spriteIconSlot ^= 1;
 
 		if (questId == LIST_CANCEL)
-		{
+	{
 			PrintDetailsForCancel();
 		}
 		else
-		{
+	{
 			GenerateAndPrintQuestDetails(questId);
 			DetermineSpriteType(questId);
 		}
@@ -1767,39 +1874,47 @@ void GenerateQuestLocation(s32 questId)
 void PrintQuestLocation(s32 questId)
 {
 	FillWindowPixelBuffer(1, 0);
-	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar4, 2, 3, 2, 0, 0,
-	                                      4);
+	QuestMenu_AddTextPrinterParameterized(
+		1, // Window ID
+		2, // Font ID
+		gStringVar4, // const u8 *str
+		93, //x
+		0, //y
+		2, //letterSpacing
+		0, //lineSpacing
+		0, //speed
+		4); //colorIdx
 }
 void GenerateQuestFlavorText(s32 questId)
 {
 	if (IsSubquestMode() == FALSE)
 	{
 		if (IsQuestInactiveState(questId) == TRUE)
-		{
+	{
 			StringCopy(gStringVar1, sText_StartForMore);
 		}
 		if (IsQuestActiveState(questId) == TRUE)
-		{
+	{
 			UpdateQuestFlavorText(questId);
 		}
 		if (IsQuestRewardState(questId) == TRUE)
-		{
+	{
 			StringCopy(gStringVar1, sText_ReturnRecieveReward);
 		}
 		if (IsQuestCompletedState(questId) == TRUE)
-		{
+	{
 			StringCopy(gStringVar1, sSideQuests[questId].donedesc);
 		}
 	}
 	else
 	{
 		if (IsSubquestCompletedState(questId) == TRUE)
-		{
+	{
 			StringCopy(gStringVar1,
 			           sSideQuests[sStateDataPtr->parentQuest].subquests[questId].desc);
 		}
 		else
-		{
+	{
 			StringCopy(gStringVar1, sText_Empty);
 		}
 	}
@@ -1812,8 +1927,16 @@ void UpdateQuestFlavorText(s32 questId)
 }
 void PrintQuestFlavorText(s32 questId)
 {
-	QuestMenu_AddTextPrinterParameterized(1, 2, gStringVar3, 40, 19, 5, 0, 0,
-	                                      4);
+	QuestMenu_AddTextPrinterParameterized(
+		1, // Window ID
+		2, // Font ID
+		gStringVar3, // const u8 *str
+		56, //x
+		16, //y
+		5, //letterSpacing
+		0, //lineSpacing
+		0, //speed
+		4);//colorIdx
 }
 
 bool8 IsSubquestCompletedState(s32 questId)
@@ -1896,8 +2019,8 @@ void DetermineSpriteType(s32 questId)
 
 	if (IsSubquestMode() == FALSE)
 	{
-		spriteId = GetSpriteId_Complex(questId);
-		spriteType = GetSpriteType_Complex(questId);
+		spriteId = GetQuestSprite(questId);
+		spriteType = GetQuestSpriteType(questId);
 
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
@@ -1907,7 +2030,7 @@ void DetermineSpriteType(s32 questId)
 		spriteId =
 		      sSideQuests[sStateDataPtr->parentQuest].subquests[questId].sprite;
 		spriteType =
-		      sSideQuests[sStateDataPtr->parentQuest].subquests[questId].spritetype;
+		      sSideQuests[sStateDataPtr->parentQuest].subquests[questId].spriteType;
 		QuestMenu_CreateSprite(spriteId, sStateDataPtr->spriteIconSlot,
 		                       spriteType);
 	}
@@ -1918,6 +2041,7 @@ void DetermineSpriteType(s32 questId)
 	QuestMenu_DestroySprite(sStateDataPtr->spriteIconSlot ^ 1);
 	sStateDataPtr->spriteIconSlot ^= 1;
 }
+
 static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 {
 	u8 *ptr = &sItemMenuIconSpriteIds[10];
@@ -1929,17 +2053,21 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 		FreeSpritePaletteByTag(102 + idx);
 
 		switch (spriteType)
-		{
+	{
 	 		case OBJECT:
-				spriteId = CreateObjectGraphicsSprite(itemId, SpriteCallbackDummy, 20,
-				                                      132, 0);
+					spriteId = CreateObjectGraphicsSprite(
+					itemId, //graphicsId
+					SpriteCallbackDummy, //sprite callback
+					30, //x
+					116, //y
+					0); //subpriority
 				break;
 	 		case ITEM:
 				spriteId = AddItemIconSprite(102 + idx, 102 + idx, itemId);
 				break;
 	 		case PKMN:
 				LoadMonIconPalettes();
-				spriteId = CreateMonIcon(itemId, SpriteCallbackDummy, 20, 132, 0, 1);
+				spriteId = CreateMonIcon(itemId, SpriteCallbackDummy, 30, 116, 0, 1);
 				break;
 			default:
 				break;
@@ -1952,17 +2080,18 @@ static void QuestMenu_CreateSprite(u16 itemId, u8 idx, u8 spriteType)
 
 			if (spriteType == ITEM)
 			{
-				gSprites[spriteId].x2 = 24;
-				gSprites[spriteId].y2 = 140;
+				gSprites[spriteId].x2 = 32;
+				gSprites[spriteId].y2 = 122;
 			}
 		}
 	}
 }
 
+
 void ResetSpriteState(void)
 {
 	u16 i;
-
+	
 	for (i = 0; i < NELEMS(sItemMenuIconSpriteIds); i++)
 	{
 		sItemMenuIconSpriteIds[i] = 0xFF;
@@ -1979,7 +2108,7 @@ static void QuestMenu_DestroySprite(u8 idx)
 		                   gSprites[ptr[idx]].oam.paletteNum);
 		DestroySprite(&gSprites[ptr[idx]]);
 		ptr[idx] = 0xFF;
-
+		
 		if (sStateDataPtr->oldPaletteTag != palTag)
 		{
 			if (sStateDataPtr->oldPaletteTag != 0)
@@ -1990,6 +2119,27 @@ static void QuestMenu_DestroySprite(u8 idx)
 		}
 	}
 }
+
+static u32 GetQuestSprite(s32 questId)
+{
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].sprite[qvar] == 0)
+		qvar = 0;
+
+	return sSideQuests[questId].sprite[qvar];
+}
+
+static u32 GetQuestSpriteType(s32 questId)
+{
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].spriteType[qvar] == 0)
+		qvar = 0;
+
+	return sSideQuests[questId].spriteType[qvar];
+}
+
 static void GenerateStateAndPrint(u8 windowId, u32 questId, u8 y)
 {
 	u8 colorIndex;
@@ -1997,11 +2147,11 @@ static void GenerateStateAndPrint(u8 windowId, u32 questId, u8 y)
 	if (questId != LIST_CANCEL)
 	{
 		if (IsSubquestMode())
-		{
+	{
 	 		colorIndex = GenerateSubquestState(questId);
 		}
 		else
-		{
+	{
 	 		colorIndex = GenerateQuestState(questId);
 		}
 
@@ -2053,8 +2203,16 @@ u8 GenerateQuestState(u8 questId)
 
 void PrintQuestState(u8 windowId, u8 y, u8 colorIndex)
 {
-	QuestMenu_AddTextPrinterParameterized(windowId, 0, gStringVar4, 200, y, 0,
-	                                      0, 0xFF, colorIndex);
+	QuestMenu_AddTextPrinterParameterized(
+		windowId, //Window ID
+		0, //Font ID
+		gStringVar4, // const u8 *str 
+		189, //x
+		y, //y
+		0, //letterSpacing
+	    0, //lineSpacing
+		0xFF, //speed
+		colorIndex); //colorIdx
 }
 
 static void GenerateAndPrintHeader(void)
@@ -2165,18 +2323,42 @@ static void GenerateMenuContext(void)
 static void PrintNumQuests(void)
 {
 	StringExpandPlaceholders(gStringVar4, sText_QuestNumberDisplay);
-	QuestMenu_AddTextPrinterParameterized(2, 0, gStringVar4, 167, 1, 0, 1, 0,
-	                                      0);
+	QuestMenu_AddTextPrinterParameterized(
+		2, //Window ID
+		0, //Font ID
+		gStringVar4,//string pointer 
+		205, //x
+		1, //y
+		0, //letterSpacing
+		1, //lineSpacing
+		0, //speed
+		0); //colorIdx
 }
 static void PrintMenuContext(void)
 {
-	QuestMenu_AddTextPrinterParameterized(2, 0,
-	                                      questNameArray[QUEST_ARRAY_COUNT], 10, 1, 0, 1, 0, 0);
+	QuestMenu_AddTextPrinterParameterized(
+		2,
+		0,
+		questNameArray[QUEST_ARRAY_COUNT], 
+		15, //x
+		0, //y
+		0, 
+		1, 
+		0, 
+		0);
 }
 static void PrintTypeFilterButton(void)
 {
-	QuestMenu_AddTextPrinterParameterized(2, 0, sText_Type, 198, 1,
-	                                      0, 1, 0, 0);
+	QuestMenu_AddTextPrinterParameterized(
+		2,
+		0,
+		sText_Type,
+		159, //x
+		1, //y
+		0,
+		1,
+		0, 
+		0);
 
 }
 
@@ -2193,36 +2375,36 @@ static void Task_Main(u8 taskId)
 		                        &sListMenuState.row);
 
 		switch (input)
-		{
+	{
 	 		case LIST_NOTHING_CHOSEN:
 				if (JOY_NEW(R_BUTTON))
-				{
+			{
 			 		ChangeModeAndCleanUp(taskId);
 				}
 				if (JOY_NEW(START_BUTTON))
-				{
+			{
 					ToggleAlphaModeAndCleanUp(taskId);
 				}
 				if (JOY_NEW(SELECT_BUTTON))
-				{
+			{
 					ToggleFavoriteAndCleanUp(taskId, selectedQuestId);
 				}
 				break;
 
 	 		case LIST_CANCEL:
 				if (IsSubquestMode())
-				{
+			{
 					ReturnFromSubquestAndCleanUp(taskId);
 				}
 				else
-				{
+			{
 					TurnOffQuestMenu(taskId);
 				}
 				break;
 
 			default:
 				if (!IsSubquestMode())
-				{
+			{
 					EnterSubquestModeAndCleanUp(taskId, data, input);
 				}
 				break;
@@ -2513,11 +2695,11 @@ static void Task_QuestMenuTurnOff2(u8 taskId)
 	{
 		DestroyListMenuTask(data[0], &sListMenuState.scroll, &sListMenuState.row);
 		if (sStateDataPtr->savedCallback != NULL)
-		{
+	{
 			SetMainCallback2(sStateDataPtr->savedCallback);
 		}
 		else
-		{
+	{
 			SetMainCallback2(sListMenuState.savedCallback);
 		}
 
@@ -2558,42 +2740,30 @@ void QuestMenu_ResetMenuSaveData(void)
 
 static const u8 *GetQuestLocation(s32 questId)
 {
-    switch (questId) {
-        case QUEST_HEARTH_MAIN_CAMPAIGN:
-            return gTable_MainCampaignMaps[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-        default:
-            return sSideQuests[questId].map;
-    }
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].map[qvar] == NULL)
+		qvar = 0;
+
+	return sSideQuests[questId].map[qvar];
 }
 
 static const u8 *GetQuestDesc(s32 questId)
 {
-    switch (questId) {
-        case QUEST_HEARTH_MAIN_CAMPAIGN:
-            return gTable_MainCampaignDescs[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-        default:
-            return sSideQuests[questId].desc;
-    }
+	u32 qvar = VarGet(sSideQuests[questId].questVariable);
+	
+	if (sSideQuests[questId].desc[qvar] == NULL)
+		qvar = 0;
+
+	return sSideQuests[questId].desc[qvar];
 }
 
-static u16 GetSpriteId_Complex(s32 questId)
+u32 QuestMenu_GetQuestVariableId(u8 quest)
 {
-	switch (questId)
-    {
- 		case QUEST_HEARTH_MAIN_CAMPAIGN:
-		    return MainCampaignSprites[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-		default:
-		    return sSideQuests[questId].sprite;
-	} 
+    return sSideQuests[quest].questVariable;
 }
 
-static u8 GetSpriteType_Complex(s32 questId)
+u32 QuestMenu_GetQuestVariable(u8 quest)
 {
-	switch (questId)
-    {
- 		case QUEST_HEARTH_MAIN_CAMPAIGN:
-		    return MainCampaignSpriteTypes[VarGet(VAR_MAIN_CAMPAIGN_QUEST)];
-		default:
-		    return sSideQuests[questId].spritetype;
-	} 
+    return VarGet(QuestMenu_GetQuestVariableId(quest));
 }

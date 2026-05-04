@@ -1449,6 +1449,17 @@
 	.4byte \text
 	.endm
 
+	@ Automatically scrolls Hariko's message without player input and at a fixed speed.
+	.macro harikomessage text:req
+	callnative ScrCmd_harikoautoscroll
+	.4byte \text
+	.endm
+
+	@ Returns printing speed to normal after harikomessage
+	.macro harikofinish
+	callnative ScrCmd_harikofinish
+	.endm
+
 	@ Executes the specified field effect animation (FLDEFF_*).
 	.macro dofieldeffect animation:req
 	.byte SCR_OP_DOFIELDEFFECT
@@ -2840,36 +2851,37 @@
     @ Starts the specified quest.
 	.macro startquest quest:req
 	closemessage
-	@ delay 30
+	delay 30
 	questmenu QUEST_MENU_SET_ACTIVE, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    @ bufferstring 1 gText_QuestActive
-	@ playfanfare MUS_LEVEL_UP 
-	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	@ waitfanfare
+    bufferstring 1 gText_QuestActive
+	playfanfare MUS_LEVEL_UP 
+	msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	waitfanfare
 	.endm
 
     @ Completes the specified quest.
 	.macro completequest quest:req
 	closemessage
-	@ delay 30
+	delay 30
 	questmenu QUEST_MENU_COMPLETE_QUEST, \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-    @ bufferstring 1 gText_QuestComplete
-	@ playfanfare MUS_LEVEL_UP 
-	@ msgbox gText_QuestAnnounce, MSGBOX_SIGN
-	@ waitfanfare
+    bufferstring 1 gText_QuestComplete
+	playfanfare MUS_LEVEL_UP 
+	msgbox gText_QuestAnnounce, MSGBOX_SIGN
+	waitfanfare
 	.endm
 
 	@ Updates the complex quest's variable to give it its next state.
-	.macro updatequest quest:req, questvar:req
-	addvar \questvar, 1
+	.macro updatequest quest:req
+	callnative ScrCmd_updatequest
+	.byte \quest
 	questmenu QUEST_MENU_BUFFER_QUEST_NAME \quest
-	@ bufferstring 1 gText_QuestUpdate
-	@ playse SE_PIN
-	@ msgbox gText_QuestUpdate, MSGBOX_SIGN
-	@ waitse
-	@ openquestmenu
+	bufferstring 1 gText_QuestUpdate
+	playse SE_PIN
+	msgbox gText_QuestUpdate, MSGBOX_SIGN
+	waitse
+	openquestmenu
 	.endm
 
 	.macro goto_if_quest_inactive quest:req, dest:req
@@ -3298,6 +3310,32 @@
 	.macro setstartingstatus status:req
 	callnative ScrCmd_setstartingstatus
 	.byte \status
+	.endm
+
+	@ Makes the player and specified (localId) object face one another.
+	.macro facetogether localIdOne=LOCALID_PLAYER, localIdTwo=VAR_LAST_TALKED
+	callnative ScriptFaceEachOther, requests_effects=1
+	.2byte \localIdOne
+	.2byte \localIdTwo
+	.endm
+
+	@ Saves the species of a specified (localId) object, or SPECIES_NONE if one is not found. 
+	.macro getoverworldwildencounterspecies var:req, localId=VAR_LAST_TALKED
+	callnative SetOverworldObjectSpecies, requests_effects=1
+	.2byte \var
+	.2byte \localId
+	.endm
+
+	@ Starts an Overworld Wild Encounter with a specified (localId) object, if possible.
+	.macro tryoverworldwildencounter localId=VAR_LAST_TALKED
+	callnative StartWildBattleWithOWE, requests_effects=1
+	.2byte \localId
+	.endm
+
+	@ Start a scripted approach for a specified (localId) overworld wild encounter towards the player.
+	.macro overworldwildencounterapproach localId=VAR_LAST_TALKED
+	callnative OWEApproachForBattle, requests_effects=1
+	.2byte \localId
 	.endm
 
 @ FRLG

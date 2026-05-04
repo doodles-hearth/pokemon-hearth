@@ -2,7 +2,7 @@
   "defaultFontId": "1_latin_rse",
   "fonts": {
     "1_latin_rse": {
-      "maxLineLength": 208,
+      "maxLineLength": 200,
       "numLines": 2,
       "cursorOverlapWidth": 0,
       "widths": {
@@ -160,7 +160,7 @@
         "ö": 6,
         "ü": 6,
         "{TALL_PLUS}": 0,
-        "{PLAYER}": 56,
+        "{PLAYER}": 42,
         "{STR_VAR_1}": 80,
         "{STR_VAR_2}": 80,
         "{STR_VAR_3}": 80,
@@ -177,7 +177,7 @@
       }
     },
     "1_latin_frlg": {
-      "maxLineLength": 208,
+      "maxLineLength": 200,
       "numLines": 2,
       "cursorOverlapWidth": 10,
       "widths": {
@@ -334,7 +334,7 @@
         "ö": 6,
         "ü": 6,
         "{TALL_PLUS}": 0,
-        "{PLAYER}": 56,
+        "{PLAYER}": 42,
         "{STR_VAR_1}": 80,
         "{STR_VAR_2}": 80,
         "{STR_VAR_3}": 80,
