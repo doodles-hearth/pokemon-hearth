@@ -23,7 +23,7 @@ EWRAM_DATA u32 sRetriggerDelays[64];
 EWRAM_DATA struct ActiveLiveEvent sActiveLiveEvents[64] = {0};
 EWRAM_DATA bool8 sAnySpeechBubbleIsActive = FALSE;
 
-const u32 sSpeechBubbleTiles[] = INCBIN_U32("graphics/live_event/speech_bubble_tiles.4bpp");
+const u32 sSpeechBubbleTiles[] = INCGFX_U32("graphics/live_event/speech_bubble_tiles.png", ".4bpp");
 
 #include "data/even_live_event.h"
 #include "object_event_graphics.h"

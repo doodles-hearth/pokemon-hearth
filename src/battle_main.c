@@ -3230,6 +3230,9 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
         enum BattlerId i;
         if (gBattleMons[battler].volatiles.powerTrick)
             SWAP(gBattleMons[battler].attack, gBattleMons[battler].defense, i);
+
+        if (gBattleMons[battler].volatiles.gastroAcid && gAbilitiesInfo[gBattleMons[battler].ability].cantBeSuppressed)
+            gBattleMons[battler].volatiles.gastroAcid = FALSE;
     }
 
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
@@ -5572,6 +5575,9 @@ static void HandleEndTurn_FinishBattle(void)
             }
             TryPutPokemonTodayOnAir();
         }
+
+        if (gIsFishingEncounter && IsMonShiny(&gEnemyParty[0]))
+            gChainFishingDexNavStreak = 0;
 
         if (!(gBattleTypeFlags & (BATTLE_TYPE_LINK
                                   | BATTLE_TYPE_EREADER_TRAINER

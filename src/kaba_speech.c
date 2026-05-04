@@ -444,25 +444,25 @@ static const u8 sKabaSpeech_YourJourneyStartsHere[] = _(
     "surprises and Pokémon awaits you!"
 );
 
-static const u16 sKabaSpeech_BgGfx[] = INCBIN_U16("graphics/kaba_speech/bg.4bpp");
-static const u16 sKabaSpeech_BgPal[] = INCBIN_U16("graphics/kaba_speech/bg.gbapal");
+static const u16 sKabaSpeech_BgGfx[] = INCGFX_U16("graphics/kaba_speech/bg.png", ".4bpp");
+static const u16 sKabaSpeech_BgPal[] = INCGFX_U16("graphics/kaba_speech/bg.png", ".gbapal");
 static const u32 sKabaSpeech_BgMap[] = INCBIN_U32("graphics/kaba_speech/bg.bin.smolTM");
 
-static const u16 sKabaSpeech_KabaPicGfx[] = INCBIN_U16("graphics/kaba_speech/pics/kaba.4bpp");
-static const u16 sKabaSpeech_KabaPicPal[] = INCBIN_U16("graphics/kaba_speech/pics/kaba.gbapal");
+static const u16 sKabaSpeech_KabaPicGfx[] = INCGFX_U16("graphics/kaba_speech/pics/kaba.png", ".4bpp");
+static const u16 sKabaSpeech_KabaPicPal[] = INCGFX_U16("graphics/kaba_speech/pics/kaba.png", ".gbapal");
 static const u32 sKabaSpeech_KabaPicMap[] = INCBIN_U32("graphics/kaba_speech/pics/kaba.bin.smolTM");
 
 //! NOTE: both aka and ao has the same palette as of writing
-static const u16 sKabaSpeech_PlayerPicPal[] = INCBIN_U16("graphics/kaba_speech/pics/ao.gbapal");
+static const u16 sKabaSpeech_PlayerPicPal[] = INCGFX_U16("graphics/kaba_speech/pics/ao.png", ".gbapal");
 
-static const u16 sKabaSpeech_AkaPicGfx[] = INCBIN_U16("graphics/kaba_speech/pics/aka.4bpp");
+static const u16 sKabaSpeech_AkaPicGfx[] = INCGFX_U16("graphics/kaba_speech/pics/aka.png", ".4bpp");
 static const u8 sKabaSpeech_AkaPicMap[] = INCBIN_U8("graphics/kaba_speech/pics/aka.bin");
 
-static const u16 sKabaSpeech_AoPicGfx[] = INCBIN_U16("graphics/kaba_speech/pics/ao.4bpp");
+static const u16 sKabaSpeech_AoPicGfx[] = INCGFX_U16("graphics/kaba_speech/pics/ao.png", ".4bpp");
 static const u8 sKabaSpeech_AoPicMap[] = INCBIN_U8("graphics/kaba_speech/pics/ao.bin");
 
-static const u16 sKabaSpeech_PlatformGfx[] = INCBIN_U16("graphics/kaba_speech/platform.4bpp");
-static const u16 sKabaSpeech_PlatformPal[] = INCBIN_U16("graphics/kaba_speech/platform.gbapal");
+static const u16 sKabaSpeech_PlatformGfx[] = INCGFX_U16("graphics/kaba_speech/platform.png", ".4bpp");
+static const u16 sKabaSpeech_PlatformPal[] = INCGFX_U16("graphics/kaba_speech/platform.png", ".gbapal");
 
 static const struct BgTemplate sKabaSpeech_BgTemplates[BG_COUNT] =
 {
