@@ -555,3 +555,13 @@ script WhiteslateRoute_EventScript_TinyPassage {
 
 	release
 }
+
+script Live_EventScript_Deerling1Flee {
+	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	applymovement(LOCALID_WHITESLATE_DEERLING1, moves(walk_left * 8))
+}
+
+script Live_EventScript_Deerling2Flee {
+	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	applymovement(LOCALID_WHITESLATE_DEERLING2, moves(walk_left * 8))
+}

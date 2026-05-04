@@ -393,6 +393,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_DEERLING2",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DEERLING_AUTUMN)",
       "x": 26,
       "y": 25,
@@ -408,6 +409,7 @@
       "deadnight": false,
       "earlymorning": true,
       "evening": false,
+      "live_event": "LIVE_EVENT_DEERLING1_FLEE",
       "lunchtime": false,
       "morning": true,
       "night": false
@@ -433,6 +435,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_DEERLING1",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DEERLING_AUTUMN)",
       "x": 23,
       "y": 24,
@@ -448,6 +451,7 @@
       "deadnight": false,
       "earlymorning": true,
       "evening": false,
+      "live_event": "LIVE_EVENT_DEERLING1_FLEE",
       "lunchtime": false,
       "morning": true,
       "night": false

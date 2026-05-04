@@ -121,7 +121,6 @@
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "live_event": "LIVE_EVENT_HELLO",
       "lunchtime": false,
       "morning": false,
       "night": false
