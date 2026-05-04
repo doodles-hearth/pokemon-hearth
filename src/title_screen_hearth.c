@@ -58,13 +58,13 @@ static void SpriteCB_VersionBannerLeft(struct Sprite *sprite);
 static void SpriteCB_VersionBannerRight(struct Sprite *sprite);
 static void SpriteCB_PressStartCopyrightBanner(struct Sprite *sprite);
 
-static const u32 sHearthTitleScreenSkyGfx[] = INCBIN_U32("graphics/title_screen/hearth/sky-tiles.4bpp.smol");
+static const u32 sHearthTitleScreenSkyGfx[] = INCGFX_U32("graphics/title_screen/hearth/sky-tiles.png", ".4bpp.smol");
 static const u32 sHearthTitleScreenSkyTilemap[] = INCBIN_U32("graphics/title_screen/hearth/sky-tiles.bin.smolTM");
 
-static const u32 sHearthTitleScreenLandscapeGfx[] = INCBIN_U32("graphics/title_screen/hearth/landscape-tiles.4bpp.smol");
+static const u32 sHearthTitleScreenLandscapeGfx[] = INCGFX_U32("graphics/title_screen/hearth/landscape-tiles.png", ".4bpp.smol");
 static const u32 sHearthTitleScreenLandscapeTilemap[] = INCBIN_U32("graphics/title_screen/hearth/landscape-tiles.bin.smolTM");
 
-static const u32 sHearthTitleScreenChimechoGfx[] = INCBIN_U32("graphics/title_screen/hearth/chimecho-tiles.4bpp.smol");
+static const u32 sHearthTitleScreenChimechoGfx[] = INCGFX_U32("graphics/title_screen/hearth/chimecho-tiles.png", ".4bpp.smol");
 static const u32 sHearthTitleScreenChimechoTilemap[] = INCBIN_U32("graphics/title_screen/hearth/chimecho-tiles.bin.smolTM");
 
 static const struct OamData sVersionBannerLeftOamData =
