@@ -136,7 +136,6 @@
 #define VAR_EGG_GIRL_SPECIES                0x4056
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_EGG_GIRL_STEP_COUNTER                        0x405B
 /*
@@ -258,6 +257,10 @@
 
 #define VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE             0x409B
 #define VAR_ELITE_4_STATE                                0x409C
+
+//COMPLEX QUEST VARS
+#define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
+
 /*
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
@@ -271,6 +274,7 @@
     // 9: Ashii gives reward
 */
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
+
 /*
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
@@ -281,6 +285,7 @@
     // 5: Given rock
 */
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
+
 /*
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
@@ -293,6 +298,7 @@
     // 7: Player has given medicine to Scyther
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
+
 /*
     VAR_SAKU_KURA_VILLAGES_STATEs
     // 0: The two villages hate each other

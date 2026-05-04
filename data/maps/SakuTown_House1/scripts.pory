@@ -107,7 +107,7 @@ script SakuTown_House1_EventScript_Tama {
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Wielder! I owe you my thanks.\nTell her I'll meet her tonight!"
 		))
 		closemessage
-		addvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
+		updatequest(QUEST_SAKURALOVERS)
 
 	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 8) {
 		faceplayer
