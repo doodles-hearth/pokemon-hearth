@@ -1449,6 +1449,17 @@
 	.4byte \text
 	.endm
 
+	@ Automatically scrolls Hariko's message without player input and at a fixed speed.
+	.macro harikomessage text:req
+	callnative ScrCmd_harikoautoscroll
+	.4byte \text
+	.endm
+
+	@ Returns printing speed to normal after harikomessage
+	.macro harikofinish
+	callnative ScrCmd_harikofinish
+	.endm
+
 	@ Executes the specified field effect animation (FLDEFF_*).
 	.macro dofieldeffect animation:req
 	.byte SCR_OP_DOFIELDEFFECT
