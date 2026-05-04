@@ -63,6 +63,7 @@ EventScript_TryDoRematchBattle::
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
+	closemessage
 	special BattleSetup_StartRematchBattle
 	waitstate
 	releaseall
@@ -81,6 +82,7 @@ EventScript_TryDoDoubleRematchBattle::
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
+	closemessage
 	special BattleSetup_StartRematchBattle
 	waitstate
 	releaseall
@@ -111,6 +113,7 @@ EventScript_ShowTrainerIntroMsg::
 	special ShowTrainerIntroSpeech
 	waitmessage
 	waitbuttonpress
+	closemessage
 	special TryPrepareSecondApproachingTrainer
 	goto_if_eq VAR_RESULT, TRUE, EventScript_TrainerApproach
 	goto EventScript_DoTrainerBattle

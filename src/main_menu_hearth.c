@@ -154,35 +154,35 @@ static const struct WindowTemplate sHmmErrorWindowTemplate[] = {
     [0] = {.bg = 0, .tilemapLeft = 4, .tilemapTop = 5, .width = 22, .height = 3, .paletteNum = 15, .baseBlock = 1},
     DUMMY_WIN_TEMPLATE};
 
-static const u32 HmmBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/tiles.4bpp.smol");
+static const u32 HmmBgTiles[] = INCGFX_U32("graphics/main_menu_hearth/main_bg/tiles.png", ".4bpp.smol");
 static const u32 HmmBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/main_bg/map.bin.smolTM");
-static const u16 HmmBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/inactive.gbapal");
-static const u16 HmmBgActivePalette[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/active.gbapal");
-static const u16 HmmMsgboxPal[] = INCBIN_U16("graphics/main_menu_hearth/main_bg/msgbox.gbapal");
+static const u16 HmmBgPalette[] = INCGFX_U16("graphics/main_menu_hearth/main_bg/inactive.pal", ".gbapal");
+static const u16 HmmBgActivePalette[] = INCGFX_U16("graphics/main_menu_hearth/main_bg/active.pal", ".gbapal");
+static const u16 HmmMsgboxPal[] = INCGFX_U16("graphics/main_menu_hearth/main_bg/msgbox.pal", ".gbapal");
 
-static const u32 HmmScrollingBgTiles[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/tiles.4bpp.smol");
+static const u32 HmmScrollingBgTiles[] = INCGFX_U32("graphics/main_menu_hearth/scrolling_bg/tiles.png", ".4bpp.smol");
 static const u32 HmmScrollingBgTilemap[] = INCBIN_U32("graphics/main_menu_hearth/scrolling_bg/map.bin.smolTM");
-static const u16 HmmScrollingBgPalette[] = INCBIN_U16("graphics/main_menu_hearth/scrolling_bg/scrolling_bg.gbapal");
+static const u16 HmmScrollingBgPalette[] = INCGFX_U16("graphics/main_menu_hearth/scrolling_bg/scrolling_bg.pal", ".gbapal");
 
-static const u32 sMenuButtonGfx[] = INCBIN_U32("graphics/main_menu_hearth/buttons/button.4bpp.smol");
-static const u16 sMenuButtonPal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/inactive.gbapal");
-static const u16 sMenuButtonActivePal[] = INCBIN_U16("graphics/main_menu_hearth/buttons/active.gbapal");
+static const u32 sMenuButtonGfx[] = INCGFX_U32("graphics/main_menu_hearth/buttons/button.png", ".4bpp.smol");
+static const u16 sMenuButtonPal[] = INCGFX_U16("graphics/main_menu_hearth/buttons/inactive.pal", ".gbapal");
+static const u16 sMenuButtonActivePal[] = INCGFX_U16("graphics/main_menu_hearth/buttons/active.pal", ".gbapal");
 
-static const u32 sMenuBottledTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/bottled.4bpp.smol");
-static const u32 sMenuCarvedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/carved.4bpp.smol");
-static const u32 sMenuSewnTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/sewn.4bpp.smol");
-static const u32 sMenuForgedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/forged.4bpp.smol");
-static const u32 sMenuCapturedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/captured.4bpp.smol");
-static const u32 sMenuFoldedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/folded.4bpp.smol");
-static const u32 sMenuPolishedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/polished.4bpp.smol");
-static const u32 sMenuCherishedTokenGfx[] = INCBIN_U32("graphics/main_menu_hearth/badges/cherished.4bpp.smol");
-static const u16 sMenuBadgesPal1[] = INCBIN_U16("graphics/main_menu_hearth/badges/badges1.gbapal");
-static const u16 sMenuBadgesPal2[] = INCBIN_U16("graphics/main_menu_hearth/badges/badges2.gbapal");
+static const u32 sMenuBottledTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/bottled.png", ".4bpp.smol");
+static const u32 sMenuCarvedTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/carved.png", ".4bpp.smol");
+static const u32 sMenuSewnTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/sewn.png", ".4bpp.smol");
+static const u32 sMenuForgedTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/forged.png", ".4bpp.smol");
+static const u32 sMenuCapturedTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/captured.png", ".4bpp.smol");
+static const u32 sMenuFoldedTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/folded.png", ".4bpp.smol");
+static const u32 sMenuPolishedTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/polished.png", ".4bpp.smol");
+static const u32 sMenuCherishedTokenGfx[] = INCGFX_U32("graphics/main_menu_hearth/badges/cherished.png", ".4bpp.smol");
+static const u16 sMenuBadgesPal1[] = INCGFX_U16("graphics/main_menu_hearth/badges/badges1.pal", ".gbapal");
+static const u16 sMenuBadgesPal2[] = INCGFX_U16("graphics/main_menu_hearth/badges/badges2.pal", ".gbapal");
 
-static const u32 sPlayerAoGfx[] = INCBIN_U32("graphics/main_menu_hearth/mugshots/ao.4bpp.smol");
-static const u16 sPlayerAoPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots/ao.gbapal");
-static const u32 sPlayerAkaGfx[] = INCBIN_U32("graphics/main_menu_hearth/mugshots/aka.4bpp.smol");
-static const u16 sPlayerAkaPal[] = INCBIN_U16("graphics/main_menu_hearth/mugshots/aka.gbapal");
+static const u32 sPlayerAoGfx[] = INCGFX_U32("graphics/main_menu_hearth/mugshots/ao.png", ".4bpp.smol");
+static const u16 sPlayerAoPal[] = INCGFX_U16("graphics/main_menu_hearth/mugshots/ao.png", ".gbapal");
+static const u32 sPlayerAkaGfx[] = INCGFX_U32("graphics/main_menu_hearth/mugshots/aka.png", ".4bpp.smol");
+static const u16 sPlayerAkaPal[] = INCGFX_U16("graphics/main_menu_hearth/mugshots/aka.png", ".gbapal");
 
 enum FontColor { FONT_WHITE, FONT_GRAY, FONT_PLAYER };
 static const u8 HmmWindowFontColors[][3] = {
