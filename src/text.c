@@ -346,8 +346,6 @@ static void SetFontsPointer(const struct FontInfo *fonts)
 
 u32 GetPlayerTextSpeed(void)
 {
-    if (gTextFlags.forceHarikoTextSpeed)
-        return OPTIONS_TEXT_SPEED_HARIKO;
     if (gTextFlags.forceMidTextSpeed)
         return OPTIONS_TEXT_SPEED_MID;
 
