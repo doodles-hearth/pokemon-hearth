@@ -22,7 +22,8 @@ script SunriseVillage_RivalsHouse_EventScript_Woman {
 		))
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}Good morning, {PLAYER}!\nToday's the big day, huh?\p"
+			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}"
+			"Good morning, {PLAYER}!\nToday's the big day, huh?\p"
 			"Break a leg! Don't talk to strangers!"
 		))
 	}
@@ -74,19 +75,22 @@ script SunriseVillage_RivalsHouse_EventScript_Man {
 	faceplayer
 	setspeaker(SP_NAME_NATSUKIS_DAD)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 0}Hello, {PLAYER}.\nHow is your adventure going?\p"
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 0}"
+			"Hello, {PLAYER}.\nHow is your adventure going?\p"
 			"Make sure you come back home\nto see your sister sometimes,\lI'm sure she misses you."
-		))
+		)
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 8) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 0}It was tough when Natsuki and I\nfirst moved all the way down here.\p"
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 0}"
+			"It was tough when Natsuki and I first\nmoved all the way down here.\p"
 			"Things are better now.\nWe both needed a fresh start."
-		))
+		)
 	} else {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 0}Hello, {PLAYER}! How are you doing? Off to some trouble with Natsuki, I bet?"
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_1 0}"
+			"Hello, {PLAYER}! How are you? Up to some\ntrouble with Natsuki, I bet?"
+		)
 	}
 	release
 }
@@ -94,9 +98,7 @@ script SunriseVillage_RivalsHouse_EventScript_Man {
 script SunriseVillage_RivalsHouse_EventScript_Meowth {
 	setseenmon(SPECIES_MEOWTH)
 	setspeakertomonname(SPECIES_MEOWTH)
-    msgbox(format(
-        "Purrr…"
-    ), MSGBOX_NPC)
+    msgbox("Purrr…", MSGBOX_NPC)
 }
 
 script SunriseVillage_RivalsHouse_EventScript_Meowth2 {
@@ -105,9 +107,7 @@ script SunriseVillage_RivalsHouse_EventScript_Meowth2 {
     setseenmon(SPECIES_MEOWTH)
     playmoncry(SPECIES_MEOWTH, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_MEOWTH)
-    msgbox(format(
-        "Meow!"
-    ))
+    msgbox("Meow!")
     waitmoncry
     release
     end

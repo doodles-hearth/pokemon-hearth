@@ -211,16 +211,10 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	lock
-	completequest QUEST_SAKURALOVERS
-	completequest QUEST_SAKURAESPEON
 	release
 	end
 
 Debug_EventScript_Script_2::
-	giveitem ITEM_FISHCAKE
-	giveitem ITEM_ORAN_BERRY
-	giveitem ITEM_REVIVAL_POWDER
 	release
 	end
 

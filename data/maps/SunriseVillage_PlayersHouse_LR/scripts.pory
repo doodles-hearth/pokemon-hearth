@@ -1,13 +1,4 @@
-const LOCALID_BIGSIS = 1
-const LOCALID_RIVALS_NOTE = 2
-
 mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
-	MAP_SCRIPT_ON_LOAD {
-		// Put rival's note on the table
-		if (!flag(FLAG_RECEIVED_STARTER)) {
-			setmetatile(4, 4, METATILE_HouseBeige_Scroll, TRUE)
-		}
-	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
         VAR_SUNRISE_VILLAGE_INTRO_STATE, 2: SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi
     ]	
@@ -16,25 +7,23 @@ mapscripts SunriseVillage_PlayersHouse_LR_MapScripts {
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
     lock
 	playse(SE_PIN)
-	applymovement(LOCALID_BIGSIS, Common_Movement_ExclamationMark)
+	applymovement(LOCALID_PLAYERS_HOUSE_BIGSIS, Common_Movement_ExclamationMark)
 	waitmovement(0)
-	applymovement(LOCALID_BIGSIS, Common_Movement_Delay48)
+	applymovement(LOCALID_PLAYERS_HOUSE_BIGSIS, Common_Movement_Delay48)
 	waitmovement(0)
-	turnobject(LOCALID_BIGSIS, DIR_EAST)
+	turnobject(LOCALID_PLAYERS_HOUSE_BIGSIS, DIR_EAST)
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_WEST)
 
 	special(GetPlayerBrotherSisterString)
 	setspeaker(SP_NAME_BIG_SIS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Oh, {PLAYER}, you're up! Ready for the big event?\p"
-		"Are you excited? I sure hope you are, because I'm VERY EXCITED!\p"
-		"I have to head out! Don't be late, I know you, little {STR_VAR_1}!\p"
-		"By the way, your friend Natsuki left you a note.\l"
-		"Make sure you read it!"
-	))
-		// "And don't forget to pick up the bag I made for you before you leave!\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Oh, {PLAYER}, you're up!\nReady for the big event?\p"
+		"Are you excited? I sure hope you are,\nbecause I'm VERY EXCITED!\p"
+		"I have to head out!\nDon't be late, or face Kaba's wrath!\p"
+		"By the way, shorite, Natsuki came by.\nHe said to meet him at the beach"
+	)
 	closemessage
-	applymovement(LOCALID_BIGSIS, moves(
+	applymovement(LOCALID_PLAYERS_HOUSE_BIGSIS, moves(
 		walk_down * 2
 		walk_right * 2
 		walk_down * 2
@@ -43,7 +32,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
 	waitmovement(0)
 	playse(SE_EXIT)
-	removeobject(LOCALID_BIGSIS)
+	removeobject(LOCALID_PLAYERS_HOUSE_BIGSIS)
 	waitse
 	
 	setvar(VAR_SUNRISE_VILLAGE_INTRO_STATE, 3)
@@ -58,39 +47,35 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 	faceplayer
 	setspeaker(SP_NAME_BIG_SIS)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 4) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}What are you still doing here? You're late for the distribution!\p"
-			"Go to Kaba's house right now!"
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}What are you still doing here?\nYou're late for the distribution!\p"
+			"Go to Elder Kaba's house right now!"
+		)
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 6) {
-		special(GetPlayerBrotherSisterString)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
-			"By the way, I heard Natsuki was waiting for you at Elder Kaba's house. You should probably go see them."
-		))
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! Wanna see my new friend?\nShe's really cute!\p"
+			"By the way, I heard Natsuki was waiting\nfor you at Elder Kaba's house.\lYou should probably go see them."
+		)
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
-		special(GetPlayerBrotherSisterString)
 		bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey little {STR_VAR_1}! See how cute my new Pokémon is?\p"
-			"Oh, who is that lovely little thing with you?\N"
-			"{STR_VAR_2}, huh?\p"
-			"Looks like it already likes you a lot! You're going to make a great Wielder,\lI know it!\p"
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! Wanna see my new friend?\nShe's really cute!\p"
+			"And it looks like you have a cute friend\nof your own, too!\p"
+			"You take care of each other, alright?\nYou're going to make a great Wielder,\lI just know it!\p"
 			"… … … … … …\n… … … … … …\p"
-			"So you're going on a journey…\p"
-			"That's great! I'm proud of you, {PLAYER}.\p"
-			"I know you'll get lost though, so I'll lend you my map of Toku!"
-		))
+			"My little {STR_VAR_1}'s is going on\na journey…\p"
+			"I can't tell you how proud I am,\n{PLAYER}.\p"
+			"It's a big world though, so I have one\nlast gift for you!"
+		)
 		closemessage
 
 		giveitem(ITEM_TOKU_MAP)
 
-		special(GetPlayerBrotherSisterString)
 		setspeaker(SP_NAME_BIG_SIS)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alrighty! You all set? Have a safe\njourney, little {STR_VAR_1}.\l"
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Alrighty! You all set? Have a safe\njourney, {PLAYER}.\l"
 			"Maybe I'll see you around!\p"
 			"Come home sometimes though, will you?\nYou and your Pokémon can rest here!\p"
 			"See you soon!\nI'll send you Chatot messages!"
@@ -103,7 +88,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 
 		// Default
 	} else {
-		special(GetPlayerBroSisString)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey {PLAYER}! How's it going?\p"
 			"Here, rest for a bit."
@@ -112,7 +96,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		call(Common_EventScript_OutOfCenterPartyHeal)
 		setspeaker(SP_NAME_BIG_SIS)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}See you around, little {STR_VAR_1}."
+			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}See you around, shortie."
 		))
 		closemessage
 	}
@@ -130,29 +114,17 @@ script SunriseVillage_PlayersHouse_LR_EventScript_Eevee {
 	release
 }
 
-script SunriseVillage_PlayersHouse_LR_EventScript_RivalsNote {
-    lock
-	msgbox(format(
-		"“Hey {PLAYER},\n"
-		"Going down to the beach before the giveaway, if you wanna hang out.\l"
-		"-Natsuki”"
-	))
-	closemessage
-    release
-    end
-}
-
 script SunriseVillage_PlayersHouse_LR_EventScript_Gong {
 	lock
 	if (flag(FLAG_HIDE_BIGSIS_HOME)) {
 		msgbox(format(
-			"It's a gong.\nGONG!… … …"
+			"It's a gong.\pGONG!… … …"
 		))
 	} else {
-		msgbox(format(
-			"It's a gong.\nGONG!… … …\p"
+		msgbox(
+			"It's a gong.\pGONG!… … …\p"
 			"Let's not annoy Big Sis too much."
-		))
+		)
 	}
 	closemessage
 	release
