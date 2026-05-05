@@ -223,7 +223,7 @@ script SunriseVillage_Event_GuardForest {
         msgbox(
             "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 0}Wild Pokémon have been lashing out\nrecently.\p"
             "I know you're used to walking around on\nyour own, but times are different now.\lThe woods have become dangerous.\p"
-            "I wouldn't go alone if I were you.\nOr, you know…\lif I were me."
+            "I wouldn't go alone if I were you.\nOr, you know…\lIf I were me."
         )
         closemessage
         applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_down))
