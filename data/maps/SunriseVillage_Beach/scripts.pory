@@ -298,8 +298,7 @@ script SunriseVillage_Event_LookingAtYifu {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}"
-		"My best friend lives all the way over\nthere in Yifu City!\l"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}My best friend lives all the way over\nthere in Yifu City!\l"
 		"I don't get to see her often.\pI miss her…"
 	)
 	closemessage
@@ -314,8 +313,7 @@ script SunriseVillage_Event_PokemonWontComeOut {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}"
-		"I'm gonna catch my first Pokémon!\nAll on my own!"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}I'm gonna catch my first Pokémon!\nAll on my own!"
 	)
 	closemessage
 	applymovement(VAR_LAST_TALKED, moves(face_original_direction))
