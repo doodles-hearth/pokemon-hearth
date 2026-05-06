@@ -47,10 +47,12 @@
 #define QUEST_30        29
 #define QUEST_COUNT     (QUEST_30 + 1)
 
-#define SUB_QUEST_1          0
-#define SUB_QUEST_2          1
-#define SUB_QUEST_3          2
-#define SUB_QUEST_4          3
+/* POKEDEX SUBQUESTS START */
+#define SUB_QUEST_SEEALLMONS          0
+#define SUB_QUEST_NAMEALLMONS         1
+#define SUB_QUEST_CATCHALLMONS        2
+#define SUB_QUEST_DESCRIBEALLMONS     3
+/* POKEDEX SUBQUESTS END */
 #define SUB_QUEST_5          4
 #define SUB_QUEST_6          5
 #define SUB_QUEST_7          6
