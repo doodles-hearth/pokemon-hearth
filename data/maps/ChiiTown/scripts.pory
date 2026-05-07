@@ -124,10 +124,9 @@ script ChiiTown_EventScript_PlantingFlowers {
 
 script ChiiTown_EventScript_AlsoPlantingFlowers {
 	setspeaker(SP_NAME_LITTLE_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}She's making me plant flowers so that the wild Pokémon become happy again.\p"
-		"I'm not though…"
-	), MSGBOX_NPC)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}She's making me plant flowers so that\nthe wild Pokémon become happy again.\p"
+		"It doesn't make me happy though…", MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
 }
@@ -145,10 +144,9 @@ script ChiiTown_EventScript_EatingBerries {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Sensei said that we should eat berries to grow big and strong!\p"
-		"But how are we supposed to get them if we aren't big and strong yet?"
-	), MSGBOX_DEFAULT)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Sensei said that we should eat lots of\nberries to grow big and strong!\p"
+		"But how are we supposed to reach\nthem if we aren't big and strong yet?", MSGBOX_DEFAULT)
 	closemessage
 
 	if(checkitem(ITEM_ORAN_BERRY, 1)){
@@ -183,10 +181,10 @@ script ChiiTown_EventScript_BerryEnthusiast {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been eating berries just like Sensei said, but I haven't grown yet.\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been eating berries just like\nSensei said, but I haven't grown yet.\p"
 		"I don't care though. They're delicious!"
-	))
+	)
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -367,6 +365,7 @@ script ChiiTown_EventScript_Samurai {
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}There's been reports of shady men\ndressed in blue loitering around here.\lBe careful when traveling!"
 	), MSGBOX_NPC)
+	closemessage
 }
 
 script ChiiTown_EventScript_TownSign {

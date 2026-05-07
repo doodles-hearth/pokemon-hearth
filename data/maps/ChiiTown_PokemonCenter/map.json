@@ -56,6 +56,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_LADY_SHOPPER",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
       "x": 16,
       "y": 10,
@@ -76,6 +77,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_SHAMISEN_CEL",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_FAT_GUY",
       "x": 18,
       "y": 4,
@@ -96,6 +98,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_WEARY_TRAVELLER",
       "graphics_id": "OBJ_EVENT_GFX_TRAVELER",
       "x": 11,
       "y": 9,
@@ -257,6 +260,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_DIKTAT_KID",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_BOY",
       "x": 17,
       "y": 8,

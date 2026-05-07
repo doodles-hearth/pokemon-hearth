@@ -80,7 +80,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -240,7 +240,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -320,7 +320,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -340,7 +340,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": false,
       "night": false
