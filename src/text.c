@@ -315,6 +315,7 @@ static const u8 sTextSpeedFrameDelays[] =
     [OPTIONS_TEXT_SPEED_SLOW]    = 8,
     [OPTIONS_TEXT_SPEED_MID]     = 4,
     [OPTIONS_TEXT_SPEED_FAST]    = 1,
+    [OPTIONS_TEXT_SPEED_HARIKO]    = 1,
     [OPTIONS_TEXT_SPEED_INSTANT] = 1,
 };
 
@@ -324,6 +325,7 @@ static const u8 sTextSpeedModifiers[] =
     [OPTIONS_TEXT_SPEED_MID]     = TEXT_SPEED_MEDIUM_MODIFIER,
     [OPTIONS_TEXT_SPEED_FAST]    = TEXT_SPEED_FAST_MODIFIER,
     [OPTIONS_TEXT_SPEED_INSTANT] = TEXT_SPEED_INSTANT_MODIFIER,
+    [OPTIONS_TEXT_SPEED_HARIKO]  = TEXT_SPEED_HARIKO_MODIFIER,
 };
 
 static const u8 sTextScrollSpeeds[] =
@@ -332,6 +334,7 @@ static const u8 sTextScrollSpeeds[] =
     [OPTIONS_TEXT_SPEED_MID]     = 2,
     [OPTIONS_TEXT_SPEED_FAST]    = 4,
     [OPTIONS_TEXT_SPEED_INSTANT] = 6,
+    [OPTIONS_TEXT_SPEED_HARIKO]  = 6,
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCGFX_U16("graphics/fonts/japanese_bold.png", ".hwjpnfont");
@@ -343,6 +346,9 @@ static void SetFontsPointer(const struct FontInfo *fonts)
 
 u32 GetPlayerTextSpeed(void)
 {
+    if (gTextFlags.forceHarikoTextSpeed)
+        return OPTIONS_TEXT_SPEED_HARIKO;
+    
     if (gTextFlags.forceMidTextSpeed)
         return OPTIONS_TEXT_SPEED_MID;
 
