@@ -125,6 +125,7 @@ BattleScript_ItemRaikouBalm::
 	call BattleScript_UseItemMessage
 BattleScript_ItemRaikouBalmCureStatusAfterMsg:
 	itemincreasestat
+	trybattlerstatchange BS_ATTACKER, STAT_CHANGE_NO_FLAGS
 	itemcurestatus BattleScript_RaikouBalmEnd, BattleScript_ItemRaikouBalm_Battler
 	printstring STRINGID_PKMNWOKEUP
 	waitmessage B_WAIT_TIME_LONG

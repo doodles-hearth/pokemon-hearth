@@ -11453,12 +11453,15 @@ void BS_ItemIncreaseStat(void)
     if (gBattlerPartyIndexes[gBattlerAttacker] != gBattleStruct->itemPartyIndex[gBattlerAttacker])
         gBattlerAttacker = BATTLE_PARTNER(gBattlerAttacker);
 
-    if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_INCREASE_STAT ||
-        GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_RAIKOU_BALM)
+    if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_INCREASE_STAT)
     {
         if (B_X_ITEMS_BUFF >= GEN_7)
             SetStatChange(gBattlerAttacker, GetItemEffect(gLastUsedItem)[1], 2);
         else
+            SetStatChange(gBattlerAttacker, GetItemEffect(gLastUsedItem)[1], 1);
+    }
+    else if (GetItemBattleUsage(gLastUsedItem) == EFFECT_ITEM_RAIKOU_BALM)
+    {
             SetStatChange(gBattlerAttacker, GetItemEffect(gLastUsedItem)[1], 1);
     }
     else
