@@ -290,6 +290,8 @@ static void WindowFunc_RedrawDialogueFrame(u8 bg, u8 left, u8 top, u8 width, u8 
 
 void RedrawDialogueFrame(void)
 {
+    return;
+
     if (IsMatchCallTaskActive())
         RedrawMatchCallTextBoxBorder();
     else
