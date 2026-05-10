@@ -2345,7 +2345,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_NON_VOLATILE_STATUS,
         .power = 0,
         .type = TYPE_ELECTRIC,
+         #if TESTING
+        .accuracy = 90,
+         #else
         .accuracy = B_UPDATED_MOVE_DATA >= GEN_7 ? 90 : 100,
+         #endif
         .pp = 20,
         .target = TARGET_SELECTED,
         .priority = 0,
