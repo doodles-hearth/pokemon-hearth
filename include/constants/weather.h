@@ -23,7 +23,8 @@
 #define WEATHER_PINK_LEAVES             23
 #define WEATHER_AUTUMN_LEAVES           24
 #define WEATHER_DECAY                   25
-#define WEATHER_COUNT                   26
+#define WEATHER_DYNAMIC                 26
+#define WEATHER_COUNT                   27
 
 // These are used in maps' coord_weather_event entries.
 // They are not a one-to-one mapping with the engine's
