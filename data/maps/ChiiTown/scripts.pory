@@ -8,6 +8,8 @@ const LOCALID_BATTLING_BOY = 16
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		call(ChiiTown_DrawMetatiles)
+		closedoormetatile(TIME_DEAD_NIGHT, 14, 5)
+		closedoormetatile(TIME_DEAD_NIGHT, 24, 19)
     }
 	MAP_SCRIPT_ON_TRANSITION {
         setflag(FLAG_VISITED_CHII_TOWN)
@@ -42,21 +44,6 @@ script ChiiTown_DrawMetatiles{
 		setmetatile(16, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
 		setmetatile(21, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
-
-    gettimeofday
-	switch(var(VAR_0x8000)){
-        case TIME_DEAD_NIGHT:
-            setmetatile(14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
-            setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
-        case TIME_EARLY_MORNING:
-        case TIME_MORNING:
-        case TIME_LUNCHTIME:
-        case TIME_AFTERNOON:
-        case TIME_EVENING:
-        case TIME_NIGHT:
-        default:
-            end
-    }
 }
 
 script ChiiTown_EventScript_WatchfulMom{
