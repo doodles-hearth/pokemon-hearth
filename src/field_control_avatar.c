@@ -578,6 +578,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         }
         return ChatotPost_EventScript_EmptyPost;
     }
+    if (MetatileBehavior_IsClosedTokuDoor(metatileBehavior) == TRUE)
+        return EventScript_ClosedToku;
     if (MetatileBehavior_IsClosedSootopolisDoor(metatileBehavior) == TRUE)
         return EventScript_ClosedSootopolisDoor;
     if (MetatileBehavior_IsSkyPillarClosedDoor(metatileBehavior) == TRUE)
