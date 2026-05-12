@@ -1,8 +1,9 @@
 const FLAG_HIDE_CUT_MASTER = FLAG_TEMP_1
-const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
-const VAR_HOUR_OF_DAY = VAR_0x8000
 const FLAG_HIDE_FLETCHLING = FLAG_TEMP_2
 const FLAG_CUT_QUEST_COMPLETED_JUST_NOW = FLAG_TEMP_3
+const VAR_HOUR_OF_DAY = VAR_0x8000
+const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
+const VAR_DONT_FIGHT = VAR_TEMP_1
 
 mapscripts TranquilRoute_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
@@ -298,7 +299,20 @@ movement TranquilRoute_Movement_MysteriousSamuraiWalksAway {
 
 script TranquilRoute_EventScript_Girl {
 	setspeaker(SP_NAME_GIRL)
-	msgbox(("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\nMy Pokémon and I are just strolling."), MSGBOX_NPC)
+
+	switch(var(VAR_TEMP_1)){
+		case 0:
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\nMy Pokémon and I are just strolling.", MSGBOX_NPC)
+			closemessage
+			addvar(VAR_DONT_FIGHT, 1)
+			break
+		default:
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}I understand the Pokémon are meant\nto protect us, but it's just so boring.\p"
+				"You're just hitting each other over\nand over; I don't see the appeal…", MSGBOX_NPC)
+			closemessage
+			break
+	}
 }
 
 script TranquilRoute_EventScript_Fanboy {
@@ -549,9 +563,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
-	))
+	msgbox("{CREATE_MUGSHOT MUGSHOT_OKADA 0}{FONT_SMALL}Mumble mumble…\nShould restock on ointment…\lDamn, where did I put my purse?…")
 	closemessage
 
 	delay(24)
@@ -563,20 +575,21 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	faceplayer
 
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Oh, hello! Sorry, shop's closed at the moment!\p"
-		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
-		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
-		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
-		"What's your name? {PLAYER}?\nNice to meet you, {PLAYER}!\p"
-		"I see you're a young Wielder, eh?\NMaybe we can even have a friendly battle sometime!\p"
-		"Now if you'll excuse me, I'm running late! See you around, {PLAYER}!"
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Oh, hello!\nSorry, shop's closed at the moment!\p"
+		"…Oh, sorry, we haven't met, have we?\nI'm not good with faces…\p"
+		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant!\nI travel through all of Toku on foot,\lselling useful goods and rare finds!\p"
+		"I'm sold out on, well, pretty much\neverything right now…\p"
+		"But you're definitely going to see me\naround!\p"
+		"What's your name?…\p{PLAYER}?\nNice to meet you, {PLAYER}!\p"
+		"I see; so you're a young Wielder, eh?\nMaybe we can even have a friendly\lbattle sometime!\p"
+		"Now if you'll excuse me, I'm running\nlate! See you around, {PLAYER}!"
+	)
 	closemessage
 
 	turnobject(VAR_LAST_TALKED, DIR_EAST)
-
-	setspeaker(SP_NAME_MAN)
+	delay(16)
+	setspeaker(SP_NAME_OKADA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Come on, Keke."
 	))
