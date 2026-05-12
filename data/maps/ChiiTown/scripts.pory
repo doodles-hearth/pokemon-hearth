@@ -61,7 +61,7 @@ script ChiiTown_EventScript_WatchfulMom{
 			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm dropping off my children to school.\p")
 			waitmessage
 			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
-			message("With all the recent Pokémon attacks,\n{PLAY_SE SE_PIN}I will not let them leave my sight!")
+			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
 			waitmessage
 			waitse
 			waitmovement(0)

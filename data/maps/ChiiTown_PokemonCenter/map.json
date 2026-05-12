@@ -131,12 +131,12 @@
       "script": "ChiiTown_PokemonCenter_EventScript_Snorunt",
       "flag": "0",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_BLUE",
