@@ -80,7 +80,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -137,11 +137,11 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": true,
       "evening": false,
-      "lunchtime": true,
+      "lunchtime": false,
       "morning": true,
       "night": false
     },
@@ -160,9 +160,9 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
-      "lunchtime": true,
-      "morning": true,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
       "night": true
     },
     {
@@ -186,6 +186,7 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_WATCHFUL_MOM",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_1",
       "x": 15,
       "y": 8,
@@ -200,7 +201,7 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": false,
       "morning": true,
       "night": false
@@ -240,7 +241,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -320,7 +321,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -340,7 +341,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": false,
       "night": false
