@@ -559,3 +559,9 @@ script WhiteslateRoute_EventScript_TinyPassage {
 
 	release
 }
+
+script WhiteslateRoute_DirectionSign {
+	msgbox((
+		"{LEFT_ARROW} Hanabi City"
+	), MSGBOX_SIGN)
+}

@@ -21,3 +21,19 @@ script PuddlePath_EventScript_OneWayRoute {
 	))
 	release
 }
+
+script PuddlePath_EventScript_OneWayWarning {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_FARMER}You should think twice before going\ndown this path.\p"
+		"Once you're all the way down over\nthere, you can't get back up here!"
+	))
+	release
+}
+
+script PuddlePath_EventScript_DirectionsToBottomSign {
+	msgbox((
+		"{DOWN_ARROW} This way to Orchard Path"
+	), MSGBOX_SIGN)
+}
