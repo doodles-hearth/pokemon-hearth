@@ -3389,6 +3389,15 @@
 	waitstate
 	.endm
 
+	@ Closes the doors in the map at the specified time.
+	@ Must be put in either in a MAP_SCRIPT_ON_LOAD or right before DrawWholeMapView
+	.macro closedoormetatile time:req, doorTopX:req, doorTopY:req
+	callnative ScrCmd_closedoormetatile, requests_effects=1
+	.2byte \time
+	.2byte \doorTopX
+	.2byte \doorTopY
+	.endm
+
 @ ZATSU'S MEMORY READER
 
 	@ Gets the \memorySlot for the Pokémon at \slot
