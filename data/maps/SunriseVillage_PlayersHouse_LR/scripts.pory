@@ -65,7 +65,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 			"Looks like you have a cute friend\nof your own, too!\p"
 			"You take care of each other, alright?\nYou're going to make a great Wielder,\lI just know it!\p"
 			"… … … … … …\n… … … … … …\p"
-			"My little {STR_VAR_1}'s is going on\na journey…\p"
+			"My little {STR_VAR_1}'s going on\na journey…\p"
 			"I can't tell you how proud I am,\n{PLAYER}.\p"
 			"It's a big world though, so I have one\nlast gift for you!"
 		)
