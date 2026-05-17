@@ -45,6 +45,7 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSisSaysHi {
 script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 	lock
 	faceplayer
+	special(GetPlayerBrotherSisterString)
 	setspeaker(SP_NAME_BIG_SIS)
 	if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) <= 4) {
 		msgbox(
@@ -59,7 +60,6 @@ script SunriseVillage_PlayersHouse_LR_EventScript_BigSis {
 		)
 		closemessage
 	} elif (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) == 7) {
-		bufferspeciesname(STR_VAR_2, VAR_STARTER_MON)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_BIG_SIS 0}Hey shortie! Wanna see my new friend?\nShe's really cute!\p"
 			"Looks like you have a cute friend\nof your own, too!\p"
