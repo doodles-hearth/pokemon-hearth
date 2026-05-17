@@ -1,16 +1,16 @@
 #include "global.h"
 #include "pokemon.h"
+#include "random_mon_generation.h"
 #include "string_util.h"
 #include "test/test.h"
 #include "constants/form_change_types.h"
 
 TEST("Form species ID tables are shared between all forms")
 {
-    u32 i;
     u32 species = SPECIES_NONE;
     const u16 *formSpeciesIdTable;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (u32 i = 0; i < NUM_SPECIES; i++)
     {
         if (gSpeciesInfo[i].formSpeciesIdTable)
         {
@@ -19,21 +19,39 @@ TEST("Form species ID tables are shared between all forms")
     }
 
     formSpeciesIdTable = gSpeciesInfo[species].formSpeciesIdTable;
-    for (i = 0; formSpeciesIdTable[i] != FORM_SPECIES_END; i++)
+    for (u32 i = 0; formSpeciesIdTable[i] != FORM_SPECIES_END; i++)
     {
         u32 formSpeciesId = formSpeciesIdTable[i];
         EXPECT_EQ(gSpeciesInfo[formSpeciesId].formSpeciesIdTable, formSpeciesIdTable);
     }
 }
 
+TEST("Form species ID tables fit within RANDOM_MON_MAX_FORMS")
+{
+    u32 formCount;
+    u32 species = SPECIES_NONE;
+    const u16 *formSpeciesIdTable;
+
+    for (u32 i = 0; i < NUM_SPECIES; i++)
+    {
+        if (gSpeciesInfo[i].formSpeciesIdTable)
+            PARAMETRIZE_LABEL("ID:%d - %S", i, gSpeciesInfo[i].speciesName) { species = i; }
+    }
+
+    formSpeciesIdTable = gSpeciesInfo[species].formSpeciesIdTable;
+    for (formCount = 0; formSpeciesIdTable[formCount] != FORM_SPECIES_END; formCount++)
+        ;
+
+    EXPECT(formCount <= RANDOM_MON_MAX_FORMS);
+}
+
 TEST("Form change tables contain only forms in the form species ID table")
 {
-    u32 i, j;
     u32 species = SPECIES_NONE;
     const struct FormChange *formChangeTable;
     const u16 *formSpeciesIdTable;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (u32 i = 0; i < NUM_SPECIES; i++)
     {
         if (gSpeciesInfo[i].formChangeTable)
         {
@@ -45,8 +63,10 @@ TEST("Form change tables contain only forms in the form species ID table")
     formSpeciesIdTable = gSpeciesInfo[species].formSpeciesIdTable;
     EXPECT(formSpeciesIdTable);
 
-    for (i = 0; formChangeTable[i].method != FORM_CHANGE_TERMINATOR; i++)
+    for (u32 i = 0; formChangeTable[i].method != FORM_CHANGE_TERMINATOR; i++)
     {
+        u32 j;
+
         if (formChangeTable[i].targetSpecies == SPECIES_NONE)
             continue;
         for (j = 0; formSpeciesIdTable[j] != FORM_SPECIES_END; j++)
@@ -62,10 +82,9 @@ TEST("Form change tables contain only forms in the form species ID table")
 
 TEST("Forms have the appropriate species form changes")
 {
-    u32 i;
     u32 species = SPECIES_NONE;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (u32 i = 0; i < NUM_SPECIES; i++)
     {
         if (gSpeciesInfo[i].isMegaEvolution
             || gSpeciesInfo[i].isGigantamax
@@ -104,11 +123,10 @@ TEST("Forms have the appropriate species form changes")
 
 TEST("Form change targets have the appropriate species flags")
 {
-    u32 i;
     u32 species = SPECIES_NONE;
     const struct FormChange *formChangeTable;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (u32 i = 0; i < NUM_SPECIES; i++)
     {
         if (gSpeciesInfo[i].formChangeTable)
         {
@@ -117,7 +135,7 @@ TEST("Form change targets have the appropriate species flags")
     }
 
     formChangeTable = gSpeciesInfo[species].formChangeTable;
-    for (i = 0; formChangeTable[i].method != FORM_CHANGE_TERMINATOR; i++)
+    for (u32 i = 0; formChangeTable[i].method != FORM_CHANGE_TERMINATOR; i++)
     {
         const struct SpeciesInfo *targetSpeciesInfo = &gSpeciesInfo[formChangeTable[i].targetSpecies];
         switch (formChangeTable[i].method)
@@ -141,13 +159,12 @@ TEST("Form change targets have the appropriate species flags")
 
 TEST("No species has two evolutions that use the evolution tracker")
 {
-    u32 i, j;
     u32 species = SPECIES_NONE;
     u32 evolutionTrackerEvolutions;
     bool32 hasRecoilEvo;
     const struct Evolution *evolutions;
 
-    for (i = 0; i < NUM_SPECIES; i++)
+    for (u32 i = 0; i < NUM_SPECIES; i++)
     {
         if (IsSpeciesEnabled(i) && GetSpeciesEvolutions(i) != NULL)
             PARAMETRIZE_LABEL("ID:%d - %S", i, GetSpeciesName(i, SKIP_NAME_CHECK)) { species = i; }
@@ -157,11 +174,11 @@ TEST("No species has two evolutions that use the evolution tracker")
     hasRecoilEvo = FALSE;
     evolutions = GetSpeciesEvolutions(species);
 
-    for (i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
+    for (u32 i = 0; evolutions[i].method != EVOLUTIONS_END; i++)
     {
         if (evolutions[i].params == NULL)
             continue;
-        for (j = 0; evolutions[i].params[j].condition != CONDITIONS_END; j++)
+        for (u32 j = 0; evolutions[i].params[j].condition != CONDITIONS_END; j++)
         {
             if (evolutions[i].params[j].condition == IF_USED_MOVE_X_TIMES
              || evolutions[i].params[j].condition == IF_DEFEAT_X_WITH_ITEMS
@@ -187,9 +204,8 @@ extern const u8 gFallbackPokedexText[];
 
 TEST("Every species has a description")
 {
-    u32 i;
     u32 species = SPECIES_NONE;
-    for (i = 1; i < NUM_SPECIES; i++)
+    for (u32 i = 1; i < NUM_SPECIES; i++)
     {
         if (IsSpeciesEnabled(i))
             PARAMETRIZE_LABEL("ID:%d - %S", i, GetSpeciesName(i, SKIP_NAME_CHECK)) { species = i; }
