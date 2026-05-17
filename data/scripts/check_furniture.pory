@@ -14,6 +14,11 @@ script EventScript_ClayFurnace {
 	closemessage
 }
 
+script EventScript_ClosedToku{
+	msgbox(format("It's night time, probably shouldn't disturb them!"))
+	closemessage
+}
+
 raw `
 EventScript_PictureBookShelf::
 	msgbox Text_PictureBookShelf, MSGBOX_SIGN

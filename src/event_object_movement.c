@@ -172,7 +172,7 @@ static bool8 MovementType_Disguise_Callback(struct ObjectEvent *, struct Sprite 
 static bool8 MovementType_Buried_Callback(struct ObjectEvent *, struct Sprite *);
 static void CreateReflectionEffectSprites(void);
 static u8 GetObjectEventIdByLocalIdAndMapInternal(u8, u8, u8);
-static bool8 GetAvailableObjectEventId(u16, u8, u8, u8 *);
+static u32 GetAvailableObjectEventId(u16, u8, u8);
 static void SetObjectEventDynamicGraphicsId(struct ObjectEvent *);
 static void RemoveObjectEventInternal(struct ObjectEvent *);
 static u16 GetObjectEventFlagIdByObjectEventId(u8);
@@ -1641,7 +1641,8 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
         template = &(mapHeader->events->objectEvents[localId - 1]);
     }
 
-    if (GetAvailableObjectEventId(template->localId, mapNum, mapGroup, &objectEventId))
+    objectEventId = GetAvailableObjectEventId(template->localId, mapNum, mapGroup);
+    if (objectEventId == OBJECT_EVENTS_COUNT)
         return OBJECT_EVENTS_COUNT;
 
     if (!ShouldInitObjectEventStateFromTemplate(template, isClone, x3, y3))
@@ -1698,54 +1699,33 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
     return objectEventId;
 }
 
-u8 Unref_TryInitLocalObjectEvent(u8 localId)
-{
-    u8 i;
-    u8 objectEventCount;
-    struct ObjectEventTemplate *template;
-
-    if (gMapHeader.events != NULL)
-    {
-        if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
-            objectEventCount = GetNumBattlePyramidObjectEvents();
-        else if (InTrainerHill())
-            objectEventCount = HILL_TRAINERS_PER_FLOOR;
-        else
-            objectEventCount = gMapHeader.events->objectEventCount;
-
-        for (i = 0; i < objectEventCount; i++)
-        {
-            template = &gSaveBlock1Ptr->objectEventTemplates[i];
-            if (template->localId == localId && !FlagGet(template->flagId))
-                return InitObjectEventStateFromTemplate(template, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
-        }
-    }
-    return OBJECT_EVENTS_COUNT;
-}
-
-static bool8 GetAvailableObjectEventId(u16 localId, u8 mapNum, u8 mapGroup, u8 *objectEventId)
+static u32 GetAvailableObjectEventId(u16 localId, u8 mapNum, u8 mapGroup)
 // Looks for an empty slot.
-// Returns FALSE and the location of the available slot
-// in *objectEventId.
+// Returns the location of the first available slot
 // If no slots are available, or if the object is already
 // loaded, returns TRUE.
 {
-    u8 i = 0;
+    u32 availableId = OBJECT_EVENTS_COUNT;
 
-    for (i = 0; i < OBJECT_EVENTS_COUNT && gObjectEvents[i].active; i++)
+    // This function returns the first available id in vanilla Emerald
+    // If you are certain the function can return any available/inactive with no consequence, feel free to have the loop go in order
+    for (s32 i = OBJECT_EVENTS_COUNT - 1; i >= 0; i--)
     {
-        if (gObjectEvents[i].localId == localId && gObjectEvents[i].mapNum == mapNum && gObjectEvents[i].mapGroup == mapGroup)
-            return TRUE;
+        // check if object is already loaded
+        if (gObjectEvents[i].active)
+        {
+            if (gObjectEvents[i].localId == localId && gObjectEvents[i].mapNum == mapNum && gObjectEvents[i].mapGroup == mapGroup)
+                return OBJECT_EVENTS_COUNT;
+        }
+        else
+        {
+            //gets first available/inactive id (we loop in reverse so the loop will end on the first one)
+            availableId = i;
+        }
     }
-    if (i >= OBJECT_EVENTS_COUNT && !IS_LOCALID_GENERATED_OWE(localId))
-        return TryAndDespawnOldestGeneratedOWE_ToFreeObject(objectEventId);
-    *objectEventId = i;
-    for (; i < OBJECT_EVENTS_COUNT; i++)
-    {
-        if (gObjectEvents[i].active && gObjectEvents[i].localId == localId && gObjectEvents[i].mapNum == mapNum && gObjectEvents[i].mapGroup == mapGroup)
-            return TRUE;
-    }
-    return FALSE;
+    if (availableId == OBJECT_EVENTS_COUNT && !IS_LOCALID_GENERATED_OWE(localId))
+         return TryAndDespawnOldestGeneratedOWE_ToFreeObject();
+    return availableId;
 }
 
 void RemoveObjectEvent(struct ObjectEvent *objectEvent)
@@ -1906,9 +1886,9 @@ u16 LoadSheetGraphicsInfo(const struct ObjectEventGraphicsInfo *info, u16 uuid, 
         sprite->usingSheet = FALSE;
 
     }
-    else if (sprite && !sprite->sheetTileStart && sprite->oam.size != info->oam->size)
+    else if (sprite && !sprite->usingSheet && sprite->images->size != info->images->size)
     {
-        // Not usingSheet and info size differs; realloc tiles
+        // Not usingSheet and frame size differs; realloc tiles
         ReallocSpriteTiles(sprite, info->images->size);
     }
     return tag;
@@ -3251,8 +3231,8 @@ static void ObjectEventSetGraphics(struct ObjectEvent *objectEvent, const struct
     if (i != 0xFF)
         UpdateSpritePalette(&sObjectEventSpritePalettes[i], sprite);
 
-    // If gfx size changes, we need to reallocate tiles
-    if (OW_LARGE_OW_SUPPORT && !OW_GFX_COMPRESS && graphicsInfo->oam->size != sprite->oam.size)
+    // If frame size changes, we need to reallocate tiles.
+    if (OW_LARGE_OW_SUPPORT && !OW_GFX_COMPRESS && graphicsInfo->images->size != sprite->images->size)
         ReallocSpriteTiles(sprite, graphicsInfo->images->size);
 
     #if OW_GFX_COMPRESS
@@ -3624,19 +3604,6 @@ void ShiftStillObjectEventCoords(struct ObjectEvent *objectEvent)
     ShiftObjectEventCoords(objectEvent, objectEvent->currentCoords.x, objectEvent->currentCoords.y);
 }
 
-void UpdateObjectEventCoords(struct ObjectEvent *objectEvent, s16 dx, s16 dy)
-{
-    if (objectEvent->active)
-    {
-        objectEvent->initialCoords.x -= dx;
-        objectEvent->initialCoords.y -= dy;
-        objectEvent->currentCoords.x -= dx;
-        objectEvent->currentCoords.y -= dy;
-        objectEvent->previousCoords.x -= dx;
-        objectEvent->previousCoords.y -= dy;
-    }
-}
-
 void UpdateObjectEventCoordsForCameraUpdate(void)
 {
     u8 i;
@@ -3845,8 +3812,6 @@ void SetObjectEventDirection(struct ObjectEvent *objectEvent, enum Direction dir
 
 static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 {
-    if (localId == OBJ_EVENT_ID_FOLLOWER)
-        return EventScript_Follower;
     return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
 }
 
@@ -12677,7 +12642,7 @@ bool8 MovementType_OverworldWildEncounter_FleePlayer_Step8(struct ObjectEvent *o
 
 bool8 MovementType_OverworldWildEncounter_FleePlayer_Step10(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    if (WE_OWE_FLEE_DESPAWN && sCollisionTimer >= OWE_FLEE_COLLISION_TIME)
+    if (WE_OWE_FLEE_DESPAWN && sCollisionTimer >= OWE_FLEE_COLLISION_TIME && CanRemoveObjectForOWEMovement(objectEvent))
     {
         RemoveObjectEvent(objectEvent);
         return FALSE;
@@ -12873,7 +12838,7 @@ bool8 MovementType_OverworldWildEncounter_Despawn_Step10(struct ObjectEvent *obj
 
 bool8 MovementType_OverworldWildEncounter_Despawn_Step11(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    if (sDespawnTimer == OWE_DESPAWN_FRAMES)
+    if (sDespawnTimer == OWE_DESPAWN_FRAMES && CanRemoveObjectForOWEMovement(objectEvent))
     {
         RemoveObjectEvent(objectEvent);
         return FALSE;

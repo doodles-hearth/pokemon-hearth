@@ -833,7 +833,7 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
     if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
         return TRUE;
     
-    if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (B_FLAG_NO_CATCHING != 0 && FlagGet(B_FLAG_NO_CATCHING))))
+    if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (FlagGet(WE_FLAG_NO_CATCHING))))
         return FALSE;
     
     if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
@@ -3199,6 +3199,16 @@ u32 GetSpeciesBaseStat(enum Species species, u32 statIndex)
         return GetSpeciesBaseSpDefense(species);
     }
     return 0;
+}
+
+u32 GetSpeciesBaseStatTotal(enum Species species)
+{
+    u32 total = 0;
+
+    for (u32 i = 0; i < NUM_STATS; i++)
+        total += GetSpeciesBaseStat(species, i);
+
+    return total;
 }
 
 const struct LevelUpMove *GetSpeciesLevelUpLearnset(enum Species species)

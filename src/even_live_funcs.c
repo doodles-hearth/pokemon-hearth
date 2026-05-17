@@ -18,8 +18,7 @@ void LiveBaseBubble(u32 localId, u32 eventIndex, enum LiveEvent event, const u8 
             eventIndex,
             AUTOMATIC_START,
             inputStr,
-            FALSE,
-            sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids
+            FALSE
         );
         sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
     }
@@ -29,28 +28,12 @@ void LiveBaseBubble(u32 localId, u32 eventIndex, enum LiveEvent event, const u8 
 
 void HelloFunc(u32 localId, u32 eventIndex)
 {
-    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
-
-    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[LIVE_EVENT_HELLO].duration)
-    {
-        u32 numSprites = CreateSpeechBubbleNormal(localId, eventIndex, AUTOMATIC_START, COMPOUND_STRING("Hello"), FALSE, sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids);
-        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
-    }
-
-    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+    SpeechBubbleEvent(AUTOMATIC_START, COMPOUND_STRING("Hello"), FALSE);
 }
 
 void LiveHaltFunc(u32 localId, u32 eventIndex)
 {
-    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
-
-    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[LIVE_EVENT_HALT].duration)
-    {
-        u32 numSprites = CreateSpeechBubbleNormal(localId, eventIndex, AUTOMATIC_START, COMPOUND_STRING("Halt"), FALSE, sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids);
-        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
-    }
-
-    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+    SpeechBubbleEvent(AUTOMATIC_START, COMPOUND_STRING("Halt"), FALSE);
 }
 
 void LiveWoobatFlee(u32 localId, u32 eventIndex)
@@ -65,6 +48,25 @@ void LiveWoobatFlee(u32 localId, u32 eventIndex)
     sActiveLiveEvents[eventIndex].duration--;
 }
 
+const struct MultiSpeechBubble sSunManRant[] =
+{
+    {
+        .str = COMPOUND_STRING("The sun!"),
+        .displayAt = 200,
+        .removeAt = 100,
+    },
+    {
+        .str = COMPOUND_STRING("It moves!"),
+        .displayAt = 100,
+        .removeAt = 0,
+    }
+};
+
+void SunManRant(u32 localId, u32 eventIndex)
+{
+    MultiSpeechBubbleEvent(AUTOMATIC_START, sSunManRant, FALSE);
+}
+
 void LiveSigh(u32 localId, u32 eventIndex)
 {
     u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
@@ -76,8 +78,7 @@ void LiveSigh(u32 localId, u32 eventIndex)
             eventIndex,
             AUTOMATIC_START,
             COMPOUND_STRING("Sigh…"),
-            FALSE,
-            sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids
+            FALSE
         );
         sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
     }

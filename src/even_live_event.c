@@ -694,8 +694,51 @@ const struct SpritePalette sSpritePalette_Bubble =
     gObjectEventPaletteEmotes, OBJ_EVENT_PAL_TAG_EMOTES
 };
 
-u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side, const u8 *inputStr, bool32 maxOneSprite, u8 ids[2])
+void _SpeechBubbleEvent(u32 localId, u32 eventIndex, enum StartingSide side, const u8 *inputStr, bool32 maxOneSprite)
 {
+    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
+
+    //  Potentially slow, should maybe be stored in the event
+    enum LiveEvent liveEvent = GetObjectEventTemplateByLocalIdAndMap(gObjectEvents[objectEventId].localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)->liveEvent;
+
+    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[liveEvent].duration)
+    {
+        u32 numSprites = CreateSpeechBubbleNormal(localId, eventIndex, side, inputStr, maxOneSprite);
+        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
+    }
+
+    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+}
+
+void _MultiSpeechBubbleEvent(u32 localId, u32 eventIndex, enum StartingSide side, const struct MultiSpeechBubble *inputStrs, bool32 maxOneSprite, u32 numStrings)
+{
+    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
+
+    //  Potentially slow, should maybe be stored in the event
+    enum LiveEvent liveEvent = GetObjectEventTemplateByLocalIdAndMap(gObjectEvents[objectEventId].localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup)->liveEvent;
+    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[liveEvent].duration)
+    {
+        sActiveLiveEvents[eventIndex].internalIndex = 0;
+    }
+
+    if (inputStrs[sActiveLiveEvents[eventIndex].internalIndex].removeAt == sActiveLiveEvents[eventIndex].duration)
+    {
+        TearDownSpeechBubble(eventIndex, objectEventId);
+        sActiveLiveEvents[eventIndex].internalIndex++;
+    }
+
+    if (sActiveLiveEvents[eventIndex].internalIndex < numStrings && inputStrs[sActiveLiveEvents[eventIndex].internalIndex].displayAt == sActiveLiveEvents[eventIndex].duration)
+    {
+        u32 numSprites = CreateSpeechBubbleNormal(localId, eventIndex, side, inputStrs[sActiveLiveEvents[eventIndex].internalIndex].str, maxOneSprite);
+        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
+    }
+
+    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+}
+
+u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side, const u8 *inputStr, bool32 maxOneSprite)
+{
+    u8 *ids = sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids;
     u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
     u32 numSprites;
     sActiveLiveEvents[eventIndex].speechBubbleNormalData.str = Alloc(128);
@@ -796,36 +839,50 @@ u32 CreateSpeechBubbleNormal(u32 localId, u32 eventIndex, enum StartingSide side
     return numSprites;
 }
 
+void TearDownSpeechBubble(u32 eventIndex, u32 objectEventId)
+{
+    if (LIVE_TEXT_SPEED != 0)
+    {
+        //  Stop potential active text printers
+        if (sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites == 2)
+        {
+            if (IsTextPrinterActiveOnSprite(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0]))
+                DeactivateSingleTextPrinter(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0], SPRITE_TEXT_PRINTER);
+            else if (IsTextPrinterActiveOnSprite(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1]))
+                DeactivateSingleTextPrinter(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1], SPRITE_TEXT_PRINTER);
+        }
+        else
+        {
+            if (IsTextPrinterActiveOnSprite(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0]))
+                DeactivateSingleTextPrinter(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0], SPRITE_TEXT_PRINTER);
+        }
+    }
+    if (sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0] != SPRITE_NONE)
+    {
+        DestroySprite(&gSprites[sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0]]);
+        sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0] = SPRITE_NONE;
+        FreeSpriteTilesByTag(LIVE_EVENT_GFX_TAG_START + 2 * eventIndex);
+    }
+    if (sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites == 2)
+    {
+        if (sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1] != SPRITE_NONE)
+        {
+            DestroySprite(&gSprites[sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1]]);
+            sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1] = SPRITE_NONE;
+            FreeSpriteTilesByTag(LIVE_EVENT_GFX_TAG_START + 2 * eventIndex + 1);
+        }
+    }
+    Free(sActiveLiveEvents[eventIndex].speechBubbleNormalData.str);
+    sActiveLiveEvents[eventIndex].speechBubbleNormalData.str = NULL;
+}
+
 void CheckAndTearDownSpeechBubble(u32 eventIndex, u32 objectEventId)
 {
     sAnySpeechBubbleIsActive = TRUE;
     if (sActiveLiveEvents[eventIndex].duration == 1 || IsSourceObjectOffscreen(objectEventId))
     {
-        if (LIVE_TEXT_SPEED != 0)
-        {
-            //  Stop potential active text printers
-            if (sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites == 2)
-            {
-                if (IsTextPrinterActiveOnSprite(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0]))
-                    DeactivateSingleTextPrinter(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0], SPRITE_TEXT_PRINTER);
-                else if (IsTextPrinterActiveOnSprite(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1]))
-                    DeactivateSingleTextPrinter(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1], SPRITE_TEXT_PRINTER);
-            }
-            else
-            {
-                if (IsTextPrinterActiveOnSprite(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0]))
-                    DeactivateSingleTextPrinter(sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0], SPRITE_TEXT_PRINTER);
-            }
-        }
-        DestroySprite(&gSprites[sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[0]]);
-        FreeSpriteTilesByTag(LIVE_EVENT_GFX_TAG_START + 2 * eventIndex);
-        if (sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites == 2)
-        {
-            DestroySprite(&gSprites[sActiveLiveEvents[eventIndex].speechBubbleNormalData.ids[1]]);
-            FreeSpriteTilesByTag(LIVE_EVENT_GFX_TAG_START + 2 * eventIndex + 1);
-        }
+        TearDownSpeechBubble(eventIndex, objectEventId);
         sActiveLiveEvents[eventIndex].duration = 1;
-        Free(sActiveLiveEvents[eventIndex].speechBubbleNormalData.str);
     }
     sActiveLiveEvents[eventIndex].duration--;
 }

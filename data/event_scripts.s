@@ -56,6 +56,7 @@
 #include "constants/pokeball.h"
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
+#include "constants/random_mon_generation.h"
 #include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/route_challenge.h"

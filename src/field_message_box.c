@@ -135,8 +135,8 @@ extern void FillDialogFramePlate();
 extern int GetDialogFramePlateWidth();
 static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkippingDelayWithButtonPress)
 {
-    TrySpawnNamebox(NAME_BOX_BASE_TILE_NUM);
     StringExpandPlaceholders(gStringVar4, str);
+    TrySpawnNamebox(gStringVar4, NAME_BOX_BASE_TILE_NUM);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
     if (IsFieldMugshotActive())
