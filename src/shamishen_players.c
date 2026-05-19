@@ -5,6 +5,8 @@
 #define SHAMISHEN_PLAYERS_COUNT 3
 #define SHAMISHEN_PLAYERS_LOCATIONS_COUNT 3
 
+#define UNDEFINED_LOCATION 0xFF
+
 static const u16 sShamishenPlayersVar[SHAMISHEN_PLAYERS_COUNT] =
 {
     VAR_SHAMISHEN_PLAYER_BLUE,
@@ -28,19 +30,19 @@ static const u16 sShamishenPlayersLocations[SHAMISHEN_PLAYERS_LOCATIONS_COUNT][2
 
 static s8 GetShamishenPlayerCurrentLocation(u32 index)
 {
-    s16 varValue = VarGet(sShamishenPlayersVar[index]);
+    u16 varValue = VarGet(sShamishenPlayersVar[index]);
     return (varValue >> 8);
 }
 
-static void SetShamishenPlayerLocation(u32 index, s8 location)
+static void SetShamishenPlayerLocation(u32 index, u8 location)
 {
-    s16 varValue = VarGet(sShamishenPlayersVar[index]);
+    u16 varValue = VarGet(sShamishenPlayersVar[index]);
     u8 state = varValue & 0xFF;
-    s16 newValue = (location << 8) | state;
+    u16 newValue = (location << 8) | state;
     VarSet(sShamishenPlayersVar[index], newValue);
 }
 
-static u32 GetPossibleLocations(u32 index, s8 *alreadySet, s8 *possibleLocations)
+static u32 GetPossibleLocations(u32 index, u8 *alreadySet, u8 *possibleLocations)
 {
     u32 possibleLocationsCount = 0;
     for (u32 i = 0; i < SHAMISHEN_PLAYERS_LOCATIONS_COUNT; i++)
@@ -66,7 +68,7 @@ static u32 GetPossibleLocations(u32 index, s8 *alreadySet, s8 *possibleLocations
         possibleLocations[possibleLocationsCount++] = i;
     }
     for (u32 i = possibleLocationsCount; i < SHAMISHEN_PLAYERS_LOCATIONS_COUNT; i++)
-        possibleLocations[i] = -1;
+        possibleLocations[i] = UNDEFINED_LOCATION;
     return possibleLocationsCount;
 }
 
@@ -75,18 +77,17 @@ void UpdateShamishenPlayersLocations(void)
     u32 seed = gSaveBlock1Ptr->dailySeed ^ 0x0C6F200F; // bytes corresponding to しゃみせ(ん is missing) "shamishe(n)"
     rng_value_t localRngState = LocalRandomSeed(seed);
 
-    s8 newLocations[SHAMISHEN_PLAYERS_COUNT];
-    s8 possibleLocations[SHAMISHEN_PLAYERS_LOCATIONS_COUNT];
+    u8 newLocations[SHAMISHEN_PLAYERS_COUNT];
+    u8 possibleLocations[SHAMISHEN_PLAYERS_LOCATIONS_COUNT];
 
     for (u32 i = 0; i < SHAMISHEN_PLAYERS_COUNT; i++)
-        newLocations[i] = -1;
+        newLocations[i] = UNDEFINED_LOCATION;
 
     for (u32 i = 0; i < SHAMISHEN_PLAYERS_COUNT; i++)
     {
         u32 possibleLocationsCount = GetPossibleLocations(i, newLocations, possibleLocations);
-        if (possibleLocationsCount == 0)
-            newLocations[i] = -1;
-        newLocations[i] = possibleLocations[LocalRandom32(&localRngState) % possibleLocationsCount];
+        if (possibleLocationsCount > 0)
+            newLocations[i] = possibleLocations[LocalRandom32(&localRngState) % possibleLocationsCount];
     }
 
     for (u32 i = 0; i < SHAMISHEN_PLAYERS_COUNT; i++)
@@ -95,7 +96,7 @@ void UpdateShamishenPlayersLocations(void)
 
 void SetShamishenPlayersFlags(u32 mapGroup, u32 mapNum)
 {
-    s8 location = -1;
+    u8 location = UNDEFINED_LOCATION;
     for (u32 i = 0; i < SHAMISHEN_PLAYERS_LOCATIONS_COUNT; i++)
     {
         if (MAP_GROUP(sShamishenPlayersLocations[i][0]) == mapGroup && MAP_NUM(sShamishenPlayersLocations[i][0]) == mapNum)
@@ -105,7 +106,7 @@ void SetShamishenPlayersFlags(u32 mapGroup, u32 mapNum)
         }
     }
 
-    if (location == -1)
+    if (location == UNDEFINED_LOCATION)
         return;
 
     for (u32 i = 0; i < SHAMISHEN_PLAYERS_COUNT; i++)
