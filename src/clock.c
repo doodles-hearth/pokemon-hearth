@@ -12,6 +12,7 @@
 #include "pokerus.h"
 #include "random.h"
 #include "rtc.h"
+#include "shamishen_players.h"
 #include "shiny_vial.h"
 #include "time_events.h"
 #include "tv.h"
@@ -56,6 +57,7 @@ static void UpdatePerDay(struct Time *localTime)
         ClearDailyFlags();
         ClearDailyTrainers();
         UpdateDailySeed();
+        UpdateShamishenPlayersLocations();
         UpdateDewfordTrendPerDay(daysSince);
         UpdateTVShowsPerDay(daysSince);
         UpdateWeatherPerDay(daysSince);
