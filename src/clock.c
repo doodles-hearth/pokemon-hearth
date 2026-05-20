@@ -12,7 +12,7 @@
 #include "pokerus.h"
 #include "random.h"
 #include "rtc.h"
-#include "shamishen_players.h"
+#include "shamisen_players.h"
 #include "shiny_vial.h"
 #include "time_events.h"
 #include "tv.h"
@@ -51,7 +51,7 @@ void DoDailyEvents(u32 daysSince)
     ClearDailyFlags();
     ClearDailyTrainers();
     UpdateDailySeed();
-    UpdateShamishenPlayersLocations();
+    UpdateShamisenPlayers();
     UpdateDewfordTrendPerDay(daysSince);
     UpdateTVShowsPerDay(daysSince);
     UpdateWeatherPerDay(daysSince);

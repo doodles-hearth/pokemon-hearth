@@ -411,10 +411,10 @@
 #define VAR_GINKO_WOODS_CAMPFIRE                         0x40F7
 #define VAR_FLASH_TRACKER                                0x40F8
 
-// Shamishen Players Locations
-#define VAR_SHAMISHEN_PLAYER_BLUE                        0x40F9
-#define VAR_SHAMISHEN_PLAYER_RED                         0x40FA
-#define VAR_SHAMISHEN_PLAYER_GREEN                       0x40FB
+// Shamisen Players Locations
+#define VAR_SHAMISEN_PLAYER_BLUE                         0x40F9
+#define VAR_SHAMISEN_PLAYER_RED                          0x40FA
+#define VAR_SHAMISEN_PLAYER_GREEN                        0x40FB
 #define VAR_UNUSED_0x40FC                                0x40FC
 #define VAR_UNUSED_0x40FD                                0x40FD
 #define VAR_UNUSED_0x40FE                                0x40FE

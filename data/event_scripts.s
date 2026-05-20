@@ -63,6 +63,7 @@
 #include "constants/script_menu.h"
 #include "constants/seagallop.h"
 #include "constants/secret_bases.h"
+#include "constants/shamisen_players.h"
 #include "constants/siirtc.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
@@ -1744,6 +1745,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/wild_encounter.inc"
+	.include "data/scripts/shamisen_players.inc"
 
 	@ please include poryscript-generated scripts here!!
 	@ ---------------------------------------------

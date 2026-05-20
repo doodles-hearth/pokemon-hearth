@@ -41,6 +41,7 @@
 #include "decoration_inventory.h"
 #include "secret_base.h"
 #include "string_util.h"
+#include "shamisen_players.h"
 #include "player_pc.h"
 #include "field_specials.h"
 #include "berry_powder.h"
@@ -257,6 +258,7 @@ void NewGameInitData(void)
     ResetLimitedShops();
     DecorationAdd(DECOR_MAREEP_DOLL);
     GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_JOLTIK), FLAG_SET_SEEN);
+    ResetShamisenPlayersNewGame();
 }
 
 static void ResetMiniGamesRecords(void)
