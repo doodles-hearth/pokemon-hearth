@@ -22,7 +22,8 @@ script ChiiTown_School_EventScript_PreparingDay {
 
 	setspeaker(SP_NAME_TEACHER)
 	msgbox(
-		"Um… The school isn't open yet, I'm afraid. Come back later with your little brother or sister!"
+		"Um… I'm sorry, but the school isn't\nopen yet.\p"
+		"You can come back later with your\nlittle sibling if you'd like!"
 	)
 	closemessage
 
