@@ -3415,6 +3415,17 @@
 	.2byte \doorTopY
 	.endm
 
+	.macro getshamisenplayerflag flagId:req
+	callnative ScrCmd_getshamisenplayerflag
+	.byte \flagId
+	.endm
+
+	.macro setshamisenplayerflag flagId:req, value:req
+	callnative ScrCmd_setshamisenplayerflag
+	.byte \flagId
+	.byte \value
+	.endm
+
 @ ZATSU'S MEMORY READER
 
 	@ Gets the \memorySlot for the Pokémon at \slot

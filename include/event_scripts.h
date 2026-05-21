@@ -824,6 +824,10 @@ extern const u8 EventScript_PokemonHandsYouAnOran[];
 extern const u8 EventScript_CamperWantsToBattle[];
 extern const u8 EventScript_PokemonWantsToBattle[];
 
+extern const u8 EventScript_ShamisenPlayerBlue[];
+extern const u8 EventScript_ShamisenPlayerRed[];
+extern const u8 EventScript_ShamisenPlayerGreen[];
+
 //  Live event script prototypes
 extern const u8 WC_WoobatFlee[];
 
