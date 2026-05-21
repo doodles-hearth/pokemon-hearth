@@ -3803,7 +3803,7 @@ bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
     
     if(time == GetTimeOfDay())
     {
-        MapGridSetMetatileIdAt(doorTopX, doorTopX, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
+        MapGridSetMetatileIdAt(doorTopX, doorTopY, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
         MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
     }
     return FALSE;
