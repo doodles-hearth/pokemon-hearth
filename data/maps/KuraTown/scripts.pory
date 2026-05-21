@@ -298,13 +298,22 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 		"That coincides with the beginning of\nthe Volcano's rumbling spells,\lso there probably is a correlation.\p"
 		"We need to get to the bottom of this."
 	))
+	setspeaker(SP_NAME_NATSUKI)
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Y'know, maybe we could-"
+	)
+	waitmessage
+	delay(20)
+	closemessage
 	playse(SE_PIN)
 	applymovement(LOCALID_KURA_HARIKO, moves(emote_angry))
-	msgbox(format(
-		"But how are we supposed to if the grownups don't let us?"
-	))
-	closemessage
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}But HOW are we supposed to\nif the grownups don't let us?"
+	)
 
+	setspeaker(SP_NAME_NATSUKI)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}…")
+	closemessage
 	delay(60)
 
 	applymovement(LOCALID_KURA_HARIKO, moves(walk_in_place_fast_left))
@@ -334,27 +343,41 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	playse(SE_PIN)
 	applymovement(LOCALID_KURA_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Boy, your friend sure talks a lot, huh?\p"
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Boy, she sure yaps a lot, huh?")
+	applymovement(LOCALID_KURA_NATSUKI, moves(face_up))
+	setspeaker(SP_NAME_NATSUKI)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{FONT_SMALL}Kinda rude, too…{PAUSE 20}")
+	closemessage
+	delay(60)
+	playse(SE_PIN)
+	applymovement(LOCALID_KURA_NATSUKI, moves(face_right, emote_exclamation_mark))
+	delay(48)
+	setspeaker(SP_NAME_NATSUKI)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{FONT_NORMAL}Huh?\nDon't tell me you heard that!\p"
+		"… … …\n"
+		"… … …\p"
+		"Anyways…\p"
 		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
-		"I'm glad the Samurai are on it.\nI'm sure they'll fix whatever this is.\p"
-		"You're going up to Silveridge to deliver that letter, huh, {PLAYER}?\p"
-		"Me? I'm heading to Yifu City.\nThere's a Dojo there, and I'll need\lto collect a heckload of Tokens\lif I wanna join the New Moon order.\p"
-		"When I'm a Samurai, I'll be able to\nprotect everyone from danger!\p"
-		"Don't worry, I'll protect you, too!{PAUSE_UNTIL_PRESS}\n…Mostly from yourself, though!"
-	))
+		"Gosh, what was up with those\nSamurai?\p"
+		"That was SO rude the way they\npressured us to vamoose!\p"
+		"We just wanted to help…\p"
+		"You're going up to Silveridge to\ndeliver that letter, {PLAYER}?\p"
+		"I'm heading to Yifu City.\pThere's a Dojo there, and I\ngotta collect all the tokens as\lfast as I can!"
+	)
 
 	applymovement(LOCALID_KURA_NATSUKI, moves(lock_facing_direction, walk_fast_left, unlock_facing_direction))
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't hit me! Don't hit me!\nI'm gone!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I promise I'll NEVER be a jerk\nlike those dudes!\p"
+		"I swear!\p"
 		"See ya later, Feraligatr!"
 	))
 
 	closemessage
 	
-	applymovement(LOCALID_KURA_NATSUKI, moves(walk_down * 7))
+	applymovement(LOCALID_KURA_NATSUKI, moves(walk_fast_down * 7))
 	delay(32)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_KURA_NATSUKI)

@@ -393,6 +393,19 @@ script MaguroHarbor_EventScript_Cramorant {
 	release
 }
 
+script MaguroHarbor_EventScript_Pawniard {
+	lock
+	faceplayer
+	setseenmon(SPECIES_PAWNIARD)
+	playmoncry(SPECIES_PAWNIARD, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_PAWNIARD)
+	msgbox(format(
+		"Paaaa!"
+	))
+	closemessage
+	release
+}
+
 script MaguroHarbor_EventScript_FishermanOldRod {
 	lock
 	faceplayer
@@ -594,7 +607,7 @@ script MaguroHarbor_EventScript_Natsuki {
 			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0} Bah! {PLAYER}!\n"
 			"You weren't supposed to be here yet!\p"
 			"I was all ready to challenge the dojo,\nbut this old fisherman was breaking\lhis back bringing his fish to market!\p"
-			"I couldn't just leave him to it on his own!\p"
+			"I couldn't just leave him on his own!\p"
 			"Can we agree I won the race, at least?"
 		)
 
@@ -625,12 +638,13 @@ script MaguroHarbor_EventScript_OldFisherman {
 	lock
 	faceplayer
 	if(flag(FLAG_HIDE_NATSUKI_MAGURO)) {
-		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}That lad from before told me he\nwants to be a samurai?\p"
-				"He's too good for them, if you ask me!\p"
-				"He should be a fisherman instead!\nI'd gladly teach him all I know!")
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}That lad from before told me\nhe wants to be a samurai?\p"
+				"Bah! He's too good for those oafs!\p"
+				"He should be a fisherman instead!\nI'll teach him all I know!")
 	} else {
-		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}Oohoohoo!\nDo you know this young man?\p"
-			   "What a wonderful lad! I was dreading bringing this\nhaul to the plaza myself!")
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}Oohoohoo!\nWhat a wonderful young lad!\p"
+			   "I didn't even ask him for help!\p"
+			   "He just up and started bringing\nall my 'karp to market!")
 	}
 	closemessage
 	
