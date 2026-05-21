@@ -347,6 +347,18 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.numSubquests = QUEST_2_SUB_COUNT,
 		.questVariable = 0,
 	},
+	[QUEST_CUT_MASTER] = 
+	{
+		.name = COMPOUND_STRING("A Tended Garden"),
+		.desc = {COMPOUND_STRING("Help the Cut Master by clearing\nhis garden from weeds!")},
+		.donedesc = COMPOUND_STRING("The Cut Master's garden\nwas cleaned up!"),
+		.map = {COMPOUND_STRING("Tranquil Route")},
+		.sprite = {OBJ_EVENT_GFX_SAKURA_OLD_MAN},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
+		.questVariable = 0,
+	},
 	[QUEST_SAKURALOVERS] = 
 	{
 		.name = COMPOUND_STRING("Star-Crossed Lovers"),
@@ -354,11 +366,11 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			sText_Unk, //Var at 0
 			COMPOUND_STRING("Deliver the scarf to Tama!"),
 			COMPOUND_STRING("Report back to Ashii!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
 			sText_Unk, //Var at 9
 		},
 		.donedesc = COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
@@ -401,18 +413,6 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_SCYTHER_STATE,
-	},
-	[QUEST_6] = 
-	{
-		.name = COMPOUND_STRING(""),
-		.desc = {COMPOUND_STRING("")},
-		.donedesc = COMPOUND_STRING(""),
-		.map = {COMPOUND_STRING("")},
-		.sprite = {OBJ_EVENT_GFX_WALLY},
-		.spriteType = {OBJECT},
-		.subquests = NULL,
-		.numSubquests = 0,
-		.questVariable = 0,
 	},
 	[QUEST_7] = 
 	{

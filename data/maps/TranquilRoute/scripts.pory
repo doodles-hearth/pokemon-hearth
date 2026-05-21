@@ -7,6 +7,7 @@ const VAR_DONT_FIGHT = VAR_TEMP_1
 
 mapscripts TranquilRoute_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
+		returnqueststate(QUEST_CUT_MASTER)
 		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_FlowerCutMastersGarden)
 		call(TranquilRoute_EventScript_SpawnBirds)
@@ -48,9 +49,10 @@ script TranquilRoute_EventScript_GrassCutscene {
 	delay(24)
 
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"… … … … … …\n… … … … … …"
-	))
+	msgbox(
+		"… … … … … …\n… … … … … …\p"
+		"My… my garden…"
+	)
 	closemessage
 
 	delay(16)
@@ -59,12 +61,12 @@ script TranquilRoute_EventScript_GrassCutscene {
 	waitmovement(0)
 	delay(24)
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"Was it always this big?"
-	))
+	msgbox(
+		"I don't even the remember the last\ntime it looked so… new."
+	)
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 2))
+	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 2, walk_up, face_right))
 	waitmovement(0)
 	delay(24)
 	delay(24)
@@ -74,21 +76,22 @@ script TranquilRoute_EventScript_GrassCutscene {
 	))
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, moves(walk_left, walk_in_place_faster_down))
+	applymovement(LOCALID_CUT_MASTER, moves(walk_left, walk_down, walk_in_place_faster_down))
 	waitmovement(0)
 	delay(48)
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"I cannot thank you enough for this.\p"
-		"I shall tend to my garden again, thanks to you."
-	))
+	msgbox(
+		"I cannot thank you enough for this.\n"
+		"I can tend to my garden again, all\lthanks to you and your Pokémon!\p"
+		"Please, have this as a token of my\nthanks."
+	)
 	closemessage
 
 	giveitem(ITEM_LEAF_STONE)
-
+	
 	setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_WANDER_AROUND)
 
-	setflag(FLAG_CUT_QUEST_COMPLETED)
+	completequest(QUEST_CUT_MASTER)
 	setflag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)
 	setvar(VAR_DO_CUT_MASTER_CUTSCENE, 0)
 
@@ -97,7 +100,9 @@ script TranquilRoute_EventScript_GrassCutscene {
 
 script TranquilRoute_EventScript_SetupCutGrassCutscene {
 	// The cut master is only out once the cut grass quest is completed, and only during the day
-	if (!flag(FLAG_CUT_QUEST_COMPLETED)) {
+	returnqueststate(QUEST_CUT_MASTER)
+
+	if (var(VAR_RESULT) != QUEST_MENU_COMPLETE_QUEST) {
 		if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)) {
 			// If the player has just exited the cut master's house after having cut all the grass,
 			// get ready for cutscene
@@ -125,32 +130,45 @@ script TranquilRoute_EventScript_SetupCutGrassCutscene {
 // Cut master
 script TranquilRoute_EventScript_CutMaster{
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"I'm enjoying tending my garden again.\p"
-		"I like watching it slowly blossom into something beautiful."
-	), MSGBOX_NPC)
+	if(flag(FLAG_TEMP_3) == FALSE){
+		msgbox(
+			"I'm enjoying tending my garden again.\p"
+			"I like watching it slowly blossom\ninto something beautiful.", MSGBOX_NPC)
+		setflag(FLAG_TEMP_3)
+	} else {
+		msgbox(
+			"You remind me of myself when I was\nyounger.\p"
+			"During my travels, I would use the\nSecret of the Blade to help others.\p"
+			"Little did I know I would be helped\ntoo, one day!", MSGBOX_NPC)
+	}
 }
 
+//Makes sure that flowers are not planted immediately after the cut quest was completed
 script TranquilRoute_EventScript_FlowerCutMastersGarden {
-	if (flag(FLAG_CUT_QUEST_COMPLETED) && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
+	if (var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
 		if (flag(FLAG_BADGE02_GET)) {
-			setmetatile(39, 33, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(40, 34, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(41, 33, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(42, 34, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(39, 33, 0x005, FALSE)
+			setmetatile(40, 34, 0x00D, FALSE)
+			setmetatile(41, 33, 0x005, FALSE)
+			setmetatile(42, 34, 0x00D, FALSE)
 		}
 
 		if (flag(FLAG_BADGE03_GET)) {
-			setmetatile(35, 29, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(34, 30, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(35, 31, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(34, 32, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(35, 29, 0x005, FALSE)
+			setmetatile(34, 30, 0x00D, FALSE)
+			setmetatile(35, 31, 0x005, FALSE)
+			setmetatile(34, 32, 0x00D, FALSE)
 		}
 	}
 }
 
 script TranquilRoute_EventScript_CheckCutGrass{
-	call_if_set(FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_CutGrass)
+	switch(var(VAR_RESULT)){
+		case 3:
+		case 4:
+			call(TranquilRoute_EventScript_CutGrass)
+		default:
+	}
 }
 
 script TranquilRoute_EventScript_CutGrass {
@@ -185,6 +203,7 @@ script TranquilRoute_EventScript_CutGrass {
 	setmetatile(32, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
 	setmetatile(33, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
 	setmetatile(34, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
+	setmetatile(35, 21, METATILE_PorytilesPrimaryTutorial_Grass_BigTreeTop, FALSE)
 	setmetatile(36, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
 	setmetatile(37, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
 	setmetatile(38, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
