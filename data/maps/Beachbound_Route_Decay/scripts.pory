@@ -1,6 +1,8 @@
 const FLAG_HIDE_HARIKO = FLAG_TEMP_1
 const FLAG_HIDE_NATSUKI = FLAG_TEMP_2
-const FLAG_HIDE_PAWNIARD = FLAG_TEMP_3
+const FLAG_HIDE_SNIVY = FLAG_TEMP_3
+const FLAG_HIDE_CYNDAQUIL = FLAG_TEMP_4
+const FLAG_HIDE_SQUIRTLE = FLAG_TEMP_5
 
 mapscripts Beachbound_Route_Decay_MapScripts {
 	MAP_SCRIPT_ON_FRAME_TABLE [
@@ -9,7 +11,9 @@ mapscripts Beachbound_Route_Decay_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_HIDE_HARIKO)
 		setflag(FLAG_HIDE_NATSUKI)
-		setflag(FLAG_HIDE_PAWNIARD)
+		setflag(FLAG_HIDE_SNIVY)
+		setflag(FLAG_HIDE_CYNDAQUIL)
+		setflag(FLAG_HIDE_SQUIRTLE)
 	}
 }
 
@@ -70,9 +74,19 @@ script BeachboundRoute_Decay_EventScript_Kin {
 script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 4)
 	clearflag(FLAG_HIDE_NATSUKI)
-	clearflag(FLAG_HIDE_PAWNIARD)
+
+	if (var(VAR_STARTER_MON) == SPECIES_SQUIRTLE) {
+		clearflag(FLAG_HIDE_SNIVY)
+		addobject(LOCALID_BEACHBOUND_DECAY_SNIVY)
+	} elif (var(VAR_STARTER_MON) == SPECIES_CYNDAQUIL) {
+		clearflag(FLAG_HIDE_SQUIRTLE)
+		addobject(LOCALID_BEACHBOUND_DECAY_SQUIRTLE)
+	} else {
+		clearflag(FLAG_HIDE_CYNDAQUIL)
+		addobject(LOCALID_BEACHBOUND_DECAY_CYNDAQUIL)
+	}
+
 	addobject(LOCALID_BEACHBOUND_DECAY_NATSUKI)
-	addobject(LOCALID_BEACHBOUND_DECAY_PAWNIARD)
 	setspeaker(SP_NAME_HARIKO)
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
 		msgbox(format(
@@ -102,7 +116,13 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	closemessage
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_fast_left * 5, walk_fast_up))
-	applymovement(LOCALID_BEACHBOUND_DECAY_PAWNIARD, moves(walk_fast_left * 6, face_up))
+	if (var(VAR_STARTER_MON) == SPECIES_SQUIRTLE) {
+		applymovement(LOCALID_BEACHBOUND_DECAY_SNIVY, moves(walk_fast_left * 6, face_up))
+	} elif (var(VAR_STARTER_MON) == SPECIES_CYNDAQUIL) {
+		applymovement(LOCALID_BEACHBOUND_DECAY_SQUIRTLE, moves(walk_fast_left * 6, face_up))
+	} else {
+		applymovement(LOCALID_BEACHBOUND_DECAY_CYNDAQUIL, moves(walk_fast_left * 6, face_up))
+	}
 	waitmovement(0)
 
 	playse(SE_PIN)
@@ -111,9 +131,19 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	waitmovement(0)
 	delay(48)
 
-	applymovement(LOCALID_BEACHBOUND_DECAY_PAWNIARD, moves(enter_pokeball))
-	waitmovement(0)
-	removeobject(LOCALID_BEACHBOUND_DECAY_PAWNIARD)
+	if (var(VAR_STARTER_MON) == SPECIES_SQUIRTLE) {
+		applymovement(LOCALID_BEACHBOUND_DECAY_SNIVY, moves(enter_pokeball))
+		waitmovement(0)
+		removeobject(LOCALID_BEACHBOUND_DECAY_SNIVY)
+	} elif (var(VAR_STARTER_MON) == SPECIES_CYNDAQUIL) {
+		applymovement(LOCALID_BEACHBOUND_DECAY_SQUIRTLE, moves(enter_pokeball))
+		waitmovement(0)
+		removeobject(LOCALID_BEACHBOUND_DECAY_SQUIRTLE)
+	} else {
+		applymovement(LOCALID_BEACHBOUND_DECAY_CYNDAQUIL, moves(enter_pokeball))
+		waitmovement(0)
+		removeobject(LOCALID_BEACHBOUND_DECAY_CYNDAQUIL)
+	}
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_fast_left * 3, walk_fast_up * 4))
 	waitmovement(0)
 
