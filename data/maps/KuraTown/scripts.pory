@@ -307,6 +307,7 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	closemessage
 	playse(SE_PIN)
 	applymovement(LOCALID_KURA_HARIKO, moves(emote_angry))
+	setspeaker(SP_NAME_HARIKO)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}But HOW are we supposed to\nif the grownups don't let us?"
 	)
