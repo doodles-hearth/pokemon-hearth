@@ -7,14 +7,12 @@ const VAR_DONT_FIGHT = VAR_TEMP_1
 
 mapscripts TranquilRoute_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-		returnqueststate(QUEST_CUT_MASTER)
-		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_FlowerCutMastersGarden)
 		call(TranquilRoute_EventScript_SpawnBirds)
 	}
 	MAP_SCRIPT_ON_TRANSITION {
+		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_SetupCutGrassCutscene)
-
 		// Remove roadblock to Whiteslate Route
 		if (flag(FLAG_BADGE02_GET)) {
 			setvar(VAR_TEMP_1, 1)
@@ -102,28 +100,31 @@ script TranquilRoute_EventScript_SetupCutGrassCutscene {
 	// The cut master is only out once the cut grass quest is completed, and only during the day
 	returnqueststate(QUEST_CUT_MASTER)
 
-	if (var(VAR_RESULT) != QUEST_MENU_COMPLETE_QUEST) {
-		if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)) {
-			// If the player has just exited the cut master's house after having cut all the grass,
-			// get ready for cutscene
-			getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
-			if (var(VAR_TEMP_2) == 43 && var(VAR_TEMP_3) == 33) {
-				setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_FACE_LEFT)
-				setobjectxyperm(LOCALID_CUT_MASTER, 44, 33)
-				setvar(VAR_DO_CUT_MASTER_CUTSCENE, 1)
-			}
-		} else {
-			setflag(FLAG_HIDE_CUT_MASTER)
-		}
-	} else {
-		// Can't plug the Cut master to Zatsu's scheduling system because of his special needs
-		gettimeofday
-		switch(var(VAR_0x8000)){
-			case TIME_EVENING:
-			case TIME_NIGHT:
-			case TIME_DEAD_NIGHT:
+	switch(var(VAR_RESULT)) {
+		case QUEST_MENU_UNLOCK_QUEST:
+		case QUEST_MENU_SET_ACTIVE:
+		case QUEST_MENU_SET_REWARD:
+			if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)) {
+				// If the player has just exited the cut master's house after having cut all the grass,
+				// get ready for cutscene
+				getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
+				if (var(VAR_TEMP_2) == 43 && var(VAR_TEMP_3) == 33) {
+					setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_FACE_LEFT)
+					setobjectxyperm(LOCALID_CUT_MASTER, 44, 33)
+					setvar(VAR_DO_CUT_MASTER_CUTSCENE, 1)
+				}
+			} else {
 				setflag(FLAG_HIDE_CUT_MASTER)
-		}
+			}
+		case QUEST_MENU_COMPLETE_QUEST:
+			// Can't plug the Cut master to Zatsu's scheduling system because of his special needs
+			gettimeofday
+			switch(var(VAR_0x8000)){
+				case TIME_EVENING:
+				case TIME_NIGHT:
+				case TIME_DEAD_NIGHT:
+					setflag(FLAG_HIDE_CUT_MASTER)
+			}
 	}
 }
 
@@ -145,97 +146,32 @@ script TranquilRoute_EventScript_CutMaster{
 
 //Makes sure that flowers are not planted immediately after the cut quest was completed
 script TranquilRoute_EventScript_FlowerCutMastersGarden {
+	returnqueststate(QUEST_CUT_MASTER)
 	if (var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
 		if (flag(FLAG_BADGE02_GET)) {
 			setmetatile(39, 33, 0x005, FALSE)
 			setmetatile(40, 34, 0x00D, FALSE)
 			setmetatile(41, 33, 0x005, FALSE)
-			setmetatile(42, 34, 0x00D, FALSE)
+			setmetatile(42, 34, 0x8CE, FALSE)
 		}
 
 		if (flag(FLAG_BADGE03_GET)) {
 			setmetatile(35, 29, 0x005, FALSE)
 			setmetatile(34, 30, 0x00D, FALSE)
-			setmetatile(35, 31, 0x005, FALSE)
-			setmetatile(34, 32, 0x00D, FALSE)
+			setmetatile(35, 31, 0x8CE, FALSE)
+			setmetatile(34, 32, 0x8CE, FALSE)
 		}
 	}
 }
 
 script TranquilRoute_EventScript_CheckCutGrass{
+	returnqueststate(QUEST_CUT_MASTER)
 	switch(var(VAR_RESULT)){
 		case 3:
 		case 4:
-			call(TranquilRoute_EventScript_CutGrass)
+			setmaplayoutindex(LAYOUT_TRANQUIL_ROUTE_CUT_GRASS)
 		default:
 	}
-}
-
-script TranquilRoute_EventScript_CutGrass {
-	// there is probably a smarter way to do this but here we are
-	// set all the tiles that were cut to just be normal grass
-	setmetatile(32, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(34, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(35, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(36, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(37, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(38, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-
-	setmetatile(31, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(33, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(34, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(35, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(36, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(37, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(38, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(39, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(32, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(33, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(34, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(35, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(36, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(37, 20, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(38, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(39, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(31, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(32, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(33, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(34, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(35, 21, METATILE_PorytilesPrimaryTutorial_Grass_BigTreeTop, FALSE)
-	setmetatile(36, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(37, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(38, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(39, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(33, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(37, 22, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(37, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(38, 24, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(38, 25, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-
-	setmetatile(38, 26, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(39, 26, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(37, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 27, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(39, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(37, 28, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(38, 28, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(39, 28, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(37, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(38, 30, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	return
 }
 
 script TranquilRoute_EventScript_Chikao {
