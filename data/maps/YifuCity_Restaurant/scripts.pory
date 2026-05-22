@@ -214,7 +214,7 @@ script(local) Hotpot_OrderedEverythingOnMenu {
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Everything? As in, every item on the menu?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Everything!? As in, every item on the menu!?!?"
 	))
 
 	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
@@ -255,7 +255,7 @@ script(local) Hotpot_Slowpoke {
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Chomp, chomp…\nWhat does a Slowpoke even eat?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Chomp, chomp…\nWhat do Slowpoke even eat?"
 	))
 
 	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))
@@ -333,7 +333,7 @@ script(local) Hotpot_Decay {
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I heard rumors the Decay' spreading again in Uume Forest, west of here."
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I heard rumors the Decay's spreading again in Uume Forest, west of here."
 	))
 
 	playse(SE_PIN)
@@ -363,7 +363,7 @@ script(local) Hotpot_Decay {
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}That bunch is definitely up to no good…\p"
-				"They strike me as dumb more than evil, but we ought to keep an eye on them!"
+				"Though they certainly strike me as more dumb than evil!"
 			))
 
 			applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down, emote_pensive))
@@ -402,8 +402,8 @@ script(local) Hotpot_Decay {
 			applymovement(LOCALID_HOTPOT_NATSUKI, moves(walk_in_place_fast_right))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}What are you on about, {PLAYER}?\p"
-				"You know I wanna become a Samurai someday!\NThey've been protecting us forever!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Pfft… You wish, {PLAYER}!\p"
+				"There's nobody in Toku\nmore noble than the Samurai of\lthe New Moon Order!"
 			))
 
 			applymovement(LOCALID_HOTPOT_HARIKO, moves(face_down, emote_pensive))
@@ -464,7 +464,7 @@ script(local) Hotpot_End {
 	applymovement(LOCALID_HOTPOT_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Man, I think I ate too much…"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oof… I think I ate too much…"
 	))
 
 	applymovement(LOCALID_HOTPOT_HARIKO, moves(walk_in_place_fast_left))

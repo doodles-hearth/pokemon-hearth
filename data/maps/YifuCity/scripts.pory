@@ -1265,14 +1265,14 @@ script(local) SpeakToNatsukiAfternoon {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, chill Hariko!\nThe Golden Drampa's open all day!\p"
 		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
 	))
 
 	call(NatsukiFacesPlayer)
 
 	msgbox(format(
-		"What d'you say, {PLAYER}?\nYou in or what?"
+		"Whaddya say, {PLAYER}?\nYou in or what?"
 	))
 
 	mcdialogueB(
@@ -1385,14 +1385,14 @@ script(local) HarikoNotABreakfastPlace {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, you should chill.\nI'm sure they'll have breakfast options!\p"
-		"I could actually go for a hotpot anyway!"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, chill Hariko!\nI'm sure they'll have breakfast options!\p"
+		"I'll go for hotpot any time of day!"
 	))
 
 	call(NatsukiFacesPlayer)
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}What d'you say, {PLAYER}?\nYou in or what?"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Whaddya say, {PLAYER}?\nYou in or what?"
 	))
 
 	mcdialogueB(
@@ -1429,8 +1429,8 @@ script(local) HarikoTooLateForDinner {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, you should chill.\nThe Golden Drampa's open all night!\p"
-		"I haven't eaten much today.\nI could go for a late night hotpot!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, chill Hariko!\nThe Golden Drampa's open all night!\p"
+		"I've barely eaten today.\nI could go for a late night hotpot!\p"
 		"What d'you say, {PLAYER}?\nYou in or what?"
 	))
 
@@ -1560,7 +1560,7 @@ script(local) SpeakToHarikoAfternoon {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, you should chill.\nThe Golden Drampa's open all day!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, chill Hariko!.\nThe Golden Drampa's open all day!\p"
 		"I actually haven't had lunch yet.\nI vote afternoon hotpot!"
 	))
 
@@ -1653,7 +1653,7 @@ script(local) SpeakToNatsukiAgain {
 	// Morning
 	if (var(VAR_HOUR_OF_DAY) >= 5 && var(VAR_HOUR_OF_DAY) <= 11) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a sick hotpot breakfast,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a rockin' hotpot\nbreakfast, {PLAYER}?"
 		))
 		// Lunch or dinner
 	} elif (
@@ -1661,17 +1661,17 @@ script(local) SpeakToNatsukiAgain {
 		|| (var(VAR_HOUR_OF_DAY) > 18 && var(VAR_HOUR_OF_DAY) <= 22)
 	) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a sick hotpot meal,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a rockin' hotpot\nmeal,{PLAYER}?"
 		))
 		// Snack
 	} elif (var(VAR_HOUR_OF_DAY) > 15 && var(VAR_HOUR_OF_DAY) <= 18) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a sick hotpot snack,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a rockin' hotpot\nsnack, {PLAYER}?"
 		))
 		// Late night dinner (23h-5h)
 	} else {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a sick late night hotpot,\n{PLAYER}?"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ready for a rockin' late night\nhotpot, {PLAYER}?"
 		))
 	}
 
@@ -1695,7 +1695,7 @@ script(local) NatsukiCanIComeToo {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{PLAYER}! What's up? Did you hear\nabout the whole lockdown thing?\l"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Yo, {PLAYER}! What's up? You hear\nabout the whole lockdown thing?\l"
 		"Wild stuff, huh?"
 	))
 
