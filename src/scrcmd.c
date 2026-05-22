@@ -3795,6 +3795,8 @@ bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
     u16 time        = VarGet(ScriptReadHalfword(ctx));
     u16 doorTopX    = VarGet(ScriptReadHalfword(ctx));
     u16 doorTopY    = VarGet(ScriptReadHalfword(ctx));
+    u16 doortoptile = VarGet(ScriptReadHalfword(ctx));
+    u16 doorbottile = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
@@ -3803,8 +3805,8 @@ bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
     
     if(time == GetTimeOfDay())
     {
-        MapGridSetMetatileIdAt(doorTopX, doorTopY, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
-        MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
+        MapGridSetMetatileIdAt(doorTopX, doorTopY, doortoptile | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
+        MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, doorbottile | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
     }
     return FALSE;
 }
