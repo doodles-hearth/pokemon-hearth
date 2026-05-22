@@ -55,6 +55,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BONSAI_SHOP_SHOPPER",
       "graphics_id": "OBJ_EVENT_GFX_SAKURA_MAN_2",
       "x": 2,
       "y": 4,

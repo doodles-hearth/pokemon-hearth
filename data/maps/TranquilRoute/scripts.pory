@@ -496,9 +496,17 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	// o o o
 	//   o
-	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down, zubats_align, delay_16, delay_16))
-	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(face_down, zubats_align, delay_16, delay_16))
-	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down, zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(face_down))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
+
+	playse(SE_FLEE)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(zubats_align, delay_16, delay_16))
 	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
 	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
 	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
