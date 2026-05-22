@@ -5777,7 +5777,7 @@
       "id": "LAYOUT_CHII_TOWN",
       "name": "ChiiTown_Layout",
       "width": 38,
-      "height": 31,
+      "height": 34,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",

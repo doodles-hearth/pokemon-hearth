@@ -10,11 +10,11 @@ mapscripts ChiiTown_MapScripts {
 		call(ChiiTown_DrawMetatiles)
 		
 		// School Door
-		closedoormetatile(TIME_NIGHT, 14, 5)
-		closedoormetatile(TIME_DEAD_NIGHT, 14, 5)
+		closedoormetatile(TIME_NIGHT, 14, 8, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		closedoormetatile(TIME_DEAD_NIGHT, 14, 8, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
 		
 		//Growlithe Owner House Door
-		closedoormetatile(TIME_DEAD_NIGHT, 24, 19)
+		closedoormetatile(TIME_DEAD_NIGHT, 24, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
     }
 	MAP_SCRIPT_ON_TRANSITION {
         setflag(FLAG_VISITED_CHII_TOWN)
