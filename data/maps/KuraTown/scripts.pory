@@ -32,6 +32,13 @@ mapscripts KuraTown_MapScripts {
 		if (flag(FLAG_KURA_DOJO_CLOSED)) {
 			setmetatile(40, 16, METATILE_SakuKura_ClosedDojoDoor, TRUE)
 		}
+		if (flag(FLAG_SAKU_KURA_REUNITED)) {
+			setmetatile(19, 33, METATILE_SakuKura_BoardGame, TRUE)
+		}
+		if (flag(FLAG_SAKU_KURA_RIVALS)) {
+			setmetatile(19, 33, METATILE_PorytilesPrimaryTutorial_Grass, TRUE)
+		}
+
 		gettimeofday
 		switch(var(VAR_0x8000)){
 			case TIME_DEAD_NIGHT:

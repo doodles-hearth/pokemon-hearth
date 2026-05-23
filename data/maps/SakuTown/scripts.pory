@@ -57,9 +57,9 @@ mapscripts SakuTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		setflag(FLAG_HIDE_NATSUKI)
 
-		if (flag(FLAG_SAKU_KURA_REUNITED)) {
+		if (!flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
-			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
+			setmetatile(19, 2, METATILE_PorytilesPrimaryTutorial_Grass, TRUE)
 		}
 		
 		//Close Bonsai Shop
