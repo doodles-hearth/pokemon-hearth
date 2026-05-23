@@ -6,11 +6,11 @@ mapscripts SakuTown_House1_MapScripts {
 script SakuTown_House1_EventScript_Tama {
 	lock
 	if (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 0) {
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_MAN}Please go away.\nLeave me alone."))
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_MAN}Please go away.\nLeave me alone.")
 		closemessage
 	}
 	elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) == 1) {
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_MAN}Please go away.\nLeave me alone."))
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_MAN}Please go away.\nLeave me alone.")
 
 		mcdialogue(
 			"Excuse me…",
@@ -19,19 +19,20 @@ script SakuTown_House1_EventScript_Tama {
 
 		switch(var(VAR_RESULT)) {
 			case 0:
-				msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}… … … … … …\n… … … … …What?"))
+				msgbox("{SPEAKER NAME_TAMA}… … … … … …\n… … … … …What?")
 			case 1:
-				msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}… … … … … …\n… … … … …Yeah, so?"))
+				msgbox("… … … … … …\n… … … … …Yeah, so?")
 		}
+		
+		delay(32)
 		
 		mcdialogue(
 			"I have something!",
 			"This is for you!"
 		)
 
-		delay(32)
-
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}… … … … … …\n… … … … … …"))
+		message("… … … … … …\n… … … … … …")
+		waitmessage
 
 		delay(32)
 
@@ -43,11 +44,11 @@ script SakuTown_House1_EventScript_Tama {
 		applymovement(LOCALID_TAMA, moves(face_player, emote_exclamation_mark, delay_16 * 6))
 		waitmovement(0)
 
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}WHAT?! Let me see!"))
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}WHAT?! Let me see!")
 		closemessage
 
 		playfanfare(MUS_OBTAIN_ITEM)
-		msgbox(format("{PLAYER} gave Tama the scarf."))
+		msgbox("{PLAYER} gave Tama the scarf.")
 		waitfanfare
 		removeitem(ITEM_ASHIIS_SCARF)
 		closemessage
@@ -56,9 +57,7 @@ script SakuTown_House1_EventScript_Tama {
 		applymovement(LOCALID_TAMA, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
 		waitmovement(LOCALID_TAMA)
 
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}I… I can't believe it!\nShe really does love me!"
-		))
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}I… I can't believe it!\nShe really does love me!")
 		closemessage
 
 		playse(SE_PIN)
@@ -66,16 +65,14 @@ script SakuTown_House1_EventScript_Tama {
 		waitmovement(LOCALID_TAMA)
 		waitse
 
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Eh? There's a letter inside!\n Whatever for?"
-		))
-		closemessage
-
-		applymovement(LOCALID_TAMA, moves(face_down))
+		message("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Eh? There's a letter inside!\nWhatever for?")
+		applymovement(LOCALID_TAMA, moves(face_away_player))
 		waitmovement(LOCALID_TAMA)
+		waitmessage
+		waitbuttonpress
 
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Ahem…\n"
+		message(
+			"Ahem…\p"
 			"“My dear Tama,\p"
 			"It pains me that you aren't by my side\nevery night.\p"
 			"The sweet chirping of birds pales\nin comparison to your hearty laugh.\p"
@@ -83,37 +80,54 @@ script SakuTown_House1_EventScript_Tama {
 			"If your heart still rings true for mine,\nmeet me under pale moonlight,\lin the vale betwixt our homes.\p"
 			"Sincerely yours,\n-Ashii {EMOJI_HEART}”\p"
 			"… … … … … …\n… … … … … …"
-		))
+		)
+		waitmessage
+		waitbuttonpress
+		//ignore poryscript warning
 		closemessage
 
 		delay(24)
 		faceplayer
 	
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}…Ahem. Sorry, this is a little\nembarrassing…\p"
 			"What does she mean with that “vale”,\nthough?…\p"
 			"Oh!\p"
 			"She must be talking about the small\nvalley east of here!\p"
-			"And “pale moonlight”…\nThat must be tonight!\p"
-			"Of course! Why else ask you to deliver\nthis now?"
-		))
+			"And “pale moonlight”…\nThat means to meet her at night!"
+		)
 		closemessage
 
+		delay(32)
+
 		applymovement(LOCALID_TAMA, Common_Movement_FaceAwayPlayer)
+		message("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}But what about the trees blocking the\nvalley?\p")
+		waitmessage
 		waitmovement(LOCALID_TAMA)
+		applymovement(LOCALID_TAMA, moves(emote_sweat, delay_16 * 2))
+		message("I can't do anything without Pokémon\nof my own…\p")
+		waitmessage
+		waitmovement(0)
+		delay(32)
+		applymovement(LOCALID_TAMA, moves(emote_exclamation_mark, delay_16 * 2))
+		message(
+			"No! If she sent this, she must have a\nplan…\p"
+			"I just have to trust her!"
+		)
+		waitmessage
+		waitbuttonpress
+		waitmovement(0)
+		closemessage
+
 		delay(60)
 		faceplayer
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Wielder! I owe you my thanks.\nTell her I'll meet her tonight!"
-		))
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Wielder! I owe you my thanks.\nTell her I'll be waiting!")
 		closemessage
 		updatequest(QUEST_SAKURALOVERS)
 
 	} elif (var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) >= 2 || var(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE) < 8) {
 		faceplayer
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Please, tell Ashii I'll meet her\ntonight!"
-		))
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_1 0}{SPEAKER NAME_TAMA}Please, tell Ashii I'll meet her\ntonight!")
 		waitmessage
 		closemessage
 	} else {

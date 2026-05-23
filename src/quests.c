@@ -400,9 +400,6 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
-			COMPOUND_STRING("Saku & Kura Villages"),
-			COMPOUND_STRING("Saku & Kura Villages"),
-			COMPOUND_STRING("Saku & Kura Villages"),
 		},
 		.sprite = {OBJ_EVENT_GFX_SPECIES(EEVEE)},
 		.spriteType = {OBJECT},
@@ -416,8 +413,6 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.desc = {COMPOUND_STRING("Find a cure for the ailing Scyther!")},
 		.donedesc = COMPOUND_STRING("Cured the Scyther to full health!"),
 		.map = {
-			COMPOUND_STRING("Saku & Kura Villages"),
-			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
