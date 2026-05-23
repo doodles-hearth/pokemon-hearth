@@ -19,7 +19,6 @@ mapscripts SakuTown_MapScripts {
 
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
-			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_SAKU_TOWN_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
 
@@ -57,6 +56,11 @@ mapscripts SakuTown_MapScripts {
 	}
 	MAP_SCRIPT_ON_LOAD {
 		setflag(FLAG_HIDE_NATSUKI)
+
+		if (flag(FLAG_SAKU_KURA_REUNITED)) {
+			// Once reunited, the guards from the two villages play a board game together
+			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
+		}
 		
 		//Close Bonsai Shop
 		closedoormetatile(TIME_NIGHT, 35, 30, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
@@ -422,7 +426,7 @@ script SakuTown_EventScript_KuraGuard {
 	lock
 	setspeaker(SP_NAME_GUARD)
 	msgbox(format(
-		"Hah, got two of your Tauros in my herd!"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hah, got two of your Tauros in my herd!"
 	))
 	closemessage
 	release

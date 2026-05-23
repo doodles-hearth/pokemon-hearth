@@ -56,7 +56,7 @@ script KuraTown_EventScript_GuardStopsYou {
 	applymovement(LOCALID_KURA_TOWN_GUARD, Common_Movement_WalkInPlaceFasterRight)
 	waitmovement(0)
 	setspeaker(SP_NAME_GUARD)
-	msgbox(format("Hey!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hey!"))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
 	waitmovement(OBJ_EVENT_ID_PLAYER)
@@ -66,7 +66,7 @@ script KuraTown_EventScript_GuardStopsYou {
 		delay(20)
 		if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1) {
 		msgbox(
-			"You think I don't see you trying\nto sneak in from Saku Village?\p"
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}You think I don't see you trying\nto sneak in from Saku Village?\p"
 			"…Wait, you're just a regular traveler,\naren't you…\p"
 			"Welcome to Kura Village then!"
 		)
@@ -76,7 +76,7 @@ script KuraTown_EventScript_GuardStopsYou {
 	} elif (var(VAR_GUARD_TRIGGER) == 1) {
 		setspeaker(SP_NAME_GUARD)
 		msgbox(
-			"You're not trying to sneak into Saku\nVillage, are you?\p"
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}You're not trying to sneak into Saku\nVillage, are you?\p"
 			"…My bad, you're that traveler again.\nDidn't recognize ya.\p"
 			"You can go through, though I'm not sure\nwhy you'd want to."
 		)
