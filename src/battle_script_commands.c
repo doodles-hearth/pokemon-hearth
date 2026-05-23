@@ -1139,19 +1139,10 @@ static void Cmd_printselectionstringfromtable(void)
     }
 }
 
-static inline void CalculateAndSetMoveDamage(struct DamageContext *ctx)
+static inline void SetDynamicMoveCategoryAndDamage(struct DamageContext *ctx)
 {
     SetDynamicMoveCategory(gBattlerAttacker, ctx->battlerDef, gCurrentMove);
-    ctx->isCrit = gSpecialStatuses[ctx->battlerDef].criticalHit;
-    ctx->fixedBasePower = 0;
     gBattleStruct->moveDamage[ctx->battlerDef] = CalculateMoveDamage(ctx);
-
-    // Slighly hacky but we need to check move result flags for distortion match-up as well but it can only be done after damage calcs
-    if (gSpecialStatuses[ctx->battlerDef].distortedTypeMatchups && IsBattlerUnaffectedByMove(ctx->battlerDef))
-    {
-        gSpecialStatuses[ctx->battlerDef].distortedTypeMatchups = FALSE;
-        gSpecialStatuses[ctx->battlerDef].teraShellAbilityDone = FALSE;
-    }
 }
 
 static void Cmd_damagecalc(void)
@@ -1189,14 +1180,14 @@ static void Cmd_damagecalc(void)
                 continue;
 
             ctx.battlerDef = battlerDef;
-            CalculateAndSetMoveDamage(&ctx);
+            SetDynamicMoveCategoryAndDamage(&ctx);
         }
         gBattleStruct->calculatedDamageDone = TRUE;
     }
     else
     {
         ctx.battlerDef = gBattlerTarget;
-        CalculateAndSetMoveDamage(&ctx);
+        SetDynamicMoveCategoryAndDamage(&ctx);
     }
 
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -1862,20 +1853,8 @@ static void Cmd_resultmessage(void)
 
     if (*moveResultFlags & MOVE_RESULT_MISSED && !(*moveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE))
     {
-        if (gMultiHitCounter && gMultiHitCounter < GetMoveStrikeCount(gCurrentMove))
-        {
-            gMultiHitCounter = 0;
-            gBattleStruct->moveDamage[gBattlerTarget] = 0;
-            gSpecialStatuses[gBattlerTarget].damagedByAttack = FALSE;
-            *moveResultFlags &= ~MOVE_RESULT_MISSED;
-            BattleScriptCall(BattleScript_MultiHitPrintStrings);
-            return;
-        }
-        else
-        {
-            gBattleCommunication[MSG_DISPLAY] = 1;
-            stringId = STRINGID_PKMNAVOIDEDATTACK;
-        }
+        gBattleCommunication[MSG_DISPLAY] = 1;
+        stringId = STRINGID_PKMNAVOIDEDATTACK;
     }
     else
     {
@@ -2640,11 +2619,13 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
          && gProtectStructs[effectBattler].protected != PROTECT_MAX_GUARD)
         {
             gProtectStructs[effectBattler].protected = PROTECT_NONE;
+            gBattleMons[effectBattler].volatiles.consecutiveMoveUses = 0;
             i = TRUE;
         }
         if (GetProtectType(gProtectStructs[BATTLE_PARTNER(effectBattler)].protected) == PROTECT_TYPE_SIDE)
         {
             gProtectStructs[BATTLE_PARTNER(effectBattler)].protected = PROTECT_NONE;
+            gBattleMons[BATTLE_PARTNER(effectBattler)].volatiles.consecutiveMoveUses = 0;
             i = TRUE;
         }
         if (i)
