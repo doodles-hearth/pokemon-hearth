@@ -56,6 +56,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_KURA_TOWN_GUARD",
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
       "x": 15,
       "y": 29,
@@ -476,24 +477,6 @@
     },
     {
       "type": "trigger",
-      "x": 17,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "2",
-      "script": "KuraTown_EventScript_GuardStopsYou"
-    },
-    {
-      "type": "trigger",
-      "x": 16,
-      "y": 30,
-      "elevation": 0,
-      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
-      "var_value": "2",
-      "script": "KuraTown_EventScript_GuardStopsYou"
-    },
-    {
-      "type": "trigger",
       "x": 49,
       "y": 27,
       "elevation": 0,
@@ -563,6 +546,33 @@
       "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
       "var_value": "2",
       "script": "KuraTown_EventScript_PreventStealing_BeachBoundRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
     }
   ],
   "bg_events": [

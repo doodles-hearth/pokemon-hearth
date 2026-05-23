@@ -236,7 +236,7 @@ script KuraTown_Dojo_EventScript_Advice {
 					"All these trees are blocking your way,\naren't they?\p"
 					"I'm sure you'll find a way to cut them\ndown soon enough!\p"
 					"If you're itching for a challenge, why\nnot try your skills at the Dojo in\lMaguro Harbor first?\p"
-					"It's not very far east from here!"
+					"It's just a short jog through the\nroute east of here!"
 				)
 			}
 		}

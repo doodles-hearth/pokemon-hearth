@@ -1,7 +1,7 @@
-const LOCALID_GUARD = 2
 const LOCALID_ASHII = 16
 const FLAG_HIDE_HARIKO_NATSUKI = FLAG_TEMP_1
 const FLAG_HIDE_ABRA_GUY = FLAG_TEMP_2
+const VAR_GUARD_TRIGGER = VAR_TEMP_2
 
 mapscripts KuraTown_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -53,44 +53,43 @@ script KuraTown_EventScript_GuardStopsYou {
 	lockall
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	// Player sneaks in from the left
+	applymovement(LOCALID_KURA_TOWN_GUARD, Common_Movement_WalkInPlaceFasterRight)
+	waitmovement(0)
 	setspeaker(SP_NAME_GUARD)
-	if (var(VAR_TEMP_0) <= 14) {
-		applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterLeft)
-		waitmovement(0)
-		msgbox(format("Hey!"))
-		closemessage
-		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
-		waitmovement(OBJ_EVENT_ID_PLAYER)
-		// Player sneaks in from the right
-	} else {
-		applymovement(LOCALID_GUARD, Common_Movement_WalkInPlaceFasterRight)
-		waitmovement(0)
-		msgbox(format("Hey!"))
-		closemessage
-		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
-		waitmovement(OBJ_EVENT_ID_PLAYER)
-	}
-	delay(20)
-
-	setspeaker(SP_NAME_GUARD)
-	if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1) {
+	msgbox(format("Hey!"))
+	closemessage
+	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+	waitmovement(OBJ_EVENT_ID_PLAYER)
+	if(var(VAR_GUARD_TRIGGER) == 0)
+	{
+		setspeaker(SP_NAME_GUARD)
+		delay(20)
+		if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1) {
 		msgbox(
 			"You think I don't see you trying\nto sneak in from Saku Village?\p"
 			"…Wait, you're just a regular traveler,\naren't you…\p"
 			"Welcome to Kura Village then!"
 		)
 		closemessage
-		setvar(VAR_SAKU_KURA_VILLAGES_STATE, 2)
-	} elif (var(VAR_SAKU_KURA_VILLAGES_STATE) == 2) {
+		setvar(VAR_GUARD_TRIGGER, 2)
+	}
+	} elif (var(VAR_GUARD_TRIGGER) == 1) {
+		setspeaker(SP_NAME_GUARD)
 		msgbox(
 			"You're not trying to sneak into Saku\nVillage, are you?\p"
 			"…My bad, you're that traveler again.\nDidn't recognize ya.\p"
 			"You can go through, though I'm not sure\nwhy you'd want to."
 		)
 		closemessage
-		setvar(VAR_SAKU_KURA_VILLAGES_STATE, 3)
-	}
+		setvar(VAR_SAKU_KURA_VILLAGES_STATE, 2)
+	} 
+
 	releaseall
+}
+
+script KuraTown_EventScript_GuardFlagVar {
+	if(var(VAR_SAKU_KURA_VILLAGES_STATE) < 2){setvar(VAR_GUARD_TRIGGER, 1)}
+	if(var(VAR_SAKU_KURA_VILLAGES_STATE) == 2){}
 }
 
 script KuraTown_EventScript_DojoChallenger {
