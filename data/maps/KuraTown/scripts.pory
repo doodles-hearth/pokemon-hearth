@@ -60,15 +60,15 @@ script KuraTown_EventScript_GuardStopsYou {
 	lockall
 	getplayerxy(VAR_TEMP_0, VAR_TEMP_1)
 	// Player sneaks in from the left
-	applymovement(LOCALID_KURA_TOWN_GUARD, Common_Movement_WalkInPlaceFasterRight)
-	waitmovement(0)
-	setspeaker(SP_NAME_GUARD)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hey!"))
-	closemessage
-	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
-	waitmovement(OBJ_EVENT_ID_PLAYER)
 	if(var(VAR_GUARD_TRIGGER) == 0)
 	{
+		applymovement(LOCALID_KURA_TOWN_GUARD, Common_Movement_WalkInPlaceFasterRight)
+		waitmovement(0)
+		setspeaker(SP_NAME_GUARD)
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hey!"))
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
 		setspeaker(SP_NAME_GUARD)
 		delay(20)
 		if (var(VAR_SAKU_KURA_VILLAGES_STATE) == 1) {
@@ -81,6 +81,15 @@ script KuraTown_EventScript_GuardStopsYou {
 		setvar(VAR_GUARD_TRIGGER, 2)
 	}
 	} elif (var(VAR_GUARD_TRIGGER) == 1) {
+		applymovement(LOCALID_KURA_TOWN_GUARD, Common_Movement_WalkInPlaceFasterRight)
+		waitmovement(0)
+		setspeaker(SP_NAME_GUARD)
+		msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hey!"))
+		closemessage
+		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceLeft)
+		waitmovement(OBJ_EVENT_ID_PLAYER)
+		setspeaker(SP_NAME_GUARD)
+		delay(20)
 		setspeaker(SP_NAME_GUARD)
 		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}You're not trying to sneak into Saku\nVillage, are you?\p"
@@ -265,7 +274,7 @@ script KuraTown_EventScript_Guard {
 	faceplayer
 	setspeaker(SP_NAME_GUARD)
 	msgbox(
-		"Hope you didn't have too much trouble\npassing the gate.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hope you didn't have too much trouble\npassing the gate.\p"
 		"That Saku Village guard is such a jerk,\nhe won't let anyone from our village\lcross to theirs.\p"
 		"So of course we're not gonna let\nanyone from theirs in ours! Hah!",
 		MSGBOX_DEFAULT

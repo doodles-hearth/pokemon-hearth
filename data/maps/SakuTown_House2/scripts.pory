@@ -197,9 +197,10 @@ script SakuTown_House2_EventScript_Sister {
 				"Oh, hey… If it's not too much to ask…\nCan you ask around if someone saw it?"
 			)
 			closemessage
-			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
-			startquest(QUEST_SAKURAESPEON)
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 1)
+			startquest(QUEST_SAKURAESPEON)
+			applymovement(LOCALID_SISTER, Common_Movement_FaceOriginalDirection)
+			waitmovement(0)
 		case 1:
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Hm, asking the people who are always\noutdoors might be a good idea."

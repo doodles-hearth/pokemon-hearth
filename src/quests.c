@@ -391,7 +391,7 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	[QUEST_SAKURAESPEON] = 
 	{
 		.name = COMPOUND_STRING("The Lost Eevee"),
-		.desc = {COMPOUND_STRING("Find the Eevee missed in the thunderstorm!")},
+		.desc = {COMPOUND_STRING("Find the Eevee missed in the\nthunderstorm!")},
 		.donedesc = COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
 		.map = {
 			COMPOUND_STRING("Saku & Kura Villages"),
