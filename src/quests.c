@@ -391,8 +391,13 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	[QUEST_SAKURAESPEON] = 
 	{
 		.name = COMPOUND_STRING("The Lost Eevee"),
-		.desc = {COMPOUND_STRING("Find the Eevee missed in the\nthunderstorm!")},
-		.donedesc = COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
+		.desc = {
+			COMPOUND_STRING("Find the Eevee missed in\nthe thunderstorm!"),
+			COMPOUND_STRING("Find the Eevee missed in\nthe thunderstorm!"),
+			COMPOUND_STRING("Return the Espeon to her Wielder\nin Saku village!"),
+			COMPOUND_STRING("Claim your reward from the young\nboy!"),
+		},
+		.donedesc = COMPOUND_STRING("Reunited Eevee, now Espeon,\nwith its Wielder!"),
 		.map = {
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
@@ -401,8 +406,14 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
 		},
-		.sprite = {OBJ_EVENT_GFX_SPECIES(EEVEE)},
-		.spriteType = {OBJECT},
+		.sprite = {
+			SPECIES_EEVEE,
+			SPECIES_EEVEE,
+			SPECIES_ESPEON,
+			SPECIES_ESPEON,
+			SPECIES_ESPEON
+		},
+		.spriteType = {PKMN},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_ESPEON_STATE,
@@ -421,8 +432,10 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
 		},
-		.sprite = {OBJ_EVENT_GFX_SPECIES(SCYTHER)},
-		.spriteType = {OBJECT},
+		.sprite = {
+			SPECIES_SCYTHER
+		},
+		.spriteType = {PKMN},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_SCYTHER_STATE,

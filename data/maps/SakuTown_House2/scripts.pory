@@ -69,7 +69,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			call(PlayerFacesEspeon)
 			waitmovement(0)
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Eevee…{PAUSE 8} Is that you?"
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Eevee…{PAUSE 16} Is that you?"
 			)
 			closemessage
 
@@ -104,6 +104,7 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 			addobject(LOCALID_SAKU_ESPEON)
 			destroyfollowernpc
 			special(DrawWholeMapView)
+			questmenu(QUEST_MENU_SET_REWARD, QUEST_SAKURAESPEON)
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 3)
 		case 3:
 			faceplayer
@@ -112,7 +113,6 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 				"But since she's already evolved, I\ndon't have much use for them.\p"
 				"You can have one!"
 			)
-			closemessage
 			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 4)
 			call(SakuTown_House2_EventScript_GiveEvoStone)
 		case 4:
@@ -124,14 +124,14 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}I look forward to thanking the nice\nlady that took care of Espeon!\p"
 				"My sister says I can't go into\nKura Town yet… Maybe someday!"
 			)
-			waitmessage
 			closemessage
 	}
 	release
 }
 
 script SakuTown_House2_EventScript_GiveEvoStone {
-	msgbox("Which rock would you like?")
+	if(var(VAR_SAKU_KURA_QUEST_ESPEON_STATE)==3){msgbox("Which rock would you like?")}
+	else{msgbox("{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Which rock would you like?")}
 	dynmultichoice(
 		0,
 		0,

@@ -85,7 +85,7 @@ script KuraTown_House3_EventScript_Lady {
 			closemessage
 
 			setflag(FLAG_SAKU_KURA_HIDE_ESPEON_LADYS_HOUSE)
-			setvar(VAR_SAKU_KURA_QUEST_ESPEON_STATE, 2)
+			updatequest(QUEST_SAKURAESPEON) //VAR_SAKU_KURA_QUEST_ESPEON_STATE == 2
 		default:
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_MRS_YARI}Because of the feud between Saku and\nKura, residents from either side can't\lgo into each other's village.\p"
