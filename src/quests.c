@@ -382,8 +382,26 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			COMPOUND_STRING("Saku & Kura Villages"),
 			COMPOUND_STRING("Saku & Kura Villages"),
 		},
-		.sprite = {ITEM_ASHIIS_SCARF},
-		.spriteType = {ITEM},
+		.sprite = {
+			OBJ_EVENT_GFX_SAKURA_GIRL_2,
+			OBJ_EVENT_GFX_SAKURA_MAN_1,
+			OBJ_EVENT_GFX_SAKURA_GIRL_2,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF
+		},
+		.spriteType = {
+			OBJECT,
+			OBJECT,
+			OBJECT, 
+			ITEM,
+			ITEM,
+			ITEM,
+			ITEM,
+			ITEM
+		},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE,
