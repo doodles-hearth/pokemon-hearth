@@ -54,6 +54,7 @@ script ChiiTown_DrawMetatiles{
 script ChiiTown_EventScript_WatchfulMom{
 	gettimeofday
 	setspeaker(SP_NAME_WOMAN)
+	//using switch here instead of if/elif to make it more readable
 	switch(var(VAR_0x8000)){
 		case TIME_MORNING:
 			lock
@@ -61,6 +62,7 @@ script ChiiTown_EventScript_WatchfulMom{
 			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm dropping off my children to school.\p")
 			waitmessage
 			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
+			setspeaker("Watchful Mom")
 			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
 			waitmessage
 			waitse
@@ -68,12 +70,17 @@ script ChiiTown_EventScript_WatchfulMom{
 			waitbuttonpress
 			closemessage
 		case TIME_AFTERNOON:
-			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm waiting to pick up my children\nafter school.\p"
-				"With all the recent Pokémon attacks,\nI will not let them leave my sight!", MSGBOX_NPC)
-		case TIME_EVENING:
-			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}Phew… Being a full-time mom\nis exhausting…", MSGBOX_NPC)
+			lock
+			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm waiting to pick up my children\nafter school.\p")
+			waitmessage
+			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
+			setspeaker("Watchful Mom")
+			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
+			waitmessage
+			waitse
+			waitmovement(0)
+			waitbuttonpress
+			closemessage
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)

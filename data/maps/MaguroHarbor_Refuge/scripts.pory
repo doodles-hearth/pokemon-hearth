@@ -61,19 +61,17 @@ script MaguroHarbor_Refuge_EventScript_Hariko {
 
 		applymovement(LOCALID_BEAN, moves(walk_in_place_fast_left))
 		waitmovement(LOCALID_BEAN)
-		delay(60)
+		delay(90)
 		playse(SE_LEDGE)
 		applymovement(LOCALID_SLOWPOKE, moves(jump_in_place_down))
 		waitmovement(LOCALID_SLOWPOKE)
 		playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
 
 		setspeaker(SP_NAME_BEAN)
-		msgbox(format(
-			"Hurr…"
-		))
+		msgbox("Hurr…")
 		closemessage
 
-		applymovement(LOCALID_BEAN, moves(walk_in_place_fast_down))
+		applymovement(LOCALID_BEAN, moves(walk_in_place_fast_down,delay_16 * 2,emote_question_mark))
 		waitmovement(LOCALID_BEAN)
 
 		setspeaker(SP_NAME_HARIKO)
@@ -98,7 +96,6 @@ script MaguroHarbor_Refuge_BattleHariko {
 		"Yes!",
 		"Maybe later."
 	)
-	closemessage
 
 	switch(var(VAR_RESULT)) {
 		case 0:
@@ -149,6 +146,7 @@ script MaguroHarbor_Refuge_EventScript_NurseSleep {
 script MaguroHarbor_Refuge_EventScript_Slowpoke {
 	lock
 	faceplayer
+	delay(90)
 	setseenmon(SPECIES_SLOWPOKE)
 	playmoncry(SPECIES_SLOWPOKE, CRY_MODE_NORMAL)
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
@@ -176,13 +174,14 @@ script MaguroHarbor_Refuge_EventScript_DescribedMons {
 		waitse
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_happy))
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}Oh! You're writing a Pokémon encyclopedia? That's amazing!\p"
-			"I bet you're wondering how to fill up the description of every Pokémon.\l"
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}Oh! You're writing a Pokémon\nencyclopedia? That's amazing!\p"
+			"I bet you're wondering how to fill up\nthe description of every Pokémon.\l"
 			"Well, asking around definitely helps!\p"
-			"For instance, Krabby sleeps burrowed inside holes in the sand, and did you know it can grow its pincers back if they fall during battle?\p"
-			"Go ahead, you can write that down about it!"
-		))
+			"For instance, Krabby sleeps burrowed\ninside holes in the sand!\p"
+			"It can also grow its pincers back if\nthey ever fall of during battle.\p"
+			"Go ahead, you can write that down\nabout it!"
+		)
 		closemessage
 	}
 
