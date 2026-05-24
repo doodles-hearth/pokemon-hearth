@@ -1620,12 +1620,15 @@ BattleScript_MaxHp50Recoil::
 
 BattleScript_EffectDreamEater::
 	attackcanceler
-.if B_DREAM_EATER_SUBSTITUTE < GEN_5
-	jumpifsubstituteblocks BattleScript_DoesntAffectTargetAtkString
-.endif
+	jumpifgenconfiglowerthan CONFIG_B_DREAM_EATER_SUBSTITUTE, GEN_5, BattleScript_DreamEaterSubstituteCheck
+BattleScript_DreamEaterSleepCheck:
 	jumpifstatus BS_TARGET, STATUS1_SLEEP, BattleScript_HitFromAccCheck
 	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_HitFromAccCheck
 	goto BattleScript_DoesntAffectTargetAtkString
+
+BattleScript_DreamEaterSubstituteCheck:
+	jumpifsubstituteblocks BattleScript_DoesntAffectTargetAtkString
+	goto BattleScript_DreamEaterSleepCheck
 
 BattleScript_StatUp::
 	printfromtable gStatUpStringIds
@@ -1670,6 +1673,15 @@ BattleScript_RoarBlockedByDynamax:
 
 BattleScript_MultiHitPrintStrings::
 	resultmessage
+	waitmessage B_WAIT_TIME_LONG
+	copyarray gBattleTextBuff1, sMULTIHIT_STRING, 6
+	printstring STRINGID_HITXTIMES
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_BattlerAvoidedMultiHit::
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_BATTLERAVOIDEDATTACK
 	waitmessage B_WAIT_TIME_LONG
 	copyarray gBattleTextBuff1, sMULTIHIT_STRING, 6
 	printstring STRINGID_HITXTIMES
