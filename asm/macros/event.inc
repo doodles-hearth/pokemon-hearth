@@ -1257,6 +1257,11 @@
 	stringvar \stringVarId
 	.endm
 
+	@ Gets ID of species of the first Pokemon in the player's party
+	.macro getleadmonspecies
+	.byte SCR_OP_GETLEADMONSPECIES
+	.endm
+
 	@ Writes the nickname of the Pokemon in 'slot' (zero-indexed) of the player's party to the specified buffer.
 	@ If an empty or invalid slot is specified, ten spaces ("") are written to the buffer.
 	.macro bufferpartymonnick stringVarId:req, slot:req
