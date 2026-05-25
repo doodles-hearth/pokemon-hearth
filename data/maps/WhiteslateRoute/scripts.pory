@@ -556,6 +556,12 @@ script WhiteslateRoute_EventScript_TinyPassage {
 	release
 }
 
+script WhiteslateRoute_DirectionSign {
+	msgbox((
+		"{LEFT_ARROW} Hanabi City"
+	), MSGBOX_SIGN)
+}
+
 script Live_EventScript_Deerling1Flee {
 	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
 	applymovement(LOCALID_WHITESLATE_DEERLING1, moves(walk_left * 8))

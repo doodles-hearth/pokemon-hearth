@@ -35,12 +35,12 @@ static bool32 IsFieldMoveUnlocked_RockSmash(void)
 
 static bool32 IsFieldMoveUnlocked_Strength(void)
 {
-    return FlagGet(FLAG_BADGE04_GET) && CheckBagHasItem(ITEM_SECRET_STRENGTH, 1);
+    return FlagGet(FLAG_BADGE05_GET) && CheckBagHasItem(ITEM_SECRET_STRENGTH, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Surf(void)
 {
-    return FlagGet(FLAG_BADGE05_GET) && CheckBagHasItem(ITEM_SECRET_SURF, 1);
+    return FlagGet(FLAG_BADGE04_GET) && CheckBagHasItem(ITEM_SECRET_SURF, 1);
 }
 
 static bool32 IsFieldMoveUnlocked_Fly(void)

@@ -356,9 +356,9 @@
 #define FLAG_RECEIVED_MYSTIC_TICKET          0x13B
 #define FLAG_RECEIVED_OLD_SEA_MAP            0x13C
 #define FLAG_RECEIVED_DOLL_FROM_CHILD        0x13D
-#define FLAG_TRADED_EGG                      0x13E // UNUSED
+#define FLAG_SAVED_WAILORD                   0x13E
 #define FLAG_BOUGHT_FAKE_SHINY               0x13F
-#define FLAG_WONDER_CARD_UNUSED_4            0x140
+#define FLAG_GOT_WAILMER_DOLL                0x140
 #define FLAG_WONDER_CARD_UNUSED_5            0x141
 #define FLAG_WONDER_CARD_UNUSED_6            0x142
 #define FLAG_WONDER_CARD_UNUSED_7            0x143
