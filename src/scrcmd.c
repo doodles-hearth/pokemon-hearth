@@ -35,6 +35,7 @@
 #include "main.h"
 #include "map_preview_screen.h"
 #include "menu.h"
+#include "constants/metatile_labels.h"
 #include "money.h"
 #include "move.h"
 #include "move_relearner.h"
@@ -1786,6 +1787,29 @@ bool8 ScrCmd_messageautoscroll(struct ScriptContext *ctx)
     gTextFlags.autoScroll = TRUE;
     gTextFlags.forceMidTextSpeed = TRUE;
     ShowFieldAutoScrollMessage(msg);
+    return FALSE;
+}
+
+bool8 ScrCmd_harikoautoscroll(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    gTextFlags.autoScroll = TRUE;
+    gTextFlags.forceHarikoTextSpeed = TRUE;
+    ShowFieldAutoScrollMessage(msg);
+    return FALSE;
+}
+
+bool8 ScrCmd_harikofinish(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    gTextFlags.autoScroll = FALSE;
+    gTextFlags.forceHarikoTextSpeed = FALSE;
     return FALSE;
 }
 
@@ -3765,3 +3789,23 @@ bool8 ScrCmd_updatequest(struct ScriptContext *ctx)
 
     return FALSE;
 }
+
+bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
+{
+    u16 time        = VarGet(ScriptReadHalfword(ctx));
+    u16 doorTopX    = VarGet(ScriptReadHalfword(ctx));
+    u16 doorTopY    = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    doorTopX += MAP_OFFSET;
+    doorTopY += MAP_OFFSET;
+    
+    if(time == GetTimeOfDay())
+    {
+        MapGridSetMetatileIdAt(doorTopX, doorTopX, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
+        MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
+    }
+    return FALSE;
+}
+

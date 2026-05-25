@@ -8,6 +8,7 @@
 STATIC_ASSERT(   TEXT_SPEED_SLOW_MODIFIER    <= 31
               && TEXT_SPEED_MEDIUM_MODIFIER  <= 31
               && TEXT_SPEED_FAST_MODIFIER    <= 31
+              && TEXT_SPEED_HARIKO_MODIFIER  <= 31
               && TEXT_SPEED_INSTANT_MODIFIER <= 31, TextSpeedModifiersCantGoPast31)
 
 // Given as a text speed when all the text should be
@@ -170,6 +171,7 @@ typedef struct {
     bool8 useAlternateDownArrow:1;
     bool8 autoScroll:1;
     bool8 forceMidTextSpeed:1;
+    bool8 forceHarikoTextSpeed:1;
 } TextFlags;
 
 struct TextGlyph

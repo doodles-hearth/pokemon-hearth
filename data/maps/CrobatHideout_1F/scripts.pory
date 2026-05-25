@@ -328,6 +328,7 @@ script CrobatHideout_1F_EventScript_Plan {
 
 script CrobatHideout_1F_EventScript_Nickit {
 	lock
+	faceplayer
 	setseenmon(SPECIES_HAPPINY)
 	setspeakertomonname(SPECIES_HAPPINY)
 	playmoncry(SPECIES_HAPPINY, CRY_MODE_NORMAL)
@@ -356,7 +357,7 @@ script CrobatHideout_1F_Trigger_4V1_FromLeft {
 	addobject(LOCALID_4V1_GRUNT_3)
 	addobject(LOCALID_4V1_GRUNT_4)
 
-	playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+	playbgm(MUS_ENCOUNTER_MAGMA, TRUE)
 
 	// Grunts surround player
 	applymovement(LOCALID_4V1_GRUNT_1, moves(walk_faster_right * 8))
@@ -380,7 +381,7 @@ script CrobatHideout_1F_Trigger_4V1_FromRight {
 	addobject(LOCALID_4V1_GRUNT_3)
 	addobject(LOCALID_4V1_GRUNT_4)
 
-	playbgm(MUS_ENCOUNTER_AQUA, FALSE)
+	playbgm(MUS_ENCOUNTER_AQUA, TRUE)
 
 	// Grunts surround player
 	applymovement(LOCALID_4V1_GRUNT_3, moves(walk_faster_left * 9, delay_16, walk_faster_up, walk_faster_left, face_down))

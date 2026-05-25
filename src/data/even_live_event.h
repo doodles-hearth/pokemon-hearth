@@ -21,6 +21,13 @@ const struct LiveEventData sLiveEvents[LIVE_EVENT_COUNT] =
         .duration = 240,
         .triggerRange = 2,
     },
+    [LIVE_EVENT_SUN_RANT] =
+    {
+        .func = SunManRant,
+        .retriggerDelay = 0,
+        .duration = 200,
+        .triggerRange = 2,
+    },
     [LIVE_EVENT_SIGH] =
     {
         .func = LiveSigh,

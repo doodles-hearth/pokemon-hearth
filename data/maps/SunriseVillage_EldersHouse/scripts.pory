@@ -51,7 +51,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}{PLAYER}, Natsuki.\nYou are late. Why am I not surprised?\p"
 		"I always have to run after you two!\nNow stay still and listen closely!\p"
 		"As you have heard, the woods, and even\nthe roads, are no longer safe.\p"
-		"Wild Pokémon we lived peacefully with\nhave started to become aggressive.\lAnd we don't yet know why."
+		"Wild Pokémon we lived peacefully with\nhave started to become aggressive.\lAnd we don't yet know why.\p"
 		"Several villages have had travelers\nreport that they've been attacked.\p"
 		"This is all very worrying…"
 	)
@@ -638,6 +638,7 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 		message(
 			"{CREATE_MUGSHOT MUGSHOT_SUNRISE_VALET 0}Hi! I'm Elder Kaba's assistant.\nWant to know more about the PokéDex?"
 		)
+		waitmessage
 		mcdialogue("PokéDex?","I'm good.")
 		switch (var(VAR_RESULT)) {
 			case 0:
@@ -649,13 +650,16 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 					"Draw a sketch of the Pokémon when\nyou encounter it.\p"
 					"And write field notes when you hear\nor see something interesting about it!" 
 				) // Can ignore poryscript warning; last line, no indicator. Only 1 pixel over.
-				
+				waitmessage
+				waitbuttonpress
 			case 1:
 				applymovement(LOCALID_ELDER_KABAS_HOUSE_ASSISTANT, moves(emote_happy))
 				waitmovement(0)
 				message(
 					"I see, you're all set then!\nCan't wait to read your findings!"
 				)
+				waitmessage
+				waitbuttonpress
 		}
 		waitmessage
 		waitbuttonpress

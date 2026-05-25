@@ -90,13 +90,12 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Well, well…\nThey slipped through our fingers,\lbut they finally left the city!\p"
 		"Their hideout is now useless!\p"
 		"Thank you for giving the Samurai a hand.\lThis operation was a success!\p"
-		"You might be young, but you wouldn't make a half bad Samurai yourself,\lyou know…\p"
+		"You might be young, but you wouldn't\nmake a half bad Samurai yourself…\p"
 		"Ha ha ha ha!\p"
-		"I have to go report to my superiors.\p"
 		"{PLAYER}!\nI am sure we will meet again!\lUntil then, farewell!"
 	))
 	closemessage

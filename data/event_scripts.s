@@ -56,12 +56,15 @@
 #include "constants/pokeball.h"
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
+#include "constants/pokemon_size_record.h"
+#include "constants/random_mon_generation.h"
 #include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/route_challenge.h"
 #include "constants/script_menu.h"
 #include "constants/seagallop.h"
 #include "constants/secret_bases.h"
+#include "constants/shamisen_players.h"
 #include "constants/siirtc.h"
 #include "constants/songs.h"
 #include "constants/sound.h"
@@ -113,6 +116,8 @@ gSpecialVars::
 	.4byte gSpecialVar_Unused_0x8014
 	.4byte gTrainerBattleParameter + 2 // gTrainerBattleParameter.params.opponentA
 
+	.purgem def_special
+	.set ALLOCATE_SPECIAL_TABLE, 1
 	.include "data/specials.inc"
 
 gStdScripts::
@@ -1252,7 +1257,6 @@ EventScript_RegionMap::
 	@ msgbox Common_Text_LookCloserAtMap, MSGBOX_DEFAULT
 	fadescreen FADE_TO_BLACK
 	special FieldShowRegionMap
-	waitstate
 	releaseall
 	end
 
@@ -1335,7 +1339,6 @@ Common_EventScript_FerryDepartIsland::
 Common_EventScript_NameReceivedPartyMon::
 	fadescreen FADE_TO_BLACK
 	special ChangePokemonNickname
-	waitstate
 	return
 
 Common_EventScript_PlayerHandedOverTheItem::
@@ -1541,7 +1544,6 @@ EventScript_GetInGameTradeSpeciesInfo::
 
 EventScript_ChooseMonForInGameTrade::
 	special ChoosePartyMon
-	waitstate
 	lock
 	faceplayer
 	return
@@ -1553,7 +1555,6 @@ EventScript_GetInGameTradeSpecies::
 EventScript_DoInGameTrade::
 	special CreateInGameTradePokemon
 	special DoInGameTradeScene
-	waitstate
 	lock
 	faceplayer
 	return
@@ -1686,7 +1687,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	playse SE_PC_ON
 	msgbox gText_PlayerHouseBootPC
 	special BedroomPC
-	waitstate
 	releaseall
 	end
 
@@ -1743,6 +1743,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/wild_encounter.inc"
+	.include "data/scripts/shamisen_players.inc"
 
 	@ please include poryscript-generated scripts here!!
 	@ ---------------------------------------------
