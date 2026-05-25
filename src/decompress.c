@@ -3,6 +3,7 @@
 #include "data.h"
 #include "decompress.h"
 #include "decompress_error_handler.h"
+#include "diverse_eggs.h"
 #include "pokemon.h"
 #include "pokemon_spots.h"
 #include "pokemon_sprite_visualizer.h"
@@ -1139,9 +1140,14 @@ void LoadSpecialPokePicIsEgg(void *dest, enum Species species, u32 personality, 
     if (isEgg)
     {
         if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
+        {
             DecompressDataWithHeaderWram(gEggDatas[gSpeciesInfo[species].eggId].eggSprite, dest);
+        }
         else
-            DecompressDataWithHeaderWram(gSpeciesInfo[SPECIES_EGG].frontPic, dest);
+        {
+            const u32 *spriteData = GetEggSpriteData(species);
+            DecompressDataWithHeaderWram(spriteData, dest);
+        }
     }
     else if (isFrontPic)
     {
@@ -1220,7 +1226,7 @@ static void UNUSED StitchObjectsOn8x8Canvas(s32 object_size, s32 object_count, u
                 }
             }
 
-            // Clear the columns to the left and right that wont be used completely
+            // Clear the columns to the left and right that won't be used completely
             // Unlike the previous loops, this will clear the later used space as well
             for (j = 0; j < 2; j++)
             {

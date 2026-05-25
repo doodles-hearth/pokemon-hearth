@@ -163,8 +163,8 @@ static void MCB2_FieldUpdateRegionMap(void)
     DoScheduledBgTilemapCopiesToVram();
 }
 
-static const u16 sUnvisitedTownIcons_Pal[] = INCBIN_U16("graphics/region_map_hearth/town_icons.gbapal");
-static const u32 sUnvisitedTownIcons_Gfx[] = INCBIN_U32("graphics/region_map_hearth/town_icons.4bpp.smol");
+static const u16 sUnvisitedTownIcons_Pal[] = INCGFX_U16("graphics/region_map_hearth/town_icons.png", ".gbapal");
+static const u32 sUnvisitedTownIcons_Gfx[] = INCGFX_U32("graphics/region_map_hearth/town_icons.png", ".4bpp.smol");
 
 static const struct SpritePalette sUnvisitedTownIconsSpritePalette =
 {

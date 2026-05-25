@@ -1,211 +1,211 @@
 #include "object_event_graphics.h"
 
-static const u32 sFieldMugshotGfx_TestNormal[] = INCBIN_U32("graphics/field_mugshots/test/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_TestAlt[] = INCBIN_U32("graphics/field_mugshots/test/alt.4bpp.smol");
-static const u16 sFieldMugshotPal_TestNormal[] = INCBIN_U16("graphics/field_mugshots/test/normal.gbapal");
-static const u16 sFieldMugshotPal_TestAlt[] = INCBIN_U16("graphics/field_mugshots/test/alt.gbapal");
+static const u32 sFieldMugshotGfx_TestNormal[] = INCGFX_U32("graphics/field_mugshots/test/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_TestAlt[] = INCGFX_U32("graphics/field_mugshots/test/alt.png", ".4bpp.smol");
+static const u16 sFieldMugshotPal_TestNormal[] = INCGFX_U16("graphics/field_mugshots/test/normal.png", ".gbapal");
+static const u16 sFieldMugshotPal_TestAlt[] = INCGFX_U16("graphics/field_mugshots/test/alt.png", ".gbapal");
 
-static const u32 sFieldMugshotGfx_HarikoNormal[] = INCBIN_U32("graphics/field_mugshots/hariko/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HarikoNormal[] = INCGFX_U32("graphics/field_mugshots/hariko/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_NatsukiNormal[] = INCBIN_U32("graphics/field_mugshots/natsuki/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_NatsukiNormal[] = INCGFX_U32("graphics/field_mugshots/natsuki/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_KabaNormal[] = INCBIN_U32("graphics/field_mugshots/elder_kaba/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_KabaNormal[] = INCGFX_U32("graphics/field_mugshots/elder_kaba/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_KoishiNormal[] = INCBIN_U32("graphics/field_mugshots/leader_koishi/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_KoishiNormal[] = INCGFX_U32("graphics/field_mugshots/leader_koishi/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_HanaNormal[] = INCBIN_U32("graphics/field_mugshots/leader_hana/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HanaNormal[] = INCGFX_U32("graphics/field_mugshots/leader_hana/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_YutakaNormal[] = INCBIN_U32("graphics/field_mugshots/leader_yutaka/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_YutakaNormal[] = INCGFX_U32("graphics/field_mugshots/leader_yutaka/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_MasamuneNormal[] = INCBIN_U32("graphics/field_mugshots/leader_masamune/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_MasamuneNormal[] = INCGFX_U32("graphics/field_mugshots/leader_masamune/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_CrobatNormal[] = INCBIN_U32("graphics/field_mugshots/crobat/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_CrobatNormal[] = INCGFX_U32("graphics/field_mugshots/crobat/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_ZubatNormal[] = INCBIN_U32("graphics/field_mugshots/zubat/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ZubatNormal[] = INCGFX_U32("graphics/field_mugshots/zubat/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_ClerkNormal[] = INCBIN_U32("graphics/field_mugshots/clerk/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ClerkNormal[] = INCGFX_U32("graphics/field_mugshots/clerk/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_IncenseNormal[] = INCBIN_U32("graphics/field_mugshots/incense/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_IncenseNormal[] = INCGFX_U32("graphics/field_mugshots/incense/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_OkadaNormal[] = INCBIN_U32("graphics/field_mugshots/okada/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_OkadaSexy[] = INCBIN_U32("graphics/field_mugshots/okada/sexy.4bpp.smol");
+static const u32 sFieldMugshotGfx_OkadaNormal[] = INCGFX_U32("graphics/field_mugshots/okada/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_OkadaSexy[] = INCGFX_U32("graphics/field_mugshots/okada/sexy.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_MasquerainGirlNormal[] = INCBIN_U32("graphics/field_mugshots/masquerain_girl/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_MasquerainGirlNormal[] = INCGFX_U32("graphics/field_mugshots/masquerain_girl/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_YoungsterNormal[] = INCBIN_U32("graphics/field_mugshots/youngster/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_YoungsterNormal[] = INCGFX_U32("graphics/field_mugshots/youngster/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_SchoolKidFNormal[] = INCBIN_U32("graphics/field_mugshots/school_kid_f/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SchoolKidFNormal[] = INCGFX_U32("graphics/field_mugshots/school_kid_f/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_SchoolKidMNormal[] = INCBIN_U32("graphics/field_mugshots/school_kid_m/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SchoolKidMNormal[] = INCGFX_U32("graphics/field_mugshots/school_kid_m/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_BugCatcherMNormal[] = INCBIN_U32("graphics/field_mugshots/bug_catcher/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BugCatcherMNormal[] = INCGFX_U32("graphics/field_mugshots/bug_catcher/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_AromaLadyNormal[] = INCBIN_U32("graphics/field_mugshots/aroma_lady/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_AromaLadyNormal[] = INCGFX_U32("graphics/field_mugshots/aroma_lady/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_MonkNormal[] = INCBIN_U32("graphics/field_mugshots/monk/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_MonkNormal[] = INCGFX_U32("graphics/field_mugshots/monk/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_LassNormal[] = INCBIN_U32("graphics/field_mugshots/lass/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_LassNormal[] = INCGFX_U32("graphics/field_mugshots/lass/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_NinjaBoyNormal[] = INCBIN_U32("graphics/field_mugshots/ninja_boy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_NinjaBoyNormal[] = INCGFX_U32("graphics/field_mugshots/ninja_boy/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_HexManiacNormal[] = INCBIN_U32("graphics/field_mugshots/hex_maniac/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HexManiacNormal[] = INCGFX_U32("graphics/field_mugshots/hex_maniac/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_ArtistNormal[] = INCBIN_U32("graphics/field_mugshots/artist/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ArtistNormal[] = INCGFX_U32("graphics/field_mugshots/artist/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_BattleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/battle_girl/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BattleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/battle_girl/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_BattleGuyNormal[] = INCBIN_U32("graphics/field_mugshots/battle_guy/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BattleGuyNormal[] = INCGFX_U32("graphics/field_mugshots/battle_guy/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_HotSpringFNormal[] = INCBIN_U32("graphics/field_mugshots/hot_spring_f/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HotSpringFNormal[] = INCGFX_U32("graphics/field_mugshots/hot_spring_f/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_HotSpringMNormal[] = INCBIN_U32("graphics/field_mugshots/hot_spring_m/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HotSpringMNormal[] = INCGFX_U32("graphics/field_mugshots/hot_spring_m/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_BreederMNormal[] = INCBIN_U32("graphics/field_mugshots/breeder_m/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BreederMNormal[] = INCGFX_U32("graphics/field_mugshots/breeder_m/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_BreederFNormal[] = INCBIN_U32("graphics/field_mugshots/breeder_f/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BreederFNormal[] = INCGFX_U32("graphics/field_mugshots/breeder_f/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_SamuraiNormal[] = INCBIN_U32("graphics/field_mugshots/samurai/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SamuraiNormal[] = INCGFX_U32("graphics/field_mugshots/samurai/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_ShamisenGreenNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_green/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ShamisenGreenNormal[] = INCGFX_U32("graphics/field_mugshots/shamisen_green/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_ShamisenRedNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_red/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ShamisenRedNormal[] = INCGFX_U32("graphics/field_mugshots/shamisen_red/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_ShamisenBlueNormal[] = INCBIN_U32("graphics/field_mugshots/shamisen_blue/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ShamisenBlueNormal[] = INCGFX_U32("graphics/field_mugshots/shamisen_blue/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_CookNormal[] = INCBIN_U32("graphics/field_mugshots/cook/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_CookNormal[] = INCGFX_U32("graphics/field_mugshots/cook/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_IwaNormal[] = INCBIN_U32("graphics/field_mugshots/elder_iwa/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_IwaNormal[] = INCGFX_U32("graphics/field_mugshots/elder_iwa/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_GemManiacNormal[] = INCBIN_U32("graphics/field_mugshots/gem_maniac/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_GemManiacNormal[] = INCGFX_U32("graphics/field_mugshots/gem_maniac/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_MinerNormal[] = INCBIN_U32("graphics/field_mugshots/miner/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_MinerNormal[] = INCGFX_U32("graphics/field_mugshots/miner/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_GardenerNormal[] = INCBIN_U32("graphics/field_mugshots/gardener/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_GardenerNormal[] = INCGFX_U32("graphics/field_mugshots/gardener/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_FarmerNormal[] = INCBIN_U32("graphics/field_mugshots/farmer/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_FarmerNormal[] = INCGFX_U32("graphics/field_mugshots/farmer/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_BurglarNormal[] = INCBIN_U32("graphics/field_mugshots/burglar/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BurglarNormal[] = INCGFX_U32("graphics/field_mugshots/burglar/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_DisguiseKidNormal[] = INCBIN_U32("graphics/field_mugshots/disguise_kid/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_DisguiseKidNormal[] = INCGFX_U32("graphics/field_mugshots/disguise_kid/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_FishermanNormal[] = INCBIN_U32("graphics/field_mugshots/fisherman/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_FishermanNormal[] = INCGFX_U32("graphics/field_mugshots/fisherman/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_FirebringerNormal[] = INCBIN_U32("graphics/field_mugshots/firebringer/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_FirebringerNormal[] = INCGFX_U32("graphics/field_mugshots/firebringer/normal.png", ".4bpp.smol");
 
 // Sunrise
 
-static const u32 sFieldMugshotGfx_BigSisNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/big_sis/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_BigSisNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/big_sis/normal.png", ".4bpp.smol");
 
-static const u32 sFieldMugshotGfx_SunriseWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/woman_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/woman_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseMan1Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseMan2Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/man_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseOldManNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/old_man/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/little_boy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/little_girl/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/girl_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/girl_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/boy_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/sunrise/boy_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/fat_guy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseNurseNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/nurse/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SunriseValetNormal[] = INCBIN_U32("graphics/field_mugshots/sunrise/valet/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseWoman1Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/woman_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseWoman2Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/woman_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseMan1Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseMan2Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/man_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseOldManNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/old_man/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseLittleBoyNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/little_boy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseLittleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/little_girl/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseGirl1Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/girl_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/girl_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseBoy1Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/boy_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseBoy2Normal[] = INCGFX_U32("graphics/field_mugshots/sunrise/boy_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseFatGuyNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/fat_guy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseNurseNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/nurse/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SunriseValetNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/valet/normal.png", ".4bpp.smol");
 
 // Sakura
 
-static const u32 sFieldMugshotGfx_SakuraWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/woman_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/woman_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraMan1Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraMan2Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/man_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraOldManNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/old_man/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/little_boy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/little_girl/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/girl_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/girl_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/boy_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/sakura/boy_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/fat_guy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraNurseNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/nurse/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SakuraValetNormal[] = INCBIN_U32("graphics/field_mugshots/sakura/valet/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraWoman1Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/woman_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraWoman2Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/woman_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraMan1Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraMan2Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/man_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraOldManNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/old_man/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraLittleBoyNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/little_boy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraLittleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/little_girl/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraGirl1Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/girl_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/girl_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraBoy1Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/boy_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraBoy2Normal[] = INCGFX_U32("graphics/field_mugshots/sakura/boy_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraFatGuyNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/fat_guy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraNurseNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/nurse/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SakuraValetNormal[] = INCGFX_U32("graphics/field_mugshots/sakura/valet/normal.png", ".4bpp.smol");
 
 // Mountain
 
-static const u32 sFieldMugshotGfx_MountainWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/woman_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/woman_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainMan1Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainMan2Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/man_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainOldManNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/old_man/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/little_boy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/little_girl/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/girl_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/girl_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/boy_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/mountain/boy_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/fat_guy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainNurseNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/nurse/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_MountainValetNormal[] = INCBIN_U32("graphics/field_mugshots/mountain/valet/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainWoman1Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/woman_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainWoman2Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/woman_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainMan1Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainMan2Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/man_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainOldManNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/old_man/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainLittleBoyNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/little_boy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainLittleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/little_girl/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainGirl1Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/girl_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/girl_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainBoy1Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/boy_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainBoy2Normal[] = INCGFX_U32("graphics/field_mugshots/mountain/boy_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainFatGuyNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/fat_guy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainNurseNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/nurse/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_MountainValetNormal[] = INCGFX_U32("graphics/field_mugshots/mountain/valet/normal.png", ".4bpp.smol");
 
 // Uume
 
-static const u32 sFieldMugshotGfx_UumeWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/woman_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/woman_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeMan1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeMan2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/man_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeOldManNormal[] = INCBIN_U32("graphics/field_mugshots/uume/old_man/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/uume/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/uume/little_boy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/uume/little_girl/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/girl_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/girl_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/uume/boy_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/uume/boy_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/uume/fat_guy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeNurseNormal[] = INCBIN_U32("graphics/field_mugshots/uume/nurse/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_UumeValetNormal[] = INCBIN_U32("graphics/field_mugshots/uume/valet/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeWoman1Normal[] = INCGFX_U32("graphics/field_mugshots/uume/woman_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeWoman2Normal[] = INCGFX_U32("graphics/field_mugshots/uume/woman_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeMan1Normal[] = INCGFX_U32("graphics/field_mugshots/uume/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeMan2Normal[] = INCGFX_U32("graphics/field_mugshots/uume/man_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeOldManNormal[] = INCGFX_U32("graphics/field_mugshots/uume/old_man/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/uume/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeLittleBoyNormal[] = INCGFX_U32("graphics/field_mugshots/uume/little_boy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeLittleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/uume/little_girl/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeGirl1Normal[] = INCGFX_U32("graphics/field_mugshots/uume/girl_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/uume/girl_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeBoy1Normal[] = INCGFX_U32("graphics/field_mugshots/uume/boy_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeBoy2Normal[] = INCGFX_U32("graphics/field_mugshots/uume/boy_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeFatGuyNormal[] = INCGFX_U32("graphics/field_mugshots/uume/fat_guy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeNurseNormal[] = INCGFX_U32("graphics/field_mugshots/uume/nurse/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_UumeValetNormal[] = INCGFX_U32("graphics/field_mugshots/uume/valet/normal.png", ".4bpp.smol");
 
 // Cold
 
-static const u32 sFieldMugshotGfx_ColdWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/woman_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/woman_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdMan1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdMan2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/man_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdOldManNormal[] = INCBIN_U32("graphics/field_mugshots/cold/old_man/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/cold/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/cold/little_boy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/cold/little_girl/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/girl_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/girl_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/cold/boy_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/cold/boy_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/cold/fat_guy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdNurseNormal[] = INCBIN_U32("graphics/field_mugshots/cold/nurse/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_ColdValetNormal[] = INCBIN_U32("graphics/field_mugshots/cold/valet/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdWoman1Normal[] = INCGFX_U32("graphics/field_mugshots/cold/woman_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdWoman2Normal[] = INCGFX_U32("graphics/field_mugshots/cold/woman_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdMan1Normal[] = INCGFX_U32("graphics/field_mugshots/cold/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdMan2Normal[] = INCGFX_U32("graphics/field_mugshots/cold/man_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdOldManNormal[] = INCGFX_U32("graphics/field_mugshots/cold/old_man/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/cold/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdLittleBoyNormal[] = INCGFX_U32("graphics/field_mugshots/cold/little_boy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdLittleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/cold/little_girl/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdGirl1Normal[] = INCGFX_U32("graphics/field_mugshots/cold/girl_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/cold/girl_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdBoy1Normal[] = INCGFX_U32("graphics/field_mugshots/cold/boy_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdBoy2Normal[] = INCGFX_U32("graphics/field_mugshots/cold/boy_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdFatGuyNormal[] = INCGFX_U32("graphics/field_mugshots/cold/fat_guy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdNurseNormal[] = INCGFX_U32("graphics/field_mugshots/cold/nurse/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_ColdValetNormal[] = INCGFX_U32("graphics/field_mugshots/cold/valet/normal.png", ".4bpp.smol");
 
 // Seaside
 
-static const u32 sFieldMugshotGfx_SeasideWoman1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/woman_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideWoman2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/woman_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideMan1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideMan2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/man_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideOldManNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/old_man/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideLittleBoyNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/little_boy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideLittleGirlNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/little_girl/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideGirl1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/girl_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/girl_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideBoy1Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/boy_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideBoy2Normal[] = INCBIN_U32("graphics/field_mugshots/seaside/boy_2/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideFatGuyNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/fat_guy/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideNurseNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/nurse/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_SeasideValetNormal[] = INCBIN_U32("graphics/field_mugshots/seaside/valet/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideWoman1Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/woman_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideWoman2Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/woman_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideMan1Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideMan2Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/man_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideOldManNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/old_man/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideLittleBoyNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/little_boy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideLittleGirlNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/little_girl/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideGirl1Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/girl_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/girl_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideBoy1Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/boy_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideBoy2Normal[] = INCGFX_U32("graphics/field_mugshots/seaside/boy_2/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideFatGuyNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/fat_guy/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideNurseNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/nurse/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_SeasideValetNormal[] = INCGFX_U32("graphics/field_mugshots/seaside/valet/normal.png", ".4bpp.smol");
 
 // Hot
-static const u32 sFieldMugshotGfx_HotMan1Normal[] = INCBIN_U32("graphics/field_mugshots/hot/man_1/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_HotOldWomanNormal[] = INCBIN_U32("graphics/field_mugshots/hot/old_woman/normal.4bpp.smol");
-static const u32 sFieldMugshotGfx_HotGirl2Normal[] = INCBIN_U32("graphics/field_mugshots/hot/girl_2/normal.4bpp.smol");
+static const u32 sFieldMugshotGfx_HotMan1Normal[] = INCGFX_U32("graphics/field_mugshots/hot/man_1/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_HotOldWomanNormal[] = INCGFX_U32("graphics/field_mugshots/hot/old_woman/normal.png", ".4bpp.smol");
+static const u32 sFieldMugshotGfx_HotGirl2Normal[] = INCGFX_U32("graphics/field_mugshots/hot/girl_2/normal.png", ".4bpp.smol");
 
 struct MugshotGfx
 {

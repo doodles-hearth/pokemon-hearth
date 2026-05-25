@@ -6,6 +6,7 @@
 #include "bg.h"
 #include "data.h"
 #include "decompress.h"
+#include "event_data.h"
 #include "evolution_scene.h"
 #include "evolution_graphics.h"
 #include "gpu_regs.h"
@@ -68,15 +69,15 @@ static void StopBgAnimation(void);
 static void Task_AnimateBg(u8 taskId);
 static void RestoreBgAfterAnim(void);
 
-static const u16 sUnusedPal1[] = INCBIN_U16("graphics/evolution_scene/unused_1.gbapal");
-static const u32 sBgAnim_Gfx[] = INCBIN_U32("graphics/evolution_scene/bg.4bpp.smol");
+static const u16 sUnusedPal1[] = INCGFX_U16("graphics/evolution_scene/unused_1.pal", ".gbapal");
+static const u32 sBgAnim_Gfx[] = INCGFX_U32("graphics/evolution_scene/bg.png", ".4bpp.smol");
 static const u32 sBgAnim_Inner_Tilemap[] = INCBIN_U32("graphics/evolution_scene/bg_inner.bin.smolTM");
 static const u32 sBgAnim_Outer_Tilemap[] = INCBIN_U32("graphics/evolution_scene/bg_outer.bin.smolTM");
-static const u16 sBgAnim_Intro_Pal[] = INCBIN_U16("graphics/evolution_scene/bg_anim_intro.gbapal");
-static const u16 sUnusedPal2[] = INCBIN_U16("graphics/evolution_scene/unused_2.gbapal");
-static const u16 sUnusedPal3[]  = INCBIN_U16("graphics/evolution_scene/unused_3.gbapal");
-static const u16 sUnusedPal4[] = INCBIN_U16("graphics/evolution_scene/unused_4.gbapal");
-static const u16 sBgAnim_Pal[] = INCBIN_U16("graphics/evolution_scene/bg_anim.gbapal");
+static const u16 sBgAnim_Intro_Pal[] = INCGFX_U16("graphics/evolution_scene/bg_anim_intro.pal", ".gbapal");
+static const u16 sUnusedPal2[] = INCGFX_U16("graphics/evolution_scene/unused_2.pal", ".gbapal");
+static const u16 sUnusedPal3[]  = INCGFX_U16("graphics/evolution_scene/unused_3.pal", ".gbapal");
+static const u16 sUnusedPal4[] = INCGFX_U16("graphics/evolution_scene/unused_4.pal", ".gbapal");
+static const u16 sBgAnim_Pal[] = INCGFX_U16("graphics/evolution_scene/bg_anim.pal", ".gbapal");
 
 static const u8 sText_ShedinjaJapaneseName[] = _("ヌケニン");
 
@@ -677,6 +678,7 @@ static void Task_EvolutionScene(u8 taskId)
         && gTasks[taskId].tBits & TASK_BIT_CAN_STOP)
     {
         gTasks[taskId].tState = EVOSTATE_CANCEL;
+        gSpecialVar_Result = EVO_EVENT_INTERRUPTED;
         gTasks[sEvoGraphicsTaskId].tEvoStopped = TRUE;
         StopBgAnimation();
         return;

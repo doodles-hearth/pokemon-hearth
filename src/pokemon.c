@@ -15,6 +15,7 @@
 #include "data.h"
 #include "daycare.h"
 #include "dexnav.h"
+#include "diverse_eggs.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "evolution_scene.h"
@@ -95,7 +96,7 @@ EWRAM_DATA u8 gPartiesCount[MAX_BATTLE_TRAINERS] = {0};
 EWRAM_DATA struct Pokemon gParties[MAX_BATTLE_TRAINERS][PARTY_SIZE] = {0};
 EWRAM_DATA struct SpriteTemplate gMultiuseSpriteTemplate = {0};
 EWRAM_DATA static struct MonSpritesGfxManager *sMonSpritesGfxManagers[MON_SPR_GFX_MANAGERS_COUNT] = {NULL};
-EWRAM_DATA static u8 sTriedEvolving = 0;
+EWRAM_DATA u8 gTriedEvolving = 0;
 EWRAM_DATA u16 gFollowerSteps = 0;
 
 #include "data/abilities.h"
@@ -133,7 +134,7 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     FOREACH_SPECIES_IN_HOENN_DEX_ORDER(HOENN_TO_NATIONAL)
 };
 
-// In Battle Palace, moves are chosen based on the pokemons nature rather than by the player
+// In Battle Palace, moves are chosen based on the Pokémon's nature rather than by the player
 // Moves are grouped into "Attack", "Defense", or "Support" (see PALACE_MOVE_GROUP_*)
 // Each nature has a certain percent chance of selecting a move from a particular group
 // and a separate percent chance for each group when at or below 50% HP
@@ -477,6 +478,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/form_species_tables.h"
 #include "data/pokemon/form_change_tables.h"
 #include "data/pokemon/form_change_table_pointers.h"
+#include "data/pokemon/wild_encounter_ow_behavior.h"
 #include "data/object_events/object_event_pic_tables_followers.h"
 
 #include "data/pokemon/species_info.h"
@@ -781,6 +783,7 @@ void ZeroPlayerPartyMons(void)
 {
     for (s32 i = 0; i < PARTY_SIZE; i++)
         ZeroMonData(&gParties[B_TRAINER_0][i]);
+    gPlayerPartyCount = 0;
 }
 
 void ZeroEnemyPartyMons(void)
@@ -790,6 +793,8 @@ void ZeroEnemyPartyMons(void)
         ZeroMonData(&gParties[B_TRAINER_1][i]);
         ZeroMonData(&gParties[B_TRAINER_3][i]);
     }
+    gPartiesCount[B_TRAINER_1] = 0;
+    gPartiesCount[B_TRAINER_3] = 0;
 }
 
 void CreateRandomMon(struct Pokemon *mon, enum Species species, u8 level)
@@ -818,6 +823,48 @@ void CreateMonWithIVs(struct Pokemon *mon, enum Species species, u8 level, u32 p
     CreateMon(mon, species, level, personality, trainerId);
     SetBoxMonIVs(&mon->box, fixedIV);
     CalculateMonStats(mon);
+}
+
+bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
+{
+    if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
+        return FALSE;
+    
+    if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
+        return TRUE;
+    
+    if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (FlagGet(WE_FLAG_NO_CATCHING))))
+        return FALSE;
+    
+    if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
+        return FALSE;
+
+    u32 totalRerolls = 0;
+    
+    if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+        totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
+
+    if (LURE_STEP_COUNT != 0)
+        totalRerolls += 1;
+
+    totalRerolls += CalculateChainFishingShinyRolls();
+
+    if (gDexNavSpecies)
+        totalRerolls += CalculateDexNavShinyRolls();
+
+
+    if (gSaveBlock1Ptr->isShinyVialActive)
+    {
+        totalRerolls += SHINY_VIAL_ADDITIONAL_ROLLS;
+    }
+
+    while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
+    {
+        personality = Random32();
+        totalRerolls--;
+    }
+
+    return GET_SHINY_VALUE(value, personality) < SHINY_ODDS;
 }
 
 void SetBoxMonIVs(struct BoxPokemon *mon, u8 fixedIV)
@@ -905,47 +952,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, enum Species species, u8 level, u32
     else // Player is the OT
     {
         value = READ_OTID_FROM_SAVE;
-        if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
-        {
-            isShiny = FALSE;
-        }
-        else if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
-        {
-            isShiny = TRUE;
-        }
-        else if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (B_FLAG_NO_CATCHING != 0 && FlagGet(B_FLAG_NO_CATCHING))))
-        {
-            isShiny = FALSE;
-        }
-        else if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
-        {
-            isShiny = FALSE;
-        }
-        else
-        {
-            u32 totalRerolls = 0;
-            if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
-                totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
-            if (LURE_STEP_COUNT != 0)
-                totalRerolls += 1;
-            totalRerolls += CalculateChainFishingShinyRolls();
-            if (gDexNavSpecies)
-                totalRerolls += CalculateDexNavShinyRolls();
-
-            if (gSaveBlock1Ptr->isShinyVialActive)
-            {
-                totalRerolls += SHINY_VIAL_ADDITIONAL_ROLLS;
-            }
-
-            u32 shinyPersonality = personality;
-            while (GET_SHINY_VALUE(value, shinyPersonality) >= SHINY_ODDS && totalRerolls > 0)
-            {
-                shinyPersonality = Random32();
-                totalRerolls--;
-            }
-
-            isShiny = GET_SHINY_VALUE(value, shinyPersonality) < SHINY_ODDS;
-        }
+        isShiny = ComputePlayerShinyOdds(personality, value);    
     }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
@@ -992,6 +999,20 @@ static bool32 IsValidGender(u32 gender)
     }
 }
 
+static void CleanIncompatibleGenderSpecies(enum Species species, u8 *gender)
+{
+    switch (gSpeciesInfo[species].genderRatio)
+    {
+    case MON_MALE:
+    case MON_FEMALE:
+    case MON_GENDERLESS:
+        *gender = MON_GENDER_RANDOM;
+        return;
+    }
+    if (*gender == MON_GENDERLESS)
+        *gender = MON_GENDER_RANDOM;
+}
+
 u32 GetMonPersonality(enum Species species, u8 gender, u8 nature, u8 unownLetter)
 {
     u32 personality, actualLetter;
@@ -1011,14 +1032,14 @@ u32 GetMonPersonality(enum Species species, u8 gender, u8 nature, u8 unownLetter
         unownLetter = RANDOM_UNOWN_LETTER;
     }
 
-    //gender outside valid gender ratios for species is not asserted because it could be triggered by cute charm
+    CleanIncompatibleGenderSpecies(species, &gender);
     do
     {
         personality = Random32();
         actualLetter = GET_UNOWN_LETTER(personality);
     }
     while ((nature != GetNatureFromPersonality(personality) && nature != NATURE_RANDOM)
-            || (gender != GetGenderFromSpeciesAndPersonality(species, personality) && gender != MON_GENDER_RANDOM)
+            || (gender != MON_GENDER_RANDOM && gender != GetGenderFromSpeciesAndPersonality(species, personality))
             || ((actualLetter != unownLetter - 1) && unownLetter > 0));
     return personality;
 }
@@ -1342,8 +1363,8 @@ void CalculateMonStats(struct Pokemon *mon)
         gBattleScripting.levelUpHP = 1;
     SetMonData(mon, MON_DATA_MAX_HP, &newMaxHP);
 
-    // Since a pokemon's maxHP data could either not have
-    // been initialized at this point or this pokemon is
+    // Since a Pokémon's maxHP data could either not have
+    // been initialized at this point or this Pokémon is
     // just fainted, the check for oldMaxHP is important.
     if (currentHP == 0 && oldMaxHP != 0)
         return;
@@ -3180,6 +3201,16 @@ u32 GetSpeciesBaseStat(enum Species species, u32 statIndex)
     return 0;
 }
 
+u32 GetSpeciesBaseStatTotal(enum Species species)
+{
+    u32 total = 0;
+
+    for (u32 i = 0; i < NUM_STATS; i++)
+        total += GetSpeciesBaseStat(species, i);
+
+    return total;
+}
+
 const struct LevelUpMove *GetSpeciesLevelUpLearnset(enum Species species)
 {
     const struct LevelUpMove *learnset = gSpeciesInfo[SanitizeSpeciesId(species)].levelUpLearnset;
@@ -3805,7 +3836,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
 bool8 HealStatusConditions(struct Pokemon *mon, u32 healMask, enum BattlerId battler)
 {
     u32 status = GetMonData(mon, MON_DATA_STATUS, 0);
-    
+
     PREPARE_MON_NICK_BUFFER(gBattleTextBuff1, battler, gBattlerPartyIndexes[battler]);
 
     if (status & healMask)
@@ -4561,6 +4592,8 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
                 continue;
             if (evolutions[i].method != EVO_SCRIPT_TRIGGER)
                 continue;
+            if (evolutions[i].param != evolutionItem)
+                continue;
             if (DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState))
             {
                 // All checks passed, so stop checking the rest of the evolutions.
@@ -5287,6 +5320,8 @@ const u16 *GetMonSpritePalFromSpeciesIsEgg(enum Species species, bool32 isShiny,
     {
         if (gSpeciesInfo[species].eggId != EGG_ID_NONE)
             return gEggDatas[gSpeciesInfo[species].eggId].eggPalette;
+        else if (IsKnownEggGroup(species))
+            return LoadEggPalette(species);
         else
             return gSpeciesInfo[SPECIES_EGG].palette;
     }
@@ -6280,66 +6315,31 @@ void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv)
     }
 }
 
-// Attempts to perform non-level/item related overworld evolutions; called by tryspecialevo command.
-void TryScriptEvolution(void)
-{
-    u8 i;
-    bool32 canStopEvo = gSpecialVar_0x8001;
-    u16 tryMultiple = gSpecialVar_0x8002;
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_SCRIPT_TRIGGER, 0, NULL, &canStopEvo, CHECK_EVO);
-
-        if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
-        {
-            GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_SCRIPT_TRIGGER, 0, NULL, &canStopEvo, DO_EVO);
-            sTriedEvolving |= 1u << i;
-            if (gMain.callback2 == TryScriptEvolution) // This fixes small graphics glitches.
-                EvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
-            else
-                BeginEvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
-
-            if (tryMultiple)
-                gCB2_AfterEvolution = TryScriptEvolution;
-            else
-                gCB2_AfterEvolution = CB2_ReturnToField;
-            return;
-        }
-    }
-
-    sTriedEvolving = 0;
-    SetMainCallback2(CB2_ReturnToField);
-}
-
 void TrySpecialOverworldEvo(void)
 {
     u8 i;
-    bool32 canStopEvo = gSpecialVar_0x8001;
-    u16 tryMultiple = gSpecialVar_0x8002;
+    bool32 canStopEvo = FALSE;
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
         enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, CHECK_EVO);
 
-        if (targetSpecies != SPECIES_NONE && !(sTriedEvolving & (1u << i)))
+        if (targetSpecies != SPECIES_NONE && !(gTriedEvolving & (1u << i)))
         {
             GetEvolutionTargetSpecies(&gParties[B_TRAINER_0][i], EVO_MODE_OVERWORLD_SPECIAL, 0, NULL, &canStopEvo, DO_EVO);
-            sTriedEvolving |= 1u << i;
+            gTriedEvolving |= 1u << i;
+
             if (gMain.callback2 == TrySpecialOverworldEvo) // This fixes small graphics glitches.
                 EvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
             else
                 BeginEvolutionScene(&gParties[B_TRAINER_0][i], targetSpecies, canStopEvo, i);
 
-            if (tryMultiple)
-                gCB2_AfterEvolution = TrySpecialOverworldEvo;
-            else
-                gCB2_AfterEvolution = CB2_ReturnToField;
+            gCB2_AfterEvolution = TrySpecialOverworldEvo;
             return;
         }
     }
 
-    sTriedEvolving = 0;
+    gTriedEvolving = 0;
     SetMainCallback2(CB2_ReturnToField);
 }
 
@@ -6360,7 +6360,7 @@ bool32 SpeciesHasGenderDifferences(enum Species species)
 static struct PartyState *GetBattlerPartyStateByPokemon(struct Pokemon *partyMon, enum BattleTrainer trainer)
 {
     struct Pokemon *party = GetTrainerParty(trainer);
-    
+
     for (int i = 0; i < PARTY_SIZE; i++)
     {
         struct Pokemon *mon = &party[i];
@@ -6793,6 +6793,7 @@ u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot)
         HandleSetPokedexFlagFromMon(mon, FLAG_SET_SEEN);
         HandleSetPokedexFlagFromMon(mon, FLAG_SET_CAUGHT);
     }
+    CalculatePlayerPartyCount();
     return sentToPc;
 }
 

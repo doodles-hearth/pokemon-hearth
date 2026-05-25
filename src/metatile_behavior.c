@@ -142,6 +142,7 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_CYCLING_ROAD_PULL_DOWN_GRASS]       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FAST_WATER]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_CYCLING_ROAD_WATER]                 = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
+    [MB_CLOSED_TOKU_DOOR]                   = TILE_FLAG_UNUSED,
 };
 
 bool8 MetatileBehavior_IsATile(u8 metatileBehavior)
@@ -1877,3 +1878,10 @@ bool8 MetatileBehavior_IsTrainerTowerMonitor(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsClosedTokuDoor(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_CLOSED_TOKU_DOOR)
+        return TRUE;
+    else
+        return FALSE;
+}

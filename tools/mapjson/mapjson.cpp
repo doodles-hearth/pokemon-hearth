@@ -172,8 +172,13 @@ string generate_map_header_text(Json map_data, Json layouts_data) {
          << "\t.byte "  << json_to_string(map_data, "weather") << "\n"
          << "\t.byte "  << json_to_string(map_data, "map_type") << "\n";
 
-    if (version != "firered")
-        text << "\t.2byte 0\n";
+    string floor_number = json_to_string(map_data, "floor_number", true);
+    if (floor_number.empty())
+        text << "\t.byte 0\n";
+    else
+        text << "\t.byte " << floor_number << "\n";
+
+    text << "\t.byte 0\n";
 
     if (version == "ruby")
         text << "\t.byte " << json_to_string(map_data, "show_map_name") << "\n";
@@ -183,9 +188,6 @@ string generate_map_header_text(Json map_data, Json layouts_data) {
              << "allow_escaping=" << json_to_string(map_data, "allow_escaping") << ", "
              << "allow_running=" << json_to_string(map_data, "allow_running") << ", "
              << "show_map_name=" << json_to_string(map_data, "show_map_name") << "\n";
-
-    if (version == "firered")
-        text << "\t.byte " << json_to_string(map_data, "floor_number") << "\n";
 
      text << "\t.byte " << json_to_string(map_data, "battle_scene") << "\n\n";
 
@@ -273,7 +275,11 @@ string generate_map_events_text(Json map_data) {
                      << json_to_string(obj_event, "evening", false, true) << ", "
                      << json_to_string(obj_event, "lunchtime", false, true) << ", "
                      << json_to_string(obj_event, "morning", false, true) << ", "
-                     << json_to_string(obj_event, "night", false, true) << "\n";
+                     << json_to_string(obj_event, "night", false, true);
+               if (json_to_string(obj_event, "live_event", true).empty())
+                  text << "\n";
+               else
+                   text << ", " << json_to_string(obj_event, "live_event") << "\n";
             } else if (type == "clone") {
                 text << "\tclone_event " << i + 1 << ", "
                      << json_to_string(obj_event, "graphics_id") << ", "

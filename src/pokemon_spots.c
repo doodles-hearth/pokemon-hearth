@@ -94,10 +94,10 @@ static inline u32 GetSpotRow(const u32* image, u32 row, enum SpotScale scale);
 
 // SPECIES_SPINDA
 static const SpotImage16 sSpindaSpotImages[4] = {
-    INCBIN_U32("graphics/pokemon/spinda/spots/spot_0.1bpp"),
-    INCBIN_U32("graphics/pokemon/spinda/spots/spot_1.1bpp"),
-    INCBIN_U32("graphics/pokemon/spinda/spots/spot_2.1bpp"),
-    INCBIN_U32("graphics/pokemon/spinda/spots/spot_3.1bpp"),
+    INCGFX_U32("graphics/pokemon/spinda/spots/spot_0.png", ".1bpp"),
+    INCGFX_U32("graphics/pokemon/spinda/spots/spot_1.png", ".1bpp"),
+    INCGFX_U32("graphics/pokemon/spinda/spots/spot_2.png", ".1bpp"),
+    INCGFX_U32("graphics/pokemon/spinda/spots/spot_3.png", ".1bpp"),
 };
 //NOTE: Spinda spots have been ordered in reverse for save compatibility
 static const struct MonSpot sSpindaSpots[] = {
@@ -119,10 +119,10 @@ const struct MonSpotTemplate gSpindaSpotTemplate = {
 
 //SPECIES_GYARADOS_TOKUAN
 static const SpotImage32 sGyaradosTokuanSpotImages[4] = {
-    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_0.1bpp"),
-    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_1.1bpp"),
-    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_2.1bpp"),
-    INCBIN_U32("graphics/pokemon/gyarados/tokuan/spots/spot_3.1bpp"),
+    INCGFX_U32("graphics/pokemon/gyarados/tokuan/spots/spot_0.png", ".1bpp", "-plain -data_width 4"),
+    INCGFX_U32("graphics/pokemon/gyarados/tokuan/spots/spot_1.png", ".1bpp", "-plain -data_width 4"),
+    INCGFX_U32("graphics/pokemon/gyarados/tokuan/spots/spot_2.png", ".1bpp", "-plain -data_width 4"),
+    INCGFX_U32("graphics/pokemon/gyarados/tokuan/spots/spot_3.png", ".1bpp", "-plain -data_width 4"),
 };
 static const struct MonSpot sGyaradosTokuanSpots[4] = {
     {.x = 26, .y = 26, .image = sGyaradosTokuanSpotImages[3]},
@@ -206,8 +206,8 @@ static void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spot
         u8 pidLowerNibble = pidByteForSpot & NIBBLE_LOWER;
         u8 pidUpperNibble = (pidByteForSpot & NIBBLE_UPPER) >> 4;
 
-        u8 x = spot->x + pidLowerNibble * (spotTemplate->scale / 2);
-        u8 y = spot->y + pidUpperNibble * (spotTemplate->scale / 2);
+        s32 x = spot->x + pidLowerNibble * (spotTemplate->scale / 2);
+        s32 y = spot->y + pidUpperNibble * (spotTemplate->scale / 2);
 
         switch (spotAnimFrame)
         {
@@ -229,7 +229,7 @@ static void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spot
         for (u32 i = 0; i < size; i++)
         {
             u32 spotPixelRow = GetSpotRow(spot->image, i, spotTemplate->scale);
-            u32 row = y + i;
+            s32 row = y + i;
 
             //INFO: This loop draws one row
             for (u32 j = 0; j < size; j++)
@@ -237,7 +237,11 @@ static void DrawPokemonSpots(u32 personality, const struct MonSpotTemplate* spot
                 u32 bit = (spotPixelRow >> j) & 1;
                 if (bit)
                 {
-                    u32 col = x + j;
+                    s32 col = x + j;
+                    if (col < 0 || col >= MON_PIC_WIDTH
+                     || row < 0 || row >= MON_PIC_HEIGHT * MAX_MON_PIC_FRAMES)
+                        continue;
+
                     u8* destPixels = dest + CoordToByteOffset(col, row);
 
                     u8 shift = (col & 1) ? ODD_PIXEL_SHIFT : EVEN_PIXEL_SHIFT;

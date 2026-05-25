@@ -177,9 +177,9 @@ static void DrawBgWindowFrames(void);
 EWRAM_DATA static struct OptionMenu *sOptions = NULL;
 
 // const data
-static const u8 sEqualSignGfx[] = INCBIN_U8("graphics/interface/option_menu_equals_sign.4bpp"); // note: this is only used in the Japanese release
+static const u8 sEqualSignGfx[] = INCGFX_U8("graphics/interface/option_menu_equals_sign.png", ".4bpp"); // note: this is only used in the Japanese release
 static const u16 sOptionMenuBg_Pal[] = {RGB(17, 18, 31)};
-static const u16 sOptionMenuText_Pal[] = INCBIN_U16("graphics/interface/option_menu_text_custom.gbapal");
+static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text_custom.pal", ".gbapal");
 
 #define TEXT_COLOR_OPTIONS_WHITE 1
 #define TEXT_COLOR_OPTIONS_GRAY_FG 2

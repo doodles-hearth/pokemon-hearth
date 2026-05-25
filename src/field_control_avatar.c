@@ -8,6 +8,7 @@
 #include "debug.h"
 #include "dexnav.h"
 #include "faraway_island.h"
+#include "follower_npc.h"
 #include "event_data.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
@@ -38,10 +39,12 @@
 #include "trainer_hill.h"
 #include "vs_seeker.h"
 #include "wild_encounter.h"
+#include "wild_encounter_ow.h"
 #include "constants/event_bg.h"
 #include "constants/event_objects.h"
 #include "constants/field_poison.h"
 #include "constants/items.h"
+#include "constants/layouts.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
@@ -54,7 +57,6 @@ static EWRAM_DATA u8 sPreviousDirection = 0;
 
 COMMON_DATA u8 gSelectedObjectEvent = 0;
 
-static void GetPlayerPosition(struct MapPosition *);
 static void GetInFrontOfPlayerPosition(struct MapPosition *);
 static u16 GetPlayerCurMetatileBehavior(int);
 static bool8 TryStartInteractionScript(struct MapPosition *, u16, enum Direction);
@@ -65,7 +67,6 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *, u8, enum Dire
 static const u8 *GetInteractedWaterScript(struct MapPosition *, u8, enum Direction);
 static bool32 TrySetupDiveDownScript(void);
 static bool32 TrySetupDiveEmergeScript(void);
-static bool8 TryStartStepBasedScript(struct MapPosition *, u16, enum Direction);
 static bool8 CheckStandardWildEncounter(u16);
 static bool8 TryArrowWarp(struct MapPosition *, u16, enum Direction);
 static bool8 IsWarpMetatileBehavior(u16);
@@ -249,7 +250,8 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     {
         IncrementGameStat(GAME_STAT_STEPS);
         IncrementBirthIslandRockStepCount();
-        if (TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
+        DespawnAllOverworldWildEncounters(OWE_GENERATED, WILD_CHECK_REPEL);
+        if (FindTaskIdByFunc(Task_FollowerNPCOutOfDoor) == TASK_NONE && TryStartStepBasedScript(&position, metatileBehavior, playerDirection) == TRUE)
             return TRUE;
     }
 
@@ -322,7 +324,7 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     return FALSE;
 }
 
-static void GetPlayerPosition(struct MapPosition *position)
+void GetPlayerPosition(struct MapPosition *position)
 {
     PlayerGetDestCoords(&position->x, &position->y);
     position->elevation = PlayerGetElevation();
@@ -482,10 +484,14 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
     gSelectedObjectEvent = objectEventId;
     gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
 
-    if (InTrainerHill() == TRUE)
-        script = GetTrainerHillTrainerScript();
-    else if (PlayerHasFollowerNPC() && objectEventId == GetFollowerNPCObjectId())
+    if (PlayerHasFollowerNPC() && objectEventId == GetFollowerNPCObjectId())
         script = GetFollowerNPCScriptPointer();
+    else if (IsOverworldWildEncounter(&gObjectEvents[objectEventId], OWE_ANY))
+        script = GetOverworlWildEncounterScript(objectEventId);
+    else if (gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_FOLLOWER)
+        script = EventScript_Follower;
+    else if (InTrainerHill() == TRUE)
+        script = GetTrainerHillTrainerScript();
     else
         script = GetObjectEventScriptPointerByObjectEventId(objectEventId);
 
@@ -571,6 +577,8 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         }
         return ChatotPost_EventScript_EmptyPost;
     }
+    if (MetatileBehavior_IsClosedTokuDoor(metatileBehavior) == TRUE)
+        return EventScript_ClosedToku;
     if (MetatileBehavior_IsClosedSootopolisDoor(metatileBehavior) == TRUE)
         return EventScript_ClosedSootopolisDoor;
     if (MetatileBehavior_IsSkyPillarClosedDoor(metatileBehavior) == TRUE)
@@ -683,7 +691,7 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         SetMsgSignPostAndVarFacing(direction);
         return Common_EventScript_ShowPokemonCenterSign;
     }
-    if (MetatileBehavior_IsRockClimbable(metatileBehavior) == TRUE && !IsRockClimbActive())
+    if (IsFieldMoveUnlocked(FIELD_MOVE_ROCK_CLIMB) && MetatileBehavior_IsRockClimbable(metatileBehavior) == TRUE && !IsRockClimbActive())
         return EventScript_UseRockClimb;
 
     elevation = position->elevation;
@@ -770,7 +778,7 @@ static bool32 TrySetupDiveEmergeScript(void)
     return FALSE;
 }
 
-static bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
+bool8 TryStartStepBasedScript(struct MapPosition *position, u16 metatileBehavior, enum Direction direction)
 {
     if (TryStartCoordEventScript(position) == TRUE)
         return TRUE;
@@ -985,9 +993,26 @@ void RestartWildEncounterImmunitySteps(void)
     sWildEncounterImmunitySteps = 0;
 }
 
+static bool32 ShouldDisableRandomEncounters(void)
+{
+    if (FlagGet(WE_FLAG_NO_ENCOUNTER))
+        return TRUE;
+
+    if (!WE_VANILLA_RANDOM && WE_OW_ENCOUNTERS)
+    {
+        if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && !WE_OWE_BATTLE_PIKE)
+            return FALSE;
+
+        if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR && !WE_OWE_BATTLE_PYRAMID)
+            return FALSE;
+    }
+
+    return !WE_VANILLA_RANDOM;
+}
+
 static bool8 CheckStandardWildEncounter(u16 metatileBehavior)
 {
-    if (FlagGet(OW_FLAG_NO_ENCOUNTER))
+    if (ShouldDisableRandomEncounters())
         return FALSE;
 
     if (sWildEncounterImmunitySteps < 4)

@@ -23,6 +23,8 @@
 #include "field_camera.h"
 #include "overworld.h"
 
+#include "even_live_event.h"
+
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
 struct RGBColor
@@ -201,7 +203,7 @@ static const u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
     COLOR_MAP_DARK_CONTRAST,
 };
 
-const u16 ALIGNED(4) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
+const u16 ALIGNED(4) gFogPalette[] = INCGFX_U16("graphics/weather/fog.pal", ".gbapal");
 
 void StartWeather(void)
 {
@@ -873,6 +875,7 @@ void ApplyWeatherColorMapIfIdle_Gradual(u8 colorMapIndex, u8 targetColorMapIndex
 
 void FadeScreen(u8 mode, s8 delay)
 {
+    StopActiveLiveEvents();
     FadeSelectedPals(mode, delay, PALETTES_ALL);
 }
 
@@ -962,6 +965,7 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
 // (i.e if blending lighting effects using WINOBJ)
 void FadeScreenHardware(u32 mode, s32 delay)
 {
+    StopActiveLiveEvents();
     u32 bldCnt = GetGpuReg(REG_OFFSET_BLDCNT) & BLDCNT_TGT2_ALL;
     bldCnt |= BLDCNT_TGT1_ALL;
     // enable blend in all windows

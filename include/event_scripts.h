@@ -612,6 +612,7 @@ extern const u8 MossdeepCity_SpaceCenter_2F_EventScript_RivalRayquazaCall[];
 extern const u8 SSTidalCorridor_EventScript_ReachedStepCount[];
 extern const u8 EventScript_FallDownHoleMtPyre[];
 extern const u8 EventScript_Campfire[];
+extern const u8 EventScript_ClosedToku[];
 
 // Secret Base
 extern const u8 SecretBase_EventScript_PC[];
@@ -822,5 +823,12 @@ extern const u8 EventScript_PokemonHandsYouAnOran[];
 
 extern const u8 EventScript_CamperWantsToBattle[];
 extern const u8 EventScript_PokemonWantsToBattle[];
+
+extern const u8 EventScript_ShamisenPlayerBlue[];
+extern const u8 EventScript_ShamisenPlayerRed[];
+extern const u8 EventScript_ShamisenPlayerGreen[];
+
+//  Live event script prototypes
+extern const u8 WC_WoobatFlee[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

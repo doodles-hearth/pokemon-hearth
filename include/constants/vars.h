@@ -136,7 +136,6 @@
 #define VAR_EGG_GIRL_SPECIES                0x4056
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_EGG_GIRL_STEP_COUNTER                        0x405B
 /*
@@ -258,6 +257,10 @@
 
 #define VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE             0x409B
 #define VAR_ELITE_4_STATE                                0x409C
+
+//COMPLEX QUEST VARS
+#define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
+
 /*
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
@@ -271,6 +274,7 @@
     // 9: Ashii gives reward
 */
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
+
 /*
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
@@ -281,6 +285,7 @@
     // 5: Given rock
 */
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
+
 /*
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
@@ -293,6 +298,7 @@
     // 7: Player has given medicine to Scyther
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
+
 /*
     VAR_SAKU_KURA_VILLAGES_STATEs
     // 0: The two villages hate each other
@@ -404,13 +410,15 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_GINKO_WOODS_CAMPFIRE                         0x40F7
 #define VAR_FLASH_TRACKER                                0x40F8
-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
-#define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
-#define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
-#define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+
+// Shamisen Players Locations
+#define VAR_SHAMISEN_PLAYER_BLUE                         0x40F9
+#define VAR_SHAMISEN_PLAYER_RED                          0x40FA
+#define VAR_SHAMISEN_PLAYER_GREEN                        0x40FB
+#define VAR_UNUSED_0x40FC                                0x40FC
+#define VAR_UNUSED_0x40FD                                0x40FD
+#define VAR_UNUSED_0x40FE                                0x40FE
+#define VAR_UNUSED_0x40FF                                0x40FF
 
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)

@@ -71,8 +71,10 @@ script(local) AshiiScript_FirstEncounter {
 	closemessage
 
 	giveitem(ITEM_ASHIIS_SCARF)
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1)
+	waitmessage
+	closemessage
 	startquest(QUEST_SAKURALOVERS)
+	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 1) //should not be updatequest. must remain as setvar
 }
 
 script(local) AshiiScript_DidYouGiveTamaScarf {
@@ -85,7 +87,6 @@ script(local) AshiiScript_DidYouGiveTamaScarf {
 }
 
 script(local) AshiiScript_ReportBackAfterGivingScarf {
-	setvar(VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE, 3)
 	faceplayer
 	setspeaker(SP_NAME_ASHII)
 	msgbox(format(
@@ -122,6 +123,9 @@ script(local) AshiiScript_ReportBackAfterGivingScarf {
 		"Tama can't get to me!\nCould you cut them for me?\p"
 		"I'd do it myself, but I can't get into Saku Village."
 	))
+	waitmessage
+	closemessage
+	updatequest(QUEST_SAKURALOVERS)	
 }
 
 script(local) AshiiScript_Rocks {

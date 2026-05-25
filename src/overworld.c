@@ -76,6 +76,7 @@
 #include "tv.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
+#include "wild_encounter_ow.h"
 #include "vs_seeker.h"
 #include "frontier_util.h"
 #include "field_mugshot.h"
@@ -89,6 +90,7 @@
 #include "constants/songs.h"
 #include "constants/trainer_hill.h"
 #include "constants/weather.h"
+#include "even_live_event.h"
 
 STATIC_ASSERT((B_FLAG_FOLLOWERS_DISABLED == 0 || OW_FOLLOWERS_ENABLED), FollowersFlagAssignedWithoutEnablingThem);
 
@@ -463,10 +465,10 @@ void Overworld_ResetBattleFlagsAndVars(void)
     #endif
 
     FlagClear(B_FLAG_INVERSE_BATTLE);
-    FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
-    FlagClear(B_SMART_WILD_AI_FLAG);
-    FlagClear(B_FLAG_NO_CATCHING);
-    FlagClear(B_FLAG_NO_RUNNING);
+    FlagClear(WE_FLAG_FORCE_DOUBLE_WILD);
+    FlagClear(WE_SMART_WILD_AI_FLAG);
+    FlagClear(WE_FLAG_NO_CATCHING);
+    FlagClear(WE_FLAG_NO_RUNNING);
     FlagClear(B_FLAG_DYNAMAX_BATTLE);
     FlagClear(B_FLAG_SKY_BATTLE);
     FlagClear(B_FLAG_NO_WHITEOUT);
@@ -893,6 +895,8 @@ bool8 SetDiveWarpDive(u16 x, u16 y)
 
 void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
 {
+    StopActiveLiveEvents();
+    ResetLiveEventTriggers();
     SetWarpDestination(mapGroup, mapNum, WARP_ID_NONE, -1, -1);
 
     // Dont transition map music between BF Outside West/East
@@ -944,12 +948,16 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
         if (gMapHeader.regionMapSectionId != MAPSEC_DUMMY || gMapHeader.regionMapSectionId != sLastMapSectionId)
             ShowMapNamePopup();
     }
+    SetMinimumOWESpawnTimer();
 }
 
 static void LoadMapFromWarp(bool32 a1)
 {
     bool8 isOutdoors;
     bool8 isIndoors;
+
+    StopActiveLiveEvents();
+    ResetLiveEventTriggers();
 
     LoadCurrentMapData();
     if (!(sObjectEventLoadFlag & SKIP_OBJECT_EVENT_LOAD))
@@ -1004,6 +1012,7 @@ static void LoadMapFromWarp(bool32 a1)
         UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
         InitSecretBaseAppearance(TRUE);
     }
+    SetMinimumOWESpawnTimer();
 }
 
 void ResetInitialPlayerAvatarState(void)
@@ -1415,8 +1424,28 @@ void Overworld_FadeOutMapMusic(void)
     FadeOutMapMusic(4);
 }
 
+static bool32 ShouldPlayVanillaAmbientCry(void)
+{
+    switch (OW_AMBIENT_CRIES)
+    {
+    case OW_AMBIENT_CRIES_VANILLA:
+        return TRUE;
+    case OW_AMBIENT_CRIES_OWE_PRIORITY:
+        return !TryPlayAmbientCryOWE();
+    case OW_AMBIENT_CRIES_OWE_ONLY:
+        TryPlayAmbientCryOWE();
+        return FALSE;
+    case OW_AMBIENT_CRIES_NONE:
+    default:
+        return FALSE;
+    }
+}
+
 static void PlayAmbientCry(void)
 {
+    if (!ShouldPlayVanillaAmbientCry())
+        return;
+    
     s16 x, y;
     s8 pan;
     s8 volume;
@@ -1668,6 +1697,7 @@ static void DoCB1_Overworld(u16 newKeys, u16 heldKeys)
         {
             PlayerStep(inputStruct.dpadDirection, newKeys, heldKeys);
         }
+        ProcessLiveEvents();
     }
     // If stop running but keep holding B -> fix follower frame.
     if (PlayerHasFollowerNPC() && (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_ON_FOOT) && IsPlayerStandingStill())
@@ -1937,6 +1967,7 @@ static void OverworldBasic(void)
         }
     }
     PlayerAvatarHandleBob();
+    UpdateOverworldWildEncounter();
 }
 
 // This CB2 is used when starting

@@ -49,6 +49,7 @@
 #include "item.h"
 #include "script.h"
 #include "field_name_box.h"
+#include "wild_encounter_ow.h"
 #include "constants/battle_frontier.h"
 #include "constants/battle_setup.h"
 #include "constants/event_objects.h"
@@ -269,6 +270,7 @@ static void Task_BattleStart(u8 taskId)
             SetMainCallback2(CB2_InitBattle);
             RestartWildEncounterImmunitySteps();
             ClearPoisonStepCounter();
+            DespawnOWEOnBattleStart();
             DestroyTask(taskId);
         }
         break;
@@ -1627,6 +1629,9 @@ static void CB2_EndRematchBattle(void)
 void BattleSetup_StartRematchBattle(void)
 {
     gBattleTypeFlags = BATTLE_TYPE_TRAINER;
+    if (GetTrainerBattleType(TRAINER_BATTLE_PARAM.opponentA) == TRAINER_BATTLE_TYPE_DOUBLES)
+        gBattleTypeFlags |= BATTLE_TYPE_DOUBLE;
+    
     gMain.savedCallback = CB2_EndRematchBattle;
     DoTrainerBattle();
     ScriptContext_Stop();

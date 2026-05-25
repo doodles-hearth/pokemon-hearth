@@ -19,6 +19,7 @@
 #include "event_object_lock.h"
 #include "event_object_movement.h"
 #include "event_scripts.h"
+#include "evolution_scene.h"
 #include "fake_rtc.h"
 #include "field_message_box.h"
 #include "field_player_avatar.h"
@@ -34,6 +35,7 @@
 #include "main.h"
 #include "map_preview_screen.h"
 #include "menu.h"
+#include "constants/metatile_labels.h"
 #include "money.h"
 #include "move.h"
 #include "move_relearner.h"
@@ -68,6 +70,8 @@
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
 #include "player_transform.h"
+#include "constants/party_menu.h"
+#include "even_live_event.h"
 
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *);
@@ -1749,6 +1753,7 @@ bool8 ScrCmd_release(struct ScriptContext *ctx)
 
 bool8 ScrCmd_message(struct ScriptContext *ctx)
 {
+    StopActiveLiveEvents();
     const u8 *msg = (const u8 *)ScriptReadWord(ctx);
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -1782,6 +1787,29 @@ bool8 ScrCmd_messageautoscroll(struct ScriptContext *ctx)
     gTextFlags.autoScroll = TRUE;
     gTextFlags.forceMidTextSpeed = TRUE;
     ShowFieldAutoScrollMessage(msg);
+    return FALSE;
+}
+
+bool8 ScrCmd_harikoautoscroll(struct ScriptContext *ctx)
+{
+    const u8 *msg = (const u8 *)ScriptReadWord(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (msg == NULL)
+        msg = (const u8 *)ctx->data[0];
+    gTextFlags.autoScroll = TRUE;
+    gTextFlags.forceHarikoTextSpeed = TRUE;
+    ShowFieldAutoScrollMessage(msg);
+    return FALSE;
+}
+
+bool8 ScrCmd_harikofinish(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    gTextFlags.autoScroll = FALSE;
+    gTextFlags.forceHarikoTextSpeed = FALSE;
     return FALSE;
 }
 
@@ -2934,6 +2962,42 @@ bool8 ScrCmd_setmetatile(struct ScriptContext *ctx)
     return FALSE;
 }
 
+void NativeFunc_SetMetatileInRange(struct ScriptContext *ctx)
+{
+    u8 xmin = ScriptReadByte(ctx);
+    u8 ymin = ScriptReadByte(ctx);
+    u8 xmax = ScriptReadByte(ctx);
+    u8 ymax = ScriptReadByte(ctx);
+    u16 metatileId = VarGet(ScriptReadHalfword(ctx));
+    bool8 hasCollision = ScriptReadByte(ctx);
+    u8 elevation = ScriptReadByte(ctx);
+    u32 temp;
+    
+    if (xmin > xmax)
+        SWAP(xmin, xmax, temp);
+
+    if (ymin > ymax)
+        SWAP(ymin, ymax, temp);
+    xmin += MAP_OFFSET;
+    ymin += MAP_OFFSET;
+    xmax += MAP_OFFSET;
+    ymax += MAP_OFFSET;
+
+    // try set impassable
+    if (hasCollision)
+        metatileId |= MAPGRID_COLLISION_MASK;
+
+    // set elevation
+    if (elevation < 15)
+        metatileId |= (elevation << MAPGRID_ELEVATION_SHIFT);
+
+    for (u32 i = xmin; i <= xmax; i++)
+    {
+        for (u32 j = ymin; j <= ymax; j++)
+            MapGridSetMetatileEntryAt(i, j, metatileId);
+    }
+}
+
 bool8 ScrCmd_opendoor(struct ScriptContext *ctx)
 {
     u16 x = VarGet(ScriptReadHalfword(ctx));
@@ -3453,6 +3517,66 @@ bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
     return FALSE;
 }
 
+static bool32 EventEvolution(u32 partyIndex)
+{
+    bool32 canStopEvo = gSpecialVar_0x8000;
+    u32 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, CHECK_EVO);
+    if (targetSpecies == SPECIES_NONE)
+    {
+        gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
+        return FALSE;
+    }
+    gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
+    GetEvolutionTargetSpecies(&gPlayerParty[partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, DO_EVO);
+    BeginEvolutionScene(&gPlayerParty[partyIndex], targetSpecies, canStopEvo, partyIndex);
+    ScriptContext_Stop();
+    return TRUE;
+}
+
+static void TriggerMultipleEvolutions_Repeatable(void)
+{
+    if (gSpecialVar_Result == EVO_EVENT_SUCCESSFUL)
+        gSpecialVar_0x8006++;
+
+    gCB2_AfterEvolution = TriggerMultipleEvolutions_Repeatable;
+    for (u32 i = 0; i < gPlayerPartyCount; i++)
+    {
+        if (!(gTriedEvolving & (1u << i)))
+        {
+            gTriedEvolving |= 1u << i;
+            if (EventEvolution(i))
+                return;
+        }
+    }
+
+    gTriedEvolving = 0;
+    gSpecialVar_Result = gSpecialVar_0x8006;
+    SetMainCallback2(CB2_ReturnToFieldContinueScript);
+}
+
+void Script_TriggerMultipleEvolutions(struct ScriptContext *ctx)
+{
+    ctx->waitAfterCallNative = TRUE;
+    TriggerMultipleEvolutions_Repeatable();
+}
+
+void Script_TriggerUniqueEvolution(struct ScriptContext *ctx)
+{
+    ctx->waitAfterCallNative = TRUE;
+    if (gSpecialVar_0x8004 == PARTY_NOTHING_CHOSEN)
+    {
+        gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
+        return;
+    }
+    assertf(gSpecialVar_0x8004 <= PARTY_SIZE, "TriggerEvolution script called with invalid partyIndex %d", gSpecialVar_0x8004)
+    {
+        gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
+        return;
+    }
+    gCB2_AfterEvolution = CB2_ReturnToFieldContinueScript;
+    EventEvolution(gSpecialVar_0x8004);
+}
+
 void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
 {
     u8 condition = ScriptReadByte(ctx);
@@ -3653,3 +3777,35 @@ void BufferOriginalTrainerName(struct ScriptContext *ctx)
 
     StringCopy(sScriptStringVars[stringVarIndex], otName);
 }
+
+//updatequest by mudskipper
+bool8 ScrCmd_updatequest(struct ScriptContext *ctx)
+{
+    u8 questId = VarGet(ScriptReadByte(ctx));
+    u32 varId = QuestMenu_GetQuestVariableId(questId); // VAR_UNUSED_XXXX
+    u32 varValue = QuestMenu_GetQuestVariable(questId); // the value that VAR_UNUSED_XXXX holds
+
+    VarSet(varId, varValue + 1);
+
+    return FALSE;
+}
+
+bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
+{
+    u16 time        = VarGet(ScriptReadHalfword(ctx));
+    u16 doorTopX    = VarGet(ScriptReadHalfword(ctx));
+    u16 doorTopY    = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    doorTopX += MAP_OFFSET;
+    doorTopY += MAP_OFFSET;
+    
+    if(time == GetTimeOfDay())
+    {
+        MapGridSetMetatileIdAt(doorTopX, doorTopX, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
+        MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
+    }
+    return FALSE;
+}
+

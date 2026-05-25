@@ -24,7 +24,7 @@
 #define FLAG_TEMP_B      (TEMP_FLAGS_START + 0xB)  // Unused Flag
 #define FLAG_TEMP_C      (TEMP_FLAGS_START + 0xC)  // Unused Flag
 #define FLAG_TEMP_D      (TEMP_FLAGS_START + 0xD)  // Unused Flag
-#define FLAG_TEMP_E      (TEMP_FLAGS_START + 0xE)  // When set, follower pokemon won't be spawned
+#define FLAG_TEMP_E      (TEMP_FLAGS_START + 0xE)  // When set, follower Pokémon won't be spawned
 #define FLAG_TEMP_F      (TEMP_FLAGS_START + 0xF)  // Unused Flag
 #define FLAG_TEMP_10     (TEMP_FLAGS_START + 0x10) // Unused Flag
 #define FLAG_TEMP_11     (TEMP_FLAGS_START + 0x11)
@@ -44,6 +44,8 @@
 #define FLAG_TEMP_1F     (TEMP_FLAGS_START + 0x1F)
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
+
+#define SHAMISEN_PLAYERS_EVENT_FLAG FLAG_TEMP_1F
 
 #if IS_FRLG
 

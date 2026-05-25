@@ -30,6 +30,7 @@
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
+      "live_event": "LIVE_EVENT_CROBAT_SHOP",
       "lunchtime": false,
       "morning": false,
       "night": false
