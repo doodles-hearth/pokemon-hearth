@@ -830,5 +830,7 @@ extern const u8 EventScript_ShamisenPlayerGreen[];
 
 //  Live event script prototypes
 extern const u8 WC_WoobatFlee[];
+extern const u8 Live_EventScript_Deerling1Flee[];
+extern const u8 Live_EventScript_Deerling2Flee[];
 
 #endif // GUARD_EVENT_SCRIPTS_H

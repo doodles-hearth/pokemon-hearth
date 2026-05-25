@@ -498,15 +498,15 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			} else {
 				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\l"
-					"… … …!\p"
-					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\p"
+					"… … …!\n…Oh, I recognize you!\p"
+					"You're that promising young Wielder\nI met on Whiteslate Route!\p"
 					"… …Yes, I feel it…\p"
-					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your Wielding skills and medicine…\p"
-					"Congratulations, um… {FONT_SMALL}What did you say your name was?{FONT_NORMAL}\p"
-					"Congratulations, {PLAYER}!\nAs I expected, you have proved worthy of our songs!\p"
-					"I carry some Pokémon Eggs right this moment. I want you to have one, I know it would be in good hands.\p"
+					"You traversed the Route, relying on\nyour Wielding skills and medicine…\p"
+					"Congratulations, um…\n{FONT_SMALL}What did you say your name was?{FONT_NORMAL}\lCongratulations, {PLAYER}!\p"
+					"As I hoped, you have proven worthy\nof our songs!\p"
+					"I carry three Pokémon Eggs.\nI want you to have one.\lI know it would be in good hands!\p"
 					"Which of these Eggs do you favor?"
 				))
 			}
@@ -548,8 +548,8 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				giveegg(VAR_TEMP_0, METLOC_EGG_SHAMISEN)
 
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Please take good care of this Egg.\p"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Please take good care of this Egg.\n"
 					"May destiny cross our paths again!"
 				))
 				closemessage
@@ -569,12 +569,13 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 		case ROUTE_CHALLENGE_STATE_FAILURE:
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\l"
-				"… … …!\p"
-				"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
-				"{PLAYER}? It's nice to meet you again.\p"
-				"Tell me honestly, {PLAYER}… Did you manage to traverse Whiteslate Route without resorting to the services of a Pokémon Refuge?"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\p"
+				"… … …!\n…Oh, I recognize you!\p"
+				"You're that promising young Wielder\nI met on Whiteslate Route!\p"
+				"{PLAYER}?\nIt's nice to meet you again.\p"
+				"Tell me honestly, {PLAYER}…\p"
+				"Did you traverse Whiteslate Route\nwithout going to a Pokémon Refuge?"
 			))
 
 			mcdialogue(
@@ -586,22 +587,24 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				case 0:
 					applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
-					msgbox(format(
+					msgbox((
 						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hmmmm… … …\n… … …\p"
-						"You aren't telling the truth, are you?\n"
-						"You're deceiving yourself, do you not feel it in your heart?\p"
-						"Don't be too sad about not succeeding. Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
-						"Rest here a while, and prepare well for your next journey!"
+						"You aren't telling the truth,\nare you?\n"
+						"You're deceiving yourself, do you\nnot feel it in your heart?\p"
+						"Don't be too sad about not succeeding.\p"
+						"Honesty beats pride. You'll get other\nopportunities to prove yourself!\p"
+						"Rest here a while, and prepare well\nfor your next journey!"
 					))
 					closemessage
 					setflag(FLAG_LIED_TO_SHAMISEN_PLAYER)
 				case 1:
 					applymovement(VAR_LAST_TALKED, moves(emote_happy))
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
-					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
-						"Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
-						"Rest here a while, and use these to prepare for your next journey!"
+					msgbox((
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, that's alright!\nDon't beat yourself up.\p"
+						"I see in your heart that you have a\nbright future ahead of you.\p"
+						"Honesty beats pride. You'll get other\nopportunities to prove yourself!\p"
+						"Rest here a while, and use these to\nprepare for your next journey!"
 					))
 
 					giveitem(ITEM_SUPERGIRI, 3)
