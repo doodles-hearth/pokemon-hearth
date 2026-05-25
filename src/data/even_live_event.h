@@ -1,22 +1,15 @@
 const struct LiveEventData sLiveEvents[LIVE_EVENT_COUNT] =
 {
-    [LIVE_EVENT_HELLO] =
+    [LIVE_EVENT_DEERLING1_FLEE] =
     {
-        .func = HelloFunc,
+        .func = LiveDeerling1Flee,
         .retriggerDelay = 0,
-        .duration = 120,
+        .duration = 240,
         .triggerRange = 2,
     },
-    [LIVE_EVENT_HALT] =
+    [LIVE_EVENT_DEERLING2_FLEE] =
     {
-        .func = LiveHaltFunc,
-        .retriggerDelay = 600,
-        .duration = 120,
-        .triggerRange = 0,
-    },
-    [LIVE_EVENT_WOOBAT_FLEE] =
-    {
-        .func = LiveWoobatFlee,
+        .func = LiveDeerling2Flee,
         .retriggerDelay = 0,
         .duration = 240,
         .triggerRange = 2,
@@ -32,7 +25,7 @@ const struct LiveEventData sLiveEvents[LIVE_EVENT_COUNT] =
     {
         .func = LiveSigh,
         .retriggerDelay = 800,
-        .duration = 500,
+        .duration = 200,
         .triggerRange = 2,
     },
     [LIVE_EVENT_CHATOT] =
