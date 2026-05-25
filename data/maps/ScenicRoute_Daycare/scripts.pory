@@ -258,16 +258,7 @@ script ScenicRoute_Daycare_EventScript_CostPrompt {
 }
 
 script ScenicRoute_Daycare_EventScript_Nidoran {
-	lock
-    faceplayer
-	setseenmon(SPECIES_NIDORAN)
-	setspeakertomonname(SPECIES_NIDORAN)
-	playmoncry(SPECIES_NIDORAN, CRY_MODE_NORMAL)
-    msgbox(format(
-        "Snort!"
-    ))
-    waitmoncry
-    release
+	mondialogue(SPECIES_NIDORAN, "Snort!")
 }
 
 script ScenicRoute_Daycare_EventScript_NidoranF {
