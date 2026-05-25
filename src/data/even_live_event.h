@@ -1,12 +1,5 @@
 const struct LiveEventData sLiveEvents[LIVE_EVENT_COUNT] =
 {
-    [LIVE_EVENT_HALT] =
-    {
-        .func = LiveHaltFunc,
-        .retriggerDelay = 600,
-        .duration = 120,
-        .triggerRange = 0,
-    },
     [LIVE_EVENT_DEERLING1_FLEE] =
     {
         .func = LiveDeerling1Flee,
@@ -19,6 +12,13 @@ const struct LiveEventData sLiveEvents[LIVE_EVENT_COUNT] =
         .func = LiveDeerling2Flee,
         .retriggerDelay = 0,
         .duration = 240,
+        .triggerRange = 2,
+    },
+    [LIVE_EVENT_SUN_RANT] =
+    {
+        .func = SunManRant,
+        .retriggerDelay = 0,
+        .duration = 200,
         .triggerRange = 2,
     },
     [LIVE_EVENT_SIGH] =
