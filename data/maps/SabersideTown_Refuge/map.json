@@ -3,6 +3,7 @@
   "name": "SabersideTown_Refuge",
   "layout": "LAYOUT_POKEMON_CENTER_1F",
   "music": "MUS_RG_POKE_CENTER",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SABERSIDE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

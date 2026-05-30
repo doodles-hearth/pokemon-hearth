@@ -3,6 +3,7 @@
   "name": "SteepstonePassBottom",
   "layout": "LAYOUT_STEEP_STONE_PASS_BOTTOM",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_STEEPSTONE_PASS_BOTTOM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

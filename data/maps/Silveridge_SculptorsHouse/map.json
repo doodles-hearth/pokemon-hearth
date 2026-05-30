@@ -3,6 +3,7 @@
   "name": "Silveridge_SculptorsHouse",
   "layout": "LAYOUT_SILVERIDGE_SCULPTORS_HOUSE",
   "music": "MUS_RG_PEWTER",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SILVERIDGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

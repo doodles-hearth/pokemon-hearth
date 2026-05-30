@@ -3,6 +3,7 @@
   "name": "Soulkeep_Library_2F",
   "layout": "LAYOUT_SOULKEEP_LIBRARY_2F",
   "music": "MUS_RG_SEVII_67",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

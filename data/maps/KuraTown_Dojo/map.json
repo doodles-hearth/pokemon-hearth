@@ -3,6 +3,7 @@
   "name": "KuraTown_Dojo",
   "layout": "LAYOUT_KURA_TOWN_DOJO",
   "music": "MUS_B_PALACE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_KURA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

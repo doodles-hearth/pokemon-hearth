@@ -3,6 +3,7 @@
   "name": "SeaTurfRoute",
   "layout": "LAYOUT_SEA_TURF_ROUTE",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SEATURF_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

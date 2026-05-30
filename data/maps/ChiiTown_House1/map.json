@@ -3,6 +3,7 @@
   "name": "ChiiTown_House1",
   "layout": "LAYOUT_HOUSE_BEIGE_HEARTH",
   "music": "MUS_HH_CHII_TOWN",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_CHII_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

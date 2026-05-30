@@ -3,6 +3,7 @@
   "name": "SakuTown_BufferArea",
   "layout": "LAYOUT_SAKU_TOWN_BUFFER_AREA",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

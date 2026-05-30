@@ -3,6 +3,7 @@
   "name": "WindsweptRouteBottom",
   "layout": "LAYOUT_WINDSWEPT_ROUTE_BOTTOM",
   "music": "MUS_ROUTE110",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_WINDSWEPT_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -3,6 +3,7 @@
   "name": "Shogunate",
   "layout": "LAYOUT_SHOGUNATE",
   "music": "MUS_B_ARENA",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SHOGUNATE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -3,6 +3,7 @@
   "name": "HarvestShrine",
   "layout": "LAYOUT_HARVEST_SHRINE",
   "music": "MUS_ROUTE104",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_HARVEST_SHRINE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

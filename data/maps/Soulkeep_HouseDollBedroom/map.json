@@ -3,6 +3,7 @@
   "name": "Soulkeep_HouseDollBedroom",
   "layout": "LAYOUT_SOULKEEP_HOUSE_DOLL_BEDROOM",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOULKEEP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

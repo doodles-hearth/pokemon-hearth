@@ -3,6 +3,7 @@
   "name": "Coreef_House2",
   "layout": "LAYOUT_COREEF_HOUSE2",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_COREEF_ISLE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
