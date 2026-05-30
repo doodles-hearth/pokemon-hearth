@@ -122,7 +122,7 @@ static const u32 sRegionMapCursorSmallGfxLZ[] = INCGFX_U32("graphics/region_map_
 static const u32 sRegionMapCursorLargeGfxLZ[] = INCGFX_U32("graphics/region_map_hearth/cursor_large.png", ".4bpp.smol");
 static const u16 sRegionMapBg_Pal[] = INCGFX_U16("graphics/region_map_hearth/map.png", ".gbapal");
 static const u32 sRegionMapBg_GfxLZ[] = INCGFX_U32("graphics/region_map_hearth/map.png", ".4bpp.smol");
-static const u32 sRegionMapBg_TilemapLZ[] = INCGFX_U32("graphics/region_map_hearth/map.bin", "smolTM");
+static const u32 sRegionMapBg_TilemapLZ[] = INCGFX_U32("graphics/region_map_hearth/map.bin", ".smolTM");
 static const u16 sRegionMapPlayerIcon_BrendanPal[] = INCGFX_U16("graphics/region_map_hearth/brendan_icon.png", ".gbapal");
 static const u8 sRegionMapPlayerIcon_BrendanGfx[] = INCGFX_U8("graphics/region_map_hearth/brendan_icon.png", ".4bpp");
 static const u16 sRegionMapPlayerIcon_MayPal[] = INCGFX_U16("graphics/region_map_hearth/may_icon.png", ".gbapal");
@@ -272,7 +272,7 @@ static const mapsec_u8_t sMapSecIdsOffMap[] =
 
 static const u16 sRegionMapFramePal[] = INCGFX_U16("graphics/region_map_hearth/frame.png", ".gbapal");
 static const u32 sRegionMapFrameGfxLZ[] = INCGFX_U32("graphics/region_map_hearth/frame.png", ".4bpp.smol");
-static const u32 sRegionMapFrameTilemapLZ[] = INCGFX_U32("graphics/region_map_hearth/frame.bin", "smolTM");
+static const u32 sRegionMapFrameTilemapLZ[] = INCGFX_U32("graphics/region_map_hearth/frame.bin", ".smolTM");
 static const u16 sFlyTargetIcons_Pal[] = INCGFX_U16("graphics/region_map_hearth/fly_target_icons.png", ".gbapal");
 static const u32 sFlyTargetIcons_Gfx[] = INCGFX_U32("graphics/region_map_hearth/fly_target_icons.png", ".4bpp.smol");
 
