@@ -48,7 +48,7 @@ void GetMemory(struct ScriptContext *ctx)
 
     if (partyIndex < PARTY_SIZE)
         gSpecialVar_Result = GetMonData(
-            &gPlayerParty[partyIndex],
+            &gParties[B_TRAINER_PLAYER][partyIndex],
             (memorySlot == MON_MEMORY_OLD) ? MON_DATA_MEMORY_OLD : MON_DATA_MEMORY_NEW
         );
 }
@@ -59,9 +59,9 @@ void BufferMemoryMessage(struct ScriptContext *ctx)
     u32 memorySlot = ScriptReadByte(ctx);
     u8 otName[PLAYER_NAME_LENGTH + 1];
     u8 monNickname[POKEMON_NAME_LENGTH + 1];
-    u32 otId = GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_ID);
-    GetMonData(&gPlayerParty[partyIndex], MON_DATA_OT_NAME, otName);
-    GetMonData(&gPlayerParty[partyIndex], MON_DATA_NICKNAME, monNickname);
+    u32 otId = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_OT_ID);
+    GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_OT_NAME, otName);
+    GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_NICKNAME, monNickname);
     StringCopy(gStringVar1, monNickname);
     // StringGet_Nickname(sScriptStringVars[stringVarIndex]);
 
@@ -69,7 +69,7 @@ void BufferMemoryMessage(struct ScriptContext *ctx)
     {
         if (memorySlot == MON_MEMORY_OLD || memorySlot == MON_MEMORY_NEW)
         {
-            u8 memory = GetMonData(&gPlayerParty[partyIndex], (memorySlot == MON_MEMORY_OLD) ? MON_DATA_MEMORY_OLD : MON_DATA_MEMORY_NEW);
+            u8 memory = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], (memorySlot == MON_MEMORY_OLD) ? MON_DATA_MEMORY_OLD : MON_DATA_MEMORY_NEW);
 
             if (memorySlot == MON_MEMORY_OLD && IsOtherTrainer(otId, otName))
             {
@@ -109,9 +109,9 @@ void BufferMemoryMessage(struct ScriptContext *ctx)
         {
             // Almost identical to the code that displays origin in party menu
             const u8 *text;
-            u8 metLoc = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MET_LOCATION);
-            u8 metLevel = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MET_LEVEL);
-            u8 metGame = GetMonData(&gPlayerParty[partyIndex], MON_DATA_MET_GAME);
+            u8 metLoc = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MET_LOCATION);
+            u8 metLevel = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MET_LEVEL);
+            u8 metGame = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_MET_GAME);
 
             if (metLevel == 0)
                 ConvertIntToDecimalStringN(gStringVar2, (P_EGG_HATCH_LEVEL >= GEN_4) ? 1 : 5, STR_CONV_MODE_LEFT_ALIGN, 3);
@@ -229,11 +229,11 @@ void SetMemoryAllWithRules(u8 memory)
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (
-            GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
-            && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+            GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
+            && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
         )
         {
-            SetMemoryWithRules(&gPlayerParty[i], memory);
+            SetMemoryWithRules(&gParties[B_TRAINER_PLAYER][i], memory);
         }
     }
 }
@@ -244,7 +244,7 @@ void SetMemory(struct ScriptContext *ctx)
     u32 partyIndex = VarGet(ScriptReadHalfword(ctx));
 
     if (partyIndex < PARTY_SIZE)
-        SetMemoryWithRules(&gPlayerParty[partyIndex], memory);
+        SetMemoryWithRules(&gParties[B_TRAINER_PLAYER][partyIndex], memory);
 }
 
 void SetMemoryAll(struct ScriptContext *ctx)
@@ -255,18 +255,18 @@ void SetMemoryAll(struct ScriptContext *ctx)
     for (i = 0; i < PARTY_SIZE; i++)
     {
         if (
-            GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
-            && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
+            GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG) != SPECIES_NONE
+            && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG) != SPECIES_EGG
         )
         {
-            SetMemoryWithRules(&gPlayerParty[i], memory);
+            SetMemoryWithRules(&gParties[B_TRAINER_PLAYER][i], memory);
         }
     }
 }
 
 void ResolveMemoriesAfterTrade(u8 partyIdx)
 {
-    struct Pokemon *mon = &gPlayerParty[partyIdx];
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][partyIdx];
     u8 oldestMem = GetMonData(mon, MON_DATA_MEMORY_OLD);
     u8 newestMem = GetMonData(mon, MON_DATA_MEMORY_NEW);
     u8 clearMem = 0;
@@ -287,15 +287,15 @@ bool8 GiveMonTravellerRibbon(void)
     bool8 retVal = FALSE;
     
     // Is given to a Pokemon that has at least one memory from multiple trainers
-    u8 hasTravellerRibbon = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_TRAVELLER_RIBBON);
+    u8 hasTravellerRibbon = GetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_TRAVELLER_RIBBON);
 
     if (!hasTravellerRibbon)
     {
         hasTravellerRibbon = 1;
-        SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_TRAVELLER_RIBBON, &hasTravellerRibbon);
-        if (GetRibbonCount(&gPlayerParty[gSpecialVar_0x8004]) > NUM_CUTIES_RIBBONS)
+        SetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_TRAVELLER_RIBBON, &hasTravellerRibbon);
+        if (GetRibbonCount(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004]) > NUM_CUTIES_RIBBONS)
         {
-            TryPutSpotTheCutiesOnAir(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_TRAVELLER_RIBBON);
+            TryPutSpotTheCutiesOnAir(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_TRAVELLER_RIBBON);
         }
         FlagSet(FLAG_SYS_RIBBON_GET);
         retVal = TRUE;
@@ -309,18 +309,18 @@ bool8 GiveMonHistoricRibbon(void)
     bool8 retVal = FALSE;
     
     // Is given to a Pokemon that has two memories in the special category
-    u8 hasHistoricRibbon = GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HISTORIC_RIBBON);
+    u8 hasHistoricRibbon = GetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_HISTORIC_RIBBON);
     if (
         !hasHistoricRibbon
-        && IsMemorySpecial(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_MEMORY_OLD))
-        && IsMemorySpecial(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_MEMORY_NEW))
+        && IsMemorySpecial(GetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_MEMORY_OLD))
+        && IsMemorySpecial(GetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_MEMORY_NEW))
     )
     {
         hasHistoricRibbon = 1;
-        SetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HISTORIC_RIBBON, &hasHistoricRibbon);
-        if (GetRibbonCount(&gPlayerParty[gSpecialVar_0x8004]) > NUM_CUTIES_RIBBONS)
+        SetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_HISTORIC_RIBBON, &hasHistoricRibbon);
+        if (GetRibbonCount(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004]) > NUM_CUTIES_RIBBONS)
         {
-            TryPutSpotTheCutiesOnAir(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_HISTORIC_RIBBON);
+            TryPutSpotTheCutiesOnAir(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_HISTORIC_RIBBON);
         }
         FlagSet(FLAG_SYS_RIBBON_GET);
         retVal = TRUE;

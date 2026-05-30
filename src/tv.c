@@ -3255,7 +3255,7 @@ bool8 TryPutNameRaterShowOnTheAir(void)
 
 bool8 WasNicknameChanged(void)
 {
-    GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
+    GetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_NICKNAME, gStringVar1);
     return StringCompare(gStringVar3, gStringVar1);
 }
 

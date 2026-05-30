@@ -11216,9 +11216,9 @@ static inline u8 GetHighestMonLevel(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES) != SPECIES_NONE)
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES) != SPECIES_NONE)
         {
-            level = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+            level = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
             if(level > highestLevel)
                 highestLevel = level;
         }
@@ -11246,7 +11246,7 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
 
     if (B_CATCH_UP_EXP == TRUE)
     {
-        s8 levelDiff = GetHighestMonLevel() - GetMonData(&gPlayerParty[expGetterMonId], MON_DATA_LEVEL);
+        s8 levelDiff = GetHighestMonLevel() - GetMonData(&gParties[B_TRAINER_PLAYER][expGetterMonId], MON_DATA_LEVEL);
 
         if (levelDiff < 0)
             levelDiff = 0;

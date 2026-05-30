@@ -2007,7 +2007,7 @@ static void EnterPokeStorage(u8 boxOption)
         sStorage->taskId = CreateTask(Task_InitPokeStorage, 3);
         sLastUsedBox = StorageGetCurrentBox();
         SetMainCallback2(CB2_PokeStorage);
-        sPartyChecksum = CalculatePartyChecksum(gPlayerParty);
+        sPartyChecksum = CalculatePartyChecksum(gParties[B_TRAINER_PLAYER]);
     }
 }
 
@@ -3788,7 +3788,7 @@ static void Task_ChangeScreen(u8 taskId)
             SetMainCallback2(CB2_ReturnToFieldContinueScript);
         else
             SetMainCallback2(CB2_ExitPokeStorage);
-        if (sPartyChecksum != CalculatePartyChecksum(gPlayerParty))
+        if (sPartyChecksum != CalculatePartyChecksum(gParties[B_TRAINER_PLAYER]))
             FlagSet(FLAG_LAYOUT_DIFFERENT_AFTER_PC);
         FreePokeStorageData();
         break;

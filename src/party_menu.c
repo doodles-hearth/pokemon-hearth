@@ -1640,10 +1640,10 @@ static void HandleChooseMonSelection(u8 taskId, s8 *slotPtr)
         {
             u8 partyId = GetPartyIdFromBattleSlot((u8)*slotPtr);
 
-            u32 species = GetMonData(&gPlayerParty[*slotPtr], MON_DATA_SPECIES_OR_EGG);
+            u32 species = GetMonData(&gParties[B_TRAINER_PLAYER][*slotPtr], MON_DATA_SPECIES_OR_EGG);
 
-            if (GetMonData(&gPlayerParty[*slotPtr], MON_DATA_HP) == 0
-                || GetMonData(&gPlayerParty[*slotPtr], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG
+            if (GetMonData(&gParties[B_TRAINER_PLAYER][*slotPtr], MON_DATA_HP) == 0
+                || GetMonData(&gParties[B_TRAINER_PLAYER][*slotPtr], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG
                 || ((gBattleTypeFlags & BATTLE_TYPE_MULTI) && partyId >= (PARTY_SIZE / 2))
                 || GetSpeciesHeight(species) == 0
             )

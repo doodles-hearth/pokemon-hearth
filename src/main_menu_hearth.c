@@ -677,13 +677,13 @@ static void Hmm_DrawPartyIcons(void)
     const u16 startY = 44;
 
     for (u32 i = 0; i < PARTY_SIZE; i++) {
-        u16 speciesId = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG);
+        u16 speciesId = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG);
         if (speciesId == SPECIES_NONE) {
             sHmmMemory->state.partyIconId[i] = SPRITE_NONE;
             continue;
         }
 
-        u32 personality = GetMonData(&gPlayerParty[i], MON_DATA_PERSONALITY);
+        u32 personality = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PERSONALITY);
 
         u32 row = i / 3;
         u32 col = i % 3;

@@ -1718,7 +1718,7 @@ enum Species ScriptGetSelectedMonSpecies(void)
 
 u16 ScriptGetPartyMonSpeciesEvenIfEgg(void)
 {
-    return GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
+    return GetMonData(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], MON_DATA_SPECIES, NULL);
 }
 
 // Removed for Emerald
@@ -4612,7 +4612,7 @@ void GetDexRiddleFeedback(void)
  */
 void DestroySelectedPartyMon(void) {
     u8 monId = GetCursorSelectionMonId();
-    ZeroMonData(&gPlayerParty[monId]);
+    ZeroMonData(&gParties[B_TRAINER_PLAYER][monId]);
     CompactPartySlots();
 }
 
@@ -4747,9 +4747,9 @@ u8 GetFollowerMonIndex(void)
     u8 partyCount = CalculatePlayerPartyCount();
     for (i = 0; i < partyCount; i++)
     {
-        if (GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
-         && GetMonData(&gPlayerParty[i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
-		 && GetMonData(&gPlayerParty[i], MON_DATA_HP, NULL) > 0)
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_EGG
+         && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES_OR_EGG, NULL) != SPECIES_NONE
+		 && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, NULL) > 0)
             return i;
     }
     return 0;
@@ -4810,9 +4810,9 @@ u32 GetNumberOfBadges(void)
 void InitEggGirlStepCounterFromSelectedPartyEgg(void) 
 {
     u8 monId = GetCursorSelectionMonId();
-    VarSet(VAR_EGG_GIRL_SPECIES, GetMonData(&gPlayerParty[monId], MON_DATA_SPECIES, NULL));
-    VarSet(VAR_EGG_GIRL_STEP_COUNTER, GetMonData(&gPlayerParty[monId], MON_DATA_FRIENDSHIP, NULL) * GetEggCycleLength());
-    ZeroMonData(&gPlayerParty[monId]);
+    VarSet(VAR_EGG_GIRL_SPECIES, GetMonData(&gParties[B_TRAINER_PLAYER][monId], MON_DATA_SPECIES, NULL));
+    VarSet(VAR_EGG_GIRL_STEP_COUNTER, GetMonData(&gParties[B_TRAINER_PLAYER][monId], MON_DATA_FRIENDSHIP, NULL) * GetEggCycleLength());
+    ZeroMonData(&gParties[B_TRAINER_PLAYER][monId]);
     CompactPartySlots();
 }
 

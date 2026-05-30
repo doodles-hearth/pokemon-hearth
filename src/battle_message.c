@@ -3740,13 +3740,13 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
 static u32 GetSpeciesHack(enum BattlerId battler, u32 partyId)
 {
     s32 id, i;
-    // we know it's gEnemyParty
-    struct Pokemon *mon = &gEnemyParty[partyId], *partnerMon;
+    // we know it's gParties[B_TRAINER_OPPONENT_A]
+    struct Pokemon *mon = &gParties[B_TRAINER_OPPONENT_A][partyId], *partnerMon;
 
     if (GetMonAbility(mon) == ABILITY_ILLUSION)
     {
         if (IsBattlerAlive(BATTLE_PARTNER(battler)))
-            partnerMon = &gEnemyParty[gBattlerPartyIndexes[BATTLE_PARTNER(battler)]];
+            partnerMon = &gParties[B_TRAINER_OPPONENT_A][gBattlerPartyIndexes[BATTLE_PARTNER(battler)]];
         else
             partnerMon = mon;
 
@@ -3754,12 +3754,12 @@ static u32 GetSpeciesHack(enum BattlerId battler, u32 partyId)
         for (i = PARTY_SIZE - 1; i >= 0; i--)
         {
             id = i;
-            if (GetMonData(&gEnemyParty[id], MON_DATA_SANITY_HAS_SPECIES)
-                && GetMonData(&gEnemyParty[id], MON_DATA_HP)
-                && &gEnemyParty[id] != mon
-                && &gEnemyParty[id] != partnerMon)
+            if (GetMonData(&gParties[B_TRAINER_OPPONENT_A][id], MON_DATA_SANITY_HAS_SPECIES)
+                && GetMonData(&gParties[B_TRAINER_OPPONENT_A][id], MON_DATA_HP)
+                && &gParties[B_TRAINER_OPPONENT_A][id] != mon
+                && &gParties[B_TRAINER_OPPONENT_A][id] != partnerMon)
             {
-                return GetMonData(&gEnemyParty[id], MON_DATA_SPECIES);
+                return GetMonData(&gParties[B_TRAINER_OPPONENT_A][id], MON_DATA_SPECIES);
             }
         }
     }

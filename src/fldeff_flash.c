@@ -383,15 +383,15 @@ void UpdateFlashTint(void)
     u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
 
 	u8 followerIndex = GetFollowerMonIndex();
-    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTint;
-    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTintShiny;
+    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES)].flashTint;
+    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES)].flashTintShiny;
     u8 currentFlashTint = 0;
     u8 newFlashTint = 1;
     
-    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES));
+    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES));
     
     // Get Flash DNS Tint
-    if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
+    if (GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
     {
         DebugPrintf("   Shiny");
         newFlashTint = followerFlashTintShiny;

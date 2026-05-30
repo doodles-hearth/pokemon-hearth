@@ -206,7 +206,7 @@ void Task_RestAtCampfire(u8 taskId)
 
     gSaveBlock1Ptr->campfire.scriptTargetMon = -1;
     if (gTasks[taskId].tEventGroup == CAMPFIRE_EVENT_GROUP_PARTYMON)
-        gSaveBlock1Ptr->campfire.scriptTargetMon = Random() % gPlayerPartyCount;
+        gSaveBlock1Ptr->campfire.scriptTargetMon = Random() % gPartiesCount[B_TRAINER_PLAYER];
 
     gTasks[taskId].func = Task_ShowMonAndStartCampfire;
 }
@@ -371,7 +371,7 @@ static void TryShowPlayerPokemonAtCampfire(void)
         u32 specGfx;
         bool32 shiny;
         bool32 female;
-        GetMonInfo(&gPlayerParty[i], &specGfx, &shiny, &female);
+        GetMonInfo(&gParties[B_TRAINER_PLAYER][i], &specGfx, &shiny, &female);
 
         if (specGfx == SPECIES_NONE || specGfx == SPECIES_EGG)
             continue;
@@ -392,7 +392,7 @@ static void TryShowPlayerPokemonAtCampfire(void)
 void GetCampfireAction(struct ScriptContext *ctx)
 {
     u8 partyIndex = ScriptReadByte(ctx);
-    struct Pokemon *mon = &gPlayerParty[partyIndex];
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][partyIndex];
     struct ObjectEvent *objEvent = &gObjectEvents[GetObjectEventIdByLocalIdAndMap(gSpecialVar_LastTalked, gMapNum, gMapGroup)];
     struct SpecialEmote condEmotes[16] = {0};
     u32 i, j, emotion, condCount = 0;

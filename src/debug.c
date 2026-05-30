@@ -4896,7 +4896,7 @@ static void DebugNativeStep_Party_SetColorSelect(u8 taskId)
     {
         PlaySE(SE_SELECT);
         gTasks[taskId].tColoration = gTasks[taskId].tInput;
-        SetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_COLORATION, &gTasks[taskId].tInput);
+        SetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_COLORATION, &gTasks[taskId].tInput);
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -4916,9 +4916,9 @@ static void DebugNativeStep_Party_SetColorSelect(u8 taskId)
 static void DebugNativeStep_Party_SetColorMain(u8 taskId)
 {
     u8 windowId = DebugNativeStep_CreateDebugWindow();
-    u32 coloration = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_COLORATION);
-    u32 species = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_SPECIES);
-    u32 isShiny = GetMonData(&gPlayerParty[gTasks[taskId].tPartyId], MON_DATA_IS_SHINY);
+    u32 coloration = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_COLORATION);
+    u32 species = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_SPECIES);
+    u32 isShiny = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_IS_SHINY);
 
     gTasks[taskId].func = DebugNativeStep_Party_SetColorSelect;
     gTasks[taskId].tSubWindowId = windowId;

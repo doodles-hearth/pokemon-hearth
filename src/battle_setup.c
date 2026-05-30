@@ -362,16 +362,16 @@ void BattleSetup_StartBattlePikeWildBattle(void)
 static void ZeroPartyForSinglePokemonBattle()
 {
     for (u32 i = 1; i < PARTY_SIZE; i++)
-        ZeroMonData(&gPlayerParty[i]);
+        ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
 
 
     u32 data;
-    gPlayerParty[0] = *GetSavedPlayerPartyMon(gSinglePokemonBattlerIndex);
+    gParties[B_TRAINER_PLAYER][0] = *GetSavedPlayerPartyMon(gSinglePokemonBattlerIndex);
 
-    data = gPlayerParty[0].maxHP - gPlayerParty[0].hp;
-    SetBoxMonData(&gPlayerParty[0].box, MON_DATA_HP_LOST, &data);
-    data = gPlayerParty[0].status;
-    SetBoxMonData(&gPlayerParty[0].box, MON_DATA_STATUS, &data);
+    data = gParties[B_TRAINER_PLAYER][0].maxHP - gParties[B_TRAINER_PLAYER][0].hp;
+    SetBoxMonData(&gParties[B_TRAINER_PLAYER][0].box, MON_DATA_HP_LOST, &data);
+    data = gParties[B_TRAINER_PLAYER][0].status;
+    SetBoxMonData(&gParties[B_TRAINER_PLAYER][0].box, MON_DATA_STATUS, &data);
 }
 
 static void DoStandardWildBattle(bool32 isDouble)
@@ -1452,7 +1452,7 @@ void BattleSetup_StartTrainerBattle(void)
 
 static void CB2_EndSinglePokemonBattle()
 {
-    SavePlayerPartyMon(gSinglePokemonBattlerIndex, gPlayerParty);
+    SavePlayerPartyMon(gSinglePokemonBattlerIndex, gParties[B_TRAINER_PLAYER]);
     LoadPlayerParty();
     SetMainCallback2(CB2_EndWildBattle);
 }
