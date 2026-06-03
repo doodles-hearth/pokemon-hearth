@@ -569,27 +569,6 @@ Level: 20
 - Snarl
 - Assurance
 
-=== TRAINER_SHAMISEN ===
-Name: Kyoku
-Class: Shamisen
-Pic: Shamisen
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Check Bad Move / Prefer Status Moves
-
-Kricketune
-Level: 17
-- Sing
-- Fury Cutter
-- Bide
-
-Growlithe
-Level: 16
-- Fire Fang
-- Odor Sleuth
-- Bite
-
 === TRAINER_YAMATO ===
 Name: Yamato
 Class: Old Man
@@ -617,27 +596,6 @@ AI: Try To Faint
 Makuhita
 Level: 10
 - Rock Smash
-
-=== TRAINER_ASAGAO ===
-Name: Asagao
-Class: Aroma Lady
-Pic: Aroma Lady
-Gender: Female
-Music: Female
-Battle Type: Singles
-AI: Basic Trainer
-
-Cherrim
-Level: 19
-- Magical Leaf
-- Growth
-- Tackle
-
-Deerling Autumn
-Level: 17
-- Double Kick
-- Feint Attack
-- Leech Seed
 
 === TRAINER_DAICHI ===
 Name: Daichi
@@ -821,93 +779,6 @@ Ralts
 Level: 6
 - Confusion
 - Double Team
-
-=== TRAINER_GRUNT_WEATHER_INST_4 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 28
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_5 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Carvanha
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_GRUNT_AQUA_HIDEOUT_6 ===
-Name: GRUNT
-Class: Team Aqua
-Pic: Aqua Grunt F
-Gender: Female
-Music: Aqua
-Battle Type: Singles
-AI: Check Bad Move
-
-Zubat
-Level: 32
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-
-=== TRAINER_FREDRICK ===
-Name: FREDRICK
-Class: Expert
-Pic: Expert M
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Basic Trainer
-
-Makuhita
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Machoke
-Level: 30
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MATT ===
-Name: MATT
-Class: Aqua Admin
-Pic: Aqua Admin M
-Gender: Male
-Music: Aqua
-Items: Super Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Mightyena
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-Golbat
-Level: 34
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
-
-=== TRAINER_ZANDER ===
-Name: ZANDER
-Class: Black Belt
-Pic: Black Belt
-Gender: Male
-Music: Intense
-Battle Type: Singles
-AI: Check Bad Move
-
-Hariyama
-Level: 31
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TAMA ===
 Name: Tama
@@ -1488,23 +1359,6 @@ Level: 17
 - Poison Tail
 - Wrap
 - Screech
-
-=== TRAINER_LOLA_2 ===
-Name: LOLA
-Class: Tuber F
-Pic: Tuber F
-Gender: Female
-Music: Girl
-Battle Type: Singles
-AI: Check Bad Move
-
-Marill
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
-
-Marill
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 === TRAINER_LOLA_3 ===
 Name: LOLA
@@ -17326,6 +17180,163 @@ Battle Type: Singles
 Kyogre
 Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+
+/* SHAMISEN */
+
+
+/* Kazane */
+
+=== TRAINER_SHAMISEN_KAZANE_1 ===
+Name: Kazane
+Class: Shamisen
+Pic: Shamisen Red
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Check Bad Move / Prefer Status Moves
+
+Kricketune
+Level: 17
+- Sing
+- Fury Cutter
+- Bide
+
+Growlithe
+Level: 16
+- Fire Fang
+- Odor Sleuth
+- Bite
+
+=== TRAINER_SHAMISEN_KAZANE_2 ===
+Name: Kazane
+Class: Shamisen
+Pic: Shamisen Red
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Check Bad Move / Prefer Status Moves
+
+Kricketune
+Level: 17
+- Sing
+- Fury Cutter
+- Bide
+
+Growlithe
+Level: 16
+- Fire Fang
+- Odor Sleuth
+- Bite
+
+=== TRAINER_SHAMISEN_KAZANE_3 ===
+Name: Kazane
+Class: Shamisen
+Pic: Shamisen Red
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Check Bad Move / Prefer Status Moves
+
+Kricketune
+Level: 17
+- Sing
+- Fury Cutter
+- Bide
+
+Growlithe
+Level: 16
+- Fire Fang
+- Odor Sleuth
+- Bite
+
+/* Tsuzune */
+
+=== TRAINER_SHAMISEN_TSUZUNE_1 ===
+Name: Tsuzune
+Class: Shamisen
+Pic: Shamisen Blue
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Toxel Tokuan
+Level: 17
+- Sing
+- Tackle
+
+=== TRAINER_SHAMISEN_TSUZUNE_2 ===
+Name: Tsuzune
+Class: Shamisen
+Pic: Shamisen Blue
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Toxikyu Amped
+Level: 25
+- Sing
+- Tackle
+
+=== TRAINER_SHAMISEN_TSUZUNE_3 ===
+Name: Tsuzune
+Class: Shamisen
+Pic: Shamisen Blue
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Toxikyu Amped
+Level: 25
+- Sing
+- Tackle
+
+/* Ichine */
+
+=== TRAINER_SHAMISEN_ICHINE_1 ===
+Name: Ichine
+Class: Shamisen
+Pic: Shamisen Green
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Toxel Tokuan
+Level: 17
+- Sing
+- Tackle
+
+=== TRAINER_SHAMISEN_ICHINE_2 ===
+Name: Ichine
+Class: Shamisen
+Pic: Shamisen Green
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Toxel Tokuan
+Level: 17
+- Sing
+- Tackle
+
+=== TRAINER_SHAMISEN_ICHINE_3 ===
+Name: Ichine
+Class: Shamisen
+Pic: Shamisen Green
+Gender: Female
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Toxel Tokuan
+Level: 17
+- Sing
+- Tackle
 
 === TRAINER_DUMMY ===
 Name: DUMMY
