@@ -34,7 +34,7 @@ struct Pokemon* GetCurrentlyTransformedPokemon()
 {
     bool32 isPlayerTransformed = FlagGet(FLAG_PLAYER_IS_POKEMON);
     if (isPlayerTransformed && !gPlayerTransformPokemon)
-        gPlayerTransformPokemon = &gPlayerParty[gSaveBlock1Ptr->playerTransformPokemonIndex];
+        gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][gSaveBlock1Ptr->playerTransformPokemonIndex];
     return gPlayerTransformPokemon;
 }
 
@@ -47,7 +47,7 @@ void CB2_TransformPlayerToPokemonFromParty()
     }
     else {
         gSaveBlock1Ptr->playerTransformPokemonIndex = index;
-        gPlayerTransformPokemon = &gPlayerParty[index];
+        gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][index];
         TransformPlayerToPokemon();
     }
 
@@ -124,7 +124,7 @@ void TransformPlayer(struct ScriptContext* ctx)
     u16 value = VarGet(gSpecialVar_0x8004);
     if (value != PARTY_NOTHING_CHOSEN) {
         if (defer) {
-            gPlayerTransformPokemon = &gPlayerParty[value];
+            gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][value];
             SetPlayerTransformFlags();
         }
         else
@@ -140,7 +140,7 @@ void TransformPlayerFromScriptByIndex(struct ScriptContext* ctx)
     slot--;
 
     if (defer) {
-        gPlayerTransformPokemon = &gPlayerParty[slot];
+        gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][slot];
         SetPlayerTransformFlags();
     }
     else
@@ -164,7 +164,7 @@ void TransformPlayerFromParty()
 static void TransformPlayerToPokemonByIndex(u8 index)
 {
     gSaveBlock1Ptr->playerTransformPokemonIndex = index;
-    gPlayerTransformPokemon = &gPlayerParty[index];
+    gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][index];
     TransformPlayerToPokemon();
     UpdateFollowingPokemon();
 }

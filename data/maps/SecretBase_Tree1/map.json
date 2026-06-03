@@ -3,6 +3,7 @@
   "name": "SecretBase_Tree1",
   "layout": "LAYOUT_SECRET_BASE_TREE1",
   "music": "MUS_FORTREE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SECRET_BASE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

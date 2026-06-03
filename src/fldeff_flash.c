@@ -67,7 +67,7 @@ static const u16 sCaveTransitionPalette_Black[] = INCGFX_U16("graphics/cave_tran
 
 static const u16 sCaveTransitionPalette_Enter[] = INCGFX_U16("graphics/cave_transition/enter.pal", ".gbapal");
 
-static const u32 sCaveTransitionTilemap[] = INCBIN_U32("graphics/cave_transition/tilemap.bin.smolTM");
+static const u32 sCaveTransitionTilemap[] = INCGFX_U32("graphics/cave_transition/tilemap.bin", ".smolTM");
 static const u32 sCaveTransitionTiles[] = INCGFX_U32("graphics/cave_transition/tiles.png", ".4bpp.smol");
 
 EWRAM_DATA u8 currentCaveTint;
@@ -383,15 +383,15 @@ void UpdateFlashTint(void)
     u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
 
 	u8 followerIndex = GetFollowerMonIndex();
-    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTint;
-    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTintShiny;
+    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES)].flashTint;
+    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES)].flashTintShiny;
     u8 currentFlashTint = 0;
     u8 newFlashTint = 1;
     
-    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES));
+    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES));
     
     // Get Flash DNS Tint
-    if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
+    if (GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
     {
         DebugPrintf("   Shiny");
         newFlashTint = followerFlashTintShiny;

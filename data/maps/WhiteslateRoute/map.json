@@ -3,6 +3,7 @@
   "name": "WhiteslateRoute",
   "layout": "LAYOUT_WHITESLATE_ROUTE",
   "music": "MUS_ROUTE119",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_WHITESLATE_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

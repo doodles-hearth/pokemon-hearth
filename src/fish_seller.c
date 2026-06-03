@@ -49,7 +49,7 @@ void Native_GiveFish(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1);
 
-    enum Species species = GetMonData(&gPlayerParty[VarGet(VAR_0x8004)], MON_DATA_SPECIES);
+    enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][VarGet(VAR_0x8004)], MON_DATA_SPECIES);
     struct FishMon acceptedFish = GetAcceptedFish(species);
     u32 price = 0;
     u32 treasure = ITEM_NONE;

@@ -3,6 +3,7 @@
   "name": "SunriseCave",
   "layout": "LAYOUT_SUNRISE_CAVE",
   "music": "MUS_HH_SUNRISE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SUNRISE_CAVE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
