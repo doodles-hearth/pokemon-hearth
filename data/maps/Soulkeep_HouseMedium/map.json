@@ -3,6 +3,7 @@
   "name": "Soulkeep_HouseMedium",
   "layout": "LAYOUT_SOULKEEP_HOUSE_MEDIUM",
   "music": "MUS_RG_SEVII_67",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOULKEEP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

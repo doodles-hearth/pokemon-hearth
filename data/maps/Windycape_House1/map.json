@@ -3,6 +3,7 @@
   "name": "Windycape_House1",
   "layout": "LAYOUT_WINDYCAPE_HOUSE1",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_WINDYCAPE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

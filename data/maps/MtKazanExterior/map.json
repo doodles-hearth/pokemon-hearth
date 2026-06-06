@@ -3,6 +3,7 @@
   "name": "MtKazanExterior",
   "layout": "LAYOUT_MT_KAZAN_EXTERIOR",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MT_KAZAN_EXTERIOR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
