@@ -211,3 +211,4 @@
 .include "sound/voicegroups/voicegroup192.inc"
 .include "sound/voicegroups/friendventure.inc"
 .include "sound/voicegroups/snow.inc"
+.include "sound/voicegroups/offset.inc"
