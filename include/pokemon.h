@@ -1,6 +1,7 @@
 #ifndef GUARD_POKEMON_H
 #define GUARD_POKEMON_H
 
+#include "constants/species.h"
 #include "contest_effect.h"
 #include "sprite.h"
 #include "wild_encounter_ow.h"
@@ -182,7 +183,7 @@ struct BoxPokemon
     u32 cuteRibbon:3;     // Stores the highest contest rank achieved in the Cute category.
     u32 smartRibbon:3;    // Stores the highest contest rank achieved in the Smart category.
     u32 winningRibbon:1;  // Given at the Battle Tower's Level 50 challenge by winning a set of seven battles that extends the current streak to 56 or more.
-    u32 species:11; // 2047 species.
+    enum Species species:11; // 2047 species.
     u32 metLocation:8;
 
     //  Word
@@ -199,7 +200,7 @@ struct BoxPokemon
     //  Word
     u32 move3:11; // 2047 moves.
     u32 move4:11; // 2047 moves.
-    u32 heldItem:10; // 1023 items.
+    enum Item heldItem:10; // 1023 items.
     //  Word
 
     //  Word
@@ -616,11 +617,11 @@ struct FormChangeContext
     enum Species currentSpecies;
     u16 partyItemUsed;
     u16 multichoiceSelection;
-    u16 heldItem;
-    u16 ability;
+    enum Item heldItem;
+    enum Ability ability;
     u16 learnedMove;
     u32 status;
-    u16 moves[MAX_MON_MOVES];
+    enum Move moves[MAX_MON_MOVES];
     u16 hp;
     u16 maxHP;
     u32 gmaxFactor:1;
@@ -640,10 +641,10 @@ struct Fusion
 {
     u16 fusionStorageIndex;
     enum Item itemId;
-    u16 targetSpecies1;
-    u16 targetSpecies2;
+    enum Species targetSpecies1;
+    enum Species targetSpecies2;
     u16 fusingIntoMon;
-    u16 fusionMove;
+    enum Move fusionMove;
     enum FusionExtraMoveHandling extraMoveHandling;
 };
 
@@ -768,7 +769,7 @@ u8 GetMonGender(struct Pokemon *mon);
 u8 GetBoxMonGender(struct BoxPokemon *boxMon);
 u8 GetGenderFromSpeciesAndPersonality(enum Species species, u32 personality);
 bool32 IsPersonalityFemale(enum Species species, u32 personality);
-u32 GetUnownSpeciesId(u32 personality);
+enum Species GetUnownSpeciesId(u32 personality);
 void SetMultiuseSpriteTemplateToPokemon(enum Species speciesTag, enum BattlerPosition battlerPosition);
 void SetMultiuseSpriteTemplateToTrainerBack(enum TrainerPicID trainerPicId, enum BattlerPosition battlerPosition);
 void SetMultiuseSpriteTemplateToTrainerFront(enum TrainerPicID trainerPicId, enum BattlerPosition battlerPosition);
@@ -821,6 +822,7 @@ u32 GetSpeciesBaseStatTotal(enum Species species);
 const struct LevelUpMove *GetSpeciesLevelUpLearnset(enum Species species);
 const u16 *GetSpeciesTeachableLearnset(enum Species species);
 const u16 *GetSpeciesEggMoves(enum Species species);
+bool32 SpeciesHasEggMove(enum Species species, enum Move move);
 const struct Evolution *GetSpeciesEvolutions(enum Species species);
 const u16 *GetSpeciesFormTable(enum Species species);
 const struct FormChange *GetSpeciesFormChanges(enum Species species);
@@ -864,7 +866,6 @@ void MonGainEVs(struct Pokemon *mon, enum Species defeatedSpecies);
 u16 GetMonEVCount(struct Pokemon *mon);
 bool8 TryIncrementMonLevel(struct Pokemon *mon);
 u8 CanLearnTeachableMove(enum Species species, enum Move move);
-u8 GetLevelUpMovesBySpecies(enum Species species, u16 *moves);
 u16 SpeciesToPokedexNum(enum Species species);
 bool32 IsSpeciesInRegionalDex(enum Species species);
 bool32 IsSpeciesInKantoDex(enum Species species);
@@ -931,8 +932,8 @@ void UpdateDaysPassedSinceFormChange(u16 days);
 void TrySetDayLimitToFormChange(struct Pokemon *mon);
 enum Type CheckDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId battler, enum MonState state);
 uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier);
-u32 GetRegionalFormByRegion(enum Species species, u32 region);
-bool32 IsSpeciesForeignRegionalForm(enum Species species, u32 currentRegion);
+enum Species GetRegionalFormByRegion(enum Species species, enum Region region);
+bool32 IsSpeciesForeignRegionalForm(enum Species species, enum Region currentRegion);
 enum Type GetTeraTypeFromPersonality(struct Pokemon *mon);
 bool8 ShouldSkipFriendshipChange(void);
 struct Pokemon *GetSavedPlayerPartyMon(u32 index);
