@@ -183,7 +183,7 @@ struct BoxPokemon
     u32 cuteRibbon:3;     // Stores the highest contest rank achieved in the Cute category.
     u32 smartRibbon:3;    // Stores the highest contest rank achieved in the Smart category.
     u32 winningRibbon:1;  // Given at the Battle Tower's Level 50 challenge by winning a set of seven battles that extends the current streak to 56 or more.
-    enum Species species:11; // 2047 species.
+    u32 species:11; // 2047 species.
     u32 metLocation:8;
 
     //  Word
@@ -200,7 +200,7 @@ struct BoxPokemon
     //  Word
     u32 move3:11; // 2047 moves.
     u32 move4:11; // 2047 moves.
-    enum Item heldItem:10; // 1023 items.
+    u32 heldItem:10; // 1023 items.
     //  Word
 
     //  Word
