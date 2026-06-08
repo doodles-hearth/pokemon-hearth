@@ -23,7 +23,6 @@ script YifuCity_House4_EventScript_NameRater {
 			"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Which Pokémon should receive my attention?"
 		))
 		special(ChoosePartyMon)
-		waitstate
 		if (var(VAR_0x8004) != PARTY_NOTHING_CHOSEN) {
 			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 			if (var(VAR_RESULT) == SPECIES_EGG) {
