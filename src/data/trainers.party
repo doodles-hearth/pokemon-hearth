@@ -1908,39 +1908,50 @@ Hariyama
 Level: 35
 IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
 
-=== TRAINER_WARREN ===
-Name: WARREN
-Class: Cooltrainer
-Pic: Cooltrainer M
+=== TRAINER_AME ===
+Name: Ame
+Class: Beauty
+Pic: Beauty
 Gender: Male
-Music: Cool
-Items: Full Restore
+Music: Female
 Battle Type: Singles
 AI: Basic Trainer
 
-Graveler
-Level: 33
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Lombre
+Level: 27
+- Bubble Beam
+- Nature Power
+- Rain Dance
+- Water Sport
 
-Ludicolo
-Level: 33
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_MARY ===
-Name: MARY
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Delcatty
+Castform
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Feint Attack
-- Shock Wave
+- Rain Dance
+- Powder Snow
+- Headbutt
+- Water Gun
+
+=== TRAINER_YO ===
+Name: Yo
+Class: Beauty
+Pic: Beauty
+Gender: Female
+Music: Female
+Battle Type: Singles
+AI: Basic Trainer
+
+Jumpluff
+Level: 27
+- Leech Seed
+- Bullet Seed
+- Fairy Wind
+
+Braixen
+Level: 26
+- Fire Spin
+- Sunny Day
+- Psybeam
+- Lucky Chant
 
 === TRAINER_ALEXIA ===
 Name: ALEXIA

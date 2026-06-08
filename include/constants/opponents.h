@@ -92,8 +92,8 @@
 #define TRAINER_WILTON_3                     85
 #define TRAINER_WILTON_4                     86
 #define TRAINER_WILTON_5                     87
-#define TRAINER_WARREN                       88
-#define TRAINER_MARY                         89
+#define TRAINER_AME                          88
+#define TRAINER_YO                           89
 #define TRAINER_ALEXIA                       90
 #define TRAINER_JODY                         91
 #define TRAINER_WENDY                        92
