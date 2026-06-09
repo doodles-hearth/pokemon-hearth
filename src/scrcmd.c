@@ -2290,7 +2290,7 @@ bool8 ScrCmd_getleadmonspecies(struct ScriptContext *ctx)
     Script_RequestEffects(SCREFF_V1);
 
     u8 partyIndex = GetLeadMonIndex();
-    enum Species species = GetMonData(&gParties[B_TRAINER_0][partyIndex], MON_DATA_SPECIES);
+    enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_SPECIES);
     VarSet(VAR_RESULT, species);
     return FALSE;
 }
