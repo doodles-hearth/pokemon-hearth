@@ -3,6 +3,7 @@
   "name": "InsideBronzong",
   "layout": "LAYOUT_INSIDE_BRONZONG",
   "music": "MUS_SEALED_CHAMBER",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_INSIDE_BRONZONG",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

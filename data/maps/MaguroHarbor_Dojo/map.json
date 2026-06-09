@@ -3,6 +3,7 @@
   "name": "MaguroHarbor_Dojo",
   "layout": "LAYOUT_MAGURO_HARBOR_DOJO",
   "music": "MUS_B_PALACE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MAGURO_HARBOR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

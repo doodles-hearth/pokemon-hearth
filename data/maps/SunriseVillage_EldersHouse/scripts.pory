@@ -661,6 +661,8 @@ script SunriseVillage_EldersHouse_EventScript_Assistant {
 				waitmessage
 				waitbuttonpress
 		}
+		waitmessage
+		waitbuttonpress
 	} else {
 		msgbox(
 			"Don't mind me!\nJust enjoy the distribution!"

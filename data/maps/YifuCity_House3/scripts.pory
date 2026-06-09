@@ -28,16 +28,7 @@ script YifuCity_House3_DaycareEggGirl {
 }
 
 script YifuCity_House3_EventScript_Nidoran {
-	lock
-	faceplayer
-	setseenmon(SPECIES_NIDORAN)
-	setspeakertomonname(SPECIES_NIDORAN)
-	msgbox(format(
-        "Snort!"
-    ))
-    playmoncry(SPECIES_NIDORAN, CRY_MODE_NORMAL)
-    waitmoncry
-    release
+	mondialogue(SPECIES_NIDORAN, "Snort!")
 }
 
 script YifuCity_House3_EventScript_EggGirl {

@@ -210,3 +210,4 @@
 .include "sound/voicegroups/hh_chii_town.inc"
 .include "sound/voicegroups/voicegroup192.inc"
 .include "sound/voicegroups/friendventure.inc"
+.include "sound/voicegroups/snow.inc"

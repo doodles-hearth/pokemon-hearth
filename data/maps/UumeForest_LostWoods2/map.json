@@ -3,6 +3,7 @@
   "name": "UumeForest_LostWoods2",
   "layout": "LAYOUT_UUME_FOREST_LOST_WOODS2",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_UUME_FOREST",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

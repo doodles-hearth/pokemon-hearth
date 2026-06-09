@@ -7,34 +7,22 @@
 #include "event_object_movement.h"
 #include "random.h"
 
-void LiveBaseBubble(u32 localId, u32 eventIndex, enum LiveEvent event, const u8 * inputStr)
+// BASE FUNCTIONS
+
+// Execute a script
+void LiveBaseGoAwayScript(u32 localId, u32 eventIndex, enum LiveEvent event, const u8 eventScript[])
 {
     u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
-
     if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[event].duration)
+        ExecuteScript(eventScript);
+    if (sActiveLiveEvents[eventIndex].duration == 1 || IsSourceObjectOffscreen(objectEventId))
     {
-        u32 numSprites = CreateSpeechBubbleNormal(
-            localId,
-            eventIndex,
-            AUTOMATIC_START,
-            inputStr,
-            FALSE
-        );
-        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
+        RemoveObjectEventByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
     }
-
-    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+    sActiveLiveEvents[eventIndex].duration--;
 }
 
-void HelloFunc(u32 localId, u32 eventIndex)
-{
-    SpeechBubbleEvent(AUTOMATIC_START, COMPOUND_STRING("Hello"), FALSE);
-}
-
-void LiveHaltFunc(u32 localId, u32 eventIndex)
-{
-    SpeechBubbleEvent(AUTOMATIC_START, COMPOUND_STRING("Halt"), FALSE);
-}
+// END OF BASE FUNCTIONS
 
 void LiveWoobatFlee(u32 localId, u32 eventIndex)
 {
@@ -69,30 +57,26 @@ void SunManRant(u32 localId, u32 eventIndex)
 
 void LiveSigh(u32 localId, u32 eventIndex)
 {
-    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
+    SpeechBubbleEvent(AUTOMATIC_START, COMPOUND_STRING("Sigh…"), FALSE);
+}
 
-    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[LIVE_EVENT_SIGH].duration)
-    {
-        u32 numSprites = CreateSpeechBubbleNormal(
-            localId,
-            eventIndex,
-            AUTOMATIC_START,
-            COMPOUND_STRING("Sigh…"),
-            FALSE
-        );
-        sActiveLiveEvents[eventIndex].speechBubbleNormalData.numSprites = numSprites;
-    }
+void LiveDeerling1Flee(u32 localId, u32 eventIndex)
+{
+    LiveBaseGoAwayScript(localId, eventIndex, LIVE_EVENT_DEERLING1_FLEE, Live_EventScript_Deerling1Flee);
+}
 
-    CheckAndTearDownSpeechBubble(eventIndex, objectEventId);
+void LiveDeerling2Flee(u32 localId, u32 eventIndex)
+{
+    LiveBaseGoAwayScript(localId, eventIndex, LIVE_EVENT_DEERLING2_FLEE, Live_EventScript_Deerling2Flee);
 }
 
 void LiveChatot(u32 localId, u32 eventIndex)
 {
     u32 rand = Random() % 3;
-    LiveBaseBubble(localId, eventIndex, LIVE_EVENT_CHATOT, (rand == 0) ? COMPOUND_STRING("HI CHATOT!") : COMPOUND_STRING("SQWAK!"));
+    SpeechBubbleEvent(AUTOMATIC_START, (rand == 0) ? COMPOUND_STRING("HI CHATOT!") : COMPOUND_STRING("SQWAK!"), FALSE);
 }
 
 void LiveCrobatShop(u32 localId, u32 eventIndex)
 {
-    LiveBaseBubble(localId, eventIndex, LIVE_EVENT_CHATOT, COMPOUND_STRING("Cheap, legal wares!"));
+    SpeechBubbleEvent(AUTOMATIC_START, COMPOUND_STRING("Cheap, legal wares!"), FALSE);
 }
