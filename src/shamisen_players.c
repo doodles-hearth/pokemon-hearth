@@ -7,7 +7,7 @@
 #include "constants/shamisen_players.h"
 
 #define SHAMISEN_PLAYERS_COUNT 3
-#define SHAMISEN_PLAYERS_LOCATIONS_COUNT 3
+#define SHAMISEN_PLAYERS_LOCATIONS_COUNT 6
 
 #define UNDEFINED_LOCATION  0xFF
 #define NO_SHAMISEN_PLAYER 0xFF
@@ -27,10 +27,15 @@ static const struct ShamisenPlayer sShamisenPlayers[SHAMISEN_PLAYERS_COUNT] =
 
 static const u16 sShamisenPlayersLocations[SHAMISEN_PLAYERS_LOCATIONS_COUNT][2] =
 {
-    {MAP_CHII_TOWN_POKEMON_CENTER, FLAG_VISITED_CHII_TOWN},
-    {MAP_SAKU_TOWN_POKEMON_CENTER, FLAG_VISITED_SAKU_TOWN},
-    {MAP_MAGURO_HARBOR_REFUGE, FLAG_VISITED_MAGURO_HARBOR}
+    {MAP_SAKU_TOWN_POKEMON_CENTER, FLAG_VISITED_SAKU_TOWN}, // TODO when refuge is built
+    {MAP_MAGURO_HARBOR_REFUGE, FLAG_VISITED_MAGURO_HARBOR},
+    {MAP_SILVERIDGE_REFUGE, FLAG_VISITED_SILVERIDGE},
+    {MAP_SOULKEEP_REFUGE, FLAG_VISITED_SOULKEEP}, // TODO when soulkeep is freed from ghosts
+    {MAP_YIFU_CITY_REFUGE, FLAG_VISITED_YIFU_CITY},
+    {MAP_SABERSIDE_TOWN_REFUGE, FLAG_VISITED_SABERSIDE_TOWN},
 };
+// {MAP_WINDYCAPE_REFUGE, FLAG_VISITED_WINDYCAPE},
+// {MAP_HANABI_CITY_REFUGE, FLAG_VISITED_HANABI_CITY},
 
 static u32 GetShamisenPlayerCurrentLocation(u32 index)
 {
@@ -149,7 +154,7 @@ static void UpdateShamisenPlayersLocations(void)
 
 static void UpdateShamisenPlayersTalkedFlag(void)
 {
-    for (u32 i = 0; i < SHAMISEN_PLAYERS_LOCATIONS_COUNT; i++)
+    for (u32 i = 0; i < SHAMISEN_PLAYERS_COUNT; i++)
     {
         if (GetShamisenPlayerFlag(i, SHAMISEN_PLAYER_FLAG_TALKED_TODAY))
             SetShamisenPlayerFlag(i, SHAMISEN_PLAYER_FLAG_TALKED_BEFORE, TRUE);

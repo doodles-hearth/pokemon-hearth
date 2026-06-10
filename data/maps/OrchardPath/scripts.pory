@@ -424,3 +424,38 @@ script OrchardPath_EventScript_Utsu {
 	closemessage
 	end
 }
+
+script OrchardPath_EventScript_Gako {
+	trainerbattle_double(
+		TRAINER_GAKO_GEN,
+		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
+		"We only lost because Gako's busy\npretending to be a Croconaw!",
+		"{SPEAKER NAME_TWIN_GEN}Croco, naw.\n(You need two Pokémon to battle us.)"
+	)
+	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script OrchardPath_EventScript_Gen {
+	trainerbattle_double(
+		TRAINER_GAKO_GEN,
+		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
+		"We only lost because Gako's busy\npretending to be a Croconaw!",
+		"{SPEAKER NAME_TWIN_GAKO}You need two Pokémon to battle us."
+	)
+	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script OrchardPath_EventScript_Masuo {
+	trainerbattle_single(
+		TRAINER_MASUO,
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Nocturnal Pokémon are so much cooler!",
+		"Your Pokémon aren't bad either…"
+	)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}{SPEAKER NAME_YOUNGSTER}I sneak out at night to catch badass\nPokémon and impress my friends!"
+	))
+	closemessage
+	end
+}

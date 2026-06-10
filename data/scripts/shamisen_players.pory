@@ -1,0 +1,132 @@
+// Don't touch this script
+script EventScript_ShamisenPlayer {
+    callnative(StartShamisenPlayerScript)
+}
+
+// BLUE
+script EventScript_ShamisenPlayerBlue {
+    setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+    if (var(VAR_RESULT) == 0) {
+        call(ShamisenBlueFirstEncounter)
+    } else {
+        call(ShamisenBlueSecondEncounter)
+    }
+}
+
+script(local) ShamisenBlueFirstEncounter {
+    faceplayer
+    msgbox("First encounter blue")
+    closemessage
+
+    call(ShamisenBlueBattle)
+
+    msgbox("Nice battle first encounter")
+    closemessage
+}
+
+script(local) ShamisenBlueSecondEncounter {
+    faceplayer
+    call(ShamisenBlueDialogueAndBattle)
+    closemessage
+}
+
+script(local) ShamisenBlueBattle {
+    specialvar(VAR_RESULT, GetNumberOfBadges)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 0 Tokens")
+        case 1:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 1 Tokens")
+        case 2:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 2 Tokens")
+        case 3:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 3 Tokens")
+        case 4:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 4 Tokens")
+        case 5:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 5 Tokens")
+        case 6:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 6 Tokens")
+        case 7:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 7 Tokens")
+        case 8:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 8 Tokens")
+    }
+}
+
+script(local) ShamisenBlueDialogueAndBattle {
+    specialvar(VAR_RESULT, GetNumberOfBadges)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox("Let's battle 0 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 0 Tokens")
+        case 1:
+            msgbox("Let's battle 1 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 1 Tokens")
+        case 2:
+            msgbox("Let's battle 2 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 2 Tokens")
+        case 3:
+            msgbox("Let's battle 3 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 3 Tokens")
+        case 4:
+            msgbox("Let's battle 4 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 4 Tokens")
+        case 5:
+            msgbox("Let's battle 5 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 5 Tokens")
+        case 6:
+            msgbox("Let's battle 6 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 6 Tokens")
+        case 7:
+            msgbox("Let's battle 7 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 7 Tokens")
+        case 8:
+            msgbox("Let's battle 8 Tokens")
+            call(ShamisenBlueBattle)
+            msgbox("Nice battle 8 Tokens")
+    }
+}
+
+// RED
+script EventScript_ShamisenPlayerRed {
+    setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+    if (var(VAR_RESULT) == 0) {
+        call(ShamisenTestFirstEncounter)
+    } else {
+        call(ShamisenTestSecondEncounter)
+    }
+}
+
+// GREEN
+script EventScript_ShamisenPlayerGreen {
+    setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+    if (var(VAR_RESULT) == 0) {
+        call(ShamisenTestFirstEncounter)
+    } else {
+        call(ShamisenTestSecondEncounter)
+    }
+}
+
+script(local) ShamisenTestFirstEncounter {
+    faceplayer
+    msgbox("First encounter")
+    closemessage
+}
+
+script(local) ShamisenTestSecondEncounter {
+    faceplayer
+    msgbox("Second encounter")
+    closemessage
+}

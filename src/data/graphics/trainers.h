@@ -1367,10 +1367,17 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SushiChef, gTrainerPalette_SushiChef)
 	},
-    //TODO: Random Color
- 	[TRAINER_PIC_SHAMISEN] = 
+ 	[TRAINER_PIC_SHAMISEN_RED] = 
+	{
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Shamisen, gTrainerPalette_ShamisenRed)
+	},
+ 	[TRAINER_PIC_SHAMISEN_BLUE] = 
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Shamisen, gTrainerPalette_ShamisenBlue)
+	},
+ 	[TRAINER_PIC_SHAMISEN_GREEN] = 
+	{
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Shamisen, gTrainerPalette_ShamisenGreen)
 	},
  	[TRAINER_PIC_ZUBAT_GRUNT_M] = 
 	{

@@ -17,10 +17,10 @@
 #define TRAINER_GRUNT_BEACHBOUND_ROUTE_1     10
 #define TRAINER_IKUTO                        11
 #define TRAINER_GRUNT_CROBAT_HIDEOUT_8       12
-#define TRAINER_SHAMISEN                     13
+#define TRAINER_SHAMISEN_KAZANE_1            13
 #define TRAINER_YAMATO                       14
 #define TRAINER_ROCK_SMASH_GUY               15
-#define TRAINER_ASAGAO                       16 // UNUSED
+#define TRAINER_SHAMISEN_KAZANE_2            16
 #define TRAINER_DAICHI                       17
 #define TRAINER_HAGANE                       18
 #define TRAINER_HARUKI                       19
@@ -30,12 +30,12 @@
 #define TRAINER_EREN                         23
 #define TRAINER_UTSU                         24
 #define TRAINER_ASUNA                        25
-#define TRAINER_GRUNT_WEATHER_INST_4         26
-#define TRAINER_GRUNT_AQUA_HIDEOUT_5         27
-#define TRAINER_GRUNT_AQUA_HIDEOUT_6         28
-#define TRAINER_FREDRICK                     29
-#define TRAINER_MATT                         30
-#define TRAINER_ZANDER                       31
+#define TRAINER_SHAMISEN_KAZANE_3            26
+#define TRAINER_SHAMISEN_ICHINE_1            27
+#define TRAINER_SHAMISEN_ICHINE_2            28
+#define TRAINER_SHAMISEN_ICHINE_3            29
+#define TRAINER_SHAMISEN_TSUZUNE_1           30
+#define TRAINER_SHAMISEN_TSUZUNE_2           31
 #define TRAINER_TAMA     32
 #define TRAINER_YORU       33
 #define TRAINER_ROKU                         34
@@ -64,7 +64,7 @@
 #define TRAINER_DEIJI                        57
 #define TRAINER_TOMIKO                       58
 #define TRAINER_UTARO                        59
-#define TRAINER_LOLA_2                       60
+#define TRAINER_SHAMISEN_TSUZUNE_3           60
 #define TRAINER_LOLA_3                       61
 #define TRAINER_LOLA_4                       62
 #define TRAINER_LOLA_5                       63
@@ -75,9 +75,9 @@
 #define TRAINER_DANJO                        68
 #define TRAINER_FURAWA                       69
 #define TRAINER_YUGAO                        70
-#define TRAINER_RANDALL                      71
-#define TRAINER_PARKER                       72
-#define TRAINER_GEORGE                       73
+#define TRAINER_GAKO_GEN                     71
+#define TRAINER_MASUO                        72
+#define TRAINER_SANI                         73
 #define TRAINER_BERKE                        74
 #define TRAINER_BRAXTON                      75
 #define TRAINER_VINCENT                      76
@@ -92,8 +92,8 @@
 #define TRAINER_WILTON_3                     85
 #define TRAINER_WILTON_4                     86
 #define TRAINER_WILTON_5                     87
-#define TRAINER_WARREN                       88
-#define TRAINER_MARY                         89
+#define TRAINER_AME                          88
+#define TRAINER_YO                           89
 #define TRAINER_ALEXIA                       90
 #define TRAINER_JODY                         91
 #define TRAINER_WENDY                        92

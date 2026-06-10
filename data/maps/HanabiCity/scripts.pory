@@ -1,1 +1,38 @@
 mapscripts HanabiCity_MapScripts {}
+
+script HanabiCity_EventScript_Dolls {
+    lock
+	faceplayer
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I sell dolls!"
+	)
+	closemessage
+	release
+}
+
+script HanabiCity_EventScript_Mart {
+    lock
+	faceplayer
+	message(("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Hi, hello! This is where you'll find all\nyour usual items for Wielders."))
+	waitmessage
+	pokemart(HanabiCity_Mart)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Come again! Enjoy the festival!")
+    closemessage
+	release
+}
+
+mart HanabiCity_Mart {
+	ITEM_GREAT_BALL
+    ITEM_ULTRA_BALL
+	ITEM_SUPER_OINTMENT
+	ITEM_HYPER_OINTMENT
+	ITEM_REVIVAL_POWDER
+	ITEM_REVIVAL_BALM
+	ITEM_PARALYZE_HEAL
+	ITEM_ANTIDOTE
+	ITEM_AWAKENING
+	ITEM_BURN_HEAL
+	ITEM_ICE_HEAL
+	ITEM_ESCAPE_ROPE
+}
+

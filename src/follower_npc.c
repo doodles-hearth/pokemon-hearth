@@ -692,22 +692,24 @@ void Task_FollowerNPCOutOfDoor(u8 taskId)
         }
         break;
     case REALLOW_MOVEMENT:
-        struct MapPosition position;
-        enum Direction playerDirection;
-
-        FollowerNPC_HandleSprite();
-        SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NONE);
-        gPlayerAvatar.preventStep = FALSE;
-
-        playerDirection = GetPlayerFacingDirection();
-        GetPlayerPosition(&position);
-        if (TryStartStepBasedScript(&position, player->currentMetatileBehavior, playerDirection) == TRUE)
         {
-            LockPlayerFieldControls();
-            HideMapNamePopUpWindow();
+            struct MapPosition position;
+            enum Direction playerDirection;
+
+            FollowerNPC_HandleSprite();
+            SetFollowerNPCData(FNPC_DATA_COME_OUT_DOOR, FNPC_DOOR_NONE);
+            gPlayerAvatar.preventStep = FALSE;
+
+            playerDirection = GetPlayerFacingDirection();
+            GetPlayerPosition(&position);
+            if (TryStartStepBasedScript(&position, player->currentMetatileBehavior, playerDirection) == TRUE)
+            {
+                LockPlayerFieldControls();
+                HideMapNamePopUpWindow();
+            }
+            DestroyTask(taskId);
+            break;
         }
-        DestroyTask(taskId);
-        break;
     }
 }
 

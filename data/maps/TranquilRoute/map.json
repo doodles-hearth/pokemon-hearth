@@ -3,7 +3,6 @@
   "name": "TranquilRoute",
   "layout": "LAYOUT_TRANQUIL_ROUTE",
   "music": "MUS_GSC_ROUTE38",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_TRANQUIL_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -861,5 +860,6 @@
       "item": "ITEM_REVIVAL_HERB",
       "flag": "FLAG_HIDDEN_ITEM_TRANQUIL_ROUTE_REVIVAL_HERB"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
