@@ -1,8 +1,0 @@
-Memory region         Used Size  Region Size  %age Used
-           EWRAM:      229100 B       256 KB     87.39%
-           IWRAM:       23196 B        32 KB     70.79%
-             ROM:    28202020 B        32 MB     84.05%
-cd build/emerald-hearth && arm-none-eabi-ld -Map ../../pokeemerald-hearth.map --print-memory-usage --gc-sections -T ../../ld_script_modern.ld -o ../../pokeemerald-hearth.elf <objs> <libs> | cat
-tools/gbafix/gbafix pokeemerald-hearth.elf -t"POKEMON EMER" -cBPEE -m01 -r0 --silent
-arm-none-eabi-objcopy -O binary pokeemerald-hearth.elf pokeemerald-hearth.gba
-tools/gbafix/gbafix pokeemerald-hearth.gba -p --silent
