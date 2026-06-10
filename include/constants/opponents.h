@@ -75,9 +75,9 @@
 #define TRAINER_DANJO                        68
 #define TRAINER_FURAWA                       69
 #define TRAINER_YUGAO                        70
-#define TRAINER_RANDALL                      71
-#define TRAINER_PARKER                       72
-#define TRAINER_GEORGE                       73
+#define TRAINER_GAKO_GEN                     71
+#define TRAINER_MASUO                        72
+#define TRAINER_SANI                         73
 #define TRAINER_BERKE                        74
 #define TRAINER_BRAXTON                      75
 #define TRAINER_VINCENT                      76

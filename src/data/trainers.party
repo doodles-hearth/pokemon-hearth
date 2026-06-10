@@ -1535,56 +1535,65 @@ Level: 27
 - Giga Drain
 - Toxic Spikes
 
-=== TRAINER_RANDALL ===
-Name: RANDALL
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
+=== TRAINER_GAKO_GEN ===
+Name: Gako & Gen
+Class: Twins
+Pic: Twins
+Music: Twins
+Battle Type: Doubles
 AI: Basic Trainer
 
-Swellow
+Bayleef
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Quick Attack
-- Agility
-- Wing Attack
+- Natural Gift
+- Reflect
+- Poison Powder
 
-=== TRAINER_PARKER ===
-Name: PARKER
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
+Croconaw
+Level: 25
+- Ice Fang
+- Flail
+- Leer
+
+=== TRAINER_MASUO ===
+Name: Masuo
+Class: Youngster
+Pic: Youngster
+Music: Male
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Spinda
+Stantler
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Teeter Dance
-- Dizzy Punch
-- Focus Punch
+- Astonish
+- Take Down
+- Calm Mind
+- Me First
 
-=== TRAINER_GEORGE ===
-Name: GEORGE
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
+Seviper
+Level: 26
+- Lick
+- Poison Fang
+- Venom Drench
+
+=== TRAINER_SANI ===
+Name: Sani
+Class: Beauty
+Pic: Beauty
+Music: Female
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Slakoth @ Sitrus Berry
-Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Slack Off
-- Counter
-- Shadow Ball
+Roselia
+Level: 19
+- Mega Drain
+- Poison Sting
+
+Castform
+Level: 18
+- Ember
+- Sunny Day
+- Headbutt
 
 === TRAINER_BERKE ===
 Name: BERKE

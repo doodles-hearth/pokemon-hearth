@@ -258,6 +258,17 @@ script WhiteslateRoute_EventScript_Deiji {
 	end
 }
 
+script WhiteslateRoute_EventScript_Sani {
+	trainerbattle_single(
+		TRAINER_SANI,
+		"Close your eyes and feel the sunshine\non your face!",
+		"Oops, maybe I should have kept my\neyes open for this!"
+	)
+	// TODO EVA weather girl
+	msgbox(("I empathize with Pokémon that need\nsunlight to thrive!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script WhiteslateRoute_EventScript_ShuckleGirl {
 	lock
 	faceplayer

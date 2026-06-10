@@ -43,9 +43,9 @@ script SabersideTown_Dojo_SetGymTrainers {
 }
 
 script PetalburgCity_Gym_SetGymTrainers {
-	settrainerflag(TRAINER_RANDALL)
-	settrainerflag(TRAINER_PARKER)
-	settrainerflag(TRAINER_GEORGE)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_BERKE)
 	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_ALEXIA)

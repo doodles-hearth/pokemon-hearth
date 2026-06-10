@@ -2068,3 +2068,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/UumeForest_Entrance/scripts.scr"
 
 	.include "data/maps/HanabiLake/scripts.scr"
+
+	.include "data/maps/HanabiCity_Dojo/scripts.scr"
