@@ -586,7 +586,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 	setflag(FLAG_MET_TRAVELING_MERCHANT)
 	setflag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)
 
-	limitedpokemart(LIMITED_SHOP_1)
+	limitedpokemart(TRAVELLING_SHOP_FIRST_TIME)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thanks for your business!\nNow where did I put that scroll again…"
 	))

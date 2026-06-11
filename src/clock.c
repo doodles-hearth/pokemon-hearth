@@ -52,6 +52,7 @@ void DoDailyEvents(u32 daysSince)
     ClearDailyTrainers();
     UpdateDailySeed();
     UpdateShamisenPlayers();
+    UpdateTravelingMerchantLocation();
     UpdateDewfordTrendPerDay(daysSince);
     UpdateTVShowsPerDay(daysSince);
     UpdateWeatherPerDay(daysSince);

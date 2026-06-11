@@ -571,3 +571,22 @@ script Live_EventScript_Deerling2Flee {
 	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
 	applymovement(LOCALID_WHITESLATE_DEERLING2, moves(walk_left * 8))
 }
+
+script WhiteslateRoute_EventScript_TravelingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Good day, {PLAYER}! I'm traveling\naround the capital, today.\p"
+		"Why not check out what I have in\nstore?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Happy to be of help!\n…Have you seen Keke's Poké Ball?"
+	))
+	closemessage
+
+	release
+}
