@@ -368,7 +368,7 @@ static void TryShowPlayerPokemonAtCampfire(void)
     // Placing player's Pokémon in the field (VAR_OBJ_GFX_ID_A to F)
     for (s32 i = 0; i < PARTY_SIZE; i++)
     {
-        u32 specGfx;
+        enum Species specGfx;
         bool32 shiny;
         bool32 female;
         GetMonInfo(&gParties[B_TRAINER_PLAYER][i], &specGfx, &shiny, &female);

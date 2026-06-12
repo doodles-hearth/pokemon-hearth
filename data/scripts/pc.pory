@@ -21,7 +21,6 @@ script Common_EventScript_PcGuy {
 
 	// call(EventScript_AccessPokemonStorage)
 	special(ShowPokemonStorageSystemPC)
-	waitstate
 
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	// Player didn't drop or retrieve mons
@@ -80,7 +79,6 @@ EventScript_PCMainMenu::
 	message gText_WhichPCShouldBeAccessed
 	waitmessage
 	special ScriptMenu_CreatePCMultichoice
-	waitstate
 	goto EventScript_AccessPC
 	end
 
@@ -97,7 +95,6 @@ EventScript_AccessPlayersPC::
 	playse SE_PC_LOGIN
 	msgbox gText_AccessedPlayersPC, MSGBOX_DEFAULT
 	special PlayerPC
-	waitstate
 	goto EventScript_PCMainMenu
 	end
 
@@ -107,7 +104,6 @@ EventScript_AccessPokemonStorage::
 	@ call_if_set FLAG_SYS_PC_LANETTE, EventScript_AccessLanettesPC
 	@ msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
-	waitstate
 	@ goto EventScript_PCMainMenu
 	releaseall
 	end
@@ -131,7 +127,6 @@ EventScript_AccessHallOfFame::
 	goto_if_unset FLAG_SYS_GAME_CLEAR, EventScript_TurnOffPC
 	playse SE_PC_LOGIN
 	special AccessHallOfFamePC
-	waitstate
 	goto EventScript_AccessPC
 	end
 
@@ -139,7 +134,6 @@ EventScript_AccessPokemonBoxLink::
 	playse SE_PC_LOGIN
 	msgbox gText_StorageSystemOpened, MSGBOX_DEFAULT
 	special ShowPokemonStorageSystemPC
-	waitstate
 	goto EventScript_TurnOffPC
 	end
 `

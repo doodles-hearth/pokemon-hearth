@@ -501,7 +501,6 @@ Debug_EventScript_SetFriendship::
 
 Debug_EventScript_SetColor::
 	special ChoosePartyMon
-	waitstate
 	callnative DebugNative_Party_SetColor
 	releaseall
 	end

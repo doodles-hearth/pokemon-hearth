@@ -34,7 +34,6 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	closemessage
 
 	special(EnterDexRiddleGuess)
-	waitstate
 	special(GetDexRiddleFeedback)
 
 	if(var(VAR_RESULT) == 1)

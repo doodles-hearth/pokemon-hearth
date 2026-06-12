@@ -273,7 +273,6 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				special(ChoosePartyMon)
-				waitstate
 				if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
 					setspeaker(SP_NAME_SHOPKEEPER)
 					msgbox(format("Ah c'mon, don't waste my time!"))
