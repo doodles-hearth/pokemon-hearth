@@ -24294,8 +24294,8 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u8 gMonIcon_ToxikyuLowKey[] = INCGFX_U8("graphics/pokemon/toxikyu/low_key/icon.png", ".4bpp");
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_ToxelTokuan[] = INCGFX_COMP("graphics/pokemon/toxel/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
-    const u32 gObjectEventPic_ToxikyuAmped[] = INCGFX_COMP("graphics/pokemon/toxikyu/overworld.png", ".4bpp");
-    const u32 gObjectEventPic_ToxikyuLowKey[] = INCGFX_COMP("graphics/pokemon/toxikyu/low_key/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_ToxikyuAmped[] = INCGFX_COMP("graphics/pokemon/toxikyu/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+    const u32 gObjectEventPic_ToxikyuLowKey[] = INCGFX_COMP("graphics/pokemon/toxikyu/low_key/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_TOKUAN_FORMS
 
