@@ -536,7 +536,6 @@ script WhiteslateRoute_EventScript_TinyPassage {
 
 	if (var(VAR_RESULT) == 0) {
 		special(ChoosePartyMonForSmallPassage)
-		waitstate
 
 		if (var(VAR_0x8004) != PARTY_NOTHING_CHOSEN) {
 			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
