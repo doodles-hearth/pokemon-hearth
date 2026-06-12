@@ -2048,8 +2048,8 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u8 gMonIcon_VenomothTokuan[] = INCGFX_U8("graphics/pokemon/venomoth/tokuan/icon.png", ".4bpp");
 
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_VenonatTokuan[] = INCGFX_COMP("graphics/pokemon/venonat/tokuan/overworld.png", ".4bpp");
-    const u32 gObjectEventPic_VenomothTokuan[] = INCGFX_COMP("graphics/pokemon/venomoth/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_VenonatTokuan[] = INCGFX_COMP("graphics/pokemon/venonat/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+    const u32 gObjectEventPic_VenomothTokuan[] = INCGFX_COMP("graphics/pokemon/venomoth/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif // P_TOKUAN_FORMS
 #endif //P_FAMILY_VENONAT
@@ -2333,7 +2333,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u8 gMonFootprint_PsyduckTokuan[] = INCGFX_U8("graphics/pokemon/psyduck/tokuan/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_PsyduckTokuan[] = INCGFX_COMP("graphics/pokemon/psyduck/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_PsyduckTokuan[] = INCGFX_COMP("graphics/pokemon/psyduck/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_TOKUAN_FORMS
 
@@ -2347,7 +2347,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u8 gMonFootprint_GolduckTokuan[] = INCGFX_U8("graphics/pokemon/golduck/tokuan/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_GolduckTokuan[] = INCGFX_COMP("graphics/pokemon/golduck/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_GolduckTokuan[] = INCGFX_COMP("graphics/pokemon/golduck/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_TOKUAN_FORMS
 #endif //P_FAMILY_PSYDUCK
@@ -5581,7 +5581,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_MagikarpF[] = INCGFX_COMP("graphics/pokemon/magikarp/overworldf.png", ".4bpp");
 #if P_TOKUAN_FORMS
-    const u32 gObjectEventPic_MagikarpTokuan[] = INCGFX_COMP("graphics/pokemon/magikarp/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_MagikarpTokuan[] = INCGFX_COMP("graphics/pokemon/magikarp/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif // P_TOKUAN_FORMS
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_GENDER_DIFFERENCES
@@ -5615,7 +5615,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #if OW_POKEMON_OBJECT_EVENTS
     const u32 gObjectEventPic_Gyarados[] = INCGFX_COMP("graphics/pokemon/gyarados/overworld.png", ".4bpp");
 #if P_TOKUAN_FORMS
-    const u32 gObjectEventPic_GyaradosTokuan[] = INCGFX_COMP("graphics/pokemon/gyarados/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_GyaradosTokuan[] = INCGFX_COMP("graphics/pokemon/gyarados/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif // P_TOKUAN_FORMS
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gOverworldPalette_Gyarados[] = INCGFX_U16("graphics/pokemon/gyarados/overworld_normal.pal", ".gbapal");
@@ -6998,7 +6998,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u8 gMonFootprint_Shadowl[] = INCGFX_U8("graphics/pokemon/shadowl/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_Shadowl[] = INCGFX_COMP("graphics/pokemon/shadowl/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_Shadowl[] = INCGFX_COMP("graphics/pokemon/shadowl/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_HOOTHOOT
 
@@ -7534,7 +7534,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u8 gMonFootprint_Honestree[] = INCGFX_U8("graphics/pokemon/honestree/footprint.png", ".1bpp");
 #endif //P_FOOTPRINTS
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_Honestree[] = INCGFX_COMP("graphics/pokemon/honestree/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_Honestree[] = INCGFX_COMP("graphics/pokemon/honestree/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #endif //OW_POKEMON_OBJECT_EVENTS
 
 #if !P_GBA_STYLE_SPECIES_GFX
@@ -17196,7 +17196,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_SewaddleTokuan[] = INCGFX_U16("graphics/pokemon/sewaddle/tokuan/shiny.png", ".gbapal");
     const u8 gMonIcon_SewaddleTokuan[] = INCGFX_U8("graphics/pokemon/sewaddle/tokuan/icon.png", ".4bpp");
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_SewaddleTokuan[] = INCGFX_COMP("graphics/pokemon/sewaddle/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_SewaddleTokuan[] = INCGFX_COMP("graphics/pokemon/sewaddle/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gFollowerPalette_SewaddleTokuan[] = INCGFX_U16("graphics/pokemon/sewaddle/tokuan/anim_front.png", ".gbapal");
     const u16 gShinyFollowerPalette_SewaddleTokuan[] = INCGFX_U16("graphics/pokemon/sewaddle/tokuan/shiny.png", ".gbapal");
@@ -17209,7 +17209,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_SwadloonTokuan[] = INCGFX_U16("graphics/pokemon/swadloon/tokuan/shiny.png", ".gbapal");
     const u8 gMonIcon_SwadloonTokuan[] = INCGFX_U8("graphics/pokemon/swadloon/tokuan/icon.png", ".4bpp");
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_SwadloonTokuan[] = INCGFX_COMP("graphics/pokemon/swadloon/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_SwadloonTokuan[] = INCGFX_COMP("graphics/pokemon/swadloon/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gFollowerPalette_SwadloonTokuan[] = INCGFX_U16("graphics/pokemon/swadloon/tokuan/anim_front.png", ".gbapal");
     const u16 gShinyFollowerPalette_SwadloonTokuan[] = INCGFX_U16("graphics/pokemon/swadloon/tokuan/shiny.png", ".gbapal");
@@ -17222,7 +17222,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_LeavannyTokuan[] = INCGFX_U16("graphics/pokemon/leavanny/tokuan/shiny.png", ".gbapal");
     const u8 gMonIcon_LeavannyTokuan[] = INCGFX_U8("graphics/pokemon/leavanny/tokuan/icon.png", ".4bpp");
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_LeavannyTokuan[] = INCGFX_COMP("graphics/pokemon/leavanny/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_LeavannyTokuan[] = INCGFX_COMP("graphics/pokemon/leavanny/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_FOLLOWERS_SHARE_PALETTE == FALSE
     const u16 gFollowerPalette_LeavannyTokuan[] = INCGFX_U16("graphics/pokemon/leavanny/tokuan/anim_front.png", ".gbapal");
     const u16 gShinyFollowerPalette_LeavannyTokuan[] = INCGFX_U16("graphics/pokemon/leavanny/tokuan/shiny.png", ".gbapal");
@@ -24293,7 +24293,7 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_ToxikyuLowKey[] = INCGFX_U16("graphics/pokemon/toxikyu/low_key/shiny.png", ".gbapal");
     const u8 gMonIcon_ToxikyuLowKey[] = INCGFX_U8("graphics/pokemon/toxikyu/low_key/icon.png", ".4bpp");
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_ToxelTokuan[] = INCGFX_COMP("graphics/pokemon/toxel/tokuan/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_ToxelTokuan[] = INCGFX_COMP("graphics/pokemon/toxel/tokuan/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
     const u32 gObjectEventPic_ToxikyuAmped[] = INCGFX_COMP("graphics/pokemon/toxikyu/overworld.png", ".4bpp");
     const u32 gObjectEventPic_ToxikyuLowKey[] = INCGFX_COMP("graphics/pokemon/toxikyu/low_key/overworld.png", ".4bpp");
 #endif //OW_POKEMON_OBJECT_EVENTS
@@ -27681,8 +27681,8 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //P_FOOTPRINTS
 
 #if OW_POKEMON_OBJECT_EVENTS
-    const u32 gObjectEventPic_Kotora[] = INCGFX_COMP("graphics/pokemon/kotora/follower.png", ".4bpp");
-    const u32 gObjectEventPic_Raitora[] = INCGFX_COMP("graphics/pokemon/raitora/follower.png", ".4bpp");
+    const u32 gObjectEventPic_Kotora[] = INCGFX_COMP("graphics/pokemon/kotora/follower.png", ".4bpp", "-mwidth 4 -mheight 4");
+    const u32 gObjectEventPic_Raitora[] = INCGFX_COMP("graphics/pokemon/raitora/follower.png", ".4bpp", "-mwidth 4 -mheight 4");
 
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
     const u16 gFollowerPalette_Kotora[] = INCGFX_U16("graphics/pokemon/kotora/follow_normal.pal", ".gbapal");
