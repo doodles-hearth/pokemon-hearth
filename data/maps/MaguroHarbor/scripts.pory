@@ -3,13 +3,23 @@ const FLAG_TALKED_TO_FISH_SELLER = FLAG_TEMP_2
 
 mapscripts MaguroHarbor_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-		call(MaguroHarbor_DrawMetatiles)
-    }
+		closedoormetatile(TIME_DEAD_NIGHT, 32, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		closedoormetatile(TIME_DEAD_NIGHT, 15, 15, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		closedoormetatile(TIME_NIGHT, 15, 15, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+	    gettimeofday
+		switch(var(VAR_0x8000)){
+			case TIME_DEAD_NIGHT:
+				setmetatile(30, 23, METATILE_Maguro_MaguroClosedWindows, TRUE)
+				setmetatile(13, 16, METATILE_Maguro_MaguroClosedWindows, TRUE)
+			case TIME_NIGHT:
+				setmetatile(13, 16, METATILE_Maguro_MaguroClosedWindows, TRUE)
+			default:
+				end
+    	}
+	}
 
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_MAGURO_HARBOR)
-
-
 		getweekday
 		if(
 			var(VAR_RESULT) != WEEKDAY_MON
@@ -20,24 +30,6 @@ mapscripts MaguroHarbor_MapScripts {
 			setflag(FLAG_HIDE_FISH_SELLER)
 		}
 	}
-}
-
-script MaguroHarbor_DrawMetatiles{
-    gettimeofday
-	switch(var(VAR_0x8000)){
-        case TIME_DEAD_NIGHT:
-            setmetatile(30, 23, METATILE_Maguro_MaguroClosedWindows, TRUE)
-			setmetatile(32, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
-            setmetatile(32, 23, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
-        case TIME_EARLY_MORNING:
-        case TIME_MORNING:
-        case TIME_LUNCHTIME:
-        case TIME_AFTERNOON:
-        case TIME_EVENING:
-        case TIME_NIGHT:
-        default:
-            end
-    }
 }
 
 script MaguroHarbor_EventScript_TownSign {

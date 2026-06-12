@@ -8,15 +8,15 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 	setspeaker(SP_NAME_KOISHI)
 	trainerbattle_single(
 		TRAINER_KOISHI_1,
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}Welcome to Maguro's Koi Pond Dojo, one of the eight Dojos officially appointed by the Toku Council.\p"
+		
+			"{CREATE_MUGSHOT MUGSHOT_KOISHI 0}Welcome to Maguro's Koi Pond Dojo.\pOne of eight Dojos officially\nappointed by the Toku Council.\p"
 			"We Dojo Masters fight Wielders that have taken on the Toku Council's challenge.\p"
 			"We each give out a different Token to anyone who succeeds in defeating us.\p"
 			"I am Koishi. I began raising elegant, graceful Pokémon when I was even younger than you are now.\p"
 			"I may behave and speak in a soft manner…\p"
 			"But do not for one second mistake soft-spokenness for weakness.\p"
 			"Now… Shall we battle?"
-		),
+		,
 		format("I see…"),
 		MaguroHarbor_Dojo_EventScript_KoishiDefeated,
 		NO_MUSIC
@@ -199,7 +199,7 @@ script MaguroHarbor_Dojo_EventScript_Advice {
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_2 0}Hello, young challenger!\nWelcome to the Koi Pond Dojo!\l"
 			"Fighting for your first Token?\p"
 			"Koishi, the Master of this place,\nfavors water-type moves.\p"
-			"Her battling style is strong, yet\ngraceful… Sigh…\lI am her biggest fan! It's true!"
+			"Her battling style is strong, yet\ngraceful… Sigh…\lI am her biggest fan! It's true!\p"
 			"Maybe one day, I'll become your\nbiggest fan, who knows?\l"
 			"Go get 'em!"
 		))
