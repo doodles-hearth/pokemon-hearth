@@ -21,9 +21,10 @@ script ChiiTown_School_EventScript_PreparingDay {
 	faceplayer
 
 	setspeaker(SP_NAME_TEACHER)
-	msgbox(format(
-		"Um… The school isn't open yet, I'm afraid. Come back later with your little brother or sister!"
-	))
+	msgbox(
+		"Um… I'm sorry, but the school isn't\nopen yet.\p"
+		"You can come back later with your\nlittle sibling if you'd like!"
+	)
 	closemessage
 
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)

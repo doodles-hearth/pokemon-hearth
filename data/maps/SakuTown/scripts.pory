@@ -19,7 +19,6 @@ mapscripts SakuTown_MapScripts {
 
 		if (flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
-			setmetatile(19, 2, METATILE_SakuKura_BoardGame, TRUE)
 			setobjectmovementtype(LOCALID_SAKU_TOWN_GUARD, MOVEMENT_TYPE_FACE_RIGHT)
 		}
 
@@ -57,20 +56,25 @@ mapscripts SakuTown_MapScripts {
 	}
 	MAP_SCRIPT_ON_LOAD {
 		setflag(FLAG_HIDE_NATSUKI)
-		gettimeofday
-		switch(var(VAR_0x8000)){
-			case TIME_DEAD_NIGHT:
-				setmetatile(16, 19, METATILE_SakuKura_ClosedDoorTop, TRUE)
-				setmetatile(16, 20, METATILE_SakuKura_ClosedDoorBottom, TRUE)
-			case TIME_EARLY_MORNING:
-			case TIME_MORNING:
-			case TIME_LUNCHTIME:
-			case TIME_AFTERNOON:
-			case TIME_EVENING:
-			case TIME_NIGHT:
-			default:
-		end
+
+		if (!flag(FLAG_SAKU_KURA_REUNITED)) {
+			// Once reunited, the guards from the two villages play a board game together
+			setmetatile(19, 2, METATILE_PorytilesPrimaryTutorial_Grass, TRUE)
 		}
+		
+		//Close Bonsai Shop
+		closedoormetatile(TIME_NIGHT, 35, 30, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
+		closedoormetatile(TIME_DEAD_NIGHT, 35, 30, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
+
+		//Close Psyduck House
+		closedoormetatile(TIME_NIGHT, 18, 32, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
+		closedoormetatile(TIME_DEAD_NIGHT, 18, 32, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
+
+		//Close Eevee House
+		closedoormetatile(TIME_DEAD_NIGHT, 22, 17, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
+
+		//Close Tama's House
+		closedoormetatile(TIME_DEAD_NIGHT, 16, 19, METATILE_SakuKura_ClosedDoorTop, METATILE_SakuKura_ClosedDoorBottom)
 	}
 }
 
@@ -422,7 +426,7 @@ script SakuTown_EventScript_KuraGuard {
 	lock
 	setspeaker(SP_NAME_GUARD)
 	msgbox(format(
-		"Hah, got two of your Tauros in my herd!"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Hah, got two of your Tauros in my herd!"
 	))
 	closemessage
 	release
@@ -552,18 +556,21 @@ script SakuTown_EventScript_MonHues {
 		"{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}Pay close attention to the fur and\nfeather colors of the wild Pokémon.\p"
 		"They may all look the same at first…\nBut no two Pokémon's colors are alike!"
 	)
+	playse(SE_NOTE_C_HIGH)
 	applymovement(VAR_LAST_TALKED, moves(emote_music))
-	msgbox(format(
-		"Doesn't it make your heart sing?"
-	))
+	message("Doesn't it make your heart sing?")
+	waitmessage
+	waitmovement
+	waitbuttonpress
 
 	if(var(VAR_SAKU_KURA_QUEST_ESPEON_STATE) == 1) {
 		mcdialogueB("Has an Eevee passed by?", "Have a good day!")
 		if (var(VAR_RESULT) == 0) {
 			setspeaker(SP_NAME_MAN)
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}Huh, I don't think I've seen an Eevee at\nall, regardless of it's color. Sorry."
+				"Huh, I don't think I've seen an Eevee at\nall, regardless of it's color. Sorry."
 			)
+			//ignore poryscript warning
 			closemessage
 		}
 	}

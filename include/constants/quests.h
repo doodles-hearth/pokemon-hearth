@@ -17,10 +17,10 @@
 // quest number defines
 #define QUEST_HEARTH_MAIN_CAMPAIGN          0
 #define QUEST_POKEDEX                       1
-#define QUEST_SAKURALOVERS                  2
-#define QUEST_SAKURAESPEON                  3
-#define QUEST_SAKURASCYTHER                 4
-#define QUEST_6          5
+#define QUEST_CUT_MASTER                    2
+#define QUEST_SAKURALOVERS                  3
+#define QUEST_SAKURAESPEON                  4
+#define QUEST_SAKURASCYTHER                 5
 #define QUEST_7          6
 #define QUEST_8          7
 #define QUEST_9          8

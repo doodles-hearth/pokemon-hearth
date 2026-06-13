@@ -5777,7 +5777,7 @@
       "id": "LAYOUT_CHII_TOWN",
       "name": "ChiiTown_Layout",
       "width": 38,
-      "height": 31,
+      "height": 34,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
@@ -11855,6 +11855,18 @@
       "secondary_tileset": "gTileset_Hanabi",
       "border_filepath": "data/layouts/HanabiLake/border.bin",
       "blockdata_filepath": "data/layouts/HanabiLake/map.bin"
+    },
+    {
+      "id": "LAYOUT_TRANQUIL_ROUTE_CUT_GRASS",
+      "name": "TranquilRoute_CutGrass",
+      "width": 54,
+      "height": 80,
+      "border_width": 6,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_SakuKura",
+      "border_filepath": "data/layouts/TranquilRoute_CutGrass/border.bin",
+      "blockdata_filepath": "data/layouts/TranquilRoute_CutGrass/map.bin"
     }
   ]
 }

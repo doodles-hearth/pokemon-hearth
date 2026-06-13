@@ -57,6 +57,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_LADY_SHOPPER",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_WOMAN_2",
       "x": 16,
       "y": 10,
@@ -72,11 +73,12 @@
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
+      "lunchtime": true,
       "morning": false,
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_SHAMISEN_CEL",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_FAT_GUY",
       "x": 18,
       "y": 4,
@@ -97,6 +99,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_WEARY_TRAVELLER",
       "graphics_id": "OBJ_EVENT_GFX_TRAVELER",
       "x": 11,
       "y": 9,
@@ -109,12 +112,12 @@
       "script": "ChiiTown_PokemonCenter_EventScript_IveComeALongWay",
       "flag": "0",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(SNORUNT)",
@@ -129,12 +132,12 @@
       "script": "ChiiTown_PokemonCenter_EventScript_Snorunt",
       "flag": "0",
       "afternoon": false,
-      "deadnight": false,
+      "deadnight": true,
       "earlymorning": false,
       "evening": false,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_BLUE",
@@ -258,6 +261,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_CHII_TOWN_DIKTAT_KID",
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_LITTLE_BOY",
       "x": 17,
       "y": 8,
@@ -269,13 +273,13 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ChiiTown_PokemonCenter_EventScript_MakeNamesUp",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
       "evening": false,
-      "lunchtime": false,
+      "lunchtime": true,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SUNRISE_NURSE",

@@ -120,25 +120,30 @@ script ChiiTown_PokemonCenter_EventScript_WhereShamisen {
 	lock
 	faceplayer
 	setspeaker("Weird man")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY 0}Where's that cute shamisen player that was here last night?"
-	))
+	message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY 0}…")
+	waitmessage
+	waitbuttonpress
+	playse(SE_M_LICK)
+	applymovement(LOCALID_CHII_TOWN_SHAMISEN_CEL, moves(emote_sad))
+	message("Where's that cute shamisen player\nthat was here last night?")
+	waitmovement(0)
+	waitse
+	waitmessage
+	waitbuttonpress
 	closemessage
+	applymovement(LOCALID_CHII_TOWN_SHAMISEN_CEL, moves(face_original_direction))
+	waitmovement(0)
 	release
-	end
 }
 
 script ChiiTown_PokemonCenter_EventScript_IveComeALongWay {
-	lock
-	faceplayer
+	playse(SE_PIN)
+	applymovement(LOCALID_CHII_TOWN_WEARY_TRAVELLER, moves(emote_happy))
 	setspeaker("Weary traveler")
-	msgbox(format(
-		"I'm so glad I found this refuge. I've come a long way and my feet hurt.\p"
-		"My Pokémon and I will rest here for a while."
-	))
+	msgbox("I'm so glad I found this refuge.\nI've come a long way and my feet hurt.\lMy Pokémon and I will rest here awhile.", MSGBOX_NPC)
+	waitse
+	waitmovement(0)
 	closemessage
-	release
-	end
 }
 
 script ChiiTown_PokemonCenter_EventScript_Snorunt {
@@ -157,29 +162,28 @@ script ChiiTown_PokemonCenter_EventScript_Snorunt {
 }
 
 script ChiiTown_PokemonCenter_EventScript_NeedMarket {
-	lock
-	faceplayer
+	playse(SE_BALL_BOUNCE_1)
+	applymovement(LOCALID_CHII_TOWN_LADY_SHOPPER, moves(emote_pensive))
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}Berries, ointments… I should get a few more Poké Balls from the market!"
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}Berries, ointments… Oh! I should get a\nfew more Poké Balls from the market!"
+	)
+	waitse
+	waitmovement(0)
 	closemessage
-	release
-	end
 }
 
 script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	lock
 	faceplayer
 	setspeaker("Talkative man")
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_1 0}Isn't it amazing?\p"
-		"This is one of the many brand new Pokémon refuges that the Pokémon Council has built across all Toku!\p"
-		"With traveling alone becoming more dangerous, many people are now training a Pokémon for protection.\p"
-		"Towns were in dire need of proper healing and rest spots for Pokémon.\p"
-		"Sorry, I'll get out of your hair now.\n"
-		"Talk to the nurse and her Chansey\lif you want her to heal your Pokémon!"
-	))
+		"You're in one of the many new Pokémon\nrefuges the Toku Council had built!\p"
+		"Since traveling's so dangerous now,\nmore people are becoming Wielders,\ljust like the Toku Council advised.\p"
+		"In turn, towns needed proper places\nfor Pokémon to rest and heal.\p"
+		"Sorry, I'll get out of your hair now.\nTalk to the nurse and her Chansey\lif you want your Pokémon to be healed!"
+	)
 	closemessage
 
 	setnamedmon(SPECIES_CHANSEY)
@@ -202,24 +206,23 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	end
 }
 
-movement ChiiTown_PokemonCenter_Movement_LeaveWhenFromBottom {
-	walk_right
-	walk_down * 6
-}
-
-movement ChiiTown_PokemonCenter_Movement_Leave {
-	walk_down * 6
-}
-
 script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}You know what happens if I see a Pokémon and I don't know its name?\p"
-		"I just make it right up!\nI don't care about silly “real” names!\p"
-		"And neither should you! Be free of the diktat of naming accuracy!"
-	))
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}You know what happens if I see a\nPokémon and I don't know its name?\p"
+		"I just make it right up!\nI don't care about silly “real” names!")
+	waitmessage
+	waitbuttonpress
+	message("And neither should you!{PAUSE 16} Be free of the\ndiktat of naming accuracy!")
+	delay(30)
+	applymovement(LOCALID_CHII_TOWN_DIKTAT_KID, moves(emote_exclamation_mark))
+	playse(SE_PIN)
+	waitmovement(0)
+	waitse
+	waitmessage
+	waitbuttonpress
 	closemessage
 	release
 	end

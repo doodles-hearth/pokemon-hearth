@@ -43,7 +43,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BeachboundRoute_EventScript_RunningBoy",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
       "evening": true,
@@ -152,6 +152,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_HOPPIP",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP)",
       "x": 50,
       "y": 18,
@@ -323,7 +324,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BeachboundRoute_EventScript_RunningGirl",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
       "evening": true,
@@ -352,6 +353,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_MUGGED_WOMAN",
       "graphics_id": "OBJ_EVENT_GFX_SAKURA_WOMAN_1",
       "x": 68,
       "y": 9,
@@ -372,6 +374,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_1",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 67,
       "y": 10,
@@ -392,6 +395,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_BOSS",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_BOSS",
       "x": 68,
       "y": 11,
@@ -412,6 +416,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_3",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN",
       "x": 69,
       "y": 10,
@@ -432,6 +437,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 68,
       "y": 10,
@@ -481,7 +487,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ChiiTown_EventScript_WatchfulMom",
+      "script": "BeachboundRoute_EventScript_PlayfulMom",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
