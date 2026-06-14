@@ -94,7 +94,7 @@ enum
 {
     SELLER_NONE,
     SELLER_MART_FEMALE, // OBJ_EVENT_GFX_MART_EMPLOYEE
-    SELLER_OKADA, // OBJ_EVENT_GFX_TRAVELING_MERCHANT
+    SELLER_OKADA, // OBJ_EVENT_GFX_TRAVELLING_MERCHANT
     SELLER_ZUBAT, // OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M
     SELLER_INCENSE, // OBJ_EVENT_GFX_INCENSE_SHOP_KEEPER
     SELLER_COUNT,
@@ -489,7 +489,7 @@ static const struct Seller sSellers[] = {
         },
     },
     [SELLER_OKADA] = {
-        { .gfxId = OBJ_EVENT_GFX_TRAVELING_MERCHANT },
+        { .gfxId = OBJ_EVENT_GFX_TRAVELLING_MERCHANT },
         .mugshotGfx = sNewShopMenu_SellerMugshotGfx_Okada,
         .mugshotPal = sNewShopMenu_SellerMugshotPal_Okada,
         .scrollGfx = sNewShopMenu_SellerScrollGfx_Okada,
@@ -620,7 +620,7 @@ static void SetShopItemsForSale(const u16 *items)
 
 #include "data/limited_shop.h"
 
-static void SetTravellingMerchantShopItemsForSale(void)
+static void SettravellingmerchantShopItemsForSale(void)
 {
     u16 i = 0, j = 0;
     sMartInfo.itemCount = 0;
@@ -631,7 +631,7 @@ static void SetTravellingMerchantShopItemsForSale(void)
         i++;
     }
 
-    while (j < LIMITED_SHOP_MAX_ITEMS && gTravellingMerchantProgression[GetNumBadgesObtained()][j].item)
+    while (j < LIMITED_SHOP_MAX_ITEMS && gtravellingmerchantProgression[GetNumBadgesObtained()][j].item)
     {
         sMartInfo.itemCount++;
         j++;
@@ -680,10 +680,10 @@ static void InitShopItemsForSale(void)
                 i++;
             }
 
-            while (gTravellingMerchantProgression[GetNumBadgesObtained()][j].item)
+            while (gtravellingmerchantProgression[GetNumBadgesObtained()][j].item)
             {
-                *itemList = gTravellingMerchantProgression[GetNumBadgesObtained()][j].item;
-                *itemQuantity = gTravellingMerchantProgression[GetNumBadgesObtained()][j].quantity;
+                *itemList = gtravellingmerchantProgression[GetNumBadgesObtained()][j].item;
+                *itemQuantity = gtravellingmerchantProgression[GetNumBadgesObtained()][j].quantity;
                 itemList++;
                 itemQuantity++;
                 j++;
@@ -1043,7 +1043,7 @@ static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 amountBought)
     gSaveBlock2Ptr->limitedShopVars[index] |= (newAmount & 0xF) << bitOffset;
 }
 
-void ResetTravellingMerchantItemStock(void)
+void ResettravellingmerchantItemStock(void)
 {
     for (u16 i = 0; i < LIMITED_SHOP_MAX_ITEMS; i++)
     {
@@ -1969,7 +1969,7 @@ void NewShop_CreateLimitedShopMenu(u8 shopId)
 {
     CreateShopMenu(MART_TYPE_LIMITED);
     if (shopId == TRAVELLING_MERCHANT_SHOP)
-        SetTravellingMerchantShopItemsForSale();
+        SettravellingmerchantShopItemsForSale();
     else
         SetLimitedShopItemsForSale(shopId);
     SetShopId(shopId);

@@ -3,7 +3,6 @@
   "name": "SakuTown",
   "layout": "LAYOUT_SAKU_TOWN",
   "music": "MUS_HH_SUNRISE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_PINK_LEAVES",
@@ -773,5 +772,6 @@
       "item": "ITEM_CHERI_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_SAKU_CHERI_BERRY"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

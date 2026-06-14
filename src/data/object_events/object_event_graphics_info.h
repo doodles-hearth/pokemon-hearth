@@ -1972,9 +1972,9 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Natsuki = {
     .images = sPicTable_Natsuki,
 };
 
-const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravelingMerchant = {
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravellingMerchant = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_TRAVELING_MERCHANT,
+    .paletteTag = OBJ_EVENT_PAL_TAG_TRAVELLING_MERCHANT,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 512,
     .width = 32,
@@ -1987,7 +1987,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravelingMerchant 
     .oam = &gObjectEventBaseOam_32x32,
     .subspriteTables = sOamTables_32x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_TravelingMerchant,
+    .images = sPicTable_TravellingMerchant,
 };
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenF = {

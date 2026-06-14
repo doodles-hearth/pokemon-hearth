@@ -2857,7 +2857,7 @@
 	.endm
 
 	.macro travellingmerchant
-	callnative ScrCmd_travellingmerchant
+	callnative ScrCmd_TravellingMerchant
 	waitstate
 	.endm
 

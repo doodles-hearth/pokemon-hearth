@@ -3,7 +3,6 @@
   "name": "ChiiTown_PokemonCenter",
   "layout": "LAYOUT_POKEMON_CENTER_1F",
   "music": "MUS_RG_POKE_CENTER",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_CHII_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -321,5 +320,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

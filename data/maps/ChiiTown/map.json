@@ -3,7 +3,6 @@
   "name": "ChiiTown",
   "layout": "LAYOUT_CHII_TOWN",
   "music": "MUS_HH_CHII_TOWN",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_CHII_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -475,5 +474,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "ChiiTown_EventScript_SchoolSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

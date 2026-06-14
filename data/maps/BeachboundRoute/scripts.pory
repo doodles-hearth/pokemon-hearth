@@ -553,16 +553,16 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(0)
 }
 
-script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
+script BeachboundRoute_EventScript_TravellingMerchantSecondTime {
 	lock
 	faceplayer
-	if (flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
+	if (flag(FLAG_MET_TRAVELLING_MERCHANT_2ND_TIME)) {
 		setspeaker(SP_NAME_OKADA)
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Hello, hello again, {PLAYER}!\p"
 			"Can I interest you in some handpicked goods?"
 		))
-	} elif (flag(FLAG_MET_TRAVELING_MERCHANT)) {
+	} elif (flag(FLAG_MET_TRAVELLING_MERCHANT)) {
 		setspeaker(SP_NAME_OKADA)
 		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Hello! … …Have we met before?\nSorry, I'm not good with faces…\p"
@@ -574,7 +574,7 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Hello, hello again!\p"
 			"… …Oh, sorry, we haven't met, have we?\nI'm not good with faces…\p"
-			"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant!\nI travel through all of Toku on foot,\lselling useful goods and rare finds!\p"
+			"{SPEAKER NAME_OKADA}I'm Okada, the travelling merchant!\nI travel through all of Toku on foot,\lselling useful goods and rare finds!\p"
 			"If you're a traveler, you're\ndefinitely going to see me around!\p"
 			"What's your name? {PLAYER}?\nIt's nice to meet you, {PLAYER}!\p"
 			"I see you're a Wielder, eh? Maybe we\ncan have a friendly battle sometime!\p"
@@ -583,8 +583,8 @@ script BeachboundRoute_EventScript_TravelingMerchantSecondTime {
 		))
 	}
 
-	setflag(FLAG_MET_TRAVELING_MERCHANT)
-	setflag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)
+	setflag(FLAG_MET_TRAVELLING_MERCHANT)
+	setflag(FLAG_MET_TRAVELLING_MERCHANT_2ND_TIME)
 
 	limitedpokemart(TRAVELLING_SHOP_FIRST_TIME)
 	msgbox((

@@ -572,7 +572,7 @@ script Live_EventScript_Deerling2Flee {
 	applymovement(LOCALID_WHITESLATE_DEERLING2, moves(walk_left * 8))
 }
 
-script WhiteslateRoute_EventScript_TravelingMerchant {
+script WhiteslateRoute_EventScript_TravellingMerchant {
 	lock
 	faceplayer
 

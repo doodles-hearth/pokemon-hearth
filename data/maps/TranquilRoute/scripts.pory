@@ -543,7 +543,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 	setflag(FLAG_HIDE_CROBAT_SHADOWS_TRANQUIL_RT)
 }
 
-script TranquilRoute_EventScript_TravelingMerchantFirstTime {
+script TranquilRoute_EventScript_TravellingMerchantFirstTime {
 	lock
 	waitse
 	playse(SE_PIN)
@@ -566,7 +566,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Oh, hello! Sorry, shop's closed at the moment!\p"
 		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
-		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
+		"{SPEAKER NAME_OKADA}I'm Okada, the travelling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
 		"What's your name? {PLAYER}?\nNice to meet you, {PLAYER}!\p"
 		"I see you're a young Wielder, eh?\NMaybe we can even have a friendly battle sometime!\p"
@@ -600,7 +600,7 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	removeobject(VAR_LAST_TALKED)
 	removeobject(LOCALID_TRANQUIL_RT_KECLEON)
 
-	setflag(FLAG_MET_TRAVELING_MERCHANT)
+	setflag(FLAG_MET_TRAVELLING_MERCHANT)
 	release
 }
 

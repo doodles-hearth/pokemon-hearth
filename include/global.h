@@ -1258,6 +1258,7 @@ struct SaveBlock1
     u8 activePost[NUM_ACTIVE_POST_SLOTS];
     u8 postFlags[NUM_MAIL_FLAG_BYTES];
     u16 chatotPostRematchTrainerId;
+    u16 travellingMerchantLocation;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

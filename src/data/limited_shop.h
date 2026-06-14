@@ -55,7 +55,7 @@ const struct LimitedShopItems gTravellingMerchantLocation[LAYOUT_SILVER_TUNNEL_3
     },
 };
 
-const struct LimitedShopItems gTravellingMerchantRareItemsLocation[LAYOUT_SILVER_TUNNEL_3F][LIMITED_SHOP_MAX_ITEMS + 1] = {
+const struct LimitedShopItems gtravellingmerchantRareItemsLocation[LAYOUT_SILVER_TUNNEL_3F][LIMITED_SHOP_MAX_ITEMS + 1] = {
     /*gMapHeader.mapLayoutId*/
     [LAYOUT_BURNFOOT_PASS_BOTTOM] = 
     {
@@ -69,7 +69,7 @@ const struct LimitedShopItems gTravellingMerchantRareItemsLocation[LAYOUT_SILVER
     },
 };
 
-const struct LimitedShopItems gTravellingMerchantProgression[NUM_BADGES + 2][LIMITED_SHOP_MAX_ITEMS + 1] = {
+const struct LimitedShopItems gtravellingmerchantProgression[NUM_BADGES + 2][LIMITED_SHOP_MAX_ITEMS + 1] = {
     /*Badges obtained*/
     [0] = 
     {

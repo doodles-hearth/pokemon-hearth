@@ -36,7 +36,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRAVELING_MERCHANT",
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
       "x": 18,
       "y": 2,
       "elevation": 0,
@@ -45,7 +45,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "YifuCity_Refuge_2F_EventScript_TravelingMerchant",
+      "script": "YifuCity_Refuge_2F_EventScript_TravellingMerchant",
       "flag": "FLAG_TEMP_2",
       "afternoon": false,
       "deadnight": true,
@@ -65,7 +65,7 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TravelingMerchant_EventScript_Keke",
+      "script": "TravellingMerchant_EventScript_Keke",
       "flag": "FLAG_TEMP_2",
       "afternoon": false,
       "deadnight": true,

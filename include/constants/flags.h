@@ -45,7 +45,8 @@
 #define TEMP_FLAGS_END   FLAG_TEMP_1F
 #define NUM_TEMP_FLAGS   (TEMP_FLAGS_END - TEMP_FLAGS_START + 1)
 
-#define SHAMISEN_PLAYERS_EVENT_FLAG FLAG_TEMP_1F
+#define TRAVELLING_MERCHANT_EVENT_FLAG FLAG_TEMP_1E
+#define SHAMISEN_PLAYERS_EVENT_FLAG   FLAG_TEMP_1F
 
 #if IS_FRLG
 
@@ -675,7 +676,7 @@
 #define FLAG_HIDE_SUNRISE_BEACH_RIVAL 0x265 // True if talked to rival on the beach in intro sequence
 #define FLAG_RECEIVED_STARTER  0x266 // True if player has received their starter
 #define FLAG_HIDE_SUNRISE_VILLAGE_STANDARD_NPC_POSITIONS  0x267 // True if all the Sunrise Village NPC's should be removed from their usual spot
-#define FLAG_MET_TRAVELING_MERCHANT  0x268
+#define FLAG_MET_TRAVELLING_MERCHANT  0x268
 // True if the Pokémon refuge presentation speech has been given
 #define FLAG_POKEMON_REFUGE_PRESENTATION  0x269
 #define FLAG_GOT_CROBAT_PASSWORD_FIRST_HALF 0x26A
@@ -684,7 +685,7 @@
 #define FLAG_CLEARED_CROBAT_HIDEOUT 0x26D
 #define FLAG_CROBAT_HIDEOUT_SEEN_BY_GRUNT 0x26E
 // True if the player met the merchant in beachbound route
-#define FLAG_MET_TRAVELING_MERCHANT_2ND_TIME  0x26F
+#define FLAG_MET_TRAVELLING_MERCHANT_2ND_TIME  0x26F
 #define FLAG_BEAT_CHII_TOWN_KIDS  0x271
 #define FLAG_HIDE_LOCKDOWN_SAMURAI 0x272
 #define FLAG_HIDE_HARIKO_YIFU_CITY  0x273

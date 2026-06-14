@@ -3,7 +3,6 @@
   "name": "BeachboundRoute",
   "layout": "LAYOUT_BEACHBOUND_ROUTE",
   "music": "MUS_ROUTE104",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -501,7 +500,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TravelingMerchant_EventScript_Keke",
+      "script": "TravellingMerchant_EventScript_Keke",
       "flag": "FLAG_BADGE01_GET",
       "afternoon": false,
       "deadnight": false,
@@ -512,7 +511,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRAVELING_MERCHANT",
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
       "x": 32,
       "y": 18,
       "elevation": 0,
@@ -521,7 +520,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BeachboundRoute_EventScript_TravelingMerchantSecondTime",
+      "script": "BeachboundRoute_EventScript_TravellingMerchantSecondTime",
       "flag": "FLAG_BADGE01_GET",
       "afternoon": false,
       "deadnight": false,
@@ -665,6 +664,46 @@
       "lunchtime": true,
       "morning": true,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
+      "x": 31,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TravellingMerchant_EventScript_Keke",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
+      "x": 32,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WhiteslateRoute_EventScript_TravellingMerchant",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -999,5 +1038,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BeachboundRoute_Sign_TrainerTips_XP"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

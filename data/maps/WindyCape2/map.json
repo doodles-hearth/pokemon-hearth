@@ -3,7 +3,6 @@
   "name": "WindyCape2",
   "layout": "LAYOUT_WINDY_CAPE2",
   "music": "MUS_SAILING",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_WINDYCAPE",
   "requires_flash": false,
   "weather": "WEATHER_RAIN",
@@ -122,5 +121,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "WindyCape_EventScript_SignApricorn"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

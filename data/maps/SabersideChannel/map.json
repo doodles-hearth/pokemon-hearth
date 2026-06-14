@@ -3,7 +3,6 @@
   "name": "SabersideChannel",
   "layout": "LAYOUT_SABERSIDE_CHANNEL",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SABERSIDE_CHANNEL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -28,5 +27,6 @@
   "object_events": [],
   "warp_events": [],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }
