@@ -631,7 +631,7 @@ static void SettravellingmerchantShopItemsForSale(void)
         i++;
     }
 
-    while (j < LIMITED_SHOP_MAX_ITEMS && gtravellingmerchantProgression[GetNumBadgesObtained()][j].item)
+    while (j < LIMITED_SHOP_MAX_ITEMS && gTravellingMerchantProgression[GetNumBadgesObtained()][j].item)
     {
         sMartInfo.itemCount++;
         j++;
@@ -680,10 +680,10 @@ static void InitShopItemsForSale(void)
                 i++;
             }
 
-            while (gtravellingmerchantProgression[GetNumBadgesObtained()][j].item)
+            while (gTravellingMerchantProgression[GetNumBadgesObtained()][j].item)
             {
-                *itemList = gtravellingmerchantProgression[GetNumBadgesObtained()][j].item;
-                *itemQuantity = gtravellingmerchantProgression[GetNumBadgesObtained()][j].quantity;
+                *itemList = gTravellingMerchantProgression[GetNumBadgesObtained()][j].item;
+                *itemQuantity = gTravellingMerchantProgression[GetNumBadgesObtained()][j].quantity;
                 itemList++;
                 itemQuantity++;
                 j++;

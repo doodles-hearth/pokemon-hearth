@@ -365,7 +365,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(KECLEON)",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(KECLEON)",
       "x": 15,
       "y": 13,
       "elevation": 0,
@@ -394,7 +394,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "WhiteslateRoute_EventScript_TravellingMerchant",
+      "script": "OrchardPath_EventScript_TravellingMerchant",
       "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
       "afternoon": true,
       "deadnight": false,

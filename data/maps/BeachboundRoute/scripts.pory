@@ -615,3 +615,22 @@ script BeachboundRoute_Sign_TrainerTips_XP {
 		"Weaker Pokémon will grow faster to catch up with your stronger ones!"
 	), MSGBOX_SIGN)
 }
+
+script BeachboundRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Nice to see you, {PLAYER}!\p"
+		"Please take a look at my shop!"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Safe travels!\n(Shuckles, where's my map?)"
+	))
+	closemessage
+
+	release
+}

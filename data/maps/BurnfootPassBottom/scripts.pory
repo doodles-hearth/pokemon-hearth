@@ -1,1 +1,39 @@
 mapscripts BurnfootPassBottom_MapScripts {}
+
+script BurnfootPassBottom_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}{PLAYER}!\nYou're covered in ash too, haha!\p"
+		"Take a look at my curated wares!"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thank you for your business!"
+	))
+    waitmessage
+
+    applymovement(VAR_LAST_TALKED, moves(face_left))
+    waitmovement(0)
+
+    msgbox(
+        "Keke no! Stop licking the ash!"
+    )
+
+    applymovement(LOCALID_BURNFOOTBOTTOM_KEKE, moves(face_left, shake_vertical))
+    playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
+
+    setspeaker("Keke")
+    msgbox(
+        "{DESTROY_MUGSHOT}Keh keh keh!"
+    )
+
+    waitmovement(0)
+
+	closemessage
+
+	release
+}

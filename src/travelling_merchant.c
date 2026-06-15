@@ -27,66 +27,69 @@ static const u16 sTravellingMerchantLocations[TRAVELLING_MERCHANT_LOCATIONS_COUN
 
 void UpdateTravellingMerchantLocation(void)
 {
+    DebugPrintf("UpdateTravellingMerchantLocation");
     if (!FlagGet(FLAG_MET_TRAVELLING_MERCHANT)) {
         return;
     }
 
-    gSaveBlock1Ptr->travellingMerchantLocation = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
-    u32 seed = gSaveBlock1Ptr->dailySeed ^ 0xE59586E4;
-    rng_value_t localRngState = LocalRandomSeed(seed);
+    rng_value_t localRngState = LocalRandomSeed(gSaveBlock1Ptr->dailySeed ^ 0xE59586E4);
 
     u32 newLocation = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
     
-    // Keeping only accessible locations
-    u32 possibleLocations[TRAVELLING_MERCHANT_LOCATIONS_COUNT];
-    u32 possibleLocationsCount = 0;
+    // Keeping only allowed locations
+    u32 allowedLocations[TRAVELLING_MERCHANT_LOCATIONS_COUNT];
+    u32 allowedLocationsCount = 0;
     for (u32 i = 0; i < TRAVELLING_MERCHANT_LOCATIONS_COUNT; i++)
     {
-        if (sTravellingMerchantLocations[i][1]) {
-            possibleLocations[possibleLocationsCount++] = i;
+        if (FlagGet(sTravellingMerchantLocations[i][1])) {
+            allowedLocations[allowedLocationsCount++] = i;
         }
     }
 
-    for (u32 i = possibleLocationsCount; i < TRAVELLING_MERCHANT_LOCATIONS_COUNT; i++)
+    for (u32 i = allowedLocationsCount; i < TRAVELLING_MERCHANT_LOCATIONS_COUNT; i++)
     {
-        possibleLocations[i] = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
+        allowedLocations[i] = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
     }
 
-    if (possibleLocationsCount > 0)
+    // Picking a random allowed location
+    if (allowedLocationsCount > 0)
     {
-        newLocation = possibleLocations[LocalRandom32(&localRngState) % possibleLocationsCount];
+        newLocation = allowedLocations[LocalRandom32(&localRngState) % allowedLocationsCount];
     }
 
     DebugPrintf("Location: %d", newLocation);
     gSaveBlock1Ptr->travellingMerchantLocation = newLocation;
 }
 
-static u32 IsInTravellingMerchantLocation(void)
+static u32 GetPlayerLocationIfIsAllowedMerchantLocation(void)
 {
-    u32 location = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
+    u32 playerLocation = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
     for (u32 i = 0; i < TRAVELLING_MERCHANT_LOCATIONS_COUNT; i++)
     {
         if
         (
+            sTravellingMerchantLocations[i][1] && // Only allowed locations
             MAP_GROUP(sTravellingMerchantLocations[i][0]) == gSaveBlock1Ptr->location.mapGroup &&
             MAP_NUM(sTravellingMerchantLocations[i][0]) == gSaveBlock1Ptr->location.mapNum
         )
         {
-            location = i;
+            DebugPrintf("Player is on a possible map!");
+            playerLocation = i;
             break;
         }
     }
-    return location;
+    return playerLocation;
 }
 
-void SetTravellingMerchantFlag(void)
+void UpdateTravellingMerchantFlag(void)
 {
-    u8 location = IsInTravellingMerchantLocation();
-    if (location == TRAVELLING_MERCHANT_UNDEFINED_LOCATION)
+    u32 playerLocation = GetPlayerLocationIfIsAllowedMerchantLocation();
+    if (playerLocation == TRAVELLING_MERCHANT_UNDEFINED_LOCATION)
         return;
 
-    if (location == gSaveBlock1Ptr->travellingMerchantLocation)
+    if (playerLocation == gSaveBlock1Ptr->travellingMerchantLocation)
     {
+        DebugPrintf("Player is on the same map!");
         FlagClear(TRAVELLING_MERCHANT_EVENT_FLAG);
         return;
     }

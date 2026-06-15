@@ -604,6 +604,25 @@ script TranquilRoute_EventScript_TravellingMerchantFirstTime {
 	release
 }
 
+script TranquilRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Oh, hello, {PLAYER}.\nAre you on your way back home?\p"
+		"Are you looking to purchase?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}I will see you around!\p(You haven't found my purse around,\nhave you?)"
+	))
+	closemessage
+
+	release
+}
+
 script TranquilRoute_EventScript_WaitingForChatot {
 	lock
 	faceplayer

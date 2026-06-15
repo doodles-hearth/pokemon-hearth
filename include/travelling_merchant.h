@@ -1,7 +1,7 @@
 #ifndef GUARD_TRAVELLING_MERCHANT_H
 #define GUARD_TRAVELLING_MERCHANT_H
 
-void SetTravellingMerchantFlag(void);
+void UpdateTravellingMerchantFlag(void);
 void UpdateTravellingMerchantLocation(void);
 void ResetTravellingMerchantNewGame(void);
 

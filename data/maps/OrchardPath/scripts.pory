@@ -424,3 +424,22 @@ script OrchardPath_EventScript_Utsu {
 	closemessage
 	end
 }
+
+script OrchardPath_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Hello, {PLAYER}!\nGoing Berry picking?\p"
+		"Right, um, want to buy something?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thank you very much!\nUh, where was I going next?…"
+	))
+	closemessage
+
+	release
+}
