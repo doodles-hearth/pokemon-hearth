@@ -3,7 +3,8 @@ const FLAG_HIDE_HOTPOT_SCENE_MONS = FLAG_TEMP_2
 
 mapscripts YifuCity_Restaurant_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
-		getspeciesgfx(VAR_STARTER_MON, VAR_OBJ_GFX_ID_0)
+		getleadmonspecies
+		getspeciesgfx(VAR_RESULT, VAR_OBJ_GFX_ID_0)
 		getnatsukistartermongfx(VAR_OBJ_GFX_ID_1, 2)
 		if (var(VAR_HOTPOT_SCENE_STATE) == 2) {
 		} else {

@@ -2281,6 +2281,16 @@ bool32 ScrCmd_GetTransformMonSpecies(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_getleadmonspecies(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1);
+
+    u8 partyIndex = GetLeadMonIndex();
+    enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_SPECIES);
+    VarSet(VAR_RESULT, species);
+    return FALSE;
+}
+
 bool8 ScrCmd_bufferleadmonspeciesname(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
