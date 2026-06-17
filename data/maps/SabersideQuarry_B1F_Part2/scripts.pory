@@ -114,7 +114,6 @@ script SabersideQuarry_EventScript_LostGirl {
 	closemessage
 
 	special(ChoosePartyMon)
-	waitstate
 
 	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
 		msgbox(format(

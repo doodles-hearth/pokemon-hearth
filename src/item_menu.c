@@ -371,20 +371,22 @@ static const u8 sContextMenuItems_QuizLady[] = {
     ACTION_CONFIRM_QUIZ_LADY, ACTION_CANCEL
 };
 
-static const TaskFunc sContextMenuFuncs[] = {
-    [ITEMMENULOCATION_FIELD] =                  Task_ItemContext_Normal,
-    [ITEMMENULOCATION_BATTLE] =                 Task_ItemContext_Normal,
-    [ITEMMENULOCATION_PARTY] =                  Task_ItemContext_GiveToParty,
-    [ITEMMENULOCATION_SHOP] =                   Task_ItemContext_Sell,
-    [ITEMMENULOCATION_BERRY_TREE] =             Task_FadeAndCloseBagMenu,
-    [ITEMMENULOCATION_BERRY_BLENDER_CRUSH] =    Task_ItemContext_Normal,
-    [ITEMMENULOCATION_ITEMPC] =                 Task_ItemContext_Deposit,
-    [ITEMMENULOCATION_FAVOR_LADY] =             Task_ItemContext_Normal,
-    [ITEMMENULOCATION_QUIZ_LADY] =              Task_ItemContext_Normal,
-    [ITEMMENULOCATION_APPRENTICE] =             Task_ItemContext_Normal,
-    [ITEMMENULOCATION_WALLY] =                  NULL,
-    [ITEMMENULOCATION_PCBOX] =                  Task_ItemContext_GiveToPC,
-    [ITEMMENULOCATION_BERRY_TREE_MULCH] =       Task_FadeAndCloseBagMenuIfMulch,
+static const TaskFunc sContextMenuFuncs[] =
+{
+    [ITEMMENULOCATION_FIELD]                    = Task_ItemContext_Normal,
+    [ITEMMENULOCATION_BATTLE]                   = Task_ItemContext_Normal,
+    [ITEMMENULOCATION_PARTY]                    = Task_ItemContext_GiveToParty,
+    [ITEMMENULOCATION_SHOP]                     = Task_ItemContext_Sell,
+    [ITEMMENULOCATION_BERRY_TREE]               = Task_FadeAndCloseBagMenu,
+    [ITEMMENULOCATION_BERRY_BLENDER_CRUSH]      = Task_ItemContext_Normal,
+    [ITEMMENULOCATION_ITEMPC]                   = Task_ItemContext_Deposit,
+    [ITEMMENULOCATION_FAVOR_LADY]               = Task_ItemContext_Normal,
+    [ITEMMENULOCATION_QUIZ_LADY]                = Task_ItemContext_Normal,
+    [ITEMMENULOCATION_APPRENTICE]               = Task_ItemContext_Normal,
+    [ITEMMENULOCATION_WALLY]                    = NULL,
+    [ITEMMENULOCATION_PCBOX]                    = Task_ItemContext_GiveToPC,
+    [ITEMMENULOCATION_BERRY_TREE_MULCH]         = Task_FadeAndCloseBagMenuIfMulch,
+    [ITEMMENULOCATION_RAIDEND]                  = Task_ItemContext_Normal,
 };
 
 static const struct YesNoFuncTable sYesNoTossFunctions = {ConfirmToss, CancelToss};
@@ -622,6 +624,11 @@ void ChooseBerryForMachine(MainCallback exitCallback)
     GoToBagMenu(ITEMMENULOCATION_BERRY_BLENDER_CRUSH, POCKET_BERRIES, exitCallback);
 }
 
+void CB2_ChooseBall(void)
+{
+    GoToBagMenu(ITEMMENULOCATION_RAIDEND, POCKET_POKE_BALLS, CB2_SetUpReshowBattleScreenAfterMenu2);
+}
+
 void CB2_GoToSellMenu(void)
 {
     #ifdef MUDSKIP_SHOP_UI
@@ -671,9 +678,10 @@ void GoToBagMenu(u8 location, u8 pocket, MainCallback exitCallback)
             gBagPosition.exitCallback = exitCallback;
         if (pocket < POCKETS_COUNT)
             gBagPosition.pocket = pocket;
-        if (gBagPosition.location == ITEMMENULOCATION_BERRY_TREE ||
-            gBagPosition.location == ITEMMENULOCATION_BERRY_BLENDER_CRUSH ||
-            gBagPosition.location == ITEMMENULOCATION_BERRY_TREE_MULCH)
+        if (gBagPosition.location == ITEMMENULOCATION_BERRY_TREE
+         || gBagPosition.location == ITEMMENULOCATION_BERRY_BLENDER_CRUSH
+         || gBagPosition.location == ITEMMENULOCATION_BERRY_TREE_MULCH
+         || gBagPosition.location == ITEMMENULOCATION_RAIDEND)
             gBagMenu->pocketSwitchDisabled = TRUE;
         gBagMenu->newScreenCallback = NULL;
         gBagMenu->toSwapPos = NOT_SWAPPING;
@@ -1382,6 +1390,10 @@ static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
         *bagPocketId = POCKETS_COUNT - 1;
     else
         *bagPocketId += deltaBagPocketId;
+
+    if (IsVictoryCatch() && *bagPocketId == POCKET_POKE_BALLS)
+        *bagPocketId += 1;
+
 }
 
 static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseList)
@@ -1605,6 +1617,7 @@ static void OpenContextMenu(u8 taskId)
     {
     case ITEMMENULOCATION_BATTLE:
     case ITEMMENULOCATION_WALLY:
+    case ITEMMENULOCATION_RAIDEND:
         if (GetItemBattleUsage(gSpecialVar_ItemId))
         {
             gBagMenu->contextMenuItemsPtr = sContextMenuItems_BattleUse;

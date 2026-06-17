@@ -120,7 +120,6 @@ script SunriseVillage_PlayersHouse_Bedroom_Trigger_ForgotBag {
 script SunriseVillage_EventScript_PlayerPc {
 	lockall
 	special(BedroomPC)
-	waitstate
 }
 
 script SunriseVillage_TurnOffPlayerPC {
