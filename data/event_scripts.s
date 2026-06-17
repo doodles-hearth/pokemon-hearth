@@ -1743,7 +1743,6 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/apricorn_tree.inc"
 	.include "data/scripts/dexnav.inc"
 	.include "data/scripts/wild_encounter.inc"
-	.include "data/scripts/shamisen_players.inc"
 
 	@ please include poryscript-generated scripts here!!
 	@ ---------------------------------------------
@@ -1762,6 +1761,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/travelling_merchant.scr"
 	.include "data/scripts/daycare_adoption.scr"
 	.include "data/scripts/memory_reader.scr"
+	.include "data/scripts/shamisen_players.scr"
 
 	.include "data/text/pokedex_rating.scr"
 
@@ -2068,3 +2068,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/UumeForest_Entrance/scripts.scr"
 
 	.include "data/maps/HanabiLake/scripts.scr"
+
+	.include "data/maps/HanabiCity_Dojo/scripts.scr"

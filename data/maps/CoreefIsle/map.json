@@ -3,7 +3,6 @@
   "name": "CoreefIsle",
   "layout": "LAYOUT_COREEF_ISLE",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_COREEF_ISLE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -290,5 +289,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CoreefIsle_EventScript_TownSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

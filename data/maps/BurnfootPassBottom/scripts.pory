@@ -37,3 +37,36 @@ script BurnfootPassBottom_EventScript_TravellingMerchant {
 
 	release
 }
+
+script BurnfootPassBottom_EventScript_Ame {
+    trainerbattle_single(
+		TRAINER_AME,
+		format("The weather here is so confusing!"),
+		format("I was distracted by the falling ash!")
+	)
+	// setspeaker(SP_NAME_BATTLE_GIRL)
+	msgbox(("The ash from the volcano is drying out\nmy skin…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script BurnfootPassBottom_EventScript_Yo {
+    trainerbattle_single(
+		TRAINER_YO,
+		format("Noooo!\nAll this ash is blocking the sun!"),
+		format("You shine bright, young Wielder…")
+	)
+	// setspeaker(SP_NAME_BATTLE_GIRL)
+	msgbox(("My doctor said I should get more\nsunlight.\lWhy did I come here, of all places?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script BurnfootPassBottom_EventScript_TrekUp {
+	lock
+	faceplayer
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Running all the way up to Mt Kazan and\ndown again is great exercise.\p"
+		"It's even better when you have to run\nleft and right avoiding boulders."
+	)
+	closemessage
+	release
+}

@@ -585,6 +585,7 @@ gSpecials::
 	def_special SetAbility
 	def_special GetRandomAdoptionSpecies
 	def_special GetRandomSpecialAdoptionSpecies
+	def_special GetNumberOfBadges
 	def_special CanTeachMoveBoxMon
 	def_special ObjectEventInteractionGetApricornTreeData
 	def_special ObjectEventInteractionPickApricornTree
