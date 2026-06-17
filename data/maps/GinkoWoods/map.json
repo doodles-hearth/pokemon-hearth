@@ -3,7 +3,6 @@
   "name": "GinkoWoods",
   "layout": "LAYOUT_GINKO_WOODS",
   "music": "MUS_RG_VIRIDIAN_FOREST",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_GINKO_WOODS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -384,5 +383,6 @@
       "item": "ITEM_TINY_MUSHROOM",
       "flag": "FLAG_HIDDEN_ITEM_GINKO_WOODS_TINY_MUSHROOM"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

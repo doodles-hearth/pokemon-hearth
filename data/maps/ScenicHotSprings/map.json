@@ -3,7 +3,6 @@
   "name": "ScenicHotSprings",
   "layout": "LAYOUT_SCENIC_HOT_SPRINGS",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SCENIC_HOT_SPRINGS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -28,5 +27,6 @@
   "object_events": [],
   "warp_events": [],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

@@ -14,6 +14,7 @@
 #include "random.h"
 #include "rtc.h"
 #include "shamisen_players.h"
+#include "travelling_merchant.h"
 #include "shiny_vial.h"
 #include "time_events.h"
 #include "tv.h"
@@ -53,6 +54,7 @@ void DoDailyEvents(u32 daysSince)
     ClearDailyTrainers();
     UpdateDailySeed();
     UpdateShamisenPlayers();
+    UpdateTravellingMerchantLocation();
     UpdateDewfordTrendPerDay(daysSince);
     UpdateTVShowsPerDay(daysSince);
     UpdateWeatherPerDay(daysSince);

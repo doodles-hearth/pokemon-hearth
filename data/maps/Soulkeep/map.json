@@ -3,7 +3,6 @@
   "name": "Soulkeep",
   "layout": "LAYOUT_SOULKEEP",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOULKEEP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -461,5 +460,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Soulkeep_EventScript_GraveyardSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

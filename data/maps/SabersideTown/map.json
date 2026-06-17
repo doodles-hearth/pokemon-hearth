@@ -3,7 +3,6 @@
   "name": "SabersideTown",
   "layout": "LAYOUT_SABERSIDE_TOWN",
   "music": "MUS_RG_CINNABAR",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SABERSIDE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -407,5 +406,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SabersideTown_EventScript_TownSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -3,7 +3,6 @@
   "name": "Silveridge",
   "layout": "LAYOUT_SILVERIDGE",
   "music": "MUS_RG_PEWTER",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SILVERIDGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -338,5 +337,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Silveridge_EventScript_EldersHouseSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

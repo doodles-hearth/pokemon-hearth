@@ -256,8 +256,8 @@ const u32 gObjectEventPic_RichBoy[] = INCGFX_U32("graphics/object_events/pics/pe
 const u32 gObjectEventPic_FatMan[] = INCGFX_U32("graphics/object_events/pics/people/fat_man.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u16 gObjectEventPal_FatMan[] = INCGFX_U16("graphics/object_events/pics/people/fat_man.png", ".gbapal");
 const u32 gObjectEventPic_PokefanF[] = INCGFX_U32("graphics/object_events/pics/people/pokefan_f.png", ".4bpp", "-mwidth 2 -mheight 4");
-const u32 gObjectEventPic_TravelingMerchant[] = INCGFX_U32("graphics/object_events/pics/people/traveling_merchant.png", ".4bpp", "-mwidth 4 -mheight 4");
-const u16 gObjectEventPal_TravelingMerchant[] = INCGFX_U16("graphics/trainers/front_pics/traveling_merchant.png", ".gbapal");
+const u32 gObjectEventPic_TravellingMerchant[] = INCGFX_U32("graphics/object_events/pics/people/traveling_merchant.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u16 gObjectEventPal_TravellingMerchant[] = INCGFX_U16("graphics/trainers/front_pics/traveling_merchant.png", ".gbapal");
 const u32 gObjectEventPic_Bean[] = INCGFX_U32("graphics/object_events/pics/people/cold/hariko.png", ".4bpp", "-mwidth 4 -mheight 4");
 
 const u32 gObjectEventPic_ExpertM[] = INCGFX_U32("graphics/object_events/pics/people/expert_m.png", ".4bpp", "-mwidth 2 -mheight 4");

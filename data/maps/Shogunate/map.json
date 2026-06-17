@@ -3,7 +3,6 @@
   "name": "Shogunate",
   "layout": "LAYOUT_SHOGUNATE",
   "music": "MUS_B_ARENA",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SHOGUNATE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -317,5 +316,6 @@
       "item": "ITEM_MOON_STONE",
       "flag": "FLAG_HIDDEN_ITEM_SHOGUNATE_MOON_STONE"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -28,6 +28,7 @@
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "config/save.h"
+#include "constants/limited_shop.h"
 #include "config/limited_shop.h"
 
 // Prevent cross-jump optimization.
@@ -1258,6 +1259,7 @@ struct SaveBlock1
     u8 activePost[NUM_ACTIVE_POST_SLOTS];
     u8 postFlags[NUM_MAIL_FLAG_BYTES];
     u16 chatotPostRematchTrainerId;
+    u16 travellingMerchantLocation;
 };
 
 extern struct SaveBlock1 *gSaveBlock1Ptr;

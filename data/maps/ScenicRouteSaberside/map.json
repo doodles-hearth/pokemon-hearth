@@ -3,7 +3,6 @@
   "name": "ScenicRouteSaberside",
   "layout": "LAYOUT_SCENIC_ROUTE_SABERSIDE",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SCENIC_ROUTE_SABERSIDE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -172,5 +171,6 @@
       "script": "ScenicRoute_Trigger_ExitZoneUnderBridge"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }
