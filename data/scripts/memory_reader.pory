@@ -44,11 +44,9 @@ script MemoryGirl_EventScript_BeginConversation {
     closemessage
 
     special(ChoosePartyMon)
-    waitstate
 
     if (var(CHOSEN_SLOT) == PARTY_NOTHING_CHOSEN)
     {
-        
         msgbox(
             "You're no fun!"
         )

@@ -19,6 +19,7 @@
 #include "constants/berry.h"
 #include "constants/chatot_post.h"
 #include "constants/maps.h"
+#include "constants/mass_outbreak.h"
 #include "constants/pokemon.h"
 #include "constants/route_challenge.h"
 #include "constants/easy_chat.h"

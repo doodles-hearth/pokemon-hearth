@@ -607,11 +607,6 @@ static void IsTrainerHillChallengeActive(void)
         gSpecialVar_Result = TRUE;
 }
 
-static void UNUSED TrainerHillDummy_Unused(void)
-{
-
-}
-
 static void TrainerHillDummy(void)
 {
 

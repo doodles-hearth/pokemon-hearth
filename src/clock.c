@@ -8,6 +8,7 @@
 #include "field_weather.h"
 #include "lottery_corner.h"
 #include "main.h"
+#include "mass_outbreak.h"
 #include "overworld.h"
 #include "pokerus.h"
 #include "random.h"
@@ -58,12 +59,15 @@ void DoDailyEvents(u32 daysSince)
     UpdateTVShowsPerDay(daysSince);
     UpdateWeatherPerDay(daysSince);
     UpdatePartyPokerusTime(daysSince);
-    UpdateMirageRnd(daysSince);
     UpdateBirchState(daysSince);
     UpdateFrontierManiac(daysSince);
     UpdateFrontierGambler(daysSince);
     SetShoalItemFlag(daysSince);
-    SetRandomLotteryNumber(daysSince);
+    if (!OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES)
+    {
+        UpdateMirageRnd(daysSince);
+        SetRandomLotteryNumber(daysSince);
+    }
     UpdateDaysPassedSinceFormChange(daysSince);
     RollDailyCampfireEvents(daysSince);
     DailyResetApricornTrees();

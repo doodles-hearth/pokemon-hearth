@@ -823,7 +823,6 @@ script CrobatHideout_1F_LetsFight2v2 {
 	special(SavePlayerParty)
 	fadescreenswapbuffers(FADE_TO_BLACK)
 	special(ChooseHalfPartyForBattle)
-	waitstate
 
 	if (var(VAR_RESULT) == 0) {
 		special(LoadPlayerParty)
@@ -898,7 +897,6 @@ script CrobatHideout_1F_LetsFight2v2 {
 		} else {
 			fadescreenswapbuffers(FADE_TO_BLACK)
 			special(SetCB2WhiteOut)
-			waitstate
 		}
 	}
 

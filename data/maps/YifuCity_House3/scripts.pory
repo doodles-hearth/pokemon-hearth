@@ -162,7 +162,6 @@ script YifuCity_House3_NotTradedYet {
 
 script YifuCity_House3_TradeEgg {
 	special(ChoosePartyMon)
-	waitstate
 	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
 		msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}Have you changed your mind?"))
 		closemessage
