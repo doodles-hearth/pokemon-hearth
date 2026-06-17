@@ -14,7 +14,7 @@
 static const u16 sTravellingMerchantLocations[TRAVELLING_MERCHANT_LOCATIONS_COUNT][2] =
 {
     {MAP_TRANQUIL_ROUTE, FLAG_BADGE01_GET},
-    {MAP_BEACHBOUND_ROUTE, FLAG_DUMMY}, // TODO EVA flag healed Bronzong decay
+    {MAP_BEACHBOUND_ROUTE, FLAG_CURED_DECAY_HARVEST_SHRINE},
     {MAP_WHITESLATE_ROUTE, FLAG_BADGE02_GET},
     {MAP_WINDSWEPT_ROUTE, FLAG_BADGE03_GET},
     {MAP_SCENIC_ROUTE, FLAG_BADGE03_GET},
@@ -27,12 +27,11 @@ static const u16 sTravellingMerchantLocations[TRAVELLING_MERCHANT_LOCATIONS_COUN
 
 void UpdateTravellingMerchantLocation(void)
 {
-    DebugPrintf("UpdateTravellingMerchantLocation");
     if (!FlagGet(FLAG_MET_TRAVELLING_MERCHANT)) {
         return;
     }
 
-    rng_value_t localRngState = LocalRandomSeed(gSaveBlock1Ptr->dailySeed ^ 0xE59586E4);
+    rng_value_t localRngState = LocalRandomSeed(gSaveBlock1Ptr->dailySeed ^ TRAVELLING_MERCHANT_SEED_MODIFIER);
 
     u32 newLocation = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
     
@@ -41,7 +40,12 @@ void UpdateTravellingMerchantLocation(void)
     u32 allowedLocationsCount = 0;
     for (u32 i = 0; i < TRAVELLING_MERCHANT_LOCATIONS_COUNT; i++)
     {
-        if (FlagGet(sTravellingMerchantLocations[i][1])) {
+        if
+        (
+            FlagGet(sTravellingMerchantLocations[i][1]) &&
+            // Can't have the same location twice in a row
+            i != gSaveBlock1Ptr->travellingMerchantLocation
+        ) {
             allowedLocations[allowedLocationsCount++] = i;
         }
     }
@@ -57,7 +61,6 @@ void UpdateTravellingMerchantLocation(void)
         newLocation = allowedLocations[LocalRandom32(&localRngState) % allowedLocationsCount];
     }
 
-    DebugPrintf("Location: %d", newLocation);
     gSaveBlock1Ptr->travellingMerchantLocation = newLocation;
 }
 
@@ -73,7 +76,6 @@ static u32 GetPlayerLocationIfIsAllowedMerchantLocation(void)
             MAP_NUM(sTravellingMerchantLocations[i][0]) == gSaveBlock1Ptr->location.mapNum
         )
         {
-            DebugPrintf("Player is on a possible map!");
             playerLocation = i;
             break;
         }
@@ -89,7 +91,6 @@ void UpdateTravellingMerchantFlag(void)
 
     if (playerLocation == gSaveBlock1Ptr->travellingMerchantLocation)
     {
-        DebugPrintf("Player is on the same map!");
         FlagClear(TRAVELLING_MERCHANT_EVENT_FLAG);
         return;
     }
@@ -97,7 +98,7 @@ void UpdateTravellingMerchantFlag(void)
     FlagSet(TRAVELLING_MERCHANT_EVENT_FLAG);
 }
 
-void ResetTravellingMerchantNewGame(void)
+void ReSetTravellingMerchantNewGame(void)
 {
     gSaveBlock1Ptr->travellingMerchantLocation = TRAVELLING_MERCHANT_UNDEFINED_LOCATION;
 }

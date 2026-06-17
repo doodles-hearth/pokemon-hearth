@@ -262,7 +262,7 @@ void NewGameInitData(void)
     DecorationAdd(DECOR_MAREEP_DOLL);
     GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_JOLTIK), FLAG_SET_SEEN);
     ResetShamisenPlayersNewGame();
-    ResetTravellingMerchantNewGame();
+    ReSetTravellingMerchantNewGame();
 }
 
 static void ResetMiniGamesRecords(void)

@@ -3,6 +3,6 @@
 
 void UpdateTravellingMerchantFlag(void);
 void UpdateTravellingMerchantLocation(void);
-void ResetTravellingMerchantNewGame(void);
+void ReSetTravellingMerchantNewGame(void);
 
 #endif //GUARD_TRAVELLING_MERCHANT_H

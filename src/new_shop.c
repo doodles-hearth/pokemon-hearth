@@ -44,6 +44,8 @@
 #include "constants/event_objects.h"
 #include "config/limited_shop.h"
 #include "move.h"
+#include "constants/travelling_merchant.h"
+#include "random.h"
 
 #ifdef MUDSKIP_SHOP_UI
 // #include "outfit_menu.h" // uncomment this out if you have my outfit system
@@ -500,7 +502,7 @@ static const struct Seller sSellers[] = {
         .message = {
             [SELLER_MSG_RETURN_TO_FIELD]   = COMPOUND_STRING("{CREATE_MUGSHOT MUGSHOT_OKADA EMOTE_NORMAL}{SPEAKER NAME_OKADA}Alrighty! Anything else?"),
             [SELLER_MSG_BUY_PROMPT]        = sText_YouWantedVar1ThatllBeVar2,
-            [SELLER_MSG_BUY_PROMPT_PLURAL] = COMPOUND_STRING("{STR_VAR_1}?\nSure! How\nmany?"),
+            [SELLER_MSG_BUY_PROMPT_PLURAL] = COMPOUND_STRING("{STR_VAR_1}?\nSure! Uh,\nhow many?"),
             [SELLER_MSG_BUY_CONFIRM]       = sText_Var1AndYouWantedVar2,
             [SELLER_MSG_BUY_SUCCESS]       = COMPOUND_STRING("Here you go!\nPlease enjoy."),
             [SELLER_MSG_BUY_FAIL_NO_SPACE] = sText_NoMoreRoomForThis,
@@ -620,9 +622,9 @@ static void SetShopItemsForSale(const u16 *items)
 
 #include "data/limited_shop.h"
 
-static void SettravellingmerchantShopItemsForSale(void)
+static void SetTravellingMerchantShopItemsForSale(void)
 {
-    u16 i = 0, j = 0;
+    u32 i = 0, j = 0;
     sMartInfo.itemCount = 0;
 
     while (i < LIMITED_SHOP_MAX_ITEMS && gTravellingMerchantLocation[gMapHeader.mapLayoutId][i].item)
@@ -636,6 +638,16 @@ static void SettravellingmerchantShopItemsForSale(void)
         sMartInfo.itemCount++;
         j++;
     }
+
+    // If location has rare travelling merchant items, there's a 1/odds chance he's selling one
+    if (gTravellingMerchantRareItemsLocation[gMapHeader.mapLayoutId][0].item) {
+        rng_value_t localRngState = LocalRandomSeed(gSaveBlock1Ptr->dailySeed ^ TRAVELLING_MERCHANT_SEED_MODIFIER);
+        if (LocalRandom32(&localRngState) % TRAVELLING_MERCHANT_RARE_ITEM_ODDS == 1) {
+            sMartInfo.itemCount++;
+        }
+    }
+
+    // Exit button
     sMartInfo.itemCount++;
 }
 
@@ -687,6 +699,26 @@ static void InitShopItemsForSale(void)
                 itemList++;
                 itemQuantity++;
                 j++;
+            }
+
+            // If location has rare travelling merchant items, there's a 1/odds chance he's selling one at random
+            if (gTravellingMerchantRareItemsLocation[gMapHeader.mapLayoutId][0].item)
+            {
+                rng_value_t localRngState = LocalRandomSeed(gSaveBlock1Ptr->dailySeed ^ TRAVELLING_MERCHANT_SEED_MODIFIER);
+                if (LocalRandom32(&localRngState) % TRAVELLING_MERCHANT_RARE_ITEM_ODDS == 1) {
+                    u32 nbRareItemsForLoc = 0;
+                    while (nbRareItemsForLoc < LIMITED_SHOP_MAX_ITEMS && gTravellingMerchantRareItemsLocation[gMapHeader.mapLayoutId][nbRareItemsForLoc].item)
+                    {
+                        nbRareItemsForLoc++;
+                    }
+
+                    u32 indexRareItem = LocalRandom32(&localRngState) % nbRareItemsForLoc;
+
+                    *itemList = gTravellingMerchantRareItemsLocation[gMapHeader.mapLayoutId][indexRareItem].item;
+                    *itemQuantity = gTravellingMerchantRareItemsLocation[gMapHeader.mapLayoutId][indexRareItem].quantity;
+                    itemList++;
+                    itemQuantity++;
+                }
             }
         }
         else
@@ -1043,7 +1075,7 @@ static void SetAmountOfItemBought(u8 storeId, u16 itemPos, s16 amountBought)
     gSaveBlock2Ptr->limitedShopVars[index] |= (newAmount & 0xF) << bitOffset;
 }
 
-void ResettravellingmerchantItemStock(void)
+void ReSetTravellingMerchantItemStock(void)
 {
     for (u16 i = 0; i < LIMITED_SHOP_MAX_ITEMS; i++)
     {
@@ -1969,7 +2001,7 @@ void NewShop_CreateLimitedShopMenu(u8 shopId)
 {
     CreateShopMenu(MART_TYPE_LIMITED);
     if (shopId == TRAVELLING_MERCHANT_SHOP)
-        SettravellingmerchantShopItemsForSale();
+        SetTravellingMerchantShopItemsForSale();
     else
         SetLimitedShopItemsForSale(shopId);
     SetShopId(shopId);

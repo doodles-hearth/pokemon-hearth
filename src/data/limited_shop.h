@@ -22,20 +22,13 @@ const struct LimitedShopItems gLimitedShops[LIMITED_SHOP_COUNT][LIMITED_SHOP_MAX
         {ITEM_TM_AERIAL_ACE, 1},
         {ITEM_NONE, UNLIMITED},
     },
-    [LIMITED_SHOP_2] = 
-    {
-        {ITEM_POTION, UNLIMITED},
-        {ITEM_HYPER_POTION, 15},
-        {ITEM_MAX_POTION, 5},
-        {ITEM_ESCAPE_ROPE, 5},
-        {ITEM_FULL_HEAL, 10},
-        {ITEM_REVIVE, 5},
-        {ITEM_REPEL, 15},
-        {ITEM_SUPER_REPEL, 10},
-        {ITEM_NONE, UNLIMITED},
-    },
 };
 
+// =========================================
+// === TRAVELING MERCHANT'S LIMITED SHOP ===
+// =========================================
+
+// Items specific to a location
 const struct LimitedShopItems gTravellingMerchantLocation[LAYOUT_SILVER_TUNNEL_3F][LIMITED_SHOP_MAX_ITEMS + 1] = {
     /*gMapHeader.mapLayoutId*/
     [LAYOUT_BURNFOOT_PASS_BOTTOM] = 
@@ -55,15 +48,38 @@ const struct LimitedShopItems gTravellingMerchantLocation[LAYOUT_SILVER_TUNNEL_3
     },
 };
 
-const struct LimitedShopItems gtravellingmerchantRareItemsLocation[LAYOUT_SILVER_TUNNEL_3F][LIMITED_SHOP_MAX_ITEMS + 1] = {
+// Rare items (only present at random some of the time) specific to a location
+const struct LimitedShopItems gTravellingMerchantRareItemsLocation[LAYOUT_SILVER_TUNNEL_3F][LIMITED_SHOP_MAX_ITEMS + 1] = {
     /*gMapHeader.mapLayoutId*/
     [LAYOUT_TRANQUIL_ROUTE] = 
     {
         {ITEM_NEST_BALL, 5},
         {ITEM_NONE, UNLIMITED},
     },
+    [LAYOUT_BEACHBOUND_ROUTE] = 
+    {
+        {ITEM_WATER_STONE, 1},
+        {ITEM_NONE, UNLIMITED},
+    },
+    [LAYOUT_BURNFOOT_PASS] = 
+    {
+        {ITEM_TM_FLAMETHROWER, 1},
+        {ITEM_MAGMARIZER, 1},
+        {ITEM_NONE, UNLIMITED},
+    },
+    [LAYOUT_WINDSWEPT_ROUTE] = 
+    {
+        {ITEM_THUNDER_STONE, 1},
+        {ITEM_NONE, UNLIMITED},
+    },
+    [LAYOUT_ORCHARD_PATH] = 
+    {
+        {ITEM_TM_SHADOW_BALL, 1},
+        {ITEM_NONE, UNLIMITED},
+    },
 };
 
+// Items per number of badges obtained
 const struct LimitedShopItems gTravellingMerchantProgression[NUM_BADGES + 2][LIMITED_SHOP_MAX_ITEMS + 1] = {
     /*Badges obtained*/
     [0] = 
