@@ -121,37 +121,37 @@ script Silveridge_Refuge_EventScript_Pasture {
 }
 
 script Silveridge_Refuge_EventScript_Shamisen {
-	lock
-	faceplayer
+	// lock
+	// faceplayer
 
-	if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
-		setspeaker(SP_NAME_SHAMISEN_PLAYER)
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}Are you resting here for the night\nas well?"
-		))
-		closemessage
-	} else {
-		special(GetPlayerBoyGirlString)
-		setspeaker(SP_NAME_SHAMISEN_PLAYER)
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}Good evening to you, {STR_VAR_1}.\nAre you here to listen to my music?\lOr are you here to battle?"
-		))
-		closemessage
+	// if (flag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)) {
+	// 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
+	// 	msgbox((
+	// 		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}Are you resting here for the night\nas well?"
+	// 	))
+	// 	closemessage
+	// } else {
+	// 	special(GetPlayerBoyGirlString)
+	// 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
+	// 	msgbox((
+	// 		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}Good evening to you, {STR_VAR_1}.\nAre you here to listen to my music?\lOr are you here to battle?"
+	// 	))
+	// 	closemessage
 
-		trainerbattle_no_intro(TRAINER_SHAMISEN, format("Such fun!"))
+	// 	trainerbattle_no_intro(TRAINER_SHAMISEN, format("Such fun!"))
 
-		setspeaker(SP_NAME_SHAMISEN_PLAYER)
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}That was just the thing I needed to\npass the time.\p"
-			"I'll share my meal with you as a\nthanks."
-		))
-		closemessage
+	// 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
+	// 	msgbox((
+	// 		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_GREEN 0}That was just the thing I needed to\npass the time.\p"
+	// 		"I'll share my meal with you as a\nthanks."
+	// 	))
+	// 	closemessage
 
-		giveitem(ITEM_SUPERGIRI, 2)
+	// 	giveitem(ITEM_SUPERGIRI, 2)
 
-		setflag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)
-	}
+	// 	setflag(FLAG_DAILY_SHAMISEN_BATTLE_IN_POKECENTER)
+	// }
 
-	release
-	end
+	// release
+	// end
 }

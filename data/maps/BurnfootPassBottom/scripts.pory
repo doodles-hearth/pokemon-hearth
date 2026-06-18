@@ -1,1 +1,72 @@
 mapscripts BurnfootPassBottom_MapScripts {}
+
+script BurnfootPassBottom_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}{PLAYER}!\nYou're covered in ash too, haha!\p"
+		"Take a look at my curated wares!"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thank you for your business!"
+	))
+    waitmessage
+
+    applymovement(VAR_LAST_TALKED, moves(face_left))
+    waitmovement(0)
+
+    msgbox(
+        "Keke no! Stop licking the ash!"
+    )
+
+    applymovement(LOCALID_BURNFOOTBOTTOM_KEKE, moves(face_left, shake_vertical))
+    playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
+
+    setspeaker("Keke")
+    msgbox(
+        "{DESTROY_MUGSHOT}Keh keh keh!"
+    )
+
+    waitmovement(0)
+
+	closemessage
+
+	release
+}
+
+script BurnfootPassBottom_EventScript_Ame {
+    trainerbattle_single(
+		TRAINER_AME,
+		format("The weather here is so confusing!"),
+		format("I was distracted by the falling ash!")
+	)
+	// setspeaker(SP_NAME_BATTLE_GIRL)
+	msgbox(("The ash from the volcano is drying out\nmy skin…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script BurnfootPassBottom_EventScript_Yo {
+    trainerbattle_single(
+		TRAINER_YO,
+		format("Noooo!\nAll this ash is blocking the sun!"),
+		format("You shine bright, young Wielder…")
+	)
+	// setspeaker(SP_NAME_BATTLE_GIRL)
+	msgbox(("My doctor said I should get more\nsunlight.\lWhy did I come here, of all places?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script BurnfootPassBottom_EventScript_TrekUp {
+	lock
+	faceplayer
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Running all the way up to Mt Kazan and\ndown again is great exercise.\p"
+		"It's even better when you have to run\nleft and right avoiding boulders."
+	)
+	closemessage
+	release
+}

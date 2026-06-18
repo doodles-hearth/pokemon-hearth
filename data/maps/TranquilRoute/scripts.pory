@@ -531,7 +531,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 	setflag(FLAG_HIDE_CROBAT_SHADOWS_TRANQUIL_RT)
 }
 
-script TranquilRoute_EventScript_TravelingMerchantFirstTime {
+script TranquilRoute_EventScript_TravellingMerchantFirstTime {
 	lock
 	waitse
 	playse(SE_PIN)
@@ -587,7 +587,26 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	removeobject(VAR_LAST_TALKED)
 	removeobject(LOCALID_TRANQUIL_RT_KECLEON)
 
-	setflag(FLAG_MET_TRAVELING_MERCHANT)
+	setflag(FLAG_MET_TRAVELLING_MERCHANT)
+	release
+}
+
+script TranquilRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Oh, hello, {PLAYER}.\nAre you on your way back home?\p"
+		"Are you looking to purchase?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}I will see you around!\p(You haven't found my purse around,\nhave you?)"
+	))
+	closemessage
+
 	release
 }
 

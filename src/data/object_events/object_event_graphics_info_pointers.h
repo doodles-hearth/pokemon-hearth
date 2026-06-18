@@ -167,7 +167,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Farmer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Firebringer;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Bean;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Natsuki;
-extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravelingMerchant;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_TravellingMerchant;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenFSwimming;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_OnsenMSwimming;
@@ -697,7 +697,7 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_FIREBRINGER] =              &gObjectEventGraphicsInfo_Firebringer,
     [OBJ_EVENT_GFX_BEAN] =                     &gObjectEventGraphicsInfo_Bean,
     [OBJ_EVENT_GFX_NATSUKI] =                  &gObjectEventGraphicsInfo_Natsuki,
-    [OBJ_EVENT_GFX_TRAVELING_MERCHANT] =       &gObjectEventGraphicsInfo_TravelingMerchant,
+    [OBJ_EVENT_GFX_TRAVELLING_MERCHANT] =       &gObjectEventGraphicsInfo_TravellingMerchant,
     [OBJ_EVENT_GFX_ONSEN_F] =                  &gObjectEventGraphicsInfo_OnsenF,
     [OBJ_EVENT_GFX_ONSEN_F_SWIMMING] =         &gObjectEventGraphicsInfo_OnsenFSwimming,
     [OBJ_EVENT_GFX_ONSEN_M_SWIMMING] =         &gObjectEventGraphicsInfo_OnsenMSwimming,

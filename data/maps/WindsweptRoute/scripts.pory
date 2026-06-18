@@ -156,3 +156,22 @@ script WindsweptRoute_EventScript_Yugao {
 script WindsweptRoute_EventScript_Sign {
 	msgbox(("{UP_ARROW} Windycape\n{LEFT_ARROW}Scenic Route"), MSGBOX_SIGN)
 }
+
+script WindsweptRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Oh gosh, the weather could be better…\p"
+		"Are you looking to shop?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thank you, {PLAYER}!\nOh man, my Uumegiri are all wet…"
+	))
+	closemessage
+
+	release
+}

@@ -224,8 +224,8 @@ const u16 gTrainerPalette_Firebringer[] = INCGFX_U16("graphics/trainers/front_pi
 const u32 gTrainerFrontPic_Artist[] = INCGFX_U32("graphics/trainers/front_pics/artist.png", ".4bpp.smol");
 const u16 gTrainerPalette_Artist[] = INCGFX_U16("graphics/trainers/front_pics/artist.png", ".gbapal");
 
-const u32 gTrainerFrontPic_TravelingMerchant[] = INCGFX_U32("graphics/trainers/front_pics/traveling_merchant.png", ".4bpp.smol");
-const u16 gTrainerPalette_TravelingMerchant[] = INCGFX_U16("graphics/trainers/front_pics/traveling_merchant.png", ".gbapal");
+const u32 gTrainerFrontPic_TravellingMerchant[] = INCGFX_U32("graphics/trainers/front_pics/traveling_merchant.png", ".4bpp.smol");
+const u16 gTrainerPalette_TravellingMerchant[] = INCGFX_U16("graphics/trainers/front_pics/traveling_merchant.png", ".gbapal");
 
 const u32 gTrainerFrontPic_Bean[] = INCGFX_U32("graphics/trainers/front_pics/bean.png", ".4bpp.smol");
 const u16 gTrainerPalette_Bean[] = INCGFX_U16("graphics/trainers/front_pics/bean.png", ".gbapal");
@@ -1343,9 +1343,9 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Firebringer, gTrainerPalette_Firebringer)
 	},
- 	[TRAINER_PIC_TRAVELING_MERCHANT] = 
+ 	[TRAINER_PIC_TRAVELLING_MERCHANT] = 
 	{
-		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_TravelingMerchant, gTrainerPalette_TravelingMerchant)
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_TravellingMerchant, gTrainerPalette_TravellingMerchant)
 	},
  	[TRAINER_PIC_BEAN] = 
 	{
@@ -1367,10 +1367,17 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_SushiChef, gTrainerPalette_SushiChef)
 	},
-    //TODO: Random Color
- 	[TRAINER_PIC_SHAMISEN] = 
+ 	[TRAINER_PIC_SHAMISEN_RED] = 
+	{
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Shamisen, gTrainerPalette_ShamisenRed)
+	},
+ 	[TRAINER_PIC_SHAMISEN_BLUE] = 
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Shamisen, gTrainerPalette_ShamisenBlue)
+	},
+ 	[TRAINER_PIC_SHAMISEN_GREEN] = 
+	{
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_Shamisen, gTrainerPalette_ShamisenGreen)
 	},
  	[TRAINER_PIC_ZUBAT_GRUNT_M] = 
 	{

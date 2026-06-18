@@ -16,7 +16,7 @@ mapscripts YifuCity_Refuge_2F_MapScripts {
 			setflag(FLAG_HIDE_NUMEL)
 		}
 
-		if (!flag(FLAG_MET_TRAVELING_MERCHANT_2ND_TIME)) {
+		if (!flag(FLAG_MET_TRAVELLING_MERCHANT_2ND_TIME)) {
 			setflag(FLAG_HIDE_OKADA)
 		}
 	}
@@ -134,7 +134,7 @@ script YifuCity_Refuge_2F_EventScript_Heracross {
     release
 }
 
-script YifuCity_Refuge_2F_EventScript_TravelingMerchant {
+script YifuCity_Refuge_2F_EventScript_TravellingMerchant {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_OKADA)

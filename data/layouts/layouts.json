@@ -11867,6 +11867,18 @@
       "secondary_tileset": "gTileset_SakuKura",
       "border_filepath": "data/layouts/TranquilRoute_CutGrass/border.bin",
       "blockdata_filepath": "data/layouts/TranquilRoute_CutGrass/map.bin"
+    },
+    {
+      "id": "LAYOUT_HANABI_CITY_DOJO",
+      "name": "HanabiCity_Dojo_Layout",
+      "width": 11,
+      "height": 10,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Hanabi",
+      "border_filepath": "data/layouts/HanabiCity_Dojo/border.bin",
+      "blockdata_filepath": "data/layouts/HanabiCity_Dojo/map.bin"
     }
   ]
 }

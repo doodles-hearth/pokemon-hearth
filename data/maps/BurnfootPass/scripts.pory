@@ -1,1 +1,20 @@
 mapscripts BurnfootPass_MapScripts {}
+
+script BurnfootPass_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}{PLAYER}… This is as far up as I can go.\nIt's too darn hot here!\p"
+		"Oh, uh, do you need anything?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}I will see you around!\nIn a less… scorching place, hopefully!"
+	))
+	closemessage
+
+	release
+}

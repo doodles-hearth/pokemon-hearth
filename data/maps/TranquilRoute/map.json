@@ -3,7 +3,6 @@
   "name": "TranquilRoute",
   "layout": "LAYOUT_TRANQUIL_ROUTE",
   "music": "MUS_GSC_ROUTE38",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_TRANQUIL_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -518,7 +517,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRAVELING_MERCHANT",
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
       "x": 25,
       "y": 66,
       "elevation": 0,
@@ -527,8 +526,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TranquilRoute_EventScript_TravelingMerchantFirstTime",
-      "flag": "FLAG_MET_TRAVELING_MERCHANT",
+      "script": "TranquilRoute_EventScript_TravellingMerchantFirstTime",
+      "flag": "FLAG_MET_TRAVELLING_MERCHANT",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -548,8 +547,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TravelingMerchant_EventScript_Keke",
-      "flag": "FLAG_MET_TRAVELING_MERCHANT",
+      "script": "TravellingMerchant_EventScript_Keke",
+      "flag": "FLAG_MET_TRAVELLING_MERCHANT",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -735,6 +734,46 @@
       "lunchtime": true,
       "morning": true,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(KECLEON)",
+      "x": 30,
+      "y": 66,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TravellingMerchant_EventScript_Keke",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
+      "x": 29,
+      "y": 66,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TranquilRoute_EventScript_TravellingMerchant",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -861,5 +900,6 @@
       "item": "ITEM_REVIVAL_HERB",
       "flag": "FLAG_HIDDEN_ITEM_TRANQUIL_ROUTE_REVIVAL_HERB"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

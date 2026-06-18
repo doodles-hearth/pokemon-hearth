@@ -788,8 +788,8 @@ script YifuCity_EventScript_Tourist {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}We came all the way from Windycape to see the great capital.\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_WOMAN_1 0}We came all the way from Windycape\nto see the great capital.\p"
 		"The city's beautiful, and we got a\nnice cosy room at the Refuge!"
 	))
 	closemessage
@@ -801,9 +801,10 @@ script YifuCity_EventScript_TouristKid {
 	lock
 	faceplayer
 	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	setspeaker(SP_NAME_LITTLE_BOY)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_BOY 0}We're on vacation!\nI wanna see the big Sawsbuck!"
 	))
 	closemessage
@@ -818,9 +819,10 @@ script YifuCity_EventScript_TouristGirl {
 	faceplayer
 	setspeaker(SP_NAME_GIRL)
 	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 0}I'm tired… I wish mom'd take us to the hot springs…"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_GIRL_1 0}I'm tired… I wish mom'd take us\nto the hot springs…"
 	))
 	closemessage
 

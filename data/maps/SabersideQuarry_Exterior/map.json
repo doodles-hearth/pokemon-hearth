@@ -3,7 +3,6 @@
   "name": "SabersideQuarry_Exterior",
   "layout": "LAYOUT_SABERSIDE_QUARRY_EXTERIOR",
   "music": "MUS_ROUTE120",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SABERSIDE_QUARRY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -175,5 +174,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

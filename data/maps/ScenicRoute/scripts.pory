@@ -162,3 +162,22 @@ script ScenicRoute_EventScript_Danjo {
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}My fingers get so sore holding this\npiece of cardboard…"), MSGBOX_AUTOCLOSE)
 	end
 }
+
+script ScenicRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Oh hi {PLAYER}, nice view, huh?\p"
+		"Are you looking for something\nin particular?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thank you, {PLAYER}!\nOh man, my Uumegiri are all wet…"
+	))
+	closemessage
+
+	release
+}
