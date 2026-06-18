@@ -41,10 +41,16 @@ script Beachbound_Route_Decay_SeeDecay {
 }
 
 script BeachboundRoute_Decay_EventScript_Shepherd {
+	lock
 	setspeaker(SP_NAME_SHEPHERD)
-	msgbox(format(
-		"What's goin' on? Why are all the plants rotting?"
-	), MSGBOX_NPC)
+	message("{CREATE_MUGSHOT MUGSHOT_FARMER 0}What's goin' on?\p")
+	waitmessage
+	applymovement(LOCALID_BEACHBOUND_ROUTE_DECAY_SHEPHERD, moves(emote_sad))
+	message("Why are all the plants rotting?")
+	waitmessage
+	waitmovement
+	waitbuttonpress
+	release
 }
 
 script BeachboundRoute_Decay_EventScript_Karu {
@@ -65,16 +71,16 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 4)
 	setspeaker(SP_NAME_HARIKO)
 	if (flag(FLAG_TALKED_TO_HARIKO_IN_MAGURO_REFUGE)) {
-		msgbox(format(
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Oh! Hello again, {PLAYER}!\n"
 			"As you can see, I am investigating."
-		))
+		)
 	} else {
-		msgbox(format(
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Oh! Hello.\n{PLAYER}, right?\p"
-			"I am Hariko, remember me? We had a chat in the Ginko Woods.\p"
+			"I am Hariko, remember me?\nWe had a chat in the Ginko Woods.\p"
 			"As you can see, I am investigating."
-		))
+		)
 	}
 
 	mcdialogue(
@@ -83,6 +89,8 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	)
 	closemessage
 
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(face_away_player, delay_16 * 2, face_player, delay_16*2))
+	waitmovement(0)
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Well, look around you! This whole area is decaying.\p"
