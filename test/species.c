@@ -153,6 +153,8 @@ TEST("Form change targets have the appropriate species flags")
         case FORM_CHANGE_BATTLE_GIGANTAMAX:
             EXPECT(targetSpeciesInfo->isGigantamax);
             break;
+        default:
+            break;
        }
     }
 }

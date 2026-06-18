@@ -1291,6 +1291,11 @@ static void BattleSetup_ConfigureTrainerBattle(TrainerBattleParameter *battlePar
         PUSH(EventSnippet_NotEnoughMonsForDoubleBattle)
         return;
     }
+
+    if (battleParams->params.opponentA != 0 && battleParams->params.opponentB != 0)
+    {
+        gNoOfApproachingTrainers = 2;
+    }
     
 #if FREE_MATCH_CALL == FALSE
     if (battleParams->params.isRematch)

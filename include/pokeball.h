@@ -16,7 +16,7 @@ struct PokeBallSprite
     struct CompressedSpriteSheet pic;
     struct SpritePalette palette;
     struct SpriteTemplate spriteTemplate;
-    u16 itemId;
+    enum Item itemId;
 };
 
 extern const struct PokeBallSprite gPokeBalls[];
@@ -32,7 +32,7 @@ void StartHealthboxSlideIn(enum BattlerId battler);
 void DoHitAnimHealthboxEffect(enum BattlerId battler);
 void LoadBallGfx(enum PokeBall ballId);
 void FreeBallGfx(enum PokeBall ballId);
-enum PokeBall ItemIdToBallId(u32 ballItem);
+enum PokeBall ItemIdToBallId(enum Item ballItem);
 
 // kaba's speech
 u8 CreateIntroPokeballSprite(u8 monSpriteId, u8 monPalNum, u8 x, u8 y, u8 oamPriority, u8 subPriority, u8 delay, u32 fadePalettes);
