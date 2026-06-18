@@ -38,7 +38,6 @@ SINGLE_BATTLE_TEST("Falling Leaves causes Leftovers to recover 3/32 HP at end of
     } SCENE {
         s32 maxHP = GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
-        MESSAGE("Wobbuffet restored a little HP using its Leftovers!");
         HP_BAR(player, damage: -maxHP * 3 / 32);
     }
 }
