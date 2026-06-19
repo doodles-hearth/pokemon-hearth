@@ -14,7 +14,7 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 			"We each give out a different Token to\nanyone who succeeds in defeating us.\p"
 			"{SPEAKER NAME_KOISHI}I am Koishi.\p"
 			"I have been raising elegant, graceful\nPokémon since I was a young girl.\p"
-			"My manner may be demure…{PAUSE 64} but only a\nfool mistakes that for weakness.\p"
+			"I may be softspoken…{PAUSE 64} but only a\nfool mistakes that for weakness.\p"
 			"Now… Shall we battle?"
 		,
 		format("I see…"),
