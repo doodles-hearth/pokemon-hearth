@@ -385,6 +385,34 @@ DirectSoundWaveData_unknown_16::
 	.align 2
 DirectSoundWaveData_unknown_17::
 	.incbin "sound/direct_sound_samples/unknown_17.bin"
+DirectSoundWaveData_dp_vibra_c1_16::
+	.incbin "sound/direct_sound_samples/dp_vibra_c1_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_vibra_c2_16::
+	.incbin "sound/direct_sound_samples/dp_vibra_c2_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_vibra_c3_16::
+	.incbin "sound/direct_sound_samples/dp_vibra_c3_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_vibra_c4_16::
+	.incbin "sound/direct_sound_samples/dp_vibra_c4_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_vibra_c5_16::
+	.incbin "sound/direct_sound_samples/dp_vibra_c5_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_vibra_c6_16::
+	.incbin "sound/direct_sound_samples/dp_vibra_c6_16.bin"
+
+	.align 2
+DirectSoundWaveData_dp_altosax_c3_16::
+	.incbin "sound/direct_sound_samples/dp_altosax_c3_16.bin"
+	
+	.align 2
 
 .if P_CRIES_ENABLED == TRUE
 .if P_FAMILY_BULBASAUR == TRUE
