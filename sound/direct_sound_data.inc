@@ -389,26 +389,7 @@ DirectSoundWaveData_dp_vibra_c1_16::
 	.incbin "sound/direct_sound_samples/dp_vibra_c1_16.bin"
 
 	.align 2
-DirectSoundWaveData_dp_vibra_c2_16::
-	.incbin "sound/direct_sound_samples/dp_vibra_c2_16.bin"
 
-	.align 2
-DirectSoundWaveData_dp_vibra_c3_16::
-	.incbin "sound/direct_sound_samples/dp_vibra_c3_16.bin"
-
-	.align 2
-DirectSoundWaveData_dp_vibra_c4_16::
-	.incbin "sound/direct_sound_samples/dp_vibra_c4_16.bin"
-
-	.align 2
-DirectSoundWaveData_dp_vibra_c5_16::
-	.incbin "sound/direct_sound_samples/dp_vibra_c5_16.bin"
-
-	.align 2
-DirectSoundWaveData_dp_vibra_c6_16::
-	.incbin "sound/direct_sound_samples/dp_vibra_c6_16.bin"
-
-	.align 2
 DirectSoundWaveData_dp_altosax_c3_16::
 	.incbin "sound/direct_sound_samples/dp_altosax_c3_16.bin"
 	

@@ -112,9 +112,9 @@ voice_group hanabi
 	voice_directsound 60, 0, DirectSoundWaveData_dp_whistle_c5_16, 255, 247, 160, 200
 	voice_directsound 61, 44, DirectSoundWaveData_dp_triangle_16, 255, 200, 130, 30
 	voice_directsound 60, 0, DirectSoundWaveData_dp_vibra_c1_16, 255, 247, 0, 196
-	voice_directsound 60, 0, DirectSoundWaveData_dp_vibra_c2_16, 255, 247, 0, 196
-	voice_directsound 60, 0, DirectSoundWaveData_dp_vibra_c3_16, 255, 247, 0, 208
-	voice_directsound 60, 0, DirectSoundWaveData_dp_vibra_c4_16, 255, 247, 0, 208
+	voice_square_1 60, 0, 0, 1, 0, 1, 9, 0
+	voice_square_1 60, 0, 0, 1, 0, 1, 9, 0
+	voice_square_1 60, 0, 0, 1, 0, 1, 9, 0
 	voice_directsound 59, 34, DirectSoundWaveData_dp_woodblock_16, 255, 0, 255, 176
 	voice_directsound 60, 0, DirectSoundWaveData_register_noise, 255, 0, 255, 76
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_accordion_duplicate, 255, 249, 25, 248
