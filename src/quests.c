@@ -244,9 +244,6 @@ static const u8 sText_Close[] = _("Close");
 static const u8 sText_ColorGreen[] = _("{COLOR}{GREEN}");
 static const u8 sText_AZ[] = _(" A-Z");
 
-//Some static strings
-static const u8 gText_PokedexQuestMap[] = _("Toku Region");
-
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////////BEGIN SUBQUEST CUSTOMIZATION/////////////////////////////
 
@@ -259,7 +256,7 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 	      0,
 	      COMPOUND_STRING("Seen all Pokémon"),
 	      COMPOUND_STRING("Sketched all of Toku's Pokémon in\nyour Pokédex!"),
-	      gText_PokedexQuestMap,
+	      COMPOUND_STRING("Toku Region"),
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -269,7 +266,7 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 	      1,
 	      COMPOUND_STRING("Named all Pokémon"),
 	      COMPOUND_STRING("Found out the names of all\nthe Pokémon in Toku!"),
-	      gText_PokedexQuestMap,
+	      COMPOUND_STRING("Toku Region"),
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -279,7 +276,7 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 	      2,
 	      COMPOUND_STRING("Caught all Pokémon"),
 	      COMPOUND_STRING("Caught all the Pokémon in Toku!"),
-	      gText_PokedexQuestMap,
+	      COMPOUND_STRING("Toku Region"),
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -289,7 +286,7 @@ static const struct SubQuest sPokedexSubQuests[QUEST_2_SUB_COUNT] =
 	      3,
 	      COMPOUND_STRING("Described all Pokémon"),
 	      COMPOUND_STRING("Wrote down everything\nabout Toku's Pokémon!"),
-	      gText_PokedexQuestMap,
+	      COMPOUND_STRING("Toku Region"),
 	      OBJ_EVENT_GFX_ITEM_BALL,
 	      OBJECT,
 	      sText_Complete
@@ -340,11 +337,23 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.name = COMPOUND_STRING("The Toku Pokédex"),
 		.desc = {COMPOUND_STRING("Fill the pages of the PokéDex!")},
 		.donedesc = COMPOUND_STRING("You've completed the PokéDex!"),
-		.map = {gText_PokedexQuestMap},
+		.map = {COMPOUND_STRING("Toku Region")},
 		.sprite = {ITEM_POKE_BALL},
 		.spriteType = {ITEM},
 		.subquests = sPokedexSubQuests,
 		.numSubquests = QUEST_2_SUB_COUNT,
+		.questVariable = 0,
+	},
+	[QUEST_CUT_MASTER] = 
+	{
+		.name = COMPOUND_STRING("A Tended Garden"),
+		.desc = {COMPOUND_STRING("Help the Cut Master by clearing\nhis garden from weeds!")},
+		.donedesc = COMPOUND_STRING("The Cut Master's garden\nwas cleaned up!"),
+		.map = {COMPOUND_STRING("Tranquil Route")},
+		.sprite = {OBJ_EVENT_GFX_SAKURA_OLD_MAN},
+		.spriteType = {OBJECT},
+		.subquests = NULL,
+		.numSubquests = 0,
 		.questVariable = 0,
 	},
 	[QUEST_SAKURALOVERS] = 
@@ -354,20 +363,45 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 			sText_Unk, //Var at 0
 			COMPOUND_STRING("Deliver the scarf to Tama!"),
 			COMPOUND_STRING("Report back to Ashii!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
-			COMPOUND_STRING("Help Tama and Ashii meet under\n the moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
+			COMPOUND_STRING("Help Tama and Ashii meet under\nthe moonlight!"),
 			sText_Unk, //Var at 9
 		},
 		.donedesc = COMPOUND_STRING("For never was a story of more glee\nThan this of Tama and Ashii."),
 		.map = {
-			sText_Unk,
-			COMPOUND_STRING("Saku & Kura Villages")
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
 		},
-		.sprite = {ITEM_ASHIIS_SCARF},
-		.spriteType = {ITEM},
+		.sprite = {
+			OBJ_EVENT_GFX_SAKURA_GIRL_2,
+			OBJ_EVENT_GFX_SAKURA_MAN_1,
+			OBJ_EVENT_GFX_SAKURA_GIRL_2,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF,
+			ITEM_ASHIIS_SCARF
+		},
+		.spriteType = {
+			OBJECT,
+			OBJECT,
+			OBJECT, 
+			ITEM,
+			ITEM,
+			ITEM,
+			ITEM,
+			ITEM
+		},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE,
@@ -375,14 +409,29 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 	[QUEST_SAKURAESPEON] = 
 	{
 		.name = COMPOUND_STRING("The Lost Eevee"),
-		.desc = {COMPOUND_STRING("Find the Eevee missed in the thunderstorm!")},
-		.donedesc = COMPOUND_STRING("Reunited Eeevee, now Espeon, with\nits Wielder!"),
-		.map = {
-			sText_Unk,
-			COMPOUND_STRING("Saku & Kura Villages")
+		.desc = {
+			COMPOUND_STRING("Find the Eevee missed in\nthe thunderstorm!"),
+			COMPOUND_STRING("Find the Eevee missed in\nthe thunderstorm!"),
+			COMPOUND_STRING("Return the Espeon to her Wielder\nin Saku village!"),
+			COMPOUND_STRING("Claim your reward from the young\nboy!"),
 		},
-		.sprite = {OBJ_EVENT_GFX_SPECIES(EEVEE)},
-		.spriteType = {OBJECT},
+		.donedesc = COMPOUND_STRING("Reunited Eevee, now Espeon,\nwith its Wielder!"),
+		.map = {
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+		},
+		.sprite = {
+			SPECIES_EEVEE,
+			SPECIES_EEVEE,
+			SPECIES_ESPEON,
+			SPECIES_ESPEON,
+			SPECIES_ESPEON
+		},
+		.spriteType = {PKMN},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_ESPEON_STATE,
@@ -393,26 +442,21 @@ static const struct SideQuest sSideQuests[QUEST_COUNT] =
 		.desc = {COMPOUND_STRING("Find a cure for the ailing Scyther!")},
 		.donedesc = COMPOUND_STRING("Cured the Scyther to full health!"),
 		.map = {
-			sText_Unk,
-			COMPOUND_STRING("Saku & Kura Villages")
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
+			COMPOUND_STRING("Saku & Kura Villages"),
 		},
-		.sprite = {OBJ_EVENT_GFX_SPECIES(SCYTHER)},
-		.spriteType = {OBJECT},
+		.sprite = {
+			SPECIES_SCYTHER
+		},
+		.spriteType = {PKMN},
 		.subquests = NULL,
 		.numSubquests = 0,
 		.questVariable = VAR_SAKU_KURA_QUEST_SCYTHER_STATE,
-	},
-	[QUEST_6] = 
-	{
-		.name = COMPOUND_STRING(""),
-		.desc = {COMPOUND_STRING("")},
-		.donedesc = COMPOUND_STRING(""),
-		.map = {COMPOUND_STRING("")},
-		.sprite = {OBJ_EVENT_GFX_WALLY},
-		.spriteType = {OBJECT},
-		.subquests = NULL,
-		.numSubquests = 0,
-		.questVariable = 0,
 	},
 	[QUEST_7] = 
 	{

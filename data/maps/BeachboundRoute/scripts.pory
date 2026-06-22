@@ -1,11 +1,5 @@
 const FLAG_HIDE_SAMURAI = FLAG_TEMP_1
 const FLAG_HIDE_HOPPIP = FLAG_TEMP_5
-const LOCALID_HOPPIP = 7
-const LOCALID_GRUNT_1 = 18
-const LOCALID_GRUNT_2 = 21
-const LOCALID_GRUNT_3 = 20
-const LOCALID_GRUNT_BOSS = 19
-const LOCALID_MUGGED_WOMAN = 17
 
 mapscripts BeachboundRoute_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
@@ -153,7 +147,7 @@ script BeachboundRoute_EventScript_Karu {
 
 script BeachboundRoute_EventScript_Karu_PostBattle {
 	setflag(FLAG_HIDE_HOPPIP)
-	removeobject(LOCALID_HOPPIP)
+	removeobject(LOCALID_BEACHBOUND_HOPPIP)
 }
 
 script BeachboundRoute_EventScript_Kin {
@@ -288,7 +282,7 @@ script BeachboundRoute_EventScript_Mugging {
 	// Lost to them once
 	if (var(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE) < 3) {
 		setvar(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 3)
-		applymovement(LOCALID_GRUNT_1, moves(walk_in_place_fast_up))
+		applymovement(LOCALID_BEACHBOUND_GRUNT_1, moves(walk_in_place_fast_up))
 
 		setspeaker("Shady Man")
 		msgbox((
@@ -297,7 +291,7 @@ script BeachboundRoute_EventScript_Mugging {
 		closemessage
 
 		playse(SE_PIN)
-		applymovement(LOCALID_GRUNT_2, moves(walk_in_place_fast_up, emote_angry))
+		applymovement(LOCALID_BEACHBOUND_GRUNT_2, moves(walk_in_place_fast_up, emote_angry))
 
 		setspeaker("Shady Man")
 		msgbox((
@@ -307,9 +301,9 @@ script BeachboundRoute_EventScript_Mugging {
 
 		delay(40)
 
-		turnobject(LOCALID_GRUNT_BOSS, DIR_SOUTH)
+		turnobject(LOCALID_BEACHBOUND_GRUNT_BOSS, DIR_SOUTH)
 		playse(SE_PIN)
-		applymovement(LOCALID_GRUNT_BOSS, Common_Movement_ExclamationMark)
+		applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, Common_Movement_ExclamationMark)
 		waitmovement(0)
 		waitse
 		delay(48)
@@ -320,12 +314,12 @@ script BeachboundRoute_EventScript_Mugging {
 			"Can't ya see we're in the middle of\nsomething 'ere?"
 		))
 
-		applymovement(LOCALID_GRUNT_1, Common_Movement_FaceDown)
-		applymovement(LOCALID_GRUNT_2, Common_Movement_FaceDown)
-		applymovement(LOCALID_GRUNT_3, Common_Movement_FaceDown)
-		waitmovement(LOCALID_GRUNT_1)
-		waitmovement(LOCALID_GRUNT_2)
-		waitmovement(LOCALID_GRUNT_3)
+		applymovement(LOCALID_BEACHBOUND_GRUNT_1, Common_Movement_FaceDown)
+		applymovement(LOCALID_BEACHBOUND_GRUNT_2, Common_Movement_FaceDown)
+		applymovement(LOCALID_BEACHBOUND_GRUNT_3, Common_Movement_FaceDown)
+		waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
+		waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
+		waitmovement(LOCALID_BEACHBOUND_GRUNT_3)
 
 		mcdialogue(
 			"Leave her alone!",
@@ -366,7 +360,7 @@ script BeachboundRoute_EventScript_Mugging {
 		}
 		closemessage
 
-		applymovement(LOCALID_GRUNT_3, Common_Movement_WalkInPlaceFasterDown)
+		applymovement(LOCALID_BEACHBOUND_GRUNT_3, Common_Movement_WalkInPlaceFasterDown)
 		waitmovement(0)
 		setspeaker(SP_NAME_CROBAT_SHADOW)
 		msgbox((
@@ -374,7 +368,7 @@ script BeachboundRoute_EventScript_Mugging {
 		))
 		closemessage
 
-		turnobject(LOCALID_GRUNT_BOSS, DIR_NORTH)
+		turnobject(LOCALID_BEACHBOUND_GRUNT_BOSS, DIR_NORTH)
 		delay(40)
 
 		setspeaker(SP_NAME_CROBAT_BOSS)
@@ -383,7 +377,7 @@ script BeachboundRoute_EventScript_Mugging {
 		))
 		closemessage
 
-		turnobject(LOCALID_GRUNT_BOSS, DIR_SOUTH)
+		turnobject(LOCALID_BEACHBOUND_GRUNT_BOSS, DIR_SOUTH)
 
 		delay(24)
 
@@ -393,7 +387,7 @@ script BeachboundRoute_EventScript_Mugging {
 		))
 		closemessage
 	} else {
-		turnobject(LOCALID_GRUNT_BOSS, DIR_SOUTH)
+		turnobject(LOCALID_BEACHBOUND_GRUNT_BOSS, DIR_SOUTH)
 		setspeaker(SP_NAME_CROBAT_BOSS)
 		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Can't believe it! Look who's back!\nBack fer another whoopin', are we?\p"
@@ -401,12 +395,12 @@ script BeachboundRoute_EventScript_Mugging {
 		))
 	}
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(walk_right, face_left))
-	applymovement(LOCALID_GRUNT_1, moves(walk_down))
-	applymovement(LOCALID_GRUNT_2, moves(walk_down))
-	waitmovement(LOCALID_GRUNT_BOSS)
-	waitmovement(LOCALID_GRUNT_1)
-	waitmovement(LOCALID_GRUNT_2)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, moves(walk_right, face_left))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_1, moves(walk_down))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_2, moves(walk_down))
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_BOSS)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
 
 	trainerbattle_two_trainers(
 		TRAINER_GRUNT_BEACHBOUND_ROUTE_1,
@@ -417,16 +411,16 @@ script BeachboundRoute_EventScript_Mugging {
 
 	setvar(VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE, 4)
 
-	applymovement(LOCALID_GRUNT_1, Common_Movement_WalkInPlaceFasterRight)
-	waitmovement(LOCALID_GRUNT_1)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_1, Common_Movement_WalkInPlaceFasterRight)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Sorry, boss!"
 	))
 	closemessage
 	
-	applymovement(LOCALID_GRUNT_2, Common_Movement_WalkInPlaceFasterRight)
-	waitmovement(LOCALID_GRUNT_2)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_2, Common_Movement_WalkInPlaceFasterRight)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}We got stomped proper, boss!"
@@ -436,7 +430,7 @@ script BeachboundRoute_EventScript_Mugging {
 	delay(24)
 
 	playse(SE_PIN)
-	applymovement(LOCALID_GRUNT_BOSS, moves(emote_angry))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, moves(emote_angry))
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Ya gotta be kiddin' me…\p"
@@ -444,8 +438,8 @@ script BeachboundRoute_EventScript_Mugging {
 	))
 	closemessage
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
-	waitmovement(LOCALID_GRUNT_BOSS)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, moves(walk_in_place_fast_down))
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_BOSS)
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox((
@@ -453,7 +447,7 @@ script BeachboundRoute_EventScript_Mugging {
 	))
 	closemessage
 
-	applymovement(LOCALID_GRUNT_3, moves(walk_in_place_fast_down))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_3, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox((
@@ -463,18 +457,18 @@ script BeachboundRoute_EventScript_Mugging {
 
 	delay(24)
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(face_up, delay_16 * 3))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, moves(face_up, delay_16 * 3))
 	waitmovement(0)
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}For the love of god, Kevin…"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{FONT_SMALL}For the love of god, Kevin…"
 	))
 	closemessage
 
 	delay(48)
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(walk_in_place_fast_down))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, moves(walk_in_place_fast_down))
 	waitmovement(0)
 	
 	setspeaker(SP_NAME_CROBAT_BOSS)
@@ -485,7 +479,7 @@ script BeachboundRoute_EventScript_Mugging {
 	))
 	closemessage
 
-	turnobject(LOCALID_GRUNT_BOSS, DIR_NORTH)
+	turnobject(LOCALID_BEACHBOUND_GRUNT_BOSS, DIR_NORTH)
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox((
@@ -493,38 +487,38 @@ script BeachboundRoute_EventScript_Mugging {
 	))
 	closemessage
 
-	applymovement(LOCALID_GRUNT_1, moves(walk_up, face_down))
-	applymovement(LOCALID_GRUNT_2, moves(walk_up, face_down))
-	waitmovement(LOCALID_GRUNT_1)
-	waitmovement(LOCALID_GRUNT_2)
-	applymovement(LOCALID_GRUNT_1, moves(face_down, zubats_align, delay_16 * 2))
-	applymovement(LOCALID_GRUNT_2, moves(face_down, zubats_align, delay_16 * 2))
-	applymovement(LOCALID_GRUNT_3, moves(face_down, zubats_align, delay_16 * 2))
-	waitmovement(LOCALID_GRUNT_1)
-	waitmovement(LOCALID_GRUNT_2)
-	waitmovement(LOCALID_GRUNT_3)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_1, moves(walk_up, face_down))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_2, moves(walk_up, face_down))
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_1, moves(face_down, zubats_align, delay_16 * 2))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_2, moves(face_down, zubats_align, delay_16 * 2))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_3, moves(face_down, zubats_align, delay_16 * 2))
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_3)
 
-	applymovement(LOCALID_GRUNT_BOSS, moves(walk_down * 5, walk_left * 9))
-	applymovement(LOCALID_GRUNT_1, moves(walk_right * 2, walk_down * 6, walk_left * 9))
-	applymovement(LOCALID_GRUNT_2, moves(walk_right, walk_down * 6, walk_left * 9))
-	applymovement(LOCALID_GRUNT_3, moves(walk_down * 6, walk_left * 9))
-	waitmovement(LOCALID_GRUNT_BOSS)
-	waitmovement(LOCALID_GRUNT_1)
-	waitmovement(LOCALID_GRUNT_2)
-	waitmovement(LOCALID_GRUNT_3)
+	applymovement(LOCALID_BEACHBOUND_GRUNT_BOSS, moves(walk_down * 5, walk_left * 9))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_1, moves(walk_right * 2, walk_down * 6, walk_left * 9))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_2, moves(walk_right, walk_down * 6, walk_left * 9))
+	applymovement(LOCALID_BEACHBOUND_GRUNT_3, moves(walk_down * 6, walk_left * 9))
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_BOSS)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
+	waitmovement(LOCALID_BEACHBOUND_GRUNT_3)
 
-	removeobject(LOCALID_GRUNT_BOSS)
-	removeobject(LOCALID_GRUNT_1)
-	removeobject(LOCALID_GRUNT_2)
-	removeobject(LOCALID_GRUNT_3)
+	removeobject(LOCALID_BEACHBOUND_GRUNT_BOSS)
+	removeobject(LOCALID_BEACHBOUND_GRUNT_1)
+	removeobject(LOCALID_BEACHBOUND_GRUNT_2)
+	removeobject(LOCALID_BEACHBOUND_GRUNT_3)
 	setflag(FLAG_HIDE_CROBAT_SHADOWS_BEACHBOUND_RT)
 
 	fadedefaultbgm
 
 	delay(60)
 
-	applymovement(LOCALID_MUGGED_WOMAN, moves(walk_down * 2))
-	waitmovement(LOCALID_MUGGED_WOMAN)
+	applymovement(LOCALID_BEACHBOUND_MUGGED_WOMAN, moves(walk_down * 2))
+	waitmovement(LOCALID_BEACHBOUND_MUGGED_WOMAN)
 
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(format(
@@ -547,9 +541,9 @@ script BeachboundRoute_EventScript_Mugging {
 
 	addvar(VAR_PLAYER_REPUTATION, 1)
 
-	applymovement(LOCALID_MUGGED_WOMAN, moves(walk_left, walk_down * 5, walk_left * 9))
-	waitmovement(LOCALID_MUGGED_WOMAN)
-	removeobject(LOCALID_MUGGED_WOMAN)
+	applymovement(LOCALID_BEACHBOUND_MUGGED_WOMAN, moves(walk_left, walk_down * 5, walk_left * 9))
+	waitmovement(LOCALID_BEACHBOUND_MUGGED_WOMAN)
+	removeobject(LOCALID_BEACHBOUND_MUGGED_WOMAN)
 	waitmovement(0)
 }
 
@@ -564,14 +558,14 @@ script BeachboundRoute_EventScript_TravellingMerchantSecondTime {
 		))
 	} elif (flag(FLAG_MET_TRAVELLING_MERCHANT)) {
 		setspeaker(SP_NAME_OKADA)
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Hello! … …Have we met before?\nSorry, I'm not good with faces…\p"
 			"Wait! Uhh, {PLAYER}, was it?\p"
 			"I'm in the area for a while to gather\nresources.\p"
 			"Can I interest you in some handpicked\ngoods?"
-		))
+		)
 	} else {
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Hello, hello again!\p"
 			"… …Oh, sorry, we haven't met, have we?\nI'm not good with faces…\p"
 			"{SPEAKER NAME_OKADA}I'm Okada, the travelling merchant!\nI travel through all of Toku on foot,\lselling useful goods and rare finds!\p"
@@ -580,7 +574,7 @@ script BeachboundRoute_EventScript_TravellingMerchantSecondTime {
 			"I see you're a Wielder, eh? Maybe we\ncan have a friendly battle sometime!\p"
 			"I'm in the area for a while to gather\nresources.\p"
 			"Can I interest you in some handpicked\ngoods?"
-		))
+		)
 	}
 
 	setflag(FLAG_MET_TRAVELLING_MERCHANT)
@@ -588,7 +582,7 @@ script BeachboundRoute_EventScript_TravellingMerchantSecondTime {
 
 	limitedpokemart(TRAVELLING_SHOP_FIRST_TIME)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thanks for your business!\nNow where did I put that scroll again…"
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thanks for your business!\n{FONT_SMALL}Now where did I put that scroll again…"
 	))
 	closemessage
 
@@ -614,6 +608,23 @@ script BeachboundRoute_Sign_TrainerTips_XP {
 		"Did you know?\p"
 		"Weaker Pokémon will grow faster to catch up with your stronger ones!"
 	), MSGBOX_SIGN)
+}
+
+script BeachboundRoute_EventScript_PlayfulMom {
+	lock
+	setspeaker("Loving Mom")
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I bring my children here after school\nlet them play in the Sakura petals.\p"
+		"I want them to enjoy their youth while\nthey can…\p"
+	)
+	waitmessage
+	applymovement(VAR_LAST_TALKED, moves(emote_heart))
+	message("Besides, they look so adorable\nplaying!")
+	waitmessage
+	waitmovement(0)
+	waitbuttonpress
+	closemessage
+	release
 }
 
 script BeachboundRoute_EventScript_TravellingMerchant {

@@ -1,11 +1,11 @@
-const LOCALID_CUTMASTER = 1
 const VAR_HOUR_OF_DAY = VAR_0x8000
 const FLAG_HIDE_CUT_MASTER = FLAG_TEMP_1
 
 mapscripts TranquilRoute_CutHouse_MapScripts {
 	MAP_SCRIPT_ON_LOAD: TranquilRoute_CutHouse_EventScript_CheckCutGrassQuestComplete
 	MAP_SCRIPT_ON_TRANSITION {
-		if (flag(FLAG_CUT_QUEST_COMPLETED)) {
+		returnqueststate(QUEST_CUT_MASTER)
+		if (var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST) {
 			gettime
 			if (var(VAR_HOUR_OF_DAY) >= 7 && var(VAR_HOUR_OF_DAY) <= 19) {
 				setflag(FLAG_HIDE_CUT_MASTER)
@@ -18,23 +18,29 @@ mapscripts TranquilRoute_CutHouse_MapScripts {
 }
 
 script TranquilRoute_CutHouse_EventScript_CheckCutGrassQuestComplete {
-	if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS) && !flag(FLAG_CUT_QUEST_COMPLETED)) {
+	returnqueststate(QUEST_CUT_MASTER)
+	if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS) && var(VAR_RESULT) != QUEST_MENU_COMPLETE_QUEST) {
 		setvar(VAR_TEMP_0, 1)
 	}
 }
 
 script TranquilRoute_CutHouse_EventScript_CutGrassCutscene {
 	lock
+	questmenu(QUEST_MENU_SET_REWARD, QUEST_CUT_MASTER)
 	setvar(VAR_TEMP_0, 0)
 	playse(SE_PIN)
-	applymovement(LOCALID_CUTMASTER, TranquilRoute_CutHouse_Movement_CutMasterSurprise)
+	applymovement(LOCALID_CUT_HOUSE_CUT_MASTER, moves(face_down, emote_exclamation_mark, delay_16 * 3))
 	waitmovement(0)
 	delay(48)
 
-	msgbox(format(
-		"You actually cut ALL the tall grass?\p"
-		"Wait, let us go outside. I want to see it for myself."
-	))
+	message("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Why, hello again! What's got you in\nsuch a hurry?\p")
+	waitmessage
+	message(
+		"Follow you outside? Well, if you're so\ninsistent then…\p"
+		"Just wait a smidge! Like I said, my\nbody ain't what it used to be."
+	)
+	waitmessage
+	waitbuttonpress
 	closemessage
 
 	delay(48)
@@ -43,47 +49,99 @@ script TranquilRoute_CutHouse_EventScript_CutGrassCutscene {
 	release
 }
 
-movement TranquilRoute_CutHouse_Movement_CutMasterSurprise {
-	face_down
-	emote_exclamation_mark
-	delay_16 * 3
-}
-
 script TranquilRoute_CutHouse_EventScript_CutMaster {
 	lock
 	faceplayer
 
 	// Cut already received
 	if(checkitem(ITEM_SECRET_CUT)) {
-			// Home for the night
-			if(flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)){
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}The sun is setting on another day.\p"
-					"Life is good."
-				))
-				closemessage
-			} else {
-				msgbox((
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Teach your Pokémon any slicing move\nto cut small trees!\p"
+		// Home for the night
+		returnqueststate(QUEST_CUT_MASTER)
+		if(var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST){
+			message(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}The sun is setting on another day.\p"
+				"Life is good."
+			)
+			waitmessage
+		} else {				
+			message("{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Hm? Anything else that you needed?")
+			waitmessage
+		}
+		dynmultipush("Tell me about the Cut Technique.", 0)
+		if(var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST || var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE){dynmultipush("Tell me about your garden.", 1)}
+		if(var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST){dynmultipush("Tell me about your garden!", 1)}
+		dynmultistack(0,0,FALSE,2,FALSE,0,DYN_MULTICHOICE_CB_NONE)
+		switch(var(VAR_RESULT)){
+			case 0:
+				message(
+					"Teach your Pokémon any slicing move\nto cut small trees!\p"
 					"You'll need at least one Dojo Token\nto do that, though!\p"
-					"I wrote down the slicing moves on the\nback wall.\p"
-					"No, I still haven't trimmed my garden.\nI really should get to it…"
-				))
+					"I wrote down the slicing moves on the\nback wall.\p")
+				waitmessage
+				waitbuttonpress
 				closemessage
-			}
+			case 1:
+				returnqueststate(QUEST_CUT_MASTER)
+				if (var(VAR_RESULT) == QUEST_MENU_UNLOCK_QUEST) {
+					message("Ah, well, not much of a story I can\nreally tell you, I'm afraid.\p")
+					applymovement(LOCALID_CUT_HOUSE_CUT_MASTER, moves(emote_sweat))
+					waitmessage
+					waitmovement(0)
+					//ignore poryscript warnings
+					message(
+						"One day, I suddenly came down sick.\nI couldn't move from my bed at all!\p"
+						"With my old age, it took me a week or two\njust to feel better…\p"
+						"But before I knew it, my garden was\noverrun by weeds.\p"
+						"Even if I was a master swordsman in\nmy prime, I'm much too old to do that\lmuch work alone.\p"
+						"Still… It would be nice to be able to\nwork in my garden once again."
+					)
+					waitmessage
+					waitbuttonpress
+					closemessage
+					applymovement(LOCALID_CUT_HOUSE_CUT_MASTER, moves(face_right, delay_16 * 4, emote_sad))
+					waitmovement(0)
+					delay(120)
+					startquest(QUEST_CUT_MASTER)
+				} elif (var(VAR_RESULT) == QUEST_MENU_SET_ACTIVE) {
+					message(
+						"The garden used to be my husband's,\nyou see.\p"
+						"I've been tending to it ever since\nhe passed.\p"
+					)
+					waitmessage
+					applymovement(LOCALID_CUT_HOUSE_CUT_MASTER, moves(emote_happy))
+					message(
+						"I'm sure he's cranky at me from not\nhaving taken care of it much! Hah!\p"
+						"Though, I do hope to clean it up one\nof these days. For his sake."
+					)
+					waitmovement(0)
+					waitmessage
+					waitbuttonpress
+					closemessage
+				} else {
+					message(
+						"The garden's been coming along nicely!\p"
+						"I'm sure my husband's just as happy\nthat it's starting to look so pretty.\p"
+						"'Course, nothing could ever be as\nbeautiful as him. Hah!"
+					)
+					waitmessage
+					waitbuttonpress
+				}
+			default:
+				break
+		}
 	}
 	// First time
 	else {
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}I don't get many visitors!\nSit down, have some tea!"
-		))
+		)
 		closemessage
 
 		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_question_mark, delay_16 * 6))
 		waitmovement(VAR_LAST_TALKED)
 
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}What? My garden is overrun by weeds?\p"
 			"Ho ho ho…\p"
 			"You're right, I have been neglecting\nit lately.\p"
@@ -93,28 +151,29 @@ script TranquilRoute_CutHouse_EventScript_CutMaster {
 			"I just so happen to have it written\ndown right here!\p"
 			"You don't look much like a\nswordmaster…\p"
 			"But surely a Wielder like you can teach\ntheir Pokémon the Secret of Blade!"
-		))
+		)
+		//ignore poryscript warnings
 		closemessage
 
 		giveitem(ITEM_SECRET_CUT)
 
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}There is a variety of slicing moves\nthat your Pokémon can use.\p"
 			"They'll now be able to use those moves\nto cut tall grass and little trees.\p"
 			"You will need at least one official\nDojo Token for that, though.\p"
 			"We can't be going around cutting\ntrees irresponsibly, now can we?\p"
 			"Take this as well, if your Pokémon\ndon't know any slicing moves yet.\p"
 			"Use a scroll to teach your Pokémon\na move!"
-		))
+		)
 		closemessage
 
 		giveitem(ITEM_TM_NICK)
 
-		msgbox((
+		msgbox(
 			"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Want to know another secret?\p"
 			"That powerful swordmaster I\nmentioned…\p"
 			"That was me in my youthful days,\nho ho ho…"
-		))
+		)
 		closemessage
 	}
 

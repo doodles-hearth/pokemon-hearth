@@ -213,31 +213,31 @@ script KuraTown_Dojo_EventScript_Advice {
 	} else {
 		setspeaker(SP_NAME_MAN)
 		if (isfieldmoveunlocked(FIELD_MOVE_CUT)) {
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
-				"Lady Hana, the Dojo Master, is an expert in all things bonsai.\p"
-				"She designed this place and, of course, grew these trees herself!\p"
-				"Now, pay attention: only some of these noble trees can be cut down.\p"
-				"Figure out which, and you'll reach the Master!\p"
-				"By the way - Hana's a weather expert, and a formidable adversary.\p"
-				"Be on your guard!\nMaybe get an umbrella, I don't know!"
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome\nto the Kura Village Dojo!\p"
+				"Lady Hana, the Dojo Master, is an\nexpert in all things bonsai.\p"
+				"She designed this place and, of\ncourse, grew these trees herself!\p"
+				"Now, pay attention: only some of\nthese noble trees can be cut down.\p"
+				"Figure out which, and you'll reach\nMaster Hana!\p"
+				"Lastly, Hana's a weather expert, and\na formidable adversary.\p"
+				"Be on your guard!\nMaybe get an umbrella too, who knows!"
+			)
 		} else {
 			setspeaker(SP_NAME_MAN)
 			if (flag(FLAG_BADGE01_GET)) {
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
-					"All these trees are blocking your way, aren't they?\p"
-					"You should come back once you've figured out a way to cut them!"
-				))
+				msgbox(
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome\nto the Kura Village Dojo!\p"
+					"All these trees are blocking your way,\naren't they?\p"
+					"I'm sure you'll find a way to cut them\ndown soon enough!"
+				)
 			} else {
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
-					"All these trees are blocking your way, aren't they?\p"
-					"You should come back once you've figured out a way to cut them!\p"
-					"If you're itching for a challenge, why not try your skills at the Dojo in Maguro Harbor first?\p"
-					"It's not very far east from here!"
-				))
+				msgbox(
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome\nto the Kura Village Dojo!\p"
+					"All these trees are blocking your way,\naren't they?\p"
+					"I'm sure you'll find a way to cut them\ndown soon enough!\p"
+					"If you're itching for a challenge, why\nnot try your skills at the Dojo in\lMaguro Harbor first?\p"
+					"It's just a short jog through the\nroute east of here!"
+				)
 			}
 		}
 	}
