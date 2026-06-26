@@ -491,11 +491,12 @@
 #define MUS_RG_SLOW_PALLET          557 // MUS_RG_SLOWMASARA
 #define MUS_RG_TEACHY_TV_MENU       558 // MUS_RG_TVNOIZE
 #define MUS_HH_SUNRISE              559 // Sunrise Village
-#define MUS_HH_CHII_TOWN            560 // Sunset Village
+#define MUS_HH_CHII_TOWN            560 // Chii Town
 #define MUS_FRIENDVENTURE           561 
 #define MUS_SNOW                    562
 #define MUS_HANABI                  563
-#define END_MUS                     564
+#define MUS_CHAOS                    564
+#define END_MUS                     565
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
 // Each comes in a triplet of PH_*_BLEND, PH_*_HELD, and PH_*_SOLO, and the name of each triplet incorporates the English phonetic sound it represents.
