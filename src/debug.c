@@ -4903,7 +4903,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_FRIENDVENTURE)            \
     X(MUS_SNOW)                     \
     X(MUS_HANABI)                   \
-    X(MUS_CHAOS)  
+    X(MUS_DECAY)  
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \

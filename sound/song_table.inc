@@ -570,7 +570,7 @@ gSongTable::
 	song mus_friendventure, MUSIC_PLAYER_BGM, 0
 	song mus_snow, MUSIC_PLAYER_BGM, 0
 	song mus_hanabi, MUSIC_PLAYER_BGM, 0
-	song mus_chaos, MUSIC_PLAYER_BGM, 0
+	song mus_decay, MUSIC_PLAYER_BGM, 0
 	song ph_trap_blend, MUSIC_PLAYER_SE2, 2
 	song ph_trap_held, MUSIC_PLAYER_SE2, 2
 	song ph_trap_solo, MUSIC_PLAYER_SE2, 2

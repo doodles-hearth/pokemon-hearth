@@ -495,7 +495,7 @@
 #define MUS_FRIENDVENTURE           561 
 #define MUS_SNOW                    562
 #define MUS_HANABI                  563
-#define MUS_CHAOS                    564
+#define MUS_DECAY                   564
 #define END_MUS                     565
 
 // These PH_* constants are phoneme sounds used by the "bard" NPC (see src/bard_music.c and src/mauville_old_man.c).
