@@ -2010,21 +2010,6 @@ BattleScript_EffectPainSplit::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_EffectSnore::
-	attackcanceler
-	jumpifhalfword CMP_EQUAL, gChosenMove, MOVE_SLEEP_TALK, BattleScript_DoSnore
-	jumpifvolatile BS_ATTACKER, VOLATILE_DREAM_SLEEP, BattleScript_EffectSnoreDreaming
-	printstring STRINGID_PKMNFASTASLEEP
-	goto BattleScript_EffectSnoreContinue
-BattleScript_EffectSnoreDreaming:
-	printstring STRINGID_PKMNISDREAMING
-BattleScript_EffectSnoreContinue:
-	waitmessage B_WAIT_TIME_LONG
-	statusanimation BS_ATTACKER
-BattleScript_DoSnore::
-	accuracycheck
-	goto BattleScript_HitFromDamageCalc
-
 BattleScript_EffectConversion2::
 	attackcanceler
 	settypetorandomresistance BattleScript_ButItFailed

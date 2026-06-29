@@ -2019,7 +2019,7 @@ static void DebugAction_Util_Randomizer_RefreshValues(u8 taskId)
         if (gTasks[taskId].tType == SPECIES_RANDOMIZER)
         {
             u32 species = GetRandomSpecies(gTasks[taskId].tRandomizerOption, &args);
-            str = GetSpeciesName(species);
+            str = GetSpeciesName(species, SKIP_NAME_CHECK);
             x = (i % 3) * 72 + 16;
             font = FONT_NORMAL;
         }
