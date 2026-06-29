@@ -5766,14 +5766,6 @@ static void Task_CancelPokemonLeagueLightingEffect(u8 taskId)
     }
 }
 
-void StopPokemonLeagueLightingEffectTask(void)
-{
-    if (FuncIsActiveTask(Task_RunPokemonLeagueLightingEffect) == TRUE)
-    {
-        DestroyTask(FindTaskIdByFunc(Task_RunPokemonLeagueLightingEffect));
-    }
-}
-
 /*
  * Determines which of Lorelei's doll collection to show
  * based on how many times you've entered the Hall of Fame.
