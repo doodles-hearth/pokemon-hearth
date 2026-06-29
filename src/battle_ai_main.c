@@ -1863,7 +1863,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         break;
     case EFFECT_SNORE:
     case EFFECT_SLEEP_TALK:
-        if (IsWakeupTurn(battlerAtk) || !AI_IsBattlerAsleepOrComatose(battlerAtk))
+        if (IsWakeupTurn(battlerAtk) || !IsAsleepOrComatose(battlerAtk, aiData->abilities[battlerAtk]))
             ADJUST_SCORE(-10);    // if mon will wake up, is not asleep, or is not comatose
         break;
     case EFFECT_MEAN_LOOK:
@@ -1875,7 +1875,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
     case EFFECT_NIGHTMARE:
         if (gBattleMons[battlerDef].volatiles.nightmare)
             ADJUST_SCORE(-10);
-        else if (!AI_IsBattlerAsleepOrComatose(battlerDef))
+        else if (!IsAsleepOrComatose(battlerDef, aiData->abilities[battlerDef]))
             ADJUST_SCORE(-8);
         else if (DoesPartnerHaveSameMoveEffect(BATTLE_PARTNER(battlerAtk), battlerDef, move, aiData->partnerMove))
             ADJUST_SCORE(-10);
@@ -3926,10 +3926,39 @@ static enum MoveComparisonResult CompareResistBerryEffects(enum BattlerId battle
     return MOVE_NEUTRAL_COMPARISON;
 }
 
+bool32 DoesBattlerKOItselfWithRecoil(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move)
+{
+    u32 recoilDmg = 0;
+    u32 monHP = GetNonDynamaxMaxHP(battlerAtk);
+    enum BattleMoveEffects effect = GetMoveEffect(move);
+    
+    // Is recoil applicable
+    if (!IsRecoilDamageEffect(effect) || !AI_IsDamagedByRecoil(battlerAtk))
+        return FALSE;
+
+    // Get recoil damage
+    if (effect == EFFECT_CHLOROBLAST || effect == EFFECT_MAX_HP_50_RECOIL)
+        recoilDmg = (monHP + 1) / 2; // Half of max HP rounded up
+    if (GetMoveEffect(move) == EFFECT_RECOIL)
+        recoilDmg = monHP * GetMoveRecoil(move) / 100; // Recoil damage
+
+    // Does recoil KO attacker
+    s32 opposingMons = 0;
+    if ((GetConfig(B_MULTI_BATTLE_WHITEOUT) == GEN_3) && BattlerIsPlayer(battlerDef))
+        opposingMons = CountUsablePartyMons(battlerDef);
+    else
+        opposingMons = CountUsableSideMons(battlerDef);
+    
+    if (recoilDmg >= gBattleMons[battlerAtk].hp && opposingMons != 0)
+        return TRUE;
+
+    return FALSE;
+}
+
 static enum MoveComparisonResult CompareMoveSelfSacrifice(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move1, enum Move move2)
 {
-    bool32 selfSacrifice1 = IsSelfSacrificeEffect(move1);
-    bool32 selfSacrifice2 = IsSelfSacrificeEffect(move2);
+    bool32 selfSacrifice1 = IsSelfSacrificeEffect(move1) || DoesBattlerKOItselfWithRecoil(battlerAtk, battlerDef, move1);
+    bool32 selfSacrifice2 = IsSelfSacrificeEffect(move2) || DoesBattlerKOItselfWithRecoil(battlerAtk, battlerDef, move2);
 
     if (selfSacrifice1 && !selfSacrifice2)
         return MOVE_LOST_COMPARISON;
@@ -4632,7 +4661,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     }
     case EFFECT_SNORE:
     case EFFECT_SLEEP_TALK:
-        if (!IsWakeupTurn(battlerAtk) && AI_IsBattlerAsleepOrComatose(battlerAtk))
+        if (!IsWakeupTurn(battlerAtk) && IsAsleepOrComatose(battlerAtk, aiData->abilities[battlerAtk]))
             ADJUST_SCORE(BEST_EFFECT);
         break;
     case EFFECT_LOCK_ON:

@@ -17,6 +17,7 @@ enum CancelerResult
     CANCELER_RESULT_RUN_SCRIPT_AND_INCREMENT, // Runs script. Increments state
     CANCELER_RESULT_RUN_SCRIPT, // Runs script. Does not increment state
     CANCELER_RESULT_FAILURE, // Move failed, jump to script that handles the failure
+    CANCELER_RESULT_END, // prevents going into canceler again
 };
 
 enum CancelerState
@@ -69,6 +70,8 @@ enum CancelerState
     CANCELER_TARGET_FAILURE,
     CANCELER_MULTIHIT_MOVES,
     CANCELER_ACCURACY_CHECK,
+    CANCELER_PRE_ATTACK_MOVE_EFFECT,
+    CANCELER_DAMAGE_CALC,
     CANCELER_END,
 };
 

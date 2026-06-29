@@ -1331,6 +1331,11 @@ void CreateEnemyEventMon(void)
 
 void CalculateMonStats(struct Pokemon *mon)
 {
+    CalculateMonStatsCont(mon, TRUE);
+}
+
+void CalculateMonStatsCont(struct Pokemon *mon, bool32 updateSpeedStat)
+{
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP);
     s32 currentHP = GetMonData(mon, MON_DATA_HP);
     enum Species species = GetMonData(mon, MON_DATA_SPECIES);

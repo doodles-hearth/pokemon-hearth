@@ -131,7 +131,6 @@ u32 GetBattlerSecondaryDamage(enum BattlerId battlerId);
 bool32 BattlerWillFaintFromWeather(enum BattlerId battler, enum Ability ability);
 bool32 BattlerWillFaintFromSecondaryDamage(enum BattlerId battler, enum Ability ability);
 bool32 ShouldTryOHKO(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Ability atkAbility, enum Ability defAbility, enum Move move);
-bool32 ShouldUseRecoilMove(enum BattlerId battlerAtk, enum BattlerId battlerDef, u32 recoilDmg, u32 moveIndex);
 bool32 ShouldAbsorb(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
 bool32 ShouldRecover(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, u32 healPercent);
 bool32 ShouldSetScreen(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum BattleMoveEffects moveEffect);
@@ -233,6 +232,7 @@ bool32 HasMoveWithFlag(enum BattlerId battler, MoveFlag getFlag);
 bool32 IsHazardClearingMove(enum Move move);
 bool32 IsSubstituteEffect(enum BattleMoveEffects effect);
 bool32 IsSelfSacrificeEffect(enum Move move);
+bool32 IsRecoilDamageEffect(enum BattleMoveEffects effect);
 u32 GetAIExplosionChanceFromHP(u32 hpPercent);
 
 // status checks
@@ -253,7 +253,6 @@ bool32 AnyPartyMemberStatused(enum BattlerId battlerId, bool32 checkSoundproof);
 bool32 ShouldTryToFlinch(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Ability atkAbility, enum Ability defAbility, enum Move move);
 bool32 ShouldTrap(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move);
 bool32 IsWakeupTurn(enum BattlerId battler);
-bool32 AI_IsBattlerAsleepOrComatose(enum BattlerId battlerId);
 
 // ability logic
 bool32 IsMoxieTypeAbility(enum Ability ability);
@@ -294,6 +293,7 @@ void FreeRestoreBattleMons(struct BattlePokemon *savedBattleMons);
 struct AiLogicData *AllocSaveAiLogicData(void);
 void FreeRestoreAiLogicData(struct AiLogicData *savedAiLogicData);
 s32 CountUsablePartyMons(enum BattlerId battlerId);
+s32 CountUsableSideMons(enum BattlerId battlerId);
 bool32 IsPartyFullyHealedExceptBattler(enum BattlerId battler);
 bool32 PartyHasMoveCategory(enum BattlerId battlerId, enum DamageCategory category);
 bool32 SideHasMoveCategory(enum BattlerId battlerId, enum DamageCategory category);
