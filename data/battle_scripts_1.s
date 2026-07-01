@@ -1618,6 +1618,7 @@ BattleScript_SmokeExplosionLoop::
 BattleScript_SmokeExplosionLoopIncrement::
   addbyte gBattlerTarget, 1
   jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_SmokeExplosionLoop
+  setbyte gBattlerTarget, 0
   return
 
 BattleScript_MaxHp50Recoil::
@@ -3221,7 +3222,7 @@ BattleScript_OverworldStatusStarts::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation_var BS_ATTACKER, sB_ANIM_ARG1
 	call BattleScript_OverworldStatusStarts_TryActivations
-	return
+	end3
 
 BattleScript_OverworldStatusStarts_TryActivations:
 	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_SET_TRICK_ROOM, BattleScript_TryRoomServiceLoop
