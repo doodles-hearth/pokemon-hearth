@@ -247,7 +247,7 @@ static void DoublesWhen(enum Move move, struct BattlePokemon *attacker, struct B
     else if (effect == EFFECT_DREAM_EATER
           || effect == EFFECT_NIGHTMARE)
     { // Opponent needs to be asleep
-        TURN { MOVE(target, MOVE_REST); }
+        TURN { MOVE(target, MOVE_REST, WITH_RNG(RNG_DREAM_SLEEP, 0)); }
     }
     else if (effect == EFFECT_STAT_CHANGE_ON_STATUS
           || effect == EFFECT_PURIFY)
@@ -381,7 +381,7 @@ static void DoublesWhen(enum Move move, struct BattlePokemon *attacker, struct B
         }
         else
         { // All other moves
-            MOVE(target, MOVE_LAST_RESORT, target: attacker); // Last Resort, so there's no anim on the opponent's side.
+            MOVE(target, MOVE_LAST_RESORT, WITH_RNG(RNG_DREAM_SLEEP, 0), target: attacker); // Last Resort, so there's no anim on the opponent's side.
             MOVE(attacker, move, target: target);
         }
         if (effect != EFFECT_AFTER_YOU)
@@ -471,7 +471,7 @@ static void WhenSingles(enum Move move, struct BattlePokemon *attacker, struct B
     else if (effect == EFFECT_DREAM_EATER
           || effect == EFFECT_NIGHTMARE)
     { // defender needs to be asleep
-        TURN { MOVE(defender, MOVE_REST); }
+        TURN { MOVE(defender, MOVE_REST, WITH_RNG(RNG_DREAM_SLEEP, 0); }
     }
     else if (effect == EFFECT_STAT_CHANGE_ON_STATUS
           || effect == EFFECT_PURIFY)
