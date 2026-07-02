@@ -35,7 +35,6 @@ u16 StringLength(const u8 *str);
 u16 StringLineLength(const u8 *str);
 s32 StringCompare(const u8 *str1, const u8 *str2);
 s32 StringCompareN(const u8 *str1, const u8 *str2, u32 n);
-bool8 IsStringLengthAtLeast(const u8 *str, s32 n);
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
 u8 *ConvertUIntToDecimalStringN(u8 *dest, u32 value, enum StringConvertMode mode, u8 n);
 u8 *ConvertIntToHexStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n);
@@ -49,7 +48,6 @@ u8 *StringCopyN_Multibyte(u8 *dest, u8 *src, u32 n);
 u32 StringLength_Multibyte(const u8 *str);
 u8 *WriteColorChangeControlCode(u8 *dest, enum TextColorType colorType, u8 color);
 bool32 IsStringJapanese(u8 *str);
-bool32 IsStringNJapanese(u8 *str, s32 n);
 u8 GetExtCtrlCodeLength(u8 code);
 s32 StringCompareWithoutExtCtrlCodes(const u8 *str1, const u8 *str2);
 void ConvertInternationalString(u8 *s, enum Language language);
@@ -59,5 +57,6 @@ s32 DoesStringContainMonName(const u8 *string, const u8 *monName);
 void ToLowerCase(u8 *string);
 u8 *StringCopyCensorWord(u8 *dest, const u8 *src, u8 wordStartIndex, u8 wordLength);
 bool32 DoesStringProperlyTerminate(const u8 *str, u32 last);
+u8* const GetStringVar(u8 index);
 
 #endif // GUARD_STRING_UTIL_H

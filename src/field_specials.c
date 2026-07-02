@@ -539,7 +539,7 @@ u8 GetLinkPartnerNames(void)
     {
         if (myLinkPlayerNumber != i)
         {
-            StringCopy(gTVStringVarPtrs[j], gLinkPlayers[i].name);
+            StringCopy(GetStringVar(j), gLinkPlayers[i].name);
             j++;
         }
     }
@@ -5763,14 +5763,6 @@ static void Task_CancelPokemonLeagueLightingEffect(u8 taskId)
             BlendPalettes(0x00000080, 16, RGB_BLACK);
         }
         DestroyTask(taskId);
-    }
-}
-
-void StopPokemonLeagueLightingEffectTask(void)
-{
-    if (FuncIsActiveTask(Task_RunPokemonLeagueLightingEffect) == TRUE)
-    {
-        DestroyTask(FindTaskIdByFunc(Task_RunPokemonLeagueLightingEffect));
     }
 }
 
