@@ -130,6 +130,8 @@ const u32 gObjectEventPic_Seaside_Boy2[] = INCGFX_U32("graphics/object_events/pi
 const u32 gObjectEventPic_Seaside_Nurse[] = INCGFX_U32("graphics/object_events/pics/people/seaside/nurse.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_Seaside_Valet[] = INCGFX_U32("graphics/object_events/pics/people/seaside/valet.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_Seaside_FatGuy[] = INCGFX_U32("graphics/object_events/pics/people/seaside/fat_guy.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_CastformRainGuy[] = INCGFX_U32("graphics/object_events/pics/people/castform_rain_guy.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_CastformSunGirl[] = INCGFX_U32("graphics/object_events/pics/people/castform_sun_girl.png", ".4bpp", "-mwidth 4 -mheight 4");
 
 // Uume area NPCs
 const u32 gObjectEventPic_Uume_Woman1[] = INCGFX_U32("graphics/object_events/pics/people/uume/woman_1.png", ".4bpp", "-mwidth 4 -mheight 4");

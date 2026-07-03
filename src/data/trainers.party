@@ -1584,16 +1584,16 @@ Music: Female
 Battle Type: Singles
 AI: Smartish Trainer
 
-Roselia
-Level: 19
-- Mega Drain
-- Poison Sting
-
 Castform
 Level: 18
 - Ember
 - Sunny Day
 - Headbutt
+
+Roselia
+Level: 19
+- Mega Drain
+- Poison Sting
 
 === TRAINER_BERKE ===
 Name: BERKE

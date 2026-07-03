@@ -92,6 +92,10 @@ static const u32 sFieldMugshotGfx_FishermanNormal[] = INCGFX_U32("graphics/field
 
 static const u32 sFieldMugshotGfx_FirebringerNormal[] = INCGFX_U32("graphics/field_mugshots/firebringer/normal.png", ".4bpp.smol");
 
+static const u32 sFieldMugshotGfx_CastformRainGuy[] = INCGFX_U32("graphics/field_mugshots/castform_rain_guy/normal.png", ".4bpp.smol");
+
+static const u32 sFieldMugshotGfx_CastformSunGirl[] = INCGFX_U32("graphics/field_mugshots/castform_sun_girl/normal.png", ".4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/big_sis/normal.png", ".4bpp.smol");
@@ -402,6 +406,22 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_HexManiacNormal,
             .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_CASTFORM_RAIN_GUY] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_CastformRainGuy,
+            .pal = gObjectEventPal_Npc_Seaside,
+        },
+    },
+    [MUGSHOT_CASTFORM_SUN_GIRL] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_CastformSunGirl,
+            .pal = gObjectEventPal_Npc_Seaside,
         },
     },
     [MUGSHOT_ARTIST] =

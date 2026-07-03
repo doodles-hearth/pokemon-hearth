@@ -312,6 +312,12 @@ const u16 gTrainerPalette_OldMan[] = INCGFX_U16("graphics/trainers/front_pics/ol
 const u32 gTrainerFrontPic_Medium[] = INCGFX_U32("graphics/trainers/front_pics/medium.png", ".4bpp.smol");
 const u16 gTrainerPalette_Medium[] = INCGFX_U16("graphics/trainers/front_pics/medium.png", ".gbapal");
 
+const u32 gTrainerFrontPic_CastformRainGuy[] = INCGFX_U32("graphics/trainers/front_pics/castform_rain_guy.png", ".4bpp.smol");
+const u16 gTrainerPalette_CastformRainGuy[] = INCGFX_U16("graphics/trainers/front_pics/castform_rain_guy.png", ".gbapal");
+
+const u32 gTrainerFrontPic_CastformSunGirl[] = INCGFX_U32("graphics/trainers/front_pics/castform_sun_girl.png", ".4bpp.smol");
+const u16 gTrainerPalette_CastformSunGirl[] = INCGFX_U16("graphics/trainers/front_pics/castform_sun_girl.png", ".gbapal");
+
 const u32 gTrainerFrontPic_YoungCouple[] = INCGFX_U32("graphics/trainers/front_pics/young_couple.png", ".4bpp.smol");
 const u16 gTrainerPalette_YoungCouple[] = INCGFX_U16("graphics/trainers/front_pics/young_couple.png", ".gbapal");
 
@@ -725,6 +731,14 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
     {
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_OldMan, gTrainerPalette_OldMan),
         .backPic = TRAINER_BACK_PIC(4, gTrainerBackPic_OldMan, gTrainerBackPicPalette_OldMan, sBackAnims_OldManPokedude),
+    },
+    [TRAINER_PIC_CASTFORM_RAIN_GUY] =
+    {
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CastformRainGuy, gTrainerPalette_CastformRainGuy),
+    },
+    [TRAINER_PIC_CASTFORM_SUN_GIRL] =
+    {
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_CastformSunGirl, gTrainerPalette_CastformSunGirl),
     },
     [TRAINER_PIC_HIKER] =
     {

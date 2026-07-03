@@ -1943,3 +1943,20 @@ script YifuCity_EventScript_WhereRefuge {
 	closemessage
 	release
 }
+
+script YifuCity_EventScript_Sunbather {
+	lock
+	faceplayer
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}Even living in the city, Castform\nand I need our daily dose of sunlight."
+	))
+	closemessage
+	release
+}
+
+script YifuCity_EventScript_Castform {
+	lock
+	mondialogue(SPECIES_CASTFORM, "Glgl…")
+	closemessage
+	release
+}
