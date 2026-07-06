@@ -49,6 +49,10 @@ static void Task_DrawFieldMessage(u8 taskId)
         DrawDialogueFrame(0, TRUE);
         if (nameboxWinId != WINDOW_NONE)
             DrawNamebox(nameboxWinId, NAME_BOX_BASE_TILE_NUM - NAME_BOX_BASE_TILES_TOTAL, TRUE);
+        if (IsFieldMugshotActive())
+        {
+            gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
+        }
         task->tState++;
         break;
     }
@@ -139,10 +143,6 @@ static void ExpandStringAndStartDrawFieldMessage(const u8 *str, bool32 allowSkip
     TrySpawnNamebox(gStringVar4, NAME_BOX_BASE_TILE_NUM);
     AddTextPrinterForMessage(allowSkippingDelayWithButtonPress);
     CreateTask_DrawFieldMessage();
-    if (IsFieldMugshotActive())
-    {
-        gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
-    }
 }
 
 static void StartDrawFieldMessage(void)
