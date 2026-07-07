@@ -1141,6 +1141,8 @@ static void KabaSpeech_DrawCharacterMugshot(u8 id)
 static inline void KabaSpeech_PrintMessageBox(const u8 *str)
 {
     DrawDialogueFrame(WIN_TEXT, FALSE);
+    gTextFlags.canABSpeedUpPrint = TRUE;
+    gTextFlags.forceMidTextSpeed = FALSE;
     if (str != gStringVar4)
     {
         StringExpandPlaceholders(gStringVar4, str);
