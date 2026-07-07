@@ -344,11 +344,13 @@ static void Task_KabaSpeech_FadeOutPokeball(u8);
 static void Task_KabaSpeech_FadeOutEverything(u8);
 static void Task_KabaSpeech_FadeInPlayerMugshotChoice(u8);
 static void Task_KabaSpeech_SetupPlayerMugshotChoice(u8);
+static void Task_KabaSpeech_WaitGenderChoiceMessage(u8);
 static void Task_KabaSpeech_WaitForPlayerMugshotChoice(u8);
 static void Task_KabaSpeech_MoveChosenMugshot(u8);
 static void Task_KabaSpeech_SpawnYesNoMenuForPlayerMugshot(u8);
 static void Task_KabaSpeech_HandleConfirmChosenMugshotInput(u8);
 static void Task_KabaSpeech_MoveMugshotsBack(u8);
+static void Task_KabaSpeech_WaitMovingMugshots(u8);
 static void Task_KabaSpeech_AskForName(u8);
 static void Task_KabaSpeech_WaitBeforeNamingScreen(u8);
 static void Task_KabaSpeech_DoNamingScreen(u8);
@@ -405,8 +407,9 @@ static const u8 sKabaSpeech_GenderChoice[] = _(
     "Or are you a girl?"
 );
 static const u8 sKabaSpeech_ConfirmChosenGender[] = _(
-    "So this is how you look?\p"
+    "So this is how you look?"
 );
+
 static const u8 sKabaSpeech_GenderConfirmed[] = _(
     "(Children used to dress respectfully\n"
     "back in my day…)\p"
@@ -789,7 +792,6 @@ static void Task_KabaSpeech_FadeInPlayerMugshotChoice(u8 taskId)
     sKabaSpeech->timer = 60;
     KabaSpeech_BeginFade(FALSE, 60, SPRITE_TYPE_PLATFORM);
     gTasks[taskId].func = Task_KabaSpeech_SetupPlayerMugshotChoice;
-
 }
 
 static void Task_KabaSpeech_SetupPlayerMugshotChoice(u8 taskId)
@@ -807,6 +809,14 @@ static void Task_KabaSpeech_SetupPlayerMugshotChoice(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDY, 0);
         KabaSpeech_PrintMessageBox(sKabaSpeech_GenderChoice);
         sKabaSpeech->chosenMugshot = MUGSHOT_AO;
+        gTasks[taskId].func = Task_KabaSpeech_WaitGenderChoiceMessage;
+    }
+}
+
+static void Task_KabaSpeech_WaitGenderChoiceMessage(u8 taskId)
+{
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
+    {
         sKabaSpeech->timer = 30;
         gTasks[taskId].func = Task_KabaSpeech_WaitForPlayerMugshotChoice;
     }
@@ -888,6 +898,9 @@ static void Task_KabaSpeech_MoveChosenMugshot(u8 taskId)
 
 static void Task_KabaSpeech_SpawnYesNoMenuForPlayerMugshot(u8 taskId)
 {
+    if (IsTextPrinterActiveOnWindow(WIN_TEXT))
+        return;
+
     if (sKabaSpeech->timer)
     {
         sKabaSpeech->timer--;
@@ -907,23 +920,36 @@ static void Task_KabaSpeech_HandleConfirmChosenMugshotInput(u8 taskId)
     switch(input)
     {
     case 0: // YES
-        DeactivateSingleTextPrinter(WIN_TEXT, WINDOW_TEXT_PRINTER);
         PlaySE(SE_SELECT);
         KabaSpeech_PrintMessageBox(sKabaSpeech_GenderConfirmed);
         gTasks[taskId].func = Task_KabaSpeech_AskForName;
         break;
     case 1: // NO
     case MENU_B_PRESSED:
-        DeactivateSingleTextPrinter(WIN_TEXT, WINDOW_TEXT_PRINTER);
         PlaySE(SE_SELECT);
+        sKabaSpeech->timer = 30;
         KabaSpeech_PrintMessageBox(sKabaSpeech_CancelChosenGender);
-        KabaSpeech_BeginFade(FALSE, 0, (sKabaSpeech->chosenMugshot == MUGSHOT_AO) ? SPRITE_TYPE_MUGSHOT_2 : SPRITE_TYPE_MUGSHOT_1);
         gTasks[taskId].func = Task_KabaSpeech_MoveMugshotsBack;
         break;
     }
 }
 
 static void Task_KabaSpeech_MoveMugshotsBack(u8 taskId)
+{
+    if (IsTextPrinterActiveOnWindow(WIN_TEXT))
+        return;
+
+    if (sKabaSpeech->timer)
+    {
+        sKabaSpeech->timer--;
+        return;
+    }
+
+    KabaSpeech_BeginFade(FALSE, 0, (sKabaSpeech->chosenMugshot == MUGSHOT_AO) ? SPRITE_TYPE_MUGSHOT_2 : SPRITE_TYPE_MUGSHOT_1);
+    gTasks[taskId].func = Task_KabaSpeech_WaitMovingMugshots;
+}
+
+static void Task_KabaSpeech_WaitMovingMugshots(u8 taskId)
 {
     u32 limit = 0;
     if (sKabaSpeech->counter == limit)
@@ -945,7 +971,6 @@ static void Task_KabaSpeech_AskForName(u8 taskId)
     if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         sKabaSpeech->timer = 60;
-    
         KabaSpeech_PrintMessageBox(sKabaSpeech_AskPlayerName);
         gTasks[taskId].func = Task_KabaSpeech_WaitBeforeNamingScreen;
     }
