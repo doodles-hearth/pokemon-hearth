@@ -15,7 +15,6 @@
 static EWRAM_DATA u8 sFieldMugshotSpriteIds[2] = {};
 static EWRAM_DATA u8 sIsFieldMugshotActive = 0;
 static EWRAM_DATA u8 sFieldMugshotSlot = 0;
-static EWRAM_DATA u8 sFieldMugshotObjWindowMaskId;
 
 #define TAG_MUGSHOT (0x9000 | BLEND_IMMUNE_FLAG)
 #define TAG_MUGSHOT2 (0x9001 | BLEND_IMMUNE_FLAG)
@@ -26,8 +25,6 @@ static EWRAM_DATA u8 sFieldMugshotObjWindowMaskId;
 #define MUGSHOT_Y 51  + 32
 
 static void SpriteCB_FieldMugshot(struct Sprite *s);
-static u8 CreateObjWinMaskSprite(struct Sprite* sprite);
-static bool32 DestroyObjWinMaskSprite(u8* maskId);
 
 static const struct OamData sFieldMugshot_Oam = {
     .size = SPRITE_SIZE(64x64),
@@ -44,45 +41,6 @@ static const struct SpriteTemplate sFieldMugshot_SpriteTemplate = {
     .affineAnims = gDummySpriteAffineAnimTable,
 };
 
-static u8 CreateObjWinMaskSprite(struct Sprite* sprite)
-{
-    if (!GetFlashLevel())
-        return SPRITE_NONE;
-
-    struct SpriteTemplate template = *sprite->template;
-    template.callback = SpriteCallbackDummy;
-
-    s16 x = sprite->x;
-    s16 y = sprite->y;
-
-    SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
-    SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
-
-    u8 spriteId = CreateSprite(&template, x, y, 0);
-
-    if (spriteId != MAX_SPRITES) {
-        gSprites[spriteId].oam.objMode = ST_OAM_OBJ_WINDOW;
-        return spriteId;
-    }
-    else {
-        ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
-        ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
-        return SPRITE_NONE;
-    }
-}
-
-static bool32 DestroyObjWinMaskSprite(u8* maskId)
-{
-    if (*maskId != SPRITE_NONE) {
-        DestroySprite(&gSprites[*maskId]);
-        *maskId = SPRITE_NONE;
-        ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
-        ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
-        return TRUE;
-    }
-    return FALSE;
-}
-
 static void SpriteCB_FieldMugshot(struct Sprite *s)
 {
     if (s->data[0] == TRUE)
@@ -97,25 +55,22 @@ static void SpriteCB_FieldMugshot(struct Sprite *s)
 
 void RemoveFieldMugshot(void)
 {
-    if (sFieldMugshotSpriteIds[0] != 0xFF || sFieldMugshotSpriteIds[1] != 0xFF) {
-        ResetPreservedPalettesInWeather();
-        if (sFieldMugshotSpriteIds[0] != 0xFF)
-        {
-            FreeSpriteTilesByTag(TAG_MUGSHOT);
-            FreeSpritePaletteByTag(TAG_MUGSHOT);
-            DestroySprite(&gSprites[sFieldMugshotSpriteIds[0]]);
-            sFieldMugshotSpriteIds[0] = SPRITE_NONE;
-        }
-        if (sFieldMugshotSpriteIds[1] != 0xFF)
-        {
-            FreeSpriteTilesByTag(TAG_MUGSHOT2);
-            FreeSpritePaletteByTag(TAG_MUGSHOT2);
-            DestroySprite(&gSprites[sFieldMugshotSpriteIds[1]]);
-            sFieldMugshotSpriteIds[1] = SPRITE_NONE;
-        }
-        DestroyObjWinMaskSprite(&sFieldMugshotObjWindowMaskId);
-        sIsFieldMugshotActive = FALSE;
+    ResetPreservedPalettesInWeather();
+    if (sFieldMugshotSpriteIds[0] != 0xFF)
+    {
+        FreeSpriteTilesByTag(TAG_MUGSHOT);
+        FreeSpritePaletteByTag(TAG_MUGSHOT);
+        DestroySprite(&gSprites[sFieldMugshotSpriteIds[0]]);
+        sFieldMugshotSpriteIds[0] = SPRITE_NONE;
     }
+    if (sFieldMugshotSpriteIds[1] != 0xFF)
+    {
+        FreeSpriteTilesByTag(TAG_MUGSHOT2);
+        FreeSpritePaletteByTag(TAG_MUGSHOT2);
+        DestroySprite(&gSprites[sFieldMugshotSpriteIds[1]]);
+        sFieldMugshotSpriteIds[1] = SPRITE_NONE;
+    }
+    sIsFieldMugshotActive = FALSE;
 }
 
 void CreateFieldMugshot(struct ScriptContext *ctx)
@@ -174,10 +129,16 @@ void _CreateFieldMugshot(u32 id, u32 emote)
     if (sFieldMugshotSpriteIds[slot] == SPRITE_NONE)
         return;
 
-    sFieldMugshotObjWindowMaskId = CreateObjWinMaskSprite(&gSprites[sFieldMugshotSpriteIds[slot]]);
+    if (GetFlashLevel())
+    {
+        SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
+        SetGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
+        gSprites[sFieldMugshotSpriteIds[slot]].copyToObjWin = TRUE;
+    }
 
     PreservePaletteInWeather(gSprites[sFieldMugshotSpriteIds[slot]].oam.paletteNum + 0x10);
     gSprites[sFieldMugshotSpriteIds[slot]].data[0] = FALSE;
+
     sIsFieldMugshotActive = TRUE;
     sFieldMugshotSlot ^= 1;
 }
