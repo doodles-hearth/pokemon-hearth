@@ -260,15 +260,15 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
     }
 };
 
-u32 GetCurrentBattleWeather(void)
+enum BattleWeather GetCurrentBattleWeather(u32 weather)
 {
     u32 currBattleWeather = 0xFF;
 
-    for (u32 weather = 0; weather < ARRAY_COUNT(sBattleWeatherInfo); weather++)
+    for (u32 i = 0; i < ARRAY_COUNT(sBattleWeatherInfo); i++)
     {
-        if (gBattleWeather & sBattleWeatherInfo[weather].flag)
+        if (weather & sBattleWeatherInfo[i].flag)
         {
-            currBattleWeather = weather;
+            currBattleWeather = i;
             break;
         }
     }
@@ -328,7 +328,7 @@ const struct TerrainInfo gBattleTerrainInfo[B_TERRAIN_COUNT] = {
 
 bool32 EndOrContinueWeather(void)
 {
-    u32 currBattleWeather = GetCurrentBattleWeather();
+    enum BattleWeather currBattleWeather = GetCurrentBattleWeather(gBattleWeather);
 
     if (currBattleWeather == 0xFF)
         return FALSE;
@@ -7872,10 +7872,9 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
         }
         break;
     case EFFECT_ENDEAVOR:
-        if (GetNonDynamaxHP(ctx->battlerDef) <= gBattleMons[ctx->battlerAtk].hp)
+        if (GetNonDynamaxHP(ctx->battlerDef) <= gBattleMons[ctx->battlerAtk].hp) // for accurate ai calcs but otherwise failure is handled prior
         {
             dmg = 0;
-            gBattleStruct->moveResultFlags[ctx->battlerDef] |= MOVE_RESULT_DOESNT_AFFECT_FOE;
         }
         else
         {
@@ -9211,6 +9210,7 @@ void SetDynamicMoveCategory(enum BattlerId battlerAtk, enum BattlerId battlerDef
         break;
     case EFFECT_PRESENT:
     {
+        gBattleStruct->presentBasePower = 0;
         u32 rand = RandomUniform(RNG_PRESENT, 0, 0xFF);
         if (rand < 102)
             gBattleStruct->presentBasePower = 40;
@@ -9568,15 +9568,15 @@ bool32 CanTargetBattler(enum BattlerId battlerAtk, enum BattlerId battlerDef, en
 u32 GetNextTarget(u32 moveTarget, bool32 excludeCurrent)
 {
     enum BattlerId battler;
-    for (battler = 0; battler < MAX_BATTLERS_COUNT; battler++)
+    for (battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
     {
-        if (battler == gBattlerAttacker || !IsBattlerAlive(battler))
+        if (excludeCurrent && battler == gBattlerTarget)
             continue;
-
-        if (!(excludeCurrent && battler == gBattlerTarget)
-         && !gBattleStruct->battlerState[gBattlerAttacker].targetsDone[battler]
-         && (!IsBattlerAlly(battler, gBattlerAttacker) || moveTarget == TARGET_FOES_AND_ALLY))
-            break;
+        if (gBattleStruct->battlerState[gBattlerAttacker].targetsDone[battler])
+            continue;
+        if (gBattleStruct->moveResultFlags[battler] & MOVE_RESULT_NO_EFFECT)
+            continue;
+        break;
     }
     return battler;
 }
@@ -10020,9 +10020,6 @@ void ClearDamageCalcResults(void)
         gSpecialStatuses[battler].damagedByAttack = FALSE;
     }
 
-    gBattleStruct->doneDoublesSpreadHit = FALSE;
-    gBattleStruct->calculatedSpreadMoveAccuracy = FALSE;
-    gBattleStruct->printedStrongWindsWeakenedAttack = FALSE;
     gBattleStruct->numSpreadTargets = 0;
     gBattleStruct->unableToUseMove = FALSE;
     gBattleStruct->attackAnimPlayed = FALSE;
