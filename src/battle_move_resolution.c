@@ -4485,10 +4485,11 @@ static enum MoveEndResult MoveEnd_SmokeExplosion(struct BattleCalcValues *cv)
         gBattleStruct->trySmokeExplosion = FALSE;
         for (u32 battler = 0; battler < gBattlersCount; battler++) {
             if (IsBattlerAlive(battler)) {
-                gBattleStruct->passiveHpUpdate[battler] = CalcSmokeExplosionDamage(battler);
+                s32 dmg = CalcSmokeExplosionDamage(battler);
+                SetPassiveDamageAmount(battler, dmg);
             }
             else {
-                gBattleStruct->passiveHpUpdate[battler] = 0;
+                SetPassiveDamageAmount(battler, 0);
             }
         }
         result = MOVEEND_RESULT_RUN_SCRIPT;

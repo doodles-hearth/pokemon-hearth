@@ -1601,8 +1601,8 @@ BattleScript_SmokeExplosion::
 BattleScript_SmokeExplosionLoop::
   jumpifabsent BS_TARGET, BattleScript_SmokeExplosionLoopIncrement
   trysmokeexplosionendabilities BS_TARGET
-  healthbarupdate BS_TARGET, PASSIVE_HP_UPDATE
-  datahpupdate BS_TARGET, PASSIVE_HP_UPDATE
+  healthbarupdate BS_TARGET
+  datahpupdate BS_TARGET
   tryfaintmon BS_TARGET
 
 BattleScript_SmokeExplosionLoopIncrement::
@@ -3201,8 +3201,8 @@ BattleScript_IceBodyHeal::
 BattleScript_RuinAbilityHeal::
 	call BattleScript_AbilityPopUp
 	playanimation BS_ATTACKER, B_ANIM_SIMPLE_HEAL
-	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
-	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	healthbarupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER
 	printstring STRINGID_RUINABILITYHPGAIN
 	waitmessage B_WAIT_TIME_LONG
 	return
