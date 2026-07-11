@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle_z_move.h"
+#include "constants/battle.h"
 #include "malloc.h"
 #include "battle.h"
 #include "battle_anim.h"
@@ -86,6 +87,8 @@ bool32 WeatherChecker(enum BattlerId battler, u32 weather, enum FieldEffectOutco
             result[sideBattlers] = BenefitsFromSandstorm(battlerIndex);
         else if (weather & B_WEATHER_ICY_ANY)
             result[sideBattlers] = BenefitsFromHailOrSnow(battlerIndex, weather);
+        else if (weather & B_WEATHER_SMOKE)
+            result[sideBattlers] = BenefitsFromSmoke(battlerIndex);
 
         sideBattlers = PARTNER;
     }
