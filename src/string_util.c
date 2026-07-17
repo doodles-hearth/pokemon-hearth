@@ -157,7 +157,7 @@ u16 StringLength(const u8 *str)
 
 u16 StringLineLength(const u8 *str)
 {
-    u16 i = 0, length = 0;
+    u16 length = 0;
 
     while (str[length] != EOS)
     {
@@ -168,7 +168,6 @@ u16 StringLineLength(const u8 *str)
         case CHAR_NEWLINE:
             return length;
         default:
-            i++;
             length++;
             break;
         }
