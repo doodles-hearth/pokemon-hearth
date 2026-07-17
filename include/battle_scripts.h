@@ -517,6 +517,7 @@ extern const u8 BattleScript_DecreaseStatChangeMessageMinStat[];
 extern const u8 BattleScript_StatDidntChangeMessagePause[];
 extern const u8 BattleScript_WildBattleVictory[];
 extern const u8 BattleScript_BelchFails[];
+extern const u8 BattleScript_MegaSolActivatesTwoTurnMove[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];
@@ -611,6 +612,7 @@ extern const u8 BattleScript_EffectBatonPass[];
 extern const u8 BattleScript_EffectMorningSun[];
 extern const u8 BattleScript_EffectSynthesis[];
 extern const u8 BattleScript_EffectMoonlight[];
+extern const u8 BattleScript_MegaSolActivatesHealing[];
 extern const u8 BattleScript_EffectWeather[];
 extern const u8 BattleScript_EffectStatChange[];
 extern const u8 BattleScript_EffectStatChangeHalfHp[];

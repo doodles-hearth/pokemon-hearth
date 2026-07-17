@@ -889,9 +889,6 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
         SetActiveGimmick(battlerDef, gBattleStruct->gimmick.usableGimmick[battlerDef]);
     }
 
-    SetTypeBeforeUsingMove(move, battlerAtk);
-    SetDynamicMoveCategory(battlerAtk, battlerDef, move);
-
     // We can set those globals because they are going to get rerolled on attack execution
     gBattleStruct->magnitudeBasePower = 70;
     gBattleStruct->presentBasePower = 80;
@@ -902,7 +899,6 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
     ctx.battlerAtk = battlerAtk;
     ctx.battlerDef = battlerDef;
     ctx.move = ctx.chosenMove = move;
-    ctx.moveType = GetBattleMoveType(move);
     ctx.randomFactor = FALSE;
     ctx.updateFlags = FALSE;
     ctx.terrain = terrain;
@@ -919,6 +915,10 @@ struct SimulatedDamage AI_CalcDamage(enum Move move, enum BattlerId battlerAtk, 
         ctx.holdEffects[battler] = aiData->holdEffects[battler];
     }
 
+    SetDynamicMoveCategory(battlerAtk, battlerDef, move);
+    SetTypeBeforeUsingMove(move, battlerAtk, ctx.abilities[battlerAtk], ctx.holdEffects[battlerAtk]);
+
+    ctx.moveType = GetBattleMoveType(move);
     ctx.isCrit = ShouldCalcCritDamage(&ctx);
     ctx.typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(&ctx);
 
@@ -1345,13 +1345,10 @@ uq4_12_t AI_GetMoveEffectiveness(enum Move move, enum BattlerId battlerAtk, enum
     SetBattlerData(battlerAtk);
     SetBattlerData(battlerDef);
 
-    gBattleStruct->dynamicMoveType = 0;
-    SetTypeBeforeUsingMove(move, battlerAtk);
     struct DamageContext ctx = {0};
     ctx.battlerAtk = battlerAtk;
     ctx.battlerDef = battlerDef;
     ctx.move = ctx.chosenMove = move;
-    ctx.moveType = GetBattleMoveType(move);
     ctx.updateFlags = FALSE;
     ctx.weather = AI_GetWeather();
     ctx.terrain = gFieldTimers.terrain;
@@ -1359,7 +1356,11 @@ uq4_12_t AI_GetMoveEffectiveness(enum Move move, enum BattlerId battlerAtk, enum
     ctx.abilities[ctx.battlerDef] = gAiLogicData->abilities[battlerDef];
     ctx.holdEffects[ctx.battlerAtk] = gAiLogicData->holdEffects[battlerAtk];
     ctx.holdEffects[ctx.battlerDef] = gAiLogicData->holdEffects[battlerDef];
+
+    SetTypeBeforeUsingMove(move, battlerAtk, ctx.abilities[battlerAtk], ctx.holdEffects[battlerAtk]);
+    ctx.moveType = GetBattleMoveType(move);
     typeEffectiveness = CalcTypeEffectivenessMultiplier(&ctx);
+
 
     RestoreBattlerData(battlerAtk);
     RestoreBattlerData(battlerDef);
@@ -3138,12 +3139,15 @@ bool32 HasDamagingMove(enum BattlerId battler)
 bool32 HasDamagingMoveOfType(enum BattlerId battler, enum Type type)
 {
     enum Move *moves = GetMovesArray(battler);
+    struct AiLogicData *aiData = gAiLogicData;
+    enum Ability ability = aiData->abilities[battler];
+    enum HoldEffect holdEffect = aiData->holdEffects[battler];
 
     for (u32 moveIndex = 0; moveIndex < MAX_MON_MOVES; moveIndex++)
     {
         if (moves[moveIndex] != MOVE_NONE && moves[moveIndex] != MOVE_UNAVAILABLE && GetMovePower(moves[moveIndex]) > 0)
         {
-            enum Type moveType = GetDynamicMoveType(GetBattlerMon(battler), moves[moveIndex], battler, MON_IN_BATTLE);
+            enum Type moveType = GetDynamicMoveType(GetBattlerMon(battler), moves[moveIndex], battler, ability, holdEffect, MON_IN_BATTLE);
 
             if (moveType != TYPE_NONE && type == moveType)
                 return TRUE;
