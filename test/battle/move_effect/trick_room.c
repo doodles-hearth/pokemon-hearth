@@ -1,4 +1,5 @@
 #include "global.h"
+#include "config/general.h"
 #include "test/battle.h"
 
 ASSUMPTIONS
@@ -76,6 +77,7 @@ SINGLE_BATTLE_TEST("Trick Room does not affect move priority")
 AI_MULTI_BATTLE_TEST("Trick Room does not fail if the chosen AI target has fainted")
 {
     GIVEN {
+        WITH_CONFIG(B_MULTI_BATTLE_WHITEOUT, GEN_LATEST);
         ASSUME(GetMoveEffect(MOVE_MEMENTO) == EFFECT_MEMENTO);
         PLAYER(SPECIES_WYNAUT) { Speed(4); Moves(MOVE_MEMENTO); }
         PARTNER(SPECIES_WOBBUFFET) { Speed(1); Moves(MOVE_TRICK_ROOM); }
