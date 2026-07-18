@@ -1,5 +1,6 @@
 #include "global.h"
 #include "constants/battle.h"
+#include "constants/battle_move_effects.h"
 #include "test/battle.h"
 #include "battle_ai_util.h"
 
@@ -26,6 +27,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 1-100")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_MIST:
         case EFFECT_TELEPORT:
@@ -86,6 +88,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 101-200")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_LIGHT_SCREEN:
         case EFFECT_REFLECT:
@@ -166,6 +169,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 201-300")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_SAFEGUARD:
         case EFFECT_FOLLOW_ME:
@@ -248,6 +252,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 301-400")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_WATER_SPORT:
         case EFFECT_LUCKY_CHANT:
@@ -324,6 +329,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 401-500")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_HEALING_WISH:
         case EFFECT_LUNAR_DANCE:
@@ -391,6 +397,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 501-600")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_ALLY_SWITCH:
         case EFFECT_QUASH:
@@ -462,6 +469,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 601-700")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_NO_RETREAT:
         case EFFECT_TEATIME:
@@ -540,6 +548,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 701-800")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_CLANGOROUS_SOUL:
         case EFFECT_POLTERGEIST:
@@ -606,6 +615,7 @@ AI_DOUBLE_BATTLE_TEST("AI values moves above Splash, 801-900")
 
         switch (effect)
         {
+        case EFFECT_DO_NOTHING:
         //TODO: AI HANDLING
         case EFFECT_SHED_TAIL:
         case EFFECT_FAIL_IF_NOT_ARG_TYPE:
