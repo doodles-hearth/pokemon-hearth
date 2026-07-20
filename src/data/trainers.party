@@ -1919,10 +1919,10 @@ IVs: 17 HP / 17 Atk / 17 Def / 17 SpA / 17 SpD / 17 Spe
 
 === TRAINER_AME ===
 Name: Ame
-Class: Beauty
-Pic: Beauty
+Class: Castform Rain Guy
+Pic: Castform Rain Guy
 Gender: Male
-Music: Female
+Music: Swimmer
 Battle Type: Singles
 AI: Basic Trainer
 
@@ -1930,7 +1930,6 @@ Lombre
 Level: 27
 - Bubble Beam
 - Nature Power
-- Rain Dance
 - Water Sport
 
 Castform
@@ -1942,18 +1941,12 @@ Level: 26
 
 === TRAINER_YO ===
 Name: Yo
-Class: Beauty
-Pic: Beauty
+Class: Castform Sun Girl
+Pic: Castform Sun Girl
 Gender: Female
-Music: Female
+Music: Swimmer
 Battle Type: Singles
 AI: Basic Trainer
-
-Jumpluff
-Level: 27
-- Leech Seed
-- Bullet Seed
-- Fairy Wind
 
 Braixen
 Level: 26
@@ -1961,6 +1954,12 @@ Level: 26
 - Sunny Day
 - Psybeam
 - Lucky Chant
+
+Jumpluff
+Level: 27
+- Leech Seed
+- Bullet Seed
+- Fairy Wind
 
 === TRAINER_ALEXIA ===
 Name: ALEXIA
