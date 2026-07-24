@@ -102,9 +102,9 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
     bool32 effect = FALSE;
 
     enum Ability ability = GetBattlerAbility(battler);
-    enum BattleWeather currBattleWeather = GetCurrentBattleWeather(gBattleWeather);
+    enum BattleWeather currBattleWeather = GetBattleWeather(gBattleWeather);
 
-    if (currBattleWeather == 0xFF)
+    if (currBattleWeather == BATTLE_WEATHER_NONE)
     {
         // If there is no weather on the field, no need to check other battlers so go to next state
         gBattleStruct->eventState.endTurnBattler = 0;
@@ -202,7 +202,8 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
             }
         }
     case BATTLE_WEATHER_LEAVES:
-	case BATTLE_WEATHER_SMOKE:
+    case BATTLE_WEATHER_SMOKE:
+    case BATTLE_WEATHER_NONE:
     case BATTLE_WEATHER_COUNT:
         break;
     }
@@ -408,10 +409,10 @@ static bool32 HandleEndTurnFirstEventBlock(enum BattlerId battler)
             else if (!gBattleMons[battler].volatiles.rampageTurns && gBattleMons[battler].volatiles.multipleTurns)
             {
                 gBattleMons[battler].volatiles.multipleTurns = FALSE;
-                if (!gBattleMons[battler].volatiles.confusionTurns)
+                if (!gBattleMons[battler].volatiles.confusionTimer)
                 {
                     SetMoveEffectHelper(battler, battler, MOVE_EFFECT_CONFUSION, gBattlescriptCurrInstr, EFFECT_PRIMARY);
-                    if (gBattleMons[battler].volatiles.confusionTurns)
+                    if (gBattleMons[battler].volatiles.confusionTimer)
                         BattleScriptCall(BattleScript_ThrashConfuses);
                     effect = TRUE;
                 }
