@@ -11095,7 +11095,7 @@ void TryDreaming(struct BattlePokemon* mon)
 bool32 ShouldSmokeExplode()
 {
     bool32 isFireMove = GetMoveType(gCurrentMove) == TYPE_FIRE;
-    bool32 isSmokeWeather = GetCurrentBattleWeather(gBattleWeather) == BATTLE_WEATHER_SMOKE;
+    bool32 isSmokeWeather = GetBattleWeather(gBattleWeather) == BATTLE_WEATHER_SMOKE;
 
     if (isFireMove && isSmokeWeather && HasWeatherEffect() && !IsAbilityOnField(ABILITY_DAMP))
         return TRUE;
