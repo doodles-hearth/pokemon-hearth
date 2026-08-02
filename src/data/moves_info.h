@@ -9101,7 +9101,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .noAffectOnSameTypeTarget = B_SHEER_COLD_IMMUNITY >= GEN_7,
-        .accIncreaseByTenOnSameType = B_SHEER_COLD_ACC >= GEN_7,
+        .accDecreaseIfUserNotSameType = B_SHEER_COLD_ACC >= GEN_7,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
@@ -15401,8 +15401,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     [MOVE_FREEZE_DRY] =
     {
         .name = COMPOUND_STRING("Freeze-Dry"),
-        .description = COMPOUND_STRING(
         #if B_UPDATED_MOVE_DATA < GEN_CHAMPIONS
+        .description = COMPOUND_STRING(
             "Super effective on Water-\n"
             #if B_USE_FROSTBITE == TRUE
                 "types. May cause frostbite."),
@@ -15410,6 +15410,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
                 "types. May cause freezing."),
             #endif
         #else
+        .description = COMPOUND_STRING(
             "Super effective on Water-\n"
             "types."),
         #endif

@@ -541,10 +541,10 @@ static void Hmm_RestoreBadges(void)
 static u32 Hmm_GetTokenCount(void)
 {
     u32 badgeCount = 0;
-    u32 i = 0;
-    u32 badgeFlag = FLAG_BADGE01_GET;
-    for (i = 0, badgeFlag = FLAG_BADGE01_GET; badgeFlag < FLAG_BADGE01_GET + NUM_BADGES; badgeFlag++, i++) {
-        if (FlagGet(badgeFlag))
+    u32 lastBadge = FLAG_BADGE01_GET + NUM_BADGES;
+    for (u32 i = FLAG_BADGE01_GET; i < lastBadge; i++)
+    {
+        if (FlagGet(i))
             badgeCount++;
     }
     return badgeCount;
