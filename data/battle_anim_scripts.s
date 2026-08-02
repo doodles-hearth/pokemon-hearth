@@ -35227,7 +35227,7 @@ gBattleAnimMove_SakuraDance::
 	delay 2
 	createsprite gSakuraDanceParticleSpriteTemplate, ANIM_ATTACKER, 2, -3, -5, 8
 	delay 60
-  waitforvisualfinish
+	waitforvisualfinish
 	playsewithpan SE_M_JUMP_KICK, SOUND_PAN_ATTACKER
 	createsprite gBattleAnimSpriteTemplate_LeafStorm, ANIM_ATTACKER, 2, 14, -12, 0, -12, 15, 0, 0
 	createsprite gBattleAnimSpriteTemplate_LeafStorm, ANIM_ATTACKER, 2, 26, 8, 12, 8, 15, 0, 0
@@ -35330,4 +35330,14 @@ gBattleAnimMove_SakuraDance::
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 2, 4, 0, RGB(31, 4, 26)
+	end
+
+gBattleAnimGeneral_ProtectedItself::
+	monbg ANIM_ATTACKER
+	splitbgprio ANIM_TARGET
+	playsewithpan SE_ICE_STAIRS, SOUND_PAN_ATTACKER
+	createsprite gProtectTemplate, ANIM_TARGET, 2, 0x0, 0x0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 10, 1
+	waitforvisualfinish
+	clearmonbg ANIM_ATTACKER
 	end

@@ -606,14 +606,16 @@ enum AnimBattler
 #define B_ANIM_SILPH_SCOPED             58
 #define B_ANIM_ROCK_THROW               59
 #define B_ANIM_SAFARI_REACTION          60
-#define B_ANIM_SMOKE_CONTINUES          61
-#define B_ANIM_EXPLOSION                62
-#define B_ANIM_FORM_CHANGE_INSTANT      63
-#define B_ANIM_FORM_CHANGE_DISGUISE     64
-#define B_ANIM_HELD_ITEM_BERRY          65
+#define B_ANIM_FORM_CHANGE_INSTANT      61
+#define B_ANIM_FORM_CHANGE_DISGUISE     62
+#define B_ANIM_HELD_ITEM_BERRY          63
+#define B_ANIM_PROTECTED_ITSELF         64
+// Hearth custom anims
+#define B_ANIM_SMOKE_CONTINUES          65
 #define B_ANIM_FALLING_LEAVES           66
 #define B_ANIM_DECAY                    67
-#define NUM_B_ANIMS_GENERAL             68
+#define B_ANIM_EXPLOSION                68
+#define NUM_B_ANIMS_GENERAL             69
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

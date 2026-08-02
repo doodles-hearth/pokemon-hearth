@@ -1713,8 +1713,8 @@ static bool32 CanTwoTurnMoveFireThisTurn(struct BattleCalcValues *cv, bool32 *sh
         return FALSE;
 
     enum BattleWeather moveAffectedByWeather = GetTwoTurnMoveWeather(cv->move);
-    enum BattleWeather weatherType = sBattleWeatherInfo[GetBattleWeather(weather)].type;
-    enum BattleWeather attackerWeatherType = sBattleWeatherInfo[GetBattleWeather(attackerWeather)].type;
+    enum BattleWeather weatherType = gBattleWeatherInfo[GetBattleWeather(weather)].type;
+    enum BattleWeather attackerWeatherType = gBattleWeatherInfo[GetBattleWeather(attackerWeather)].type;
 
     if (weatherType == moveAffectedByWeather)
     {
@@ -2095,7 +2095,7 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
     switch (gBattleStruct->eventState.moveEndBlock)
     {
     case TARGET_FAILURE_SEMI_INVULNERABILITY:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
         {
             cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
 
@@ -2117,7 +2117,7 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_PSYCHIC_TERRAIN:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
         {
             cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
 
@@ -2136,7 +2136,7 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_PROTECT:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
         {
             cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
 
@@ -2159,7 +2159,7 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_BOUNCE:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
         {
             cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
 
@@ -2183,7 +2183,7 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_TARGET_BLOCKED:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
         {
             cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
 
@@ -2202,7 +2202,7 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_EFFECTIVENESS:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
         {
             cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
 
@@ -2930,6 +2930,8 @@ static bool32 TryMoveDamageUpdate(struct BattleCalcValues *cv)
         gBattleStruct->moveDamage[cv->battlerDef] = 0;
         if (cv->moveEffect == EFFECT_OHKO)
             gProtectStructs[cv->battlerDef].survivedOHKO = TRUE;
+        if (DoesIceFaceBlockMove(cv->battlerDef, cv->move))
+            gProtectStructs[cv->battlerDef].assuranceDoubled = TRUE;
     }
     else
     {
