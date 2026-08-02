@@ -10714,7 +10714,7 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
     if (FlagGet(FLAG_DAILY_MON_DEX_RIDDLE_WON))
         *expAmount = (*expAmount * 110) / 100;
 
-    if (B_CATCH_UP_EXP == TRUE)
+    if (GetConfig(B_CATCH_UP_EXP) == TRUE)
     {
         s8 levelDiff = GetHighestMonLevel() - GetMonData(&gParties[B_TRAINER_PLAYER][expGetterMonId], MON_DATA_LEVEL);
 

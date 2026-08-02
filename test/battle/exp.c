@@ -1,4 +1,6 @@
 #include "global.h"
+#include "config/general.h"
+#include "constants/species.h"
 #include "test/battle.h"
 
 WILD_BATTLE_TEST("Pokemon gain experience after catching a Pokemon (Gen6+)")
@@ -222,6 +224,9 @@ AI_ONE_VS_TWO_BATTLE_TEST("Both opponent's Pokemon give experience in battle aga
     GIVEN {
         WITH_CONFIG(B_SCALED_EXP, GEN_3);
         WITH_CONFIG(B_UNEVOLVED_EXP_MULTIPLIER, GEN_3);
+        WITH_CONFIG(B_CATCH_UP_EXP, FALSE);
+        WITH_CONFIG(B_SPLIT_EXP, GEN_LATEST);
+        WITH_CONFIG(B_TRAINER_EXP_MULTIPLIER, GEN_LATEST);
         PLAYER(SPECIES_METAPOD) { Level(1); Speed(3); }
         PLAYER(SPECIES_WOBBUFFET) { Level(100); Speed(3); }
         OPPONENT_B(SPECIES_WYNAUT) { Moves(MOVE_MEMENTO); Speed(2); }

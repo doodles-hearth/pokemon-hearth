@@ -53,7 +53,7 @@ SINGLE_BATTLE_TEST("Hypnosis inflicts 1-2 turns of sleep (Champions)")
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_HYPNOSIS); MOVE(opponent, MOVE_CELEBRATE); }
+        TURN { MOVE(player, MOVE_HYPNOSIS, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); MOVE(opponent, MOVE_CELEBRATE, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
         for (count = 0; count < turns; ++count)
             TURN {}
     } SCENE {
