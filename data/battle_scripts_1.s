@@ -1622,7 +1622,7 @@ BattleScript_SmokeExplosionLoop::
   jumpifabsent BS_TARGET, BattleScript_SmokeExplosionLoopIncrement
   trysmokeexplosionendabilities BS_TARGET
   healthbarupdate BS_TARGET
-  datahpupdate BS_TARGET
+  datahpupdate BS_TARGET, ASSURANCE_IGNORE
   tryfaintmon BS_TARGET
 
 BattleScript_SmokeExplosionLoopIncrement::
@@ -3264,7 +3264,7 @@ BattleScript_RuinAbilityHeal::
 	call BattleScript_AbilityPopUp
 	playanimation BS_ATTACKER, B_ANIM_SIMPLE_HEAL
 	healthbarupdate BS_ATTACKER
-	datahpupdate BS_ATTACKER
+	datahpupdate BS_ATTACKER, ASSURANCE_IGNORE
 	printstring STRINGID_RUINABILITYHPGAIN
 	waitmessage B_WAIT_TIME_LONG
 	return
