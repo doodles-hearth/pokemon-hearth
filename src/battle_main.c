@@ -2877,7 +2877,8 @@ static void BattleStartClearSetData(void)
     gBattleStruct->wildVictorySong = 0;
     gBattleStruct->moneyMultiplier = 1;
 
-    gBattleStruct->givenExpMons = 0;
+    gBattleStruct->givenExpMons[0] = 0;
+    gBattleStruct->givenExpMons[1] = 0;
     gBattleStruct->palaceFlags = 0;
 
     gBattleResults.shinyWildMon = IsMonShiny(&gParties[B_TRAINER_OPPONENT_A][0]);
@@ -3595,6 +3596,7 @@ static void TryDoEventsBeforeFirstTurn(void)
         }
         TurnValuesCleanUp(FALSE);
         memset(&gSpecialStatuses, 0, sizeof(gSpecialStatuses));
+        memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
         BattlePutTextOnWindow(gText_EmptyString3, B_WIN_MSG);
         AssignUsableGimmicks();
         SetShellSideArmCategory();
@@ -3610,8 +3612,6 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleScripting.moveendState = 0;
         gBattleStruct->eventState.faintedAction = 0;
         gBattleStruct->eventState.endTurn = 0;
-
-        memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));
 
         if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
         {
@@ -3697,6 +3697,7 @@ bool32 EndTurnEvents(void) // Called from Battle Script
         gBattleMons[battler].volatiles.electrified = FALSE;
         gBattleMons[battler].volatiles.flinched = FALSE;
         gBattleMons[battler].volatiles.powder = FALSE;
+        memset(&gQueuedStatBoosts[battler], 0, sizeof(struct QueuedStatBoost));
 
         if (gBattleStruct->battlerState[battler].stompingTantrumTimer > 0)
             gBattleStruct->battlerState[battler].stompingTantrumTimer--;
@@ -4814,7 +4815,6 @@ static void TurnValuesCleanUp(bool32 endTurn)
             gProtectStructs[i].quash = FALSE;
             gProtectStructs[i].usedCustapBerry = FALSE;
             gProtectStructs[i].quickDraw = FALSE;
-            memset(&gQueuedStatBoosts[i], 0, sizeof(struct QueuedStatBoost));
         }
         else
         {
@@ -5337,13 +5337,6 @@ static void HandleEndTurn_FinishBattle(void)
         RecordedBattle_SetPlaybackFinished();
         if (gTestRunnerEnabled)
             TestRunner_Battle_AfterLastTurn();
-        // Clear battle mon species to avoid a bug on the next battle that causes
-        // healthboxes loading incorrectly due to it trying to create a Mega Indicator
-        // if the previous battler would've had it.
-        for (enum BattlerId i = 0; i < MAX_BATTLERS_COUNT; i++)
-        {
-            gBattleMons[i].species = SPECIES_NONE;
-        }
 
         // Set Battle Controllers to BATTLE_CONTROLLER_NONE
         for (enum BattlerId i = 0; i < MAX_BATTLERS_COUNT; i++)
@@ -5364,6 +5357,7 @@ static void FreeResetData_ReturnToOvOrDoEvolutions(void)
 {
     if (!gPaletteFade.active)
     {
+        memset(&gBattleMons, 0, sizeof(struct BattlePokemon) * MAX_BATTLERS_COUNT);
         gIsFishingEncounter = FALSE;
         gIsSurfingEncounter = FALSE;
         if (gDexNavSpecies && (gBattleOutcome == B_OUTCOME_WON || gBattleOutcome == B_OUTCOME_CAUGHT))
