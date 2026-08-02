@@ -3,7 +3,6 @@
 
 enum FieldMove
 {
-    FIELD_MOVE_NONE,
     FIELD_MOVE_CUT,
     FIELD_MOVE_FLASH,
     FIELD_MOVE_ROCK_SMASH,
