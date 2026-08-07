@@ -3,7 +3,6 @@
   "name": "SakuTown_BonsaiShop",
   "layout": "LAYOUT_SAKU_TOWN_BONSAI_SHOP",
   "music": "MUS_HH_SUNRISE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SAKU_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -224,5 +223,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SakuTown_BonsaiShop_EventScript_Bonsai"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

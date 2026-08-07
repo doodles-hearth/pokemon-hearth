@@ -111,13 +111,13 @@ script KuraTown_Dojo_EventScript_Hana {
 		setspeaker(SP_NAME_HANA)
 		trainerbattle_single(
 			TRAINER_HANA_1,
-			format(
-				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
-				"You must be wondering what a Bonsai seller from Saku Village is doing in the Kura Village Dojo.\p"
-				"I'd prefer you don't tell anyone.\nSee, the two towns have a beef with one another.\p"
-				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
-				"Show me all the grace, strength and power you are capable of!"
-			),
+				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Hello again, child. Welcome to my humble\nDojo.\pI am Hana.{PAUSE 30}\nDid you enjoy my little maze?\p"
+				"You must be wondering what a Bonsai\nseller from Saku Village is doing in\lthe Kura Village Dojo.\p"
+				"I'd prefer you don't tell anyone.\nI'm sure you know of our village's row.\p"
+				"But, to more pressing matters…\p"
+				"A Pokémon battle isn't too unlike\nbeautiful flora.\p"
+				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\l{PAUSE 30}And power like the mightiest trees.\p"
+				"Show me all the grace, strength and\npower you are capable of!",
 			format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
 			NO_MUSIC
@@ -127,13 +127,12 @@ script KuraTown_Dojo_EventScript_Hana {
 		setspeaker(SP_NAME_HANA)
 		trainerbattle_single(
 			TRAINER_HANA_1,
-			(
 				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 				"Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
-				"A Pokémon battle can be graceful like a\nbudding flower, strong like the\ldeepest roots, powerful like a\lwindswept pine tree, all at once.\p"
-				"Show me all the grace, strength and\npower you are capable of!"
-			),
-			format("Ho ho ho…"),
+				"A Pokémon battle isn't too unlike\nbeautiful flora.\p"
+				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\l{PAUSE 30}And power like the mightiest trees.\p"
+				"Show me all the grace, strength and\npower you are capable of!",
+				format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
 			NO_MUSIC
 		)
@@ -143,14 +142,32 @@ script KuraTown_Dojo_EventScript_Hana {
 	// goto_if_eq(VAR_RESULT, TRUE, KuraTown_Dojo_EventScript_HanaRematch)
 
 	setspeaker(SP_NAME_HANA)
-	msgbox(
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_HANA 0}The slow-growing tree becomes the sturdiest.\p"
-			"Take your time on your journey, {PLAYER}."
-		),
-		MSGBOX_DEFAULT
-	)
-
+	msgbox("{CREATE_MUGSHOT MUGSHOT_HANA 0}Hello, again. What did you need of me?")
+	returnqueststate(QUEST_SAKURAESPEON)
+	copyvar(VAR_TEMP_0, VAR_RESULT)
+	returnqueststate(QUEST_SAKURALOVERS)
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	returnqueststate(QUEST_SAKURASCYTHER)
+	copyvar(VAR_TEMP_2, VAR_RESULT)
+	if(var(VAR_TEMP_0) == QUEST_MENU_COMPLETE_QUEST && var(VAR_TEMP_1) == QUEST_MENU_COMPLETE_QUEST && var(VAR_TEMP_2) == QUEST_MENU_COMPLETE_QUEST)
+	{dynmultipush("I've got news!", 1)}
+	else
+	{dynmultipush("Why are you here?", 1)}
+	dynmultipush("Do you have any advice?", 2)
+	dynmultistack(0, 0, FALSE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+	switch(var(VAR_RESULT))
+	{
+		case 1:
+		msgbox(
+			"My hope with this endeavor is to bring\nour villages together.\p"
+			"Like our villages' history, a bonsai has\nmany twists, turns and knots…\p"
+			"Yet, it creates such a beautiful tree\nafter you tend to it.\p"
+			"But I wish it were as easy to mend this\nrift as it is to grow bonsai. Sigh…"
+		)
+		case 2:
+		default:
+			msgbox("{CREATE_MUGSHOT MUGSHOT_HANA 0}The slow-growing tree becomes the\nsturdiest.\pTake your time on your journey,\n{PLAYER}.",	MSGBOX_DEFAULT)
+	}
 	release
 	end
 }

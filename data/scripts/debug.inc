@@ -209,6 +209,9 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
+	clearflag FLAG_MET_HANA_GYM
+	clearflag TRAINER_FLAGS_START + TRAINER_HANA_1
+	setflag FLAG_MET_HANA_BONSAI_SHOP
 	release
 	end
 

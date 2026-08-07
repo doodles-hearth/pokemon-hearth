@@ -3,7 +3,6 @@
   "name": "KuraTown_Dojo",
   "layout": "LAYOUT_KURA_TOWN_DOJO",
   "music": "MUS_B_PALACE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_KURA_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -383,5 +382,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "KuraTown_Dojo_EventScript_DojoStatue"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
