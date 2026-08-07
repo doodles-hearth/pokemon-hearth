@@ -182,6 +182,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Is… Is that so?"
 	))
+	waitmovement(0)
 	closemessage
 
 	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE, moves(face_down, delay_16 * 2))
@@ -204,10 +205,10 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}What's a bunch of children doing here?\p"
-		"You really shouldn't stay here.\nThe situation is under control,\lbut this is no place for you kids!"
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}What are you kids doing here?\p"
+		"You really shouldn't stay.\nThe situation is under control,\lbut this is no place for children!"
+	)
 
 	mcdialogue(
 		"What's going on?",
@@ -221,11 +222,11 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 			playse(SE_PIN)
 			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_upset))
 			setspeaker(SP_NAME_SAMURAI)
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Nothing that concerns you!\n"
-				"Let the grownups handle this!\p"
+				"Let the grownups handle this.\p"
 				"On you go!"
-			))
+			)
 			closemessage
 		case 1:
 			setspeaker(SP_NAME_SAMURAI)
@@ -238,20 +239,22 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
 			setspeaker(SP_NAME_SAMURAI)
-			msgbox(format(
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Hear that?\nKids here are saying they can help!\p"
 				"Hahaha!"
-			))
+			)
+			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE, moves(emote_happy))
+			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE)
 			closemessage
 
 			applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(walk_in_place_fast_down, delay_16 * 2))
 			waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
 			setspeaker(SP_NAME_SAMURAI)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}In all seriousness though, move along and let the grownups handle this!\p"
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}In all seriousness though, move along\nand let the grown-ups handle this!\p"
 				"On you go!"
-			))
+			)
 			closemessage
 	}
 
@@ -274,9 +277,9 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	delay(48)
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
-	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(delay_16, lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
-	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(delay_8, lock_facing_direction, walk_up, delay_16 * 2, walk_up, unlock_facing_direction))
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_slow_up, delay_16 * 2))
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(delay_16, walk_slow_up, delay_16 * 2))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(delay_8, walk_slow_up, delay_16 * 2))
 
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
@@ -286,6 +289,10 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	waitmovement(0)
 
+	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_slower_up, delay_16 * 2))
+	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(delay_16, walk_slower_up, delay_16 * 2))
+	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(delay_8, walk_slower_up, delay_16 * 2))
+	
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}…need more Samurai to secure the perimeter…\p"
@@ -293,9 +300,10 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 		"…spreading over several areas…"
 	))
 	closemessage
+	waitmovement(0)
 
 	playse(SE_PIN)
-	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(emote_exclamation_mark, delay_16 * 6, face_down))
+	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(face_down, delay_16 * 6, emote_exclamation_mark))
 	waitmovement(LOCALID_BEACHBOUND_DECAY_SAMURAI)
 
 	setspeaker(SP_NAME_SAMURAI)

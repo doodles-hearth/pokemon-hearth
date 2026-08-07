@@ -360,11 +360,11 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	applymovement(LOCALID_KURA_HARIKO, moves(walk_in_place_fast_left))
 
 	setspeaker(SP_NAME_HARIKO)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Did you hear? They said this Decay\nstarted less than a week ago.\p"
 		"That coincides with the beginning of\nthe Volcano's rumbling spells,\lso there probably is a correlation.\p"
 		"We need to get to the bottom of this."
-	))
+	)
 	playse(SE_PIN)
 	applymovement(LOCALID_KURA_HARIKO, moves(emote_angry))
 	msgbox(format(
@@ -377,12 +377,12 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	applymovement(LOCALID_KURA_HARIKO, moves(walk_in_place_fast_left))
 
 	setspeaker(SP_NAME_HARIKO)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}… …{PLAYER}, Natsuki.\nI am heading home, in Yifu City.\p"
-		"We should meet up later to talk about this some more.\p"
+		"We should meet up later to talk about\nthis some more.\p"
 		"Well, I am leaving now.\p"
 		"Goodbye!"
-	))
+	)
 	closemessage
 
 	applymovement(LOCALID_KURA_HARIKO, moves(walk_down * 2, walk_left * 5, walk_down * 3))
@@ -401,23 +401,23 @@ script KuraTown_EventScript_PostDecayNatsukiHariko {
 	playse(SE_PIN)
 	applymovement(LOCALID_KURA_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Boy, your friend sure talks a lot, huh?\p"
 		"D'you think this whole Decay business\nis linked to the wild Pokémon attacks\lElder Kaba told us about?\p"
 		"I'm glad the Samurai are on it.\nI'm sure they'll fix whatever this is.\p"
-		"You're going up to Silveridge to deliver that letter, huh, {PLAYER}?\p"
+		"You're going up to Silveridge for\nthat letter, huh, {PLAYER}?\p"
 		"Me? I'm heading to Yifu City.\nThere's a Dojo there, and I'll need\lto collect a heckload of Tokens\lif I wanna join the New Moon order.\p"
 		"When I'm a Samurai, I'll be able to\nprotect everyone from danger!\p"
 		"Don't worry, I'll protect you, too!{PAUSE_UNTIL_PRESS}\n…Mostly from yourself, though!"
-	))
+	)
 
 	applymovement(LOCALID_KURA_NATSUKI, moves(lock_facing_direction, walk_fast_left, unlock_facing_direction))
 
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't hit me! Don't hit me!\nI'm gone!\p"
 		"See ya later, Feraligatr!"
-	))
+	)
 
 	closemessage
 	
