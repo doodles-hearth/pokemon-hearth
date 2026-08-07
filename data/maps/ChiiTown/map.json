@@ -80,7 +80,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": false,
       "night": false
@@ -201,7 +201,7 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": false,
       "morning": true,
       "night": false
@@ -241,7 +241,7 @@
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": false,
       "night": false
