@@ -756,7 +756,7 @@ SINGLE_BATTLE_TEST("Full Heal, Heal Powder and Local Specialties heal a battler 
     } SCENE {
         MESSAGE("Wobbuffet snapped out of its confusion!");
     } THEN {
-        EXPECT(player->volatiles.confusionTurns == 0);
+        EXPECT(player->volatiles.confusionTimer == 0);
     }
 }
 */

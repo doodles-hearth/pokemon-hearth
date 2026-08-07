@@ -236,7 +236,7 @@ static void GenerateOpponentMons(void)
 {
     int i, j, k;
     enum Species species[FRONTIER_PARTY_SIZE];
-    u16 heldItems[FRONTIER_PARTY_SIZE];
+    enum Item heldItems[FRONTIER_PARTY_SIZE];
     int firstMonId = 0;
     u16 trainerId = 0;
     enum FrontierLevelMode lvlMode = gSaveBlock2Ptr->frontier.lvlMode;
@@ -393,7 +393,7 @@ static void GenerateInitialRentalMons(void)
     enum Species currSpecies;
     enum Species species[PARTY_SIZE];
     u16 monIds[PARTY_SIZE];
-    u16 heldItems[PARTY_SIZE];
+    enum Item heldItems[PARTY_SIZE];
 
     gFacilityTrainers = gBattleFrontierTrainers;
     for (i = 0; i < PARTY_SIZE; i++)
@@ -595,7 +595,7 @@ static enum FactoryStyle GetMoveBattleStyle(enum Move move)
         return FACTORY_STYLE_SLOW_STEADY;
 
     if (IsExplosionMove(move))
-        return FACTORY_STYLE_SLOW_STEADY;
+        return FACTORY_STYLE_HIGH_RISK;
 
     return FACTORY_STYLE_NONE;
 }
@@ -792,14 +792,6 @@ u64 GetAiScriptsInBattleFactory(void)
         else
             return AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY;
     }
-}
-
-void SetMonMoveAvoidReturn(struct Pokemon *mon, enum Move moveArg, u8 moveSlot)
-{
-    enum Move move = moveArg;
-    if (moveArg == MOVE_RETURN)
-        move = MOVE_FRUSTRATION;
-    SetMonMoveSlot(mon, move, moveSlot);
 }
 
 static void FillFactoryFrontierTrainerParty(u16 trainerId, u8 firstMonId)

@@ -215,6 +215,6 @@ Input must be of the form (upper << lower) where upper can be up to 7, lower up 
  *
  * Because 'cond' must be known at compile-time, this is rarely useful
  * outside macros. */
-#define if_comptime(cond) if (__builtin_constant_p((cond) ? 0 : *(int *)0))
+#define if_comptime(cond) if (__builtin_constant_p((cond) ? 0 : *(volatile int *)0))
 
 #endif
