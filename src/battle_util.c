@@ -506,9 +506,8 @@ static bool32 IsUnnerveAbilityOnOpposingSide(enum BattlerId battler)
 void HandleAction_UseMove(void)
 {
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
-    if (gAbsentBattlerFlags & 1u << gBattlerAttacker
-     || gBattleStruct->battlerState[gBattlerAttacker].commandingDondozo
-     || !IsBattlerAlive(gBattlerAttacker))
+    if (!IsBattlerAlive(gBattlerAttacker)
+     || gBattleStruct->battlerState[gBattlerAttacker].commandingDondozo)
     {
         gCurrentActionFuncId = B_ACTION_FINISHED;
         return;
@@ -629,8 +628,7 @@ void HandleAction_Switch(void)
     gBattlerAttacker = gBattlerByTurnOrder[gCurrentTurnActionNumber];
 
     // if switching to a mon that is already on field, cancel switch
-    if (!(gAbsentBattlerFlags & (1u << BATTLE_PARTNER(gBattlerAttacker)))
-     && IsBattlerAlive(BATTLE_PARTNER(gBattlerAttacker))
+    if (IsBattlerAlive(BATTLE_PARTNER(gBattlerAttacker))
      && gBattlerPartyIndexes[BATTLE_PARTNER(gBattlerAttacker)] == gBattleStruct->monToSwitchIntoId[gBattlerAttacker]
      && BattlersShareParty(gBattlerAttacker, BATTLE_PARTNER(gBattlerAttacker)))
     {
@@ -6090,28 +6088,28 @@ bool32 BattlerHasCopyableChanges(enum BattlerId battler)
 
 u32 GetMoveTargetCount(struct DamageContext *ctx)
 {
-    enum BattlerId battlerAtk = ctx->battlerAtk;
-    enum BattlerId battlerDef = ctx->battlerDef;
-    enum Move move = ctx->move;
-
-    switch (GetBattlerMoveTargetType(battlerAtk, move))
+    switch (GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move))
     {
     case TARGET_BOTH:
-        return !(gAbsentBattlerFlags & (1u << battlerDef))
-             + !(gAbsentBattlerFlags & (1u << BATTLE_PARTNER(battlerDef)));
+        return CountTrue(
+            IsBattlerAlive(ctx->battlerDef),
+            IsBattlerAlive(BATTLE_PARTNER(ctx->battlerDef))
+        );
     case TARGET_FOES_AND_ALLY:
-        return !(gAbsentBattlerFlags & (1u << battlerDef))
-             + !(gAbsentBattlerFlags & (1u << BATTLE_PARTNER(battlerDef)))
-             + !(gAbsentBattlerFlags & (1u << BATTLE_PARTNER(battlerAtk)));
+        return CountTrue(
+            IsBattlerAlive(ctx->battlerDef),
+            IsBattlerAlive(BATTLE_PARTNER(ctx->battlerDef)),
+            IsBattlerAlive(BATTLE_PARTNER(ctx->battlerAtk))
+        );
     case TARGET_OPPONENTS_FIELD:
         return 1;
     case TARGET_DEPENDS:
     case TARGET_SELECTED:
     case TARGET_RANDOM:
     case TARGET_OPPONENT:
-        return IsBattlerAlive(battlerDef);
+        return CountTrue(IsBattlerAlive(ctx->battlerDef));
     case TARGET_USER:
-        return IsBattlerAlive(battlerAtk);
+        return CountTrue(IsBattlerAlive(ctx->battlerAtk));
     default:
         return 0;
     }
@@ -6541,12 +6539,12 @@ static inline u32 CalcMoveBasePowerAfterModifiers(struct DamageContext *ctx)
         break;
     }
     case EFFECT_STOMPING_TANTRUM:
-        if (gBattleStruct->battlerState[battlerAtk].stompingTantrumTimer == 1)
+        if (!gAiLogicData->switchInCalc && gBattleStruct->battlerState[battlerAtk].stompingTantrumTimer == 1)
             modifier = uq4_12_multiply(modifier, UQ_4_12(2.0));
         break;
     case EFFECT_MAGNITUDE:
     case EFFECT_EARTHQUAKE:
-        if (gFieldTimers.terrain == B_TERRAIN_GRASSY && !IsSemiInvulnerable(battlerDef, CHECK_ALL))
+        if (ctx->terrain == B_TERRAIN_GRASSY && !IsSemiInvulnerable(battlerDef, CHECK_ALL))
             modifier = uq4_12_multiply(modifier, UQ_4_12(0.5));
         break;
     case EFFECT_KNOCK_OFF:
@@ -7887,7 +7885,10 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
 
 static inline s32 DoMoveDamageCalc(struct DamageContext *ctx)
 {
-    ctx->typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(ctx);
+    if (ctx->useStoredTypeEffectiveness)
+        ctx->typeEffectivenessModifier = gSpecialStatuses[ctx->battlerDef].storedTypeEffectiveness;
+    else
+        ctx->typeEffectivenessModifier = CalcTypeEffectivenessMultiplier(ctx);
 
     if (ctx->typeEffectivenessModifier == UQ_4_12(0.0))
         return 0;
@@ -8243,11 +8244,14 @@ static inline void MulByTypeEffectiveness(struct DamageContext *ctx, uq4_12_t *m
             mod = UQ_4_12(1.0);
     }
 
-    if (gSpecialStatuses[ctx->battlerDef].distortedTypeMatchups || (ctx->aiCalc && mod > UQ_4_12(0.0) && ShouldTeraShellDistortTypeMatchups(ctx)))
+    if (mod > UQ_4_12(0.0) && ShouldTeraShellDistortTypeMatchups(ctx))
     {
         mod = UQ_4_12(0.5);
         if (ctx->updateFlags)
+        {
+            gSpecialStatuses[ctx->battlerDef].teraShellAbilityDone = TRUE;
             RecordAbilityBattle(ctx->battlerDef, ctx->abilities[ctx->battlerDef]);
+        }
     }
 
     *modifier = uq4_12_multiply(*modifier, mod);
@@ -10796,6 +10800,9 @@ bool32 IsAnyTargetAffected(void)
 
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
     {
+        if (gBattleStruct->moveResultFlags[battler] & MOVE_RESULT_NOT_PRESENT)
+            continue;
+
         switch (moveTarget)
         {
         case TARGET_ALL_BATTLERS: // check all battlers

@@ -1702,37 +1702,37 @@ void DeleteFirstMoveAndGiveMoveToMon(struct Pokemon *mon, enum Move move)
     SetMonData(mon, MON_DATA_PP_BONUSES, &ppBonuses);
 }
 
-u8 CountAliveMonsInBattle(u8 caseId, enum BattlerId battler)
+u32 CountAliveMonsInBattle(u8 caseId, enum BattlerId battler)
 {
     enum BattlerId i;
-    u32 retVal = 0;
+    u32 aliveMonCount = 0;
 
     switch (caseId)
     {
     case BATTLE_ALIVE_EXCEPT_BATTLER:
         for (i = 0; i < gBattlersCount; i++)
         {
-            if (i != battler && !(gAbsentBattlerFlags & (1u << i)))
-                retVal++;
+            if (i != battler && IsBattlerAlive(i))
+                aliveMonCount++;
         }
         break;
     case BATTLE_ALIVE_EXCEPT_BATTLER_SIDE:
         for (i = 0; i < gBattlersCount; i++)
         {
-            if (i != battler && i != BATTLE_PARTNER(battler) && !(gAbsentBattlerFlags & (1u << i)))
-                retVal++;
+            if (i != battler && i != BATTLE_PARTNER(battler) && IsBattlerAlive(i))
+                aliveMonCount++;
         }
         break;
     case BATTLE_ALIVE_SIDE:
         for (i = 0; i < gBattlersCount; i++)
         {
-            if (IsBattlerAlly(i, battler) && !(gAbsentBattlerFlags & (1u << i)))
-                retVal++;
+            if (IsBattlerAlly(i, battler) && IsBattlerAlive(i))
+                aliveMonCount++;
         }
         break;
     }
 
-    return retVal;
+    return aliveMonCount;
 }
 
 u8 GetDefaultMoveTarget(enum BattlerId battlerId)
@@ -1754,7 +1754,7 @@ u8 GetDefaultMoveTarget(enum BattlerId battlerId)
     }
     else
     {
-        if ((gAbsentBattlerFlags & (1u << opposing)))
+        if (!IsBattlerAlive(opposing))
             return GetBattlerAtPosition(BATTLE_PARTNER(opposing));
         else
             return GetBattlerAtPosition(opposing);
@@ -3417,14 +3417,7 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, enum Item item, u8 partyIndex, 
 
     // Get item hold effect
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM);
-    if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
-    #if FREE_ENIGMA_BERRY == FALSE
-        holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
-    #else
-        holdEffect = 0;
-    #endif //FREE_ENIGMA_BERRY
-    else
-        holdEffect = GetItemHoldEffect(heldItem);
+    holdEffect = GetItemHoldEffect(heldItem);
 
     // Skip using the item if it won't do anything
     if (GetItemEffect(item) == NULL && item != ITEM_ENIGMA_BERRY_E_READER)
@@ -4059,15 +4052,7 @@ bool32 DoesMonMeetAdditionalConditions(struct Pokemon *mon, const struct Evoluti
     {
         partnerSpecies = GetMonData(tradePartner, MON_DATA_SPECIES, 0);
         partnerHeldItem = GetMonData(tradePartner, MON_DATA_HELD_ITEM, 0);
-
-        if (partnerHeldItem == ITEM_ENIGMA_BERRY_E_READER)
-        #if FREE_ENIGMA_BERRY == FALSE
-            partnerHoldEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
-        #else
-            partnerHoldEffect = 0;
-        #endif //FREE_ENIGMA_BERRY
-        else
-            partnerHoldEffect = GetItemHoldEffect(partnerHeldItem);
+        partnerHoldEffect = GetItemHoldEffect(partnerHeldItem);
     }
     else
     {
@@ -4377,14 +4362,7 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
     if (evolutions == NULL)
         return SPECIES_NONE;
 
-    if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
-    #if FREE_ENIGMA_BERRY == FALSE
-        holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
-    #else
-        holdEffect = 0;
-    #endif //FREE_ENIGMA_BERRY
-    else
-        holdEffect = GetItemHoldEffect(heldItem);
+    holdEffect = GetItemHoldEffect(heldItem);
 
     // Prevent evolution with Everstone, unless we're just viewing the party menu with an evolution item
     if (holdEffect == HOLD_EFFECT_PREVENT_EVOLVE
@@ -4795,22 +4773,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
 
     species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
-
-    if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
-    {
-        if (gMain.inBattle)
-            holdEffect = gEnigmaBerries[0].holdEffect;
-        else
-        #if FREE_ENIGMA_BERRY == FALSE
-            holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
-        #else
-            holdEffect = 0;
-        #endif //FREE_ENIGMA_BERRY
-    }
-    else
-    {
-        holdEffect = GetItemHoldEffect(heldItem);
-    }
+    holdEffect = GetItemHoldEffect(heldItem);
 
     if (species && species != SPECIES_EGG)
     {
@@ -4891,21 +4854,7 @@ void MonGainEVs(struct Pokemon *mon, enum Species defeatedSpecies)
     u32 currentEVCap = GetCurrentEVCap();
 
     heldItem = GetMonData(mon, MON_DATA_HELD_ITEM, 0);
-    if (heldItem == ITEM_ENIGMA_BERRY_E_READER)
-    {
-        if (gMain.inBattle)
-            holdEffect = gEnigmaBerries[0].holdEffect;
-        else
-        #if FREE_ENIGMA_BERRY == FALSE
-            holdEffect = gSaveBlock1Ptr->enigmaBerry.holdEffect;
-        #else
-            holdEffect = 0;
-        #endif //FREE_ENIGMA_BERRY
-    }
-    else
-    {
-        holdEffect = GetItemHoldEffect(heldItem);
-    }
+    holdEffect = GetItemHoldEffect(heldItem);
 
     stat = GetItemSecondaryId(heldItem);
     bonus = GetItemHoldEffectParam(heldItem);
@@ -6808,7 +6757,7 @@ static void ResolveIVs(enum Species species, const u16 *ivsTemplate, u8 *ivs)
     }
 }
 
-static void ResolveEVs(const u16 *evsTemplate, u8 *evs, bool32 ignoreTotalEvCheck)
+void ResolveEVs(const u16 *evsTemplate, u8 *evs, bool32 ignoreTotalEvCheck)
 {
     u32 evTotal = 0;
     for (u32 i = 0; i < NUM_STATS; i++)
