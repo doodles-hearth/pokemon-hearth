@@ -19,6 +19,7 @@
 #include "field_screen_effect.h"
 #include "field_weather.h"
 #include "follower_npc.h"
+#include "gba/isagbprint.h"
 #include "international_string_util.h"
 #include "item.h"
 #include "item_icon.h"
@@ -49,6 +50,7 @@
 #include "script.h"
 #include "script_pokemon_util.h"
 #include "sound.h"
+#include "sprite.h"
 #include "strings.h"
 #include "string_util.h"
 #include "task.h"
@@ -4837,6 +4839,95 @@ void DebugNative_Party_SetPokerus(void)
     {
         u32 taskId = CreateTask(DebugNativeStep_DelayedSelection, 1);
         SetWordTaskArg(taskId, DEBUG_SELECTION_PTR_ARG, (u32) &sPokerusSelection);
+    }
+}
+
+static void DebugSelection_ChooseColour_OnInit(u8 taskId)
+{
+    auto task = &gTasks[taskId];
+    auto mon = &gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId];
+    s32 x = 10;
+    s32 y = 3;
+    u32 species = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_SPECIES);
+    u32 isShiny = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_IS_SHINY);
+
+
+    gTasks[taskId].tSpriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0, isShiny);
+    u32 paletteSlot = gSprites[task->tSpriteId].oam.paletteNum;
+    u16 colour = GetMonData(mon, MON_DATA_COLORATION);
+
+    MakePaletteUnique(OBJ_PLTT_ID(paletteSlot), species, colour, isShiny);
+
+    DebugNativeStep_InitAfterPartyMenu(taskId);
+    DebugSelection_SetData(taskId, 0, colour);
+}
+
+static bool32 DebugSelection_ChooseColour_OnComplete(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+
+    auto task = &gTasks[taskId];
+    u16 colour = DebugSelection_GetData(taskId, 0);
+    auto mon = &gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId];
+
+    u32 species = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_SPECIES);
+    u32 isShiny = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_IS_SHINY);
+
+    u32 paletteSlot = gSprites[task->tSpriteId].oam.paletteNum;
+    MakePaletteUnique(OBJ_PLTT_ID(paletteSlot), species, colour, isShiny);
+    SetMonData(mon, MON_DATA_COLORATION, &colour);
+
+    gTasks[taskId].tStep = 0;
+    gTasks[taskId].tStepsDataIndex = 0;
+    return FALSE;
+}
+
+static void DebugSelectionStep_UpdateColour(u8 taskId, u8 digits, u32 min, u32 max)
+{
+
+    u16 colour = DebugSelection_GetData(taskId, 0);
+    u8 buffer[36];
+    StringCopy(gStringVar1, COMPOUND_STRING("Colour:"));
+    ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
+    ConvertIntToDecimalStringN(gStringVar3, colour, STR_CONV_MODE_LEADING_ZEROS, digits);
+    StringExpandPlaceholders(buffer, COMPOUND_STRING("{STR_VAR_3} {RIGHT_ARROW} {STR_VAR_2}"));
+    StringCopy(gStringVar2, buffer);
+    StringCopy(gStringVar3, COMPOUND_STRING(""));
+    DebugNativeStep_PrintWindowSelection(taskId);
+}
+
+static void DebugSelection_ChooseColour_OnCancel(u8 taskId)
+{
+    auto task = &gTasks[taskId];
+    PlaySE(SE_SELECT);
+    FreeResourcesAndDestroySprite(&gSprites[task->tSpriteId], task->tSpriteId);
+    DebugNativeStep_CloseDebugWindow(taskId);
+}
+
+static const struct DebugSelectionStep sColourSelectionStep = {
+    .stepUpdate = DebugSelectionStep_UpdateColour,
+    .stepConfirm = DebugSelectionStep_GenericInputConfirm,
+    .minValue = 0,
+    .maxValue = 80,
+    .digits = 2
+};
+
+
+static const struct DebugSelection sColourSelection = {
+    .onInit = DebugSelection_ChooseColour_OnInit,
+    .onCancel = DebugSelection_ChooseColour_OnCancel,
+    .onComplete = DebugSelection_ChooseColour_OnComplete,
+    .steps = {&sColourSelectionStep},
+    .maxSteps = 1,
+};
+
+void DebugNative_Player_ChooseColour(void)
+{
+    if (gSpecialVar_0x8004 < PARTY_SIZE)
+    {
+        u32 taskId = CreateTask(DebugNativeStep_DelayedSelection, 1);
+        gTasks[taskId].tPartyId = gSpecialVar_0x8004;
+        SetWordTaskArg(taskId, DEBUG_SELECTION_PTR_ARG, (u32) &sColourSelection);
     }
 }
 
