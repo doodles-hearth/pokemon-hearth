@@ -70,3 +70,4 @@ tools/aif2pcm/aif2pcm
 __pycache__
 *.scr
 .map_version
+.porydaw/
