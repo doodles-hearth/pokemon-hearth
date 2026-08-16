@@ -193,7 +193,7 @@ script ScenicRoute_Daycare_EventScript_DisplayLevelsGained {
 }
 
 script ScenicRoute_Daycare_EventScript_CostPrompt {
-	special(GetDaycareCost)
+	special(GetDaycareCostAndPrepareString)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}If you want your {STR_VAR_1} back,\n"
 		"it will cost ¥{STR_VAR_2}."
