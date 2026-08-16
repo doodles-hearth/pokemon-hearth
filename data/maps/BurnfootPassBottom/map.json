@@ -72,7 +72,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_CASTFORM_RAIN_GUY",
       "x": 22,
       "y": 18,
       "elevation": 0,
@@ -92,7 +92,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BEAUTY",
+      "graphics_id": "OBJ_EVENT_GFX_CASTFORM_SUN_GIRL",
       "x": 22,
       "y": 22,
       "elevation": 0,
@@ -133,7 +133,120 @@
     }
   ],
   "warp_events": [],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "weather",
+      "x": 39,
+      "y": 19,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "weather",
+      "x": 39,
+      "y": 20,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "weather",
+      "x": 39,
+      "y": 21,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "weather",
+      "x": 16,
+      "y": 20,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "weather",
+      "x": 16,
+      "y": 21,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "weather",
+      "x": 16,
+      "y": 22,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_VOLCANIC_ASH"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 17,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 18,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 19,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 20,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 21,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 22,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 10,
+      "y": 23,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 46,
+      "y": 19,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 46,
+      "y": 20,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    },
+    {
+      "type": "weather",
+      "x": 46,
+      "y": 21,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
+    }
+  ],
   "bg_events": [],
   "region": "REGION_HOENN"
 }
