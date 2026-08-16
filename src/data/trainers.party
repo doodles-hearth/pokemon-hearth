@@ -1563,6 +1563,13 @@ Music: Male
 Battle Type: Singles
 AI: Smartish Trainer
 
+Shadowl
+Level: 26
+- Thief
+- Dream Eater
+- Hypnosis
+- Reflect
+
 Stantler
 Level: 26
 - Astonish
@@ -1571,10 +1578,11 @@ Level: 26
 - Me First
 
 Seviper
-Level: 26
+Level: 25
 - Lick
 - Poison Fang
 - Venom Drench
+- Screech
 
 === TRAINER_SANI ===
 Name: Sani
