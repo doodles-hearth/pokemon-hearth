@@ -214,3 +214,5 @@
 .include "sound/voicegroups/hanabi.inc"
 .include "sound/voicegroups/epic_route.inc"
 .include "sound/voicegroups/mus_soulkeep.inc"
+.include "sound/voicegroups/pokecenter_night.inc"
+.include "sound/voicegroups/dryugon.inc"
