@@ -333,24 +333,11 @@ bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)
         return hours >= begin && hours < end;
 }
 
+// TODO: [MIRIAM] Investigate if this breaks DNS
 enum TimeOfDay GetTimeOfDay(void)
 {
-    RtcCalcLocalTime();
-    if (IsBetweenHours(gLocalTime.hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END))
-        return TIME_DEAD_NIGHT;
-    else if (IsBetweenHours(gLocalTime.hours, MORNING_HOUR_BEGIN, MORNING_HOUR_END))
-        return TIME_MORNING;
-    else if (IsBetweenHours(gLocalTime.hours, LUNCHTIME_HOUR_BEGIN, LUNCHTIME_HOUR_END))
-        return TIME_LUNCHTIME;
-    else if (IsBetweenHours(gLocalTime.hours, AFTERNOON_HOUR_BEGIN, AFTERNOON_HOUR_END))
-        return TIME_AFTERNOON;
-    else if (IsBetweenHours(gLocalTime.hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END))
-        return TIME_EVENING;
-    else if (IsBetweenHours(gLocalTime.hours, NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_END))
-        return TIME_NIGHT;
-    return TIME_EARLY_MORNING;
-    // UpdateTimeOfDay();
-    // return gTimeOfDay;
+    UpdateTimeOfDay(FALSE);
+    return gTimeOfDay;
 }
 
 enum TimeOfDay GetTimeOfDayForDex(void)
@@ -400,12 +387,6 @@ void CalcTimeDifference(struct Time *result, struct Time *t1, struct Time *t2)
         result->hours += HOURS_PER_DAY;
         --result->days;
     }
-}
-
-u32 RtcGetMinuteCount(void)
-{
-    RtcGetInfo(&sRtc);
-    return (HOURS_PER_DAY * MINUTES_PER_HOUR) * RtcGetDayCount(&sRtc) + MINUTES_PER_HOUR * sRtc.hour + sRtc.minute;
 }
 
 u32 RtcGetLocalDayCount(void)

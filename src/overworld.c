@@ -33,6 +33,7 @@
 #include "io_reg.h"
 #include "item.h"
 #include "item_icon.h"
+#include "line_break.h"
 #include "link.h"
 #include "link_rfu.h"
 #include "load_save.h"
@@ -65,6 +66,7 @@
 #include "script_pokemon_util.h"
 #include "secret_base.h"
 #include "sound.h"
+#include "sprite.h"
 #include "start_menu.h"
 #include "strings.h"
 #include "string_util.h"
@@ -203,7 +205,6 @@ static void CameraCB_CreditsPan(struct CameraObject *camera);
 static void Task_OvwldCredits_FadeOut(u8 taskId);
 static void Task_OvwldCredits_WaitFade(u8 taskId);
 
-static void *sUnusedOverworldCallback;
 static u8 sPlayerLinkStates[MAX_LINK_PLAYERS];
 // This callback is called with a player's key code. It then returns an
 // adjusted key code, effectively intercepting the input before anything
@@ -830,11 +831,6 @@ void SetWarpDestinationToFixedHoleWarp(s16 x, s16 y)
 static void SetWarpDestinationToContinueGameWarp(void)
 {
     sWarpDestination = gSaveBlock1Ptr->continueGameWarp;
-}
-
-void SetContinueGameWarp(s8 mapGroup, s8 mapNum, s8 warpId, s8 x, s8 y)
-{
-    SetWarpData(&gSaveBlock1Ptr->continueGameWarp, mapGroup, mapNum, warpId, x, y);
 }
 
 void SetContinueGameWarpToHealLocation(u8 healLocationId)
@@ -1766,57 +1762,75 @@ const struct BlendSettings gTimeOfDayBlend[] =
 
 #define MORNING_HOUR_MIDDLE (MORNING_HOUR_BEGIN + ((MORNING_HOUR_END - MORNING_HOUR_BEGIN) / 2))
 
-void UpdateTimeOfDay(void)
+void UpdateTimeOfDay(bool32 updateBlend)
 {
     s32 hours, minutes;
     RtcCalcLocalTime();
     hours = sHoursOverride ? sHoursOverride : gLocalTime.hours;
     minutes = sHoursOverride ? 0 : gLocalTime.minutes;
 
+// TODO: [MIRIAM] Investigate if this breaks DNS
     if (IsBetweenHours(hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END)) // night->morning
     {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_MORNING];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END);
-        gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2;
-        gTimeOfDay = TIME_NIGHT;
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_NIGHT];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_MORNING];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2;
+        }
+        gTimeOfDay = TIME_MORNING;
     }
     else if (IsBetweenHours(hours, EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END)) // morning->dayy
     {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_MORNING];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
-
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END);
-        gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_MORNING];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
+        }
         gTimeOfDay = TIME_MORNING;
     }
     else if (IsBetweenHours(hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END)) // evening
     {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_EVENING];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(EVENING_HOUR_BEGIN, EVENING_HOUR_END);
-        gTimeBlend.altWeight = gTimeBlend.weight / 2 + (DEFAULT_WEIGHT / 2);
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_EVENING];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(EVENING_HOUR_BEGIN, EVENING_HOUR_END);
+            gTimeBlend.altWeight = gTimeBlend.weight / 2 + (DEFAULT_WEIGHT / 2);
+        }
         gTimeOfDay = TIME_EVENING;
     }
     else if (IsBetweenHours(hours, NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1)) // evening->night
     {
-        gTimeBlend.startBlend = gTimeOfDayBlend[TIME_EVENING];
-        gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
-        gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1);
-        gTimeBlend.altWeight = gTimeBlend.weight / 2;
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_EVENING];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1);
+            gTimeBlend.altWeight = gTimeBlend.weight / 2;
+        }
         gTimeOfDay = TIME_NIGHT;
     }
     else if (IsBetweenHours(hours, NIGHTTIME_HOUR_BEGIN, DEAD_NIGHT_HOUR_END)) // night
     {
-        gTimeBlend.weight = DEFAULT_WEIGHT;
-        gTimeBlend.altWeight = 0;
-        gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
+        if (updateBlend)
+        {
+            gTimeBlend.weight = DEFAULT_WEIGHT;
+            gTimeBlend.altWeight = 0;
+            gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
+        }
         gTimeOfDay = TIME_NIGHT;
     }
     else // day
     {
-        gTimeBlend.weight = gTimeBlend.altWeight = DEFAULT_WEIGHT;
-        gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend [TIME_LUNCHTIME];
+        if (updateBlend)
+        {
+            gTimeBlend.weight = gTimeBlend.altWeight = DEFAULT_WEIGHT;
+            gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend [TIME_LUNCHTIME];
+        }
         gTimeOfDay = TIME_LUNCHTIME;
     }
 }
@@ -1971,7 +1985,7 @@ static void OverworldBasic(void)
         u32 *bld0 = (u32*)&cachedBlend;
         u32 *bld1 = (u32*)&gTimeBlend;
         gTimeUpdateCounter = (SECONDS_PER_MINUTE * 60 / FakeRtc_GetSecondsRatio());
-        UpdateTimeOfDay();
+        UpdateTimeOfDay(TRUE);
         FormChangeTimeUpdate();
         if (MapHasNaturalLight(gMapHeader.mapType) &&
            (bld0[0] != bld1[0]
@@ -2013,12 +2027,6 @@ void CB2_Overworld(void)
 void SetMainCallback1(MainCallback cb)
 {
     gMain.callback1 = cb;
-}
-
-// This function is never called.
-void SetUnusedCallback(void *func)
-{
-    sUnusedOverworldCallback = func;
 }
 
 static bool8 RunFieldCallback(void)
@@ -2628,7 +2636,7 @@ static void ResetScreenForMapLoad(void)
     ScanlineEffect_Stop();
 
     DmaClear16(3, PLTT + 2, PLTT_SIZE - 2);
-    DmaFillLarge16(3, 0, (void *)VRAM, VRAM_SIZE, 0x1000);
+    DmaClearLarge16(3, (void *)VRAM, VRAM_SIZE, 0x1000);
     ResetOamRange(0, 128);
     LoadOam();
 }
@@ -3596,7 +3604,7 @@ static u8 GetLinkPlayerElevation(u8 linkPlayerId)
     return objEvent->currentElevation;
 }
 
-static s32 UNUSED GetLinkPlayerObjectStepTimer(u8 linkPlayerId)
+static s16 UNUSED GetLinkPlayerObjectStepTimer(u8 linkPlayerId)
 {
     u8 objEventId = gLinkPlayerObjectEvents[linkPlayerId].objEventId;
     struct ObjectEvent *objEvent = &gObjectEvents[objEventId];
@@ -3625,26 +3633,18 @@ static void SetPlayerFacingDirection(u8 linkPlayerId, u8 facing)
     u8 objEventId = linkPlayerObjEvent->objEventId;
     struct ObjectEvent *objEvent = &gObjectEvents[objEventId];
 
-    if (linkPlayerObjEvent->active)
+    if (!linkPlayerObjEvent->active)
+        return;
+
+    if (facing > FACING_FORCED_RIGHT)
     {
-        if (facing > FACING_FORCED_RIGHT)
-        {
-            objEvent->triggerGroundEffectsOnMove = TRUE;
-        }
-        else
-        {
-            // This is a hack to split this code onto two separate lines, without declaring a local variable.
-            // C++ style inline variables would be nice here.
-            #define TEMP sLinkPlayerMovementModes[linkPlayerObjEvent->movementMode](linkPlayerObjEvent, objEvent, facing)
-
-            sMovementStatusHandler[TEMP](linkPlayerObjEvent, objEvent);
-
-            // Clean up the hack.
-            #undef TEMP
-        }
+        objEvent->triggerGroundEffectsOnMove = TRUE;
+        return;
     }
-}
 
+    sMovementStatusHandler[sLinkPlayerMovementModes[linkPlayerObjEvent->movementMode](
+        linkPlayerObjEvent, objEvent, facing)](linkPlayerObjEvent, objEvent);
+}
 
 static u8 MovementEventModeCB_Normal(struct LinkPlayerObjectEvent *linkPlayerObjEvent, struct ObjectEvent *objEvent, enum Direction dir)
 {
@@ -3836,7 +3836,6 @@ bool8 GetSetItemObtained(enum Item item, enum ItemObtainFlags caseId)
 
 EWRAM_DATA static u8 sHeaderBoxWindowId = 0;
 EWRAM_DATA u8 sItemIconSpriteId = 0;
-EWRAM_DATA u8 sItemIconSpriteId2 = 0;
 
 static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash);
 static void DestroyItemIconSprite(void);
@@ -3852,44 +3851,10 @@ enum PopupType
 
 static u8 ReformatItemDescription(enum Item item, u8 *dest)
 {
-    u8 count = 0;
-    u8 numLines = 1;
-    u8 maxChars = 32;
-    u8 *desc = (u8 *)GetItemDescription(item);
-
-    while (*desc != EOS)
-    {
-        if (count >= maxChars)
-        {
-            while (*desc != CHAR_SPACE && *desc != CHAR_NEWLINE)
-            {
-                *dest = *desc;  //finish word
-                dest++;
-                desc++;
-            }
-
-            *dest = CHAR_NEWLINE;
-            count = 0;
-            numLines++;
-            dest++;
-            desc++;
-            continue;
-        }
-
-        *dest = *desc;
-        if (*desc == CHAR_NEWLINE)
-        {
-            *dest = CHAR_SPACE;
-        }
-
-        dest++;
-        desc++;
-        count++;
-    }
-
-    // finish string
-    *dest = EOS;
-    return numLines;
+    StringCopy(dest, GetItemDescription(item));
+    StripLineBreaks(dest);
+    BreakStringAutomatic(dest, 196, 2, FONT_SMALL, HIDE_SCROLL_PROMPT);
+    return CountLineBreaks(dest) + 1;
 }
 
 void ScriptShowItemDescription(struct ScriptContext *ctx)
@@ -3958,7 +3923,6 @@ static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
 {
     s16 x = 0, y = 0;
     u8 iconSpriteId;
-    u8 spriteId2 = MAX_SPRITES;
 
     if (flash)
     {
@@ -3967,8 +3931,10 @@ static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
     }
 
     iconSpriteId = AddItemIconSprite(ITEM_TAG, ITEM_TAG, item);
+
     if (flash)
-        spriteId2 = AddItemIconSprite(ITEM_TAG, ITEM_TAG, item);
+        gSprites[iconSpriteId].copyToObjWin = TRUE;
+
     if (iconSpriteId != MAX_SPRITES)
     {
         if (!firstTime)
@@ -3989,15 +3955,6 @@ static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
         gSprites[iconSpriteId].oam.priority = 0;
     }
 
-    if (spriteId2 != MAX_SPRITES)
-    {
-        gSprites[spriteId2].x2 = x;
-        gSprites[spriteId2].y2 = y;
-        gSprites[spriteId2].oam.priority = 0;
-        gSprites[spriteId2].oam.objMode = ST_OAM_OBJ_WINDOW;
-        sItemIconSpriteId2 = spriteId2;
-    }
-
     sItemIconSpriteId = iconSpriteId;
 }
 
@@ -4007,12 +3964,6 @@ static void DestroyItemIconSprite(void)
     FreeSpritePaletteByTag(ITEM_TAG);
     FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
     DestroySprite(&gSprites[sItemIconSpriteId]);
-
-    if ((GetFlashLevel() > 0 || InBattlePyramid()) && sItemIconSpriteId2 != MAX_SPRITES)
-    {
-        FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId2]);
-        DestroySprite(&gSprites[sItemIconSpriteId2]);
-    }
 }
 
 // returns old sHoursOverride
@@ -4040,18 +3991,11 @@ static void DestroyMonIconSprite(enum Species species)
     FreeMonIconPalette(species);
     FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
     DestroySprite(&gSprites[sItemIconSpriteId]);
-
-    if ((GetFlashLevel() > 0 || InBattlePyramid()) && sItemIconSpriteId2 != MAX_SPRITES)
-    {
-        FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId2]);
-        DestroySprite(&gSprites[sItemIconSpriteId2]);
-    }
 }
 
 static void ShowMonIconSprite(enum Species species, bool8 flash)
 {
     s16 x = 0, y = 0;
-    u8 spriteId2 = MAX_SPRITES;
 
     // Load Pokémon icon palette
     LoadMonIconPalette(species);
@@ -4065,7 +4009,7 @@ static void ShowMonIconSprite(enum Species species, bool8 flash)
 
     // Create the Pokémon icon sprite
     sItemIconSpriteId = CreateMonIconNoPersonality(species, SpriteCB_MonIcon, ITEM_ICON_X - 20, ITEM_ICON_Y - 18, 0);
-    
+
     if (sItemIconSpriteId != MAX_SPRITES)
     {
         x = 15;  // Position in header box
@@ -4079,28 +4023,7 @@ static void ShowMonIconSprite(enum Species species, bool8 flash)
 
     // Flash-related second sprite handling (ensure sprite is valid)
     if (flash)
-    {
-        // Create second sprite
-        spriteId2 = CreateMonIconNoPersonality(species, SpriteCB_MonIcon, ITEM_ICON_X - 20, ITEM_ICON_Y - 18, 0);
-
-        // Only proceed if sprite creation succeeded
-        if (spriteId2 != MAX_SPRITES)
-        {
-            gSprites[spriteId2].x2 = x;
-            gSprites[spriteId2].y2 = y;
-            gSprites[spriteId2].oam.priority = 0;
-            gSprites[spriteId2].oam.objMode = ST_OAM_OBJ_WINDOW;
-            sItemIconSpriteId2 = spriteId2;
-        }
-        else
-        {
-            // Handle the failure case where the second sprite couldn't be created (prevent softlock)
-            ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
-            ClearGpuRegBits(REG_OFFSET_WINOUT, WINOUT_WINOBJ_OBJ);
-            // Reset to prevent invalid accesses
-            sItemIconSpriteId2 = MAX_SPRITES;
-        }
-    }
+        gSprites[sItemIconSpriteId].copyToObjWin = TRUE;
 }
 
 void ScriptShowMonDescribedNotification(struct ScriptContext *ctx)

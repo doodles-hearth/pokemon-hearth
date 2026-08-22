@@ -165,9 +165,25 @@ u32 GetNonDynamaxMaxHP(enum BattlerId battler)
     return maxHP;
 }
 
+static void ActivateDynamax_ContinueAfterSlide(void)
+{
+    gBattleResources->battleCallbackStack->size--;
+    gBattleMainFunc = gBattleResources->battleCallbackStack->function[gBattleResources->battleCallbackStack->size];
+    ActivateDynamax(gBattleScripting.battler);
+}
+
 // Sets flags used for Dynamaxing and checks Gigantamax forms.
 void ActivateDynamax(enum BattlerId battler)
 {
+    if (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_ATTACKER_DYNAMAX))
+    {
+        gBattleScripting.battler = battler;
+        gBattleResources->battleCallbackStack->function[gBattleResources->battleCallbackStack->size++] = gBattleMainFunc;
+        gBattleMainFunc = ActivateDynamax_ContinueAfterSlide;
+
+        BattleScriptPushCursorAndCallback(BattleScript_TrainerSlideMsg);
+        return;
+    }
     // Set appropriate use flags.
     SetActiveGimmick(battler, GIMMICK_DYNAMAX);
     SetGimmickAsActivated(battler, GIMMICK_DYNAMAX);
@@ -208,26 +224,6 @@ void UndoDynamax(enum BattlerId battler)
         TryBattleFormChange(battler, FORM_CHANGE_END_BATTLE, GetBattlerAbility(battler));
 }
 
-// Certain moves are blocked by Max Guard that normally ignore protection.
-bool32 IsMoveBlockedByMaxGuard(enum Move move)
-{
-    switch (move)
-    {
-    case MOVE_BLOCK:
-    case MOVE_FLOWER_SHIELD:
-    case MOVE_GEAR_UP:
-    case MOVE_MAGNETIC_FLUX:
-    case MOVE_PHANTOM_FORCE:
-    case MOVE_PSYCH_UP:
-    case MOVE_SHADOW_FORCE:
-    case MOVE_TEATIME:
-    case MOVE_TRANSFORM:
-        return TRUE;
-    default:
-        return FALSE;
-    }
-}
-
 static enum Move GetTypeBasedMaxMove(enum BattlerId battler, enum Type type)
 {
     // Gigantamax check
@@ -260,7 +256,7 @@ static enum Move GetTypeBasedMaxMove(enum BattlerId battler, enum Type type)
 enum Move GetMaxMove(enum BattlerId battler, enum Move baseMove)
 {
     enum Type moveType;
-    SetTypeBeforeUsingMove(baseMove, battler);
+    SetTypeBeforeUsingMove(baseMove, battler, GetBattlerAbility(battler), GetBattlerHoldEffect(battler));
     moveType = GetBattleMoveType(baseMove);
 
     if (baseMove == MOVE_NONE) // for move display

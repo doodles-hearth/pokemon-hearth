@@ -2,6 +2,7 @@
 #include "money.h"
 #include "graphics.h"
 #include "event_data.h"
+#include "palette.h"
 #include "string_util.h"
 #include "text.h"
 #include "menu.h"

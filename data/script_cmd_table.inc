@@ -1,9 +1,12 @@
+
+@ WARNING:DO NOT REMOVE THE NEWLINE ABOVE IT WILL CAUSE AN ASSEMBLER ERROR
+
 @ 'requests_effects' should be set to 1 if the command contains a call
 @ to 'Script_RequestEffects', which allows it to be analyzed with
 @ 'RunScriptImmediatelyUntilEffect'.
 	.ifndef SCRIPT_CMD_TABLE_ENTRY_MACRO
 	.set SCRIPT_CMD_TABLE_ENTRY_MACRO, 1
-	.macro script_cmd_table_entry constant:req value:req, requests_effects=0
+	.macro script_cmd_table_entry constant:req, value:req, requests_effects=0
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 	.if \requests_effects == 0
 	.4byte \value
@@ -224,8 +227,8 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_TEXTCOLOR                     ScrCmd_textcolor,                   requests_effects=1  @ 0xc7
 	script_cmd_table_entry SCR_OP_LOADHELP                      ScrCmd_nop1,                        requests_effects=1  @ 0xc8
 	script_cmd_table_entry SCR_OP_UNLOADHELP                    ScrCmd_nop1,                        requests_effects=1  @ 0xc9
-	script_cmd_table_entry SCR_OP_SIGNMSG                       ScrCmd_nop1,                        requests_effects=1  @ 0xca
-	script_cmd_table_entry SCR_OP_NORMALMSG                     ScrCmd_nop1,                        requests_effects=1  @ 0xcb
+	script_cmd_table_entry SCR_OP_SIGNMSG                       ScrCmd_signmsg,                     requests_effects=1  @ 0xca
+	script_cmd_table_entry SCR_OP_NORMALMSG                     ScrCmd_normalmsg,                   requests_effects=1  @ 0xcb
 	script_cmd_table_entry SCR_OP_COMPAREHIDDENVAR              ScrCmd_nop1,                        requests_effects=1  @ 0xcc
 	script_cmd_table_entry SCR_OP_SETMODERNFATEFULENCOUNTER     ScrCmd_setmodernfatefulencounter,   requests_effects=1  @ 0xcd
 	script_cmd_table_entry SCR_OP_CHECKMODERNFATEFULENCOUNTER   ScrCmd_checkmodernfatefulencounter, requests_effects=1  @ 0xce

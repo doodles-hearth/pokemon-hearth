@@ -80,6 +80,11 @@
 #define abs(x) (((x) < 0) ? -(x) : (x))
 #endif
 
+
+#if __STDC_VERSION__ != 202311L
+#define auto __auto_type
+#endif
+
 // Used in cases where division by 0 can occur in the retail version.
 // Avoids invalid opcodes on some emulators, and the otherwise UB.
 #ifdef UBFIX
