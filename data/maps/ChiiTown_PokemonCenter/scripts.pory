@@ -212,17 +212,10 @@ script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
 	setspeaker(SP_NAME_LITTLE_BOY)
 	message(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}You know what happens if I see a\nPokémon and I don't know its name?\p"
-		"I just make it right up!\nI don't care about silly “real” names!")
+		"I just make it right up!\nI don't care about silly “real” names!\p"
+		"And neither should you!{PAUSE 16} Be free of the\ndiktat of naming accuracy!"
+	)
 	waitmessage
-	waitbuttonpress
-	message("And neither should you!{PAUSE 16} Be free of the\ndiktat of naming accuracy!")
-	delay(30)
-	applymovement(LOCALID_CHII_TOWN_DIKTAT_KID, moves(emote_exclamation_mark))
-	playse(SE_PIN)
-	waitmovement(0)
-	waitse
-	waitmessage
-	waitbuttonpress
 	closemessage
 	release
 	end

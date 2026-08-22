@@ -264,7 +264,7 @@ script TranquilRoute_EventScript_Girl {
 		default:
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}I understand the Pokémon are meant\nto protect us, but it's just so boring.\p"
-				"You're just hitting each other over\nand over; I don't see the appeal…", MSGBOX_NPC)
+				"You're just hitting each other over\nand over! I don't see the appeal…", MSGBOX_NPC)
 			closemessage
 			break
 	}

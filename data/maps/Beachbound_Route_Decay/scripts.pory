@@ -45,6 +45,7 @@ script BeachboundRoute_Decay_EventScript_Shepherd {
 	setspeaker(SP_NAME_SHEPHERD)
 	message("{CREATE_MUGSHOT MUGSHOT_FARMER 0}What's goin' on?\p")
 	waitmessage
+	playse(SE_PIN)
 	applymovement(LOCALID_BEACHBOUND_ROUTE_DECAY_SHEPHERD, moves(emote_sad))
 	message("Why are all the plants rotting?")
 	waitmessage
@@ -95,7 +96,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Well,{PAUSE 30} look around you!\n{PAUSE 30}This whole area is decaying.\p"
 		"Whatever this is, it is bad.\nI need to learn more about this.\p"
-		"Are you investigating too, {PLAYER}?\lWe should team up!"
+		"Are you investigating too, {PLAYER}?\nWe should team up!"
 	)
 	closemessage
 
@@ -141,7 +142,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 
 	setspeaker(SP_NAME_HARIKO)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}I am Hariko.\n{PLAYER} and I are friends.\pWe are investigating the root of this\ndecay together."
+		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}I am Hariko.\n{PLAYER} and I are friends.\pWe are investigating the root of this\ndecay together!"
 	)
 
 	mcdialogue(
@@ -300,7 +301,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 		"…spreading over several areas…"
 	))
 	closemessage
-	waitmovement(0)
+	waitmovementall
 
 	playse(SE_PIN)
 	applymovement(LOCALID_BEACHBOUND_DECAY_SAMURAI, moves(face_down, delay_16 * 6, emote_exclamation_mark))
@@ -327,6 +328,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	))
 	closemessage
 	
+	playse(SE_FLEE)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_fast_left * 8))
 	applymovement(LOCALID_BEACHBOUND_DECAY_HARIKO, moves(walk_fast_left * 8))
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_fast_left * 8))

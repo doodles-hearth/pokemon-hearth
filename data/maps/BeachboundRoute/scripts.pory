@@ -614,7 +614,7 @@ script BeachboundRoute_EventScript_PlayfulMom {
 	lock
 	setspeaker("Loving Mom")
 	message(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I bring my children here after school\nlet them play in the Sakura petals.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I bring my children here after school\nlet them play in the petals.\p"
 		"I want them to enjoy their youth while\nthey can…\p"
 	)
 	waitmessage
