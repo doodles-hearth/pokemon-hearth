@@ -504,7 +504,7 @@ Debug_EventScript_SetFriendship::
 
 Debug_EventScript_SetColor::
 	special ChoosePartyMon
-	callnative DebugNative_Party_SetColor
+	callnative DebugNative_Player_ChooseColour
 	releaseall
 	end
 
