@@ -8,6 +8,13 @@ const LOCALID_BATTLING_BOY = 16
 mapscripts ChiiTown_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
 		call(ChiiTown_DrawMetatiles)
+		
+		// School Door
+		closedoormetatile(TIME_NIGHT, 14, 8, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		closedoormetatile(TIME_DEAD_NIGHT, 14, 8, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		
+		//Growlithe Owner House Door
+		closedoormetatile(TIME_DEAD_NIGHT, 24, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
     }
 	MAP_SCRIPT_ON_TRANSITION {
         setflag(FLAG_VISITED_CHII_TOWN)
@@ -42,53 +49,51 @@ script ChiiTown_DrawMetatiles{
 		setmetatile(16, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
 		setmetatile(21, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
-
-    gettimeofday
-	switch(var(VAR_0x8000)){
-        case TIME_DEAD_NIGHT:
-            setmetatile(14, 5, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
-            setmetatile(14, 6, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
-        case TIME_EARLY_MORNING:
-        case TIME_MORNING:
-        case TIME_LUNCHTIME:
-        case TIME_AFTERNOON:
-        case TIME_EVENING:
-        case TIME_NIGHT:
-        default:
-            end
-    }
 }
 
 script ChiiTown_EventScript_WatchfulMom{
 	gettimeofday
 	setspeaker(SP_NAME_WOMAN)
+	//using switch here instead of if/elif to make it more readable
 	switch(var(VAR_0x8000)){
 		case TIME_MORNING:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm dropping off my children to school.\p"
-				"With all the recent Pokémon attacks, I will not let them leave my sight!"
-			), MSGBOX_NPC)	
+			lock
+			faceplayer
+			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm dropping off my children to school.\p")
+			waitmessage
+			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
+			setspeaker("Watchful Mom")
+			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
+			waitmessage
+			waitse
+			waitmovement(0)
+			waitbuttonpress
+			closemessage
 		case TIME_AFTERNOON:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm waiting to pick up my children after school.\p"
-				"With all the recent Pokémon attacks, I will not let them leave my sight!"
-			), MSGBOX_NPC)
-		default:
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}Phew… Being a full-time mom is exhausting…"
-			), MSGBOX_NPC)
+			lock
+			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm waiting to pick up my children\nafter school.\p")
+			waitmessage
+			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
+			setspeaker("Watchful Mom")
+			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
+			waitmessage
+			waitse
+			waitmovement(0)
+			waitbuttonpress
+			closemessage
 	}
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
+	release
+	end
 }
 
 script ChiiTown_EventScript_Shopper {
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}The town market lady sells Pokémon medicine and Poké Balls now!\p"
-		"Careful, though: her ointments can't be used in the middle of a battle.\p"
-		"They're super cheap though, so don't be afraid to use them to avoid needing to run to the nearest Refuge!"
-	), MSGBOX_NPC)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}The town market lady sells Pokémon\nmedicine and Poké Balls now!\p"
+		"Careful, though: her ointments can't\nbe used in the middle of a battle.\p"
+		"They're super cheap though, so don't\nbe afraid to use them! It saves a run\lto the nearest Refuge!", MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
 }
@@ -124,10 +129,9 @@ script ChiiTown_EventScript_PlantingFlowers {
 
 script ChiiTown_EventScript_AlsoPlantingFlowers {
 	setspeaker(SP_NAME_LITTLE_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}She's making me plant flowers so that the wild Pokémon become happy again.\p"
-		"I'm not though…"
-	), MSGBOX_NPC)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_BOY 0}She's making me plant flowers so that\nthe wild Pokémon become happy again.\p"
+		"It doesn't make me happy though…", MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
 }
@@ -145,10 +149,9 @@ script ChiiTown_EventScript_EatingBerries {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Sensei said that we should eat berries to grow big and strong!\p"
-		"But how are we supposed to get them if we aren't big and strong yet?"
-	), MSGBOX_DEFAULT)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Sensei said that we should eat lots of\nberries to grow big and strong!\p"
+		"But how are we supposed to reach\nthem if we aren't big and strong yet?", MSGBOX_DEFAULT)
 	closemessage
 
 	if(checkitem(ITEM_ORAN_BERRY, 1)){
@@ -183,10 +186,10 @@ script ChiiTown_EventScript_BerryEnthusiast {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been eating berries just like Sensei said, but I haven't grown yet.\p"
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been eating berries just like\nSensei said, but I haven't grown yet.\p"
 		"I don't care though. They're delicious!"
-	))
+	)
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -364,9 +367,9 @@ mart ChiiTown_Mart {
 
 script ChiiTown_EventScript_Samurai {
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}There's been reports of shady men\ndressed in blue loitering around here.\lBe careful when traveling!"
-	), MSGBOX_NPC)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}There's been reports of shady men\ndressed in blue loitering around here.\lBe careful when traveling!", MSGBOX_NPC)
+	closemessage
 }
 
 script ChiiTown_EventScript_TownSign {
