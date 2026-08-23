@@ -1969,194 +1969,248 @@ Level: 27
 - Bullet Seed
 - Fairy Wind
 
-=== TRAINER_ALEXIA ===
-Name: ALEXIA
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
+=== TRAINER_CHONG ===
+Name: Chong
+Class: Black Belt
+Pic: Black Belt
+Gender: Male
+Music: Intense
 Battle Type: Singles
 AI: Basic Trainer
 
-Wigglytuff
+Combusken
+Level: 25
+- Double Kick
+- Quick Attack
+- Flame Charge
+- Sand Attack
+
+Heracross
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Defense Curl
-- Double Edge
-- Shadow Ball
+- Counter
+- Feint
+- Endure
+- Fury Attack
 
-=== TRAINER_JODY ===
-Name: JODY
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
-
-Zangoose
+Hariyama
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Slash
+- Belly Drum
+- Whirlwind
+- Knock Off
 
-=== TRAINER_WENDY ===
-Name: WENDY
-Class: Cooltrainer
-Pic: Cooltrainer F
+=== TRAINER_HANABI_GYM_1 ===
+Name: Trainer1
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Cool
-Items: Full Restore
+Music: Spiritual
 Battle Type: Singles
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
-
-Mawile
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Baton Pass
-- Feint Attack
-- Fake Tears
-- Bite
-
-Roselia
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Mega Drain
-- Magical Leaf
-- Grass Whistle
-- Leech Seed
-
-Pelipper
-Level: 29
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Fly
-- Water Gun
-- Mist
-- Protect
-
-=== TRAINER_KEIRA ===
-Name: KEIRA
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Check Bad Move / Try To Faint / Force Setup First Turn
-
-Lairon
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Manectric
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_BROOKE_1 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Super Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Wingull
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+AI: Smartish Trainer
 
 Numel
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Level: 25
+- Magnitude
+- Lava Plume
+- Focus Energy
 
-Roselia
-Level: 17
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Darumaka
+Level: 24
+- Uproar
+- Fire Punch
+- Rage
+- Facade
 
-=== TRAINER_JENNIFER ===
-Name: JENNIFER
-Class: Cooltrainer
-Pic: Cooltrainer F
+=== TRAINER_HANABI_GYM_2 ===
+Name: Trainer2
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Cool
-Items: Full Restore
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Clefairy
+Level: 24
+- Sunny Day
+- Fire Punch
+- Sweet Kiss
+- Magical Leaf
+
+Numel
+Level: 26
+- Flame Burst
+- Earth Power
+- Focus Energy
+
+Growlithe
+Level: 25
+- Take Down
+- Flame Wheel
+- Reversal
+
+=== TRAINER_HANABI_GYM_3 ===
+Name: Trainer3
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Spiritual
 Battle Type: Singles
 AI: Basic Trainer
 
-Sableye
-Level: 30
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+Vulpix
+Level: 24
+- Hex
+- Fire Spin
+- Feint Attack
+- Confuse Ray
 
-=== TRAINER_HOPE ===
-Name: HOPE
-Class: Cooltrainer
-Pic: Cooltrainer F
+Kotora
+Level: 24
+- Bite
+- Fire Fang
+- Roar
+- Nuzzle
+
+Darumaka
+Level: 25
+- Rollout
+- Work Up
+- Incinerate
+- Fire Fang
+
+=== TRAINER_HANABI_GYM_4 ===
+Name: Trainer4
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Cool
-Items: Full Restore
+Music: Spiritual
+Battle Type: Singles
+AI: Smartish Trainer
+
+Drifloon
+Level: 25
+- Will O Wisp
+- Sunny Day
+- Ominous Wind
+- Gust
+
+Quilava
+Level: 25
+- Defense Curl
+- Flame Wheel
+- Quick Attack
+
+=== TRAINER_HANABI_GYM_5 ===
+Name: Trainer5
+Class: Kimono Girl
+Pic: Kimono Girl
+Gender: Female
+Music: Spiritual
 Battle Type: Singles
 AI: Basic Trainer
 
-Roselia
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Solrock
+Level: 25
+- Rock Slide
+- Fire Spin
+- Rock Polish
+- Sunny Day
 
-=== TRAINER_SHANNON ===
-Name: SHANNON
-Class: Cooltrainer
-Pic: Cooltrainer F
+Growlithe
+Level: 26
+- Fire Fang
+- Roar
+- Leer
+
+=== TRAINER_HANABI_GYM_6 ===
+Name: Trainer6
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Cool
-Items: Full Restore
+Music: Spiritual
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Claydol
-Level: 45
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Numel
+Level: 25
+- Flame Burst
+- Focus Energy
+- Growl
 
-=== TRAINER_MICHELLE ===
-Name: MICHELLE
-Class: Cooltrainer
-Pic: Cooltrainer F
+Drifloon
+Level: 25
+- Flame Burst
+- Astonish
+- Minimize
+
+=== TRAINER_HANABI_GYM_7 ===
+Name: Trainer7
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Cool
-Items: Full Restore
+Music: Spiritual
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Torkoal
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Solrock @ Sun Stone
+Level: 26
+- Psywave
+- Embargo
+- Fire Spin
+- Cosmic Power
 
-Medicham
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Ludicolo
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_CAROLINE ===
-Name: CAROLINE
-Class: Cooltrainer
-Pic: Cooltrainer F
+=== TRAINER_HANABI_GYM_8 ===
+Name: Trainer8
+Class: Kimono Girl
+Pic: Kimono Girl
 Gender: Female
-Music: Cool
-Items: Full Restore
+Music: Spiritual
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Skarmory
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Vulpix
+Level: 26
+- Fire Spin
+- Payback
+- Quick Attack
 
-Sableye
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+Darumaka
+Level: 25
+- Headbutt
+- Facade
+- Incinerate
+- Rage
+
+=== TRAINER_XIAO_HUO ===
+Name: Xiao Huo
+Class: Dojo Master
+Pic: Leader Yutaka
+Gender: Male
+Music: Male
+Items: Supergiri
+Battle Type: Singles
+AI: Smartish Trainer
+
+Darumaka
+Level: 25
+- Rage
+- Work Up
+- Fire Punch
+- Facade
+
+Drifblim
+Level: 28
+- Ominous Wind
+- Will O Wisp
+- Hex
+- Flame Wheel
+
+Drampa
+Level: 26
+- Dragon Rage
+- Glare
+- Fire Fang
+- Echoed Voice
 
 === TRAINER_JULIE ===
 Name: JULIE

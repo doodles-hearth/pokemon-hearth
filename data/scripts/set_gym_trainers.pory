@@ -48,8 +48,8 @@ script PetalburgCity_Gym_SetGymTrainers {
 	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_BERKE)
 	settrainerflag(TRAINER_DUMMY)
-	settrainerflag(TRAINER_ALEXIA)
-	settrainerflag(TRAINER_JODY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
 	return
 }
 

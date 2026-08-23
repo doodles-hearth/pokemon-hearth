@@ -1,1 +1,111 @@
 mapscripts HanabiCity_Dojo_MapScripts {}
+
+// TODO EVA
+
+script HanabiCity_Dojo_EventScript_Trainer1 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_1,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer2 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_2,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer3 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_3,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer4 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_4,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer5 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_5,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer6 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_6,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer7 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_7,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_Trainer8 {
+    trainerbattle_single(
+		TRAINER_HANABI_GYM_8,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script HanabiCity_Dojo_EventScript_XiaoHuo {
+    trainerbattle_single(
+		TRAINER_XIAO_HUO,
+		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
+		format("N-nice to meet you…"),
+		BeachboundRoute_EventScript_Karu_PostBattle
+	)
+	setspeaker(SP_NAME_LASS)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	end
+}

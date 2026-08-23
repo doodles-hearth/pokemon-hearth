@@ -20,7 +20,16 @@
     }
   ],
   "object_events": [],
-  "warp_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_HANABY_DOJO",
+      "x": 30,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_HANABI_CITY_DOJO",
+      "dest_warp_id": "WARP_ID_HANABY_DOJO_EXIT"
+    }
+  ],
   "coord_events": [],
   "bg_events": [],
   "region": "REGION_HOENN"

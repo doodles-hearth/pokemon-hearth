@@ -2,7 +2,7 @@
   "id": "MAP_HANABI_CITY",
   "name": "HanabiCity",
   "layout": "LAYOUT_HANABI_CITY",
-  "music": "MUS_DUMMY",
+  "music": "MUS_HANABI",
   "region_map_section": "MAPSEC_HANABI_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
