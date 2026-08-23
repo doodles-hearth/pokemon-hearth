@@ -111,13 +111,13 @@ script KuraTown_Dojo_EventScript_Hana {
 		setspeaker(SP_NAME_HANA)
 		trainerbattle_single(
 			TRAINER_HANA_1,
-			format(
-				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
-				"You must be wondering what a Bonsai seller from Saku Village is doing in the Kura Village Dojo.\p"
-				"I'd prefer you don't tell anyone.\nSee, the two towns have a beef with one another.\p"
-				"A Pokémon battle can be graceful like a budding flower, strong like the deepest roots, powerful like a windswept pine tree, all at once.\p"
-				"Show me all the grace, strength and power you are capable of!"
-			),
+				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Hello again, child. Welcome to my humble\nDojo.\pI am Hana.{PAUSE 30}\nDid you enjoy my little maze?\p"
+				"You must be wondering what a Bonsai\nseller from Saku Village is doing in\lthe Kura Village Dojo.\p"
+				"I'd prefer you don't tell anyone.\nI'm sure you know of our village's row.\p"
+				"But, to more pressing matters…\p"
+				"A Pokémon battle isn't too unlike\nbeautiful flora.\p"
+				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\l{PAUSE 30}And power like the mightiest trees.\p"
+				"Show me all the grace, strength and\npower you are capable of!",
 			format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
 			NO_MUSIC
@@ -127,13 +127,12 @@ script KuraTown_Dojo_EventScript_Hana {
 		setspeaker(SP_NAME_HANA)
 		trainerbattle_single(
 			TRAINER_HANA_1,
-			(
 				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 				"Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
-				"A Pokémon battle can be graceful like a\nbudding flower, strong like the\ldeepest roots, powerful like a\lwindswept pine tree, all at once.\p"
-				"Show me all the grace, strength and\npower you are capable of!"
-			),
-			format("Ho ho ho…"),
+				"A Pokémon battle isn't too unlike\nbeautiful flora.\p"
+				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\l{PAUSE 30}And power like the mightiest trees.\p"
+				"Show me all the grace, strength and\npower you are capable of!",
+				format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
 			NO_MUSIC
 		)
@@ -143,14 +142,32 @@ script KuraTown_Dojo_EventScript_Hana {
 	// goto_if_eq(VAR_RESULT, TRUE, KuraTown_Dojo_EventScript_HanaRematch)
 
 	setspeaker(SP_NAME_HANA)
-	msgbox(
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_HANA 0}The slow-growing tree becomes the sturdiest.\p"
-			"Take your time on your journey, {PLAYER}."
-		),
-		MSGBOX_DEFAULT
-	)
-
+	msgbox("{CREATE_MUGSHOT MUGSHOT_HANA 0}Hello, again. What did you need of me?")
+	returnqueststate(QUEST_SAKURAESPEON)
+	copyvar(VAR_TEMP_0, VAR_RESULT)
+	returnqueststate(QUEST_SAKURALOVERS)
+	copyvar(VAR_TEMP_1, VAR_RESULT)
+	returnqueststate(QUEST_SAKURASCYTHER)
+	copyvar(VAR_TEMP_2, VAR_RESULT)
+	if(var(VAR_TEMP_0) == QUEST_MENU_COMPLETE_QUEST && var(VAR_TEMP_1) == QUEST_MENU_COMPLETE_QUEST && var(VAR_TEMP_2) == QUEST_MENU_COMPLETE_QUEST)
+	{dynmultipush("I've got news!", 1)}
+	else
+	{dynmultipush("Why are you here?", 1)}
+	dynmultipush("Do you have any advice?", 2)
+	dynmultistack(0, 0, FALSE, 2, FALSE, 0, DYN_MULTICHOICE_CB_NONE)
+	switch(var(VAR_RESULT))
+	{
+		case 1:
+		msgbox(
+			"My hope with this endeavor is to bring\nour villages together.\p"
+			"Like our villages' history, a bonsai has\nmany twists, turns and knots…\p"
+			"Yet, it creates such a beautiful tree\nafter you tend to it.\p"
+			"But I wish it were as easy to mend this\nrift as it is to grow bonsai. Sigh…"
+		)
+		case 2:
+		default:
+			msgbox("{CREATE_MUGSHOT MUGSHOT_HANA 0}The slow-growing tree becomes the\nsturdiest.\pTake your time on your journey,\n{PLAYER}.",	MSGBOX_DEFAULT)
+	}
 	release
 	end
 }
@@ -213,31 +230,31 @@ script KuraTown_Dojo_EventScript_Advice {
 	} else {
 		setspeaker(SP_NAME_MAN)
 		if (isfieldmoveunlocked(FIELD_MOVE_CUT)) {
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
-				"Lady Hana, the Dojo Master, is an expert in all things bonsai.\p"
-				"She designed this place and, of course, grew these trees herself!\p"
-				"Now, pay attention: only some of these noble trees can be cut down.\p"
-				"Figure out which, and you'll reach the Master!\p"
-				"By the way - Hana's a weather expert, and a formidable adversary.\p"
-				"Be on your guard!\nMaybe get an umbrella, I don't know!"
-			))
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome\nto the Kura Village Dojo!\p"
+				"Lady Hana, the Dojo Master, is an\nexpert in all things bonsai.\p"
+				"She designed this place and, of\ncourse, grew these trees herself!\p"
+				"Now, pay attention: only some of\nthese noble trees can be cut down.\p"
+				"Figure out which, and you'll reach\nMaster Hana!\p"
+				"Lastly, Hana's a weather expert, and\na formidable adversary.\p"
+				"Be on your guard!\nMaybe get an umbrella too, who knows!"
+			)
 		} else {
 			setspeaker(SP_NAME_MAN)
 			if (flag(FLAG_BADGE01_GET)) {
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
-					"All these trees are blocking your way, aren't they?\p"
-					"You should come back once you've figured out a way to cut them!"
-				))
+				msgbox(
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome\nto the Kura Village Dojo!\p"
+					"All these trees are blocking your way,\naren't they?\p"
+					"I'm sure you'll find a way to cut them\ndown soon enough!"
+				)
 			} else {
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome to the Kura Village Dojo!\p"
-					"All these trees are blocking your way, aren't they?\p"
-					"You should come back once you've figured out a way to cut them!\p"
-					"If you're itching for a challenge, why not try your skills at the Dojo in Maguro Harbor first?\p"
-					"It's not very far east from here!"
-				))
+				msgbox(
+					"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}Hello, young challenger, and welcome\nto the Kura Village Dojo!\p"
+					"All these trees are blocking your way,\naren't they?\p"
+					"I'm sure you'll find a way to cut them\ndown soon enough!\p"
+					"If you're itching for a challenge, why\nnot try your skills at the Dojo in\lMaguro Harbor first?\p"
+					"It's just a short jog through the\nroute east of here!"
+				)
 			}
 		}
 	}

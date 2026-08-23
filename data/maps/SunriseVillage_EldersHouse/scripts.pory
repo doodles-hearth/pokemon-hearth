@@ -85,7 +85,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	setspeaker(SP_NAME_ELDER_KABA)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_KABA 0}The Toku Council has concluded what\nthe best protection from Pokémon is…\lTo use the Pokémon themselves!\p"
-		"Experienced Pokémon Wielders are rare\nin Toku.\lThis is all about to change.\p"
+		"Experienced Pokémon Wielders are rare\nin Toku. This is all about to change.\p"
 		"With a trained Pokémon by your side,\nyou'll be able to defend yourselves."
 	)
 	waitmessage
@@ -469,8 +469,9 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 	if (var(VAR_RESULT) == 0) {
 		playse(SE_LEDGE)
 		applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(jump_in_place_left))
+		setspeaker(SP_NAME_NATSUKI)
 		msgbox(
-				"That's what I'm talking about!"
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}That's what I'm talking about!"
 			)
 		waitmessage
 		closemessage
@@ -479,15 +480,14 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 
 		setspeaker(SP_NAME_NATSUKI)
 		checkplayergender
-		if (var(VAR_RESULT) == MALE) {
-			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't listen to him! He's so ready!"
-			)
+		if (var(VAR_RESULT) == FEMALE) {
+			bufferstring(STR_VAR_1, "her")
+			bufferstring(STR_VAR_2, "She")
 		} else {
-			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't listen to her! She's so ready!"
-			)
+			bufferstring(STR_VAR_1, "him")
+			bufferstring(STR_VAR_2, "He")
 		}
+		msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Don't listen to {STR_VAR_1}! {STR_VAR_2}'s so ready!") //ignore poryscript warning
 		waitmessage
 		closemessage
 

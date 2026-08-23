@@ -4,7 +4,7 @@ mapscripts GinkoWoods_MapScripts {
 
 script GinkoWoods_EventScript_Toshiki {
 	trainerbattle_single(
-		TRAINER_TOSHIKI ,
+		TRAINER_TOSHIKI,
 		format("{CREATE_MUGSHOT MUGSHOT_BUG_CATCHER 0}These bugs are electrifying!"),
 		format("Ouch! How did you do that?")
 	)
@@ -73,39 +73,40 @@ script GinkoWoods_EventScript_Hariko {
 	lock
 
 	waitse
-	playse(SE_PIN)
+	playse(SE_NOTE_G)
 	applymovement(LOCALID_GINKO_HARIKO, moves(emote_music, delay_16 * 6, face_down))
 	waitmovement(LOCALID_GINKO_HARIKO)
-
+	delay(16)
+	if(!flag(FLAG_TEMP_1))	{
+		playse(SE_PIN)
+		applymovement(LOCALID_GINKO_HARIKO, moves(emote_exclamation_mark, delay_16 * 3, face_down))
+		waitmovement(LOCALID_GINKO_HARIKO)
+		delay(16)
+	}
 	setspeaker("Odd Girl")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Hello!"
-	))
+	message("{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Hello!\p")
+	waitmessage
 	closemessage
 
 	delay(48)
-
 	turnobject(LOCALID_GINKO_HARIKO, DIR_EAST)
-
 	setspeaker("Odd Girl")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}I just noticed there are some neat tracks in the dirt here."
-	))
-	closemessage
-
-	turnobject(LOCALID_GINKO_HARIKO, DIR_SOUTH)
-	
-	delay(48)
-
-	setspeaker("Odd Girl")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}It looks like a small mammal's footprints, see?\p"
-		"Studying Pokémon tracks is so fascinating. One can find out about a Pokémon's nesting place, their hunting habits, at what time they sleep, what they eat… Interesting, isn't it?\p"
-		"These woods host a lot of yellow Pokémon, so I'd bet these are a Kotora's."
-		"Do you know why there's a lot of yellow Pokémon here? Well, that's because smaller Pokémon can easily hide from predators in the foliage, and said predators can stalk their prey without being seen."
-		"Additionally, the high concentration of electric-type Pokémon, which seems to have happened fortuitously, explains the unnaturally high static electricity in the air here."
-		"Some of the non-electric Pokémon that live here have adapted by developing specific traits, like the Sewaddle you've probably seen on your way here that blah, blah blah blah blah, blah blah…"
-	))
+	message("{CREATE_MUGSHOT MUGSHOT_HARIKO 0}I just noticed there are some really\ninteresting tracks in the dirt here.\p")
+	waitmessage
+	applymovement(LOCALID_GINKO_HARIKO, moves(delay_16, face_down, delay_16))
+	waitmovement(0)
+	message("By my calculations, these footprints\nbelong to a small mammal.\p")
+	waitmessage
+	//gets cut off here
+	message("I find it is very fascinating to study\nPokémon's footprints.\pThey reveal more than one realizes:\nEating habits, nesting places, active\lhours, daily diet… Interesting, no?")
+	waitmessage
+	mcdialogue("Yeah!", "Sure?")
+	message("These are likely a Kotora's, since\nthese woods host many yellow Pokémon.\lDo you know why that is?")
+	waitmessage
+	mcdialogue("I don't!", "{FONT_SMALL}I gotta go.")
+	harikomessage("First, note the foliage of the forest\nin order to understand the Pokémon.\lThis means that prey can easily hide.\lPredators can also stalk their prey.\lThis means the forest is a good home.\lBut strangely, the forest's foliage\lcreates a field of static electricity\lthat attracts Electric-type Pokémon.\lThis creates a very interesting chain\lreaction with the air.\lJust their mere presence has begun\lcharging the environment as well.\lSome of the non-Electric Pokémon\lthat live here have adapted by\ldeveloping specific traits, like the\l{FONT_SMALL}Sewaddle you've probably seen.\l{FONT_SMALL_NARROW}While not possesing electric powers\l{FONT_SMALL_NARROWER}of their own, they have adopted…")
+	waitmessage
+	harikofinish
 	closemessage
 
 	fadescreenswapbuffers(FADE_TO_BLACK)
@@ -118,71 +119,65 @@ script GinkoWoods_EventScript_Hariko {
 	delay(48)
 
 	setspeaker("Odd Girl")
-	msgbox((
+	message(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…And that's all that is currently\nknown about Joltik's winter habitat.\p"
 		"Neat, isn't it?"
-	))
-
-	dynmultichoice(
-		0,
-		0,
-		TRUE,
-		10,
-		0,
-		DYN_MULTICHOICE_CB_NONE,
-		"… …Yes?",
-		"Do I know you?",
-		"I was just passing through…"
 	)
+	waitmessage
+	mcdialogue("…Yes?","Do I know you?","I was just passing through…")
 	closemessage
-	setspeaker(SP_NAME_HARIKO)
 
+	setspeaker("Odd Girl")
 	switch(var(VAR_RESULT)) {
 		case 0:
-			msgbox((
+			delay(16)
+			playse(SE_PIN)
+			applymovement(LOCALID_GINKO_HARIKO, moves(emote_happy, delay_16 * 6))
+			waitmovement(LOCALID_GINKO_HARIKO)
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right! I am glad you share my interest\nin Pokémon habitats.\p"
-				"I am Hariko. And what is your name?\p"
+				"{SPEAKER NAME_HARIKO}I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\lI will see you around, then.\p"
-				"Okay. Bye!"
-			))
+				"Okay. {PAUSE 8}Bye!"
+			)
 		case 1:
-			msgbox((
+			delay(16)
+			playse(SE_PIN)
+			applymovement(LOCALID_GINKO_HARIKO, moves(emote_exclamation_mark, delay_16 * 6))
+			waitmovement(LOCALID_GINKO_HARIKO)
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Right!\nI haven't introduced myself yet.\p"
-				"I am Hariko. And what is your name?\p"
+				"{SPEAKER NAME_HARIKO}I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\lI will see you around, then.\p"
-				"Okay.{PAUSE 8}Bye!"
-			))
+				"Okay. {PAUSE 8}Bye!"
+			)
 		case 2:
 			delay(16)
 			playse(SE_PIN)
 			applymovement(LOCALID_GINKO_HARIKO, moves(emote_pensive, delay_16 * 6))
 			waitmovement(LOCALID_GINKO_HARIKO)
-			msgbox((
+			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…Oh. I am blocking your path. I see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
-				"I am Hariko. And what is your name?\p"
+				"{SPEAKER NAME_HARIKO}I am Hariko. And what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\p"
 				"I am moving now, so that you can go\nthrough.\p"
-				"I will see you around.{PAUSE 8}\nOkay.{PAUSE 8} Bye!"
-			))
+				"I will see you around.{PAUSE 8}\nOkay. {PAUSE 8} Bye!"
+			)
 	}
 	closemessage
 
-	applymovement(LOCALID_GINKO_HARIKO, GinkoWoods_Movement_BeanWalksAway)
+	applymovement(LOCALID_GINKO_HARIKO, moves(walk_up * 7))
 	waitmovement(0)
 	removeobject(LOCALID_GINKO_HARIKO)
 	setflag(FLAG_HIDE_BEAN_GINKO_WOODS)
 	
 	setnamedmon(SPECIES_JOLTIK)
 	setnamedmon(SPECIES_KOTORA)
-	setnamedmon(SPECIES_SEWADDLE)
+	setnamedmon(SPECIES_SEWADDLE_TOKUAN)
 	setdescribedmon(SPECIES_SEWADDLE_TOKUAN)
 
 	release
-}
-
-movement GinkoWoods_Movement_BeanWalksAway {
-	walk_up * 7
 }
 
 script(local) GinkoWoods_EventScript_HarikoSpotsYou {
@@ -199,10 +194,11 @@ script(local) GinkoWoods_EventScript_HarikoSpotsYou {
 
 	applymovement(LOCALID_GINKO_HARIKO, moves(emote_upset))
 	setspeaker("Odd Girl")
-	msgbox(format(
+	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}THE TRACKS!!\nYOU'RE STEPPING ON THEM!!!"
-	))
+	)
 	closemessage
+	setflag(FLAG_TEMP_1)
 }
 
 script GinkoWoods_EventScript_TracksLeft {

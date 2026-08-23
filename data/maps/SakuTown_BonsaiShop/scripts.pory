@@ -352,11 +352,17 @@ script SakuTown_EventScript_Man {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_CUSTOMER)
-	msgbox(format(
+	message(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}I'm choosing flowers for my wife.\p"
-		"I, uh… I didn't realize there'd be so many different types.\p"
-		"Guess I'll be here a while…"
-	))
+		"I, uh… I didn't realize there'd be so\nmany different types.\p"
+	)
+	playse(SE_M_LICK)
+	applymovement(LOCALID_BONSAI_SHOP_SHOPPER, moves(emote_sweat))
+	message("Guess I'll be here a while…")
+	waitmessage
+	waitbuttonpress
+	waitse
+	waitmovement
 	closemessage
 	release
 }
