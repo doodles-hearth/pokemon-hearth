@@ -3,7 +3,6 @@
   "name": "YifuCity_Restaurant",
   "layout": "LAYOUT_YIFU_CITY_RESTAURANT",
   "music": "MUS_RUSTBORO",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_YIFU_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -128,26 +127,6 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Restaurant_EventScript_LittleBoy2",
-      "flag": "0",
-      "afternoon": true,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": true,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_UUME_GIRL_2",
-      "x": 4,
-      "y": 3,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 3,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "YifuCity_Restaurant_EventScript_LonelyGirl",
       "flag": "0",
       "afternoon": true,
       "deadnight": false,
@@ -321,6 +300,26 @@
       "lunchtime": true,
       "morning": true,
       "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_UUME_GIRL_2",
+      "x": 4,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 3,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "YifuCity_Restaurant_EventScript_LonelyGirl",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": true,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
@@ -341,5 +340,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

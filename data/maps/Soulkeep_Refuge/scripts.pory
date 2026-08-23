@@ -38,9 +38,9 @@ script Soulkeep_Refuge_EventScript_Man {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}We sure don't see a lot of trav'lers 'round these parts…\p"
-		"You here for the Dojo challenge? Dojo's closed, unfortunately."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}We sure don't see a lot of trav'lers\n'round these parts…\p"
+		"You here for the Dojo challenge?\nDojo's closed, unfortunately."
 	))
 	closemessage
 	release
@@ -50,9 +50,9 @@ script Soulkeep_Refuge_EventScript_NewDojo {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Some of the town's farmers got together with Guang and said they were going to reopen the old Dojo.\p"
-		"Guang says he's tired of “living in the shadows”, whatever that means."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Some of the town's farmers got\ntogether with Guang.\lTalked about reopening the old Dojo.\p"
+		"Guang says he's tired of “living in\nthe shadows”, whatever that means."
 	))
 	closemessage
 	release
@@ -74,10 +74,10 @@ script Soulkeep_Refuge_EventScript_WhereCoreef {
 	faceplayer
 
 	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
-		msgbox(format(
+		msgbox((
 			"{SPEAKER NAME_TRAVELER}Hello! I am an expert in geography.\nI just LOVE maps.\p"
-			"Coreef Isle? It's a small islet off the coast of Saberside Town.\p"
-			"There isn't much there. Just a bunch of fishermen and old people."
+			"Coreef Isle? It's a small islet\noff the coast of Saberside Town.\p"
+			"There isn't much there.\nJust fishermen and old people."
 		))
 	} else {
 		msgbox(format(

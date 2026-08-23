@@ -185,6 +185,14 @@ static const struct SpriteFrameImage sPicTable_Seaside_Valet[] = {
     overworld_ascending_frames(gObjectEventPic_Seaside_Valet, 4, 4),
 };
 
+static const struct SpriteFrameImage sPicTable_CastformRainGuy[] = {
+    overworld_ascending_frames(gObjectEventPic_CastformRainGuy, 4, 4),
+};
+
+static const struct SpriteFrameImage sPicTable_CastformSunGirl[] = {
+    overworld_ascending_frames(gObjectEventPic_CastformSunGirl, 4, 4),
+};
+
 // Uume NPCs
 static const struct SpriteFrameImage sPicTable_Uume_Woman1[] = {
     overworld_ascending_frames(gObjectEventPic_Uume_Woman1, 4, 4),

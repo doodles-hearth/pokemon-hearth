@@ -261,11 +261,10 @@ script WhiteslateRoute_EventScript_Deiji {
 script WhiteslateRoute_EventScript_Sani {
 	trainerbattle_single(
 		TRAINER_SANI,
-		"Close your eyes and feel the sunshine\non your face!",
+		"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}Close your eyes and feel the sunshine\non your face!",
 		"Oops, maybe I should have kept my\neyes open for this!"
 	)
-	// TODO EVA weather girl
-	msgbox(("I empathize with Pokémon that need\nsunlight to thrive!"), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}I empathize with Pokémon that need\nsunlight to thrive!"), MSGBOX_AUTOCLOSE)
 	end
 }
 

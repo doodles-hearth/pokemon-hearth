@@ -36,3 +36,31 @@ mart HanabiCity_Mart {
 	ITEM_ESCAPE_ROPE
 }
 
+script HanabiCity_EventScript_FoodAddict {
+    lock
+	faceplayer
+	
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_sad))
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_1 0}{SPEAKER NAME_GIRL}Oh gosh! I want all the dolls!\nI want those delicious skewers!\p"
+		"Eep! I want to fold a Porigami!\nLeave some of everything for me!"
+	)
+
+	waitmovement
+
+	closemessage
+	release
+}
+
+script HanabiCity_EventScript_BalloonKid {
+    lock
+	faceplayer
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}My sister won me a balloon!\nI bet you're super jealous!\p"
+		"I bet I can float around if I hold my\nbreath!"
+	)
+	closemessage
+	release
+}

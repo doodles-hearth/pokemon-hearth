@@ -41,10 +41,9 @@ script BurnfootPassBottom_EventScript_TravellingMerchant {
 script BurnfootPassBottom_EventScript_Ame {
     trainerbattle_single(
 		TRAINER_AME,
-		format("The weather here is so confusing!"),
-		format("I was distracted by the falling ash!")
+		format("{CREATE_MUGSHOT MUGSHOT_CASTFORM_RAIN_GUY 0}The weather here is so confusing!"),
+		format("{CREATE_MUGSHOT MUGSHOT_CASTFORM_RAIN_GUY 0}{SPEAKER NAME_CASTFORM_RAIN_GUY}I was distracted by the falling ash!")
 	)
-	// setspeaker(SP_NAME_BATTLE_GIRL)
 	msgbox(("The ash from the volcano is drying out\nmy skin…"), MSGBOX_AUTOCLOSE)
 	end
 }
@@ -52,11 +51,10 @@ script BurnfootPassBottom_EventScript_Ame {
 script BurnfootPassBottom_EventScript_Yo {
     trainerbattle_single(
 		TRAINER_YO,
-		format("Noooo!\nAll this ash is blocking the sun!"),
-		format("You shine bright, young Wielder…")
+		format("{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}Noooo!\nAll this ash is blocking the sun!"),
+		format("You shine bright, young Wielder!")
 	)
-	// setspeaker(SP_NAME_BATTLE_GIRL)
-	msgbox(("My doctor said I should get more\nsunlight.\lWhy did I come here, of all places?"), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}My doctor said I should get more\nsunlight.\lWhy did I come here, of all places?"), MSGBOX_AUTOCLOSE)
 	end
 }
 

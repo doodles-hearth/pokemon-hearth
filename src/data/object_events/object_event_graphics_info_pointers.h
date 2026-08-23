@@ -129,6 +129,8 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PonytaWoman
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MasquerainWoman;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Scientist1;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lass;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CastformRainGuy;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CastformSunGirl;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GemManiac;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Miner;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_PokemonBreederF;
@@ -658,6 +660,8 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_BEAUTY] =                   &gObjectEventGraphicsInfo_PonytaWoman,
     [OBJ_EVENT_GFX_SCIENTIST_1] =              &gObjectEventGraphicsInfo_Scientist1,
     [OBJ_EVENT_GFX_LASS] =                     &gObjectEventGraphicsInfo_Lass,
+    [OBJ_EVENT_GFX_CASTFORM_RAIN_GUY] =        &gObjectEventGraphicsInfo_CastformRainGuy,
+    [OBJ_EVENT_GFX_CASTFORM_SUN_GIRL] =        &gObjectEventGraphicsInfo_CastformSunGirl,
     [OBJ_EVENT_GFX_GEM_MANIAC] =               &gObjectEventGraphicsInfo_GemManiac,
     [OBJ_EVENT_GFX_MINER] =                    &gObjectEventGraphicsInfo_Miner,
     [OBJ_EVENT_GFX_BREEDER_F] =                &gObjectEventGraphicsInfo_PokemonBreederF,

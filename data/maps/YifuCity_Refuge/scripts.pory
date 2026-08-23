@@ -405,19 +405,6 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	end
 }
 
-script YifuCity_Refuge_EventScript_OldMan {
-	lock
-	faceplayer
-	setspeaker(SP_NAME_OLD_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}I'm just resting my old bones by the fire.\p"
-		"How the years go by swiftly…\nDo treasure each passing day…"
-	))
-	closemessage
-	release
-	end
-}
-
 script YifuCity_Refuge_EventScript_Traveler {
 	lock
 	faceplayer
@@ -657,4 +644,30 @@ script YifuCity_Refuge_EventScript_RouteShamisenLeaves {
 	waitse
 
 	setflag(FLAG_HIDE_ROUTE_SHAMISEN)
+}
+
+script YifuCity_Refuge_EventScript_SunnyDay {
+	lock
+	if (flag(FLAG_RECEIVED_TM_SUNNY_DAY)) {
+		faceplayer
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}A sunny day is a good day!"
+		))
+		closemessage
+	} else {
+		faceplayer
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}Are you getting enough sunlight?\nI make sure to bask in the sun daily!\p"
+			"Ignore the sunburns, it's totally\nnormal, all part of the process!\p"
+			"…Okay, I might have gone a tad\noverboard, actually.\p"
+			"Maybe I shouldn't have asked Castform\nto use Sunny Day on me…\p"
+			"You look pale, though.\nYou should use this!"
+		))
+
+		closemessage
+
+		giveitem(ITEM_TM_SUNNY_DAY)
+		setflag(FLAG_RECEIVED_TM_SUNNY_DAY)
+	}
+	release
 }
