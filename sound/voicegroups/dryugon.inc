@@ -1,5 +1,5 @@
 voice_group dryugon
-	voice_directsound_no_resample 60, 0, DirectSoundWaveData_dp_whistle_c5_16, 255, 247, 78, 196
+	voice_directsound 60, 0, DirectSoundWaveData_dp_whistle_c5_16, 255, 247, 78, 196
 	voice_programmable_wave 60, 0, ProgrammableWaveData_1, 0, 2, 4, 0											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_heart_of_asia_gamelan, 255, 188, 139, 239
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_tubular_bell, 255, 165, 90, 216
@@ -11,10 +11,10 @@ voice_group dryugon
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_flute, 255, 127, 231, 127											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_enhanced_delay_shaku, 255, 191, 97, 165											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_wind, 255, 0, 255, 127											@ dummy
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy
+	voice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 85, 0, 154, 165											@ dummy
+	voice_directsound 60, 0, DirectSoundWaveData_unknown_koto_high, 255, 0, 206, 242											@ dummy
+	voice_directsound 60, 0, DirectSoundWaveData_unknown_koto_low, 255, 0, 206, 242											@ dummy
+	voice_programmable_wave 60, 0, ProgrammableWaveData_1, 0, 1, 5, 0											@ dummy
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0											@ dummy

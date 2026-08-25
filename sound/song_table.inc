@@ -576,6 +576,9 @@ gSongTable::
 	song mus_soulkeep, MUSIC_PLAYER_BGM, 0
 	song mus_pokemon_center_night, MUSIC_PLAYER_BGM, 0
 	song mus_dryugon, MUSIC_PLAYER_BGM, 0
+	song mus_dryugon2, MUSIC_PLAYER_BGM, 0
+	song mus_vs_hh_test, MUSIC_PLAYER_BGM, 0
+	song mus_dummy, MUSIC_PLAYER_BGM, 0
 	song ph_trap_held, MUSIC_PLAYER_SE2, 2
 	song ph_trap_solo, MUSIC_PLAYER_SE2, 2
 	song ph_face_blend, MUSIC_PLAYER_SE2, 2

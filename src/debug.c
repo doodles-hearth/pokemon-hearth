@@ -4907,7 +4907,9 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_TEST_EVA)                 \
     X(MUS_SOULKEEP)                 \
     X(MUS_POKEMON_CENTER_NIGHT)     \
-    X(MUS_DRYUGON)
+    X(MUS_DRYUGON)                  \
+    X(MUS_DRYUGON2)                 \
+    X(MUS_VS_HH_TEST)
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
