@@ -10,7 +10,7 @@ voice_group epic_route
 	voice_square_1 60, 0, 0, 2, 0, 2, 4, 0
 	voice_keysplit voicegroup_french_horn_keysplit, keysplit_french_horn
 	voice_keysplit voicegroup_tuba_keysplit, keysplit_tuba
-	voice_keysplit voicegroup_french_horn_keysplit, keysplit_french_horn
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_trumpet_72, 255, 0, 193, 127
 	voice_programmable_wave 60, 0, ProgrammableWaveData_1, 0, 7, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

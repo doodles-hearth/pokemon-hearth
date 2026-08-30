@@ -6,12 +6,12 @@ voice_group dryugon
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_xylophone, 255, 235, 0, 204											@ dummy
 	voice_keysplit_all voicegroup192											@ dummy
 	voice_noise 60, 0, 0, 0, 1, 0, 0											@ dummy
-	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_whistle, 255, 0, 255, 127											@ dummy
+	voice_directsound 60, 0, DirectSoundWaveData_unknown_female_voice, 128, 165, 128, 204											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 85, 0, 154, 165											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_flute, 255, 127, 231, 127											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_enhanced_delay_shaku, 255, 191, 97, 165											@ dummy
-	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_wind, 255, 0, 255, 127											@ dummy
-	voice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 85, 0, 154, 165											@ dummy
+	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_shakuhachi, 255, 0, 255, 204											@ dummy
+	voice_noise 60, 0, 0, 0, 1, 7, 1											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_unknown_koto_high, 255, 0, 206, 242											@ dummy
 	voice_directsound 60, 0, DirectSoundWaveData_unknown_koto_low, 255, 0, 206, 242											@ dummy
 	voice_programmable_wave 60, 0, ProgrammableWaveData_1, 0, 1, 5, 0											@ dummy
