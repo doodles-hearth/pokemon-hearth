@@ -123,6 +123,21 @@ enum BattlerId GetBattlerRightFoe(enum BattlerId battler)
     return GetPartnerBattler(GetBattlerLeftFoe(battler));
 }
 
+enum BattlerId GetDefaultSelectionTarget(enum BattlerId battler, enum MoveTarget moveTarget)
+{
+    switch (moveTarget)
+    {
+    case TARGET_USER:
+    case TARGET_USER_OR_ALLY:
+    case TARGET_USER_AND_ALLY:
+        return battler;
+    case TARGET_ALLY:
+        return GetPartnerBattler(battler);
+    default:
+        return GetBattlerLeftFoe(battler);
+    }
+}
+
 static const u8 sPkblToEscapeFactor[][3] = {
     {
         [B_MSG_MON_CURIOUS]    = 0,
@@ -626,7 +641,6 @@ void HandleAction_UseMove(void)
     ClearDamageCalcResults();
     ClearBothStatChangeQueues();
     gMultiHitCounter = 0;
-    gBattleCommunication[MISS_TYPE] = 0;
     gBattlerTarget = gBattleStruct->moveTarget[gBattlerAttacker];
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE && gProtectStructs[gBattlerAttacker].palaceUnableToUseMove)
@@ -1325,6 +1339,12 @@ static bool32 Ai_AttackerMovesLast(enum BattlerId battlerAtk)
         return TRUE;
 
     return FALSE;
+}
+
+void PrepareStringBattleWithWait(enum StringID stringId, enum BattlerId battler)
+{
+    PrepareStringBattle(stringId, battler);
+    gBattleCommunication[MSG_DISPLAY] = MSG_DISPLAY_WAIT;
 }
 
 void PrepareStringBattle(enum StringID stringId, enum BattlerId battler)
@@ -8708,24 +8728,8 @@ bool32 CanUltraBurst(enum BattlerId battler)
     return FALSE;
 }
 
-static void ActivateMegaEvolution_ContinueAfterSlide(void)
-{
-    gBattleResources->battleCallbackStack->size--;
-    gBattleMainFunc = gBattleResources->battleCallbackStack->function[gBattleResources->battleCallbackStack->size];
-    ActivateMegaEvolution(gBattleScripting.battler);
-}
-
 void ActivateMegaEvolution(enum BattlerId battler)
 {
-    if (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_ATTACKER_MEGA_EVOLUTION))
-    {
-        gBattleScripting.battler = battler;
-        gBattleResources->battleCallbackStack->function[gBattleResources->battleCallbackStack->size++] = gBattleMainFunc;
-        gBattleMainFunc = ActivateMegaEvolution_ContinueAfterSlide;
-
-        BattleScriptPushCursorAndCallback(BattleScript_TrainerSlideMsg);
-        return;
-    }
     enum Ability ability = GetBattlerAbility(battler);
     gLastUsedItem = gBattleMons[battler].item;
     SetActiveGimmick(battler, GIMMICK_MEGA);
@@ -9568,17 +9572,23 @@ static u32 CanBattlerHitBothFoesInTerrain(enum BattlerId battler, enum Move move
         && IsBattlerTerrainAffected(battler, GetBattlerAbility(battler), GetBattlerHoldEffect(battler), GetMoveTerrainBoost_Terrain(move), gFieldTimers.terrain);
 }
 
-enum MoveTarget GetBattlerMoveTargetType(enum BattlerId battler, enum Move move)
+enum MoveTarget GetBattlerMoveSelectionTargetType(enum BattlerId battler, enum Move move)
 {
     enum BattleMoveEffects effect = GetMoveEffect(move);
     if (effect == EFFECT_CURSE && !IS_BATTLER_OF_TYPE(battler, TYPE_GHOST))
         return TARGET_USER;
-    if (CanBattlerHitBothFoesInTerrain(battler, move, effect))
-        return TARGET_BOTH;
     if (effect == EFFECT_TERA_STARSTORM && gBattleMons[battler].species == SPECIES_TERAPAGOS_STELLAR)
         return TARGET_BOTH;
 
     return GetMoveTarget(move);
+}
+
+enum MoveTarget GetBattlerMoveTargetType(enum BattlerId battler, enum Move move)
+{
+    if (CanBattlerHitBothFoesInTerrain(battler, move, GetMoveEffect(move)))
+        return TARGET_BOTH;
+
+    return GetBattlerMoveSelectionTargetType(battler, move);
 }
 
 bool32 CanTargetBattler(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move)

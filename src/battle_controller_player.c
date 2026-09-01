@@ -425,7 +425,7 @@ void HandleInputChooseTarget(enum BattlerId battler)
         B_POSITION_OPPONENT_LEFT,
     };
     enum Move move = GetMonData(GetBattlerMon(battler), MON_DATA_MOVE1 + gMoveSelectionCursor[battler]);
-    enum MoveTarget moveTarget = GetBattlerMoveTargetType(battler, move);
+    enum MoveTarget moveTarget = GetBattlerMoveSelectionTargetType(battler, move);
 
     DoBounceEffect(gMultiUsePlayerCursor, BOUNCE_HEALTHBOX, 15, 1);
     for (i = 0; i < gBattlersCount; i++)
@@ -694,8 +694,7 @@ void HandleInputChooseMove(enum BattlerId battler)
         PlaySE(SE_SELECT);
 
         StartSpeedup();
-
-        enum MoveTarget moveTarget = GetBattlerMoveTargetType(battler, moveInfo->moves[gMoveSelectionCursor[battler]]);
+        enum MoveTarget moveTarget = GetBattlerMoveSelectionTargetType(battler, moveInfo->moves[gMoveSelectionCursor[battler]]);
         bool32 isUserOrAlly = moveTarget == TARGET_USER || moveTarget == TARGET_USER_OR_ALLY || moveTarget == TARGET_USER_AND_ALLY;
 
         if (gBattleStruct->zmove.viewing)
@@ -709,12 +708,7 @@ void HandleInputChooseMove(enum BattlerId battler)
         if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX || IsGimmickSelected(battler, GIMMICK_DYNAMAX))
             moveTarget = GetMoveTarget(GetMaxMove(battler, moveInfo->moves[gMoveSelectionCursor[battler]]));
 
-        if (isUserOrAlly)
-            gMultiUsePlayerCursor = battler;
-        else if (moveTarget == TARGET_ALLY)
-            gMultiUsePlayerCursor = GetPartnerBattler(battler);
-        else
-            gMultiUsePlayerCursor = GetBattlerLeftFoe(battler);
+        gMultiUsePlayerCursor = GetDefaultSelectionTarget(battler, moveTarget);
 
         if (gBattleResources->bufferA[battler][1]) // a double battle
         {
@@ -1608,7 +1602,6 @@ static void OpenBagAndChooseItem(enum BattlerId battler)
         gBattlerControllerFuncs[battler] = CompleteWhenChoseItem;
         ReshowBattleScreenDummy();
         CloseMainBattleScreen();
-        CB2_BagMenuFromBattle();
         if (gBattleStruct->victoryCatchState == VICTORY_CATCH_OPEN_BAG)
             CB2_ChooseBall();
         else
@@ -2040,7 +2033,7 @@ static void PlayerHandleChooseAction(enum BattlerId battler)
         StringCopy(gStringVar1, COMPOUND_STRING("Partner will use:\n"));
         enum Move move = GetBattlerChosenMove(partner);
         StringAppend(gStringVar1, GetMoveName(move));
-        enum MoveTarget moveTarget = GetBattlerMoveTargetType(partner, move);
+        enum MoveTarget moveTarget = GetBattlerMoveSelectionTargetType(partner, move);
         if (moveTarget == TARGET_SELECTED || moveTarget == TARGET_SMART)
         {
             if (gAiBattleData->chosenTarget[partner] == B_POSITION_OPPONENT_LEFT)

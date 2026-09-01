@@ -931,6 +931,10 @@ static enum CancelerResult CancelerSetTargets(struct BattleCalcValues *cv)
                 cv->battlerDef = GetPartnerBattler(cv->battlerDef);
             }
         }
+        else if (moveTarget == TARGET_SELECTED && cv->battlerDef == cv->battlerAtk)
+        {
+            cv->battlerDef = SetRandomTarget(cv->battlerAtk);
+        }
         else if (moveTarget == TARGET_ALLY && !IsBattlerAlly(cv->battlerDef, cv->battlerAtk))
         {
             cv->battlerDef = GetPartnerBattler(cv->battlerAtk);
@@ -1698,8 +1702,7 @@ static enum CancelerResult CancelerProtean(struct BattleCalcValues *cv)
             gBattleMons[cv->battlerAtk].volatiles.usedProteanLibero = TRUE;
         PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
         gBattlerAbility = cv->battlerAtk;
-        PrepareStringBattle(STRINGID_EMPTYSTRING3, cv->battlerAtk);
-        gBattleCommunication[MSG_DISPLAY] = 1;
+        PrepareStringBattleWithWait(STRINGID_EMPTYSTRING3, cv->battlerAtk);
         BattleScriptCall(BattleScript_ProteanActivates);
         return CANCELER_RESULT_RUN_SCRIPT_AND_INCREMENT;
     }
