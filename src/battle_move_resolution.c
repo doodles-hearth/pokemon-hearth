@@ -976,7 +976,7 @@ static enum CancelerResult CancelerSetTargets(struct BattleCalcValues *cv)
 
     while (gBattleStruct->eventState.atkCancelerBattler < gBattlersCount)
     {
-        enum BattlerId battlerDef = gBattleStruct->eventState.atkCancelerBattler++;
+        enum BattlerId battlerDef = (enum BattlerId)gBattleStruct->eventState.atkCancelerBattler++;
 
         if (!ShouldCheckTargetMoveFailure(cv->battlerAtk, battlerDef, cv->move, moveTarget))
             gBattleStruct->battlerState[cv->battlerAtk].targetsDone[battlerDef] = TRUE;
@@ -1367,7 +1367,7 @@ static enum CancelerResult CancelerMoveEffectFailureTarget(struct BattleCalcValu
 
     while (gBattleStruct->eventState.atkCancelerBattler < gBattlersCount)
     {
-        enum BattlerId battlerDef = gBattleStruct->eventState.atkCancelerBattler++;
+        enum BattlerId battlerDef = (enum BattlerId)gBattleStruct->eventState.atkCancelerBattler++;
 
         bool32 checkUserFailure = (battlerDef == cv->battlerAtk && moveTarget == TARGET_USER_AND_ALLY);
         if (!checkUserFailure && ShouldSkipFailureCheckOnBattler(cv->battlerAtk, battlerDef))
@@ -2121,9 +2121,9 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
     switch (gBattleStruct->eventState.moveEndBlock)
     {
     case TARGET_FAILURE_SEMI_INVULNERABILITY:
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 slot = 0; slot < gBattlersCount; slot++)
         {
-            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (moveTarget == TARGET_OPPONENTS_FIELD)
                 continue;
@@ -2143,9 +2143,9 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_PSYCHIC_TERRAIN:
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 slot = 0; slot < gBattlersCount; slot++)
         {
-            cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (moveTarget == TARGET_OPPONENTS_FIELD)
                 continue;
@@ -2162,9 +2162,9 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_PROTECT:
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 slot = 0; slot < gBattlersCount; slot++)
         {
-            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (moveTarget == TARGET_OPPONENTS_FIELD)
                 continue;
@@ -2185,9 +2185,9 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_BOUNCE:
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 slot = 0; slot < gBattlersCount; slot++)
         {
-            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (ShouldSkipFailureCheckOnBattler(cv->battlerAtk, cv->battlerDef))
                 continue;
@@ -2209,9 +2209,9 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_TARGET_BLOCKED:
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 slot = 0; slot < gBattlersCount; slot++)
         {
-            cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (moveTarget == TARGET_OPPONENTS_FIELD)
                 continue;
@@ -2228,9 +2228,9 @@ static enum CancelerResult CancelerTargetFailure(struct BattleCalcValues *cv)
         }
         gBattleStruct->eventState.moveEndBlock++;
     case TARGET_FAILURE_EFFECTIVENESS:
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 slot = 0; slot < gBattlersCount; slot++)
         {
-            cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            cv->battlerDef = ctx.battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (moveTarget == TARGET_OPPONENTS_FIELD)
                 continue;
@@ -2716,9 +2716,9 @@ static enum CancelerResult CancelerPreAnimActivations(struct BattleCalcValues *c
         }
         gBattleStruct->eventState.moveEndBlock++;
     case PRE_ANIM_TERA_SHELL:
-        for (enum BattlerId battler = B_BATTLER_0; battler < MAX_BATTLERS_COUNT; battler++)
+        for (u32 slot = 0; slot < MAX_BATTLERS_COUNT; slot++)
         {
-            enum BattlerId battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+            enum BattlerId battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
             if (ShouldSkipBattlerForDamage(cv->battlerAtk, battlerDef))
                 continue;
@@ -3930,9 +3930,9 @@ static enum MoveEndResult MoveEndBouncedMove(struct BattleCalcValues *cv)
     {
         enum MoveTarget moveTarget = GetBattlerMoveTargetType(cv->battlerAtk, cv->move);
 
-        for (enum BattlerId battler = B_BATTLER_0; battler < gBattlersCount; battler++)
+        for (u32 speedOrderIndex = 0; speedOrderIndex < gBattlersCount; speedOrderIndex++)
         {
-            u32 bounceBattler = gBattlersByRawSpeed[battler];
+            enum BattlerId bounceBattler = gBattlersByRawSpeed[speedOrderIndex];
 
             if (gBattleStruct->magicBouncePending & 1u << bounceBattler)
             {
@@ -4074,7 +4074,7 @@ static enum MoveEndResult MoveEndDefrost(struct BattleCalcValues *cv)
 
     while (gBattleStruct->eventState.moveEndBattler < gBattlersCount)
     {
-        enum BattlerId battler = gBattleStruct->eventState.moveEndBattler++;
+        enum BattlerId battler = (enum BattlerId)gBattleStruct->eventState.moveEndBattler++;
 
         if (battler == gBattlerAttacker)
             continue;
@@ -4523,7 +4523,7 @@ static enum MoveEndResult MoveEndColorChange(struct BattleCalcValues *cv)
 {
     while (gBattleStruct->eventState.moveEndBattler < gBattlersCount)
     {
-        enum BattlerId battler = gBattleStruct->eventState.moveEndBattler++;
+        enum BattlerId battler = (enum BattlerId)gBattleStruct->eventState.moveEndBattler++;
 
         if (battler == cv->battlerAtk)
             continue;
@@ -4540,7 +4540,7 @@ static enum MoveEndResult MoveEndKeeMarangaHpThresholdItemTarget(struct BattleCa
 {
     while (gBattleStruct->eventState.moveEndBattler < gBattlersCount)
     {
-        enum BattlerId battlerDef = gBattleStruct->eventState.moveEndBattler++;
+        enum BattlerId battlerDef = (enum BattlerId)gBattleStruct->eventState.moveEndBattler++;
 
         if (battlerDef == cv->battlerAtk)
             continue;
@@ -4905,7 +4905,7 @@ static enum MoveEndResult MoveEndItemsEffectsAll(struct BattleCalcValues *cv)
 {
     while (gBattleStruct->eventState.moveEndBattler < gBattlersCount)
     {
-        enum BattlerId battler = gBattleStruct->eventState.moveEndBattler++;
+        enum BattlerId battler = (enum BattlerId)gBattleStruct->eventState.moveEndBattler++;
 
         if (ItemBattleEffects(battler, 0, cv->holdEffects[battler], IsOnStatusChangeActivation)
          || ItemBattleEffects(battler, 0, cv->holdEffects[battler], IsOnHpThresholdActivation))
@@ -5470,9 +5470,9 @@ static enum MoveResult StatChangeCanAnyChange(struct BattleCalcValues *cv)
         .ignoreCertainFailure = TRUE,
     };
 
-    for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
+    for (u32 slot = 0; slot < gBattlersCount; slot++)
     {
-        cv->battlerDef = GetTargetBySlot(cv->battlerAtk, battler);
+        cv->battlerDef = GetTargetBySlot(cv->battlerAtk, slot);
 
         if (ShouldSkipStatChangeOnBattler(cv->battlerAtk, cv->battlerDef))
             continue;
