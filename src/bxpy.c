@@ -33,6 +33,7 @@ static void BXPY_PrepareEnemyParty(u32 bringSize, u32 battleFlags);
 static void BXPY_PrepareParty(u32 pickSize);
 static void BXPY_DeleteNonAliveMons(void);
 static u32 BXPY_ConvertBattleTypeToFlags(enum BXPYBattleTypes battleType);
+static const u8* BXPY_GetSpeciesName(enum Species species);
 
 static void (*const sBXPYErrorCheckFuncs[])(void) =
 {
@@ -140,6 +141,11 @@ static void BXPY_ErrorCheck_BringSizeNotEnough(void)
     ConvertIntToDecimalStringN(gStringVar1, bringSize, STR_CONV_MODE_LEFT_ALIGN, CountDigits(bringSize));
 }
 
+static const u8* BXPY_GetSpeciesName(enum Species species)
+{
+    return GetSpeciesName(species, SKIP_NAME_CHECK);
+}
+
 static void BXPY_FormatProblemListList(u32 *ids, u32 count, const u8 *(*getName)(u16))
 {
     StringCopy(gStringVar1, COMPOUND_STRING(""));
@@ -208,7 +214,7 @@ static void BXPY_ErrorCheck_ClauseSpecies(void)
         return;
 
     gSpecialVar_Result = TRUE;
-    BXPY_FormatProblemListList(uniqueDuplicates, duplicateCount, GetSpeciesName);
+    BXPY_FormatProblemListList(uniqueDuplicates, duplicateCount, BXPY_GetSpeciesName);
 }
 
 static void BXPY_ErrorCheck_ClauseItem(void)
@@ -269,7 +275,7 @@ static void BXPY_ErrorCheck_ClauseSpecialPokemon(void)
         return;
 
     gSpecialVar_Result = TRUE;
-    BXPY_FormatProblemListList(bannedMons, bannedCount, GetSpeciesName);
+    BXPY_FormatProblemListList(bannedMons, bannedCount, BXPY_GetSpeciesName);
 }
 
 void BXPY_Init(enum BXPYBattleTypes battleType, u32 bringSize, u32 pickSize, u32 trainerA, const u8 *loseTextA, u32 trainerB, const u8* loseTextB, u32 partnerId)
