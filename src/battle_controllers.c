@@ -3347,14 +3347,14 @@ bool32 TrainerHasParty(enum BattleTrainer trainer)
 }
 
 // Used for partner and opponent
-void SetFinalChosenTarget(enum BattlerId battler, bool32 partner)
+void SetFinalChosenTarget(enum BattlerId battler, bool32 checkPartner)
 {
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
 
     enum BattlerId chosenTarget = gAiBattleData->chosenTarget[battler];
     u32 chosenMoveIndex = gAiBattleData->chosenMoveIndex[battler];
     u32 chosenMove = moveInfo->moves[chosenMoveIndex];
-    enum MoveTarget targetType = GetBattlerMoveTargetType(battler, chosenMove);
+    enum MoveTarget targetType = GetBattlerMoveSelectionTargetType(battler, chosenMove);
 
     switch (targetType)
     {
@@ -3362,7 +3362,7 @@ void SetFinalChosenTarget(enum BattlerId battler, bool32 partner)
         chosenTarget = GetPartnerBattler(battler);
         break;
     case TARGET_USER_OR_ALLY: // AI could have chosen opponent as the target because of the way the score system works
-        if (!IsBattlerAlly(battler, chosenTarget))
+        if (!IsBattlerAlly(battler, chosenTarget) || !IsBattlerAlive(GetPartnerBattler(battler)))
             chosenTarget = battler;
         break;
     case TARGET_USER:
@@ -3371,7 +3371,7 @@ void SetFinalChosenTarget(enum BattlerId battler, bool32 partner)
         chosenTarget = battler;
         break;
     case TARGET_BOTH:
-        if (partner)
+        if (checkPartner)
         {
             chosenTarget = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
             if (!IsBattlerAlive(chosenTarget))
