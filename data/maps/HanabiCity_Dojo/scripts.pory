@@ -99,13 +99,134 @@ script HanabiCity_Dojo_EventScript_Trainer8 {
 }
 
 script HanabiCity_Dojo_EventScript_XiaoHuo {
-    trainerbattle_single(
-		TRAINER_XIAO_HUO,
-		format("{CREATE_MUGSHOT MUGSHOT_LASS 0}Please allow me to introduce you to\nyour own defeat!"),
-		format("N-nice to meet you…"),
-		BeachboundRoute_EventScript_Karu_PostBattle
+	lock
+	applymovement(VAR_LAST_TALKED, moves(shake_horizontal * 2))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_UNKNOWN}Grrrrrr…"
 	)
-	setspeaker(SP_NAME_LASS)
-	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}You wiped me away there.\nHow long have you been a Wielder?"), MSGBOX_AUTOCLOSE)
+	waitmovement
+	closemessage
+
+	playse(SE_PIN)
+	applymovement(LOCALID_PLAYER, moves(emote_question_mark, delay_16 * 6))
+	waitse
+	waitmovement(0)
+
+	applymovement(VAR_LAST_TALKED, moves(shake_horizontal * 5))
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_UNKNOWN}GRRRRRR… … …"
+	)
+	waitmessage
+	waitmovement(0)
+	message(
+		"GROARGH!!!"
+	)
+	waitmessage
+	closemessage
+
+	applymovement(LOCALID_PLAYER, moves(
+		emote_exclamation_mark,
+		delay_16,
+		face_right,
+		delay_16,
+		face_down
+		delay_16,
+		face_left
+		delay_16,
+		delay_16,
+		emote_angry,
+		face_up
+	))
+
+	applymovement(VAR_LAST_TALKED, moves(
+		jump_right,
+		jump_2_down,
+		jump_2_left,
+		jump_up,
+		jump_right,
+		jump_up,
+		face_down,
+		delay_16,
+		jump_in_place_down * 3
+	))
+
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_LEDGE)
+	delay(16)
+
+	waitmovementall
+
+	trainerbattle_single(
+		TRAINER_XIAO_HUO,
+			format(
+				"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}GRRRRRRRRRRR!!!"
+			)
+		,
+		format("Oh, man!\nUh I mean, grrr!"),
+		MaguroHarbor_Dojo_EventScript_XiaoHuoDefeated,
+		NO_MUSIC
+	)
+	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
+	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_XiaoHuoRematch)
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}I could go for a festival skewer, or\na hundred!"
+	))
+	end
+}
+
+script MaguroHarbor_Dojo_EventScript_XiaoHuoDefeated {
+	msgbox(
+		format(
+			"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}I'm getting too hot in this thing…\p"
+			"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}Ahhh, fresh air!\nSo anyway, you won!\p"
+			"You received the Folded Token!\p"
+			"… … …Sike!\n"
+			"You'll need to race me for it!"
+		),
+		MSGBOX_DEFAULT
+	)
+	closemessage
+	
+	applymovement(LOCALID_XIAO_HUO_DOJO, moves(
+		jump_right,
+		walk_fast_down * 6
+	))
+
+	applymovement(LOCALID_PLAYER, moves(
+		delay_16 * 3,
+		face_down
+	))
+
+	playse(SE_LEDGE)
+	delay(16)
+	playse(SE_FLEE)
+
+	waitmovementall
+
+	removeobject(LOCALID_XIAO_HUO_DOJO)
+	setflag(FLAG_HIDE_XIAO_HUO_DOJO)
+	setvar(VAR_WAILORD_QUEST_STATE, 1)
+
+	setmemoryall(MEMORY_BEAT_DOJO)
+	setvar(VAR_0x8008, 4)
+	call(Common_EventScript_SetGymTrainers)
+	addvar(VAR_PLAYER_REPUTATION, 5)
+
+	release
 	end
 }

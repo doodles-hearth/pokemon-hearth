@@ -134,10 +134,79 @@
       "lunchtime": false,
       "morning": false,
       "night": false
+    },
+    {
+      "local_id": "LOCALID_XIAO_HUO_LAKE",
+      "graphics_id": "OBJ_EVENT_GFX_HOT_LITTLE_BOY",
+      "x": 25,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_RUN_IN_PLACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_HOT_MAN_2",
+      "x": 25,
+      "y": 34,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 12,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "4",
+      "script": "HanabiCity_EventScript_SawXiaoHuo",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_WAILORD_QUEST_STATE",
+      "var_value": "2",
+      "script": "HanabiCity_EventScript_XiaoHuoRunsDown"
+    },
+    {
+      "type": "trigger",
+      "x": 25,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_WAILORD_QUEST_STATE",
+      "var_value": "2",
+      "script": "HanabiCity_EventScript_XiaoHuoRunsDown"
+    },
+    {
+      "type": "trigger",
+      "x": 26,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_WAILORD_QUEST_STATE",
+      "var_value": "2",
+      "script": "HanabiCity_EventScript_XiaoHuoRunsDown"
+    }
+  ],
   "bg_events": [],
   "region": "REGION_HOENN"
 }

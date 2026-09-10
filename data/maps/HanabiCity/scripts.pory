@@ -1,8 +1,17 @@
-mapscripts HanabiCity_MapScripts {}
+const FLAG_HIDE_XIAO_HUO_HANABI = FLAG_TEMP_1
+
+mapscripts HanabiCity_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_WAILORD_QUEST_STATE) != 2) {
+            setflag(FLAG_HIDE_XIAO_HUO_HANABI)
+        }
+    }
+}
 
 script HanabiCity_EventScript_Dolls {
     lock
 	faceplayer
+	// TODO
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I sell dolls!"
 	)
@@ -13,7 +22,7 @@ script HanabiCity_EventScript_Dolls {
 script HanabiCity_EventScript_Mart {
     lock
 	faceplayer
-	message(("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Hi, hello! This is where you'll find all\nyour usual items for Wielders."))
+	message(("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Hi, hello! This is where you'll\nfind all your usual Wielder items."))
 	waitmessage
 	pokemart(HanabiCity_Mart)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Come again! Enjoy the festival!")
@@ -63,6 +72,37 @@ script HanabiCity_EventScript_BalloonKid {
 		"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_LITTLE_BOY}My sister won me a balloon!\nI bet you're super jealous!\p"
 		"I bet I can float around if I hold my\nbreath!"
 	)
+	closemessage
+	release
+}
+
+script HanabiCity_EventScript_XiaoHuoRunsDown {
+    lockall
+
+    applymovement(LOCALID_XIAO_HUO_HANABI, moves(
+        walk_fast_down * 3
+    ))
+    playse(SE_FLEE)
+    waitmovement(0)
+    removeobject(LOCALID_XIAO_HUO_HANABI)
+    setflag(FLAG_HIDE_XIAO_HUO_HANABI)
+    setvar(VAR_WAILORD_QUEST_STATE, 3)
+
+    releaseall
+}
+
+script HanabiCity_EventScript_SawXiaoHuo {
+	lock
+	faceplayer
+	if (var(VAR_WAILORD_QUEST_STATE) == 3) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 0}{SPEAKER NAME_MAN}Xiao Huo almost ran me over on his\nway to the coast…"
+		)
+	} else {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 0}{SPEAKER NAME_MAN}I'm going to spend too much money\nat the festival, sigh…"
+		)
+	}
 	closemessage
 	release
 }

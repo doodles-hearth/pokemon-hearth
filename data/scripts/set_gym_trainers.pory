@@ -3,8 +3,8 @@ script Common_EventScript_SetGymTrainers {
 		case 1: call(KoiPond_Dojo_SetGymTrainers)
 		case 2: call(Bonsai_Dojo_SetGymTrainers)
 		case 3: call(YifuCity_Dojo_SetGymTrainers)
-		case 4: call(SabersideTown_Dojo_SetGymTrainers)
-		case 5: call(PetalburgCity_Gym_SetGymTrainers)
+		case 4: call(Hanabi_Dojo_SetGymTrainers)
+		case 5: call(SabersideTown_Dojo_SetGymTrainers)
 		case 6: call(FortreeCity_Gym_SetGymTrainers)
 		case 7: call(MossdeepCity_Gym_SetGymTrainers)
 		case 8: call(SootopolisCity_Gym_SetGymTrainers)
@@ -25,6 +25,18 @@ script Bonsai_Dojo_SetGymTrainers {
 	settrainerflag(TRAINER_TSUBAKI)
 	settrainerflag(TRAINER_AJISAI)
 	settrainerflag(TRAINER_SUMIRE)
+	return
+}
+
+script YifuCity_Dojo_SetGymTrainers {
+	settrainerflag(TRAINER_HANABI_GYM_1)
+	settrainerflag(TRAINER_HANABI_GYM_2)
+	settrainerflag(TRAINER_HANABI_GYM_3)
+	settrainerflag(TRAINER_HANABI_GYM_4)
+	settrainerflag(TRAINER_HANABI_GYM_5)
+	settrainerflag(TRAINER_HANABI_GYM_6)
+	settrainerflag(TRAINER_HANABI_GYM_7)
+	settrainerflag(TRAINER_HANABI_GYM_8)
 	return
 }
 

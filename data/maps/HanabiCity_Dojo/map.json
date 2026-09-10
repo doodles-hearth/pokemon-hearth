@@ -17,7 +17,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 2,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -37,7 +37,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 3,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -57,7 +57,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 4,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -77,7 +77,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 6,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -97,7 +97,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 5,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -117,7 +117,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 7,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -137,7 +137,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 8,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -157,7 +157,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_KIMONO_GIRL",
       "x": 9,
-      "y": 4,
+      "y": 6,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -175,8 +175,9 @@
       "night": true
     },
     {
+      "local_id": "LOCALID_XIAO_HUO_DOJO",
       "graphics_id": "OBJ_EVENT_GFX_HOT_LITTLE_BOY",
-      "x": 2,
+      "x": 5,
       "y": 2,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -185,7 +186,7 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "HanabiCity_Dojo_EventScript_XiaoHuo",
-      "flag": "0",
+      "flag": "FLAG_HIDE_XIAO_HUO_DOJO",
       "afternoon": true,
       "deadnight": true,
       "earlymorning": true,
