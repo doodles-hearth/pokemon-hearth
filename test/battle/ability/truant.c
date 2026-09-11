@@ -1,4 +1,5 @@
 #include "global.h"
+#include "random.h"
 #include "test/battle.h"
 
 SINGLE_BATTLE_TEST("Truant alternates between acting and loafing")
@@ -242,8 +243,8 @@ SINGLE_BATTLE_TEST("Focus-style setup is skipped on a Gen 3-4 loafing turn and o
         PLAYER(SPECIES_SLAKING) { Ability(ABILITY_TRUANT); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_CELEBRATE); }
-        TURN { MOVE(player, move); }
+        TURN { MOVE(player, MOVE_CELEBRATE, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
+        TURN { MOVE(player, move, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         if (gen == GEN_5) {
@@ -270,7 +271,7 @@ SINGLE_BATTLE_TEST("Focus-style setup occurs before sleep prevents the move")
         PLAYER(SPECIES_SLAKING) { Ability(ABILITY_TRUANT); Status1(STATUS1_SLEEP_TURN(3)); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, move); }
+        TURN { MOVE(player, move, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
     } SCENE {
         ANIMATION(ANIM_TYPE_GENERAL, setupAnim, player);
         MESSAGE("Slaking is fast asleep.");
@@ -968,10 +969,10 @@ SINGLE_BATTLE_TEST("A Truant user put to sleep on a loafing turn loafs when it w
         PLAYER(SPECIES_SLAKING) { Ability(ABILITY_TRUANT); Speed(1); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(2); }
     } WHEN {
-        TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_SCRATCH); }
-        TURN { MOVE(opponent, MOVE_SPORE, WITH_RNG(RNG_SLEEP_TURNS, 2)); MOVE(player, MOVE_SCRATCH); }
-        TURN { MOVE(player, MOVE_SCRATCH); }
-        TURN { MOVE(player, MOVE_SCRATCH); }
+        TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_SCRATCH, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
+        TURN { MOVE(opponent, MOVE_SPORE, WITH_RNG(RNG_SLEEP_TURNS, 2)); MOVE(player, MOVE_SCRATCH, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
+        TURN { MOVE(player, MOVE_SCRATCH, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
+        TURN { MOVE(player, MOVE_SCRATCH, WITH_RNG(RNG_DREAM_SLEEP, FALSE)); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SPORE, opponent);
