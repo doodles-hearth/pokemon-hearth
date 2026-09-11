@@ -1,4 +1,50 @@
-mapscripts SeaTurfRoute_MapScripts {}
+const FLAG_HIDE_XIAO_HUO_SEATURF = FLAG_TEMP_1
+
+mapscripts SeaTurfRoute_MapScripts {
+    MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_WAILORD_QUEST_STATE) != 3) {
+            setflag(FLAG_HIDE_XIAO_HUO_SEATURF)
+        }
+    }
+}
+
+script SeaTurfRoute_EventScript_ChasingXiaoHuo {
+    lockall
+
+    applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 9))
+    waitmovementall
+
+    msgbox(
+        "{SPEAKER NAME_UNKNOWN}Hey, I'm up here!"
+    )
+    closemessage
+
+    // TODO EVA pan shot
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}Heh, how are you gonna catch me now?"
+    )
+    closemessage
+
+    playmoncry(SPECIES_WAILORD, CRY_MODE_WEAK)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 2)  // horizontal pan
+	setvar(VAR_0x8006, 10) // num shakes
+	setvar(VAR_0x8007, 2)  // shake delay
+	special(ShakeCamera)
+    waitstate
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}AAaaaa{FONT_SMALL}aaaah…"
+    )
+    closemessage
+
+    // TODO EVA xiao huo falls into the blowhole
+    removeobject(LOCALID_XIAO_HUO_SEATURF)
+    setflag(FLAG_HIDE_XIAO_HUO_SEATURF)
+
+    releaseall
+}
 
 // TODO EVA dialogue
 script SeaTurfRoute_EventScript_Wailmer {

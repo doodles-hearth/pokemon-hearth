@@ -8,7 +8,7 @@ voice_group hanabi
 	voice_keysplit voicegroup_flute_keysplit, keysplit_flute 
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_flute                        , 255, 127, 231, 127  
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_timpani                      , 255, 246,   0, 226  
-	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2                       , 255,   0, 255, 210  
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_organ2                       , 255,   0, 255, 206  
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_harp                         , 255, 242,  51, 242  
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_tubular_bell                , 255, 165,  90, 216  
 	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_fretless_bass                , 255, 253,   0, 188  
@@ -88,7 +88,7 @@ voice_group hanabi
 	voice_programmable_wave 60, 0, ProgrammableWaveData_5, 0, 7, 15, 0 
 	voice_programmable_wave 60, 0, ProgrammableWaveData_6, 0, 7, 15, 0 
 	voice_programmable_wave 60, 0, ProgrammableWaveData_1, 0, 7, 15, 0 
-    voice_square_2_alt 60, 0, 0, 0, 10, 10, 1
+    voice_square_2_alt 60, 0, 0, 0, 7, 10, 1
     voice_square_2_alt 60, 0, 2, 0, 1, 8, 1
 	voice_square_2_alt 60, 0, 3, 0, 1, 8, 1
 	voice_square_1_alt 60, 0, 0, 2, 0, 4, 0, 0
@@ -127,5 +127,5 @@ voice_group hanabi
 	voice_directsound_alt 60, 0, DirectSoundWaveData_unknown_female_voice, 128, 165, 128, 204
 	voice_directsound 60, 0, DirectSoundWaveData_unknown_koto_high, 255, 0, 206, 242
 	voice_directsound 60, 0, DirectSoundWaveData_unknown_koto_low, 255, 0, 206, 242
-	voice_directsound 60, 0, DirectSoundWaveData_unknown_synth_snare, 255, 249, 103, 165
+
 
