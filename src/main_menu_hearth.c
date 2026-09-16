@@ -832,9 +832,12 @@ static void Hmm_SetInfoboxActive(bool32 active)
     else {
         LoadPalette(HmmBgPalette, BG_PLTT_ID(0), PLTT_SIZE_4BPP);
         gSprites[sHmmMemory->state.playerSpriteId].animPaused = TRUE;
-        Hmm_DarkenPartyIcons();
-        Hmm_DarkenPlayerMugshot();
-        Hmm_DarkenBadges();
+        if (Hmm_IsContinueMenu())
+        {
+            Hmm_DarkenPartyIcons();
+            Hmm_DarkenPlayerMugshot();
+            Hmm_DarkenBadges();
+        }
         for (u32 i = 0; i < PARTY_SIZE; i++) {
             u8 id = sHmmMemory->state.partyIconId[i];
             struct Sprite* sprite = &gSprites[id];
