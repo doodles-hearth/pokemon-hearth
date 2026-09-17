@@ -46,16 +46,17 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BREEDER_F",
-      "x": 54,
-      "y": 21,
+      "local_id": "LOCALID_XIAO_HUO_MOM_SEATURF",
+      "graphics_id": "OBJ_EVENT_GFX_HOT_WOMAN_1",
+      "x": 48,
+      "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SeaTurfRoute_EventScript_Wailmer",
+      "script": "SeaTurfRoute_EventScript_XiaoHuoMom",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -68,8 +69,8 @@
     {
       "local_id": "LOCALID_XIAO_HUO_SEATURF",
       "graphics_id": "OBJ_EVENT_GFX_HOT_LITTLE_BOY",
-      "x": 42,
-      "y": 24,
+      "x": 41,
+      "y": 25,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -96,7 +97,7 @@
       "elevation": 0,
       "var": "VAR_WAILORD_QUEST_STATE",
       "var_value": "3",
-      "script": "SeaTurfRoute_EventScript_ChasingXiaoHuo"
+      "script": "SeaTurfRoute_EventScript_ChasingXiaoHuo_Left"
     },
     {
       "type": "trigger",
@@ -105,7 +106,7 @@
       "elevation": 0,
       "var": "VAR_WAILORD_QUEST_STATE",
       "var_value": "3",
-      "script": "SeaTurfRoute_EventScript_ChasingXiaoHuo"
+      "script": "SeaTurfRoute_EventScript_ChasingXiaoHuo_Right"
     }
   ],
   "bg_events": [],

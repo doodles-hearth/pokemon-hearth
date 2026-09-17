@@ -8,23 +8,128 @@ mapscripts SeaTurfRoute_MapScripts {
     }
 }
 
-script SeaTurfRoute_EventScript_ChasingXiaoHuo {
+script SeaTurfRoute_EventScript_ChasingXiaoHuo_Left {
     lockall
 
-    applymovement(LOCALID_PLAYER, moves(walk_down * 2, walk_left * 9))
+    applymovement(LOCALID_PLAYER, moves(
+        face_left,
+        emote_exclamation_mark,
+        delay_16 * 6,
+        walk_down * 2,
+        walk_left * 9
+    ))
+    goto(SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2)
+}
+
+script SeaTurfRoute_EventScript_ChasingXiaoHuo_Right {
+    lockall
+
+    applymovement(LOCALID_PLAYER, moves(
+        face_left,
+        emote_exclamation_mark,
+        delay_16 * 6,
+        walk_down * 2,
+        walk_left * 10
+    ))
+    goto(SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2)
+}
+
+script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
+    playse(SE_PIN)
+
+    delay(48) // 16 * 13
+
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, moves(
+        walk_slow_left * 3
+    ))
     waitmovementall
 
-    msgbox(
-        "{SPEAKER NAME_UNKNOWN}Hey, I'm up here!"
-    )
-    closemessage
-
-    // TODO EVA pan shot
+    playse(SE_LEDGE)
+    applymovement(LOCALID_XIAO_HUO_SEATURF, moves(jump_in_place_right))
+    waitmovementall
 
     msgbox(
         "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}Heh, how are you gonna catch me now?"
     )
     closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(emote_upset))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Xiao Huo! Come down!\nYou'll fall and hurt yourself!"
+    )
+    waitse
+    waitmovementall
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_SEATURF, moves(emote_angry))
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}You can't tell me what to do, mom!"
+    )
+    waitse
+    waitmovementall
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(emote_angry))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Don't make me come up there…"
+    )
+    waitse
+    waitmovementall
+    closemessage
+
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_SEATURF, moves(emote_exclamation_mark, delay_16))
+    waitse
+    waitmovementall
+
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(walk_left))
+    delay(10)
+
+    playse(SE_LEDGE)
+    applymovement(LOCALID_XIAO_HUO_SEATURF, moves(
+        lock_facing_direction,
+        jump_left,
+        unlock_facing_direction,
+        walk_in_place_faster_right * 2
+    ))
+    waitmovementall
+    setflag(FLAG_HIDE_XIAO_HUO_SEATURF)
+    removeobject(LOCALID_XIAO_HUO_SEATURF)
+
+    playse(SE_FALL)
+    message(
+        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}AAAaaaa{FONT_SMALL}aaaahhh…"
+    )
+    waitse
+
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
+    delay(8)
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(emote_exclamation_mark))
+    waitse
+
+    waitbuttonpress
+    closemessage
+
+    waitmovementall
+
+    delay(48)
+
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(walk_in_place_fast_down))
+    applymovement(LOCALID_PLAYER, moves(face_up))
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Please, young Wielder, help!"
+    )
+    waitmovementall
+    closemessage
+
 
     playmoncry(SPECIES_WAILORD, CRY_MODE_WEAK)
 	setvar(VAR_0x8004, 0)  // vertical pan
@@ -34,64 +139,43 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo {
 	special(ShakeCamera)
     waitstate
 
-    msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}AAaaaa{FONT_SMALL}aaaah…"
-    )
-    closemessage
-
-    // TODO EVA xiao huo falls into the blowhole
-    removeobject(LOCALID_XIAO_HUO_SEATURF)
-    setflag(FLAG_HIDE_XIAO_HUO_SEATURF)
+    applymovement(LOCALID_CAMERA, moves(walk_slow_right * 3))
+    special(RemoveCameraObject)
+    waitmovementall
 
     releaseall
 }
 
-// TODO EVA dialogue
-script SeaTurfRoute_EventScript_Wailmer {
+script SeaTurfRoute_EventScript_XiaoHuoMom {
     lock
     faceplayer
 
-    if (checkitem(ITEM_SECRET_SURF)) {
-        msgbox(
-            "A Wailmer is sick and needs help!\nTake this and go help him or whatever!"
-        )
-        closemessage
-
-        giveitem(ITEM_SECRET_SURF)
-
-        msgbox(
-            "If you don't have a move that allows\nyour Pokémon to swim, use this!"
-        )
-        closemessage
-
-        giveitem(ITEM_TM_SPLASH)
-
-        msgbox(
-            "Please, help Wailmer!"
-        )
-        closemessage
-    } else {
-        if (flag(FLAG_SAVED_WAILORD)) {
-            if (flag(FLAG_GOT_WAILMER_DOLL)) {
-                msgbox(
-                    "Thank you!"
-                )
-                closemessage    
-            } else {
-                msgbox(
-                    "You saved Wailord! Take this!"
-                )
-                closemessage
-
-                givedecoration(DECOR_WAILMER_DOLL)
-
-                setflag(FLAG_GOT_WAILMER_DOLL)
-            }
+    # TODO EVA dialogue
+    if (flag(FLAG_SAVED_WAILORD)) {
+        if (flag(FLAG_GOT_WAILMER_DOLL)) {
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Thanks again!"
+            )
+            closemessage    
         } else {
             msgbox(
-                "Please, help Wailmer!"
+                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}You saved Xiao Huo! Take this!"
             )
             closemessage
+
+            givedecoration(DECOR_WAILMER_DOLL)
+
+            setflag(FLAG_GOT_WAILMER_DOLL)
         }
+    } else {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Please, young Wielder, help!"
+        )
+        closemessage
+
+        applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_left))
+        waitmovement(VAR_LAST_TALKED)
     }
+
+    releaseall
 }
