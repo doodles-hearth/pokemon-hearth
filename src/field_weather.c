@@ -9,6 +9,7 @@
 #include "event_object_movement.h"
 #include "field_weather.h"
 #include "fieldmap.h"
+#include "fldeff.h"
 #include "main.h"
 #include "menu.h"
 #include "palette.h"
@@ -930,13 +931,22 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
 
     if (fadeOut)
     {
-        // Note: Copying faded -> unfaded like this works fine, except if the screen is faded back in
-        // without transitioning to a different screen
-        // For cases like that, use fadescreenswapbuffers
-        CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
+        if (!useWeatherPal && IsMapTypeFlash(gMapHeader.mapType) && MapHasNaturalLight(gMapHeader.mapType))
+        {
+            // If map type is cave, start fadeout with the cave palette blend
+            const struct BlendSettings *blend = GetCaveBlendSettings();
+            BeginTimeOfDayPaletteFade(selectedPalettes, delay, 0, 16, blend, blend, 256, fadeColor);
+        }
+        else
+        {
+            // Note: Copying faded -> unfaded like this works fine, except if the screen is faded back in
+            // without transitioning to a different screen
+            // For cases like that, use fadescreenswapbuffers
+            CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
 
-        gPaletteFade.simultaneousFade = TRUE;
-        BeginNormalPaletteFade(selectedPalettes, delay, 0, 16, fadeColor);
+            gPaletteFade.simultaneousFade = TRUE;
+            BeginNormalPaletteFade(selectedPalettes, delay, 0, 16, fadeColor);
+        }
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_SCREEN_FADING_OUT;
     }
     else
@@ -949,8 +959,19 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
         }
         else if (MapHasNaturalLight(gMapHeader.mapType))
         {
+            // Get regular blend settings
+            const struct BlendSettings *blend0 = &gTimeBlend.startBlend;
+            const struct BlendSettings *blend1 = &gTimeBlend.endBlend;
+            u16 weight = gTimeBlend.weight;
+
             UpdateAltBgPalettes(selectedPalettes & PALETTES_BG);
-            BeginTimeOfDayPaletteFade(selectedPalettes, delay, 16, 0, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight, fadeColor);
+            if (IsMapTypeFlash(gMapHeader.mapType))
+            {
+                // Change to cave blend settings
+                blend0 = blend1 = GetCaveBlendSettings();
+                weight = 256;
+            }
+            BeginTimeOfDayPaletteFade(selectedPalettes, delay, 16, 0, blend0, blend1, weight, fadeColor);
         }
         else
         {
