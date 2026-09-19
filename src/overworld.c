@@ -1935,7 +1935,7 @@ u8 UpdateSpritePaletteWithTime(u8 paletteNum)
         if (!gMapHeader.cave) // Not flash cave
         {
             if (IsMapTypeFlash(gMapHeader.mapType)) // ZETA- Set DNS tint to default Cave
-                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], 256);
+                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], 256);
             else if (MapHasNaturalLight(gMapHeader.mapType)) // Do normal DNS blending
                 TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
         }

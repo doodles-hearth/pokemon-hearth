@@ -934,7 +934,7 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
         if (!useWeatherPal && IsMapTypeFlash(gMapHeader.mapType) && MapHasNaturalLight(gMapHeader.mapType))
         {
             // If map type is cave, start fadeout with the cave palette blend
-            struct BlendSettings *blend = (struct BlendSettings *)GetCaveBlendSettings();
+            const struct BlendSettings *blend = GetCaveBlendSettings();
             BeginTimeOfDayPaletteFade(selectedPalettes, delay, 0, 16, blend, blend, 256, fadeColor);
         }
         else
@@ -960,15 +960,15 @@ void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
         else if (MapHasNaturalLight(gMapHeader.mapType))
         {
             // Get regular blend settings
-            struct BlendSettings *blend0 = &gTimeBlend.startBlend;
-            struct BlendSettings *blend1 = &gTimeBlend.endBlend;
+            const struct BlendSettings *blend0 = &gTimeBlend.startBlend;
+            const struct BlendSettings *blend1 = &gTimeBlend.endBlend;
             u16 weight = gTimeBlend.weight;
 
             UpdateAltBgPalettes(selectedPalettes & PALETTES_BG);
             if (IsMapTypeFlash(gMapHeader.mapType))
             {
                 // Change to cave blend settings
-                blend0 = blend1 = (struct BlendSettings *)GetCaveBlendSettings();
+                blend0 = blend1 = GetCaveBlendSettings();
                 weight = 256;
             }
             BeginTimeOfDayPaletteFade(selectedPalettes, delay, 16, 0, blend0, blend1, weight, fadeColor);
