@@ -370,48 +370,49 @@ static void Task_EnterCaveTransition4(u8 taskId)
 
 extern const struct BlendSettings gCustomDNSTintBlend[];
 
+// Get all cave blend settings from one source here
+static u8 GetCaveBlendIndex(void)
+{
+    if (!gMapHeader.cave)
+        return DNS_BLEND_CAVE_STANDARD;
+
+    u8 followerIndex = GetFollowerMonIndex();
+    struct Pokemon *follower = &gParties[B_TRAINER_PLAYER][followerIndex];
+    u16 species = GetMonData(follower, MON_DATA_SPECIES);
+    u8 followerFlashTint = gSpeciesInfo[species].flashTint;
+    u8 followerFlashTintShiny = gSpeciesInfo[species].flashTintShiny;
+
+    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES));
+
+    if (GetMonData(follower, MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
+        return followerFlashTintShiny;
+    if (followerFlashTint > 0)
+        return followerFlashTint;
+    return DNS_BLEND_CAVE_STANDARD;
+}
+
+const struct BlendSettings *GetCaveBlendSettings(void)
+{
+    return &gCustomDNSTintBlend[GetCaveBlendIndex()];
+}
+
 void UpdateFlashTint(void)
 {
     if (!gMapHeader.cave)
-		return;
-    
+        return;
+
+    u8 newFlashTint = GetCaveBlendIndex();
     u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
 
-	u8 followerIndex = GetFollowerMonIndex();
-    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES)].flashTint;
-    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES)].flashTintShiny;
-    u8 currentFlashTint = 0;
-    u8 newFlashTint = 1;
-    
-    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES));
-    
-    // Get Flash DNS Tint
-    if (GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
+    if (GET_FOLLOWER_TINT(flashTrackerPacked) != newFlashTint)
     {
-        DebugPrintf("   Shiny");
-        newFlashTint = followerFlashTintShiny;
-        currentFlashTint = followerFlashTintShiny;
-    }
-    else if (followerFlashTint > 0)
-    {
-        newFlashTint = followerFlashTint;
-        currentFlashTint = followerFlashTint;
-    }
-    else
-    {
-        newFlashTint = DNS_BLEND_CAVE_STANDARD;
-    }
-    
-    // Do Custom DNS Blend
-    if ((currentFlashTint != followerFlashTintShiny) || (currentFlashTint != followerFlashTint))
-    {
-        SET_FOLLOWER_TINT(flashTrackerPacked, currentFlashTint);
+        SET_FOLLOWER_TINT(flashTrackerPacked, newFlashTint);
         VarSet(VAR_FLASH_TRACKER_PACKED, flashTrackerPacked);
     }
 
     u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
     const struct BlendSettings *blend = &gCustomDNSTintBlend[newFlashTint];
     TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
-    
+
     currentCaveTint = newFlashTint;
 }

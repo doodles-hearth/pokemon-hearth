@@ -1941,10 +1941,7 @@ u8 UpdateSpritePaletteWithTime(u8 paletteNum)
         }
         else // Flash cave
         {
-            // Get blend index from upper byte of blend var
-            u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
-            u16 blendVar = GET_FOLLOWER_TINT(flashTrackerPacked);
-            const struct BlendSettings *blend = &gCustomDNSTintBlend[blendVar];
+            const struct BlendSettings *blend = GetCaveBlendSettings();
             TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
         }
     }
@@ -2016,10 +2013,6 @@ void CB2_Overworld(void)
     if (fading)
     {
         SetFieldVBlankCallback();
-        if (IsMapTypeFlash(gMapHeader.mapType))
-        {
-            DoCustomDNSBlend();
-        }
         return;
     }
 }
