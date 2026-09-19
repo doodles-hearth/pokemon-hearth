@@ -131,7 +131,7 @@ script ScenicRoute_Daycare_EventScript_GiveMonToRaise {
 		fadescreen(FADE_TO_BLACK)
 		special(ChooseSendDaycareMon)
 
-		if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+		if (var(VAR_0x8004) == PARTY_MON_CANCEL) {
 			call(ScenicRoute_Daycare_EventScript_ComeAgain)
 		} else {
 			specialvar(VAR_RESULT, CountPartyAliveNonEggMons_IgnoreVar0x8004Slot)

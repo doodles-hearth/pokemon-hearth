@@ -45,7 +45,7 @@ script MemoryGirl_EventScript_BeginConversation {
 
     special(ChoosePartyMon)
 
-    if (var(CHOSEN_SLOT) == PARTY_NOTHING_CHOSEN)
+    if (var(CHOSEN_SLOT) == PARTY_MON_CANCEL)
     {
         msgbox(
             "You're no fun!"
