@@ -1,0 +1,21 @@
+mapscripts InsideWailord_MapScripts {}
+
+script InsideWailord_EventScript_XiaoHuo {
+    lock
+    faceplayer
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Ha! You managed to get up there!\p"
+        "Good thing you fell down here too.\nWailord looks unwell.\l"
+        "I'm sure it ate something bad!\p"
+        "Let's find the thing that's ailing\nWailord, {PLAYER}.\l"
+        "I'm right behind you!"
+    )
+    closemessage
+
+    setfollowernpc(LOCALID_WAIL_XIAO_HUO, flags:req, script=0, battlePartner=0)
+
+    setnamedmon(SPECIES_WAILORD)
+
+    release
+}

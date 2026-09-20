@@ -11879,6 +11879,18 @@
       "secondary_tileset": "gTileset_Hanabi",
       "border_filepath": "data/layouts/HanabiCity_Dojo/border.bin",
       "blockdata_filepath": "data/layouts/HanabiCity_Dojo/map.bin"
+    },
+    {
+      "id": "LAYOUT_INSIDE_WAILORD",
+      "name": "InsideWailord_Layout",
+      "width": 31,
+      "height": 60,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_InsideWailord",
+      "border_filepath": "data/layouts/InsideWailord/border.bin",
+      "blockdata_filepath": "data/layouts/InsideWailord/map.bin"
     }
   ]
 }
