@@ -412,7 +412,7 @@ void UpdateFlashTint(void)
 
     u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
     const struct BlendSettings *blend = &gCustomDNSTintBlend[newFlashTint];
-    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
+    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, blend, blend, 256);
 
     currentCaveTint = newFlashTint;
 }
