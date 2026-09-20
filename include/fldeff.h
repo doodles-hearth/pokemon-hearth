@@ -39,6 +39,7 @@ bool32 SetUpFieldMove_Flash(void);
 void CB2_DoChangeMap(void);
 bool8 GetMapPairFadeToType(u8 _fromType, u8 _toType);
 bool8 GetMapPairFadeFromType(u8 _fromType, u8 _toType);
+const struct BlendSettings *GetCaveBlendSettings(void);
 void UpdateFlashTint(void);
 
 // strength
