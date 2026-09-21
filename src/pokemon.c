@@ -2189,7 +2189,7 @@ u32 GetBoxMonData3(struct BoxPokemon *boxMon, s32 field, u8 *data)
             retVal = boxMon->travellerRibbon;
             break;
         case MON_DATA_HISTORIC_RIBBON:
-            retVal = boxMon->travellerRibbon;
+            retVal = boxMon->historicRibbon;
             break;
         case MON_DATA_COUNTRY_RIBBON:
             retVal = boxMon->countryRibbon;
