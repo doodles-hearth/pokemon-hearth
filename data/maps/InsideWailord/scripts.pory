@@ -5,17 +5,31 @@ script InsideWailord_EventScript_XiaoHuo {
     faceplayer
 
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Ha! You managed to get up there!\p"
-        "Good thing you fell down here too.\nWailord looks unwell.\l"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Ha! You fell down here too!\p"
+        "Good thing you followed me, actually.\nWailord looks unwell.\l"
         "I'm sure it ate something bad!\p"
-        "Let's find the thing that's ailing\nWailord, {PLAYER}.\l"
+        "Let's see if we can find the thing\nthat's bothering Wailord, {PLAYER}.\p"
         "I'm right behind you!"
     )
     closemessage
 
-    setfollowernpc(LOCALID_WAIL_XIAO_HUO, flags:req, script=0, battlePartner=0)
+    setfollowernpc(LOCALID_WAIL_XIAO_HUO, FNPC_SURF, InsideWailord_EventScript_FollowerXiaoHuo, battlePartner=0)
 
     setnamedmon(SPECIES_WAILORD)
 
     release
+}
+
+script InsideWailord_EventScript_FollowerXiaoHuo {
+    lock
+    faceplayer
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}C'mon, let's explore further back!"
+    )
+    closemessage
+    release
+}
+
+script InsideWailord_EventScript_NeedSurf {
+    // TODO EVA
 }
