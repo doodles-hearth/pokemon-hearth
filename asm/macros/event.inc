@@ -1028,6 +1028,14 @@
 	.byte \shiny
 	.endm
 
+	@ Displays a box containing an all-black front sprite for the specified Pokemon species.
+	.macro showmonsilhouette species:req, x:req, y:req
+	callnative ScrCmd_showmonsilhouette, requests_effects=1
+	.2byte \species
+	.byte \x
+	.byte \y
+	.endm
+
 	@ Hides the box displayed by showmonpic.
 	.macro hidemonpic
 	.byte SCR_OP_HIDEMONPIC
@@ -1047,9 +1055,11 @@
 	.4byte \text
 	.endm
 
-	@ Displays a random mon's dex entry in a message box
-	.macro randomdexmessage
-	callnative ScrCmd_randomdexmessage
+	@ Displays the specified mon's dex entry in a message box. Set censorName to TRUE to hide the species name.
+	.macro dexmessage species:req, censorName:req
+	callnative ScrCmd_dexmessage, requests_effects=1
+	.2byte \species
+	.byte \censorName
 	.endm
 
 	@ Formatting for the braille window, to be put at the start of a pointer used by braillemessage.
@@ -1943,9 +1953,9 @@
 	.byte SCR_OP_CLOSEBRAILLEMESSAGE
 	.endm
 
-	@ Destroys the window created by randomdexmessage.
-	.macro closerandomdexmessage
-	callnative ScrCmd_closerandomdexmessage
+	@ Destroys the window created by dexmessage.
+	.macro closedexmessage
+	callnative ScrCmd_closedexmessage, requests_effects=1
 	.endm
 
 	@ Prints and draws the message all at once rather than character by character.
@@ -2292,11 +2302,17 @@
 	closebraillemessage
 	.endm
 
-	@ Prints a random dex message, waits for an A or B press, then closes the message.
-	.macro randomdexmsgbox
-	randomdexmessage
+	@ Prints a dex message for the specified species, waits for an A or B press, then closes the message.
+	.macro dexmsgbox species:req, censorName:req
+	dexmessage \species, \censorName
 	waitbuttonpress
-	closerandomdexmessage
+	closedexmessage
+	.endm
+
+	@ Compares gStringVar2 with the specified species name and writes TRUE/FALSE to VAR_RESULT.
+	.macro checkspeciesguess species:req
+	callnative ScrCmd_checkspeciesguess, requests_effects=1
+	.2byte \species
 	.endm
 
 	@ Creates a Pokémon with the modernFatefulEncounter bit set for an encounter

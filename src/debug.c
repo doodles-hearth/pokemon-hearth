@@ -4856,7 +4856,7 @@ static void DebugSelection_ChooseColour_OnInit(u8 taskId)
     u32 isShiny = GetMonData(&gParties[B_TRAINER_PLAYER][gTasks[taskId].tPartyId], MON_DATA_IS_SHINY);
 
 
-    gTasks[taskId].tSpriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0, isShiny);
+    gTasks[taskId].tSpriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0, isShiny, FALSE);
     u32 paletteSlot = gSprites[task->tSpriteId].oam.paletteNum;
     u16 colour = GetMonData(mon, MON_DATA_COLORATION);
 

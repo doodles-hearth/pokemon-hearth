@@ -87,7 +87,7 @@ static EWRAM_DATA u16 sMovingNpcMapNum = 0;
 static EWRAM_DATA u16 sFieldEffectScriptId = 0;
 
 static u8 sBrailleWindowId;
-static u8 sRandomDexWindowId;
+static u8 sDexWindowId;
 static bool8 sIsScriptedWildDouble;
 
 extern const SpecialFunc gSpecials[];
@@ -95,7 +95,7 @@ extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 
 static void CloseBrailleWindow(void);
-static void CloseRandomDexWindow(void);
+static void CloseDexWindow(void);
 static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
 
 static const u8 sScriptConditionTable[COMPARISON_OPERATORS_COUNT][3] =
@@ -2076,6 +2076,18 @@ bool8 ScrCmd_showmonpic(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_showmonsilhouette(struct ScriptContext *ctx)
+{
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
+    u8 x = ScriptReadByte(ctx);
+    u8 y = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    ScriptMenu_ShowPokemonSilhouette(species, x, y);
+    return FALSE;
+}
+
 bool8 ScrCmd_hidemonpic(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -2170,36 +2182,47 @@ bool8 ScrCmd_closebraillemessage(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
+bool8 ScrCmd_dexmessage(struct ScriptContext *ctx)
 {
-    enum Species species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
+    bool8 censorName = ScriptReadByte(ctx);
     struct WindowTemplate winTemplate;
-    
-    const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
-    const u8 *randomDexDesc = GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK);
-    StringCopy(gStringVar1, speciesName);
 
-    // Calculates the start of the mon's name if present. If not present, returns -1.
-    s8 monNameStartIndex = DoesStringContainMonName(randomDexDesc, speciesName);
-    if (monNameStartIndex != -1)
-        StringCopyCensorWord(gStringVar4, randomDexDesc, monNameStartIndex, StringLength(speciesName));
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    const u8 *dexDesc = GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK);
+
+    if (censorName)
+    {
+        const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
+        s8 monNameStartIndex = DoesStringContainMonName(dexDesc, speciesName);
+
+        if (monNameStartIndex != -1)
+            StringCopyCensorWord(gStringVar4, dexDesc, monNameStartIndex, StringLength(speciesName));
+        else
+            StringCopy(gStringVar4, dexDesc);
+    }
     else
-        StringCopy(gStringVar4, randomDexDesc);
+    {
+        StringCopy(gStringVar4, dexDesc);
+    }
 
     winTemplate = CreateWindowTemplate(0, 1, 5, 28, 9, 0xF, 0x1);
-    sRandomDexWindowId = AddWindow(&winTemplate);
-    LoadUserWindowBorderGfx(sRandomDexWindowId, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
-    DrawStdWindowFrame(sRandomDexWindowId, FALSE);
-    PutWindowTilemap(sRandomDexWindowId);
-    FillWindowPixelBuffer(sRandomDexWindowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(sRandomDexWindowId, FONT_SHORT, gStringVar4, 1, 6, TEXT_SKIP_DRAW, NULL);
-    CopyWindowToVram(sRandomDexWindowId, COPYWIN_FULL);
+    sDexWindowId = AddWindow(&winTemplate);
+    LoadUserWindowBorderGfx(sDexWindowId, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
+    DrawStdWindowFrame(sDexWindowId, FALSE);
+    PutWindowTilemap(sDexWindowId);
+    FillWindowPixelBuffer(sDexWindowId, PIXEL_FILL(1));
+    AddTextPrinterParameterized(sDexWindowId, FONT_SHORT, gStringVar4, 1, 6, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(sDexWindowId, COPYWIN_FULL);
     return FALSE;
 }
 
-bool8 ScrCmd_closerandomdexmessage(struct ScriptContext *ctx)
+bool8 ScrCmd_closedexmessage(struct ScriptContext *ctx)
 {
-    CloseRandomDexWindow();
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    CloseDexWindow();
     return FALSE;
 }
 
@@ -3224,10 +3247,10 @@ static void CloseBrailleWindow(void)
     RemoveWindow(sBrailleWindowId);
 }
 
-static void CloseRandomDexWindow(void)
+static void CloseDexWindow(void)
 {
-    ClearStdWindowAndFrame(sRandomDexWindowId, TRUE);
-    RemoveWindow(sRandomDexWindowId);
+    ClearStdWindowAndFrame(sDexWindowId, TRUE);
+    RemoveWindow(sDexWindowId);
 }
 
 bool8 ScrCmd_buffertrainerclassname(struct ScriptContext *ctx)

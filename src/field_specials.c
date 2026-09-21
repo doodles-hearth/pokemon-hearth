@@ -4558,53 +4558,65 @@ void UseBlankMessageToCancelPokemonPic(void)
     ScriptMenu_HidePokemonPic();
 }
 
+u16 GetRandomRegionalSpecies(void)
+{
+    enum HoennDexOrder hoennNum = RandomUniform(RNG_RANDOM_RIDDLE_SPECIES, 1, HOENN_DEX_COUNT - 1);
+
+    return NationalPokedexNumToSpecies(HoennToNationalOrder(hoennNum));
+}
+
 void AssignRandomMonCryVars(void)
 {
-    gSpecialVar_0x8004 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+    gSpecialVar_0x8004 = GetRandomRegionalSpecies();
     gSpecialVar_0x8005 = gSpecialVar_0x8004;
     gSpecialVar_0x8006 = gSpecialVar_0x8004;
     gSpecialVar_0x8007 = gSpecialVar_0x8004;
 
     do
     {
-        gSpecialVar_0x8005 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
-        
+        gSpecialVar_0x8005 = GetRandomRegionalSpecies();
     } while (gSpecialVar_0x8005 == gSpecialVar_0x8004);
 
     do
     {
-        gSpecialVar_0x8006 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
-        
+        gSpecialVar_0x8006 = GetRandomRegionalSpecies();
     } while (gSpecialVar_0x8006 == gSpecialVar_0x8004 || gSpecialVar_0x8006 == gSpecialVar_0x8005);
 
     do
     {
-        gSpecialVar_0x8007 = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
-        
+        gSpecialVar_0x8007 = GetRandomRegionalSpecies();
     } while (gSpecialVar_0x8007 == gSpecialVar_0x8004 || gSpecialVar_0x8007 == gSpecialVar_0x8005 || gSpecialVar_0x8007 == gSpecialVar_0x8006);
 
     u16 answersArray[] = { gSpecialVar_0x8004, gSpecialVar_0x8005, gSpecialVar_0x8006, gSpecialVar_0x8007 };
     gSpecialVar_0x8008 = answersArray[Random() % 4];
 }
 
-void EnterDexRiddleGuess(void)
+void EnterSpeciesGuess(void)
 {
-    DoNamingScreen(NAMING_SCREEN_DEX_RIDDLE, gStringVar2, 0, 0, 0, CB2_ReturnToFieldContinueScript);
+    gStringVar2[0] = EOS;
+    DoNamingScreen(NAMING_SCREEN_SPECIES_GUESS, gStringVar2, 0, 0, 0, CB2_ReturnToFieldContinueScript);
 }
 
-void GetDexRiddleFeedback(void)
+bool8 IsSpeciesGuessCorrect(enum Species species, const u8 *guess)
 {
-    ToLowerCase(gStringVar1);
-    ToLowerCase(gStringVar2);
+    u8 expectedName[POKEMON_NAME_LENGTH + 1];
+    u8 normalizedGuess[POKEMON_NAME_LENGTH + 1];
 
-    if (!StringCompare(gStringVar1, gStringVar2))
-    {
-        gSpecialVar_Result = 1;
-    }
-    else
-    {
-        gSpecialVar_Result = 0;
-    }
+    StringCopy_Nickname(expectedName, GetSpeciesName(species, SKIP_NAME_CHECK));
+    StringCopy_Nickname(normalizedGuess, guess);
+    ToLowerCase(expectedName);
+    ToLowerCase(normalizedGuess);
+
+    return StringCompare(expectedName, normalizedGuess) == 0;
+}
+
+void ScrCmd_checkspeciesguess(struct ScriptContext *ctx)
+{
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1);
+    Script_RequestWriteVar(VAR_RESULT);
+    gSpecialVar_Result = IsSpeciesGuessCorrect(species, gStringVar2);
 }
 
 /**
