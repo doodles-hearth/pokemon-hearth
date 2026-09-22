@@ -44,6 +44,7 @@
 #include "tilesets.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
+#define PAL_TAG_MON_SILHOUETTE 0xFFFE
 
 EWRAM_DATA s32 gFieldEffectArguments[8] = {0};
 EWRAM_DATA bool8 gSkipShowMonAnim = FALSE;
@@ -1048,14 +1049,20 @@ u8 AddNewGameBirchObject(s16 x, s16 y, u8 subpriority)
     return CreateSprite(&sSpriteTemplate_NewGameBirch, x, y, subpriority);
 }
 
-u8 CreateMonSprite_PicBox(enum Species species, s16 x, s16 y, u8 subpriority, bool8 shiny)
+u8 CreateMonSprite_PicBox(enum Species species, s16 x, s16 y, u8 subpriority, bool8 shiny, bool8 silhouette)
 {
-    s32 spriteId = CreateMonPicSprite(species, shiny, 0x8000, TRUE, x, y, 0, species);
-    PreservePaletteInWeather(IndexOfSpritePaletteTag(species) + 0x10);
+    u16 paletteTag = silhouette ? PAL_TAG_MON_SILHOUETTE : species;
+    s32 spriteId = CreateMonPicSprite(species, shiny, 0x8000, TRUE, x, y, 0, paletteTag);
+
     if (spriteId == 0xFFFF)
         return MAX_SPRITES;
-    else
-        return spriteId;
+
+    u8 paletteNum = gSprites[spriteId].oam.paletteNum;
+    PreservePaletteInWeather(paletteNum + 0x10);
+    if (silhouette)
+        FillPalette(RGB_BLACK, OBJ_PLTT_ID(paletteNum), PLTT_SIZE_4BPP);
+
+    return spriteId;
 }
 
 u8 CreateMonSprite_FieldMove(enum Species species, bool8 isShiny, u32 personality, s16 x, s16 y, u8 subpriority)

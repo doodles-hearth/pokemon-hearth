@@ -27,14 +27,15 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 	))
 	closemessage
 
-	randomdexmsgbox
+	specialvar(VAR_TEMP_1, GetRandomRegionalSpecies)
+	dexmsgbox(VAR_TEMP_1, TRUE)
 
 	setspeaker(SP_NAME_PKMN_NERD)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Well? What Pokémon am I talking about?")
 	closemessage
 
-	special(EnterDexRiddleGuess)
-	special(GetDexRiddleFeedback)
+	special(EnterSpeciesGuess)
+	checkspeciesguess(VAR_TEMP_1)
 
 	if(var(VAR_RESULT) == 1)
 	{
