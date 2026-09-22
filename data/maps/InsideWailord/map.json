@@ -97,6 +97,20 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "InsideWailord_EventScript_XiaoHuo",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_WAIL_DRAMPA",
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRAMPA)",
+      "x": 16,
+      "y": 16,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -109,6 +123,25 @@
       "dest_warp_id": "WARP_ID_ENTER_WAILORD"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "InsideWailord_EventScript_NeedSurf"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 17,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "InsideWailord_EventScript_NeedSurf"
+    }
+  ],
   "bg_events": []
 }

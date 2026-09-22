@@ -31,5 +31,35 @@ script InsideWailord_EventScript_FollowerXiaoHuo {
 }
 
 script InsideWailord_EventScript_NeedSurf {
-    // TODO EVA
+    lockall
+    facefollowernpc
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}I bet you're thinking “Oh man, I can't\nswim!”\p"
+        "Don't you worry, {PLAYER}!\nMy Drampa can carry us across!"
+    )
+    closemessage
+
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up))
+    delay(24)
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Drampa, use Aqua Jet!"
+    )
+    closemessage
+    setnamedmon(SPECIES_DRAMPA)
+
+    playse(SE_BALL_OPEN)
+    applymovement(LOCALID_WAIL_DRAMPA, moves(exit_pokeball, face_up))
+    waitse
+    waitmovement(LOCALID_WAIL_DRAMPA)
+
+    setfieldeffectargument(3, TRUE)
+	dofieldeffect FLDEFF_USE_CUT_ON_TREE
+	waitstate
+
+    playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
+    applymovement(LOCALID_WAIL_DRAMPA, moves(shake_horizontal))
+    
+    releaseall
 }
