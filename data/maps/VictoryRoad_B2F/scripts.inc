@@ -12,7 +12,7 @@ VictoryRoad_B2F_EventScript_Owen::
 	end
 
 VictoryRoad_B2F_EventScript_Caroline::
-	trainerbattle_single TRAINER_CAROLINE, VictoryRoad_B2F_Text_CarolineIntro, VictoryRoad_B2F_Text_CarolineDefeat
+	trainerbattle_single TRAINER_DUMMY, VictoryRoad_B2F_Text_CarolineIntro, VictoryRoad_B2F_Text_CarolineDefeat
 	msgbox VictoryRoad_B2F_Text_CarolinePostBattle, MSGBOX_AUTOCLOSE
 	end
 

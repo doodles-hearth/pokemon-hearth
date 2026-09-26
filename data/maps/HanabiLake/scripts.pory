@@ -1,1 +1,27 @@
-mapscripts HanabiLake_MapScripts {}
+const FLAG_HIDE_XIAO_HUO_LAKE = FLAG_TEMP_1
+
+mapscripts HanabiLake_MapScripts {
+    MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_WAILORD_QUEST_STATE, 1: HanabiLake_EventScript_XiaoHuoRunsAway
+	]
+    MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_WAILORD_QUEST_STATE) != 1) {
+            setflag(FLAG_HIDE_XIAO_HUO_LAKE)
+        }
+    }
+}
+
+script HanabiLake_EventScript_XiaoHuoRunsAway {
+    lockall
+
+    applymovement(LOCALID_XIAO_HUO_LAKE, moves(
+        walk_fast_down * 4
+    ))
+    playse(SE_FLEE)
+    waitmovement(0)
+    removeobject(LOCALID_XIAO_HUO_LAKE)
+    setflag(FLAG_HIDE_XIAO_HUO_LAKE)
+    setvar(VAR_WAILORD_QUEST_STATE, 2)
+
+    releaseall
+}

@@ -42,7 +42,7 @@ script BurnfootPassBottom_EventScript_Ame {
     trainerbattle_single(
 		TRAINER_AME,
 		format("{CREATE_MUGSHOT MUGSHOT_CASTFORM_RAIN_GUY 0}The weather here is so confusing!"),
-		format("{CREATE_MUGSHOT MUGSHOT_CASTFORM_RAIN_GUY 0}{SPEAKER NAME_CASTFORM_RAIN_GUY}I was distracted by the falling ash!")
+		format("I was distracted by the falling\nash!")
 	)
 	msgbox(("The ash from the volcano is drying out\nmy skin…"), MSGBOX_AUTOCLOSE)
 	end
@@ -58,11 +58,21 @@ script BurnfootPassBottom_EventScript_Yo {
 	end
 }
 
+script BurnfootPassBottom_EventScript_Chong {
+	trainerbattle_single(
+		TRAINER_CHONG,
+		format("{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Ugh, I ate too much at the Hanabi\nfestival, I feel awful…"),
+		format("I'm gonna be sick…")
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_BATTLE_GUY}I'm trying to jog off the excess\nfood, but it makes my stomach churn…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script BurnfootPassBottom_EventScript_TrekUp {
 	lock
 	faceplayer
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Running all the way up to Mt Kazan and\ndown again is great exercise.\p"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}{SPEAKER NAME_MAN}Running all the way up to Mt Kazan\nand down again is great exercise.\p"
 		"It's even better when you have to run\nleft and right avoiding boulders."
 	)
 	closemessage
