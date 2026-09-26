@@ -1,3 +1,5 @@
+const FLAG_LEFT_TRIGGER = FLAG_TEMP_1
+
 mapscripts InsideWailord_MapScripts {}
 
 script InsideWailord_EventScript_XiaoHuo {
@@ -30,6 +32,11 @@ script InsideWailord_EventScript_FollowerXiaoHuo {
     release
 }
 
+script InsideWailord_EventScript_NeedSurf_Left {
+    setflag(FLAG_LEFT_TRIGGER)
+    goto(InsideWailord_EventScript_NeedSurf)
+}
+
 script InsideWailord_EventScript_NeedSurf {
     lockall
     facefollowernpc
@@ -40,7 +47,16 @@ script InsideWailord_EventScript_NeedSurf {
     )
     closemessage
 
-    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up))
+    if (flag(FLAG_LEFT_TRIGGER)) {
+        applymovement(LOCALID_PLAYER, moves(face_left, lock_facing_direction, walk_right, unlock_facing_direction))
+        applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_up))
+    } else {
+        applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_left, walk_up))
+        applymovement(LOCALID_PLAYER, moves(delay_16, face_left))
+    }
+
+    waitmovementall
+
     delay(24)
 
     msgbox(
@@ -51,15 +67,94 @@ script InsideWailord_EventScript_NeedSurf {
 
     playse(SE_BALL_OPEN)
     applymovement(LOCALID_WAIL_DRAMPA, moves(exit_pokeball, face_up))
+    applymovement(LOCALID_PLAYER, moves(face_up))
     waitse
     waitmovement(LOCALID_WAIL_DRAMPA)
 
-    setfieldeffectargument(3, TRUE)
-	dofieldeffect FLDEFF_USE_CUT_ON_TREE
-	waitstate
-
     playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
     applymovement(LOCALID_WAIL_DRAMPA, moves(shake_horizontal))
+    waitmovementall
+
+    delay(24)
+
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_up, set_invisible))
+    applymovement(LOCALID_PLAYER, moves(delay_16, walk_left, walk_up, set_invisible))
+    waitmovementall
+
+    applymovement(LOCALID_WAIL_DRAMPA, InsideWailord_Movement_SurfWithDrampa)
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, InsideWailord_Movement_SurfWithDrampa)
+    applymovement(LOCALID_PLAYER, InsideWailord_Movement_SurfWithDrampa)
+    waitmovementall
+    
+    applymovement(LOCALID_PLAYER, moves(set_visible, walk_up, walk_right, face_left))
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(delay_16, set_visible, walk_up, face_down))
+    waitmovementall
+    playse(SE_BALL_OPEN)
+    applymovement(LOCALID_WAIL_DRAMPA, moves(enter_pokeball))
+    waitse
+    waitmovementall
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up, delay_8, emote_exclamation_mark, delay_16 * 6))
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(delay_8, face_up))
+    delay(8)
+    playse(SE_PIN)
+    waise
+    waitmovementall
+
+    playse(SE_PIN)
+    applymovement(LOCALID_WAIL_BOSS, moves(emote_angry))
+    waitse
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}This place smells like a Slaking's\nbutt!\p"
+        "I can't believe we're stuck in 'ere\nlike a buncha morons!\p"
+    )
+    setnamedmon(SPECIES_SLAKING)
+    closemessage
+    applymovement(LOCALID_WAIL_ADMIN, moves(walk_in_place_fast_up))
+    msgbox(
+        "{SPEAKER NAME_GOLBAT_ADMIN}I can't believe this thing ate our\nboat…"
+    )
+    closemessage
+    applymovement(LOCALID_WAIL_GRUNT2, moves(walk_in_place_fast_left))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}I can't believe we let KEVIN be the\nlookout!"
+    )
+    closemessage
+    applymovement(LOCALID_WAIL_KEVIN, moves(shake_horizontal))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}I'm sorry, guys…"
+    )
+    closemessage
+
+    delay(32)
+    playse(SE_PIN)
+    applymovement(LOCALID_WAIL_BOSS, moves(emote_exclamation_mark, delay_16 * 6))
+    waitse
+    waitmovementall
+    applymovement(LOCALID_WAIL_GRUNT2, moves(face_down))
+    applymovement(LOCALID_WAIL_ADMIN, moves(delay_16, face_down))
+    applymovement(LOCALID_WAIL_KEVIN, moves(delay_16, face_down))
+
+    waitmovementall
+
+    playse(SE_LEDGE)
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(jump_in_place_up))
+    waitse
+    waitmovementall
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Hey! You lot is why Wailord isn't\nfeeling well!\l"
+        "Get out of its stomach!!"
+    )
+    closemessage
+
+    // TODO EVA
     
     releaseall
+}
+
+movement InsideWailord_Movement_SurfWithDrampa {
+    walk_up * 3
+    walk_left * 2
+    walk_up
+    walk_slow_up * 2
 }
