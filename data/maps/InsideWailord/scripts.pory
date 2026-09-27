@@ -102,7 +102,6 @@ script InsideWailord_EventScript_NeedSurf {
 
     playse(SE_PIN)
     applymovement(LOCALID_WAIL_BOSS, moves(emote_angry))
-    waitse
     msgbox(
         "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}This place smells like a Slaking's\nbutt!\p"
         "I can't believe we're stuck in 'ere\nlike a buncha morons!\p"
@@ -142,12 +141,16 @@ script InsideWailord_EventScript_NeedSurf {
     waitmovementall
 
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Hey! You lot is why Wailord isn't\nfeeling well!\l"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Hey! You lot is why Wailord is ill!\n"
         "Get out of its stomach!!"
     )
     closemessage
 
-    // TODO EVA
+    playse(SE_PIN)
+    applymovement(LOCALID_WAIL_BOSS, moves(emote_angry))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}"
+    )
     
     releaseall
 }
