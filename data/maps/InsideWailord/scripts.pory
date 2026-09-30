@@ -120,7 +120,7 @@ script InsideWailord_EventScript_NeedSurf {
     closemessage
     applymovement(LOCALID_WAIL_KEVIN, moves(shake_horizontal))
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}I'm sorry, guys…"
+        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_KEVIN}Ah, I'm sorry, guys…"
     )
     closemessage
 
@@ -135,22 +135,65 @@ script InsideWailord_EventScript_NeedSurf {
 
     waitmovementall
 
-    playse(SE_LEDGE)
-    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(jump_in_place_up))
-    waitse
-    waitmovementall
+    delay(32)
 
+    applymovement(LOCALID_WAIL_ADMIN, moves(walk_in_place_fast_down))
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Hey! You lot is why Wailord is ill!\n"
-        "Get out of its stomach!!"
+        "{SPEAKER NAME_GOLBAT_ADMIN}Oh goshawott boss, it's the kid that\nblew up our ol' hideout in Yifu City!"
     )
     closemessage
 
     playse(SE_PIN)
-    applymovement(LOCALID_WAIL_BOSS, moves(emote_angry))
+    applymovement(LOCALID_WAIL_BOSS, moves(emote_angry, delay_16 * 6))
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}"
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Ugh, I can't deal with this kid\nagain!\p"
+        "How the heck did yer dummasses end up\ninside a Wailord?"
     )
+    waitmovementall
+    closemessage
+
+    applymovement(LOCALID_WAIL_XIAO_HUO, moves(walk_in_place_fast_up))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}…You guys are also inside a\nWailord."
+    )
+    closemessage
+
+    applymovement(LOCALID_WAIL_GRUNT2, moves(walk_in_place_fast_down))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Wait, who's the sassy midget?"
+    )
+    closemessage
+
+    playse(SE_LEDGE)
+    applymovement(LOCALID_WAIL_XIAO_HUO, moves(jump_in_place_up))
+    waitmovementall
+    playse(SE_PIN)
+    applymovement(LOCALID_WAIL_XIAO_HUO, moves(emote_angry, delay_16 * 6))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}HEY! I'm not a midget!\nI'm a Dojo Master!!\p"
+        "You lot are upsetting Wailord's\nstomach!\p"
+        "Get out of here, it's an order!"
+    )
+    waitmovementall
+    closemessage
+
+    applymovement(LOCALID_WAIL_BOSS, moves(emote_angry, delay_16 * 6))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Nobody orders the Crobat Shadows\n'round!\p"
+        "That's it, I'm shutting ya down!"
+    )
+    waitmovementall
+    closemessage
+
+    applymovement(LOCALID_WAIL_BOSS, moves(walk_down * 3))
+    applymovement(LOCALID_WAIL_ADMIN, moves(face_up, delay_16, walk_right, walk_down))
+    delay(16)
+    applymovement(LOCALID_WAIL_KEVIN, moves(walk_in_place_fast_right))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_KEVIN}Boss, maybe they could help us get\noutta here, actually"
+    )
+    closemessage
+
     
     releaseall
 }
