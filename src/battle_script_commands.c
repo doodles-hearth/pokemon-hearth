@@ -11212,7 +11212,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
     switch (gBattlerFainted)
     {
     case B_BATTLER_0:
-        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
         {
             gBattleScripting.battler = battler;
             BattleScriptPush(cmd->nextInstr);
@@ -11222,7 +11222,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11237,7 +11237,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         }
         break;
     case B_BATTLER_2:
-        if (ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_DOWN))
+        if (ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_DEFENDER_LOSES_FIRST_MON))
         {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11247,7 +11247,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11257,7 +11257,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
             else
             {
                 gBattleScripting.battler = tempBattler;
-                if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+                if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
                 {
                     gBattleScripting.battler = battler;
                     BattleScriptPush(cmd->nextInstr);
@@ -11273,7 +11273,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         }
         break;
     case B_BATTLER_1:
-        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_DOWN)))
+        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_DEFENDER_LOSES_FIRST_MON)))
         {
             gBattleScripting.battler = battler;
             BattleScriptPush(cmd->nextInstr);
@@ -11283,7 +11283,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11298,7 +11298,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         }
         break;
     case B_BATTLER_3:
-        if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_DOWN)))
+        if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_DEFENDER_LOSES_FIRST_MON)))
         {
             gBattleScripting.battler = battler;
             BattleScriptPush(cmd->nextInstr);
@@ -11308,7 +11308,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
