@@ -361,8 +361,8 @@
 #define FLAG_BOUGHT_FAKE_SHINY               0x13F
 #define FLAG_GOT_WAILMER_DOLL                0x140
 #define FLAG_RECEIVED_TM_SUNNY_DAY           0x141
-#define FLAG_WONDER_CARD_UNUSED_6            0x142
-#define FLAG_WONDER_CARD_UNUSED_7            0x143
+#define FLAG_SPOKE_TO_NATSUKI_MAGURO         0x142
+#define FLAG_HIDE_NATSUKI_MAGURO             0x143
 #define FLAG_WONDER_CARD_UNUSED_8            0x144
 #define FLAG_WONDER_CARD_UNUSED_9            0x145
 #define FLAG_WONDER_CARD_UNUSED_10           0x146

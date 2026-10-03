@@ -45,7 +45,7 @@ script SunriseVillage_RivalsHouse_EventScript_Natsuki {
 	} else {
 		setspeaker(SP_NAME_NATSUKI)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Poké Balls, check…\nMedicine, check…\lSpare pair of underwear, check…"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Poké Balls, check…\nMedicine, check…\lToy soldiers, check…\lSpare pair of underwear, check…"
 		))
 		closemessage
 
