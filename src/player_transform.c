@@ -34,7 +34,7 @@ struct Pokemon* GetCurrentlyTransformedPokemon()
 {
     bool32 isPlayerTransformed = FlagGet(FLAG_PLAYER_IS_POKEMON);
     if (isPlayerTransformed && !gPlayerTransformPokemon)
-        gPlayerTransformPokemon = &gPlayerParty[gSaveBlock1Ptr->playerTransformPokemonIndex];
+        gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][gSaveBlock1Ptr->playerTransformPokemonIndex];
     return gPlayerTransformPokemon;
 }
 
@@ -43,11 +43,11 @@ void CB2_TransformPlayerToPokemonFromParty()
     u8 index;
     index = GetCursorSelectionMonId();
     if (index >= PARTY_SIZE) {
-        index = PARTY_NOTHING_CHOSEN;
+        index = PARTY_MON_CANCEL;
     }
     else {
         gSaveBlock1Ptr->playerTransformPokemonIndex = index;
-        gPlayerTransformPokemon = &gPlayerParty[index];
+        gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][index];
         TransformPlayerToPokemon();
     }
 
@@ -57,7 +57,7 @@ void CB2_TransformPlayerToPokemonFromParty()
 
 u16 PokemonToGraphicsId(struct Pokemon* pokemon)
 {
-    u32 species = GetMonData(pokemon, MON_DATA_SPECIES);
+    enum Species species = GetMonData(pokemon, MON_DATA_SPECIES);
     bool32 isShiny = GetMonData(pokemon, MON_DATA_IS_SHINY);
     bool32 isFemale = GetMonGender(pokemon) == MON_FEMALE;
 
@@ -72,7 +72,7 @@ u16 PokemonToGraphicsId(struct Pokemon* pokemon)
 
 static void UNUSED UpdateTransformedPlayerPalette(struct ObjectEvent* playerObj)
 {
-    u32 species = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
+    enum Species species = GetMonData(gPlayerTransformPokemon, MON_DATA_SPECIES);
     struct SpritePalette spritePalette;
     spritePalette.data = gSpeciesInfo[species].overworldPalette;
     spritePalette.tag = species + OBJ_EVENT_MON;
@@ -122,9 +122,9 @@ void TransformPlayer(struct ScriptContext* ctx)
 {
     bool32 defer = ScriptReadByte(ctx);
     u16 value = VarGet(gSpecialVar_0x8004);
-    if (value != PARTY_NOTHING_CHOSEN) {
+    if (value != PARTY_MON_CANCEL) {
         if (defer) {
-            gPlayerTransformPokemon = &gPlayerParty[value];
+            gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][value];
             SetPlayerTransformFlags();
         }
         else
@@ -140,7 +140,7 @@ void TransformPlayerFromScriptByIndex(struct ScriptContext* ctx)
     slot--;
 
     if (defer) {
-        gPlayerTransformPokemon = &gPlayerParty[slot];
+        gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][slot];
         SetPlayerTransformFlags();
     }
     else
@@ -164,7 +164,7 @@ void TransformPlayerFromParty()
 static void TransformPlayerToPokemonByIndex(u8 index)
 {
     gSaveBlock1Ptr->playerTransformPokemonIndex = index;
-    gPlayerTransformPokemon = &gPlayerParty[index];
+    gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][index];
     TransformPlayerToPokemon();
     UpdateFollowingPokemon();
 }

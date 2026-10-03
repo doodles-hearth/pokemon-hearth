@@ -3,6 +3,7 @@
   "name": "SecretBase_Shrub3",
   "layout": "LAYOUT_SECRET_BASE_SHRUB3",
   "music": "MUS_FORTREE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SECRET_BASE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

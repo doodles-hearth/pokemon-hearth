@@ -25,7 +25,9 @@ static const u16 sMoveItemTable[][4] =
 
 SINGLE_BATTLE_TEST("Weakness berries decrease the base power of moves by half", s16 damage)
 {
-    u32 move = 0, item = 0, defender = 0;
+    enum Move move = MOVE_NONE;
+    enum Item item = ITEM_NONE;
+    u32 defender = 0;
     enum Type type = TYPE_NONE;
 
     for (u32 j = 0; j < ARRAY_COUNT(sMoveItemTable); j++)
@@ -50,20 +52,23 @@ SINGLE_BATTLE_TEST("Weakness berries decrease the base power of moves by half", 
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
-        if (1 == i % 2) {
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
+        if (item != ITEM_NONE) {
+            ITEM_POPUP(opponent, item);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
         for (u32 j = 0; j < ARRAY_COUNT(sMoveItemTable); j++) {
-            EXPECT_MUL_EQ(results[j*2].damage, Q_4_12(0.5), results[(j*2)+1].damage);
+            EXPECT_MUL_EQ(results[j*2].damage, Q_4_12(0.5), results[(j*2)+1].damage); // no resist berry damage * 0.5 = resist berry damage
         }
     }
 }
 
 SINGLE_BATTLE_TEST("Weakness berries do not activate unless a move is super effective", s16 damage)
 {
-    u32 move = 0, item = 0, defender = 0;
+    enum Move move = MOVE_NONE;
+    enum Item item = ITEM_NONE;
+    enum Species defender = SPECIES_NONE;
     enum Type type = TYPE_NONE;
 
     for (u32 j = 0; j < ARRAY_COUNT(sMoveItemTable); j++)
@@ -93,13 +98,16 @@ SINGLE_BATTLE_TEST("Weakness berries do not activate unless a move is super effe
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
-        NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
+        NONE_OF {
+            ITEM_POPUP(opponent, item);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
+        }
     }
 }
 
 SINGLE_BATTLE_TEST("Weakness berries do not decrease the power of Struggle", s16 damage)
 {
-    u32 item = 0;
+    enum Item item = ITEM_NONE;
 
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_CHILAN_BERRY; }
@@ -115,7 +123,8 @@ SINGLE_BATTLE_TEST("Weakness berries do not decrease the power of Struggle", s16
         TURN { MOVE(player, MOVE_STRUGGLE); }
     } SCENE {
         NONE_OF {
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
+            ITEM_POPUP(opponent, ITEM_CHILAN_BERRY);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
             MESSAGE("The Chilan Berry weakened the damage to the opposing Wobbuffet!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STRUGGLE, player);
@@ -137,7 +146,8 @@ SINGLE_BATTLE_TEST("Weakness berries do not activate if Disguise blocks the dama
         TURN { MOVE(player, MOVE_METAL_CLAW); }
     } SCENE {
         NONE_OF {
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, opponent);
+            ITEM_POPUP(opponent, ITEM_BABIRI_BERRY);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_BERRY, opponent);
             MESSAGE("The Babiri Berry weakened the damage to the opposing Mimikyu!");
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_METAL_CLAW, player);

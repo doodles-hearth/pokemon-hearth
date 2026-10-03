@@ -6,10 +6,15 @@
 #include "event_data.h"
 #include "field_specials.h"
 #include "field_weather.h"
-#include "main.h"
 #include "lottery_corner.h"
+#include "main.h"
+#include "mass_outbreak.h"
 #include "overworld.h"
+#include "pokerus.h"
+#include "random.h"
 #include "rtc.h"
+#include "shamisen_players.h"
+#include "travelling_merchant.h"
 #include "shiny_vial.h"
 #include "time_events.h"
 #include "tv.h"
@@ -38,6 +43,36 @@ void DoTimeBasedEvents(void)
     }
 }
 
+void UpdateDailySeed(void)
+{
+    gSaveBlock1Ptr->dailySeed = Random32();
+}
+
+void DoDailyEvents(u32 daysSince)
+{
+    ClearDailyFlags();
+    ClearDailyTrainers();
+    UpdateDailySeed();
+    UpdateShamisenPlayers();
+    UpdateTravellingMerchantLocation();
+    UpdateDewfordTrendPerDay(daysSince);
+    UpdateTVShowsPerDay(daysSince);
+    UpdateWeatherPerDay(daysSince);
+    UpdatePartyPokerusTime(daysSince);
+    UpdateBirchState(daysSince);
+    UpdateFrontierManiac(daysSince);
+    UpdateFrontierGambler(daysSince);
+    SetShoalItemFlag(daysSince);
+    if (!OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES)
+    {
+        UpdateMirageRnd(daysSince);
+        SetRandomLotteryNumber(daysSince);
+    }
+    UpdateDaysPassedSinceFormChange(daysSince);
+    RollDailyCampfireEvents(daysSince);
+    DailyResetApricornTrees();
+}
+
 static void UpdatePerDay(struct Time *localTime)
 {
     u16 *days = GetVarPointer(VAR_DAYS);
@@ -46,21 +81,7 @@ static void UpdatePerDay(struct Time *localTime)
     if (*days != localTime->days && *days <= localTime->days)
     {
         daysSince = localTime->days - *days;
-        ClearDailyFlags();
-        ClearDailyTrainers();
-        UpdateDewfordTrendPerDay(daysSince);
-        UpdateTVShowsPerDay(daysSince);
-        UpdateWeatherPerDay(daysSince);
-        UpdatePartyPokerusTime(daysSince);
-        UpdateMirageRnd(daysSince);
-        UpdateBirchState(daysSince);
-        UpdateFrontierManiac(daysSince);
-        UpdateFrontierGambler(daysSince);
-        SetShoalItemFlag(daysSince);
-        SetRandomLotteryNumber(daysSince);
-        UpdateDaysPassedSinceFormChange(daysSince);
-        RollDailyCampfireEvents(daysSince);
-        DailyResetApricornTrees();
+        DoDailyEvents(daysSince);
         *days = localTime->days;
     }
 }
@@ -88,15 +109,7 @@ void FormChangeTimeUpdate()
     s32 i;
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        struct Pokemon *mon = &gPlayerParty[i];
-        u32 targetSpecies = GetFormChangeTargetSpecies(mon, FORM_CHANGE_TIME_OF_DAY, 0);
-        u32 currentSpecies = GetMonData(mon, MON_DATA_SPECIES);
-
-        if (targetSpecies != currentSpecies)
-        {
-            SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
-            CalculateMonStats(mon);
-        }
+        TryFormChange(&gParties[B_TRAINER_PLAYER][i], FORM_CHANGE_TIME_OF_DAY, B_TRAINER_PLAYER);
     }
 }
 

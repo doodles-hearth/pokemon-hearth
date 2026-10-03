@@ -42,7 +42,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BeachboundRoute_EventScript_RunningBoy",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
       "evening": true,
@@ -151,6 +151,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_HOPPIP",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(HOPPIP)",
       "x": 50,
       "y": 18,
@@ -322,7 +323,7 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "BeachboundRoute_EventScript_RunningGirl",
       "flag": "0",
-      "afternoon": true,
+      "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
       "evening": true,
@@ -351,6 +352,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_MUGGED_WOMAN",
       "graphics_id": "OBJ_EVENT_GFX_SAKURA_WOMAN_1",
       "x": 68,
       "y": 9,
@@ -371,6 +373,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_1",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 67,
       "y": 10,
@@ -391,6 +394,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_BOSS",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_BOSS",
       "x": 68,
       "y": 11,
@@ -411,6 +415,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_3",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_KEVIN",
       "x": 69,
       "y": 10,
@@ -431,6 +436,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_BEACHBOUND_GRUNT_2",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
       "x": 68,
       "y": 10,
@@ -480,7 +486,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "ChiiTown_EventScript_WatchfulMom",
+      "script": "BeachboundRoute_EventScript_PlayfulMom",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -500,7 +506,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "TravelingMerchant_EventScript_Keke",
+      "script": "TravellingMerchant_EventScript_Keke",
       "flag": "FLAG_BADGE01_GET",
       "afternoon": false,
       "deadnight": false,
@@ -511,7 +517,7 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TRAVELING_MERCHANT",
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
       "x": 32,
       "y": 18,
       "elevation": 0,
@@ -520,7 +526,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "BeachboundRoute_EventScript_TravelingMerchantSecondTime",
+      "script": "BeachboundRoute_EventScript_TravellingMerchantSecondTime",
       "flag": "FLAG_BADGE01_GET",
       "afternoon": false,
       "deadnight": false,
@@ -622,6 +628,88 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "NULL",
       "flag": "FLAG_POST_CHATOT"
+    },
+    {
+      "local_id": "LOCALID_BEACHBOUND_SAMURAI_RIGHT",
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 52,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 3,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "local_id": "LOCALID_BEACHBOUND_SAMURAI_LEFT",
+      "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
+      "x": 51,
+      "y": 3,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 3,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "NULL",
+      "flag": "FLAG_TEMP_1",
+      "afternoon": true,
+      "deadnight": true,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(KECLEON)",
+      "x": 31,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TravellingMerchant_EventScript_Keke",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
+      "x": 32,
+      "y": 17,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "BeachboundRoute_EventScript_TravellingMerchant",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -644,6 +732,14 @@
       "y": 15,
       "elevation": 0,
       "dest_map": "MAP_KURA_BEACHBOUND_GATE",
+      "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_ID_LEFT_HARVEST_SHRINE",
+      "x": 53,
+      "y": 0,
+      "elevation": 0,
+      "dest_map": "MAP_BEACHBOUND_ROUTE",
       "dest_warp_id": "0"
     }
   ],
@@ -948,5 +1044,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "BeachboundRoute_Sign_TrainerTips_XP"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

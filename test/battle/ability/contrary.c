@@ -26,7 +26,7 @@ SINGLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a single battle",
             MESSAGE("The opposing Spinda's Attack rose!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("Mightyena's Intimidate cuts the opposing Spinda's Attack!");
+            MESSAGE("The opposing Spinda's Attack fell!");
         }
         HP_BAR(player, captureDamage: &results[i].damage);
     } THEN {
@@ -62,14 +62,14 @@ DOUBLE_BATTLE_TEST("Contrary raises Attack when Intimidated in a double battle",
             MESSAGE("The opposing Spinda's Attack rose!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-            MESSAGE("Mightyena's Intimidate cuts the opposing Spinda's Attack!");
+            MESSAGE("The opposing Spinda's Attack fell!");
         }
         if (abilityRight == ABILITY_CONTRARY) {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
             MESSAGE("The opposing Spinda's Attack rose!");
         } else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-            MESSAGE("Mightyena's Intimidate cuts the opposing Spinda's Attack!");
+            MESSAGE("The opposing Spinda's Attack fell!");
         }
         HP_BAR(playerLeft, captureDamage: &results[i].damageLeft);
         HP_BAR(playerRight, captureDamage: &results[i].damageRight);
@@ -88,7 +88,7 @@ SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normall
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
-        ASSUME(MoveHasAdditionalEffectSelf(MOVE_OVERHEAT, MOVE_EFFECT_SP_ATK_MINUS_2) == TRUE);
+        ASSUME_MOVE_EFFECT_STAT_CHANGE(MOVE_OVERHEAT, self: TRUE, spAtk: -2);
         ASSUME(GetMoveCategory(MOVE_OVERHEAT) == DAMAGE_CATEGORY_SPECIAL);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_SPINDA) { Ability(ability); }
@@ -101,7 +101,7 @@ SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normall
         if (ability == ABILITY_CONTRARY) {
             // ABILITY_POPUP(opponent, ABILITY_CONTRARY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Spinda's Sp. Atk sharply rose!");
+            MESSAGE("The opposing Spinda's Sp. Atk rose sharply!");
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
@@ -113,7 +113,7 @@ SINGLE_BATTLE_TEST("Contrary raises stats after using a move which would normall
         if (ability == ABILITY_CONTRARY) {
             // ABILITY_POPUP(opponent, ABILITY_CONTRARY);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Spinda's Sp. Atk sharply rose!");
+            MESSAGE("The opposing Spinda's Sp. Atk rose sharply!");
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
@@ -132,7 +132,7 @@ SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normal
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_SWORDS_DANCE) == EFFECT_ATTACK_UP_2);
+        ASSUME_STAT_CHANGE(MOVE_SWORDS_DANCE, attack: +2);
         PLAYER(SPECIES_WOBBUFFET) { Defense(102); }
         OPPONENT(SPECIES_SPINDA) { Ability(ability); Attack(100); }
     } WHEN {
@@ -151,7 +151,7 @@ SINGLE_BATTLE_TEST("Contrary lowers a stat after using a move which would normal
         }
         else {
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
-            MESSAGE("The opposing Spinda's Attack sharply rose!");
+            MESSAGE("The opposing Spinda's Attack rose sharply!");
         }
 
         // MESSAGE("The opposing Spinda used Scratch!");
@@ -169,10 +169,8 @@ SINGLE_BATTLE_TEST("Contrary raises a stat after using a move which would normal
     PARAMETRIZE { ability = ABILITY_CONTRARY; }
     PARAMETRIZE { ability = ABILITY_TANGLED_FEET; }
     GIVEN {
-        // TODO EVA prevent tests from failing
         ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
-
-        ASSUME(GetMoveEffect(MOVE_GROWL) == EFFECT_ATTACK_DOWN);
+        ASSUME_STAT_CHANGE(MOVE_GROWL, attack: -1);
         PLAYER(SPECIES_WOBBUFFET) { Speed(3); }
         OPPONENT(SPECIES_SPINDA) { Ability(ability); Speed(2); }
     } WHEN {
@@ -246,7 +244,7 @@ SINGLE_BATTLE_TEST("Sticky Web raises Speed by 1 for Contrary mon on switch-in")
         TURN {}
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_STICKY_WEB, player);
-        MESSAGE("A sticky web has been laid out on the ground around the opposing team!");
+        MESSAGE("A sticky web has been laid out on the ground on the opposing side!");
         MESSAGE("2 sent out Snivy!");
         MESSAGE("The opposing Snivy was caught in a sticky web!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
@@ -258,7 +256,7 @@ AI_SINGLE_BATTLE_TEST("AI sees Contrary-effected moves correctly in MoveEffectIn
 {
     GIVEN{
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING | AI_FLAG_SMART_MON_CHOICES | AI_FLAG_OMNISCIENT);
-        PLAYER(SPECIES_HERACROSS){
+        PLAYER(SPECIES_HERACROSS) {
             Level(44);
             HP(1);
             Speed(5);
@@ -266,7 +264,7 @@ AI_SINGLE_BATTLE_TEST("AI sees Contrary-effected moves correctly in MoveEffectIn
             Item(ITEM_LOADED_DICE);
             Moves(MOVE_PIN_MISSILE);
         }
-        OPPONENT(SPECIES_SERPERIOR){
+        OPPONENT(SPECIES_SERPERIOR) {
             Level(44);
             Speed(10);
             Nature(NATURE_TIMID);
@@ -274,13 +272,70 @@ AI_SINGLE_BATTLE_TEST("AI sees Contrary-effected moves correctly in MoveEffectIn
             Moves(MOVE_DRAGON_PULSE, MOVE_SPIN_OUT, MOVE_HIDDEN_POWER, MOVE_GLARE);
         }
     } WHEN {
-        TURN{
+        TURN {
             MOVE(player, MOVE_PIN_MISSILE);
             EXPECT_MOVE(opponent, MOVE_SPIN_OUT); // previously all 107, now sees speed can rise w/ Contrary
         }
     }
 }
 
-TO_DO_BATTLE_TEST("Contrary does not invert stat changes that have been Baton-passed")
+SINGLE_BATTLE_TEST("Contrary does not invert stat changes that have been Baton-passed")
+{
+    GIVEN {
+        ASSUME_STAT_CHANGE(MOVE_SWORDS_DANCE, attack: +2);
+        ASSUME(GetMoveEffect(MOVE_BATON_PASS) == EFFECT_BATON_PASS);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_SNIVY) { Ability(ABILITY_CONTRARY); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SWORDS_DANCE); }
+        TURN { MOVE(opponent, MOVE_BATON_PASS); SEND_OUT(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BATON_PASS, opponent);
+        MESSAGE("2 sent out Snivy!");
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
+    }
+}
 
-TO_DO_BATTLE_TEST("Contrary inverts stat changes from X Attack and other stat-boosting items.")
+SINGLE_BATTLE_TEST("Contrary inverts stat changes from X items")
+{
+    enum Item item;
+    enum Stat stat;
+
+    PARAMETRIZE { item = ITEM_X_ATTACK;   stat = STAT_ATK; }
+    PARAMETRIZE { item = ITEM_X_DEFENSE;  stat = STAT_DEF; }
+    PARAMETRIZE { item = ITEM_X_SP_ATK;   stat = STAT_SPATK; }
+    PARAMETRIZE { item = ITEM_X_SP_DEF;   stat = STAT_SPDEF; }
+    PARAMETRIZE { item = ITEM_X_SPEED;    stat = STAT_SPEED; }
+    PARAMETRIZE { item = ITEM_X_ACCURACY; stat = STAT_ACC; }
+
+    GIVEN {
+        WITH_CONFIG(B_X_ITEMS_BUFF, GEN_7);
+        ASSUME(gItemsInfo[item].battleUsage == EFFECT_ITEM_INCREASE_STAT);
+        PLAYER(SPECIES_SNIVY) { Ability(ABILITY_CONTRARY); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { USE_ITEM(player, item); }
+    } THEN {
+        EXPECT_EQ(player->statStages[stat], DEFAULT_STAT_STAGE - 2);
+    }
+}
+
+SINGLE_BATTLE_TEST("Contrary inverts stat changes from Max Mushrooms")
+{
+    GIVEN {
+        ASSUME(gItemsInfo[ITEM_MAX_MUSHROOMS].battleUsage == EFFECT_ITEM_INCREASE_ALL_STATS);
+        PLAYER(SPECIES_SNIVY) { Ability(ABILITY_CONTRARY); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { USE_ITEM(player, ITEM_MAX_MUSHROOMS); }
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE - 1);
+        EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE - 1);
+    }
+}

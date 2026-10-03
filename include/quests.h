@@ -25,6 +25,9 @@
 #define ITEM 2
 #define PKMN 3
 
+#define MAX_QUEST_STATES 50
+/* Defines how many states a complex quest can have */
+
 struct SubQuest
 {
     const u8 id;
@@ -32,20 +35,21 @@ struct SubQuest
 	const u8 *desc;
 	const u8 *map;
 	const u16 sprite;
-    const u8 spritetype;
+    const u8 spriteType;
     const u8 *type;
 }; 
 
 struct SideQuest
 {
 	const u8 *name;
-	const u8 *desc;
+	const u8 *desc[MAX_QUEST_STATES];
 	const u8 *donedesc;
-	const u8 *map;
-	const u16 sprite;
-    const u8 spritetype;
+	const u8 *map[MAX_QUEST_STATES];
+	const u16 sprite[MAX_QUEST_STATES];
+    const u8 spriteType[MAX_QUEST_STATES];
 	const struct SubQuest *subquests;
 	const u8 numSubquests;
+	const u16 questVariable;
 }; 
 
 enum QuestCases
@@ -72,6 +76,8 @@ enum QuestCases
 void QuestMenu_Init(u8 a0, MainCallback callback);
 u8 QuestMenu_GetSetSubquestState(u8 quest, u8 caseId, u8 childQuest);
 u8 QuestMenu_GetSetQuestState(u8 quest, u8 caseId);
+u32 QuestMenu_GetQuestVariableId(u8 quest);
+u32 QuestMenu_GetQuestVariable(u8 quest);
 void Task_QuestMenu_OpenFromStartMenu(u8);
 void QuestMenu_CopyQuestName(u8 *dst, u8 questId);
 void QuestMenu_CopySubquestName(u8 *dst, u8 parentId, u8 childId);

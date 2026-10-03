@@ -1,6 +1,8 @@
 #include "global.h"
+#include "clock.h"
 #include "new_game.h"
 #include "random.h"
+#include "clock.h"
 #include "pokemon.h"
 #include "roamer.h"
 #include "pokemon_size_record.h"
@@ -19,6 +21,7 @@
 #include "event_data.h"
 #include "money.h"
 #include "trainer_hill.h"
+#include "trainer_tower.h"
 #include "tv.h"
 #include "coins.h"
 #include "text.h"
@@ -39,6 +42,9 @@
 #include "pokemon_jump.h"
 #include "decoration_inventory.h"
 #include "secret_base.h"
+#include "string_util.h"
+#include "shamisen_players.h"
+#include "travelling_merchant.h"
 #include "player_pc.h"
 #include "field_specials.h"
 #include "berry_powder.h"
@@ -57,6 +63,7 @@
 #include "constants/decorations.h"
 
 extern const u8 EventScript_ResetAllMapFlags[];
+extern const u8 EventScript_ResetAllMapFlagsFrlg[];
 
 static void ClearFrontierRecord(void);
 static void WarpToStartPositionInPlayersBedroom(void);
@@ -113,7 +120,6 @@ static void SetDefaultOptions(void)
 
 static void ClearPokedexFlags(void)
 {
-    gUnusedPokedexU8 = 0;
     memset(&gSaveBlock1Ptr->dexCaught, 0, sizeof(gSaveBlock1Ptr->dexCaught));
     memset(&gSaveBlock1Ptr->dexNamed, 0, sizeof(gSaveBlock1Ptr->dexNamed));
     memset(&gSaveBlock1Ptr->dexSeen, 0, sizeof(gSaveBlock1Ptr->dexSeen));
@@ -142,8 +148,13 @@ static void ClearFrontierRecord(void)
 static void WarpToStartPositionInPlayersBedroom(void)
 {
     // TODO EVA not here goddammit
-    NameRival();
-    SetWarpDestination(MAP_GROUP(MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 5);
+    if (IS_FRLG) {
+        SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
+    }
+    else {
+        NameRival();
+        SetWarpDestination(MAP_GROUP(MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), MAP_NUM(MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM), WARP_ID_NONE, 2, 5);
+    }
     WarpIntoMap();
 }
 
@@ -165,9 +176,15 @@ void ResetMenuAndMonGlobals(void)
 
 void NewGameInitData(void)
 {
+#if IS_FRLG
+    u8 rivalName[PLAYER_NAME_LENGTH + 1];
+#endif
     if (gSaveFileStatus == SAVE_STATUS_EMPTY || gSaveFileStatus == SAVE_STATUS_CORRUPT)
         RtcReset();      
 
+#if IS_FRLG
+    StringCopy(rivalName, gSaveBlock1Ptr->rivalName);
+#endif
     gDifferentSaveFile = TRUE;
     gSaveBlock2Ptr->encryptionKey = 0;
     ZeroPlayerPartyMons();
@@ -196,7 +213,7 @@ void NewGameInitData(void)
     ClearPlayerLinkBattleRecords();
     InitSeedotSizeRecord();
     InitLotadSizeRecord();
-    gPlayerPartyCount = 0;
+    gPartiesCount[B_TRAINER_PLAYER] = 0;
     ZeroPlayerPartyMons();
     ResetPokemonStorageSystem();
     DeactivateAllRoamers();
@@ -209,8 +226,15 @@ void NewGameInitData(void)
     InitDewfordTrend();
     ResetFanClub();
     ResetLotteryCorner();
+    UpdateDailySeed();
     WarpToStartPositionInPlayersBedroom();
-    RunScriptImmediately(EventScript_ResetAllMapFlags);
+    if (IS_FRLG)
+        RunScriptImmediately(EventScript_ResetAllMapFlagsFrlg);
+    else
+        RunScriptImmediately(EventScript_ResetAllMapFlags);
+#if IS_FRLG
+        StringCopy(gSaveBlock1Ptr->rivalName, rivalName);
+#endif
     ResetMiniGamesRecords();
     InitUnionRoomChatRegisteredTexts();
     InitLilycoveLady();
@@ -220,10 +244,10 @@ void NewGameInitData(void)
     ClearMysteryGift();
     WipeTrainerNameRecords();
     ResetTrainerHillResults();
+    ResetTrainerTowerResults();
     ResetContestLinkResults();
     SetCurrentDifficultyLevel(DIFFICULTY_NORMAL);
     ResetItemFlags();
-    gSpecialVar_MonBoxId = 0xFF;
     ResetDexNav();
     ClearFollowerNPCData();
 
@@ -237,6 +261,8 @@ void NewGameInitData(void)
     ResetLimitedShops();
     DecorationAdd(DECOR_MAREEP_DOLL);
     GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_JOLTIK), FLAG_SET_SEEN);
+    ResetShamisenPlayersNewGame();
+    ReSetTravellingMerchantNewGame();
 }
 
 static void ResetMiniGamesRecords(void)

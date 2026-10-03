@@ -15,17 +15,18 @@
   "connections": [
     {
       "map": "MAP_OPEN_SEA_ICY",
-      "offset": -40,
+      "offset": -20,
       "direction": "down"
     },
     {
       "map": "MAP_OPEN_SEA_CORAL",
-      "offset": 0,
+      "offset": 15,
       "direction": "right"
     }
   ],
   "object_events": [],
   "warp_events": [],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

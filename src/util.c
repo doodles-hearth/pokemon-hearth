@@ -75,7 +75,7 @@ static const u16 sCrc16Table[] =
     0x7BC7, 0x6A4E, 0x58D5, 0x495C, 0x3DE3, 0x2C6A, 0x1EF1, 0x0F78,
 };
 
-const u8 gMiscBlank_Gfx[] = INCBIN_U8("graphics/interface/blank.4bpp");
+const u8 gMiscBlank_Gfx[] = INCGFX_U8("graphics/interface/blank.png", ".4bpp");
 
 u8 CreateInvisibleSpriteWithCallback(void (*callback)(struct Sprite *))
 {
@@ -166,20 +166,6 @@ void CopySpriteTiles(u8 shape, u8 size, u8 *tiles, u16 *tilemap, u8 *output)
     }
 }
 
-int CountTrailingZeroBits(u32 value)
-{
-    u8 i;
-
-    for (i = 0; i < 32; i++)
-    {
-        if ((value & 1) == 0)
-            value >>= 1;
-        else
-            return i;
-    }
-    return 0;
-}
-
 u16 CalcCRC16(const u8 *data, s32 length)
 {
     u16 i, j;
@@ -226,6 +212,10 @@ void BlendPalette(u16 palOffset, u16 numEntries, u8 coeff, u32 blendColor)
 {
     u16 i;
     struct PlttData *data2 = (struct PlttData *) & blendColor;
+    assertf(palOffset + numEntries <= PLTT_BUFFER_SIZE, "BlendPalette out of bounds: palOffset=%d numEntries=%d", palOffset, numEntries)
+    {
+        return;
+    }
     for (i = 0; i < numEntries; i++)
     {
         u16 index = i + palOffset;
@@ -359,7 +349,7 @@ static const s8 sHueShiftSpeciesLimit[NUM_SPECIES] =
     // todo - add limits for any mons after gen3 that need them
 };
 
-u32 GetMaxColorationRange(u16 species, bool8 isShiny)
+u32 GetMaxColorationRange(enum Species species, bool8 isShiny)
 {
     s8 limitMode = sHueShiftSpeciesLimit[species];
     u32 range;
@@ -388,13 +378,13 @@ u32 GetMaxColorationRange(u16 species, bool8 isShiny)
     return range;
 }
 
-u32 CreateNewColoration(u16 species, bool8 isShiny)
+u32 CreateNewColoration(enum Species species, bool8 isShiny)
 {
     u32 range = GetMaxColorationRange(species, isShiny);
     return (Random32() % (range + 1));
 }
 
-void MakePaletteUnique(u16 palOffset, u16 species, u32 value, bool8 isShiny)
+void MakePaletteUnique(u16 palOffset, enum Species species, u32 value, bool8 isShiny)
 {
     // System made by Citrus Bolt :')
     u16 i, range;
@@ -552,4 +542,15 @@ void MakePaletteUnique(u16 palOffset, u16 species, u32 value, bool8 isShiny)
             gPlttBufferFaded[index] = RGB((u8)(r * 31 / 1000), (u8)(g * 31 / 1000), (u8)(b * 31 / 1000));
         }
     }
+}
+
+s32 SubtractClamped(s32 lowestVal, s32 highestVal, s32 currentVal, s32 delta)
+{
+    s32 newValue = currentVal - delta;
+    if (newValue > highestVal)
+        newValue = highestVal;
+    else if (newValue < lowestVal)
+        newValue = lowestVal;
+
+    return newValue;
 }

@@ -148,14 +148,26 @@ script SabersideQuarry_EventScript_Hagane {
 	end
 }
 
+script SabersideQuarry_EventScript_Eren {
+	trainerbattle_single(
+		TRAINER_EREN,
+		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Sableye! Sableye!"),
+		format("No, don't try to capture me!")
+	)
+	setspeaker(SP_NAME_DISGUISE_KID)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}I dress up as a Pokémon and trick people!"))
+	release
+	end
+}
+
 script SabersideQuarry_EventScript_Haruki {
 	trainerbattle_single(
 		TRAINER_HARUKI,
-		format("{CREATE_MUGSHOT MUGSHOT_MINER 0}My Sandy could tear right through you!"),
+		format("{CREATE_MUGSHOT MUGSHOT_DISGUISE_KID 0}My Sandy could tear right through you!"),
 		format("You tore right through me…")
 	)
 	setspeaker(SP_NAME_MINER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MINER 0}Sandy is used to digging through softer minerals.\lHer poor claws are all tender!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_DISGUISE_KID 0}Sandy is used to digging through softer minerals.\lHer poor claws are all tender!"))
 	release
 	end
 }

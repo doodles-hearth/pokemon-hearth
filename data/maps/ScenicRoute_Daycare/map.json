@@ -3,6 +3,7 @@
   "name": "ScenicRoute_Daycare",
   "layout": "LAYOUT_SCENIC_ROUTE_DAYCARE",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SCENIC_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

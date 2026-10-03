@@ -316,5 +316,6 @@
       "item": "ITEM_MOON_STONE",
       "flag": "FLAG_HIDDEN_ITEM_SHOGUNATE_MOON_STONE"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

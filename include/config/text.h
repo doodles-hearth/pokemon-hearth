@@ -10,6 +10,7 @@
 #define TEXT_SPEED_SLOW_MODIFIER     1       // How fast the SLOW text speed option prints
 #define TEXT_SPEED_MEDIUM_MODIFIER   1       // How fast the MID text speed option prints
 #define TEXT_SPEED_FAST_MODIFIER     1       // How fast the FAST text speed option prints
+#define TEXT_SPEED_HARIKO_MODIFIER   2       // How fast the HARIKO text speed option prints.
 #define TEXT_SPEED_INSTANT_MODIFIER  12      // Needed only for the animation delays
 #define TEXT_SPEED_INSTANT           FALSE   // Renders all text as fast as it can, basically instant. Overrides FLAG_TEXT_SPEED_INSTANT and in-game player options menu setting.
 

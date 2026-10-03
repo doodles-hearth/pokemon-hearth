@@ -17,7 +17,7 @@ Route133_EventScript_Linda::
 	end
 
 Route133_EventScript_Warren::
-	trainerbattle_single TRAINER_WARREN, Route133_Text_WarrenIntro, Route133_Text_WarrenDefeat
+	trainerbattle_single TRAINER_DUMMY, Route133_Text_WarrenIntro, Route133_Text_WarrenDefeat
 	msgbox Route133_Text_WarrenPostBattle, MSGBOX_AUTOCLOSE
 	end
 

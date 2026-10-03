@@ -760,5 +760,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MaguroHarbor_EventScript_FishPokemonSalesmanSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

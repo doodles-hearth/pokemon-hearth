@@ -3,6 +3,7 @@
   "name": "Soulkeep_Crypt",
   "layout": "LAYOUT_SOULKEEP_CRYPT",
   "music": "MUS_RG_SEVII_CAVE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOULKEEP_UNDERGROUND",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

@@ -3,6 +3,7 @@
 
 #include "sprite.h"
 #include "constants/field_weather.h"
+#include "constants/weather.h"
 
 #define TAG_WEATHER_START 0x1200
 enum {
@@ -14,6 +15,7 @@ enum {
     GFXTAG_BUBBLE,
     GFXTAG_RAIN,
     GFXTAG_LEAVES,
+    GFXTAG_DECAY,
 };
 enum {
     PALTAG_WEATHER = TAG_WEATHER_START,
@@ -47,6 +49,11 @@ struct Weather
     u8 colorMapStepCounter;
     u16 fadeDestColor:15;
     u16 noShadows:1; // Certain weathers require blend coeffs that do not work nice with shadows
+    // Desaturation
+    u8 desatAmt;
+    u8 desatTarget;
+    u8 desatStepDelay;
+    u8 desatStepCounter;
     u8 palProcessingState;
     u8 fadeScreenCounter;
     bool8 readyForInit;
@@ -153,6 +160,7 @@ void SetCurrentAndNextWeatherNoDelay(u8 weather);
 void ApplyWeatherColorMapIfIdle(s8 colorMapIndex);
 void ApplyWeatherColorMapIfIdle_Gradual(u8 colorMapIndex, u8 targetColorMapIndex, u8 colorMapStepDelay);
 void FadeScreen(u8 mode, s8 delay);
+void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes);
 void FadeScreenHardware(u32 mode, s32 delay);
 bool8 IsWeatherNotFadingIn(void);
 void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex, bool8 allowFog);
@@ -236,11 +244,15 @@ void Bubbles_InitVars(void);
 void Bubbles_Main(void);
 void Bubbles_InitAll(void);
 bool8 Bubbles_Finish(void);
+void Decay_InitVars(void);
+void Decay_Main(void);
+void Decay_InitAll(void);
+bool8 Decay_Finish(void);
 
 u8 GetSavedWeather(void);
-void SetSavedWeather(u32 weather);
+void SetSavedWeather(enum OverworldWeather weather);
 void SetSavedWeatherFromCurrMapHeader(void);
-void SetWeather(u32 weather);
+void SetWeather(enum OverworldWeather weather);
 void DoCurrentWeather(void);
 void UpdateWeatherPerDay(u16 increment);
 void ResumePausedWeather(void);

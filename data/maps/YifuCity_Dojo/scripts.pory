@@ -944,7 +944,7 @@ script YifuCity_Dojo_EventScript_Akari {
 script YifuCity_Dojo_EventScript_Yuka {
     trainerbattle_single(
 		TRAINER_YUKA,
-		format("You have a good eye!\nLet's see if that applies to Pokémon, as well!"),
+		format("You have a good eye!\nLet's see if that applies to Pokémon too!"),
 		format("You have many talents, I see!")
 	)
 	setspeaker(SP_NAME_KIMONO_GIRL)
@@ -966,11 +966,11 @@ script YifuCity_Dojo_EventScript_Nanami {
 script YifuCity_Dojo_EventScript_Kanae {
     trainerbattle_single(
 		TRAINER_KANAE,
-		format("You didn't see me trip over my own foot, did you?"),
+		("You didn't see me trip over my own foot,\ndid you?"),
         format("My dance wasn't perfect!\nI deserve this!")
 	)
 	setspeaker(SP_NAME_KIMONO_GIRL)
-	msgbox(format("Next time my dance will be perfect, you'll see!"), MSGBOX_AUTOCLOSE)
+	msgbox(("Next time my dance will be perfect,\nyou'll see!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -1011,7 +1011,7 @@ script YifuCity_Dojo_EventScript_Dancer2 {
     faceplayer
     setspeaker(SP_NAME_KIMONO_GIRL)
     msgbox(format(
-        "Come back to watch us dance sometimes!"
+        "Come back to watch us dance sometime!"
     ))
     release
 }
@@ -1032,7 +1032,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
     if (!flag(FLAG_BADGE03_GET)) {
         setspeaker(SP_NAME_YUTAKA)
         msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}Well done! Welcome to Yifu City's Doj-"
+            "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}Well done!\nWelcome to Yifu City's Doj-"
         ))
 
         applymovement(VAR_LAST_TALKED, Common_Movement_ExclamationMark)
@@ -1049,17 +1049,16 @@ script YifuCity_Dojo_EventScript_Yutaka {
             "Is there a reason for the\n"
             "accoutrement you're donning?\p"
             "A carnival, perhaps?\nOr have you lost a bet?\p"
-            "Or do you just lack a basic sense of style to such an extreme degree?\p"
+            "Or do you just lack a basic sense of\nstyle to such an extreme degree?\p"
             "Here you are, parading around\n"
             "in your peasant's clothes…\p"
             "(…Yutaka, you must not let this\n"
             "offend you so!\l"
             "You are stronger than that!)\p"
             "Ahem… Let us move on…\p"
-            "You shall be fighting my exquisite assortment of Pokémon,\l"
-            "in the hopes of obtaining\l"
-            "an official Token from me.\p"
-            "Try not to be too overwhelmed by my strength and, most of all, by my impeccable sense of fashion.\p"
+            "You shall be fighting my exquisite\nassortment of Pokémon,\l"
+            "in the hopes of obtaining\lan official Token from me.\p"
+            "Try not to be too overwhelmed by my\nstrength and, most of all,\lby my impeccable sense of fashion.\p"
             "Let this battle begin!"
 		),
 		format("How dare you!"),
@@ -1068,10 +1067,10 @@ script YifuCity_Dojo_EventScript_Yutaka {
 	)
     
 	setspeaker(SP_NAME_YUTAKA)
-    msgbox(format(
+    msgbox(
         "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}You shall achieve great things,\ndespite your fashion faux-pas.\p"
         "I hope to battle you again."
-	))
+	)
 
     release
 	end
@@ -1079,21 +1078,18 @@ script YifuCity_Dojo_EventScript_Yutaka {
 
 script YifuCity_Dojo_EventScript_YutakaDefeated {
     // removespeakername
-	message(format(
-		"{PLAYER} received the Silk Token from Yutaka."
-	))
+	message(
+		"{PLAYER} received the Silk Token\nfrom Yutaka."
+	)
 	waitmessage
 	call(Common_EventScript_PlayGymBadgeFanfare)
 
     setspeaker(SP_NAME_YUTAKA)
 	msgbox(
-		format(
-            "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}I am outrée! Your techniques are rough and vulgar, yet…\p"
-            "Victory is yours…\nThat is undeniable.\p"
-			"I guess what you lack in aesthetic values, you compensate in strength.\p"
-			"Do accept this, as well."
-		),
-		MSGBOX_DEFAULT
+        "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}I am outrée! Your techniques are\nrough and vulgar, yet…\p"
+        "Victory is yours…\nThat is undeniable.\p"
+        "I guess what you lack in aesthetic\nvalues, you compensate in strength.\p"
+        "Do accept this, as well."
 	)
     closemessage
 	
@@ -1101,16 +1097,15 @@ script YifuCity_Dojo_EventScript_YutakaDefeated {
 
     setspeaker(SP_NAME_YUTAKA)
 	msgbox(
-		format(
-			"{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}This scroll contains my famous X-Scissor technique.\p"
-            "I perfected it back when I worked as a seamstress.\p"
-			"About that, uh… We should go clothes-shopping together sometime.\p"
-            "I cannot bear to see your image suffer so."
-		)
+        "{CREATE_MUGSHOT MUGSHOT_YUTAKA 0}This scroll contains my famous\nX-Scissor technique.\p"
+        "I perfected it back when I worked as a\nseamstress.\p"
+        "About that, uh… We should go\nclothes-shopping together sometime.\p"
+        "I cannot bear to see your image\nsuffer so."
 	)
 	closemessage
 
 	setflag(FLAG_BADGE03_GET)
+    setmemoryall(MEMORY_BEAT_DOJO)
 	setvar(VAR_0x8008, 3)
 	call(Common_EventScript_SetGymTrainers)
 	addvar(VAR_PLAYER_REPUTATION, 5)

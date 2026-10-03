@@ -5,7 +5,6 @@ const FLAG_HIDE_ROCK_RIGHT = FLAG_TEMP_3
 const FLAG_JUST_GOT_ROCK_SMASH = FLAG_TEMP_4
 
 mapscripts OrchardPath_MapScripts {
-
 }
 
 script OrchardPath_EventScript_UumeForestSoulkeepSign {
@@ -135,8 +134,6 @@ script OrchardPath_Samurai_KnowAboutDecay {
 		"We cannot let you through though, so please be on your way.\p"
 		"Now now, move along!"
 	))
-	
-	setvar(VAR_DECAY_BEACHBOUND_ROUTE, 7)
 }
 
 script OrchardPath_EventScript_Umbreon {
@@ -410,6 +407,73 @@ script OrchardPath_EventScript_Daichi {
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Lemme bring these juicy Lum Berries back home…"
+	))
+	closemessage
+	end
+}
+
+script OrchardPath_EventScript_Utsu {
+	trainerbattle_single(
+		TRAINER_UTSU,
+		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}This is my favorite spot for a stroll!",
+		"I wasn't exactly prepared for a\nbattle!"
+	)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}{SPEAKER NAME_BEAUTY}Are you headed west?\nBe sure to find shelter before dark!"
+	))
+	closemessage
+	end
+}
+
+script OrchardPath_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Hello, {PLAYER}!\nGoing Berry picking?\p"
+		"Right, um, want to buy something?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Thank you very much!\nUh, where was I going next?…"
+	))
+	closemessage
+
+	release
+}
+
+script OrchardPath_EventScript_Gako {
+	trainerbattle_double(
+		TRAINER_GAKO_GEN,
+		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
+		"We only lost because Gako's busy\npretending to be a Croconaw!",
+		"{SPEAKER NAME_TWIN_GEN}Croco, naw.\n(You need two Pokémon to battle us.)"
+	)
+	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script OrchardPath_EventScript_Gen {
+	trainerbattle_double(
+		TRAINER_GAKO_GEN,
+		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
+		"We only lost because Gako's busy\npretending to be a Croconaw!",
+		"{SPEAKER NAME_TWIN_GAKO}You need two Pokémon to battle us."
+	)
+	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script OrchardPath_EventScript_Masuo {
+	trainerbattle_single(
+		TRAINER_MASUO,
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Nocturnal Pokémon are so much cooler!",
+		"Your Pokémon aren't bad either…"
+	)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}{SPEAKER NAME_YOUNGSTER}I sneak out at night to catch badass\nPokémon and impress my friends!"
 	))
 	closemessage
 	end

@@ -96,8 +96,8 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 
 	bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
 	setspeaker(SP_NAME_SCULPTOR)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Please show me {STR_VAR_1}. My soul aches for it!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Please show me {STR_VAR_1}.\nMy soul aches for it!"
 	))
 	
 	checkspecies_choose(VAR_TEMP_1)
@@ -110,10 +110,10 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 
 		bufferspeciesname(STR_VAR_1, VAR_TEMP_1)
 		setspeaker(SP_NAME_SCULPTOR)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Oh… … … …\n"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Oh… … … …{PAUSE 8}\n"
 			"… … …Oh!!\p"
-			"This is is… I can feel the raw inspiration coursing through my veins!\p"
+			"This is is… I can feel the inspiration\ncoursing through my veins!\p"
 			"Hello, {STR_VAR_1}!\nStand still just a moment…"
 		))
 		closemessage
@@ -136,15 +136,14 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 
 		bufferspeciesname(STR_VAR_2, VAR_TEMP_2)
 		setspeaker(SP_NAME_SCULPTOR)
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}There it is! My best work yet!\p"
 			"… … …And yet…\p"
-			"It still feels like something is missing.\p"
-			"I think… I think…\n"
-			"This wasn't the Pokémon my destiny was telling me about.\p"
-			"I am seeing {STR_VAR_2} in my mind's eye…\p"
-			"Yes! Please show me {STR_VAR_2} to help me achieve my magnum opus.\p"
-			"Still, I must reward you for your assistance. Take this rock technique!"
+			"It still feels like something is\nmissing.\lI think… I think…\p"
+			"This wasn't the Pokémon my destiny\nwas telling me about.\p"
+			"I am seeing {STR_VAR_2}\nin my mind's eye…\p"
+			"Yes! Please show me {STR_VAR_2}\nto help me achieve my magnum opus.\p"
+			"Still, I must reward you for your\nassistance. Take this rock technique!"
 		))
 		closemessage
 
@@ -154,7 +153,7 @@ script Silveridge_House1_EventScript_Sculptor_BringMeMon {
 		addvar(VAR_STATE_SCULPTOR, 1)
 	} else {
 		setspeaker(SP_NAME_SCULPTOR)
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Why must you toy with me so?"
 		))
 	}
@@ -169,8 +168,8 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SCULPTOR)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Please do not talk to me. I am creating."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}Please do not talk to me.\nI am creating."
 	))
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -185,13 +184,15 @@ script Silveridge_House1_EventScript_Sculptor_FirstTime {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_SCULPTOR)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}…Oh? Could it be? Another noble soul moved by the ancestral art of sculpture?\p"
-		"Am I no longer utterly alone? Oh, my heart swells up at the idea!\p"
-		"As a fellow connoisseur of sculpture, you must know how difficult it is to find a proper model, one that will stir in its beholder the most violent passions.\p"
-		"To transform a raw slab of stone into the pinnacle of beauty… That is my aspiration.\p"
-		"To satisfy this need, I must lay my eyes on a Ponyta.\p"
-		"I see that you are a Wielder. Please show me a Ponyta to help me achieve my magnum opus."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}…Oh? Could it be?\p"
+		"Another noble soul moved by the\nancestral art of sculpture?\p"
+		"Am I no longer utterly alone?\nOh, my heart swells up at the idea!\p"
+		"As a fellow connoisseur of sculpture,\nyou must know how difficult it is to\lfind a proper model!\p"
+		"One that will stir in its beholder\nthe most violent passions!\p"
+		"To transform a raw slab of stone into\nthe pinnacle of beauty…\lThat is my aspiration.\p"
+		"To satisfy this need, I must lay\nmy eyes on a Ponyta.\p"
+		"I see that you are a Wielder.\nPlease show me a Ponyta to help me\lachieve my magnum opus."
 	))
 	closemessage
 

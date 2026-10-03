@@ -3,6 +3,7 @@
   "name": "OrchardPath_GuardHouse",
   "layout": "LAYOUT_ORCHARD_PATH_GUARD_HOUSE",
   "music": "MUS_RG_SEVII_ROUTE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ORCHARD_PATH",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

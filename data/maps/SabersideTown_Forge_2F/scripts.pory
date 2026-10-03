@@ -49,6 +49,7 @@ script SabersideTown_Dojo_EventScript_MasamuneDefeated {
 	closemessage
 
 	setflag(FLAG_BADGE04_GET)
+    setmemoryall(MEMORY_BEAT_DOJO)
 	setvar(VAR_0x8008, 4)
 	call(Common_EventScript_SetGymTrainers)
 	addvar(VAR_PLAYER_REPUTATION, 5)

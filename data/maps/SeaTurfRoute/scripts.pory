@@ -1,2 +1,51 @@
 mapscripts SeaTurfRoute_MapScripts {}
 
+// TODO EVA dialogue
+script SeaTurfRoute_EventScript_Wailmer {
+    lock
+    faceplayer
+
+    if (checkitem(ITEM_SECRET_SURF)) {
+        msgbox(
+            "A Wailmer is sick and needs help!\nTake this and go help him or whatever!"
+        )
+        closemessage
+
+        giveitem(ITEM_SECRET_SURF)
+
+        msgbox(
+            "If you don't have a move that allows\nyour Pokémon to swim, use this!"
+        )
+        closemessage
+
+        giveitem(ITEM_TM_SPLASH)
+
+        msgbox(
+            "Please, help Wailmer!"
+        )
+        closemessage
+    } else {
+        if (flag(FLAG_SAVED_WAILORD)) {
+            if (flag(FLAG_GOT_WAILMER_DOLL)) {
+                msgbox(
+                    "Thank you!"
+                )
+                closemessage    
+            } else {
+                msgbox(
+                    "You saved Wailord! Take this!"
+                )
+                closemessage
+
+                givedecoration(DECOR_WAILMER_DOLL)
+
+                setflag(FLAG_GOT_WAILMER_DOLL)
+            }
+        } else {
+            msgbox(
+                "Please, help Wailmer!"
+            )
+            closemessage
+        }
+    }
+}

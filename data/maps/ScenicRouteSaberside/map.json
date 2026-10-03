@@ -171,5 +171,6 @@
       "script": "ScenicRoute_Trigger_ExitZoneUnderBridge"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

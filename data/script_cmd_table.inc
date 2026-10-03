@@ -1,9 +1,12 @@
+
+@ WARNING:DO NOT REMOVE THE NEWLINE ABOVE IT WILL CAUSE AN ASSEMBLER ERROR
+
 @ 'requests_effects' should be set to 1 if the command contains a call
 @ to 'Script_RequestEffects', which allows it to be analyzed with
 @ 'RunScriptImmediatelyUntilEffect'.
 	.ifndef SCRIPT_CMD_TABLE_ENTRY_MACRO
 	.set SCRIPT_CMD_TABLE_ENTRY_MACRO, 1
-	.macro script_cmd_table_entry constant:req value:req, requests_effects=0
+	.macro script_cmd_table_entry constant:req, value:req, requests_effects=0
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 	.if \requests_effects == 0
 	.4byte \value
@@ -221,16 +224,16 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_SETESCAPEWARP                 ScrCmd_setescapewarp,               requests_effects=1  @ 0xc4
 	script_cmd_table_entry SCR_OP_WAITMONCRY                    ScrCmd_waitmoncry,                  requests_effects=1  @ 0xc5
 	script_cmd_table_entry SCR_OP_BUFFERBOXNAME                 ScrCmd_bufferboxname,               requests_effects=1  @ 0xc6
-	script_cmd_table_entry SCR_OP_TEXTCOLOR                     ScrCmd_nop1,                        requests_effects=1  @ 0xc7
+	script_cmd_table_entry SCR_OP_TEXTCOLOR                     ScrCmd_textcolor,                   requests_effects=1  @ 0xc7
 	script_cmd_table_entry SCR_OP_LOADHELP                      ScrCmd_nop1,                        requests_effects=1  @ 0xc8
 	script_cmd_table_entry SCR_OP_UNLOADHELP                    ScrCmd_nop1,                        requests_effects=1  @ 0xc9
-	script_cmd_table_entry SCR_OP_SIGNMSG                       ScrCmd_nop1,                        requests_effects=1  @ 0xca
-	script_cmd_table_entry SCR_OP_NORMALMSG                     ScrCmd_nop1,                        requests_effects=1  @ 0xcb
+	script_cmd_table_entry SCR_OP_SIGNMSG                       ScrCmd_signmsg,                     requests_effects=1  @ 0xca
+	script_cmd_table_entry SCR_OP_NORMALMSG                     ScrCmd_normalmsg,                   requests_effects=1  @ 0xcb
 	script_cmd_table_entry SCR_OP_COMPAREHIDDENVAR              ScrCmd_nop1,                        requests_effects=1  @ 0xcc
 	script_cmd_table_entry SCR_OP_SETMODERNFATEFULENCOUNTER     ScrCmd_setmodernfatefulencounter,   requests_effects=1  @ 0xcd
 	script_cmd_table_entry SCR_OP_CHECKMODERNFATEFULENCOUNTER   ScrCmd_checkmodernfatefulencounter, requests_effects=1  @ 0xce
 	script_cmd_table_entry SCR_OP_TRYWONDERCARDSCRIPT           ScrCmd_trywondercardscript,         requests_effects=1  @ 0xcf
-	script_cmd_table_entry SCR_OP_SETWORLDMAPFLAG               ScrCmd_nop1,                        requests_effects=1  @ 0xd0
+	script_cmd_table_entry SCR_OP_SETWORLDMAPFLAG               ScrCmd_setworldmapflag,             requests_effects=1  @ 0xd0
 	script_cmd_table_entry SCR_OP_WARPSPINENTER                 ScrCmd_warpspinenter,               requests_effects=1  @ 0xd1
 	script_cmd_table_entry SCR_OP_SETMONMETLOCATION             ScrCmd_setmonmetlocation,           requests_effects=1  @ 0xd2
 	script_cmd_table_entry SCR_OP_MOVEROTATINGTILEOBJECTS       ScrCmd_moverotatingtileobjects,     requests_effects=1  @ 0xd3
@@ -254,10 +257,13 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_GET_GAME_STAT                 ScrCmd_getgamestat,                 requests_effects=1  @ 0xe5
 	script_cmd_table_entry SCR_OP_NUFFER_SPECIES_DEX_DESC       ScrCmd_bufferspeciesdexdesc,        requests_effects=1  @ 0xe6
 	script_cmd_table_entry SCR_OP_GET_TIME_OF_DAY               ScrCmd_gettimeofday,                requests_effects=1  @ 0xe7
-    script_cmd_table_entry SCR_OP_ISFIELDMOVEUNLOCKED           ScrCmd_isfieldmoveunlocked          requests_effects=1  @ 0xe8
-    script_cmd_table_entry SCR_OP_ADDMONEY_VAR		            ScrCmd_addmoneyvar			        requests_effects=1  @ 0xe9
+  	script_cmd_table_entry SCR_OP_ISFIELDMOVEUNLOCKED           ScrCmd_isfieldmoveunlocked          requests_effects=1  @ 0xe8
+  	script_cmd_table_entry SCR_OP_ADDMONEY_VAR                  ScrCmd_addmoneyvar                  requests_effects=1  @ 0xe9
 	script_cmd_table_entry SCR_OP_HIDEFOLLOWER                  ScrCmd_hidefollower,                requests_effects=1  @ 0xea
 	script_cmd_table_entry SCR_OP_GETFLASHLEVEL                 ScrCmd_getflashlevel,               requests_effects=1  @ 0xeb
+	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1  @ 0xec
+  	script_cmd_table_entry SCR_OP_GETLEADMONSPECIES			    ScrCmd_getleadmonspecies,    		requests_effects=1  @ 0xed
+
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

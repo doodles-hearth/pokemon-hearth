@@ -3,6 +3,7 @@
   "name": "DragonsPass",
   "layout": "LAYOUT_DRAGONS_PASS",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DRAGONS_PASS",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -24,16 +25,8 @@
       "direction": "up"
     }
   ],
-  "object_events": [
-
-  ],
-  "warp_events": [
-
-  ],
-  "coord_events": [
-
-  ],
-  "bg_events": [
-
-  ]
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
 }

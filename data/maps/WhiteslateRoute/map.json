@@ -20,12 +20,7 @@
     },
     {
       "map": "MAP_STEEPSTONE_PASS_BOTTOM",
-      "offset": -23,
-      "direction": "left"
-    },
-    {
-      "map": "MAP_SHOGUNATE",
-      "offset": 7,
+      "offset": -2,
       "direction": "left"
     },
     {
@@ -150,12 +145,13 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": true,
-      "evening": false,
+      "evening": true,
       "lunchtime": true,
       "morning": true,
-      "night": false
+      "night": true
     },
     {
+      "local_id": "LOCALID_SECRET_BASE_MAN",
       "graphics_id": "OBJ_EVENT_GFX_TRAVELER",
       "x": 26,
       "y": 35,
@@ -176,6 +172,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_SECRET_BASE_POKEMON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GROVYLE)",
       "x": 26,
       "y": 35,
@@ -376,26 +373,6 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_SPECIES(SHUCKLE)",
-      "x": 37,
-      "y": 63,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "WhiteslateRoute_EventScript_Shuckle",
-      "flag": "0",
-      "afternoon": false,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": true,
-      "lunchtime": false,
-      "morning": false,
-      "night": true
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 33,
       "y": 88,
@@ -416,6 +393,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_DEERLING2",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DEERLING_AUTUMN)",
       "x": 26,
       "y": 25,
@@ -431,6 +409,7 @@
       "deadnight": false,
       "earlymorning": true,
       "evening": false,
+      "live_event": "LIVE_EVENT_DEERLING1_FLEE",
       "lunchtime": false,
       "morning": true,
       "night": false
@@ -456,6 +435,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_DEERLING1",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(DEERLING_AUTUMN)",
       "x": 23,
       "y": 24,
@@ -471,11 +451,13 @@
       "deadnight": false,
       "earlymorning": true,
       "evening": false,
+      "live_event": "LIVE_EVENT_DEERLING1_FLEE",
       "lunchtime": false,
       "morning": true,
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_SHAMISEN_PLAYER",
       "graphics_id": "OBJ_EVENT_GFX_SHAMISEN_RED",
       "x": 23,
       "y": 10,
@@ -496,6 +478,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON",
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(GROWLITHE)",
       "x": 24,
       "y": 10,
@@ -545,7 +528,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "3",
-      "script": "WhiteslateRoute_EventScript_Asagao",
+      "script": "WhiteslateRoute_EventScript_Deiji",
       "flag": "0",
       "afternoon": false,
       "deadnight": false,
@@ -574,6 +557,66 @@
       "lunchtime": true,
       "morning": true,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_TRAVELLING_MERCHANT",
+      "x": 15,
+      "y": 75,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "WhiteslateRoute_EventScript_TravellingMerchant",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(KECLEON)",
+      "x": 14,
+      "y": 75,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 2,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "TravellingMerchant_EventScript_Keke",
+      "flag": "TRAVELLING_MERCHANT_EVENT_FLAG",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": false,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_CASTFORM_SUN_GIRL",
+      "x": 12,
+      "y": 53,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "1",
+      "script": "WhiteslateRoute_EventScript_Sani",
+      "flag": "0",
+      "afternoon": true,
+      "deadnight": false,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
+      "night": false
     }
   ],
   "warp_events": [
@@ -640,7 +683,7 @@
       "y": 40,
       "elevation": 0,
       "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",
@@ -672,6 +715,23 @@
       "y": 34,
       "elevation": 0,
       "secret_base_id": "SECRET_BASE_BROWN_CAVE1_3"
+    },
+    {
+      "type": "sign",
+      "x": 26,
+      "y": 60,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "WhiteslateRoute_EventScript_ShuckleSign"
+    },
+    {
+      "type": "sign",
+      "x": 15,
+      "y": 11,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "WhiteslateRoute_DirectionSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

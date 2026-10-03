@@ -452,7 +452,7 @@ static void AnimGunkShotParticlesStep(struct Sprite *sprite)
 
 static void AnimSuckerPunch(struct Sprite *sprite)
 {
-    if (BATTLE_PARTNER(gBattleAnimAttacker) == gBattleAnimTarget && GetBattlerPosition(gBattleAnimTarget) < B_POSITION_PLAYER_RIGHT)
+    if (GetPartnerBattler(gBattleAnimAttacker) == gBattleAnimTarget && GetBattlerPosition(gBattleAnimTarget) < B_POSITION_PLAYER_RIGHT)
         gBattleAnimArgs[0] *= -1;
 
     InitSpritePosToAnimTarget(sprite, TRUE);
@@ -494,20 +494,20 @@ static void AnimSludgeProjectile(struct Sprite *sprite)
         StartSpriteAnim(sprite, 2);
     if (gBattleAnimArgs[4] && IsDoubleBattle())
     {
-        u32 targetPartner;
+        enum BattlerId targetPartner;
         if (IsOnPlayerSide(gBattleAnimTarget))
         {
-            if (gBattleAnimTarget == 0)
-                targetPartner = 2;
+            if (gBattleAnimTarget == B_BATTLER_0)
+                targetPartner = B_BATTLER_2;
             else
-                targetPartner = 0;
+                targetPartner = B_BATTLER_0;
         }
         else
         {
-            if (gBattleAnimTarget == 1)
-                targetPartner = 3;
+            if (gBattleAnimTarget == B_BATTLER_1)
+                targetPartner = B_BATTLER_3;
             else
-                targetPartner = 1;
+                targetPartner = B_BATTLER_1;
         }
 
         if (IsBattlerAlive(gBattleAnimTarget) && !IsBattlerAlive(targetPartner))

@@ -22,6 +22,23 @@ SINGLE_BATTLE_TEST("If Glaive Rush is successful moves targeted at the user do n
     }
 }
 
+SINGLE_BATTLE_TEST("If Glaive Rush is successful OHKO moves targeted at the user do not check accuracy")
+{
+    PASSES_RANDOMLY(100, 100, RNG_ACCURACY);
+    GIVEN {
+        ASSUME(GetMoveAccuracy(MOVE_FISSURE) == 30);
+        ASSUME(GetMoveEffect(MOVE_FISSURE) == EFFECT_OHKO);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_GLAIVE_RUSH); MOVE(opponent, MOVE_FISSURE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_GLAIVE_RUSH, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FISSURE, opponent);
+        HP_BAR(player, hp: 0);
+    }
+}
+
 SINGLE_BATTLE_TEST("If Glaive Rush is successful, moves targeted at the user deal double damage")
 {
     s16 glaiveRushEffectedDmg;
@@ -55,7 +72,7 @@ SINGLE_BATTLE_TEST("If Glaive Rush is successful, moves targeted at the user dea
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); MOVE(player, MOVE_GLAIVE_RUSH); }
-        TURN { MOVE(opponent, MOVE_SCRATCH); MOVE(player, MOVE_CELEBRATE);  }
+        TURN { MOVE(opponent, MOVE_SCRATCH); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &normalDmg);
@@ -94,7 +111,7 @@ SINGLE_BATTLE_TEST("If Glaive Rush isn't successful moves targeted at the user d
 
 SINGLE_BATTLE_TEST("Glaive Rush doesn't affect the user if the effect is blocked", s16 damage)
 {
-    u32 species;
+    enum Species species;
 
     PARAMETRIZE { species = SPECIES_FIDOUGH; }
     PARAMETRIZE { species = SPECIES_MAGNEMITE; } // Closest mon in both Defense and Sp. Defense
@@ -118,7 +135,7 @@ SINGLE_BATTLE_TEST("Glaive Rush doesn't affect the user if the effect is blocked
 
 SINGLE_BATTLE_TEST("Glaive Rush status last until the the user's next turn")
 {
-    s16 normalDmgFristHit;
+    s16 normalDmgFirstHit;
     s16 normalDmgSecondHit;
 
     GIVEN {
@@ -133,11 +150,11 @@ SINGLE_BATTLE_TEST("Glaive Rush status last until the the user's next turn")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
-        HP_BAR(player, captureDamage: &normalDmgFristHit);
+        HP_BAR(player, captureDamage: &normalDmgFirstHit);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
         HP_BAR(player, captureDamage: &normalDmgSecondHit);
     } THEN {
-        EXPECT_EQ(normalDmgFristHit, normalDmgSecondHit);
+        EXPECT_EQ(normalDmgFirstHit, normalDmgSecondHit);
     }
 }

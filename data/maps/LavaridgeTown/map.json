@@ -3,6 +3,7 @@
   "name": "LavaridgeTown",
   "layout": "LAYOUT_LAVARIDGE_TOWN",
   "music": "MUS_OLDALE",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -321,7 +322,7 @@
       "y": 5,
       "elevation": 3,
       "item": "ITEM_ICE_HEAL",
-      "flag": "0"
+      "flag": "FLAG_DUMMY"
     }
   ]
 }

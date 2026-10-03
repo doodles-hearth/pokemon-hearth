@@ -628,7 +628,7 @@ static void AnimUnusedSmallEmber_Step(struct Sprite *sprite)
 {
     if (sprite->data[3])
     {
-        if(sprite->data[5] > 10000)
+        if (sprite->data[5] > 10000)
             sprite->subpriority = 1;
 
         sprite->x2 = Sin(sprite->data[0], sprite->data[1] + (sprite->data[5] >> 8));
@@ -845,6 +845,12 @@ static void AnimFireSpiralOutward_Step2(struct Sprite *sprite)
 // Animates first stage of Eruption where the attacker squishes and launches rocks away from themself
 void AnimTask_EruptionLaunchRocks(u8 taskId)
 {
+    if (!TryLoadSpriteAssets(&gEruptionLaunchRockSpriteTemplate))
+    {
+        DestroyAnimVisualTask(taskId);
+        return;
+    }
+
     struct Task *task = &gTasks[taskId];
 
     task->tAttackerSpriteId = GetAnimBattlerSpriteId(ANIM_ATTACKER);
@@ -891,7 +897,7 @@ static void AnimTask_EruptionLaunchRocks_Step(u8 taskId)
             }
         }
 
-        if(!UpdateEruptAnimTask(task))
+        if (!UpdateEruptAnimTask(task))
         {
             SetBattlerSpriteYOffsetFromYScale(task->tAttackerSpriteId);
             gSprites[task->tAttackerSpriteId].x2 = 0;
@@ -977,7 +983,7 @@ static void CreateEruptionLaunchRocks(u8 spriteId, u8 taskId, u8 activeSpritesId
     u16 y = GetEruptionLaunchRockInitialYPos(spriteId);
     u16 x = gSprites[spriteId].x;
 
-    if(IsOnPlayerSide(gBattleAnimAttacker))
+    if (IsOnPlayerSide(gBattleAnimAttacker))
     {
         x -= 12;
         sign = 1;
@@ -990,7 +996,7 @@ static void CreateEruptionLaunchRocks(u8 spriteId, u8 taskId, u8 activeSpritesId
 
     for (i = 0, j = 0; i <= 6; i++)
     {
-        u8 spriteId = CreateSprite(&gEruptionLaunchRockSpriteTemplate, x, y, 2);
+        u8 spriteId = CreateSpriteUnchecked(&gEruptionLaunchRockSpriteTemplate, x, y, 2);
 
         if (spriteId != MAX_SPRITES)
         {
@@ -1249,7 +1255,7 @@ static void AnimWillOWispFire(struct Sprite *sprite)
 
     if (IsDoubleBattle()
      && !IsContest()
-     && IsBattlerAlive(BATTLE_PARTNER(gBattleAnimTarget))
+     && IsBattlerAlive(GetPartnerBattler(gBattleAnimTarget))
      && GetMoveTarget(gAnimMoveIndex) == TARGET_BOTH)
         SetAverageBattlerPositions(gBattleAnimTarget, TRUE, &sprite->x, &sprite->y);
 
@@ -1285,7 +1291,7 @@ void AnimTask_MoveHeatWaveTargets(u8 taskId)
     struct Task *task = &gTasks[taskId];
 
     task->data[12] = IsOnPlayerSide(gBattleAnimAttacker) ? 1 : -1;
-    task->data[13] = IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimTarget)) + 1;
+    task->data[13] = IsBattlerSpriteVisible(GetPartnerBattler(gBattleAnimTarget)) + 1;
     task->data[14] = GetAnimBattlerSpriteId(ANIM_TARGET);
     task->data[15] = GetAnimBattlerSpriteId(ANIM_DEF_PARTNER);
 
@@ -1298,84 +1304,84 @@ static void AnimTask_MoveHeatWaveTargets_Step(u8 taskId)
 
     switch (task->data[0])
     {
-        case 0:
-            task->data[10] += task->data[12] * 2;
-            if (++task->data[1] >= 2)
-            {
-                task->data[1] = 0;
-                task->data[2]++;
-                if (task->data[2] & 1)
-                    task->data[11] = 2;
-                else
-                    task->data[11] = -2;
-            }
+    case 0:
+        task->data[10] += task->data[12] * 2;
+        if (++task->data[1] >= 2)
+        {
+            task->data[1] = 0;
+            task->data[2]++;
+            if (task->data[2] & 1)
+                task->data[11] = 2;
+            else
+                task->data[11] = -2;
+        }
 
-            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-            {
-                gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
-            }
+        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+        {
+            gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
+        }
 
-            if (++task->data[9] == 16)
-            {
-                task->data[9] = 0;
-                task->data[0]++;
-            }
-            break;
-        case 1:
-            if (++task->data[1] >= 5)
-            {
-                task->data[1] = 0;
-                task->data[2]++;
+        if (++task->data[9] == 16)
+        {
+            task->data[9] = 0;
+            task->data[0]++;
+        }
+        break;
+    case 1:
+        if (++task->data[1] >= 5)
+        {
+            task->data[1] = 0;
+            task->data[2]++;
 
-                if (task->data[2] & 1)
-                    task->data[11] = 2;
-                else
-                    task->data[11] = -2;
-            }
+            if (task->data[2] & 1)
+                task->data[11] = 2;
+            else
+                task->data[11] = -2;
+        }
 
-            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-            {
-                gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
-            }
+        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+        {
+            gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
+        }
 
-            if (++task->data[9] == 96)
-            {
-                task->data[9] = 0;
-                task->data[0]++;
-            }
-            break;
-        case 2:
-            task->data[10] -= task->data[12] * 2;
+        if (++task->data[9] == 96)
+        {
+            task->data[9] = 0;
+            task->data[0]++;
+        }
+        break;
+    case 2:
+        task->data[10] -= task->data[12] * 2;
 
-            if (++task->data[1] >= 2)
-            {
-                task->data[1] = 0;
-                task->data[2]++;
+        if (++task->data[1] >= 2)
+        {
+            task->data[1] = 0;
+            task->data[2]++;
 
-                if (task->data[2] & 1)
-                    task->data[11] = 2;
-                else
-                    task->data[11] = -2;
-            }
+            if (task->data[2] & 1)
+                task->data[11] = 2;
+            else
+                task->data[11] = -2;
+        }
 
-            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-            {
-                gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
-            }
+        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+        {
+            gSprites[task->data[task->data[3] + 14]].x2 = task->data[10] + task->data[11];
+        }
 
-            if (++task->data[9] == 16)
-            {
-                task->data[0]++;
-            }
-            break;
-        case 3:
-            for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
-            {
-                gSprites[task->data[task->data[3] + 14]].x2 = 0;
-            }
+        if (++task->data[9] == 16)
+        {
+            task->data[0]++;
+        }
+        break;
+    case 3:
+        for (task->data[3] = 0; task->data[3] < task->data[13]; task->data[3]++)
+        {
+            gSprites[task->data[task->data[3] + 14]].x2 = 0;
+        }
 
-            DestroyAnimVisualTask(taskId);
-            break;
+        DestroyAnimVisualTask(taskId);
+        break;
     }
 }
 

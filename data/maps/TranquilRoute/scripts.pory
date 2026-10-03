@@ -1,26 +1,18 @@
-const LOCALID_BERRYWOMAN = 5
-const LOCALID_SAMURAI = 21
-const LOCALID_CUT_MASTER = 19
-const LOCALID_CROBAT_SHADOW_BOSS = 24
-const LOCALID_CROBAT_SHADOW_GRUNT_TOP = 22
-const LOCALID_CROBAT_SHADOW_GRUNT_RIGHT = 25
-const LOCALID_CROBAT_SHADOW_GRUNT_LEFT = 23
-const LOCALID_KECLEON = 27
 const FLAG_HIDE_CUT_MASTER = FLAG_TEMP_1
-const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
-const VAR_HOUR_OF_DAY = VAR_0x8000
 const FLAG_HIDE_FLETCHLING = FLAG_TEMP_2
 const FLAG_CUT_QUEST_COMPLETED_JUST_NOW = FLAG_TEMP_3
+const VAR_HOUR_OF_DAY = VAR_0x8000
+const VAR_DO_CUT_MASTER_CUTSCENE = VAR_TEMP_0
+const VAR_DONT_FIGHT = VAR_TEMP_1
 
 mapscripts TranquilRoute_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_FlowerCutMastersGarden)
 		call(TranquilRoute_EventScript_SpawnBirds)
 	}
 	MAP_SCRIPT_ON_TRANSITION {
+		call(TranquilRoute_EventScript_CheckCutGrass)
 		call(TranquilRoute_EventScript_SetupCutGrassCutscene)
-
 		// Remove roadblock to Whiteslate Route
 		if (flag(FLAG_BADGE02_GET)) {
 			setvar(VAR_TEMP_1, 1)
@@ -55,9 +47,10 @@ script TranquilRoute_EventScript_GrassCutscene {
 	delay(24)
 
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"… … … … … …\n… … … … … …"
-	))
+	msgbox(
+		"… … … … … …\n… … … … … …\p"
+		"My… my garden…"
+	)
 	closemessage
 
 	delay(16)
@@ -66,12 +59,12 @@ script TranquilRoute_EventScript_GrassCutscene {
 	waitmovement(0)
 	delay(24)
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"Was it always this big?"
-	))
+	msgbox(
+		"I don't even the remember the last\ntime it looked so… new."
+	)
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 2))
+	applymovement(LOCALID_CUT_MASTER, moves(walk_right * 2, walk_up, face_right))
 	waitmovement(0)
 	delay(24)
 	delay(24)
@@ -81,21 +74,22 @@ script TranquilRoute_EventScript_GrassCutscene {
 	))
 	closemessage
 
-	applymovement(LOCALID_CUT_MASTER, moves(walk_left, walk_in_place_faster_down))
+	applymovement(LOCALID_CUT_MASTER, moves(walk_left, walk_down, walk_in_place_faster_down))
 	waitmovement(0)
 	delay(48)
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"I cannot thank you enough for this.\p"
-		"I shall tend to my garden again, thanks to you."
-	))
+	msgbox(
+		"I cannot thank you enough for this.\n"
+		"I can tend to my garden again, all\lthanks to you and your Pokémon!\p"
+		"Please, have this as a token of my\nthanks."
+	)
 	closemessage
 
 	giveitem(ITEM_LEAF_STONE)
-
+	
 	setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_WANDER_AROUND)
 
-	setflag(FLAG_CUT_QUEST_COMPLETED)
+	completequest(QUEST_CUT_MASTER)
 	setflag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)
 	setvar(VAR_DO_CUT_MASTER_CUTSCENE, 0)
 
@@ -104,138 +98,91 @@ script TranquilRoute_EventScript_GrassCutscene {
 
 script TranquilRoute_EventScript_SetupCutGrassCutscene {
 	// The cut master is only out once the cut grass quest is completed, and only during the day
-	if (!flag(FLAG_CUT_QUEST_COMPLETED)) {
-		if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)) {
-			// If the player has just exited the cut master's house after having cut all the grass,
-			// get ready for cutscene
-			getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
-			if (var(VAR_TEMP_2) == 43 && var(VAR_TEMP_3) == 33) {
-				setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_FACE_LEFT)
-				setobjectxyperm(LOCALID_CUT_MASTER, 44, 33)
-				setvar(VAR_DO_CUT_MASTER_CUTSCENE, 1)
-			}
-		} else {
-			setflag(FLAG_HIDE_CUT_MASTER)
-		}
-	} else {
-		// Can't plug the Cut master to Zatsu's scheduling system because of his special needs
-		gettimeofday
-		switch(var(VAR_0x8000)){
-			case TIME_EVENING:
-			case TIME_NIGHT:
-			case TIME_DEAD_NIGHT:
+	returnqueststate(QUEST_CUT_MASTER)
+
+	switch(var(VAR_RESULT)) {
+		case QUEST_MENU_UNLOCK_QUEST:
+		case QUEST_MENU_SET_ACTIVE:
+		case QUEST_MENU_SET_REWARD:
+			if (flag(FLAG_CUT_QUEST_CUT_ALL_GRASS)) {
+				// If the player has just exited the cut master's house after having cut all the grass,
+				// get ready for cutscene
+				getplayerxy(VAR_TEMP_2, VAR_TEMP_3)
+				if (var(VAR_TEMP_2) == 43 && var(VAR_TEMP_3) == 33) {
+					setobjectmovementtype(LOCALID_CUT_MASTER, MOVEMENT_TYPE_FACE_LEFT)
+					setobjectxyperm(LOCALID_CUT_MASTER, 44, 33)
+					setvar(VAR_DO_CUT_MASTER_CUTSCENE, 1)
+				}
+			} else {
 				setflag(FLAG_HIDE_CUT_MASTER)
-		}
+			}
+		case QUEST_MENU_COMPLETE_QUEST:
+			// Can't plug the Cut master to Zatsu's scheduling system because of his special needs
+			gettimeofday
+			switch(var(VAR_0x8000)){
+				case TIME_EVENING:
+				case TIME_NIGHT:
+				case TIME_DEAD_NIGHT:
+					setflag(FLAG_HIDE_CUT_MASTER)
+			}
 	}
 }
 
 // Cut master
 script TranquilRoute_EventScript_CutMaster{
 	setspeaker(SP_NAME_CUT_MASTER)
-	msgbox(format(
-		"I'm enjoying tending my garden again.\p"
-		"I like watching it slowly blossom into something beautiful."
-	), MSGBOX_NPC)
+	if(flag(FLAG_TEMP_3) == FALSE){
+		msgbox(
+			"I'm enjoying tending my garden again.\p"
+			"I like watching it slowly blossom\ninto something beautiful.", MSGBOX_NPC)
+		setflag(FLAG_TEMP_3)
+	} else {
+		msgbox(
+			"You remind me of myself when I was\nyounger.\p"
+			"During my travels, I would use the\nSecret of the Blade to help others.\p"
+			"Little did I know I would be helped\ntoo, one day!", MSGBOX_NPC)
+	}
 }
 
+//Makes sure that flowers are not planted immediately after the cut quest was completed
 script TranquilRoute_EventScript_FlowerCutMastersGarden {
-	if (flag(FLAG_CUT_QUEST_COMPLETED) && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
+	returnqueststate(QUEST_CUT_MASTER)
+	if (var(VAR_RESULT) == QUEST_MENU_COMPLETE_QUEST && !flag(FLAG_CUT_QUEST_COMPLETED_JUST_NOW)) {
 		if (flag(FLAG_BADGE02_GET)) {
-			setmetatile(39, 33, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(40, 34, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(41, 33, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(42, 34, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(39, 33, 0x005, FALSE)
+			setmetatile(40, 34, 0x00D, FALSE)
+			setmetatile(41, 33, 0x005, FALSE)
+			setmetatile(42, 34, 0x8CE, FALSE)
 		}
 
 		if (flag(FLAG_BADGE03_GET)) {
-			setmetatile(35, 29, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(34, 30, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(35, 31, METATILE_SunriseVillage_RedFlowers, FALSE)
-			setmetatile(34, 32, METATILE_SunriseVillage_RedFlowers, FALSE)
+			setmetatile(35, 29, 0x005, FALSE)
+			setmetatile(34, 30, 0x00D, FALSE)
+			setmetatile(35, 31, 0x8CE, FALSE)
+			setmetatile(34, 32, 0x8CE, FALSE)
 		}
 	}
 }
 
 script TranquilRoute_EventScript_CheckCutGrass{
-	call_if_set(FLAG_CUT_QUEST_CUT_ALL_GRASS, TranquilRoute_EventScript_CutGrass)
-}
-
-script TranquilRoute_EventScript_CutGrass {
-	// there is probably a smarter way to do this but here we are
-	// set all the tiles that were cut to just be normal grass
-	setmetatile(32, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(34, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(35, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(36, 18, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(37, 18, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(38, 18, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-
-	setmetatile(31, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(33, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(34, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(35, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(36, 19, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(37, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(38, 19, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(39, 19, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(32, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(33, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(34, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(35, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(36, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(37, 20, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(38, 20, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(39, 20, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(31, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(32, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(33, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(34, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(36, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(37, 21, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(38, 21, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(39, 21, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(33, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(37, 22, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 22, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(37, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 23, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(38, 24, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(38, 25, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-
-	setmetatile(38, 26, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(39, 26, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-
-	setmetatile(37, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 27, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(39, 27, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(37, 28, METATILE_PorytilesPrimaryTutorial_Grass3, FALSE)
-	setmetatile(38, 28, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	setmetatile(39, 28, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(37, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-	setmetatile(38, 29, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
-
-	setmetatile(38, 30, METATILE_PorytilesPrimaryTutorial_Grass2, FALSE)
-	return
+	returnqueststate(QUEST_CUT_MASTER)
+	switch(var(VAR_RESULT)){
+		case 3:
+		case 4:
+			setmaplayoutindex(LAYOUT_TRANQUIL_ROUTE_CUT_GRASS)
+		default:
+	}
 }
 
 script TranquilRoute_EventScript_Chikao {
 	trainerbattle_single(
 		TRAINER_CHIKAO,
-		format("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been studying Pokémon at school! I can't lose!"),
+		("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been studying Pokémon at school!\nI can't lose!"),
 		format("I should have listened in class…")
 	)
-	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Some Pokémon have more attack, and some have more special attack!\p"
-		"What's the difference? Uhh… It's too complicated to explain."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}{SPEAKER NAME_SCHOOL_KID}Some Pokémon have more attack, and\nsome have more special attack!\p"
+		"What's the difference?\nUhh… It's too complicated to explain."
 	))
 	closemessage
 	end
@@ -248,8 +195,8 @@ script TranquilRoute_EventScript_Kodomo {
 		format("Go back to the grass, you animal!")
 	)
 	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I should look for stronger Pokémon in the tall grass, but I'm a little scared of getting jumped by surprise!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I should look for stronger Pokémon\nin the tall grass, but…\lI'm scared of getting jumped!"
 	))
 	closemessage
 	end
@@ -258,22 +205,32 @@ script TranquilRoute_EventScript_Kodomo {
 script TranquilRoute_EventScript_Takeshi {
 	trainerbattle_single(
 		TRAINER_TAKESHI,
-		format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Stay right there! I'll defeat you with my ninja skills!"),
-		format("I had the sun in my eyes!")
+		("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Stay right there!\nI'll defeat you with my ninja skills!"),
+		format("I had the moon in my eyes!")
 	)
 	setspeaker(SP_NAME_NINJA_BOY)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}I must hone my ninja skills!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
+script TranquilRoute_EventScript_Asuna {
+	trainerbattle_single(
+		TRAINER_ASUNA,
+		("{CREATE_MUGSHOT MUGSHOT_LASS 0}This whole Pokémon battle business\nis kinda fun!"),
+		("What happened? Did I win?")
+	)
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS 0}{SPEAKER NAME_LASS}All these types and moves are hard\nto follow…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
 script TranquilRoute_EventScript_Hana {
 	trainerbattle_single(
 		TRAINER_HIINA,
-		format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Ugh, how can Kenji paint a portrait of me if people keep walking between us?"),
+		("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Ugh, how can Kenji paint a portrait of\nme if people keep walking between us?"),
 		format("Great, now my hair is all messed up.")
 	)
 	setspeaker(SP_NAME_BEAUTY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Kenji really is an amazing artist. I feel very lucky."), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Kenji really is an amazing artist.\nI feel very lucky."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -281,7 +238,7 @@ script TranquilRoute_EventScript_Kenji {
 	trainerbattle_single(
 		TRAINER_KENJI,
 		format("{CREATE_MUGSHOT MUGSHOT_ARTIST 0}You're interrupting my creative flow!!"),
-		format("Such beauty! What an artistic fight this was!")
+		format("Such beauty!\nWhat an artistic fight this was!")
 	)
 	setspeaker(SP_NAME_ARTIST)
 	msgbox(format(
@@ -297,20 +254,84 @@ movement TranquilRoute_Movement_MysteriousSamuraiWalksAway {
 
 script TranquilRoute_EventScript_Girl {
 	setspeaker(SP_NAME_GIRL)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\pMy Pokémon and I are just strolling."), MSGBOX_NPC)
+
+	switch(var(VAR_TEMP_1)){
+		case 0:
+			msgbox("{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}What? Oh, I don't fight.\nMy Pokémon and I are just strolling.", MSGBOX_NPC)
+			closemessage
+			addvar(VAR_DONT_FIGHT, 1)
+			break
+		default:
+			msgbox(
+				"{CREATE_MUGSHOT MUGSHOT_SUNRISE_GIRL_1 0}I understand the Pokémon are meant\nto protect us, but it's just so boring.\p"
+				"You're just hitting each other over\nand over! I don't see the appeal…", MSGBOX_NPC)
+			closemessage
+			break
+	}
+}
+
+script TranquilRoute_EventScript_Fanboy {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_down))
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}That's right, crush her!!"))
+	closemessage
+	release
+}
+
+script TranquilRoute_EventScript_Fangirl {
+	lock
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_up))
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}{SPEAKER NAME_SCHOOL_KID}Hit 'em harder!!"))
+	closemessage
+	release
 }
 
 script TranquilRoute_EventScript_WhiteslateRoadblock {
 	lock
-	applymovement(LOCALID_SAMURAI, Common_Movement_WalkInPlaceFasterRight)
+	playbgm(MUS_VS_TRAINER, FALSE)
+
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_NINJA, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Sorry, you can't go through. The road ahead is blocked."))
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}You shall know defeat at the hand\nof my ninja Pokémon!\l"
+		"Nickit, use Feint Attack!"
+	))
 	closemessage
 
-	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_right))
+	playmoncry(SPECIES_NICKIT, CRY_MODE_ENCOUNTER)
+	waitmoncry
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_NICKIT, moves(lock_facing_direction, walk_fast_down, walk_fast_up, unlock_facing_direction))
+	playse(SE_EFFECTIVE)
 	waitmovement(0)
+	waitse
+
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_GIRL, moves(walk_in_place_fast_up))
+	waitmovement(0)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}{SPEAKER NAME_SCHOOL_KID}Your pathetic ninja costume can't\nbeat the sheer power of knowledge!\l"
+		"Shroomish! Headbutt!"
+	))
+	closemessage
+
+
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_SHROOMISH, moves(jump_in_place_up))
+	playmoncry(SPECIES_SHROOMISH, CRY_MODE_ENCOUNTER)
+	waitmoncry
+	waitmovement(0)
+	applymovement(LOCALID_TRANQUIL_RT_BLOCK_SHROOMISH, moves(lock_facing_direction, walk_fast_up, walk_fast_down, unlock_facing_direction))
+	playse(SE_M_HEADBUTT)
+	waitmovement(0)
+	waitse
+
+	fadedefaultbgm
+
+	setnamedmon(SPECIES_SHROOMISH)
+	setnamedmon(SPECIES_NICKIT)
+	setseenmon(SPECIES_SHROOMISH)
+	setseenmon(SPECIES_NICKIT)
 
 	release
 }
@@ -340,33 +361,44 @@ script TranquilRoute_EventScript_BerryWoman {
 	}
 	else {
 		playse(SE_PIN)
-		applymovement(VAR_LAST_TALKED, moves(emote_music, delay_16 * 6))
-		waitmovement(0)
-		faceplayer
-		setspeaker(SP_NAME_WOMAN)
-		msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Hi, young one! See this?"))
-		closemessage
-		applymovement(LOCALID_BERRYWOMAN, Common_Movement_FaceRight)
-		waitmovement(0)
-		delay(48)
-		applymovement(LOCALID_BERRYWOMAN, Common_Movement_FacePlayer)
+		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, moves(emote_music, delay_16 * 6, face_player))
 		waitmovement(0)
 		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}You can plant berries in the ground in fertile spots like this.\p"
-			"The seeds will eventually grow into a healthy berry tree, ready to be harvested!\p"
-			"I see you're a Wielder. Well, different berries have different effects when they're fed to Pokémon.\p"
-			"I love berries, hopefully you'll soon learn to love them too!\p"
+		message("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Hi, young one!")
+		waitmessage
+		waitbuttonpress
+		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, moves(face_right, delay_1 * 15))
+		waitmovement(0)
+		message("Do you see these beautiful berry\ntrees?")
+		waitmessage
+		waitbuttonpress
+		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, moves(delay_1 * 15, face_player))
+		waitmovement(0)
+		message(
+			"You can plant berries in the ground\nin fertile spots like this.\p"
+			"The seeds will eventually grow into a\nberry tree, ready to be harvested!\p"
+			"Berries come in all shapes and sizes.\nDifferent berries each have their\lown effect when eaten by a Pokémon!"
+		)
+		waitmessage
+		waitbuttonpress
+		playse(SE_PIN)
+		message(
+			"I love berries, hopefully you'll soon\nlearn to love them too.\p"
 			"Here, try planting a few!"
-		))
+		)
+		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, moves(emote_heart))
+		waitmovement(0)
+		waitse
+		waitmessage
+		waitbuttonpress
 		closemessage
 		giveitem(ITEM_ORAN_BERRY, 3)
 		goto_if_eq(VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull)
 
 		setspeaker(SP_NAME_WOMAN)
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Oh, right, I almost forgot!\p"
-			"You must remember to water them regularly, or they won't grow!\p"
+			"You must remember to water them\nregularly, or they won't grow!\p"
 			"I like you. Take this!"
 		))
 		closemessage
@@ -410,10 +442,10 @@ script TranquilRoute_EventScript_Mareep2 {
 }
 
 script TranquilRoute_TrainerTips1 {
-	msgbox(format(
+	msgbox((
 		"Did you know?\p"
 		"Some Pokémon only come out at night.\p"
-		"Visit the same spot at different times of day to have a chance of seeing rare Pokémon!"
+		"Visit a spot at different times to\nhave a chance of seeing rare Pokémon!"
 	), MSGBOX_SIGN)
 }
 
@@ -448,7 +480,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	delay(20)
 
-	applymovement(LOCALID_CROBAT_SHADOW_BOSS, Common_Movement_WalkInPlaceFasterUp)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS, Common_Movement_WalkInPlaceFasterUp)
 	waitmovement(0)
 
 	setspeaker("Shady man")
@@ -457,49 +489,55 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 	))
 	closemessage
 
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_up, face_down))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_up, face_down))
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_up, face_down))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_up, face_down))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
 
 	// o o o
 	//   o
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down, zubats_align, delay_16, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP, moves(face_down, zubats_align, delay_16, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down, zubats_align, delay_16, delay_16))
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(face_down))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(face_down))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(face_down))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
+
+	playse(SE_FLEE)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(zubats_align, delay_16, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(zubats_align, delay_16, delay_16))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
 	waitse
 
 	//
 	// oooo
 	//
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP, moves(walk_left * 5, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_left * 5, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_left * 5, delay_16))
-	applymovement(LOCALID_CROBAT_SHADOW_BOSS, moves(walk_up * 2, walk_left * 5))
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_LEFT)
-	waitmovement(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
-	waitmovement(LOCALID_CROBAT_SHADOW_BOSS)
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP, moves(walk_left * 5, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT, moves(walk_left * 5, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT, moves(walk_left * 5, delay_16))
+	applymovement(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS, moves(walk_up * 2, walk_left * 5))
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
+	waitmovement(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS)
 
-	removeobject(LOCALID_CROBAT_SHADOW_GRUNT_TOP)
-	removeobject(LOCALID_CROBAT_SHADOW_GRUNT_LEFT)
-	removeobject(LOCALID_CROBAT_SHADOW_GRUNT_RIGHT)
-	removeobject(LOCALID_CROBAT_SHADOW_BOSS)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_TOP)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_LEFT)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_GRUNT_RIGHT)
+	removeobject(LOCALID_TRANQUIL_CROBAT_SHADOW_BOSS)
 	setflag(FLAG_HIDE_CROBAT_SHADOWS_TRANQUIL_RT)
 }
 
-script TranquilRoute_EventScript_TravelingMerchantFirstTime {
+script TranquilRoute_EventScript_TravellingMerchantFirstTime {
 	lock
 	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Mumble mumble… Should restock on ointment… Damn, where did I put my purse?…"
-	))
+	msgbox("{CREATE_MUGSHOT MUGSHOT_OKADA 0}{FONT_SMALL}Mumble mumble…\nShould restock on ointment…\lDamn, where did I put my purse?…")
 	closemessage
 
 	delay(24)
@@ -511,20 +549,21 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 
 	faceplayer
 
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Oh, hello! Sorry, shop's closed at the moment!\p"
-		"… …Oh, sorry, we haven't met, have we? I'm not good with faces…\p"
-		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant! I travel through all of Toku on foot, selling useful goods and rare finds!\p"
-		"I'm sold out on, well, pretty much everything right now… But you're definitely going to see me around!\p"
-		"What's your name? {PLAYER}?\nNice to meet you, {PLAYER}!\p"
-		"I see you're a young Wielder, eh?\NMaybe we can even have a friendly battle sometime!\p"
-		"Now if you'll excuse me, I'm running late! See you around, {PLAYER}!"
-	))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_MAN}Oh, hello!\nSorry, shop's closed at the moment!\p"
+		"…Oh, sorry, we haven't met, have we?\nI'm not good with faces…\p"
+		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant!\nI travel through all of Toku on foot,\lselling useful goods and rare finds!\p"
+		"I'm sold out on, well, pretty much\neverything right now…\p"
+		"But you're definitely going to see me\naround!\p"
+		"What's your name?…\p{PLAYER}?\nNice to meet you, {PLAYER}!\p"
+		"I see; so you're a young Wielder, eh?\nMaybe we can even have a friendly\lbattle sometime!\p"
+		"Now if you'll excuse me, I'm running\nlate! See you around, {PLAYER}!"
+	)
 	closemessage
 
 	turnobject(VAR_LAST_TALKED, DIR_EAST)
-
-	setspeaker(SP_NAME_MAN)
+	delay(16)
+	setspeaker(SP_NAME_OKADA)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}Come on, Keke."
 	))
@@ -537,29 +576,48 @@ script TranquilRoute_EventScript_TravelingMerchantFirstTime {
 	specialvar(VAR_RESULT, GetPlayerFacingDirection)
 	if (var(VAR_RESULT) == DIR_EAST) {
 		applymovement(VAR_LAST_TALKED, moves(walk_up, walk_left * 4, walk_up * 6))
-		applymovement(LOCALID_KECLEON, moves(walk_left, walk_up, walk_left * 5, walk_up * 5))
+		applymovement(LOCALID_TRANQUIL_RT_KECLEON, moves(walk_left, walk_up, walk_left * 5, walk_up * 5))
 	} else {
 		applymovement(VAR_LAST_TALKED, moves(walk_left * 4, walk_up * 7))
-		applymovement(LOCALID_KECLEON, moves(walk_left * 5, walk_up * 6))
+		applymovement(LOCALID_TRANQUIL_RT_KECLEON, moves(walk_left * 5, walk_up * 6))
 	}
 	waitmovement(VAR_LAST_TALKED)
-	waitmovement(LOCALID_KECLEON)
+	waitmovement(LOCALID_TRANQUIL_RT_KECLEON)
 
 	removeobject(VAR_LAST_TALKED)
-	removeobject(LOCALID_KECLEON)
+	removeobject(LOCALID_TRANQUIL_RT_KECLEON)
 
-	setflag(FLAG_MET_TRAVELING_MERCHANT)
+	setflag(FLAG_MET_TRAVELLING_MERCHANT)
+	release
+}
+
+script TranquilRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Oh, hello, {PLAYER}.\nAre you on your way back home?\p"
+		"Are you looking to purchase?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}I will see you around!\p(You haven't found my purse around,\nhave you?)"
+	))
+	closemessage
+
 	release
 }
 
 script TranquilRoute_EventScript_WaitingForChatot {
 	lock
 	faceplayer
+	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-	setspeaker(SP_NAME_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}Sigh… Maybe if I hang around the Chatot Post, my boyfriend's message will arrive sooner…"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_2 0}{SPEAKER NAME_GIRL}Sigh… Maybe if I hang around the\nChatot Post, my boyfriend's message\lwill arrive sooner…"
 	))
 	closemessage
 	release

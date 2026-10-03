@@ -1,7 +1,6 @@
 #include "global.h"
 #include "test/battle.h"
 #include "battle_ai_util.h"
-#include "constants/battle_z_move_effects.h"
 
 AI_SINGLE_BATTLE_TEST("AI uses Z-Moves.")
 {
@@ -35,7 +34,8 @@ AI_SINGLE_BATTLE_TEST("AI uses Z-Moves -- conserves Z-move if target will faint 
 
 AI_SINGLE_BATTLE_TEST("AI uses Z-Moves to ensure a low-accuracy KO.")
 {
-    u32 species, ability;
+    enum Species species;
+    enum Ability ability;
     PARAMETRIZE { species = SPECIES_TORKOAL; ability = ABILITY_DROUGHT; }
     PARAMETRIZE { species = SPECIES_PELIPPER; ability = ABILITY_DRIZZLE; }
     GIVEN {
@@ -140,7 +140,7 @@ AI_DOUBLE_BATTLE_TEST("AI uses Z-Moves -- Z-Destiny Bond is used when about to d
 
 AI_SINGLE_BATTLE_TEST("AI uses Z-Moves -- Z-Detect")
 {
-    u32 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_THUNDERBOLT; }
     PARAMETRIZE { move = MOVE_CLOSE_COMBAT; }
 
@@ -226,6 +226,16 @@ AI_SINGLE_BATTLE_TEST("AI uses Z-Moves -- Z-Transform")
     }
 }
 
+AI_SINGLE_BATTLE_TEST("AI uses the best Z-Moves.")
+{
+    GIVEN {
+        AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT );
+        ASSUME(GetMoveType(MOVE_QUICK_ATTACK) == TYPE_NORMAL);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_NORMALIUM_Z); Moves(MOVE_SCRATCH, MOVE_HEADBUTT); }
+    } WHEN {
+        TURN { EXPECT_MOVE(opponent, MOVE_HEADBUTT, gimmick: GIMMICK_Z_MOVE); }
+    }
+}
+
 TO_DO_BATTLE_TEST("TODO: AI uses Z-Moves -- Z-Trick Room")
-
-

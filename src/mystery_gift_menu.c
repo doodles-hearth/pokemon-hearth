@@ -49,8 +49,8 @@ static void Task_MysteryGift(u8 taskId);
 EWRAM_DATA static u8 sDownArrowCounterAndYCoordIdx[8] = {};
 EWRAM_DATA bool8 gGiftIsFromEReader = FALSE;
 
-static const u16 sTextboxBorder_Pal[] = INCBIN_U16("graphics/interface/mystery_gift_textbox_border.gbapal");
-static const u32 sTextboxBorder_Gfx[] = INCBIN_U32("graphics/interface/mystery_gift_textbox_border.4bpp.smol");
+static const u16 sTextboxBorder_Pal[] = INCGFX_U16("graphics/interface/mystery_gift_textbox_border.png", ".gbapal");
+static const u32 sTextboxBorder_Gfx[] = INCGFX_U32("graphics/interface/mystery_gift_textbox_border.png", ".4bpp.smol");
 
 struct MysteryGiftTaskData
 {
@@ -673,7 +673,7 @@ s8 DoMysteryGiftYesNo(u8 *textState, u16 *windowId, bool8 yesNoBoxPlacement, con
     case 0:
         // Print question message
         StringExpandPlaceholders(gStringVar4, str);
-        if (yesNoBoxPlacement == 0)
+        if (!yesNoBoxPlacement)
             *windowId = AddWindow(&sWindowTemplate_YesNoMsg_Wide);
         else
             *windowId = AddWindow(&sWindowTemplate_YesNoMsg);
@@ -687,7 +687,7 @@ s8 DoMysteryGiftYesNo(u8 *textState, u16 *windowId, bool8 yesNoBoxPlacement, con
     case 1:
         // Create Yes/No
         windowTemplate = sWindowTemplate_YesNoBox;
-        if (yesNoBoxPlacement == 0)
+        if (!yesNoBoxPlacement)
             windowTemplate.tilemapTop = 9;
         else
             windowTemplate.tilemapTop = 15;
@@ -722,7 +722,6 @@ s8 DoMysteryGiftYesNo(u8 *textState, u16 *windowId, bool8 yesNoBoxPlacement, con
 // Handle the "Receive/Send/Toss" menu that appears when selecting Wonder Card/News
 static s32 HandleGiftSelectMenu(u8 *textState, u16 *windowId, bool32 cannotToss, bool32 cannotSend)
 {
-    struct WindowTemplate UNUSED windowTemplate;
     s32 input;
 
     switch (*textState)
@@ -742,7 +741,6 @@ static s32 HandleGiftSelectMenu(u8 *textState, u16 *windowId, bool32 cannotToss,
         (*textState)++;
         break;
     case 1:
-        windowTemplate = sWindowTemplate_YesNoBox;
         if (cannotSend)
         {
             if (!cannotToss)
@@ -1352,7 +1350,7 @@ static void Task_MysteryGift(u8 taskId)
         }
         break;
     case MG_STATE_CLIENT_LINK_END:
-        if (gReceivedRemoteLinkPlayers == 0)
+        if (!gReceivedRemoteLinkPlayers)
         {
             DestroyWirelessStatusIndicatorSprite();
             data->state = MG_STATE_CLIENT_COMM_COMPLETED;
@@ -1578,7 +1576,7 @@ static void Task_MysteryGift(u8 taskId)
         data->state = MG_STATE_SERVER_LINK_END_WAIT;
         break;
     case MG_STATE_SERVER_LINK_END_WAIT:
-        if (gReceivedRemoteLinkPlayers == 0)
+        if (!gReceivedRemoteLinkPlayers)
         {
             DestroyWirelessStatusIndicatorSprite();
             data->state = MG_STATE_SERVER_RESULT_MSG;

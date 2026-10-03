@@ -294,10 +294,10 @@ script YifuCity_CrobatShop_Customer2 {
 script YifuCity_CrobatShop_EventScript_Samurai {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Shhh, don't look at me!\nSomeone tipped me off that the Crobat Shadows' band of misfits has a secret hideout right under the city!\p"
-		"I'm trying to know more by standing around and listening!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Shhh, don't look at me!\p"
+		"Someone tipped me off that the Crobat\nShadows have a secret hideout…\lRight under the city!\p"
+		"I'm trying to know more by standing\naround and listening!"
 	))
 	closemessage
 	release

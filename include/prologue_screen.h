@@ -1,6 +1,6 @@
 #ifndef PROLOGUE_GUARD
 #define PROLOGUE_GUARD
 
-void Task_OpenPrologueScreen(u8 taskId);
+void CB2_InitPrologueScreen(void);
 
 #endif

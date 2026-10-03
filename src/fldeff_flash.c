@@ -7,6 +7,7 @@
 #include "fldeff.h"
 #include "gpu_regs.h"
 #include "main.h"
+#include "map_preview_screen.h"
 #include "overworld.h"
 #include "palette.h"
 #include "party_menu.h"
@@ -37,7 +38,6 @@ static void Task_ExitCaveTransition4(u8 taskId);
 static void Task_ExitCaveTransition5(u8 taskId);
 static void DoEnterCaveTransition(void);
 static void Task_EnterCaveTransition1(u8 taskId);
-static void Task_EnterCaveTransition2(u8 taskId);
 static void Task_EnterCaveTransition3(u8 taskId);
 static void Task_EnterCaveTransition4(u8 taskId);
 
@@ -62,13 +62,13 @@ static const struct FlashStruct sTransitionTypes[] =
     {},
 };
 
-static const u16 sCaveTransitionPalette_White[] = INCBIN_U16("graphics/cave_transition/white.gbapal");
-static const u16 sCaveTransitionPalette_Black[] = INCBIN_U16("graphics/cave_transition/black.gbapal");
+static const u16 sCaveTransitionPalette_White[] = INCGFX_U16("graphics/cave_transition/white.pal", ".gbapal");
+static const u16 sCaveTransitionPalette_Black[] = INCGFX_U16("graphics/cave_transition/black.pal", ".gbapal");
 
-static const u16 sCaveTransitionPalette_Enter[] = INCBIN_U16("graphics/cave_transition/enter.gbapal");
+static const u16 sCaveTransitionPalette_Enter[] = INCGFX_U16("graphics/cave_transition/enter.pal", ".gbapal");
 
-static const u32 sCaveTransitionTilemap[] = INCBIN_U32("graphics/cave_transition/tilemap.bin.smolTM");
-static const u32 sCaveTransitionTiles[] = INCBIN_U32("graphics/cave_transition/tiles.4bpp.smol");
+static const u32 sCaveTransitionTilemap[] = INCGFX_U32("graphics/cave_transition/tilemap.bin", ".smolTM");
+static const u32 sCaveTransitionTiles[] = INCGFX_U32("graphics/cave_transition/tiles.png", ".4bpp.smol");
 
 EWRAM_DATA u8 currentCaveTint;
 
@@ -125,8 +125,6 @@ static void VBC_ChangeMapVBlank(void)
 
 void CB2_DoChangeMap(void)
 {
-    u16 ime;
-
     SetVBlankCallback(NULL);
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     SetGpuReg(REG_OFFSET_BG2CNT, 0);
@@ -144,10 +142,7 @@ void CB2_DoChangeMap(void)
     ResetPaletteFade();
     ResetTasks();
     ResetSpriteData();
-    ime = REG_IME;
-    REG_IME = 0;
-    REG_IE |= INTR_FLAG_VBLANK;
-    REG_IME = ime;
+    IntrEnable(INTR_FLAG_VBLANK);
     SetVBlankCallback(VBC_ChangeMapVBlank);
     SetMainCallback2(CB2_ChangeMapMain);
     if (!TryDoMapTransition())
@@ -159,6 +154,12 @@ static bool8 TryDoMapTransition(void)
     u8 i;
     enum MapType fromType = GetLastUsedWarpMapType();
     enum MapType toType = GetCurrentMapType();
+
+    if (ShouldRunMapPreview() && (CurrentMapHasPreviewScreen(MPS_TYPE_CAVE) == TRUE || CurrentMapHasPreviewScreen(MPS_TYPE_BASIC) == TRUE))
+    {
+        RunMapPreviewScreenNonFade(gMapHeader.regionMapSectionId);
+        return TRUE;
+    }
 
     for (i = 0; sTransitionTypes[i].fromType; i++)
     {
@@ -301,7 +302,7 @@ static void Task_EnterCaveTransition1(u8 taskId)
     gTasks[taskId].func = Task_EnterCaveTransition2;
 }
 
-static void Task_EnterCaveTransition2(u8 taskId)
+void Task_EnterCaveTransition2(u8 taskId)
 {
     SetGpuReg(REG_OFFSET_DISPCNT, 0);
     DecompressDataWithHeaderVram(sCaveTransitionTiles, (void *)(VRAM + 0xC000));
@@ -369,48 +370,49 @@ static void Task_EnterCaveTransition4(u8 taskId)
 
 extern const struct BlendSettings gCustomDNSTintBlend[];
 
+// Get all cave blend settings from one source here
+static u8 GetCaveBlendIndex(void)
+{
+    if (!gMapHeader.cave)
+        return DNS_BLEND_CAVE_STANDARD;
+
+    u8 followerIndex = GetFollowerMonIndex();
+    struct Pokemon *follower = &gParties[B_TRAINER_PLAYER][followerIndex];
+    u16 species = GetMonData(follower, MON_DATA_SPECIES);
+    u8 followerFlashTint = gSpeciesInfo[species].flashTint;
+    u8 followerFlashTintShiny = gSpeciesInfo[species].flashTintShiny;
+
+    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gParties[B_TRAINER_PLAYER][followerIndex], MON_DATA_SPECIES));
+
+    if (GetMonData(follower, MON_DATA_IS_SHINY) && followerFlashTintShiny > 0)
+        return followerFlashTintShiny;
+    if (followerFlashTint > 0)
+        return followerFlashTint;
+    return DNS_BLEND_CAVE_STANDARD;
+}
+
+const struct BlendSettings *GetCaveBlendSettings(void)
+{
+    return &gCustomDNSTintBlend[GetCaveBlendIndex()];
+}
+
 void UpdateFlashTint(void)
 {
     if (!gMapHeader.cave)
-		return;
-    
+        return;
+
+    u8 newFlashTint = GetCaveBlendIndex();
     u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
 
-	u8 followerIndex = GetFollowerMonIndex();
-    u8 followerFlashTint = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTint;
-    u8 followerFlashTintShiny = gSpeciesInfo[GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES)].flashTintShiny;
-    u8 currentFlashTint = 0;
-    u8 newFlashTint = 1;
-    
-    DebugPrintf("mon index=%d, species=%d", followerIndex, GetMonData(&gPlayerParty[followerIndex], MON_DATA_SPECIES));
-    
-    // Get Flash DNS Tint
-    if (GetMonData(&gPlayerParty[followerIndex], MON_DATA_IS_SHINY) && (IsFollowerSpawned()) && followerFlashTintShiny > 0)
+    if (GET_FOLLOWER_TINT(flashTrackerPacked) != newFlashTint)
     {
-        DebugPrintf("   Shiny");
-        newFlashTint = followerFlashTintShiny;
-        currentFlashTint = followerFlashTintShiny;
-    }
-    else if (followerFlashTint > 0)
-    {
-        newFlashTint = followerFlashTint;
-        currentFlashTint = followerFlashTint;
-    }
-    else
-    {
-        newFlashTint = DNS_BLEND_CAVE_STANDARD;
-    }
-    
-    // Do Custom DNS Blend
-    if ((currentFlashTint != followerFlashTintShiny) || (currentFlashTint != followerFlashTint))
-    {
-        SET_FOLLOWER_TINT(flashTrackerPacked, currentFlashTint);
+        SET_FOLLOWER_TINT(flashTrackerPacked, newFlashTint);
         VarSet(VAR_FLASH_TRACKER_PACKED, flashTrackerPacked);
     }
 
     u32 palettes = FilterTimeBlendPalettes(PALETTES_ALL);
     const struct BlendSettings *blend = &gCustomDNSTintBlend[newFlashTint];
-    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
-    
+    TimeMixPalettes(palettes, gPlttBufferUnfaded, gPlttBufferFaded, blend, blend, 256);
+
     currentCaveTint = newFlashTint;
 }

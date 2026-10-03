@@ -1229,7 +1229,7 @@ static void AnimCirclingFinger(struct Sprite *sprite)
 
 static void AnimBouncingMusicNote(struct Sprite *sprite)
 {
-    u8 battler;
+    enum BattlerId battler;
     if (gBattleAnimArgs[0] == 0)
         battler = gBattleAnimAttacker;
     else
@@ -1452,7 +1452,7 @@ void AnimSonicBoomProjectile(struct Sprite *sprite)
     targetXPos = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2) + gBattleAnimArgs[2];
     targetYPos = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[3];
     rotation = ArcTan2Neg(targetXPos - sprite->x, targetYPos - sprite->y);
-    rotation += 0xF000;
+    rotation -= 0x1000;
     if (IsContest())
         rotation -= 0x6000;
 
@@ -1495,9 +1495,9 @@ static void AnimAirWaveProjectile_Step1(struct Sprite *sprite)
         sprite->x2 = (u16)sprite->data[1] >> 8;
 
     if (1 & task->data[8])
-        sprite->y2 = ((u16)sprite->data[2] / 256u) * -1;
+        sprite->y2 = ((u16)sprite->data[2] >> 8) * -1;
     else
-        sprite->y2 = (u16)sprite->data[2] / 256u;
+        sprite->y2 = (u16)sprite->data[2] >> 8;
 
     if (sprite->data[0]-- <= 0)
     {
@@ -1515,15 +1515,15 @@ static void AnimAirWaveProjectile(struct Sprite *sprite)
     struct Task *task = &gTasks[sprite->data[7]];
     sprite->data[1] += (-2 & task->data[7]);
     sprite->data[2] += (-2 & task->data[8]);
-    if (1 & task->data[7])
+    if (task->data[7] & 1)
         sprite->x2 = ((u16)sprite->data[1] >> 8) * -1;
     else
         sprite->x2 = (u16)sprite->data[1] >> 8;
 
-    if (1 & task->data[8])
-        sprite->y2 = ((u16)sprite->data[2] / 256u) * -1;
+    if (task->data[8] & 1)
+        sprite->y2 = ((u16)sprite->data[2] >> 8) * -1;
     else
-        sprite->y2 = (u16)sprite->data[2] / 256u;
+        sprite->y2 = ((u16)sprite->data[2] >> 8);
 
     if (sprite->data[0]-- <= 0)
     {
@@ -1591,11 +1591,17 @@ static void AirCutterProjectileStep1(u8 taskId)
 
 void AnimTask_AirCutterProjectile(u8 taskId)
 {
+    if (!TryLoadSpriteAssets(&gAirWaveProjectileSpriteTemplate))
+    {
+        DestroyAnimVisualTask(taskId);
+        return;
+    }
+
     s16 attackerY = 0;
     s16 attackerX = 0;
     s16 targetX = 0;
     s16 targetY = 0;
-    s16 xDiff, yDiff;
+    s16 xDiff;
 
     if (IsContest())
     {
@@ -1623,7 +1629,7 @@ void AnimTask_AirCutterProjectile(u8 taskId)
     attackerX = gTasks[taskId].data[9] = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_X);
     attackerY = gTasks[taskId].data[10] = GetBattlerSpriteCoord(gBattleAnimAttacker, BATTLER_COORD_Y);
     if (IsDoubleBattle()
-        && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimTarget)))
+        && IsBattlerSpriteVisible(GetPartnerBattler(gBattleAnimTarget)))
     {
         SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &targetX, &targetY);
     }
@@ -1645,13 +1651,11 @@ void AnimTask_AirCutterProjectile(u8 taskId)
     gTasks[taskId].data[7] = gBattleAnimArgs[2];
     if (targetY >= attackerY)
     {
-        yDiff = targetY - attackerY;
-        gTasks[taskId].data[8] = MathUtil_Mul16(yDiff, MathUtil_Inv16(gTasks[taskId].data[5])) & ~1;
+        gTasks[taskId].data[8] = MathUtil_Mul16(targetY - attackerY, MathUtil_Inv16(gTasks[taskId].data[5])) & ~1;
     }
     else
     {
-        yDiff = attackerY - targetY;
-        gTasks[taskId].data[8] = MathUtil_Mul16(yDiff, MathUtil_Inv16(gTasks[taskId].data[5])) | 1;
+        gTasks[taskId].data[8] = MathUtil_Mul16(attackerY - targetY, MathUtil_Inv16(gTasks[taskId].data[5])) | 1;
     }
 
     gTasks[taskId].data[3] = gBattleAnimArgs[3];
@@ -1730,7 +1734,7 @@ static void AnimCoinThrow(struct Sprite *sprite)
 
     r6 += gBattleAnimArgs[2];
     var = ArcTan2Neg(r6 - sprite->x, r7 - sprite->y);
-    var += 0xC000;
+    var -= 0x4000;
     TrySetSpriteRotScale(sprite, FALSE, 0x100, 0x100, var);
     sprite->data[0] = gBattleAnimArgs[4];
     sprite->data[2] = r6;
@@ -2108,7 +2112,8 @@ void AnimTask_Splash(u8 taskId)
     }
     else
     {
-        u8 spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
+        enum AnimBattler animBattler = gBattleAnimArgs[0];
+        u8 spriteId = GetAnimBattlerSpriteId(animBattler);
         task->data[0] = spriteId;
         task->data[1] = 0;
         task->data[2] = gBattleAnimArgs[1];
@@ -2233,7 +2238,7 @@ static void AnimBreathPuff(struct Sprite *sprite)
 // arg 2: y pixel offset
 void AnimAngerMark(struct Sprite *sprite)
 {
-    u8 battler;
+    enum BattlerId battler;
     if (!gBattleAnimArgs[0])
         battler = gBattleAnimAttacker;
     else
@@ -2503,18 +2508,18 @@ static void AnimPencil_Step(struct Sprite *sprite)
 
 static void AnimBlendThinRing(struct Sprite *sprite)
 {
-    u8 battler = 0;
+    enum BattlerId battler = 0;
     s16 x = 0;
     s16 y = 0;
     u8 r4;
 
-    if (gBattleAnimArgs[2] == 0)
+    if (gBattleAnimArgs[2] == ANIM_ATTACKER)
         battler = gBattleAnimAttacker;
     else
         battler = gBattleAnimTarget;
 
     r4 = gBattleAnimArgs[3] ^ 1;
-    if (IsDoubleBattle() && IsBattlerSpriteVisible(BATTLE_PARTNER(battler)))
+    if (IsDoubleBattle() && IsBattlerSpriteVisible(GetPartnerBattler(battler)))
     {
         SetAverageBattlerPositions(battler, r4, &x, &y);
         if (r4 == 0)
@@ -2543,13 +2548,13 @@ static void AnimHyperVoiceRing_WaitEnd(struct Sprite *sprite)
 
 void AnimHyperVoiceRing(struct Sprite *sprite)
 {
-    u16 startX = 0;
-    u16 startY = 0;
+    s16 startX = 0;
+    s16 startY = 0;
     s16 x = 0;
     s16 y = 0;
     u8 yCoordType;
-    u8 battler1;
-    u8 battler2;
+    enum BattlerId battler1;
+    enum BattlerId battler2;
     u8 xCoordType;
 
     if (gBattleAnimArgs[5] == 0)
@@ -2577,18 +2582,18 @@ void AnimHyperVoiceRing(struct Sprite *sprite)
     if (!IsOnPlayerSide(battler1))
     {
         startX = GetBattlerSpriteCoord(battler1, xCoordType) + gBattleAnimArgs[0];
-        if (IsBattlerSpriteVisible(BATTLE_PARTNER(battler2)))
-            sprite->subpriority = gSprites[gBattlerSpriteIds[BATTLE_PARTNER(battler2)]].subpriority - 1;
+        if (IsBattlerSpriteVisible(GetPartnerBattler(battler2)))
+            sprite->subpriority = gSprites[gBattlerSpriteIds[GetPartnerBattler(battler2)]].subpriority - 1;
         else
             sprite->subpriority = gSprites[gBattlerSpriteIds[battler2]].subpriority - 1;
     }
     else
     {
         startX = GetBattlerSpriteCoord(battler1, xCoordType) - gBattleAnimArgs[0];
-        if (!IsContest() && IsBattlerSpriteVisible(BATTLE_PARTNER(battler1)))
+        if (!IsContest() && IsBattlerSpriteVisible(GetPartnerBattler(battler1)))
         {
-            if (gSprites[gBattlerSpriteIds[battler1]].x < gSprites[gBattlerSpriteIds[BATTLE_PARTNER(battler1)]].x)
-                sprite->subpriority = gSprites[gBattlerSpriteIds[BATTLE_PARTNER(battler1)]].subpriority + 1;
+            if (gSprites[gBattlerSpriteIds[battler1]].x < gSprites[gBattlerSpriteIds[GetPartnerBattler(battler1)]].x)
+                sprite->subpriority = gSprites[gBattlerSpriteIds[GetPartnerBattler(battler1)]].subpriority + 1;
             else
                 sprite->subpriority = gSprites[gBattlerSpriteIds[battler1]].subpriority - 1;
         }
@@ -2600,7 +2605,7 @@ void AnimHyperVoiceRing(struct Sprite *sprite)
     }
 
     startY = GetBattlerSpriteCoord(battler1, yCoordType) + gBattleAnimArgs[1];
-    if (!IsContest() && IsBattlerSpriteVisible(BATTLE_PARTNER(battler2)))
+    if (!IsContest() && IsBattlerSpriteVisible(GetPartnerBattler(battler2)))
     {
         SetAverageBattlerPositions(battler2, gBattleAnimArgs[6], &x, &y);
     }
@@ -2875,6 +2880,12 @@ static void AnimTask_ExtremeSpeedMonReappear_Step(u8 taskId)
 
 void AnimTask_SpeedDust(u8 taskId)
 {
+    if (!TryLoadSpriteAssets(&gSpeedDustSpriteTemplate))
+    {
+        DestroyAnimVisualTask(taskId);
+        return;
+    }
+
     struct Task *task = &gTasks[taskId];
     task->data[0] = 0;
     task->data[1] = 4;
@@ -2935,7 +2946,7 @@ static void AnimTask_SpeedDust_Step(u8 taskId)
         {
             u8 spriteId;
             task->data[1] = 0;
-            spriteId = CreateSprite(&gSpeedDustSpriteTemplate, task->data[14], task->data[15], 0);
+            spriteId = CreateSpriteUnchecked(&gSpeedDustSpriteTemplate, task->data[14], task->data[15], 0);
             if (spriteId != MAX_SPRITES)
             {
                 gSprites[spriteId].data[0] = taskId;
@@ -2996,7 +3007,7 @@ void AnimTask_FreeMusicNotesPals(u8 taskId)
 static void SetMusicNotePalette(struct Sprite *sprite, u8 a, u8 b)
 {
     u8 tile = (b & 1) ? 32 : 0;
-    sprite->oam.tileNum += tile + (a << 2);
+    sprite->oam.tileNum += tile + a * 4;
     sprite->oam.paletteNum = IndexOfSpritePaletteTag(sMusicNotePaletteTagsTable[b >> 1]);
 }
 
@@ -3432,9 +3443,13 @@ static void AnimOrbitScatter_Step(struct Sprite *sprite)
 {
     sprite->x2 += sprite->data[0];
     sprite->y2 += sprite->data[1];
-    if (sprite->x + sprite->x2 + 16 > ((u32)DISPLAY_WIDTH + 32)
-     || sprite->y + sprite->y2 > DISPLAY_HEIGHT || sprite->y + sprite->y2 < -16)
+    if (sprite->x + sprite->x2 > (DISPLAY_WIDTH + 16)
+     || sprite->x + sprite->x2 < -16
+     || sprite->y + sprite->y2 > DISPLAY_HEIGHT
+     || sprite->y + sprite->y2 < -16)
+    {
         DestroyAnimSprite(sprite);
+    }
 }
 
 static void AnimSpitUpOrb_Step(struct Sprite *sprite)
@@ -3619,7 +3634,8 @@ static void AnimMovementWaves_Step(struct Sprite *sprite)
 
 void AnimTask_UproarDistortion(u8 taskId)
 {
-    u8 spriteId = GetAnimBattlerSpriteId(gBattleAnimArgs[0]);
+    enum AnimBattler animBattler = gBattleAnimArgs[0];
+    u8 spriteId = GetAnimBattlerSpriteId(animBattler);
 
     PrepareAffineAnimInTaskData(&gTasks[taskId], spriteId, sAffineAnims_UproarDistortion);
     gTasks[taskId].func = AnimTask_UproarDistortion_Step;
@@ -3633,7 +3649,7 @@ static void AnimTask_UproarDistortion_Step(u8 taskId)
 
 static void AnimJaggedMusicNote(struct Sprite *sprite)
 {
-    u8 battler = !gBattleAnimArgs[0] ? gBattleAnimAttacker : gBattleAnimTarget;
+    enum BattlerId battler = !gBattleAnimArgs[0] ? gBattleAnimAttacker : gBattleAnimTarget;
 
     if (!IsOnPlayerSide(battler))
         gBattleAnimArgs[1] *= -1;
@@ -3641,8 +3657,8 @@ static void AnimJaggedMusicNote(struct Sprite *sprite)
     sprite->x = GetBattlerSpriteCoord(battler, BATTLER_COORD_X_2)  + gBattleAnimArgs[1];
     sprite->y = GetBattlerSpriteCoord(battler, BATTLER_COORD_Y_PIC_OFFSET) + gBattleAnimArgs[2];
     sprite->data[0] = 0;
-    sprite->data[1] = (u16)sprite->x << 3;
-    sprite->data[2] = (u16)sprite->y << 3;
+    sprite->data[1] = sprite->x << 3;
+    sprite->data[2] = sprite->y << 3;
     sprite->data[3] = (gBattleAnimArgs[1] << 3) / 8;
     sprite->data[4] = (gBattleAnimArgs[2] << 3) / 8;
 
@@ -3677,13 +3693,12 @@ static void AnimPerishSongMusicNote2(struct Sprite *sprite)
 
 static void AnimPerishSongMusicNote(struct Sprite *sprite)
 {
-    int index;
-    int var2;
+    u16 index;
 
     if (!sprite->data[0])
     {
         sprite->x = 120;
-        sprite->y = (gBattleAnimArgs[0] + (((u16)gBattleAnimArgs[0]) >> 31)) / 2 - 15;
+        sprite->y = gBattleAnimArgs[0] / 2 - 15;
 
         StartSpriteAnim(sprite, gBattleAnimArgs[1]);
 
@@ -3693,12 +3708,12 @@ static void AnimPerishSongMusicNote(struct Sprite *sprite)
 
     sprite->data[0]++;
 
-    sprite->data[1] = (sprite->data[0] + ((u16)sprite->data[0] >> 31)) / 2;
-    index = ((sprite->data[0] * 3) + (u16)sprite->data[3]);
-    var2 = 0xFF;
-    sprite->data[6] = (sprite->data[6] + 10) & 0xFF;
+    sprite->data[1] = sprite->data[0] / 2;
 
-    index &= var2;
+    index = ((sprite->data[0] * 3) + sprite->data[3]) & 0xFF;
+    sprite->data[6] += 10;
+    sprite->data[6] &= 0xFF;
+
     sprite->x2 = Cos(index, 100);
 
     sprite->y2 = sprite->data[1] + Sin(index, 10) + Cos(sprite->data[6], 4);
@@ -3754,7 +3769,7 @@ static void AnimPerishSongMusicNote_Step2(struct Sprite *sprite)
 //  arg0: cover both battlers
 static void AnimGuardRing(struct Sprite *sprite)
 {
-    if (gBattleAnimArgs[0] && IsDoubleBattle() && IsBattlerSpriteVisible(BATTLE_PARTNER(gBattleAnimAttacker)))
+    if (gBattleAnimArgs[0] && IsDoubleBattle() && IsBattlerSpriteVisible(GetPartnerBattler(gBattleAnimAttacker)))
     {
         SetAverageBattlerPositions(gBattleAnimAttacker, FALSE, &sprite->x, &sprite->y);
         sprite->y += 40;
@@ -3784,5 +3799,11 @@ void AnimTask_IsFuryCutterHitRight(u8 taskId)
 void AnimTask_GetFuryCutterHitCount(u8 taskId)
 {
     gBattleAnimArgs[ARG_RET_ID] = gAnimDisableStructPtr->furyCutterCounter;
+    DestroyAnimVisualTask(taskId);
+}
+
+void AnimTask_GetStockpileCounter(u8 taskId)
+{
+    gBattleAnimArgs[ARG_RET_ID] = gAnimDisableStructPtr->stockpileCounter;
     DestroyAnimVisualTask(taskId);
 }

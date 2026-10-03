@@ -98,7 +98,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SAKURA_WOMAN_1",
       "x": 27,
-      "y": 20,
+      "y": 24,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 2,
@@ -176,6 +176,7 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_SAKU_TOWN_GUARD",
       "graphics_id": "OBJ_EVENT_GFX_FARMER",
       "x": 18,
       "y": 2,
@@ -368,12 +369,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_MonHues",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -388,12 +389,12 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SakuTown_EventScript_Cherrim",
       "flag": "0",
-      "afternoon": false,
+      "afternoon": true,
       "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
+      "earlymorning": true,
+      "evening": true,
+      "lunchtime": true,
+      "morning": true,
       "night": false
     },
     {
@@ -406,7 +407,7 @@
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "KuraTown_EventScript_Scyther",
+      "script": "SakuTown_EventScript_Scyther",
       "flag": "FLAG_HIDE_SAKU_FARMERS",
       "afternoon": true,
       "deadnight": false,
@@ -513,6 +514,27 @@
       "evening": false,
       "lunchtime": true,
       "morning": true,
+      "night": false
+    },
+    {
+      "local_id": "LOCALID_KURA_TOWN_GUARD_OFFBORDER",
+      "graphics_id": "OBJ_EVENT_GFX_FARMER",
+      "x": 15,
+      "y": -2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 3,
+      "movement_range_y": 3,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "KuraTown_EventScript_Guard",
+      "flag": "FLAG_SAKU_KURA_REUNITED",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
       "night": false
     }
   ],
@@ -657,6 +679,69 @@
       "var": "VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE",
       "var_value": "7",
       "script": "SakuTown_BottomTamaTrigger"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 26,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 27,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 30,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 31,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 32,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_QUEST_ESPEON_STATE",
+      "var_value": "2",
+      "script": "SakuTown_EventScript_PreventStealing_TranquilRoute"
     }
   ],
   "bg_events": [
@@ -708,5 +793,6 @@
       "item": "ITEM_CHERI_BERRY",
       "flag": "FLAG_HIDDEN_ITEM_SAKU_CHERI_BERRY"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

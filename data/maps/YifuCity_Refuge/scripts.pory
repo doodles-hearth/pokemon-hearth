@@ -1,5 +1,3 @@
-const LOCALID_NURSE_CROBAT = 1
-const LOCALID_GROWLITHE = 17
 const FLAG_HIDE_NURSE = FLAG_TEMP_1
 const FLAG_HIDE_ROUTE_SHAMISEN = FLAG_TEMP_2
 const FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG = FLAG_TEMP_3
@@ -407,19 +405,6 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	end
 }
 
-script YifuCity_Refuge_EventScript_OldMan {
-	lock
-	faceplayer
-	setspeaker(SP_NAME_OLD_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}I'm just resting my old bones by the fire.\p"
-		"How the years go by swiftly…\nDo treasure each passing day…"
-	))
-	closemessage
-	release
-	end
-}
-
 script YifuCity_Refuge_EventScript_Traveler {
 	lock
 	faceplayer
@@ -451,6 +436,8 @@ script YifuCity_Refuge_EventScript_Bisharp {
 script YifuCity_Refuge_EventScript_Samurai {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 	setspeaker(SP_NAME_SAMURAI)
 	msgbox(format(
@@ -464,10 +451,13 @@ script YifuCity_Refuge_EventScript_Samurai {
 script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_MAN)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh… this city's Dojo is all girls, so I thought it was going to be super easy…\p"
+		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh…\p"
+		"This city's Dojo is all girls, so I\nthought it was gonna be super easy…\p"
 		"I got obliterated…"
 	))
 	closemessage
@@ -476,14 +466,7 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 }
 
 script YifuCity_Refuge_EventScript_RouteShamisensPokemon {
-	lock
-	setseenmon(SPECIES_GROWLITHE)
-	playmoncry(SPECIES_GROWLITHE, CRY_MODE_NORMAL)
-	setspeakertomonname(SPECIES_GROWLITHE)
-	msgbox("Rr-ruff!")
-	waitse
-	closemessage
-	release
+	mondialogue(SPECIES_GROWLITHE, "Rr-ruff!")
 }
 
 script YifuCity_Refuge_EventScript_RouteShamisen {
@@ -502,15 +485,15 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 			} else {
 				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\l"
-					"… … …!\p"
-					"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\p"
+					"… … …!\n…Oh, I recognize you!\p"
+					"You're that promising young Wielder\nI met on Whiteslate Route!\p"
 					"… …Yes, I feel it…\p"
-					"You managed to traverse the whole Route, triumphing of both Wielders and wild Pokémon, relying on your Wielding skills and medicine…\p"
-					"Congratulations, um… {FONT_SMALL}What did you say your name was?{FONT_NORMAL}\p"
-					"Congratulations, {PLAYER}!\nAs I expected, you have proved worthy of our songs!\p"
-					"I carry some Pokémon Eggs right this moment. I want you to have one, I know it would be in good hands.\p"
+					"You traversed the Route, relying on\nyour Wielding skills and medicine…\p"
+					"Congratulations, um…\n{FONT_SMALL}What did you say your name was?{FONT_NORMAL}\lCongratulations, {PLAYER}!\p"
+					"As I hoped, you have proven worthy\nof our songs!\p"
+					"I carry three Pokémon Eggs.\nI want you to have one.\lI know it would be in good hands!\p"
 					"Which of these Eggs do you favor?"
 				))
 			}
@@ -552,8 +535,8 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				giveegg(VAR_TEMP_0, METLOC_EGG_SHAMISEN)
 
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Please take good care of this Egg.\p"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Please take good care of this Egg.\n"
 					"May destiny cross our paths again!"
 				))
 				closemessage
@@ -573,12 +556,13 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 		case ROUTE_CHALLENGE_STATE_FAILURE:
 			applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\l"
-				"… … …!\p"
-				"Oh, I recognize you! You're that promising young Wielder I met on Whiteslate Route!\p"
-				"{PLAYER}? It's nice to meet you again.\p"
-				"Tell me honestly, {PLAYER}… Did you manage to traverse Whiteslate Route without resorting to the services of a Pokémon Refuge?"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\p"
+				"… … …!\n…Oh, I recognize you!\p"
+				"You're that promising young Wielder\nI met on Whiteslate Route!\p"
+				"{PLAYER}?\nIt's nice to meet you again.\p"
+				"Tell me honestly, {PLAYER}…\p"
+				"Did you traverse Whiteslate Route\nwithout going to a Pokémon Refuge?"
 			))
 
 			mcdialogue(
@@ -590,22 +574,24 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				case 0:
 					applymovement(VAR_LAST_TALKED, moves(emote_pensive))
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
-					msgbox(format(
+					msgbox((
 						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hmmmm… … …\n… … …\p"
-						"You aren't telling the truth, are you?\n"
-						"You're deceiving yourself, do you not feel it in your heart?\p"
-						"Don't be too sad about not succeeding. Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
-						"Rest here a while, and prepare well for your next journey!"
+						"You aren't telling the truth,\nare you?\n"
+						"You're deceiving yourself, do you\nnot feel it in your heart?\p"
+						"Don't be too sad about not succeeding.\p"
+						"Honesty beats pride. You'll get other\nopportunities to prove yourself!\p"
+						"Rest here a while, and prepare well\nfor your next journey!"
 					))
 					closemessage
 					setflag(FLAG_LIED_TO_SHAMISEN_PLAYER)
 				case 1:
 					applymovement(VAR_LAST_TALKED, moves(emote_happy))
 					setspeaker(SP_NAME_SHAMISEN_PLAYER)
-					msgbox(format(
-						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, that's alright! Don't beat yourself up. I see in your heart that you have a bright future ahead of you.\p"
-						"Honesty beats pride, and you will get other opportunities to prove yourself in the future!\p"
-						"Rest here a while, and use these to prepare for your next journey!"
+					msgbox((
+						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, that's alright!\nDon't beat yourself up.\p"
+						"I see in your heart that you have a\nbright future ahead of you.\p"
+						"Honesty beats pride. You'll get other\nopportunities to prove yourself!\p"
+						"Rest here a while, and use these to\nprepare for your next journey!"
 					))
 
 					giveitem(ITEM_SUPERGIRI, 3)
@@ -631,10 +617,10 @@ script YifuCity_Refuge_EventScript_RouteShamisenLeaves {
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
 			applymovement(VAR_LAST_TALKED, moves(walk_down, walk_left * 4, face_down))
-			applymovement(LOCALID_GROWLITHE, moves(walk_down * 2, walk_left * 3))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_down * 2, walk_left * 3))
 		default:
 			applymovement(VAR_LAST_TALKED, moves(walk_left * 4, walk_down))
-			applymovement(LOCALID_GROWLITHE, moves(walk_down, walk_left * 4, face_down))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_down, walk_left * 4, face_down))
 	}
 	delay(24)
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
@@ -647,15 +633,41 @@ script YifuCity_Refuge_EventScript_RouteShamisenLeaves {
 
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
-			applymovement(LOCALID_GROWLITHE, moves(walk_left, face_down))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_left, face_down))
 		default:
-			applymovement(LOCALID_GROWLITHE, moves(walk_down))
+			applymovement(LOCALID_YIFU_REFUGE_GROWLITHE, moves(walk_down))
 	}
-	waitmovement(LOCALID_GROWLITHE)
+	waitmovement(LOCALID_YIFU_REFUGE_GROWLITHE)
 
 	playse(SE_EXIT)
-	removeobject(LOCALID_GROWLITHE)
+	removeobject(LOCALID_YIFU_REFUGE_GROWLITHE)
 	waitse
 
 	setflag(FLAG_HIDE_ROUTE_SHAMISEN)
+}
+
+script YifuCity_Refuge_EventScript_SunnyDay {
+	lock
+	if (flag(FLAG_RECEIVED_TM_SUNNY_DAY)) {
+		faceplayer
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}A sunny day is a good day!"
+		))
+		closemessage
+	} else {
+		faceplayer
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}Are you getting enough sunlight?\nI make sure to bask in the sun daily!\p"
+			"Ignore the sunburns, it's totally\nnormal, all part of the process!\p"
+			"…Okay, I might have gone a tad\noverboard, actually.\p"
+			"Maybe I shouldn't have asked Castform\nto use Sunny Day on me…\p"
+			"You look pale, though.\nYou should use this!"
+		))
+
+		closemessage
+
+		giveitem(ITEM_TM_SUNNY_DAY)
+		setflag(FLAG_RECEIVED_TM_SUNNY_DAY)
+	}
+	release
 }

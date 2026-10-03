@@ -3,6 +3,7 @@
   "name": "Route113",
   "layout": "LAYOUT_ROUTE113",
   "music": "MUS_ROUTE113",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DRAGONS_PASS",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -555,7 +556,7 @@
       "y": 3,
       "elevation": 3,
       "item": "ITEM_ETHER",
-      "flag": "0"
+      "flag": "FLAG_DUMMY"
     },
     {
       "type": "hidden_item",

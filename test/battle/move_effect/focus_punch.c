@@ -8,7 +8,7 @@ ASSUMPTIONS
 
 SINGLE_BATTLE_TEST("Focus Punch activates only if not damaged")
 {
-    u32 move;
+    enum Move move;
     bool32 activate;
     PARAMETRIZE { move = MOVE_SCRATCH; activate = FALSE; }
     PARAMETRIZE { move = MOVE_WATER_GUN; activate = FALSE; }
@@ -73,7 +73,7 @@ DOUBLE_BATTLE_TEST("Focus Punch activation is based on Speed")
 
 SINGLE_BATTLE_TEST("Focus Punch activates when Focus Band/Focus Sash blocks OHKO move")
 {
-    u32 item;
+    enum Item item;
     PARAMETRIZE { item = ITEM_NONE; }
     PARAMETRIZE { item = ITEM_FOCUS_BAND; }
     PARAMETRIZE { item = ITEM_FOCUS_SASH; }
@@ -106,13 +106,13 @@ SINGLE_BATTLE_TEST("Focus Punch activates when Focus Band/Focus Sash blocks OHKO
 
 SINGLE_BATTLE_TEST("Focus Punch activates when Disguise block a OHKO move (Gen8+)")
 {
-    u32 move;
+    enum Move move;
     bool32 activate;
     PARAMETRIZE { move = MOVE_WATER_GUN; activate = FALSE; }
     PARAMETRIZE { move = MOVE_FISSURE; activate = TRUE; }
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_FISSURE) == EFFECT_OHKO);
-        WITH_CONFIG(CONFIG_DISGUISE_HP_LOSS, GEN_8);
+        WITH_CONFIG(B_DISGUISE_HP_LOSS, GEN_8);
         PLAYER(SPECIES_MIMIKYU_DISGUISED) { Ability(ABILITY_DISGUISE); }
         OPPONENT(SPECIES_WOBBUFFET) {};
     } WHEN {
@@ -139,7 +139,8 @@ SINGLE_BATTLE_TEST("Focus Punch activates when Disguise block a OHKO move (Gen8+
 
 SINGLE_BATTLE_TEST("Focus Punch does not activate when Focus Band/Focus Sash/Sturdy prevent getting one-shot by an attack")
 {
-    u32 item, ability;
+    enum Item item;
+    enum Ability ability;
     PARAMETRIZE { item = ITEM_NONE; ability = ABILITY_STURDY; }
     PARAMETRIZE { item = ITEM_FOCUS_BAND; ability = ABILITY_SHADOW_TAG; }
     PARAMETRIZE { item = ITEM_FOCUS_SASH; ability = ABILITY_SHADOW_TAG; }
@@ -185,12 +186,12 @@ SINGLE_BATTLE_TEST("Focus Punch activates when the user's Substitute is hit")
 
 SINGLE_BATTLE_TEST("Focus Punch uses PP when losing focus (Gen 3-4)")
 {
-    u32 move;
+    enum Move move;
     bool32 activate;
     PARAMETRIZE { move = MOVE_SCRATCH; activate = FALSE; }
     PARAMETRIZE { move = MOVE_LEER; activate = TRUE; }
     GIVEN {
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_3);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_3);
         PLAYER(SPECIES_WOBBUFFET) {MovesWithPP({MOVE_FOCUS_PUNCH, 1});};
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -210,12 +211,12 @@ SINGLE_BATTLE_TEST("Focus Punch uses PP when losing focus (Gen 3-4)")
 
 SINGLE_BATTLE_TEST("Focus Punch doesn't use PP when losing focus (Gen 5+)")
 {
-    u32 move;
+    enum Move move;
     bool32 activate;
     PARAMETRIZE { move = MOVE_SCRATCH; activate = FALSE; }
     PARAMETRIZE { move = MOVE_LEER; activate = TRUE; }
     GIVEN {
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_5);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_5);
         PLAYER(SPECIES_WOBBUFFET) {MovesWithPP({MOVE_FOCUS_PUNCH, 1});};
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -240,7 +241,7 @@ SINGLE_BATTLE_TEST("Focus Punch failing occurs after flinching (Gen 3-4)")
 {
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_FAKE_OUT, MOVE_EFFECT_FLINCH) == TRUE);
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_3);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_3);
         PLAYER(SPECIES_WOBBUFFET) {MovesWithPP({MOVE_FOCUS_PUNCH, 1});};
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -258,7 +259,7 @@ SINGLE_BATTLE_TEST("Focus Punch failing occurs before flinching (Gen 5+)")
 {
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_FAKE_OUT, MOVE_EFFECT_FLINCH) == TRUE);
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_5);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_5);
         PLAYER(SPECIES_WOBBUFFET) {MovesWithPP({MOVE_FOCUS_PUNCH, 1});};
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -278,9 +279,10 @@ TO_DO_BATTLE_TEST("Focus Punch losing focus is not considered as the last move u
 TO_DO_BATTLE_TEST("Focus Punch's initial message is not considered as using the move for Zoom Lens");
 TO_DO_BATTLE_TEST("Focus Punch will use the selected move's priority when being Encored into Focus Punch");
 
-SINGLE_BATTLE_TEST("Focus Punch's initial message is not shown if the user selected a different move and was Encored into using Focus Punch")
+SINGLE_BATTLE_TEST("Focus Punch's initial message is not shown if the user selected a different move and was Encored into using Focus Punch (Gen9-)")
 {
     GIVEN {
+        WITH_CONFIG(B_MOVE_EFFECTS_BEFORE_MOVES, GEN_9);
         ASSUME(GetMoveEffect(MOVE_ENCORE) == EFFECT_ENCORE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -304,10 +306,35 @@ SINGLE_BATTLE_TEST("Focus Punch's initial message is not shown if the user selec
     }
 }
 
+SINGLE_BATTLE_TEST("Focus Punch's initial message is shown if the user selected a different move and was Encored into using Focus Punch (Champions)")
+{
+    GIVEN {
+        WITH_CONFIG(B_MOVE_EFFECTS_BEFORE_MOVES, GEN_CHAMPIONS);
+        ASSUME(GetMoveEffect(MOVE_ENCORE) == EFFECT_ENCORE);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_FOCUS_PUNCH); }
+        TURN { MOVE(opponent, MOVE_ENCORE); MOVE(player, MOVE_CELEBRATE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
+        MESSAGE("Wobbuffet is tightening its focus!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FOCUS_PUNCH, player);
+        HP_BAR(opponent);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
+            MESSAGE("Wobbuffet is tightening its focus!");
+        }
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ENCORE, opponent);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FOCUS_PUNCH_SETUP, player);
+        MESSAGE("Wobbuffet is tightening its focus!");
+    }
+}
+
 DOUBLE_BATTLE_TEST("Focus Punch will lose focus if damaged when used by selecting a different move and being Encored (Gen 3-4)")
 {
     GIVEN {
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_3);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_3);
         ASSUME(GetMoveEffect(MOVE_ENCORE) == EFFECT_ENCORE);
         PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
         PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
@@ -336,7 +363,7 @@ DOUBLE_BATTLE_TEST("Focus Punch will lose focus if damaged when used by selectin
 DOUBLE_BATTLE_TEST("Focus Punch will NOT lose focus if damaged when used by selecting a different move and being Encored (Gen 5+)")
 {
     GIVEN {
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_7);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_7);
         ASSUME(GetMoveEffect(MOVE_ENCORE) == EFFECT_ENCORE);
         PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
         PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
@@ -365,7 +392,7 @@ DOUBLE_BATTLE_TEST("Focus Punch will NOT lose focus if damaged when used by sele
 DOUBLE_BATTLE_TEST("Focus Punch will lose focus if damaged when encored into a different move and selected Focus Punch (Gen 5-6)")
 {
     GIVEN {
-        WITH_CONFIG(CONFIG_FOCUS_PUNCH_FAILURE, GEN_5);
+        WITH_CONFIG(B_FOCUS_PUNCH_FAILURE, GEN_5);
         ASSUME(GetMoveEffect(MOVE_ENCORE) == EFFECT_ENCORE);
         PLAYER(SPECIES_WOBBUFFET) { Speed(1); }
         PLAYER(SPECIES_WOBBUFFET) { Speed(2); }
@@ -405,6 +432,7 @@ AI_SINGLE_BATTLE_TEST("AI won't use Focus Punch if it predicts a damaging move")
 AI_SINGLE_BATTLE_TEST("AI will Incapacitate -> Substitute -> Focus Punch if able")
 {
     GIVEN {
+        PASSES_RANDOMLY(GetConfig(B_PARALYSIS_CHANCE) >= GEN_CHAMPIONS ? 7 : 6, 8, RNG_PARALYSIS);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT);
         PLAYER(SPECIES_MAGNEZONE) { Moves(MOVE_THUNDER_WAVE, MOVE_FLASH_CANNON, MOVE_DISCHARGE, MOVE_TRI_ATTACK); }
         OPPONENT(SPECIES_BRELOOM) { Moves(MOVE_SPORE, MOVE_FOCUS_PUNCH, MOVE_SUBSTITUTE, MOVE_SEED_BOMB); }
@@ -429,7 +457,7 @@ AI_SINGLE_BATTLE_TEST("AI won't use status moves if the player's best attacking 
         ASSUME(GetSpeciesType(SPECIES_CLEFABLE, 1) == TYPE_FAIRY);
         AI_FLAGS(AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_CHECK_VIABILITY | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT);
         PLAYER(SPECIES_SNORLAX) { Moves(MOVE_FOCUS_PUNCH, MOVE_POUND); }
-        OPPONENT(SPECIES_CLEFABLE) {  Moves(MOVE_PLAY_ROUGH, MOVE_SWORDS_DANCE); }
+        OPPONENT(SPECIES_CLEFABLE) { Moves(MOVE_PLAY_ROUGH, MOVE_SWORDS_DANCE); }
     } WHEN {
         TURN { MOVE(player, MOVE_FOCUS_PUNCH); EXPECT_MOVE(opponent, MOVE_PLAY_ROUGH); }
     }

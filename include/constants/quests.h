@@ -17,10 +17,10 @@
 // quest number defines
 #define QUEST_HEARTH_MAIN_CAMPAIGN          0
 #define QUEST_POKEDEX                       1
-#define QUEST_SAKURALOVERS                  2
-#define QUEST_SAKURAESPEON                  3
-#define QUEST_SAKURASCYTHER                 4
-#define QUEST_6          5
+#define QUEST_CUT_MASTER                    2
+#define QUEST_SAKURALOVERS                  3
+#define QUEST_SAKURAESPEON                  4
+#define QUEST_SAKURASCYTHER                 5
 #define QUEST_7          6
 #define QUEST_8          7
 #define QUEST_9          8
@@ -47,10 +47,12 @@
 #define QUEST_30        29
 #define QUEST_COUNT     (QUEST_30 + 1)
 
-#define SUB_QUEST_1          0
-#define SUB_QUEST_2          1
-#define SUB_QUEST_3          2
-#define SUB_QUEST_4          3
+/* POKEDEX SUBQUESTS START */
+#define SUB_QUEST_SEEALLMONS          0
+#define SUB_QUEST_NAMEALLMONS         1
+#define SUB_QUEST_CATCHALLMONS        2
+#define SUB_QUEST_DESCRIBEALLMONS     3
+/* POKEDEX SUBQUESTS END */
 #define SUB_QUEST_5          4
 #define SUB_QUEST_6          5
 #define SUB_QUEST_7          6

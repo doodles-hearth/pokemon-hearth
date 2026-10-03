@@ -3,6 +3,7 @@
   "name": "DewfordTown",
   "layout": "LAYOUT_DEWFORD_TOWN",
   "music": "MUS_DEWFORD",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_DUMMY",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

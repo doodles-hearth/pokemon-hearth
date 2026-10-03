@@ -1,12 +1,15 @@
 #include "global.h"
+#include "constants/field_weather.h"
 #include "constants/songs.h"
 #include "constants/weather.h"
 #include "constants/rgb.h"
+#include "gba/defines.h"
 #include "util.h"
 #include "decompress.h"
 #include "event_object_movement.h"
 #include "field_weather.h"
 #include "fieldmap.h"
+#include "fldeff.h"
 #include "main.h"
 #include "menu.h"
 #include "palette.h"
@@ -20,6 +23,8 @@
 #include "gpu_regs.h"
 #include "field_camera.h"
 #include "overworld.h"
+
+#include "even_live_event.h"
 
 #define DROUGHT_COLOR_INDEX(color) ((((color) >> 1) & 0xF) | (((color) >> 2) & 0xF0) | (((color) >> 3) & 0xF00))
 
@@ -42,12 +47,15 @@ struct WeatherCallbacks
 static bool8 LightenSpritePaletteInFog(u8);
 static void UpdateWeatherColorMap(void);
 static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex);
+static void ApplyDesaturation(u8 startPalIndex, u8 numPalettes, u8 desatIdx);
+static void ApplyDesaturationWithBlend(u8 startPalIndex, u8 numPalettes, u8 desatIdx, u8 blendCoeff, u32 blendClr);
 static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex, u8 blendCoeff, u32 blendColor);
 static void ApplyDroughtColorMapWithBlend(s8 colorMapIndex, u8 blendCoeff, u32 blendColor);
 static void ApplyFogBlend(u8 blendCoeff, u32 blendColor);
 static bool8 FadeInScreen_RainShowShade(void);
 static bool8 FadeInScreen_Drought(void);
 static bool8 FadeInScreen_FogHorizontal(void);
+static bool8 FadeInScreen_Decay(void);
 static void FadeInScreenWithWeather(void);
 static void DoNothing(void);
 static void Task_WeatherInit(u8 taskId);
@@ -55,6 +63,7 @@ static void Task_WeatherMain(u8 taskId);
 static void None_Init(void);
 static void None_Main(void);
 static u8 None_Finish(void);
+static bool32 IsSpritePalTagBlendImmune(u32 palIndex);
 
 EWRAM_DATA struct Weather gWeather = {0};
 EWRAM_DATA static u8 ALIGNED(2) sFieldEffectPaletteColorMapTypes[32] = {0};
@@ -118,6 +127,8 @@ static const u16 sDroughtWeatherColors[][0x1000] = {
     INCBIN_U16("graphics/weather/drought/colors_5.bin"),
 };
 
+static const u8 sDesaturationSteps[17] = {0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 255};
+
 // This is a pointer to gWeather. All code in this file accesses gWeather directly,
 // while code in other field weather files accesses gWeather through this pointer.
 // This is likely the result of compiler optimization, since using the pointer in
@@ -143,6 +154,7 @@ static const struct WeatherCallbacks sWeatherFuncs[] =
     [WEATHER_DROUGHT]            = {Drought_InitVars,       Drought_Main,       Drought_InitAll,       Drought_Finish},
     [WEATHER_DOWNPOUR]           = {Downpour_InitVars,      Thunderstorm_Main,  Downpour_InitAll,      Thunderstorm_Finish},
     [WEATHER_UNDERWATER_BUBBLES] = {Bubbles_InitVars,       Bubbles_Main,       Bubbles_InitAll,       Bubbles_Finish},
+    [WEATHER_DECAY]              = {Decay_InitVars,         Decay_Main,         Decay_InitAll,         Decay_Finish},
 };
 
 void (*const gWeatherPalStateFuncs[])(void) =
@@ -171,7 +183,7 @@ static const u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
-    COLOR_MAP_DARK_CONTRAST,
+    COLOR_MAP_NONE,
     COLOR_MAP_NONE,
     COLOR_MAP_NONE,
     // sprite palettes
@@ -193,7 +205,7 @@ static const u8 ALIGNED(2) sBasePaletteColorMapTypes[32] =
     COLOR_MAP_DARK_CONTRAST,
 };
 
-const u16 ALIGNED(4) gFogPalette[] = INCBIN_U16("graphics/weather/fog.gbapal");
+const u16 ALIGNED(4) gFogPalette[] = INCGFX_U16("graphics/weather/fog.pal", ".gbapal");
 
 void StartWeather(void)
 {
@@ -250,9 +262,9 @@ static void UpdateWeatherForms(void)
     s32 i;
     for (i = 0; i < PARTY_SIZE; i++)
     {
-        struct Pokemon *mon = &gPlayerParty[i];
-        u16 species = GetMonData(mon, MON_DATA_SPECIES);
-        u16 targetSpecies = GetOverworldWeatherSpecies(species);
+        struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][i];
+        enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+        enum Species targetSpecies = GetOverworldWeatherSpecies(species);
         if (species != targetSpecies)
         {
             SetMonData(mon, MON_DATA_SPECIES, &targetSpecies);
@@ -338,6 +350,9 @@ static void UpdateWeatherColorMap(void)
 {
     if (gWeatherPtr->palProcessingState != WEATHER_PAL_STATE_SCREEN_FADING_OUT)
     {
+        if (gWeatherPtr->colorMapIndex == 0 && gWeatherPtr->desatTarget)
+            ApplyColorMap(0, 32, gWeatherPtr->colorMapIndex);
+
         if (gWeatherPtr->colorMapIndex == gWeatherPtr->targetColorMapIndex)
         {
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
@@ -389,6 +404,13 @@ static void FadeInScreenWithWeather(void)
             gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
         }
         break;
+    case WEATHER_DECAY:
+        if (FadeInScreen_Decay() == FALSE)
+        {
+            gWeatherPtr->colorMapIndex = 0;
+            gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_IDLE;
+        }
+        break;
     case WEATHER_SNOW:
     case WEATHER_VOLCANIC_ASH:
     case WEATHER_SANDSTORM:
@@ -429,7 +451,6 @@ static bool8 FadeInScreen_Drought(void)
 
     if (++gWeatherPtr->fadeScreenCounter >= 16)
     {
-        ApplyColorMap(0, 32, -6);
         gWeatherPtr->fadeScreenCounter = 16;
         return FALSE;
     }
@@ -448,8 +469,31 @@ static bool8 FadeInScreen_FogHorizontal(void)
     return TRUE;
 }
 
+
+static bool8 FadeInScreen_Decay(void)
+{
+    if (gWeatherPtr->fadeScreenCounter == 16)
+        return FALSE;
+
+    if (++gWeatherPtr->fadeScreenCounter >= 16)
+    {
+        ApplyDesaturation(0, 32, 14);
+        gWeatherPtr->fadeScreenCounter = 16;
+        return FALSE;
+    }
+    gWeatherPtr->fadeScreenCounter++;
+
+    ApplyDesaturationWithBlend(0, 32, 14, 16 - gWeatherPtr->fadeScreenCounter, gWeatherPtr->fadeDestColor);
+    return TRUE;
+}
+
 static void DoNothing(void)
 { }
+
+static bool32 IsSpritePalTagBlendImmune(u32 palIndex)
+{
+    return (palIndex >= 16 && IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(palIndex - 16)));
+}
 
 static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
 {
@@ -481,8 +525,7 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
         while (curPalIndex < numPalettes)
         {
             // don't blend special palettes immune to blending
-            if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE ||
-                (curPalIndex >= 16 && IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(curPalIndex - 16))))
+            if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE || IsSpritePalTagBlendImmune(curPalIndex))
             {
                 // No palette change.
                 palOffset += 16;
@@ -520,7 +563,7 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
 
         while (curPalIndex < numPalettes)
         {
-            if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE)
+            if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE || IsSpritePalTagBlendImmune(curPalIndex))
             {
                 // No palette change.
                 CpuFastCopy(&gPlttBufferUnfaded[palOffset], &gPlttBufferFaded[palOffset], PLTT_SIZE_4BPP);
@@ -540,7 +583,10 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
     }
     else
     {
-        if (MapHasNaturalLight(gMapHeader.mapType))
+        if (gWeatherPtr->currWeather == WEATHER_DECAY) {
+            ApplyDesaturation(startPalIndex, numPalettes, gWeatherPtr->desatTarget);
+        }
+        else if (MapHasNaturalLight(gMapHeader.mapType))
         {
             // Time-blend
             u32 palettes = ((1 << numPalettes) - 1) << startPalIndex;
@@ -552,6 +598,47 @@ static void ApplyColorMap(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex)
             CpuFastCopy(&gPlttBufferUnfaded[PLTT_ID(startPalIndex)], &gPlttBufferFaded[PLTT_ID(startPalIndex)], numPalettes * PLTT_SIZE_4BPP);
         }
     }
+}
+
+static void ApplyDesaturation(u8 startPalIndex, u8 numPalettes, u8 desatIdx)
+{
+        u16 curPalIndex;
+        u16 palOffset;
+        u16 endPalIndex = numPalettes + startPalIndex;
+
+        // Create the palette mask
+        u32 palettes = PALETTES_ALL;
+
+        palettes = (palettes >> startPalIndex) << startPalIndex;
+        palettes = (palettes << (32 - endPalIndex)) >> (32 - endPalIndex);
+
+        palOffset = PLTT_ID(startPalIndex);
+
+        UpdateAltBgPalettes(palettes & PALETTES_BG);
+        if (MapHasNaturalLight(gMapHeader.mapType))
+            UpdatePalettesWithTime(palettes);
+        else
+            CpuFastCopy(gPlttBufferUnfaded + palOffset, gPlttBufferFaded + palOffset, PLTT_SIZE_4BPP * numPalettes);
+
+        curPalIndex = startPalIndex;
+
+        while (curPalIndex < endPalIndex) {
+            bool32 isBlendImmune =
+                sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE ||
+                (curPalIndex >= 16 && IS_BLEND_IMMUNE_TAG(GetSpritePaletteTagByPaletteNum(curPalIndex - 16)));
+
+            if (isBlendImmune) {
+                palOffset += 16;
+            }
+            else {
+                for (u32 i = 0; i < 16; i++) {
+                    u16 base = gPlttBufferFaded[palOffset];
+                    u8 amt = sDesaturationSteps[desatIdx];
+                    gPlttBufferFaded[palOffset++] = DesaturateColor(base, amt);
+                }
+            }
+            curPalIndex++;
+        }
 }
 
 static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMapIndex, u8 blendCoeff, u32 blendColor)
@@ -574,7 +661,7 @@ static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMap
         UpdateAltBgPalettes((1 << (palOffset >> 4)) & PALETTES_BG);
         CpuFastCopy(gPlttBufferUnfaded + palOffset, gPlttBufferFaded + palOffset, 16 * sizeof(u16));
         UpdatePalettesWithTime(1 << (palOffset >> 4)); // Apply TOD blend
-        if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE)
+        if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE || IsSpritePalTagBlendImmune(curPalIndex))
         {
             // No color map. Simply blend the colors.
             BlendPalettesFine(1, gPlttBufferFaded + palOffset, gPlttBufferFaded + palOffset, blendCoeff, blendColor);
@@ -608,6 +695,64 @@ static void ApplyColorMapWithBlend(u8 startPalIndex, u8 numPalettes, s8 colorMap
     }
 }
 
+static void ApplyDesaturationWithBlend(u8 startPalIndex, u8 numPalettes, u8 desatIdx, u8 blendCoeff, u32 blendClr)
+{
+    u16 curPalIndex;
+    u16 palOffset;
+    u16 endPalIndex = numPalettes + startPalIndex;
+
+    struct RGBColor color = *(struct RGBColor*)&blendClr;
+    u8 rBlend = color.r;
+    u8 gBlend = color.g;
+    u8 bBlend = color.b;
+
+    // Create the palette mask
+    u32 palettes = PALETTES_ALL;
+
+    palettes = (palettes >> startPalIndex) << startPalIndex;
+    palettes = (palettes << (32 - endPalIndex)) >> (32 - endPalIndex);
+
+    palOffset = PLTT_ID(startPalIndex);
+    curPalIndex = startPalIndex;
+
+    while (curPalIndex < numPalettes) {
+
+        UpdateAltBgPalettes((1 << (palOffset >> 4)) & PALETTES_BG);
+        UpdatePalettesWithTime(1 << (palOffset >> 4));
+
+        bool32 isUIPal = curPalIndex > 12 && curPalIndex < 16;
+        u16* src = isUIPal ? gPlttBufferUnfaded : gPlttBufferFaded;
+
+        CpuFastCopy(&src[palOffset], &gPlttBufferFaded[palOffset], PLTT_SIZE_4BPP);
+
+        bool32 isBlendImmune =
+            sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE;
+
+
+        if (isBlendImmune) {
+            BlendPalettesFine(1, &gPlttBufferFaded[palOffset], &gPlttBufferFaded[palOffset], blendCoeff, blendClr);
+            palOffset += 16;
+        }
+        else {
+            for (int i = 0; i < 16; i++) {
+                u16 base = DesaturateColor(gPlttBufferFaded[palOffset], sDesaturationSteps[desatIdx]);
+
+                struct RGBColor c;
+                c.r = base & 0x1F;
+                c.g = (base >> 5) & 0x1F;
+                c.b = (base >> 10) & 0x1F;
+
+                c.r += ((rBlend - c.r) * blendCoeff) >> 4;
+                c.g += ((gBlend - c.g) * blendCoeff) >> 4;
+                c.b += ((bBlend - c.b) * blendCoeff) >> 4;
+
+                gPlttBufferFaded[palOffset++] = RGB2(c.r, c.g, c.b);
+            }
+        }
+        curPalIndex++;
+    }
+}
+
 static void ApplyDroughtColorMapWithBlend(s8 colorMapIndex, u8 blendCoeff, u32 blendColor)
 {
     struct RGBColor color;
@@ -626,7 +771,7 @@ static void ApplyDroughtColorMapWithBlend(s8 colorMapIndex, u8 blendCoeff, u32 b
     palOffset = 0;
     for (curPalIndex = 0; curPalIndex < 32; curPalIndex++)
     {
-        if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE)
+        if (sPaletteColorMapTypes[curPalIndex] == COLOR_MAP_NONE|| IsSpritePalTagBlendImmune(curPalIndex))
         {
             // No color map. Simply blend the colors.
             BlendPalette(palOffset, 16, blendCoeff, blendColor);
@@ -736,6 +881,12 @@ void ApplyWeatherColorMapIfIdle_Gradual(u8 colorMapIndex, u8 targetColorMapIndex
 
 void FadeScreen(u8 mode, s8 delay)
 {
+    StopActiveLiveEvents();
+    FadeSelectedPals(mode, delay, PALETTES_ALL);
+}
+
+void FadeSelectedPals(u8 mode, s8 delay, u32 selectedPalettes)
+{
     u32 fadeColor;
     bool8 fadeOut;
     bool8 useWeatherPal;
@@ -770,6 +921,7 @@ void FadeScreen(u8 mode, s8 delay)
     case WEATHER_FOG_HORIZONTAL:
     case WEATHER_SHADE:
     case WEATHER_DROUGHT:
+    case WEATHER_DECAY:
         useWeatherPal = TRUE;
         break;
     default:
@@ -779,30 +931,51 @@ void FadeScreen(u8 mode, s8 delay)
 
     if (fadeOut)
     {
-        // Note: Copying faded -> unfaded like this works fine, except if the screen is faded back in
-        // without transitioning to a different screen
-        // For cases like that, use fadescreenswapbuffers
-        CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
+        if (!useWeatherPal && IsMapTypeFlash(gMapHeader.mapType) && MapHasNaturalLight(gMapHeader.mapType))
+        {
+            // If map type is cave, start fadeout with the cave palette blend
+            const struct BlendSettings *blend = GetCaveBlendSettings();
+            BeginTimeOfDayPaletteFade(selectedPalettes, delay, 0, 16, blend, blend, 256, fadeColor);
+        }
+        else
+        {
+            // Note: Copying faded -> unfaded like this works fine, except if the screen is faded back in
+            // without transitioning to a different screen
+            // For cases like that, use fadescreenswapbuffers
+            CpuFastCopy(gPlttBufferFaded, gPlttBufferUnfaded, PLTT_BUFFER_SIZE * 2);
 
-        BeginNormalPaletteFade(PALETTES_ALL, delay, 0, 16, fadeColor);
+            gPaletteFade.simultaneousFade = TRUE;
+            BeginNormalPaletteFade(selectedPalettes, delay, 0, 16, fadeColor);
+        }
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_SCREEN_FADING_OUT;
     }
     else
     {
         gWeatherPtr->fadeDestColor = fadeColor;
-        UpdateTimeOfDay();
+        UpdateTimeOfDay(TRUE);
         if (useWeatherPal)
         {
             gWeatherPtr->fadeScreenCounter = 0; // Triggers gamma-shift-based fade-in
         }
         else if (MapHasNaturalLight(gMapHeader.mapType))
         {
-            UpdateAltBgPalettes(PALETTES_BG);
-            BeginTimeOfDayPaletteFade(PALETTES_ALL, delay, 16, 0, &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight, fadeColor);
+            // Get regular blend settings
+            const struct BlendSettings *blend0 = &gTimeBlend.startBlend;
+            const struct BlendSettings *blend1 = &gTimeBlend.endBlend;
+            u16 weight = gTimeBlend.weight;
+
+            UpdateAltBgPalettes(selectedPalettes & PALETTES_BG);
+            if (IsMapTypeFlash(gMapHeader.mapType))
+            {
+                // Change to cave blend settings
+                blend0 = blend1 = GetCaveBlendSettings();
+                weight = 256;
+            }
+            BeginTimeOfDayPaletteFade(selectedPalettes, delay, 16, 0, blend0, blend1, weight, fadeColor);
         }
         else
         {
-            BeginNormalPaletteFade(PALETTES_ALL, delay, 16, 0, fadeColor);
+            BeginNormalPaletteFade(selectedPalettes, delay, 16, 0, fadeColor);
         }
 
         gWeatherPtr->palProcessingState = WEATHER_PAL_STATE_SCREEN_FADING_IN;
@@ -819,6 +992,7 @@ void FadeScreen(u8 mode, s8 delay)
 // (i.e if blending lighting effects using WINOBJ)
 void FadeScreenHardware(u32 mode, s32 delay)
 {
+    StopActiveLiveEvents();
     u32 bldCnt = GetGpuReg(REG_OFFSET_BLDCNT) & BLDCNT_TGT2_ALL;
     bldCnt |= BLDCNT_TGT1_ALL;
     // enable blend in all windows
@@ -874,7 +1048,7 @@ void UpdateSpritePaletteWithWeather(u8 spritePaletteIndex, bool8 allowFog)
     default:
         if (gWeatherPtr->currWeather != WEATHER_FOG_HORIZONTAL)
         {
-            if (gWeatherPtr->colorMapIndex)
+            if (!!gWeatherPtr->colorMapIndex ^ !!gWeatherPtr->desatTarget)
                 ApplyColorMap(paletteIndex, 1, gWeatherPtr->colorMapIndex);
             else
                 UpdateSpritePaletteWithTime(spritePaletteIndex);
@@ -1215,6 +1389,7 @@ static const u8 sWeatherNames[WEATHER_COUNT][24] = {
     [WEATHER_ROUTE119_CYCLE]     = _("ROUTE119 CYCLE"),
     [WEATHER_ROUTE123_CYCLE]     = _("ROUTE123 CYCLE"),
     [WEATHER_FOG]                = _("FOG"),
+    [WEATHER_DECAY]              = _("DECAY"),
 };
 
 static const u8 sDebugText_WeatherNotDefined[] = _("NOT DEFINED!!!");

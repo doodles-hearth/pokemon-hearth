@@ -3,13 +3,23 @@ const FLAG_TALKED_TO_FISH_SELLER = FLAG_TEMP_2
 
 mapscripts MaguroHarbor_MapScripts {
 	MAP_SCRIPT_ON_LOAD {
-		call(MaguroHarbor_DrawMetatiles)
-    }
+		closedoormetatile(TIME_DEAD_NIGHT, 32, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		closedoormetatile(TIME_DEAD_NIGHT, 15, 15, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+		closedoormetatile(TIME_NIGHT, 15, 15, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom)
+	    gettimeofday
+		switch(var(VAR_0x8000)){
+			case TIME_DEAD_NIGHT:
+				setmetatile(30, 23, METATILE_Maguro_MaguroClosedWindows, TRUE)
+				setmetatile(13, 16, METATILE_Maguro_MaguroClosedWindows, TRUE)
+			case TIME_NIGHT:
+				setmetatile(13, 16, METATILE_Maguro_MaguroClosedWindows, TRUE)
+			default:
+				end
+    	}
+	}
 
 	MAP_SCRIPT_ON_TRANSITION {
 		setflag(FLAG_VISITED_MAGURO_HARBOR)
-
-
 		getweekday
 		if(
 			var(VAR_RESULT) != WEEKDAY_MON
@@ -23,24 +33,6 @@ mapscripts MaguroHarbor_MapScripts {
 			setobjectmovementtype(LOCALID_MAGURO_OLD_FISHERMAN, MOVEMENT_TYPE_FACE_RIGHT)
 		}
 	}
-}
-
-script MaguroHarbor_DrawMetatiles{
-    gettimeofday
-	switch(var(VAR_0x8000)){
-        case TIME_DEAD_NIGHT:
-            setmetatile(30, 23, METATILE_Maguro_MaguroClosedWindows, TRUE)
-			setmetatile(32, 22, METATILE_PorytilesPrimaryTutorial_ClosedDoorTop, TRUE)
-            setmetatile(32, 23, METATILE_PorytilesPrimaryTutorial_ClosedDoorBottom, TRUE)
-        case TIME_EARLY_MORNING:
-        case TIME_MORNING:
-        case TIME_LUNCHTIME:
-        case TIME_AFTERNOON:
-        case TIME_EVENING:
-        case TIME_NIGHT:
-        default:
-            end
-    }
 }
 
 script MaguroHarbor_EventScript_TownSign {
@@ -276,8 +268,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				special(ChoosePartyMon)
-				waitstate
-				if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+				if (var(VAR_0x8004) == PARTY_MON_CANCEL) {
 					setspeaker(SP_NAME_SHOPKEEPER)
 					msgbox(format("Ah c'mon, don't waste my time!"))
 					closemessage
@@ -372,9 +363,8 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanClosingUp {
 script MaguroHarbor_EventScript_FishermanInBoat {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"I'm letting my fishing partner Cramorant rest for a while."
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}I'm letting my fishing partner Cramorant rest for a while."
 	), MSGBOX_DEFAULT)
 	closemessage
 	release
@@ -410,15 +400,13 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	lock
 	faceplayer
 	if (flag(FLAG_RECEIVED_OLD_ROD)) {
-		setspeaker(SP_NAME_FISHERMAN)
-
 		if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
 			msgbox(format(
-				"That tremblin' nearly made me wee me pants!"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}That tremblin' nearly made me wee me pants!"
 			), MSGBOX_AUTOCLOSE)
 		} else {
 			msgbox(format(
-				"Heyo, wee fisherm'n! Hope ye be enjoyin' yer fishing rod!"
+				"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Heyo, wee fisherm'n! Hope ye be enjoyin' yer fishing rod!"
 			))
 		}
 
@@ -430,9 +418,8 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 		end
 	}
 
-	setspeaker(SP_NAME_FISHERMAN)
 	msgbox(format(
-		"Shush, ye fool child!\nYou be scarin' tha wee fishes!\p"
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}Shush, ye fool child!\nYou be scarin' tha wee fishes!\p"
 		"… … … …\p"
 		"Yer eyes…\nThey be sparklin' with passion…\p"
 		"Are ye by any chance an aspirin' fisherm'n?\p"
@@ -445,15 +432,14 @@ script MaguroHarbor_EventScript_FishermanOldRod {
 	giveitem(ITEM_OLD_ROD)
 	setflag(FLAG_RECEIVED_OLD_ROD)
 
-	setspeaker(SP_NAME_FISHERMAN)
 	if (checkplayergender == MALE) {
 		msgbox(format(
-			"It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
 			"Farewell, lad! May ye become a great fisherm'n!"
 		))
 	} else {
 		msgbox(format(
-			"It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
+			"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}It be a wee bit used, but I reckon it will serve ye mighty fine!\p"
 			"Farewell, lass! May ye become a great fisherm'n!"
 		))
 	}
@@ -470,7 +456,8 @@ script MaguroHarbor_EventScript_Man {
 	faceplayer
 	setspeaker(SP_NAME_MAN)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
-		
+		waitse
+		playse(SE_PIN)
     	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_MAN_1 0}T-This was the biggest quake we've felt yet!"

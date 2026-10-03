@@ -3,14 +3,14 @@
 
 ASSUMPTIONS
 {
-    ASSUME(!IsBattleMoveStatus(MOVE_EMBER));
+    ASSUME(GetMoveCategory(MOVE_EMBER) != DAMAGE_CATEGORY_STATUS);
     ASSUME(GetMoveType(MOVE_EMBER) == TYPE_FIRE);
 }
 
 SINGLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves")
 {
     GIVEN {
-        PLAYER(SPECIES_KYOGRE) {Item(ITEM_BLUE_ORB);}
+        PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, MOVE_EMBER); }
@@ -32,13 +32,13 @@ SINGLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves")
 DOUBLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves and prints the message only once with moves hitting multiple targets")
 {
     GIVEN {
-        ASSUME(!IsBattleMoveStatus(MOVE_ERUPTION));
+        ASSUME(GetMoveCategory(MOVE_ERUPTION) != DAMAGE_CATEGORY_STATUS);
         ASSUME(GetMoveType(MOVE_ERUPTION) == TYPE_FIRE);
         ASSUME(GetMoveTarget(MOVE_ERUPTION) == TARGET_BOTH);
-        PLAYER(SPECIES_KYOGRE) {Item(ITEM_BLUE_ORB); {Speed(5);}}
-        PLAYER(SPECIES_WOBBUFFET) {Speed(5);}
-        OPPONENT(SPECIES_WOBBUFFET) {Speed(10);}
-        OPPONENT(SPECIES_WOBBUFFET) {Speed(8);}
+        PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponentLeft, MOVE_ERUPTION); }
     } SCENE {
@@ -55,8 +55,8 @@ DOUBLE_BATTLE_TEST("Primordial Sea blocks damaging Fire-type moves and prints th
 SINGLE_BATTLE_TEST("Primordial Sea does not block a move if Pokémon is asleep and uses a Fire-type move") // Sleep/confusion/paralysis all happen before the check for primal weather
 {
     GIVEN {
-        PLAYER(SPECIES_KYOGRE) {Item(ITEM_BLUE_ORB);}
-        OPPONENT(SPECIES_WOBBUFFET) {Status1(STATUS1_SLEEP);}
+        PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
+        OPPONENT(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); }
     } WHEN {
         TURN { MOVE(opponent, MOVE_EMBER); }
     } SCENE {
@@ -70,7 +70,7 @@ SINGLE_BATTLE_TEST("Primordial Sea does not block a move if Pokémon is asleep a
 
 SINGLE_BATTLE_TEST("Primordial Sea blocks weather-setting moves")
 {
-    u16 move;
+    enum Move move;
     PARAMETRIZE { move = MOVE_SUNNY_DAY; }
     PARAMETRIZE { move = MOVE_RAIN_DANCE; }
     PARAMETRIZE { move = MOVE_SANDSTORM; }
@@ -78,11 +78,12 @@ SINGLE_BATTLE_TEST("Primordial Sea blocks weather-setting moves")
     PARAMETRIZE { move = MOVE_SNOWSCAPE; }
 
     GIVEN {
-        ASSUME(GetMoveEffect(MOVE_SUNNY_DAY) == EFFECT_SUNNY_DAY);
-        ASSUME(GetMoveEffect(MOVE_RAIN_DANCE) == EFFECT_RAIN_DANCE);
-        ASSUME(GetMoveEffect(MOVE_SANDSTORM) == EFFECT_SANDSTORM);
-        ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_HAIL);
-        ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_SNOWSCAPE);
+        ASSUME(GetMoveEffect(move) == EFFECT_WEATHER);
+        ASSUME(GetMoveWeatherType(MOVE_SUNNY_DAY) == BATTLE_WEATHER_SUN);
+        ASSUME(GetMoveWeatherType(MOVE_RAIN_DANCE) == BATTLE_WEATHER_RAIN);
+        ASSUME(GetMoveWeatherType(MOVE_SANDSTORM) == BATTLE_WEATHER_SANDSTORM);
+        ASSUME(GetMoveWeatherType(MOVE_HAIL) == BATTLE_WEATHER_HAIL);
+        ASSUME(GetMoveWeatherType(MOVE_SNOWSCAPE) == BATTLE_WEATHER_SNOW);
         PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -96,7 +97,8 @@ SINGLE_BATTLE_TEST("Primordial Sea blocks weather-setting moves")
 
 SINGLE_BATTLE_TEST("Primordial Sea prevents other weather abilities")
 {
-    u16 ability, species;
+    enum Ability ability;
+    enum Species species;
     PARAMETRIZE { ability = ABILITY_DROUGHT;      species = SPECIES_NINETALES; }
     PARAMETRIZE { ability = ABILITY_DRIZZLE;      species = SPECIES_POLITOED; }
     PARAMETRIZE { ability = ABILITY_SAND_STREAM;  species = SPECIES_HIPPOWDON; }
@@ -119,10 +121,9 @@ SINGLE_BATTLE_TEST("Primordial Sea can be replaced by Delta Stream")
 {
     GIVEN {
         PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
-        OPPONENT(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_RAYQUAZA) { Ability(ABILITY_DELTA_STREAM); }
+        OPPONENT(SPECIES_RAYQUAZA) { Moves(MOVE_DRAGON_ASCENT, MOVE_CELEBRATE); }
     } WHEN {
-        TURN { SWITCH(opponent, 1); }
+        TURN { MOVE(opponent, MOVE_CELEBRATE, gimmick: GIMMICK_MEGA); }
     } SCENE {
         ABILITY_POPUP(opponent, ABILITY_DELTA_STREAM);
         MESSAGE("Mysterious strong winds are protecting Flying-type Pokémon!");
@@ -144,5 +145,23 @@ SINGLE_BATTLE_TEST("Primordial Sea can be replaced by Desolate Land")
         MESSAGE("The sunlight turned extremely harsh!");
     } THEN {
         EXPECT(gBattleWeather & B_WEATHER_SUN_PRIMAL);
+    }
+}
+
+SINGLE_BATTLE_TEST("Primordial Sea fails if overworld weather is present (Gen9)")
+{
+    SetStartingStatus(STARTING_STATUS_WEATHER_SUN);
+
+    GIVEN {
+        PLAYER(SPECIES_KYOGRE) { Item(ITEM_BLUE_ORB); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN {}
+    } SCENE {
+        ABILITY_POPUP(player, ABILITY_PRIMORDIAL_SEA);
+        MESSAGE("But it failed!");
+    } THEN {
+        EXPECT(gBattleWeather & B_WEATHER_SUN);
+        ResetStartingStatuses();
     }
 }

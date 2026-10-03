@@ -460,5 +460,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Soulkeep_EventScript_GraveyardSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

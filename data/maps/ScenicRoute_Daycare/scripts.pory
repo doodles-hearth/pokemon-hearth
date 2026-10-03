@@ -104,7 +104,6 @@ script ScenicRoute_Daycare_EventScript_TryRetrieveMon {
 			call(ScenicRoute_Daycare_EventScript_CostPrompt)
 		} else {
 			special(ShowDaycareLevelMenu)
-			waitstate
 			copyvar(VAR_0x8004, VAR_RESULT)
 			if (var(VAR_RESULT) == DAYCARE_EXITED_LEVEL_MENU) {
 				call(ScenicRoute_Daycare_EventScript_ComeAgain)
@@ -131,9 +130,8 @@ script ScenicRoute_Daycare_EventScript_GiveMonToRaise {
 
 		fadescreen(FADE_TO_BLACK)
 		special(ChooseSendDaycareMon)
-		waitstate
 
-		if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+		if (var(VAR_0x8004) == PARTY_MON_CANCEL) {
 			call(ScenicRoute_Daycare_EventScript_ComeAgain)
 		} else {
 			specialvar(VAR_RESULT, CountPartyAliveNonEggMons_IgnoreVar0x8004Slot)
@@ -195,7 +193,7 @@ script ScenicRoute_Daycare_EventScript_DisplayLevelsGained {
 }
 
 script ScenicRoute_Daycare_EventScript_CostPrompt {
-	special(GetDaycareCost)
+	special(GetDaycareCostAndPrepareString)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_OLD_WOMAN 0}{SPEAKER NAME_OLD_LADY}If you want your {STR_VAR_1} back,\n"
 		"it will cost ¥{STR_VAR_2}."
@@ -258,16 +256,7 @@ script ScenicRoute_Daycare_EventScript_CostPrompt {
 }
 
 script ScenicRoute_Daycare_EventScript_Nidoran {
-	lock
-    faceplayer
-	setseenmon(SPECIES_NIDORAN)
-	setspeakertomonname(SPECIES_NIDORAN)
-	playmoncry(SPECIES_NIDORAN, CRY_MODE_NORMAL)
-    msgbox(format(
-        "Snort!"
-    ))
-    waitmoncry
-    release
+	mondialogue(SPECIES_NIDORAN, "Snort!")
 }
 
 script ScenicRoute_Daycare_EventScript_NidoranF {

@@ -1,6 +1,8 @@
 #ifndef GUARD_SPRITE_H
 #define GUARD_SPRITE_H
 
+#include "constants/species.h"
+
 #define OAM_MATRIX_COUNT 32
 #define MAX_SPRITES 64
 #define SPRITE_NONE 0xFF
@@ -215,7 +217,8 @@ struct Sprite
     /*0x3E*/ u16 inUse:1;                   //1
              u16 coordOffsetEnabled:1;      //2
              u16 invisible:1;               //4
-             u16 flags_3:1;                 //8
+             // If set to TRUE a copy of the sprite's OAM is created with objMode set to ST_OAM_OBJ_WINDOW
+             u16 copyToObjWin:1;                 //8
              // if nonzero, tile offset for usingSheet sprites
              // is (offset + 1) << sheetSpan;
              // (This allows using frame-based anim tables for sheet sprites)
@@ -249,6 +252,13 @@ struct OamMatrix
     s16 d;
 };
 
+struct OamDimensions
+{
+    s8 width;
+    s8 height;
+};
+
+extern const struct OamDimensions gOamDimensions[3][4];
 extern const struct OamData gDummyOamData;
 extern const union AnimCmd *const gDummySpriteAnimTable[];
 extern const union AffineAnimCmd *const gDummySpriteAffineAnimTable[];
@@ -267,7 +277,9 @@ void ResetSpriteData(void);
 void AnimateSprites(void);
 void BuildOamBuffer(void);
 u32 CreateSprite(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
+u32 CreateSpriteUnchecked(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 u32 CreateSpriteAtEnd(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
+u32 CreateSpriteAtEndUnchecked(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 u32 CreateInvisibleSprite(void (*callback)(struct Sprite *));
 u32 CreateSpriteAndAnimate(const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority);
 void DestroySprite(struct Sprite *sprite);
@@ -300,6 +312,7 @@ u16 LoadSpriteSheet(const struct SpriteSheet *sheet);
 u16 LoadSpriteSheetByTemplate(const struct SpriteTemplate *template, u32 frame, s32 offset);
 void LoadSpriteSheets(const struct SpriteSheet *sheets);
 s16 AllocSpriteTiles(u16 tileCount);
+bool32 CanAllocSpriteTiles(u16 tileCount);
 void FreeSpriteTilesByTag(u16 tag);
 void FreeSpriteTileRanges(void);
 u16 GetSpriteTileStartByTag(u16 tag);
@@ -315,7 +328,7 @@ u16 GetSpritePaletteTagByPaletteNum(u8 paletteNum);
 void FreeSpritePaletteByTag(u16 tag);
 void SetSubspriteTables(struct Sprite *sprite, const struct SubspriteTable *subspriteTables);
 bool8 AddSpriteToOamBuffer(struct Sprite *sprite, u8 *oamIndex);
-bool8 AddSubspritesToOamBuffer(struct Sprite *sprite, struct OamData *destOam, u8 *oamIndex);
+bool8 AddSubspritesToOamBuffer(struct Sprite *sprite, u8 *oamIndex);
 void CopyToSprites(u8 *src);
 void CopyFromSprites(u8 *dest);
 u8 SpriteTileAllocBitmapOp(u16 bit, u8 op);
@@ -324,7 +337,35 @@ void ResetAffineAnimData(void);
 u32 GetSpanPerImage(u32 shape, u32 size);
 void RequestSpriteFrameImageCopy(u16 index, u16 tileNum, const struct SpriteFrameImage *images);
 void SetSpriteOamFlipBits(struct Sprite *sprite, u8 hFlip, u8 vFlip);
-u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, u16 species, u32 personality, bool8 isShiny);
+u8 LoadUniqueSpritePaletteSprite(const struct SpritePalette *palette, enum Species species, u32 personality, bool8 isShiny);
 u8 IndexOfSpriteTileTag(u16 tag);
+void FillSpriteRectColor(u32 spriteId, u32 left, u32 top, u32 width, u32 height, u32 color);
+void FillSpriteRectSprite(u32 spriteId, u32 left, u32 top, u32 width, u32 height);
+void FillSpriteRectSpriteWithSprite(u32 spriteId, u32 left, u32 top, u32 width, u32 height, u32 *sprite);
+void SetupSpritesForTextPrinting(u8 *spriteIds, const u32 **spriteSrc, u32 numSpritesX, u32 numSpritesY);
+u32 *GetSrcPtrFromSprite(struct Sprite *sprite);
+u32 GetSpriteWidth(struct Sprite *sprite);
+u32 GetSpriteHeight(struct Sprite *sprite);
+u32 CountFreePaletteSlots(void);
+
+static inline s16 WorldToScreenSpaceX(const struct Sprite *sprite)
+{
+    return sprite->x + sprite->centerToCornerVecX + gSpriteCoordOffsetX;
+}
+
+static inline s16 WorldToScreenSpaceY(const struct Sprite *sprite)
+{
+    return sprite->y + sprite->centerToCornerVecY + gSpriteCoordOffsetY;
+}
+
+static inline s16 ScreenToWorldSpaceX(const struct Sprite* sprite, s16 screenX)
+{
+    return screenX - sprite->centerToCornerVecX - gSpriteCoordOffsetX;
+}
+
+static inline s16 ScreenToWorldSpaceY(const struct Sprite* sprite, s16 screenY)
+{
+    return screenY - sprite->centerToCornerVecY - gSpriteCoordOffsetY;
+}
 
 #endif //GUARD_SPRITE_H

@@ -3,6 +3,7 @@
   "name": "OpenSeaLeague",
   "layout": "LAYOUT_OPEN_SEA_LEAGUE",
   "music": "MUS_DUMMY",
+  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_OPEN_SEA_LEAGUE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -20,7 +21,7 @@
     },
     {
       "map": "MAP_MIDDLE_ISLE",
-      "offset": 40,
+      "offset": 35,
       "direction": "up"
     }
   ],

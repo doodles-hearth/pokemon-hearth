@@ -15,5 +15,7 @@ extern const u16 gObjectEventPal_Npc_Cold[];
 extern const u16 gObjectEventPal_CrobatShadowsGolbat[];
 extern const u16 gObjectEventPal_CrobatShadowsCrobat[];
 extern const u16 gObjectEventPal_Samurai[];
+extern const u16 gObjectEventPal_CorsolaPolluted[];
+extern const u16 gObjectEventPaletteEmotes[];
 
 #endif // GUARD_DATA_OBJECT_EVENT_GRAPHICS_H

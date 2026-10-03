@@ -1,7 +1,3 @@
-const LOCALID_SECRET_BASE_MAN = 7
-const LOCALID_SECRET_BASE_POKEMON = 8
-const LOCALID_SHAMISEN_PLAYER = 23
-const LOCALID_SHAMISEN_PLAYER_POKEMON = 24
 const VAR_TEMP_SHAMISEN_TRIGGER = VAR_TEMP_2
 const FLAG_HIDE_SHAMISEN = FLAG_TEMP_1
 
@@ -74,8 +70,8 @@ script WhiteslateRoute_EventScript_ShamisenChallenge {
 }
 
 script WhiteslateRoute_EventScript_ShamisenCallsOut {
-	applymovement(LOCALID_SHAMISEN_PLAYER, moves(lock_facing_direction, walk_in_place_fast_down, unlock_facing_direction))
-	waitmovement(LOCALID_SHAMISEN_PLAYER)
+	applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER, moves(lock_facing_direction, walk_in_place_fast_down, unlock_facing_direction))
+	waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
@@ -88,8 +84,8 @@ script WhiteslateRoute_EventScript_ShamisenCallsOut {
 script WhiteslateRoute_EventScript_ShamisenPlayer {
 	lock
 
-	applymovement(LOCALID_SHAMISEN_PLAYER, moves(walk_in_place_down))
-	waitmovement(LOCALID_SHAMISEN_PLAYER)
+	applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER, moves(walk_in_place_down))
+	waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
 	msgbox(format(
@@ -122,14 +118,14 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 			))
 			closemessage
 
-			applymovement(LOCALID_SHAMISEN_PLAYER_POKEMON, moves(walk_left * 5, walk_down * 9))
-			applymovement(LOCALID_SHAMISEN_PLAYER, moves(walk_left * 4, walk_down * 10))
+			applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON, moves(walk_left * 5, walk_down * 9))
+			applymovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER, moves(walk_left * 4, walk_down * 10))
 			delay(16)
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
-			waitmovement(LOCALID_SHAMISEN_PLAYER)
-			waitmovement(LOCALID_SHAMISEN_PLAYER_POKEMON)
-			removeobject(LOCALID_SHAMISEN_PLAYER)
-			removeobject(LOCALID_SHAMISEN_PLAYER_POKEMON)
+			waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
+			waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON)
+			removeobject(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
+			removeobject(LOCALID_WHITESLATE_SHAMISEN_PLAYER_POKEMON)
 			
 			setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_STARTED)
 			setvar(VAR_TEMP_SHAMISEN_TRIGGER, 1)
@@ -236,9 +232,8 @@ script WhiteslateRoute_EventScript_Tomiko {
 		format("I don't care if they're not the strongest!")
 	)
 
-	setspeakertomonname(SPECIES_SPINDA)
-	setspeaker(SP_NAME_LASS)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_LASS 0}I love Spinda. Doesn't it look silly and adorable?"), MSGBOX_AUTOCLOSE)
+	setnamedmon(SPECIES_SPINDA)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_LASS 0}{SPEAKER NAME_LASS}I love Spinda.\nIt looks so silly and adorable!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -248,20 +243,28 @@ script WhiteslateRoute_EventScript_Utaro {
 		format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}I love cool Pokémon!"),
 		format("At least I lost with style!")
 	)
-	setspeakertomonname(SPECIES_SEVIPER)
-	setspeaker(SP_NAME_YOUNGSTER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}Seviper is so darn cool! I mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
+	setnamedmon(SPECIES_SEVIPER)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_YOUNGSTER 0}{SPEAKER NAME_YOUNGSTER}Seviper is so darn cool!\nI mean, it's got a sword on its tail!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
-script WhiteslateRoute_EventScript_Asagao {
+script WhiteslateRoute_EventScript_Deiji {
 	trainerbattle_single(
-		TRAINER_UTARO,
+		TRAINER_DEIJI,
 		format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}Can you smell the perfume of Uume Berries?"),
 		format("You're a brute!")
 	)
-	setspeaker(SP_NAME_AROMA_LADY)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}With Uume Forest right west of here, the ripe Berry smell is so strong it's almost pungent!"), MSGBOX_AUTOCLOSE)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_AROMA_LADY 0}{SPEAKER NAME_AROMA_LADY}The ripe Berry smell emanating from\nUume Forest is almost pungent!", MSGBOX_AUTOCLOSE)
+	end
+}
+
+script WhiteslateRoute_EventScript_Sani {
+	trainerbattle_single(
+		TRAINER_SANI,
+		"{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}Close your eyes and feel the sunshine\non your face!",
+		"Oops, maybe I should have kept my\neyes open for this!"
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_CASTFORM_SUN_GIRL 0}{SPEAKER NAME_CASTFORM_SUN_GIRL}I empathize with Pokémon that need\nsunlight to thrive!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -269,8 +272,7 @@ script WhiteslateRoute_EventScript_ShuckleGirl {
 	lock
 	faceplayer
 	setnamedmon(SPECIES_SHUCKLE)
-	setspeaker(SP_NAME_WOMAN)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}This Shuckle lives around here. I feed him fresh berries every morning!"))
+	msgbox(format("{CREATE_MUGSHOT MUGSHOT_UUME_GIRL_1 0}{SPEAKER NAME_WOMAN}This Shuckle lives around here.\nI feed it fresh Berries each morning!"))
 	closemessage
 	release
 	end
@@ -317,6 +319,15 @@ script WhiteslateRoute_EventScript_Shuckle {
 		setflag(FLAG_DAILY_SHUCKLE_BERRY_JUICE)
 	}
 	release
+}
+
+script WhiteslateRoute_EventScript_ShuckleSign {
+	msgbox(
+		“A village of tender flower petals.”
+		"“Warning: Do not feed Shuckle\nanything other than Berries!\p"
+		"The stench from its flatulences would\nbe terrible!",
+		MSGBOX_SIGN
+	)
 }
 
 script WhiteslateRoute_Trigger_SecretBase {
@@ -503,6 +514,7 @@ script WhiteslateRoute_Trigger_SecretBase {
 script WhiteslateRoute_EventScript_MetHariko {
 	lock
 	faceplayer
+	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
@@ -534,9 +546,8 @@ script WhiteslateRoute_EventScript_TinyPassage {
 
 	if (var(VAR_RESULT) == 0) {
 		special(ChoosePartyMonForSmallPassage)
-		waitstate
 
-		if (var(VAR_0x8004) != PARTY_NOTHING_CHOSEN) {
+		if (var(VAR_0x8004) != PARTY_MON_CANCEL) {
 			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 			bufferpartymonnick(STR_VAR_1, VAR_0x8004)
 			// bufferspeciesname(STR_VAR_1, VAR_RESULT)
@@ -550,6 +561,41 @@ script WhiteslateRoute_EventScript_TinyPassage {
 			warp(MAP_WHITESLATE_ROUTE_SECRET_CAVE, WARP_ID_WHITESLATE_SECRET_CAVE_EXIT)
 		}
 	}
+
+	release
+}
+
+script WhiteslateRoute_DirectionSign {
+	msgbox((
+		"{LEFT_ARROW} Hanabi City"
+	), MSGBOX_SIGN)
+}
+
+script Live_EventScript_Deerling1Flee {
+	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	applymovement(LOCALID_WHITESLATE_DEERLING1, moves(walk_left * 8))
+}
+
+script Live_EventScript_Deerling2Flee {
+	playmoncry(SPECIES_DEERLING, CRY_MODE_NORMAL)
+	applymovement(LOCALID_WHITESLATE_DEERLING2, moves(walk_left * 8))
+}
+
+script WhiteslateRoute_EventScript_TravellingMerchant {
+	lock
+	faceplayer
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Good day, {PLAYER}! I'm traveling\naround the capital, today.\p"
+		"Why not check out what I have in\nstore?"
+	)
+
+	limitedpokemart(TRAVELLING_MERCHANT_SHOP)
+
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_OKADA 0}{SPEAKER NAME_OKADA}Happy to be of help!\n…Have you seen Keke's Poké Ball?"
+	))
+	closemessage
 
 	release
 }

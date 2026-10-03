@@ -33,7 +33,15 @@ void InitTilesetAnim_EliteFour(void);
 void InitTilesetAnim_BattleDome(void);
 void InitTilesetAnim_BattlePyramid(void);
 
-// Custom shit
+// FRLG
+void InitTilesetAnim_General_Frlg(void);
+void InitTilesetAnim_CeladonCity(void);
+void InitTilesetAnim_VermilionGym(void);
+void InitTilesetAnim_CeladonGym(void);
+void InitTilesetAnim_SilphCo(void);
+void InitTilesetAnim_MtEmber(void);
+
+// Hearth
 void InitTilesetAnim_ExteriorGeneric(void);
 void InitTilesetAnim_Building_Generic(void);
 void InitTilesetAnim_SakuKura(void);

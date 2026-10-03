@@ -443,10 +443,11 @@ void AnimRockFragment(struct Sprite *sprite)
 // args[6] - attacker or target
 void AnimParticleInVortex(struct Sprite *sprite)
 {
+    enum AnimBattler animBattler = gBattleAnimArgs[6];
     if (IsDoubleBattle() && GetMoveTarget(gAnimMoveIndex) == TARGET_BOTH)
         InitSpritePosToAnimTargetsCentre(sprite, FALSE);
     else
-        InitSpritePosToAnimBattler(gBattleAnimArgs[6], sprite, FALSE);
+        InitSpritePosToAnimBattler(animBattler, sprite, FALSE);
 
     sprite->data[0] = gBattleAnimArgs[3];
     sprite->data[1] = gBattleAnimArgs[2];
@@ -676,7 +677,7 @@ void AnimTask_Rollout(u8 taskId)
     var2 = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
     var3 = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) + 24;
 
-    if (BATTLE_PARTNER(gBattleAnimAttacker) == gBattleAnimTarget)
+    if (GetPartnerBattler(gBattleAnimAttacker) == gBattleAnimTarget)
         var3 = var1;
 
     rolloutCounter = GetRolloutCounter();
@@ -723,7 +724,7 @@ void AnimTask_TectonicRageRollout(u8 taskId)
     var2 = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X_2);
     var3 = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) + 24;
 
-    if (BATTLE_PARTNER(gBattleAnimAttacker) == gBattleAnimTarget)
+    if (GetPartnerBattler(gBattleAnimAttacker) == gBattleAnimTarget)
         var3 = var1;
 
     task->data[8] = 48 - (rolloutCounter * 8);  //rollout speed
@@ -851,11 +852,17 @@ static void CreateRolloutDirtSprite(struct Task *task)
         return;
     }
 
+    if (!TryLoadSpriteAssets(spriteTemplate))
+    {
+        //  Unsure how to exit this task
+        return;
+    }
+
     x = task->data[2] >> 3;
     y = task->data[3] >> 3;
     x += (task->data[12] * 4);
 
-    spriteId = CreateSprite(spriteTemplate, x, y, 35);
+    spriteId = CreateSpriteUnchecked(spriteTemplate, x, y, 35);
     if (spriteId != MAX_SPRITES)
     {
         gSprites[spriteId].data[0] = 18;

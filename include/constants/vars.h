@@ -1,6 +1,8 @@
 #ifndef GUARD_CONSTANTS_VARS_H
 #define GUARD_CONSTANTS_VARS_H
 
+#include "constants/vars_frlg.h"
+
 #define VARS_START 0x4000
 
 // temporary vars
@@ -51,10 +53,9 @@
 #define VAR_RECYCLE_GOODS                                0x4020
 #define VAR_REPEL_STEP_COUNT                             0x4021
 #define VAR_ICE_STEP_COUNT                               0x4022
-// Contains the species ID of the chosen starter
 #define VAR_STARTER_MON                                  0x4023
-#define VAR_MIRAGE_RND_H                                 0x4024
-#define VAR_MIRAGE_RND_L                                 0x4025
+#define VAR_MIRAGE_RND_H                                 0x4024 // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
+#define VAR_MIRAGE_RND_L                                 0x4025 // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
 #define VAR_SECRET_BASE_MAP                              0x4026
 #define VAR_CYCLING_ROAD_RECORD_COLLISIONS               0x4027
 #define VAR_CYCLING_ROAD_RECORD_TIME_L                   0x4028
@@ -94,8 +95,8 @@
 #define VAR_ASH_GATHER_COUNT                             0x4048
 #define VAR_BIRCH_STATE                                  0x4049
 #define VAR_CRUISE_STEP_COUNT                            0x404A
-#define VAR_POKELOT_RND1                                 0x404B
-#define VAR_POKELOT_RND2                                 0x404C
+#define VAR_POKELOT_RND1                                 0x404B // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
+#define VAR_POKELOT_RND2                                 0x404C // Unused if OW_USE_DAILY_SEED_FOR_VANILLA_VARIABLES is TRUE
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
 /*
     VAR_CROBAT_SHADOWS_FIRST_ENCOUNTERS_STATE States
@@ -119,7 +120,8 @@
     // 4: Talked to Hariko about decay
     // 5: End of decay cutscene
     // 6: Delivered letter to elder in Silveridge
-    // 7: Talked to Samurai near Uume Forest
+    // 7: Cured Harvest Shrine of Decay
+    // 8: Bronzong thanked us
 */
 #define VAR_DECAY_BEACHBOUND_ROUTE                       0x4052
 #define VAR_LAVARIDGE_TOWN_STATE                         0x4053
@@ -133,10 +135,18 @@
 #define VAR_EGG_GIRL_SPECIES                0x4056
 #define VAR_PETALBURG_CITY_STATE                         0x4057
 #define VAR_SLATEPORT_CITY_STATE                         0x4058
-#define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
 #define VAR_RUSTBORO_CITY_STATE                          0x405A
 #define VAR_EGG_GIRL_STEP_COUNTER                        0x405B
-#define VAR_LILYCOVE_CITY_STATE                          0x405C // Unused Var
+/*
+    VAR_DECAY_UUME_FOREST States
+
+    // 0: Start
+    // 1: Witness decay
+    // 2: Cured Hunter's Shrine of Decay
+    // 3: Finished
+    // 4: Went back to entrance (cutscene)
+*/
+#define VAR_DECAY_UUME_FOREST                            0x405C
 #define VAR_MOSSDEEP_CITY_STATE                          0x405D
 #define VAR_SOOTOPOLIS_CITY_STATE                        0x405E
 #define VAR_EVER_GRANDE_CITY_STATE                       0x405F // Unused Var
@@ -246,6 +256,10 @@
 
 #define VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE             0x409B
 #define VAR_ELITE_4_STATE                                0x409C
+
+//COMPLEX QUEST VARS
+#define VAR_MAIN_CAMPAIGN_QUEST                          0x4059
+
 /*
     // 0: Quest hasn't started
     // 1: Received Ashii's scarf
@@ -259,26 +273,31 @@
     // 9: Ashii gives reward
 */
 #define VAR_SAKU_KURA_QUEST_TAMA_ASHII_STATE             0x409D
+
 /*
     VAR_SAKU_KURA_QUEST_ESPEON_STATEs
     // 0: Quest hasn't started
-    // 1: Talked to lady but not to Espeon's master
-    // 2: Talked to Espeon's master but not to lady
-    // 3: Told Espeon's master where his Pokémon was
-    // 4: Told lady that Espeon's master was looking for it -> Espeon goes home
-    // 5: Talked to Espeon's master once are reunited
+    // 1: Sister tells you about missing Eevee
+    // 2: Espeon is found in the House
+    // 3: Gave Espeon back
+    // 4: Want a rock?
+    // 5: Given rock
 */
 #define VAR_SAKU_KURA_QUEST_ESPEON_STATE                 0x409E
+
 /*
     VAR_SAKU_KURA_QUEST_SCYTHER_STATEs
     // 0: Quest hasn't started
-    // 1: Farmer has asked player for help
-    // 2:
-    // 3:
-    // 4:
-    // 5:
+    // 1: Farmers are in Refuge
+    // 2: Farmers have asked player for help
+    // 3: Player has found Kura Town Healer
+    // 4: Player has given healer ingredients
+    // 5: Medicine is ready for giving
+    // 6: Player has medicine ingredients
+    // 7: Player has given medicine to Scyther
 */
 #define VAR_SAKU_KURA_QUEST_SCYTHER_STATE                0x409F
+
 /*
     VAR_SAKU_KURA_VILLAGES_STATEs
     // 0: The two villages hate each other
@@ -355,6 +374,7 @@
 // 0: is sailing
 // 1: is in Soulkeep
 // 2: is in Saberside
+// 3: is in Coreef
 #define VAR_SHIP_SABERSIDE_SOULKEEP                      0x40DE
 #define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
 #define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
@@ -389,13 +409,15 @@
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
 #define VAR_GINKO_WOODS_CAMPFIRE                         0x40F7
 #define VAR_FLASH_TRACKER                                0x40F8
-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
-#define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
-#define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
-#define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
+
+// Shamisen Players Locations
+#define VAR_SHAMISEN_PLAYER_BLUE                         0x40F9
+#define VAR_SHAMISEN_PLAYER_RED                          0x40FA
+#define VAR_SHAMISEN_PLAYER_GREEN                        0x40FB
+#define VAR_UNUSED_0x40FC                                0x40FC
+#define VAR_UNUSED_0x40FD                                0x40FD
+#define VAR_UNUSED_0x40FE                                0x40FE
+#define VAR_UNUSED_0x40FF                                0x40FF
 
 #define VARS_END                                         0x40FF
 #define VARS_COUNT                                       (VARS_END - VARS_START + 1)

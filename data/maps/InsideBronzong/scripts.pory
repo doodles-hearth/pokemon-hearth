@@ -1,0 +1,28 @@
+mapscripts InsideBronzong_MapScripts {}
+
+script InsideBronzong_EventScript_Heart {
+    lock
+    // TODO EVA
+    msgbox(
+        "It's a big, glowing crystal\nradiating heat.\p"
+        "Pray with the Entei Statuette?"
+    )
+
+    mcdialogueB(
+        "Pray", "Don't pray"
+    )
+    closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        msgbox(
+            "The area is cured of Decay!"
+        )
+        
+        setflag(FLAG_CURED_DECAY_HARVEST_SHRINE)
+	    setvar(VAR_DECAY_BEACHBOUND_ROUTE, 7)
+
+        warpwhitefade(MAP_HARVEST_SHRINE, WARP_ID_BRONZONG_CURED)
+    }
+
+    release
+}

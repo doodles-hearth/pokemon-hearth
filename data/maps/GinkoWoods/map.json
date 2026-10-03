@@ -383,5 +383,6 @@
       "item": "ITEM_TINY_MUSHROOM",
       "flag": "FLAG_HIDDEN_ITEM_GINKO_WOODS_TINY_MUSHROOM"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

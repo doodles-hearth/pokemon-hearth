@@ -157,7 +157,7 @@ u16 StringLength(const u8 *str)
 
 u16 StringLineLength(const u8 *str)
 {
-    u16 i = 0, length = 0;
+    u16 length = 0;
 
     while (str[length] != EOS)
     {
@@ -168,7 +168,6 @@ u16 StringLineLength(const u8 *str)
         case CHAR_NEWLINE:
             return length;
         default:
-            i++;
             length++;
             break;
         }
@@ -203,17 +202,6 @@ s32 StringCompareN(const u8 *str1, const u8 *str2, u32 n)
     }
 
     return *str1 - *str2;
-}
-
-bool8 IsStringLengthAtLeast(const u8 *str, s32 n)
-{
-    u32 i;
-
-    for (i = 0; i < n; i++)
-        if (str[i] && str[i] != EOS)
-            return TRUE;
-
-    return FALSE;
 }
 
 u8 *ConvertIntToDecimalStringN(u8 *dest, s32 value, enum StringConvertMode mode, u8 n)
@@ -512,6 +500,10 @@ static const u8 *ExpandPlaceholder_KunChan(void)
 
 static const u8 *ExpandPlaceholder_RivalName(void)
 {
+#if IS_FRLG
+    if (gSaveBlock1Ptr->rivalName[0] != EOS)
+        return gSaveBlock1Ptr->rivalName;
+#endif
     return gSaveBlock2Ptr->rivalName;
 }
 
@@ -550,6 +542,14 @@ static const u8 *ExpandPlaceholder_Groudon(void)
     return gText_ExpandedPlaceholder_Groudon;
 }
 
+static const u8 *ExpandPlaceholder_Region(void)
+{
+    if (IS_FRLG)
+        return gText_Kanto;
+    else
+        return gText_Hoenn;
+}
+
 const u8 *GetExpandedPlaceholder(u32 id)
 {
     typedef const u8 *(*ExpandPlaceholderFunc)(void);
@@ -570,6 +570,7 @@ const u8 *GetExpandedPlaceholder(u32 id)
         [PLACEHOLDER_ID_MAXIE]        = ExpandPlaceholder_Maxie,
         [PLACEHOLDER_ID_KYOGRE]       = ExpandPlaceholder_Kyogre,
         [PLACEHOLDER_ID_GROUDON]      = ExpandPlaceholder_Groudon,
+        [PLACEHOLDER_ID_REGION]       = ExpandPlaceholder_Region,
     };
 
     if (id >= ARRAY_COUNT(funcs))
@@ -701,21 +702,6 @@ bool32 IsStringJapanese(u8 *str)
     return FALSE;
 }
 
-bool32 IsStringNJapanese(u8 *str, s32 n)
-{
-    s32 i;
-
-    for (i = 0; *str != EOS && i < n; i++)
-    {
-        if (*str <= JAPANESE_CHAR_END)
-            if (*str != CHAR_SPACE)
-                return TRUE;
-        str++;
-    }
-
-    return FALSE;
-}
-
 u8 GetExtCtrlCodeLength(u8 code)
 {
     static const u8 lengths[] =
@@ -804,7 +790,7 @@ s32 StringCompareWithoutExtCtrlCodes(const u8 *str1, const u8 *str2)
     return retVal;
 }
 
-void ConvertInternationalString(u8 *s, u8 language)
+void ConvertInternationalString(u8 *s, enum Language language)
 {
     if (language == LANGUAGE_JAPANESE)
     {
@@ -963,4 +949,31 @@ u8 *StringCopyCensorWord(u8 *dest, const u8 *src, u8 wordStartIndex, u8 wordLeng
     *dest = EOS;
 
     return dest;
+}
+
+bool32 DoesStringProperlyTerminate(const u8 *str, u32 last)
+{
+    for (u32 i = 0; i < last; i++)
+    {
+        if (str[i] == EOS)
+            return TRUE;
+    }
+
+    return FALSE;
+}
+
+u8* const GetStringVar(u8 index)
+{
+    switch (index)
+    {
+    case 0:
+        return gStringVar1;
+    case 1:
+        return gStringVar2;
+    case 2:
+        return gStringVar3;
+    default:
+        errorf("Incorrect StringVar index: %d", index);
+        return gStringVar1;
+    }
 }

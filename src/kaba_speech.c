@@ -344,11 +344,13 @@ static void Task_KabaSpeech_FadeOutPokeball(u8);
 static void Task_KabaSpeech_FadeOutEverything(u8);
 static void Task_KabaSpeech_FadeInPlayerMugshotChoice(u8);
 static void Task_KabaSpeech_SetupPlayerMugshotChoice(u8);
+static void Task_KabaSpeech_WaitGenderChoiceMessage(u8);
 static void Task_KabaSpeech_WaitForPlayerMugshotChoice(u8);
 static void Task_KabaSpeech_MoveChosenMugshot(u8);
 static void Task_KabaSpeech_SpawnYesNoMenuForPlayerMugshot(u8);
 static void Task_KabaSpeech_HandleConfirmChosenMugshotInput(u8);
 static void Task_KabaSpeech_MoveMugshotsBack(u8);
+static void Task_KabaSpeech_WaitMovingMugshots(u8);
 static void Task_KabaSpeech_AskForName(u8);
 static void Task_KabaSpeech_WaitBeforeNamingScreen(u8);
 static void Task_KabaSpeech_DoNamingScreen(u8);
@@ -405,8 +407,9 @@ static const u8 sKabaSpeech_GenderChoice[] = _(
     "Or are you a girl?"
 );
 static const u8 sKabaSpeech_ConfirmChosenGender[] = _(
-    "So this is how you look?\p"
+    "So this is how you look?"
 );
+
 static const u8 sKabaSpeech_GenderConfirmed[] = _(
     "(Children used to dress respectfully\n"
     "back in my day…)\p"
@@ -444,25 +447,25 @@ static const u8 sKabaSpeech_YourJourneyStartsHere[] = _(
     "surprises and Pokémon awaits you!"
 );
 
-static const u16 sKabaSpeech_BgGfx[] = INCBIN_U16("graphics/kaba_speech/bg.4bpp");
-static const u16 sKabaSpeech_BgPal[] = INCBIN_U16("graphics/kaba_speech/bg.gbapal");
+static const u16 sKabaSpeech_BgGfx[] = INCGFX_U16("graphics/kaba_speech/bg.png", ".4bpp");
+static const u16 sKabaSpeech_BgPal[] = INCGFX_U16("graphics/kaba_speech/bg.png", ".gbapal");
 static const u32 sKabaSpeech_BgMap[] = INCBIN_U32("graphics/kaba_speech/bg.bin.smolTM");
 
-static const u16 sKabaSpeech_KabaPicGfx[] = INCBIN_U16("graphics/kaba_speech/pics/kaba.4bpp");
-static const u16 sKabaSpeech_KabaPicPal[] = INCBIN_U16("graphics/kaba_speech/pics/kaba.gbapal");
+static const u16 sKabaSpeech_KabaPicGfx[] = INCGFX_U16("graphics/kaba_speech/pics/kaba.png", ".4bpp");
+static const u16 sKabaSpeech_KabaPicPal[] = INCGFX_U16("graphics/kaba_speech/pics/kaba.png", ".gbapal");
 static const u32 sKabaSpeech_KabaPicMap[] = INCBIN_U32("graphics/kaba_speech/pics/kaba.bin.smolTM");
 
 //! NOTE: both aka and ao has the same palette as of writing
-static const u16 sKabaSpeech_PlayerPicPal[] = INCBIN_U16("graphics/kaba_speech/pics/ao.gbapal");
+static const u16 sKabaSpeech_PlayerPicPal[] = INCGFX_U16("graphics/kaba_speech/pics/ao.png", ".gbapal");
 
-static const u16 sKabaSpeech_AkaPicGfx[] = INCBIN_U16("graphics/kaba_speech/pics/aka.4bpp");
+static const u16 sKabaSpeech_AkaPicGfx[] = INCGFX_U16("graphics/kaba_speech/pics/aka.png", ".4bpp");
 static const u8 sKabaSpeech_AkaPicMap[] = INCBIN_U8("graphics/kaba_speech/pics/aka.bin");
 
-static const u16 sKabaSpeech_AoPicGfx[] = INCBIN_U16("graphics/kaba_speech/pics/ao.4bpp");
+static const u16 sKabaSpeech_AoPicGfx[] = INCGFX_U16("graphics/kaba_speech/pics/ao.png", ".4bpp");
 static const u8 sKabaSpeech_AoPicMap[] = INCBIN_U8("graphics/kaba_speech/pics/ao.bin");
 
-static const u16 sKabaSpeech_PlatformGfx[] = INCBIN_U16("graphics/kaba_speech/platform.4bpp");
-static const u16 sKabaSpeech_PlatformPal[] = INCBIN_U16("graphics/kaba_speech/platform.gbapal");
+static const u16 sKabaSpeech_PlatformGfx[] = INCGFX_U16("graphics/kaba_speech/platform.png", ".4bpp");
+static const u16 sKabaSpeech_PlatformPal[] = INCGFX_U16("graphics/kaba_speech/platform.png", ".gbapal");
 
 static const struct BgTemplate sKabaSpeech_BgTemplates[BG_COUNT] =
 {
@@ -700,7 +703,7 @@ static void Task_KabaSpeech_GreetingsTraveler(u8 taskId)
 
 static void Task_KabaSpeech_AndThis(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         KabaSpeech_PrintMessageBox(sKabaSpeech_AndThis);
         sKabaSpeech->timer = 30;
@@ -711,7 +714,7 @@ static void Task_KabaSpeech_AndThis(u8 taskId)
 static void Task_KabaSpeech_ReleaseJoltikFromPokeball(u8 taskId)
 {
     u32 spriteId;
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         if (sKabaSpeech->timer)
         {
@@ -742,7 +745,7 @@ static void Task_KabaSpeech_JoltikAPokemon(u8 taskId)
 
 static void Task_KabaSpeech_MainTalk(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         KabaSpeech_PrintMessageBox(sKabaSpeech_MainTalk);
         gTasks[taskId].func = Task_KabaSpeech_ReturnJoltik;
@@ -751,7 +754,7 @@ static void Task_KabaSpeech_MainTalk(u8 taskId)
 
 static void Task_KabaSpeech_ReturnJoltik(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         u32 spriteId = sKabaSpeech->monSpriteId;
         sKabaSpeech->ballSpriteId = CreateIntroPokeballSprite(spriteId, gSprites[spriteId].oam.paletteNum, MON_POS_X, MON_POS_Y, 0, 0, 32, 0x00007FFF);
@@ -789,7 +792,6 @@ static void Task_KabaSpeech_FadeInPlayerMugshotChoice(u8 taskId)
     sKabaSpeech->timer = 60;
     KabaSpeech_BeginFade(FALSE, 60, SPRITE_TYPE_PLATFORM);
     gTasks[taskId].func = Task_KabaSpeech_SetupPlayerMugshotChoice;
-
 }
 
 static void Task_KabaSpeech_SetupPlayerMugshotChoice(u8 taskId)
@@ -807,6 +809,14 @@ static void Task_KabaSpeech_SetupPlayerMugshotChoice(u8 taskId)
         SetGpuReg(REG_OFFSET_BLDY, 0);
         KabaSpeech_PrintMessageBox(sKabaSpeech_GenderChoice);
         sKabaSpeech->chosenMugshot = MUGSHOT_AO;
+        gTasks[taskId].func = Task_KabaSpeech_WaitGenderChoiceMessage;
+    }
+}
+
+static void Task_KabaSpeech_WaitGenderChoiceMessage(u8 taskId)
+{
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
+    {
         sKabaSpeech->timer = 30;
         gTasks[taskId].func = Task_KabaSpeech_WaitForPlayerMugshotChoice;
     }
@@ -888,6 +898,9 @@ static void Task_KabaSpeech_MoveChosenMugshot(u8 taskId)
 
 static void Task_KabaSpeech_SpawnYesNoMenuForPlayerMugshot(u8 taskId)
 {
+    if (IsTextPrinterActiveOnWindow(WIN_TEXT))
+        return;
+
     if (sKabaSpeech->timer)
     {
         sKabaSpeech->timer--;
@@ -914,14 +927,29 @@ static void Task_KabaSpeech_HandleConfirmChosenMugshotInput(u8 taskId)
     case 1: // NO
     case MENU_B_PRESSED:
         PlaySE(SE_SELECT);
+        sKabaSpeech->timer = 30;
         KabaSpeech_PrintMessageBox(sKabaSpeech_CancelChosenGender);
-        KabaSpeech_BeginFade(FALSE, 0, (sKabaSpeech->chosenMugshot == MUGSHOT_AO) ? SPRITE_TYPE_MUGSHOT_2 : SPRITE_TYPE_MUGSHOT_1);
         gTasks[taskId].func = Task_KabaSpeech_MoveMugshotsBack;
         break;
     }
 }
 
 static void Task_KabaSpeech_MoveMugshotsBack(u8 taskId)
+{
+    if (IsTextPrinterActiveOnWindow(WIN_TEXT))
+        return;
+
+    if (sKabaSpeech->timer)
+    {
+        sKabaSpeech->timer--;
+        return;
+    }
+
+    KabaSpeech_BeginFade(FALSE, 0, (sKabaSpeech->chosenMugshot == MUGSHOT_AO) ? SPRITE_TYPE_MUGSHOT_2 : SPRITE_TYPE_MUGSHOT_1);
+    gTasks[taskId].func = Task_KabaSpeech_WaitMovingMugshots;
+}
+
+static void Task_KabaSpeech_WaitMovingMugshots(u8 taskId)
 {
     u32 limit = 0;
     if (sKabaSpeech->counter == limit)
@@ -940,10 +968,9 @@ static void Task_KabaSpeech_MoveMugshotsBack(u8 taskId)
 
 static void Task_KabaSpeech_AskForName(u8 taskId)
 {
-    if (!IsTextPrinterActive(WIN_TEXT))
+    if (!IsTextPrinterActiveOnWindow(WIN_TEXT))
     {
         sKabaSpeech->timer = 60;
-    
         KabaSpeech_PrintMessageBox(sKabaSpeech_AskPlayerName);
         gTasks[taskId].func = Task_KabaSpeech_WaitBeforeNamingScreen;
     }
@@ -951,7 +978,7 @@ static void Task_KabaSpeech_AskForName(u8 taskId)
 
 static void Task_KabaSpeech_WaitBeforeNamingScreen(u8 taskId)
 {
-    if ((!IsTextPrinterActive(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
+    if ((!IsTextPrinterActiveOnWindow(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
     {
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
         gTasks[taskId].func = Task_KabaSpeech_DoNamingScreen;
@@ -1016,7 +1043,7 @@ static void Task_KabaSpeech_HandleConfirmNameInput(u8 taskId)
 
 static void Task_KabaSpeech_ConfirmPlayerName(u8 taskId)
 {
-    if ((!IsTextPrinterActive(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
+    if ((!IsTextPrinterActiveOnWindow(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
     {
         ClearDialogWindowAndFrameToTransparent(WIN_TEXT, TRUE);
         gTasks[taskId].func = Task_KabaSpeech_YourJourneyStartsHere;
@@ -1039,7 +1066,7 @@ static void Task_KabaSpeech_YourJourneyStartsHere(u8 taskId)
 
 static void Task_KabaSpeech_CloseMsgbox(u8 taskId)
 {
-    if ((!IsTextPrinterActive(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
+    if ((!IsTextPrinterActiveOnWindow(WIN_TEXT)) && (JOY_NEW(A_BUTTON) || JOY_NEW(B_BUTTON)))
     {
         ClearDialogWindowAndFrameToTransparent(WIN_TEXT, TRUE);
         gTasks[taskId].func = Task_KabaSpeech_FadeAwayEverything;
@@ -1114,14 +1141,16 @@ static void KabaSpeech_DrawCharacterMugshot(u8 id)
 static inline void KabaSpeech_PrintMessageBox(const u8 *str)
 {
     DrawDialogueFrame(WIN_TEXT, FALSE);
+    gTextFlags.canABSpeedUpPrint = TRUE;
+    gTextFlags.forceMidTextSpeed = FALSE;
     if (str != gStringVar4)
     {
         StringExpandPlaceholders(gStringVar4, str);
-        AddTextPrinterParameterized2(WIN_TEXT, FONT_NORMAL, gStringVar4, GetPlayerTextSpeed(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(WIN_TEXT, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     }
     else
     {
-        AddTextPrinterParameterized2(WIN_TEXT, FONT_NORMAL, str, GetPlayerTextSpeed(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
+        AddTextPrinterParameterized2(WIN_TEXT, FONT_NORMAL, str, GetPlayerTextSpeedDelay(), NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     }
     CopyWindowToVram(WIN_TEXT, COPYWIN_FULL);
 }

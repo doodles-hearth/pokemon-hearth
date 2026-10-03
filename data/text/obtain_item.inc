@@ -41,3 +41,23 @@ gText_PlayerFoundItems::
 
 gText_TransformMonFoundItems::
 	.string "{STR_VAR_3} found {STR_VAR_1} {STR_VAR_2}!$"
+
+gText_PutCoinsAwayInCoinCase::
+	.string "{PLAYER} put the COINS away in\n"
+	.string "the COIN CASE.$"
+
+gText_FoundXCoins::
+	.string "{PLAYER} found\n"
+	.string "{STR_VAR_1} {STR_VAR_2}!$"
+
+gText_FoundXItems::
+	.string "{PLAYER} found\n"
+	.string "{STR_VAR_1} {STR_VAR_2}(s)!$"
+
+gText_CoinCaseIsFull::
+	.string "Too bad!\n"
+	.string "The COIN CASE is full…$"
+
+gText_NothingToPutThemIn::
+	.string "Too bad!\n"
+	.string "There's nothing to put them in…$"
