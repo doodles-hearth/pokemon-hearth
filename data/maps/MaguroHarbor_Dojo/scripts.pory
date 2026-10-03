@@ -23,8 +23,8 @@ script MaguroHarbor_Dojo_EventScript_Koishi {
 	)
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_KoishiRematch)
-	msgbox(format(
-		"You shall achieve great things. I hope we meet again."
+	msgbox((
+		"You shall achieve great things.\nI hope we meet again."
 	))
 	end
 }

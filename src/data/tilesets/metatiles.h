@@ -565,3 +565,6 @@ const u16 gMetatileAttributes_Hanabi[] = INCBIN_U16("data/tilesets/secondary/han
 
 const u16 gMetatiles_snow[] = INCBIN_U16("data/tilesets/secondary/snow/metatiles.bin");
 const u16 gMetatileAttributes_snow[] = INCBIN_U16("data/tilesets/secondary/snow/metatile_attributes.bin");
+
+const u16 gMetatiles_InsideWailord[] = INCBIN_U16("data/tilesets/secondary/inside_wailord/metatiles.bin");
+const u16 gMetatileAttributes_InsideWailord[] = INCBIN_U16("data/tilesets/secondary/inside_wailord/metatile_attributes.bin");

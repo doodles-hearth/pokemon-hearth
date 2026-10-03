@@ -477,8 +477,8 @@ script CrobatHideout_1F_SamuraiOffersHelp {
 	waitse
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Oh, you were in the midst of getting attacked by these four delinquents, were you not?\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Oh, you were in the midst of getting\nattacked by these four delinquents,\lweren't you?\p"
 		"Let me help!\nI can handle two at a time!"
 	))
 	closemessage
@@ -486,8 +486,8 @@ script CrobatHideout_1F_SamuraiOffersHelp {
 	applymovement(LOCALID_4V1_GRUNT_4, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_4V1_GRUNT_4)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Hey, no fair! This was s'posed to be a four on one situation!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Hey, no fair! This was s'posed to be\na four on one situation!"
 	))
 	closemessage
 }
@@ -503,8 +503,8 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 	applymovement(LOCALID_4V1_GRUNT_1, moves(walk_in_place_fast_right))
 	waitmovement(LOCALID_4V1_GRUNT_1)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Ayayaya! Jus' wait til the Boss hears of this!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Ayayaya!\nJus' wait til the Boss hears of this!"
 	))
 	closemessage
 
@@ -521,10 +521,10 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Nicely done!\nWhat is your name, child?\p"
 		"… … …{PLAYER}!\nI see you have skill!\p"
-		"We have to take their leader down!\nBut first, let me heal your companions!"
+		"We have to take their leader down!\nFirst, let me heal your companions!"
 	))
 	closemessage
 
@@ -573,7 +573,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_CROBAT_BOSS, moves(emote_angry))
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Yeah -{PAUSE 8} I can see that, Kevin…\p"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Yeah-{PAUSE 8} I can see that, Kevin…\p"
 		"As always, thank you for your\nprecious input!\p"
 		"Did one man and a puny lil' brat jus'\nwipe through our whole squad like it\lwas nothin'? Is that what happened?"
 	))
@@ -604,10 +604,10 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	playse(SE_PIN)
 	applymovement(LOCALID_SAMURAI, moves(emote_angry))
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}I make the law here!\n"
 		"You're under arrest, you thug!\p"
-		"I'm taking you in for the Pokémon Refuge robbery!"
+		"I'm taking you in for the Pokémon\nRefuge robbery!"
 	))
 	closemessage
 
@@ -621,8 +621,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_4V1_GRUNT_4, moves(face_up))
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Bahaha! Don't make me laugh! Ya'll never get m-"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Bahaha! Don't make me laugh!\nYa'll never get m-"
 	))
 	closemessage
 
@@ -632,8 +632,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitse
 	waitmovement(LOCALID_CROBAT_BOSS)
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Wait, a robbery? Which one of ya goons did this?"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Wait, a robbery?\nWhich one of ya goons did this?"
 	))
 	closemessage
 
@@ -645,8 +645,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	playse(SE_PIN)
 	applymovement(LOCALID_CROBAT_BOSS, moves(emote_angry))
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Well bravaw! You've jus' blown our cover, ya bumblin' idjets!\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Well bravaw! You've jus' blown our\ncover, ya bumblin' idjets!\p"
 		"A robbery right here in Yifu City?\nJus' what were ya thinkin'?\p"
 		"I told y'all to lay low!\nWe can't deal with this much heat!"
 	))
@@ -663,9 +663,9 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_4V1_GRUNT_4, moves(face_left))
 	
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cut the chatter, you lowlife crook!\p"
-		"Your reign of terror has been going on for too long!\p"
+		"Your reign of terror has been going on\ntoo long!\p"
 		"You are under arrest, I said!"
 	))
 	closemessage
@@ -680,8 +680,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_4V1_GRUNT_4, moves(face_up))
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Nope, ya ain't arrestin' me, nor my gang!\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Nope, ya ain't arrestin' me, nor\nmy gang!\p"
 		"Golbat, to me!!"
 	))
 	closemessage
@@ -708,8 +708,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitmovement(LOCALID_CROBAT_BOSS)
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}I trust ya two to cover our backs, yeah?"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}I trust ya two to cover our backs,\nyeah?"
 	))
 	closemessage
 
@@ -719,7 +719,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitmovement(0)
 
 	setspeaker("Golbat Admins")
-	msgbox(format(
+	msgbox((
 		"Yes boss!"
 	))
 	closemessage
@@ -731,9 +731,9 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_CROBAT_BOSS, Common_Movement_WalkInPlaceFasterDown)
 	waitmovement(LOCALID_CROBAT_BOSS)
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}No fancy Samurai and no lil' privileged scrub are ever gonna stop us!\p"
-		"We're the Crobat Shadows, and we're always one step ahead of ya!\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}No fancy Samurai, no lil' privileged\nscrub are ever gonna stop us!\p"
+		"We're the Crobat Shadows, and we're\nalways one step ahead of ya!\p"
 		"Kid… Careful who ya team up with."
 	))
 	closemessage
@@ -743,7 +743,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_CROBAT_BOSS, moves(jump_in_place_down))
 
 	setspeaker(SP_NAME_CROBAT_BOSS)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Zubat! Align!"
 	))
 	closemessage
@@ -787,7 +787,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	delay(48)
 
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cough… cough…\nThey're gone!"
 	))
 	closemessage
@@ -800,7 +800,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 	waitmovement(LOCALID_GOLBAT_LEFT)
 	setspeaker(SP_NAME_GOLBAT_ADMIN)
-	msgbox(format(
+	msgbox((
 		"Prepare to be crushed!"
 	))
 	setweather(WEATHER_NONE)
@@ -815,7 +815,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 
 script CrobatHideout_1F_LetsFight2v2 {
 	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Let us join forces, {PLAYER}!"
 	))
 	closemessage
@@ -845,7 +845,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			applymovement(LOCALID_GOLBAT_RIGHT, moves(jump_in_place_left))
 			waitmovement(0)
 			setspeaker(SP_NAME_GOLBAT_ADMIN)
-			msgbox(format(
+			msgbox((
 				"Ya dumball, ya made us lose!"
 			))
 			closemessage
@@ -854,7 +854,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			applymovement(LOCALID_GOLBAT_LEFT, moves(jump_in_place_right))
 			waitmovement(0)
 			setspeaker(SP_NAME_GOLBAT_ADMIN)
-			msgbox(format(
+			msgbox((
 				"Naw I didn't! 'Twas yer fault!"
 			))
 			closemessage
@@ -864,7 +864,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			waitmovement(0)
 
 			setspeaker(SP_NAME_GOLBAT_ADMIN)
-			msgbox(format(
+			msgbox((
 				"Nevermind that! Let's scram!"
 			))
 			closemessage
@@ -883,7 +883,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 			waitmovement(0)
 			setspeaker(SP_NAME_SAMURAI)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cough… Let's get out of here!"
 			))
 			closemessage

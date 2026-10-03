@@ -16,10 +16,10 @@ script Soulkeep_Library_2F_EventScript_EmployeeBlocksVIPArea {
 	lock
 	faceplayer
 	setspeaker("Librarian")
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{SPEAKER NAME_LIBRARIAN}{FONT_SMALL}The upper floor holds very old and rare books and scrolls.\p"
-		"We can't let just any child get their grubby little paws all over the pages.\p"
-		"As such, only holders of at least four official Tokens have access.{FONT_NORMAL}"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_VALET 0}{SPEAKER NAME_LIBRARIAN}{FONT_SMALL}The upper floor holds very old and\nrare books and scrolls.\p"
+		"We can't let just any child get their\ngrubby little paws all over the pages.\p"
+		"As such, only holders of at least four\nofficial Tokens have access.{FONT_NORMAL}"
 	))
 	closemessage
 	release
@@ -30,14 +30,14 @@ script Soulkeep_Library_2F_EventScript_Hariko {
 	faceplayer
 	if (flag(FLAG_READ_BOOK_ABOUT_SHRINES_AND_DECAY)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}The Shrines seem to be the stemming points of the Decay…\lCould they also be used to cure it?\p"
+			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}The Toku Shrines seem to be the\nstemming points of the Decay…\lCould they also be used to cure it?\p"
 			"Wielder Jomon of Coreef Isle…\p"
-			"I wonder if his descendants still live there…{FONT_NORMAL}"
+			"I wonder if his descendants still\nlive there…{FONT_NORMAL}"
 		))
 	} else {
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Hello, {PLAYER}.\n\p"
-			"I am looking for information on the Decay.\p"
+			"I am looking for information on the\nDecay.\p"
 			"Has it happened before?\nIs there a way to fix it?\l"
 			"I am not finding anything…{FONT_NORMAL}"
 		))
@@ -128,7 +128,7 @@ script Soulkeep_Library_1F_EventScript_Book_ShrineDecay {
 
 			setvar(VAR_0x8004, 3) // vertical pan
 			setvar(VAR_0x8005, 0) // horizontal pan
-			setvar(VAR_0x8006, 50) // num shakes
+			setvar(VAR_0x8006, 10) // num shakes
 			setvar(VAR_0x8007, 2) // shake delay
 			special(ShakeCamera)
 
@@ -141,12 +141,12 @@ script Soulkeep_Library_1F_EventScript_Book_ShrineDecay {
 			applymovement(LOCALID_LIBRARY_HARIKO, moves(face_left, delay_16 * 2))
 			waitmovement(LOCALID_LIBRARY_HARIKO)
 
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}{SPEAKER NAME_HARIKO}{FONT_SMALL}Oops. Holy Shiftry.\p"
-				"The text is faded, but it mentions a link between the Toku Shrines and the Decay!\p"
-				"The Shrines seem to be the stemming points of the Decay…\lCould they also be used to cure it?\p"
+				"The text is faded, but it mentions a\nlink between the Shrines and the Decay!\p"
+				"The Toku Shrines seem to be the\nstemming points of the Decay…\lCould they also be used to cure it?\p"
 				"Wielder Jomon of Coreef Isle…\p"
-				"I wonder if he has descendants that still live there…{FONT_NORMAL}"
+				"I wonder if his descendants still\nlive there…{FONT_NORMAL}"
 			))
 			closemessage
 
