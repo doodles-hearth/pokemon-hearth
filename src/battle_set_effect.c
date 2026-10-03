@@ -1226,6 +1226,7 @@ static void HandleSetEffectBreakScreen(struct BattleCalcValues *cv, struct SetEf
 
         if (!failed)
         {
+            gBattleCommunication[MULTISTRING_CHOOSER] = 0;
             if (gSideTimers[side].reflectTimer)
                 gBattleCommunication[MULTISTRING_CHOOSER] |= 1 << 0;
             if (gSideTimers[side].lightscreenTimer)
@@ -1233,6 +1234,9 @@ static void HandleSetEffectBreakScreen(struct BattleCalcValues *cv, struct SetEf
             if (gSideTimers[side].auroraVeilTimer)
                 gBattleCommunication[MULTISTRING_CHOOSER] |= 1 << 2;
 
+            gSideTimers[side].reflectTimer = 0;
+            gSideTimers[side].lightscreenTimer = 0;
+            gSideTimers[side].auroraVeilTimer = 0;
             gSideStatuses[side] &= ~SIDE_STATUS_SCREEN_ANY;
             gBattleScripting.animTurn = 1;
             gBattleScripting.animTargetsHit = 1;

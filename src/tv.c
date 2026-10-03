@@ -2596,6 +2596,9 @@ size_t CountDigits(int value)
 {
     u32 count = 0;
 
+    if (value == 0)
+        return 1;
+
     while (value > 0)
     {
         value /= 10;
