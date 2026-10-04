@@ -155,6 +155,11 @@
     // 0: Start
     // 1: Beat Xiao Huo
     // 2: Xiao Huo runs away
+    // 3: Saw Xiao Huo run away in Hanabi
+    // 4: Xiao Huo fell down blowhole
+    // 5: Xiao Huo is now following you inside Wailord
+    // 6: Beat Crobat Shadows
+    // 7: Got badge
 */
 #define VAR_WAILORD_QUEST_STATE                          0x405F
 #define VAR_ROUTE101_STATE                               0x4060

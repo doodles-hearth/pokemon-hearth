@@ -104,8 +104,8 @@
 #define TRAINER_HANABI_GYM_7                 97
 #define TRAINER_HANABI_GYM_8                 98
 #define TRAINER_XIAO_HUO                     99
-#define TRAINER_JULIE                       100
-#define TRAINER_BROOKE_2                    101
+#define TRAINER_WAIL_CROBAT_BOSS            100
+#define TRAINER_WAIL_GOLBAT_ADMIN           101
 #define TRAINER_BROOKE_3                    102
 #define TRAINER_BROOKE_4                    103
 #define TRAINER_BROOKE_5                    104

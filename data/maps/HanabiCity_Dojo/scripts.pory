@@ -102,7 +102,7 @@ script HanabiCity_Dojo_EventScript_XiaoHuo {
 	lock
 	applymovement(VAR_LAST_TALKED, moves(shake_horizontal * 2))
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_UNKNOWN}Grrrrrr…"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_UNKNOWN}Grrrrrr…"
 	)
 	waitmovement
 	closemessage
@@ -114,7 +114,7 @@ script HanabiCity_Dojo_EventScript_XiaoHuo {
 
 	applymovement(VAR_LAST_TALKED, moves(shake_horizontal * 5))
 	message(
-		"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_UNKNOWN}GRRRRRR… … …"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_UNKNOWN}GRRRRRR… … …"
 	)
 	waitmessage
 	waitmovement(0)
@@ -151,30 +151,30 @@ script HanabiCity_Dojo_EventScript_XiaoHuo {
 	))
 
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 	playse(SE_LEDGE)
-	delay(16)
+	delay(32)
 
 	waitmovementall
 
 	trainerbattle_single(
 		TRAINER_XIAO_HUO,
 			format(
-				"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}GRRRRRRRRRRR!!!"
+				"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}GRRRRRRRRRRR!!!"
 			)
 		,
 		format("Oh, man!\nUh I mean, grrr!"),
@@ -184,7 +184,7 @@ script HanabiCity_Dojo_EventScript_XiaoHuo {
 	// specialvar(VAR_RESULT, ShouldTryRematchBattle)
 	// goto_if_eq(VAR_RESULT, TRUE, MaguroHarbor_Dojo_EventScript_XiaoHuoRematch)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}I could go for a festival skewer, or\na hundred!"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}I could go for a festival skewer, or\na hundred!"
 	))
 	end
 }
@@ -192,8 +192,8 @@ script HanabiCity_Dojo_EventScript_XiaoHuo {
 script MaguroHarbor_Dojo_EventScript_XiaoHuoDefeated {
 	msgbox(
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}I'm getting too hot in this thing…\p"
-			"{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}Ahhh, fresh air!\nSo anyway, you won!\p"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}I'm getting too hot in this thing…\p"
+			"{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}Ahhh, fresh air!\nSo anyway, you won!\p"
 			"You received the Folded Token!\p"
 			"… … …Sike!\n"
 			"You'll need to race me for it!"

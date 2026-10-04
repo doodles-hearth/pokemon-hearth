@@ -2191,70 +2191,56 @@ Items: Supergiri
 Battle Type: Singles
 AI: Smartish Trainer
 
-Darumaka
+Darumaka (M)
 Level: 25
 - Rage
 - Work Up
 - Fire Punch
 - Facade
 
-Drifblim
+Drifblim (F)
 Level: 28
 - Ominous Wind
 - Will O Wisp
 - Hex
 - Flame Wheel
 
-Drampa
+Drampa (M)
 Level: 26
 - Dragon Rage
 - Glare
 - Fire Fang
 - Aqua Jet
 
-=== TRAINER_JULIE ===
-Name: JULIE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
+=== TRAINER_WAIL_CROBAT_BOSS ===
+Name: Boss
+Class: Crobat Shadow Leader
+Pic: Crobat Boss
+Music: Aqua
+Items: Hypergiri
+Battle Type: Singles
+AI: Smartish Trainer
+
+Golbat (F)
+Level: 28
+IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+- Poison Fang
+- Air Cutter
+- Astonish
+
+=== TRAINER_WAIL_GOLBAT_ADMIN ===
+Name: Admin
+Class: Golbat
+Pic: Golbat Admin F
+Music: Aqua
 Battle Type: Singles
 AI: Basic Trainer
 
-Sandslash
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Ninetales
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-Tropius
-Level: 42
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-
-=== TRAINER_BROOKE_2 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
-AI: Basic Trainer
-
-Wingull
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
-
-Numel
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
-
-Roselia
-Level: 26
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Swoobat
+Level: 27
+- Confusion
+- Odor Sleuth
+- Heart Stamp
 
 === TRAINER_BROOKE_3 ===
 Name: BROOKE

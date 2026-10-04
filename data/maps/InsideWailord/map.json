@@ -2,11 +2,11 @@
   "id": "MAP_INSIDE_WAILORD",
   "name": "InsideWailord",
   "layout": "LAYOUT_INSIDE_WAILORD",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_INSIDE_WAILORD",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERWATER",
+  "map_type": "MAP_TYPE_UNDERGROUND",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -90,13 +90,13 @@
       "x": 20,
       "y": 35,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "InsideWailord_EventScript_XiaoHuo",
-      "flag": "0"
+      "flag": "FLAG_HIDE_WAIL_XIAO_HUO"
     },
     {
       "local_id": "LOCALID_WAIL_DRAMPA",
@@ -117,7 +117,7 @@
     {
       "warp_id": "WARP_ID_EXIT_WAILORD",
       "x": 15,
-      "y": 54,
+      "y": 47,
       "elevation": 0,
       "dest_map": "MAP_SEA_TURF_ROUTE",
       "dest_warp_id": "WARP_ID_ENTER_WAILORD"

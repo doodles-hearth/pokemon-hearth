@@ -17,7 +17,7 @@ VictoryRoad_B2F_EventScript_Caroline::
 	end
 
 VictoryRoad_B2F_EventScript_Julie::
-	trainerbattle_single TRAINER_JULIE, VictoryRoad_B2F_Text_JulieIntro, VictoryRoad_B2F_Text_JulieDefeat
+	trainerbattle_single TRAINER_DUMMY, VictoryRoad_B2F_Text_JulieIntro, VictoryRoad_B2F_Text_JulieDefeat
 	msgbox VictoryRoad_B2F_Text_JuliePostBattle, MSGBOX_AUTOCLOSE
 	end
 

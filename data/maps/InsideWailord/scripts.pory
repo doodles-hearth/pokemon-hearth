@@ -6,18 +6,27 @@ script InsideWailord_EventScript_XiaoHuo {
     lock
     faceplayer
 
-    msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Ha! You fell down here too!\p"
-        "Good thing you followed me, actually.\nWailord looks unwell.\l"
-        "I'm sure it ate something bad!\p"
-        "Let's see if we can find the thing\nthat's bothering Wailord, {PLAYER}.\p"
-        "I'm right behind you!"
-    )
-    closemessage
+    if (var(VAR_WAILORD_QUEST_STATE) == 5) {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Oh good, you're back!\n"
+            "Let's explore further back!"
+        )
+        closemessage
+    } else {
+        setvar(VAR_WAILORD_QUEST_STATE, 5)
 
-    setfollowernpc(LOCALID_WAIL_XIAO_HUO, FNPC_SURF, InsideWailord_EventScript_FollowerXiaoHuo, battlePartner=0)
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Ha! You fell down here too!\p"
+            "Good thing you followed me, actually.\nWailord looks unwell.\l"
+            "I'm sure it ate something bad!\p"
+            "Let's see if we can find what's\nbothering Wailord, {PLAYER}.\p"
+            "I'm right behind you!"
+        )
+        closemessage
+        setnamedmon(SPECIES_WAILORD)
+    }
 
-    setnamedmon(SPECIES_WAILORD)
+    setfollowernpc(LOCALID_WAIL_XIAO_HUO, FNPC_WHITE_OUT, InsideWailord_EventScript_FollowerXiaoHuo, battlePartner=0)
 
     release
 }
@@ -26,9 +35,32 @@ script InsideWailord_EventScript_FollowerXiaoHuo {
     lock
     faceplayer
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}C'mon, let's explore further back!"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}C'mon, let's explore further back!\p"
+        "Huh? You have something you need to\ndo outside first?"
+    )
+
+    mcdialogueB(
+        "I'll be right back.",
+        "Let's keep exploring!"
     )
     closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Okay, Drampa will carry you out.\n"
+            "Come back quickly though!"
+        )
+        closemessage
+        setnamedmon(SPECIES_DRAMPA)
+        playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
+        warpteleport(MAP_SEA_TURF_ROUTE, WARP_ID_ENTER_WAILORD)
+    } else {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Let's not lose any more time!"
+        )
+        closemessage
+    }
+
     release
 }
 
@@ -42,7 +74,7 @@ script InsideWailord_EventScript_NeedSurf {
     facefollowernpc
 
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}I bet you're thinking “Oh man, I can't\nswim!”\p"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}I bet you're thinking “Oh man, I\ncan't swim!”\p"
         "Don't you worry, {PLAYER}!\nMy Drampa can carry us across!"
     )
     closemessage
@@ -94,30 +126,33 @@ script InsideWailord_EventScript_NeedSurf {
     waitse
     waitmovementall
     applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(face_up, delay_8, emote_exclamation_mark, delay_16 * 6))
-    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(delay_8, face_up))
+    applymovement(LOCALID_PLAYER, moves(delay_8, face_up))
     delay(8)
     playse(SE_PIN)
-    waise
+    waitse
     waitmovementall
 
+    special(SpawnCameraObject)
+    applymovement(LOCALID_CAMERA, moves(walk_slow_up * 1))
+
+	playbgm(MUS_ENCOUNTER_AQUA, TRUE)
+
+    delay(16)
     playse(SE_PIN)
     applymovement(LOCALID_WAIL_BOSS, moves(emote_angry))
-    msgbox(
+    msgboxcontig(
         "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}This place smells like a Slaking's\nbutt!\p"
-        "I can't believe we're stuck in 'ere\nlike a buncha morons!\p"
+        "I can't believe we're stuck in 'ere\nlike a buncha morons!"
     )
     setnamedmon(SPECIES_SLAKING)
-    closemessage
     applymovement(LOCALID_WAIL_ADMIN, moves(walk_in_place_fast_up))
-    msgbox(
+    msgboxcontig(
         "{SPEAKER NAME_GOLBAT_ADMIN}I can't believe this thing ate our\nraft…"
     )
-    closemessage
     applymovement(LOCALID_WAIL_GRUNT2, moves(walk_in_place_fast_left))
-    msgbox(
+    msgboxcontig(
         "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}I can't believe we let KEVIN be the\nlookout!"
     )
-    closemessage
     applymovement(LOCALID_WAIL_KEVIN, moves(shake_horizontal))
     msgbox(
         "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_KEVIN}Ah, I'm sorry, guys…"
@@ -140,46 +175,48 @@ script InsideWailord_EventScript_NeedSurf {
     playse(SE_LEDGE)
     applymovement(LOCALID_WAIL_ADMIN, moves(jump_in_place_down))
     waitmovementall
-    msgbox(
+    msgboxcontig(
         "{SPEAKER NAME_GOLBAT_ADMIN}Oh goshawott boss, it's the kid that\nblew up our ol' hideout in Yifu City!"
     )
-    closemessage
 
+    waitse
     playse(SE_PIN)
     applymovement(LOCALID_WAIL_BOSS, moves(emote_angry, delay_16 * 6))
     applymovement(LOCALID_WAIL_ADMIN, moves(delay_16 * 2, walk_right, face_down))
-    msgbox(
+    msgboxcontig(
         "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Ugh, I can't deal with this kid\nagain!\p"
         "How the heck did yer dummasses end up\ninside a Wailord?"
     )
     waitmovementall
-    closemessage
 
-    applymovement(LOCALID_WAIL_XIAO_HUO, moves(walk_in_place_fast_up))
-    msgbox(
+    waitse
+    playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(emote_pensive))
+    msgboxcontig(
         "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}…You guys are also inside a\nWailord."
     )
-    closemessage
 
     applymovement(LOCALID_WAIL_GRUNT2, moves(walk_in_place_fast_down))
-    msgbox(
+    msgboxcontig(
         "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Wait, who's the sassy midget?"
     )
-    closemessage
 
+    waitse
     playse(SE_LEDGE)
-    applymovement(LOCALID_WAIL_XIAO_HUO, moves(jump_in_place_up))
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(jump_in_place_up))
+    waitse
     waitmovementall
     playse(SE_PIN)
-    applymovement(LOCALID_WAIL_XIAO_HUO, moves(emote_angry, delay_16 * 6))
-    msgbox(
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(emote_angry, delay_16 * 6))
+    msgboxcontig(
         "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}HEY! I'm not a midget!\nI'm a Dojo Master!!\p"
         "You lot are upsetting Wailord's\nstomach!\p"
         "Get out of here! Uh, it's an order!"
     )
     waitmovementall
-    closemessage
 
+    waitse
+    playse(SE_PIN)
     applymovement(LOCALID_WAIL_BOSS, moves(emote_angry, delay_16 * 6))
     msgbox(
         "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Nobody orders the Crobat Shadows\n'round!\p"
@@ -198,80 +235,97 @@ script InsideWailord_EventScript_NeedSurf {
     waitmovementall
     delay(32)
     applymovement(LOCALID_WAIL_BOSS, moves(walk_in_place_fast_up))
+    applymovement(LOCALID_WAIL_KEVIN, moves(face_down))
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Help us?! We ain't lost, dummy!\nI got everythin' under control!"
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Help us?!\nWe ain't lost, dummy!\lI got everythin' under control!"
     )
+    closemessage
     applymovement(LOCALID_WAIL_BOSS, moves(walk_down))
     applymovement(LOCALID_WAIL_ADMIN, moves(delay_16, walk_down))
     waitmovementall
+
+    waitse
+    playse(SE_PIN)
+    applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(emote_sweat, delay_16 * 6))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}But wait, we're not here to-"
+    )
+    waitmovementall
+    closemessage
 
     multi_2_vs_2(
         TRAINER_WAIL_CROBAT_BOSS,
         format("Yer stronger than I thought…"),
         TRAINER_WAIL_GOLBAT_ADMIN,
-        format("Ugh, that's humiliatin'…"),
-        PARTNER_SAMURAI
+        format("Boss, forgive me!"),
+        PARTNER_XIAO_HUO
     )
 
     if (var(VAR_RESULT) == 1) {
-        playse(SE_LEDGE)
-        applymovement(LOCALID_GOLBAT_RIGHT, moves(jump_in_place_left))
-        waitmovement(0)
-        setspeaker(SP_NAME_GOLBAT_ADMIN)
-        msgbox((
-            "Ya dumball, ya made us lose!"
-        ))
-        closemessage
-
-        playse(SE_LEDGE)
-        applymovement(LOCALID_GOLBAT_LEFT, moves(jump_in_place_right))
-        waitmovement(0)
-        setspeaker(SP_NAME_GOLBAT_ADMIN)
-        msgbox((
-            "Naw I didn't! 'Twas yer fault!"
-        ))
-        closemessage
-
-        applymovement(LOCALID_GOLBAT_RIGHT, moves(walk_in_place_fast_up, delay_16 * 2, walk_in_place_fast_left, delay_16))
-        applymovement(LOCALID_GOLBAT_LEFT, moves(walk_in_place_fast_up, delay_16 * 2, walk_in_place_fast_right, delay_16))
-        waitmovement(0)
-
-        setspeaker(SP_NAME_GOLBAT_ADMIN)
-        msgbox((
-            "Nevermind that! Let's scram!"
-        ))
-        closemessage
-
-        playse(SE_M_DIVE)
-        fadescreenswapbuffers(FADE_TO_WHITE)
-        setweather(WEATHER_FOG_HORIZONTAL)
-        doweather
-        removeobject(LOCALID_GOLBAT_RIGHT)
-        removeobject(LOCALID_GOLBAT_LEFT)
-        delay(80)
-        fadescreenswapbuffers(FADE_FROM_WHITE)
         delay(48)
 
-        applymovement(LOCALID_SAMURAI, moves(walk_in_place_fast_left))
-        applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
-        waitmovement(0)
-        setspeaker(SP_NAME_SAMURAI)
-        msgbox((
-            "{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cough… Let's get out of here!"
-        ))
+        playse(SE_PIN)
+        applymovement(LOCALID_WAIL_BOSS, moves(emote_pensive))
+        msgboxcontig(
+            "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}… … … … … …\p"
+            "I only fought with one of my Pokémon…\nStill, I may've underestimated ya."
+        )
+
+        waitse
+        playse(SE_PIN)
+        applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(emote_angry, delay_16 * 6))
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Are you done? Can we all calm down\nand listen to each other now?"
+        )
         closemessage
 
-        setvar(VAR_CROBAT_HIDEOUT_STATE, 3)
-        setflag(FLAG_CLEARED_CROBAT_HIDEOUT)
-        setflag(FLAG_BOUGHT_FAKE_SHINY)
-        setmemoryall(MEMORY_CLEARED_HIDEOUT)
+        delay(48)
 
-        warp(MAP_YIFU_CITY, 33, 13)
+        applymovement(LOCALID_WAIL_BOSS, moves(walk_in_place_fast_down))
+        msgboxcontig(
+            "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}I guess we came off a lil' strong."
+        )
+
+        applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_in_place_fast_up))
+        msgboxcontig(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}We get it, you're trapped in here.\nYou're also making Wailord ill!\p"
+            "My Drampa can get you all out of here\nsafely!"
+        )
+
+        waitse
+        playse(SE_PIN)
+        applymovement(LOCALID_WAIL_GRUNT1, moves(emote_pensive))
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}That does sound pretty alright."
+        )
+        closemessage
+
+        applymovement(OBJ_EVENT_ID_NPC_FOLLOWER, moves(walk_in_place_fast_down))
+        playse(SE_BALL_OPEN)
+        applymovement(LOCALID_WAIL_DRAMPA, moves(face_right, exit_pokeball))
+        waitmovementall
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Let's go, Drampa!\nGive it your all!"
+        )
+        closemessage
+        
+        applymovement(LOCALID_WAIL_GRUNT2, moves(walk_down))
+        applymovement(LOCALID_WAIL_GRUNT1, moves(delay_8, walk_down))
+        applymovement(LOCALID_WAIL_KEVIN, moves(delay_16, walk_down * 3))
+        delay(16)
+        playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
+        applymovement(LOCALID_WAIL_DRAMPA, moves(shake_horizontal))
+
+        waitmovementall
+
+        setmemoryall(MEMORY_INSIDE_WAILORD)
+        setvar(VAR_WAILORD_QUEST_STATE, 6)
+        warp(MAP_SEA_TURF_ROUTE, WARP_ID_ENTER_WAILORD)
     } else {
         fadescreenswapbuffers(FADE_TO_BLACK)
-        special(SetCB2WhiteOut)
+        special(HealPlayerParty)
+        warpsilent(MAP_SEA_TURF_ROUTE, WARP_ID_ENTER_WAILORD)
     }
-
     
     releaseall
 }

@@ -263,6 +263,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_GETFLASHLEVEL                 ScrCmd_getflashlevel,               requests_effects=1  @ 0xeb
 	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1  @ 0xec
   	script_cmd_table_entry SCR_OP_GETLEADMONSPECIES			    ScrCmd_getleadmonspecies,    		requests_effects=1  @ 0xed
+  	script_cmd_table_entry SCR_OP_WARPFALL					    ScrCmd_warpfall,    				requests_effects=1  @ 0xee
 
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE

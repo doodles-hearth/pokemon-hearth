@@ -1,44 +1,224 @@
 const FLAG_HIDE_XIAO_HUO_SEATURF = FLAG_TEMP_1
+const FLAG_HIDE_CROBATS_AND_CO = FLAG_TEMP_2
 
 mapscripts SeaTurfRoute_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         if (var(VAR_WAILORD_QUEST_STATE) != 3) {
             setflag(FLAG_HIDE_XIAO_HUO_SEATURF)
         }
+        if (var(VAR_WAILORD_QUEST_STATE) != 6) {
+            setflag(FLAG_HIDE_CROBATS_AND_CO)
+        }
     }
+    MAP_SCRIPT_ON_FRAME_TABLE [
+		VAR_WAILORD_QUEST_STATE, 6: SeaTurfRoute_EventScript_EscapingWailord
+    ]
+}
+
+script SeaTurfRoute_EventScript_EscapingWailord {
+    lockall
+
+    destroyfollowernpc
+    
+    delay(48)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    applymovement(LOCALID_XIAO_HUO_SEATURF_2, moves(face_down, emote_happy))
+    msgboxcontig(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Whew! Everyone okay?"
+    )
+    waitmovementall
+
+    waitse
+    playse(SE_PIN)
+    applymovement(LOCALID_SEATURF_BOSS, moves(emote_angry))
+    applymovement(LOCALID_PLAYER, moves(face_right))
+    message(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Yeah, yeah, whatever. We were jus'\n'bout to find the exit ourselves!"
+    )
+    waitmovementall
+    waitmessage
+    waitbuttonpress
+    applymovement(LOCALID_SEATURF_BOSS, moves(walk_in_place_fast_right))
+    msgboxcontig(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Y'all scram back home ahead of me.\nI'll catch up."
+    )
+
+    applymovement(LOCALID_SEATURF_ADMIN, moves(walk_in_place_fast_down))
+    applymovement(LOCALID_SEATURF_GRUNT_2, moves(face_up))
+    applymovement(LOCALID_SEATURF_KEVIN, moves(face_right))
+
+    msgbox(
+        "{SPEAKER NAME_GOLBAT_ADMIN}Yessir!\nZubat… ALIGN!"
+    )
+    closemessage
+
+    delay(24)
+
+    applymovement(LOCALID_SEATURF_GRUNT_2, moves(face_down))
+    applymovement(LOCALID_SEATURF_GRUNT_1, moves(walk_fast_right * 2, walk_up, face_down))
+    applymovement(LOCALID_SEATURF_KEVIN, moves(
+        walk_faster_right,
+        lock_facing_direction,
+        lock_anim,
+        jump_left,
+        unlock_facing_direction,
+        unlock_anim,
+        delay_8,
+        walk_fast_up,
+        walk_fast_right * 2,
+        walk_fast_down,
+        walk_fast_right,
+        walk_fast_down
+    ))
+    delay(8)
+    playse(SE_M_COMET_PUNCH)
+    waitmovementall
+
+    applymovement(LOCALID_SEATURF_GRUNT_1, moves(zubats_align))
+    applymovement(LOCALID_SEATURF_GRUNT_2, moves(zubats_align))
+    applymovement(LOCALID_SEATURF_KEVIN, moves(zubats_align))
+    waitmovementall
+
+    playse(SE_M_DIVE)
+	fadescreenswapbuffers(FADE_TO_WHITE)
+    removeobject(LOCALID_SEATURF_GRUNT_1)
+	removeobject(LOCALID_SEATURF_GRUNT_2)
+	removeobject(LOCALID_SEATURF_KEVIN)
+	removeobject(LOCALID_SEATURF_ADMIN)
+	delay(80)
+	fadescreenswapbuffers(FADE_FROM_WHITE)
+
+    delay(48)
+
+    applymovement(LOCALID_SEATURF_BOSS, moves(walk_in_place_fast_left))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_CROBAT 0}{SPEAKER NAME_CROBAT_BOSS}Listen, uh…\p"
+        "Thanks, I guess.{PAUSE 16}\nFer the help 'n all.\p"
+        "{FONT_SMALL}Jus' don't tell anyone the Crobat Shadows\nwere rescued by a buncha kids…{FONT_NORMAL}"
+    )
+    closemessage
+
+    applymovement(LOCALID_SEATURF_BOSS, moves(crobat_cape))
+    waitmovementall
+    playse(SE_M_DIVE)
+	fadescreenswapbuffers(FADE_TO_WHITE)
+	removeobject(LOCALID_SEATURF_BOSS)
+	delay(80)
+	fadescreenswapbuffers(FADE_FROM_WHITE)
+
+    delay(48)
+
+    applymovement(LOCALID_PLAYER, moves(face_up))
+    applymovement(LOCALID_XIAO_HUO_SEATURF_2, moves(walk_in_place_fast_down))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}So those were the infamous Crobat\nShadows, huh?\p"
+        "They looked like a bunch of scared\nchildren! Haha!"
+    )
+    waitmovementall
+    closemessage
+
+    delay(48)
+
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_SEATURF_2, moves(emote_exclamation_mark, delay_16 * 6))
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}…Oh, I was just about forgetting\nsomething!\lHere, you earned it!"
+    )
+    waitse
+    waitmovementall
+    closemessage
+
+    delay(32)
+
+    message(format(
+		"{PLAYER} received the Folded Token\n"
+		"from Xiao Huo."
+	))
+	waitmessage
+	call(Common_EventScript_PlayGymBadgeFanfare)
+
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}This turned into a whole thing, huh?\p"
+        "I'm going back home.\nTalk to my mom before going!\lShe'll give you a little something too!"
+    )
+    closemessage
+
+    playse(SE_LEDGE)
+    applymovement(LOCALID_SEATURF_DRAMPA, moves(
+        face_left
+        delay_16
+        lock_anim
+        walk_fast_right * 3
+        walk_fast_down * 2
+        walk_fast_left * 4
+        walk_fast_up * 3
+        walk_fast_right * 2
+        walk_faster_right * 12
+    ))
+    applymovement(LOCALID_XIAO_HUO_SEATURF_2, moves(
+        jump_left,
+        walk_fast_right * 3
+        walk_fast_down * 2
+        walk_fast_left * 4
+        walk_fast_up * 3
+        walk_fast_right * 2
+        walk_faster_right * 12
+    ))
+    delay(80)
+    playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
+    waitmovementall
+
+    delay(48)
+
+    setvar(VAR_WAILORD_QUEST_STATE, 7)
+
+    setflag(FLAG_BADGE04_GET)
+    setmemoryall(MEMORY_BEAT_DOJO)
+	setvar(VAR_0x8008, 4)
+	call(Common_EventScript_SetGymTrainers)
+	addvar(VAR_PLAYER_REPUTATION, 5)
+    
+    setflag(FLAG_HIDE_CROBATS_AND_CO)
+    warpsilent(MAP_SEA_TURF_ROUTE, WARP_ID_AFTER_WAILORD)
+
+    releaseall
 }
 
 script SeaTurfRoute_EventScript_ChasingXiaoHuo_Left {
     lockall
 
+    playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(
         face_left,
         emote_exclamation_mark,
         delay_16 * 6,
-        walk_down * 2,
-        walk_left * 9
+        walk_down * 3,
+        walk_left * 10
     ))
+    waitmovementall
+
     goto(SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2)
 }
 
 script SeaTurfRoute_EventScript_ChasingXiaoHuo_Right {
     lockall
 
+    playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(
         face_left,
         emote_exclamation_mark,
         delay_16 * 6,
-        walk_down * 2,
-        walk_left * 10
+        walk_down * 3,
+        walk_left * 11
     ))
+    waitmovementall
+
     goto(SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2)
 }
 
 script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
-    playse(SE_PIN)
-
-    delay(48) // 16 * 13
-
     special(SpawnCameraObject)
     applymovement(LOCALID_CAMERA, moves(
         walk_slow_left * 3
@@ -50,7 +230,7 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
     waitmovementall
 
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}Heh, how are you gonna catch me now?"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Heh, how are you gonna catch me now?"
     )
     closemessage
 
@@ -67,7 +247,7 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
     applymovement(LOCALID_XIAO_HUO_SEATURF, moves(emote_angry))
 
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}You can't tell me what to do, mom!"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}You can't tell me what to do, mom!"
     )
     waitse
     waitmovementall
@@ -92,9 +272,11 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
 
     playse(SE_LEDGE)
     applymovement(LOCALID_XIAO_HUO_SEATURF, moves(
+        disable_jump_landing_ground_effect,
         lock_facing_direction,
         jump_left,
         unlock_facing_direction,
+        enable_jump_landing_ground_effect,
         walk_in_place_faster_right * 2
     ))
     waitmovementall
@@ -103,9 +285,10 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
 
     playse(SE_FALL)
     message(
-        "{CREATE_MUGSHOT MUGSHOT_XIAO_HUO 0}{SPEAKER NAME_XIAO_HUO}AAAaaaa{FONT_SMALL}aaaahhh…"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}AAAaaaa{FONT_SMALL}aaaahhh…"
     )
     waitse
+    waitmessage
 
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
@@ -130,18 +313,23 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
     waitmovementall
     closemessage
 
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(face_left))
+    applymovement(LOCALID_PLAYER, moves(face_left))
 
     playmoncry(SPECIES_WAILORD, CRY_MODE_WEAK)
 	setvar(VAR_0x8004, 0)  // vertical pan
 	setvar(VAR_0x8005, 2)  // horizontal pan
-	setvar(VAR_0x8006, 10) // num shakes
+	setvar(VAR_0x8006, 20) // num shakes
 	setvar(VAR_0x8007, 2)  // shake delay
 	special(ShakeCamera)
     waitstate
+    waitmoncry
 
     applymovement(LOCALID_CAMERA, moves(walk_slow_right * 3))
-    special(RemoveCameraObject)
     waitmovementall
+    special(RemoveCameraObject)
+
+    setvar(VAR_WAILORD_QUEST_STATE, 4)
 
     releaseall
 }
@@ -177,5 +365,15 @@ script SeaTurfRoute_EventScript_XiaoHuoMom {
         waitmovement(VAR_LAST_TALKED)
     }
 
+    releaseall
+}
+
+script SeaTurfRoute_EventScript_FallDownHole {
+    lockall
+    delay(48)
+    playse(SE_FALL)
+    applymovement(LOCALID_PLAYER, moves(set_invisible))
+    waitse
+    warpfall(MAP_INSIDE_WAILORD, WARP_ID_EXIT_WAILORD)
     releaseall
 }

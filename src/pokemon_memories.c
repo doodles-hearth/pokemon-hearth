@@ -28,8 +28,9 @@ static const u8 MemoryStrings_WentCamping[] = _("{STR_VAR_1} went camping{STR_VA
 static const u8 MemoryStrings_FoughtTheEliteFour[] = _("{STR_VAR_1} fought and defeated\nThe Elite Four{STR_VAR_3}");
 static const u8 MemoryStrings_ClearedHideout[] = _("{STR_VAR_1} busted a hideout full\nof bandits{STR_VAR_3}");
 static const u8 MemoryStrings_BeatDojo[] = _("{STR_VAR_1} triumphed against\na Dojo Master{STR_VAR_3}");
+static const u8 MemoryStrings_InsideWailord[] = _("{STR_VAR_1} got swallowed\nwhole by a Wailord{STR_VAR_3}");
 
-static const u8 sMemoryStrings_SpecialBread[] = _("{STR_VAR_2} gave him a prestigious name!");
+static const u8 sMemoryStrings_SpecialBread[] = _("{STR_VAR_2} gave it a prestigious name!");
 
 static const u8 MemoryStrings_FullStop[] = _(".");
 static const u8 MemoryStrings_FullStopExclamationMark[] = _("!");
@@ -43,6 +44,7 @@ static const u8 *const sMemoryStrings[MEMORY_COUNT][2] = {
     [MEMORY_CLEARED_HIDEOUT]    = {MemoryStrings_ClearedHideout,            MemoryStrings_WithX}, // Start of Special Memories
     [MEMORY_BEAT_DOJO]          = {MemoryStrings_BeatDojo,                  MemoryStrings_WithX},
     [MEMORY_ELITE_FOUR]         = {MemoryStrings_FoughtTheEliteFour,        MemoryStrings_WithX},
+    [MEMORY_INSIDE_WAILORD]     = {MemoryStrings_InsideWailord,             MemoryStrings_WithX},
 };
 
 // Fluff messages

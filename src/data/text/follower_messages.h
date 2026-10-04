@@ -196,8 +196,8 @@ const struct FollowerMsgInfo gFollowerPensiveMessages[] = {
 // All 'love' messages are unconditional
 static const u8 sLoveMsg00[] = _("{STR_VAR_1} suddenly started walking\ncloser!");
 static const u8 sLoveMsg01[] = _("{STR_VAR_1}'s cheeks are becoming\nrosy!");
-static const u8 sLoveMsg02[] = _("Woah! {STR_VAR_1} suddenly hugged\nyou!");
-static const u8 sLoveMsg03[] = _("Woah! {STR_VAR_1} is suddenly\nplayful!");
+static const u8 sLoveMsg02[] = _("Whoa! {STR_VAR_1} suddenly hugged\nyou!");
+static const u8 sLoveMsg03[] = _("Whoa! {STR_VAR_1} is suddenly\nplayful!");
 static const u8 sLoveMsg04[] = _("{STR_VAR_1} is rubbing against your\nlegs!");
 static const u8 sLoveMsg05[] = _("{STR_VAR_1} blushes.");
 static const u8 sLoveMsg06[] = _("Ah! {STR_VAR_1} cuddles you!");
@@ -277,7 +277,7 @@ const struct FollowerMsgInfo gFollowerCuriousMessages[] = {
 // Unconditional music messages
 static const u8 sMusicMsg00[] = _("{STR_VAR_1} is showing off its\nagility!");
 static const u8 sMusicMsg01[] = _("{STR_VAR_1} is moving around\nhappily!");
-static const u8 sMusicMsg02[] = _("Woah! {STR_VAR_1} suddenly started\ndancing in happiness!");
+static const u8 sMusicMsg02[] = _("Whoa! {STR_VAR_1} suddenly started\ndancing in happiness!");
 static const u8 sMusicMsg03[] = _("{STR_VAR_1} is steadily keeping up\nwith you!");
 static const u8 sMusicMsg04[] = _("{STR_VAR_1} seems to want to play\nwith you.");
 static const u8 sMusicMsg05[] = _("{STR_VAR_1} is happy skipping about.");

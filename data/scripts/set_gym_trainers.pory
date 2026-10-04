@@ -40,7 +40,7 @@ script YifuCity_Dojo_SetGymTrainers {
 	return
 }
 
-script YifuCity_Dojo_SetGymTrainers {
+script Hanabi_Dojo_SetGymTrainers {
 	settrainerflag(TRAINER_AKARI)
 	settrainerflag(TRAINER_YUKA)
 	settrainerflag(TRAINER_KANAE)
