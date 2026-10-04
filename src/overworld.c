@@ -1935,16 +1935,13 @@ u8 UpdateSpritePaletteWithTime(u8 paletteNum)
         if (!gMapHeader.cave) // Not flash cave
         {
             if (IsMapTypeFlash(gMapHeader.mapType)) // ZETA- Set DNS tint to default Cave
-                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], (struct BlendSettings *)&gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], 256);
+                TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], &gCustomDNSTintBlend[DNS_BLEND_CAVE_STANDARD], 256);
             else if (MapHasNaturalLight(gMapHeader.mapType)) // Do normal DNS blending
                 TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], &gTimeBlend.startBlend, &gTimeBlend.endBlend, gTimeBlend.weight);
         }
         else // Flash cave
         {
-            // Get blend index from upper byte of blend var
-            u16 flashTrackerPacked = VarGet(VAR_FLASH_TRACKER_PACKED);
-            u16 blendVar = GET_FOLLOWER_TINT(flashTrackerPacked);
-            const struct BlendSettings *blend = &gCustomDNSTintBlend[blendVar];
+            const struct BlendSettings *blend = GetCaveBlendSettings();
             TimeMixPalettes(1, &gPlttBufferUnfaded[OBJ_PLTT_ID(paletteNum)], &gPlttBufferFaded[OBJ_PLTT_ID(paletteNum)], (struct BlendSettings *)blend, (struct BlendSettings *)blend, 256);
         }
     }
@@ -2016,10 +2013,6 @@ void CB2_Overworld(void)
     if (fading)
     {
         SetFieldVBlankCallback();
-        if (IsMapTypeFlash(gMapHeader.mapType))
-        {
-            DoCustomDNSBlend();
-        }
         return;
     }
 }

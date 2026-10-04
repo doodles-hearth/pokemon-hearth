@@ -115,7 +115,7 @@ script SabersideQuarry_EventScript_LostGirl {
 
 	special(ChoosePartyMon)
 
-	if (var(VAR_0x8004) == PARTY_NOTHING_CHOSEN) {
+	if (var(VAR_0x8004) == PARTY_MON_CANCEL) {
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_LITTLE_GIRL 0}{SPEAKER NAME_LITTLE_GIRL}I won't go back without a friend to accompany me."
 		))

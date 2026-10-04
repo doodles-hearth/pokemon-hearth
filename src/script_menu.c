@@ -205,14 +205,20 @@ static void MultichoiceDynamicEventShowItem_OnSelectionChanged(struct DynamicLis
 {
     FreeSpriteIfUsed();
     sSpriteId = AddItemIconSprite(TAG_CB_SPRITE_ICON, TAG_CB_SPRITE_ICON, eventArgs->selectedItem);
-    ChangeSpriteOnSelection(eventArgs, 36, 20);
+    if (sSpriteId != MAX_SPRITES)
+    {
+        ChangeSpriteOnSelection(eventArgs, 36, 20);
+    }
 }
 
 static void MultichoiceDynamicEventShowPkmn_OnSelectionChanged(struct DynamicListMenuEventArgs *eventArgs)
 {
     FreeSpriteIfUsed();
     sSpriteId = CreateTaggedMonIcon(TAG_CB_SPRITE_ICON, TAG_CB_SPRITE_ICON, eventArgs->selectedItem);
-    ChangeSpriteOnSelection(eventArgs, 32, 14);
+    if (sSpriteId != MAX_SPRITES)
+    {
+        ChangeSpriteOnSelection(eventArgs, 32, 14);
+    }
 }
 
 static void MultichoiceDynamicEventShowSprite_OnDestroy(struct DynamicListMenuEventArgs *eventArgs)
@@ -981,7 +987,7 @@ static void Task_PokemonPicWindow(u8 taskId)
     }
 }
 
-bool8 ScriptMenu_ShowPokemonPic(enum Species species, u8 x, u8 y, bool8 shiny)
+static bool8 ScriptMenu_ShowPokemonPicInternal(enum Species species, u8 x, u8 y, bool8 shiny, bool8 silhouette)
 {
     u8 taskId;
     u8 spriteId;
@@ -992,7 +998,7 @@ bool8 ScriptMenu_ShowPokemonPic(enum Species species, u8 x, u8 y, bool8 shiny)
     }
     else
     {
-        spriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0, shiny);
+        spriteId = CreateMonSprite_PicBox(species, x * 8 + 40, y * 8 + 40, 0, shiny, silhouette);
         taskId = CreateTask(Task_PokemonPicWindow, 0x50);
         gTasks[taskId].tWindowId = CreateWindowFromRect(x, y, 8, 8);
         gTasks[taskId].tState = 0;
@@ -1004,6 +1010,16 @@ bool8 ScriptMenu_ShowPokemonPic(enum Species species, u8 x, u8 y, bool8 shiny)
         ScheduleBgCopyTilemapToVram(0);
         return TRUE;
     }
+}
+
+bool8 ScriptMenu_ShowPokemonPic(enum Species species, u8 x, u8 y, bool8 shiny)
+{
+    return ScriptMenu_ShowPokemonPicInternal(species, x, y, shiny, FALSE);
+}
+
+bool8 ScriptMenu_ShowPokemonSilhouette(enum Species species, u8 x, u8 y)
+{
+    return ScriptMenu_ShowPokemonPicInternal(species, x, y, FALSE, TRUE);
 }
 
 bool8 (*ScriptMenu_HidePokemonPic(void))(void)

@@ -38,6 +38,8 @@ void PreparePartyForSkyBattle(void);
 void GetObjectPosition(u16*, u16*, u32, u32);
 bool32 CheckObjectAtXY(u32, u32);
 bool32 CheckPartyHasSpecies(enum Species);
+u16 GetRandomRegionalSpecies(void);
+bool8 IsSpeciesGuessCorrect(enum Species species, const u8 *guess);
 u8 GetFollowerMonIndex(void);
 bool8 CutMoveRuinValleyCheck(void);
 void CutMoveOpenDottedHoleDoor(void);

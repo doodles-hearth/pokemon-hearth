@@ -547,7 +547,7 @@ script WhiteslateRoute_EventScript_TinyPassage {
 	if (var(VAR_RESULT) == 0) {
 		special(ChoosePartyMonForSmallPassage)
 
-		if (var(VAR_0x8004) != PARTY_NOTHING_CHOSEN) {
+		if (var(VAR_0x8004) != PARTY_MON_CANCEL) {
 			specialvar(VAR_RESULT, ScriptGetPartyMonSpecies)
 			bufferpartymonnick(STR_VAR_1, VAR_0x8004)
 			// bufferspeciesname(STR_VAR_1, VAR_RESULT)

@@ -302,7 +302,7 @@ u16 ChooseMoveAndTargetInBattlePalace(enum BattlerId battler)
         }
     }
 
-    enum MoveTarget moveTarget = GetBattlerMoveTargetType(battler, moveInfo->moves[chosenMoveIndex]);
+    enum MoveTarget moveTarget = GetBattlerMoveSelectionTargetType(battler, moveInfo->moves[chosenMoveIndex]);
 
     if (moveTarget == TARGET_USER || moveTarget == TARGET_USER_OR_ALLY || moveTarget == TARGET_USER_AND_ALLY)
         chosenMoveIndex |= (battler << 8);
@@ -325,7 +325,7 @@ u16 ChooseMoveAndTargetInBattlePalace(enum BattlerId battler)
 
 static u8 GetBattlePalaceMoveGroup(enum BattlerId battler, enum Move move)
 {
-    switch (GetBattlerMoveTargetType(battler, move))
+    switch (GetBattlerMoveSelectionTargetType(battler, move))
     {
     case TARGET_SELECTED:
     case TARGET_USER_AND_ALLY:
@@ -686,7 +686,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
     {
         // Calyrex and its forms have a blue dynamax aura instead of red.
-        if (GET_BASE_SPECIES_ID(species) == SPECIES_CALYREX)
+        if (GetBaseSpecies(species) == SPECIES_CALYREX)
             BlendPalette(paletteOffset, 16, 4, RGB(12, 0, 31));
         else
             BlendPalette(paletteOffset, 16, 4, RGB(31, 0, 12));
@@ -983,7 +983,7 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
     if (GetActiveGimmick(battlerAtk) == GIMMICK_DYNAMAX)
     {
         // Calyrex and its forms have a blue dynamax aura instead of red.
-        if (GET_BASE_SPECIES_ID(targetSpecies) == SPECIES_CALYREX)
+        if (GetBaseSpecies(targetSpecies) == SPECIES_CALYREX)
             BlendPalette(paletteOffset, 16, 4, RGB(12, 0, 31));
         else
             BlendPalette(paletteOffset, 16, 4, RGB(31, 0, 12));
@@ -1105,10 +1105,10 @@ void HandleBattleLowHpMusicChange(void)
     {
         enum BattlerId playerBattler1 = GetBattlerAtPosition(B_POSITION_PLAYER_LEFT);
         enum BattlerId playerBattler2 = GetBattlerAtPosition(B_POSITION_PLAYER_RIGHT);
-        u8 battler1PartyId = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[playerBattler1]);
-        u8 battler2PartyId = GetPartyIdFromBattlePartyId(gBattlerPartyIndexes[playerBattler2]);
-        struct Pokemon mon1 = GetBattlerParty(playerBattler1)[battler1PartyId];
-        struct Pokemon mon2 = GetBattlerParty(playerBattler2)[battler2PartyId];
+        enum PartyBattleSlot battler1Slot = GetBattleSlotFromBattlePartyId(gBattlerPartyIndexes[playerBattler1]);
+        enum PartyBattleSlot battler2Slot = GetBattleSlotFromBattlePartyId(gBattlerPartyIndexes[playerBattler2]);
+        struct Pokemon mon1 = GetBattlerParty(playerBattler1)[battler1Slot];
+        struct Pokemon mon2 = GetBattlerParty(playerBattler2)[battler2Slot];
 
         if (GetMonData(&mon1, MON_DATA_HP) != 0)
             HandleLowHpMusicChange(&mon1, playerBattler1);
@@ -1154,7 +1154,7 @@ void CreateEnemyShadowSprite(enum BattlerId battler)
         enum Species species = GetBattlerVisualSpecies(battler);
         u8 size = gSpeciesInfo[species].enemyShadowSize;
 
-        gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary = CreateSprite(&gSpriteTemplate_EnemyShadow,
+        gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary = CreateSpriteUnchecked(&gSpriteTemplate_EnemyShadow,
                                                                                              GetBattlerSpriteCoord(battler, BATTLER_COORD_X),
                                                                                              GetBattlerSpriteCoord(battler, BATTLER_COORD_Y),
                                                                                              0xC8);
@@ -1168,7 +1168,7 @@ void CreateEnemyShadowSprite(enum BattlerId battler)
             sprite->invisible = TRUE;
         }
 
-        gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdSecondary = CreateSprite(&gSpriteTemplate_EnemyShadow,
+        gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdSecondary = CreateSpriteUnchecked(&gSpriteTemplate_EnemyShadow,
                                                                                                GetBattlerSpriteCoord(battler, BATTLER_COORD_X),
                                                                                                GetBattlerSpriteCoord(battler, BATTLER_COORD_Y),
                                                                                                0xC8);
@@ -1184,7 +1184,7 @@ void CreateEnemyShadowSprite(enum BattlerId battler)
     }
     else
     {
-        gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary = CreateSprite(&gSpriteTemplate_EnemyShadow,
+        gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary = CreateSpriteUnchecked(&gSpriteTemplate_EnemyShadow,
                                                                                              GetBattlerSpriteCoord(battler, BATTLER_COORD_X),
                                                                                              GetBattlerSpriteCoord(battler, BATTLER_COORD_Y) + 29,
                                                                                              0xC8);

@@ -216,8 +216,7 @@ Debug_EventScript_Script_1::
 	end
 
 Debug_EventScript_Script_2::
-	release
-	end
+	goto EventScript_SilhouetteNerd
 
 Debug_EventScript_Script_3::
 	release

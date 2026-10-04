@@ -44,6 +44,7 @@
 #include "tilesets.h"
 
 #define subsprite_table(ptr) {.subsprites = ptr, .subspriteCount = (sizeof ptr) / (sizeof(struct Subsprite))}
+#define PAL_TAG_MON_SILHOUETTE 0xFFFE
 
 EWRAM_DATA s32 gFieldEffectArguments[8] = {0};
 EWRAM_DATA bool8 gSkipShowMonAnim = FALSE;
@@ -1048,14 +1049,20 @@ u8 AddNewGameBirchObject(s16 x, s16 y, u8 subpriority)
     return CreateSprite(&sSpriteTemplate_NewGameBirch, x, y, subpriority);
 }
 
-u8 CreateMonSprite_PicBox(enum Species species, s16 x, s16 y, u8 subpriority, bool8 shiny)
+u8 CreateMonSprite_PicBox(enum Species species, s16 x, s16 y, u8 subpriority, bool8 shiny, bool8 silhouette)
 {
-    s32 spriteId = CreateMonPicSprite(species, shiny, 0x8000, TRUE, x, y, 0, species);
-    PreservePaletteInWeather(IndexOfSpritePaletteTag(species) + 0x10);
+    u16 paletteTag = silhouette ? PAL_TAG_MON_SILHOUETTE : species;
+    s32 spriteId = CreateMonPicSprite(species, shiny, 0x8000, TRUE, x, y, 0, paletteTag);
+
     if (spriteId == 0xFFFF)
         return MAX_SPRITES;
-    else
-        return spriteId;
+
+    u8 paletteNum = gSprites[spriteId].oam.paletteNum;
+    PreservePaletteInWeather(paletteNum + 0x10);
+    if (silhouette)
+        FillPalette(RGB_BLACK, OBJ_PLTT_ID(paletteNum), PLTT_SIZE_4BPP);
+
+    return spriteId;
 }
 
 u8 CreateMonSprite_FieldMove(enum Species species, bool8 isShiny, u32 personality, s16 x, s16 y, u8 subpriority)
@@ -4179,7 +4186,7 @@ static void CreateDeoxysRockFragments(struct Sprite *sprite)
 
     for (i = 0; i < 4; i++)
     {
-        u8 spriteId = CreateSprite(&sSpriteTemplate_DeoxysRockFragment, xPos, yPos, 0);
+        u8 spriteId = CreateSpriteUnchecked(&sSpriteTemplate_DeoxysRockFragment, xPos, yPos, 0);
         if (spriteId != MAX_SPRITES)
         {
             StartSpriteAnim(&gSprites[spriteId], i);
@@ -4292,7 +4299,7 @@ u8 FldEff_CaveDust(void)
     u8 spriteId;
 
     SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_DUST], gFieldEffectArguments[0], gFieldEffectArguments[1], 0xFF);
+    spriteId = CreateSpriteAtEndUnchecked(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_CAVE_DUST], gFieldEffectArguments[0], gFieldEffectArguments[1], 0xFF);
     if (spriteId != MAX_SPRITES)
     {
         gSprites[spriteId].coordOffsetEnabled = TRUE;
@@ -4327,7 +4334,7 @@ static u8 CreateRockClimbBlob(void)
     struct Sprite *sprite;
 
     SetSpritePosToOffsetMapCoords((s16 *)&gFieldEffectArguments[0], (s16 *)&gFieldEffectArguments[1], 8, 8);
-    spriteId = CreateSpriteAtEnd(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ROCK_CLIMB_BLOB], gFieldEffectArguments[0], gFieldEffectArguments[1], 0x96);
+    spriteId = CreateSpriteAtEndUnchecked(gFieldEffectObjectTemplatePointers[FLDEFFOBJ_ROCK_CLIMB_BLOB], gFieldEffectArguments[0], gFieldEffectArguments[1], 0x96);
     if (spriteId != MAX_SPRITES)
     {
         sprite = &gSprites[spriteId];

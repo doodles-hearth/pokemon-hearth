@@ -574,8 +574,8 @@ gSpecials::
 	def_special UseBlankMessageToCancelPokemonPic
 	def_special IsMonSeen
 	def_special AssignRandomMonCryVars
-	def_special EnterDexRiddleGuess
-	def_special GetDexRiddleFeedback
+	def_special EnterSpeciesGuess
+	def_special GetRandomRegionalSpecies
 	def_special DestroySelectedPartyMon
 	def_special EnterCode
 	def_special GetCodeFeedback
@@ -661,5 +661,5 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special ChooseItemFromBag
-	def_special GiveMonTravellerRibbon
-	def_special GiveMonHistoricRibbon
+	def_special StartMemoryGirlReading
+	def_special NextMemoryGirlReading

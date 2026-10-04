@@ -66,6 +66,7 @@
 #include "malloc.h"
 #include "quests.h"
 #include "new_shop.h"
+#include "bxpy.h"
 #include "battle.h"
 #include "constants/comparison_operators.h"
 #include "constants/event_objects.h"
@@ -86,7 +87,7 @@ static EWRAM_DATA u16 sMovingNpcMapNum = 0;
 static EWRAM_DATA u16 sFieldEffectScriptId = 0;
 
 static u8 sBrailleWindowId;
-static u8 sRandomDexWindowId;
+static u8 sDexWindowId;
 static bool8 sIsScriptedWildDouble;
 
 extern const SpecialFunc gSpecials[];
@@ -94,7 +95,7 @@ extern const u8 *gStdScripts[];
 extern const u8 *gStdScripts_End[];
 
 static void CloseBrailleWindow(void);
-static void CloseRandomDexWindow(void);
+static void CloseDexWindow(void);
 static void DynamicMultichoiceSortList(struct ListMenuItem *items, u32 count);
 
 static const u8 sScriptConditionTable[COMPARISON_OPERATORS_COUNT][3] =
@@ -2075,6 +2076,18 @@ bool8 ScrCmd_showmonpic(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_showmonsilhouette(struct ScriptContext *ctx)
+{
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
+    u8 x = ScriptReadByte(ctx);
+    u8 y = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    ScriptMenu_ShowPokemonSilhouette(species, x, y);
+    return FALSE;
+}
+
 bool8 ScrCmd_hidemonpic(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
@@ -2169,36 +2182,47 @@ bool8 ScrCmd_closebraillemessage(struct ScriptContext *ctx)
     return FALSE;
 }
 
-bool8 ScrCmd_randomdexmessage(struct ScriptContext *ctx)
+bool8 ScrCmd_dexmessage(struct ScriptContext *ctx)
 {
-    enum Species species = NationalPokedexNumToSpecies(HoennToNationalOrder((Random() % HOENN_DEX_COUNT) + 1));
+    enum Species species = VarGet(ScriptReadHalfword(ctx));
+    bool8 censorName = ScriptReadByte(ctx);
     struct WindowTemplate winTemplate;
-    
-    const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
-    const u8 *randomDexDesc = GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK);
-    StringCopy(gStringVar1, speciesName);
 
-    // Calculates the start of the mon's name if present. If not present, returns -1.
-    s8 monNameStartIndex = DoesStringContainMonName(randomDexDesc, speciesName);
-    if (monNameStartIndex != -1)
-        StringCopyCensorWord(gStringVar4, randomDexDesc, monNameStartIndex, StringLength(speciesName));
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    const u8 *dexDesc = GetSpeciesPokedexDescription(species, SKIP_NAME_CHECK);
+
+    if (censorName)
+    {
+        const u8 *speciesName = GetSpeciesName(species, SKIP_NAME_CHECK);
+        s8 monNameStartIndex = DoesStringContainMonName(dexDesc, speciesName);
+
+        if (monNameStartIndex != -1)
+            StringCopyCensorWord(gStringVar4, dexDesc, monNameStartIndex, StringLength(speciesName));
+        else
+            StringCopy(gStringVar4, dexDesc);
+    }
     else
-        StringCopy(gStringVar4, randomDexDesc);
+    {
+        StringCopy(gStringVar4, dexDesc);
+    }
 
     winTemplate = CreateWindowTemplate(0, 1, 5, 28, 9, 0xF, 0x1);
-    sRandomDexWindowId = AddWindow(&winTemplate);
-    LoadUserWindowBorderGfx(sRandomDexWindowId, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
-    DrawStdWindowFrame(sRandomDexWindowId, FALSE);
-    PutWindowTilemap(sRandomDexWindowId);
-    FillWindowPixelBuffer(sRandomDexWindowId, PIXEL_FILL(1));
-    AddTextPrinterParameterized(sRandomDexWindowId, FONT_SHORT, gStringVar4, 1, 6, TEXT_SKIP_DRAW, NULL);
-    CopyWindowToVram(sRandomDexWindowId, COPYWIN_FULL);
+    sDexWindowId = AddWindow(&winTemplate);
+    LoadUserWindowBorderGfx(sDexWindowId, STD_WINDOW_BASE_TILE_NUM, BG_PLTT_ID(14));
+    DrawStdWindowFrame(sDexWindowId, FALSE);
+    PutWindowTilemap(sDexWindowId);
+    FillWindowPixelBuffer(sDexWindowId, PIXEL_FILL(1));
+    AddTextPrinterParameterized(sDexWindowId, FONT_SHORT, gStringVar4, 1, 6, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(sDexWindowId, COPYWIN_FULL);
     return FALSE;
 }
 
-bool8 ScrCmd_closerandomdexmessage(struct ScriptContext *ctx)
+bool8 ScrCmd_closedexmessage(struct ScriptContext *ctx)
 {
-    CloseRandomDexWindow();
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    CloseDexWindow();
     return FALSE;
 }
 
@@ -2472,7 +2496,7 @@ bool8 ScrCmd_checkfieldmove(struct ScriptContext *ctx)
     if (doUnlockedCheck && !IsFieldMoveUnlocked(fieldMove))
         return FALSE;
 
-    for (u32 i = 0; i < PARTY_SIZE; i++)
+    for (enum PartyMon i = PARTY_MON_0; i < PARTY_MON_NONE; i++)
     {
         enum Species species = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES);
         if (!species)
@@ -3223,10 +3247,10 @@ static void CloseBrailleWindow(void)
     RemoveWindow(sBrailleWindowId);
 }
 
-static void CloseRandomDexWindow(void)
+static void CloseDexWindow(void)
 {
-    ClearStdWindowAndFrame(sRandomDexWindowId, TRUE);
-    RemoveWindow(sRandomDexWindowId);
+    ClearStdWindowAndFrame(sDexWindowId, TRUE);
+    RemoveWindow(sDexWindowId);
 }
 
 bool8 ScrCmd_buffertrainerclassname(struct ScriptContext *ctx)
@@ -3328,7 +3352,7 @@ bool8 ScrCmd_checkobjectat(struct ScriptContext *ctx)
 
 bool8 Scrcmd_getsetpokedexflag(struct ScriptContext *ctx)
 {
-    enum NationalDexOrder speciesId = SpeciesToNationalPokedexNum(VarGet(ScriptReadHalfword(ctx)));
+    enum NationalDexOrder natDexNum = SpeciesToNationalPokedexNum(VarGet(ScriptReadHalfword(ctx)));
     u32 desiredFlag = VarGet(ScriptReadHalfword(ctx));
 
     if (desiredFlag == FLAG_SET_CAUGHT || desiredFlag == FLAG_SET_SEEN || desiredFlag == FLAG_SET_NAMED)
@@ -3336,10 +3360,10 @@ bool8 Scrcmd_getsetpokedexflag(struct ScriptContext *ctx)
     else
         Script_RequestEffects(SCREFF_V1);
 
-    gSpecialVar_Result = GetSetPokedexFlag(speciesId, desiredFlag);
+    gSpecialVar_Result = GetSetPokedexFlag(natDexNum, desiredFlag);
 
     if (desiredFlag == FLAG_SET_CAUGHT)
-        GetSetPokedexFlag(speciesId, FLAG_SET_SEEN);
+        GetSetPokedexFlag(natDexNum, FLAG_SET_SEEN);
 
     return FALSE;
 }
@@ -3479,7 +3503,7 @@ bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
     return FALSE;
 }
 
-static bool32 EventEvolution(u32 partyIndex)
+static bool32 EventEvolution(enum PartyMon partyIndex)
 {
     bool32 canStopEvo = gSpecialVar_0x8000;
     enum Species targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, CHECK_EVO);
@@ -3501,7 +3525,7 @@ static void TriggerMultipleEvolutions_Repeatable(void)
         gSpecialVar_0x8006++;
 
     gCB2_AfterEvolution = TriggerMultipleEvolutions_Repeatable;
-    for (u32 i = 0; i < gPartiesCount[B_TRAINER_PLAYER]; i++)
+    for (enum PartyMon i = PARTY_MON_0; i < gPartiesCount[B_TRAINER_PLAYER]; i++)
     {
         if (!(gTriedEvolving & (1u << i)))
         {
@@ -3525,18 +3549,18 @@ void Script_TriggerMultipleEvolutions(struct ScriptContext *ctx)
 void Script_TriggerUniqueEvolution(struct ScriptContext *ctx)
 {
     ctx->waitAfterCallNative = TRUE;
-    if (gSpecialVar_0x8004 == PARTY_NOTHING_CHOSEN)
+    if (gSpecialVar_0x8004 == PARTY_MON_CANCEL)
     {
         gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
         return;
     }
-    assertf(gSpecialVar_0x8004 <= PARTY_SIZE, "TriggerEvolution script called with invalid partyIndex %d", gSpecialVar_0x8004)
+    assertf(gSpecialVar_0x8004 < PARTY_MON_NONE, "TriggerEvolution script called with invalid partyIndex %d", gSpecialVar_0x8004)
     {
         gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
         return;
     }
     gCB2_AfterEvolution = CB2_ReturnToFieldContinueScript;
-    EventEvolution(gSpecialVar_0x8004);
+    EventEvolution((enum PartyMon)gSpecialVar_0x8004);
 }
 
 void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)
@@ -3605,7 +3629,7 @@ bool8 ScrCmd_questmenu(struct ScriptContext *ctx)
             QuestMenu_CopyQuestName(gStringVar1, questId);
         break;
     }
-    
+
     return TRUE;
 }
 
@@ -3729,17 +3753,6 @@ bool8 ScrCmd_getbraillestringwidth(struct ScriptContext * ctx)
     return FALSE;
 }
 
-void BufferOriginalTrainerName(struct ScriptContext *ctx)
-{
-    u8 stringVarIndex = ScriptReadByte(ctx);
-    u32 partyIndex = VarGet(ScriptReadHalfword(ctx));
-
-    u8 otName[PLAYER_NAME_LENGTH + 1];
-    GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_OT_NAME, otName);
-
-    StringCopy(GetStringVar(stringVarIndex), otName);
-}
-
 //updatequest by mudskipper
 bool8 ScrCmd_updatequest(struct ScriptContext *ctx)
 {
@@ -3770,6 +3783,23 @@ bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
         MapGridSetMetatileIdAt(doorTopX, doorTopY, doortoptile | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
         MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, doorbottile | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
     }
+    return FALSE;
+}
+
+bool8 ScrCmd_bringxpicky(struct ScriptContext *ctx)
+{
+    enum BXPYBattleTypes battleType = ScriptReadHalfword(ctx);
+    u32 bringSize = ScriptReadHalfword(ctx);
+    u32 pickSize = ScriptReadHalfword(ctx);
+    u32 trainerA = VarGet(ScriptReadHalfword(ctx));
+    const u8 *loseTextA = (const u8 *)ScriptReadWord(ctx);
+    u32 trainerB = VarGet(ScriptReadHalfword(ctx));
+    const u8 *loseTextB = (const u8 *)ScriptReadWord(ctx);
+    u32 partner = VarGet(ScriptReadHalfword(ctx));
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    BXPY_Init(battleType, bringSize, pickSize, trainerA, loseTextA, trainerB, loseTextB, partner);
     return FALSE;
 }
 

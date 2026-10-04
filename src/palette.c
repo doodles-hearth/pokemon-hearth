@@ -229,7 +229,7 @@ bool32 BeginNormalPaletteFade(u32 selectedPalettes, s8 delay, u8 startY, u8 targ
 }
 
 // Like normal palette fade but respects sprite/tile palettes immune to time of day fading
-bool32 BeginTimeOfDayPaletteFade(u32 selectedPalettes, s8 delay, u8 startY, u8 targetY, struct BlendSettings *bld0, struct BlendSettings *bld1, u32 weight, u32 color)
+bool32 BeginTimeOfDayPaletteFade(u32 selectedPalettes, s8 delay, u8 startY, u8 targetY, const struct BlendSettings *bld0, const struct BlendSettings *bld1, u32 weight, u32 color)
 {
     u8 temp;
 
@@ -978,7 +978,7 @@ void BlendPalettes(u32 selectedPalettes, u8 coeff, u32 color)
 
 // Blends a weighted average of two blend parameters
 // Parameters can be either blended (as in BlendPalettes) or tinted (as in TintPaletteRGB_Copy)
-void TimeMixPalettes(u32 palettes, u16 *src, u16 *dst, struct BlendSettings *blend0, struct BlendSettings *blend1, u16 weight0)
+void TimeMixPalettes(u32 palettes, u16 *src, u16 *dst, const struct BlendSettings *blend0, const struct BlendSettings *blend1, u16 weight0)
 {
     s32 r0, g0, b0, r1, g1, b1, defR, defG, defB, altR, altG, altB;
     u32 color0, coeff0, color1, coeff1;

@@ -361,8 +361,8 @@
 #define FLAG_BOUGHT_FAKE_SHINY               0x13F
 #define FLAG_GOT_WAILMER_DOLL                0x140
 #define FLAG_RECEIVED_TM_SUNNY_DAY           0x141
-#define FLAG_WONDER_CARD_UNUSED_6            0x142
-#define FLAG_WONDER_CARD_UNUSED_7            0x143
+#define FLAG_SPOKE_TO_NATSUKI_MAGURO         0x142
+#define FLAG_HIDE_NATSUKI_MAGURO             0x143
 #define FLAG_WONDER_CARD_UNUSED_8            0x144
 #define FLAG_WONDER_CARD_UNUSED_9            0x145
 #define FLAG_WONDER_CARD_UNUSED_10           0x146
@@ -1605,8 +1605,8 @@
 #define FLAG_DAILY_ADOPT_EGG                        (DAILY_FLAGS_START + 0x13)
 #define FLAG_DAILY_APPRENTICE_LEAVES                (DAILY_FLAGS_START + 0x14)
 
-#define FLAG_UNUSED_0x935                           (DAILY_FLAGS_START + 0x15) // Unused Flag
-#define FLAG_UNUSED_0x936                           (DAILY_FLAGS_START + 0x16) // Unused Flag
+#define FLAG_DAILY_MON_SILHOUETTE                   (DAILY_FLAGS_START + 0x15)
+#define FLAG_DAILY_MON_SILHOUETTE_WON               (DAILY_FLAGS_START + 0x16)
 #define FLAG_UNUSED_0x937                           (DAILY_FLAGS_START + 0x17) // Unused Flag
 #define FLAG_UNUSED_0x938                           (DAILY_FLAGS_START + 0x18) // Unused Flag
 #define FLAG_UNUSED_0x939                           (DAILY_FLAGS_START + 0x19) // Unused Flag

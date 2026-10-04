@@ -9,6 +9,7 @@
 #include "overworld.h"
 #include "palette.h"
 #include "pokemon.h"
+#include "pokemon_memories.h"
 #include "random.h"
 #include "follower_helper.h"
 #include "field_camera.h"
@@ -22,6 +23,7 @@
 #include "constants/abilities.h"
 #include "constants/flags.h"
 #include "constants/maps.h"
+#include "constants/pokemon_memories.h"
 #include "constants/species.h"
 #include "constants/songs.h"
 #include "constants/vars.h"
@@ -325,6 +327,7 @@ static void Task_DoPreCampfireEvent(u8 taskId)
 static void Task_ShowMonAndStartCampfire(u8 taskId)
 {
     HealPlayerParty();
+    SetMemoryAllWithRules(MEMORY_WENT_CAMPING);
     TryShowPlayerPokemonAtCampfire();
     DrawWholeMapView();
 

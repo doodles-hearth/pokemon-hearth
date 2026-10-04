@@ -1028,6 +1028,14 @@
 	.byte \shiny
 	.endm
 
+	@ Displays a box containing an all-black front sprite for the specified Pokemon species.
+	.macro showmonsilhouette species:req, x:req, y:req
+	callnative ScrCmd_showmonsilhouette, requests_effects=1
+	.2byte \species
+	.byte \x
+	.byte \y
+	.endm
+
 	@ Hides the box displayed by showmonpic.
 	.macro hidemonpic
 	.byte SCR_OP_HIDEMONPIC
@@ -1047,9 +1055,11 @@
 	.4byte \text
 	.endm
 
-	@ Displays a random mon's dex entry in a message box
-	.macro randomdexmessage
-	callnative ScrCmd_randomdexmessage
+	@ Displays the specified mon's dex entry in a message box. Set censorName to TRUE to hide the species name.
+	.macro dexmessage species:req, censorName:req
+	callnative ScrCmd_dexmessage, requests_effects=1
+	.2byte \species
+	.byte \censorName
 	.endm
 
 	@ Formatting for the braille window, to be put at the start of a pointer used by braillemessage.
@@ -1943,9 +1953,9 @@
 	.byte SCR_OP_CLOSEBRAILLEMESSAGE
 	.endm
 
-	@ Destroys the window created by randomdexmessage.
-	.macro closerandomdexmessage
-	callnative ScrCmd_closerandomdexmessage
+	@ Destroys the window created by dexmessage.
+	.macro closedexmessage
+	callnative ScrCmd_closedexmessage, requests_effects=1
 	.endm
 
 	@ Prints and draws the message all at once rather than character by character.
@@ -2292,11 +2302,17 @@
 	closebraillemessage
 	.endm
 
-	@ Prints a random dex message, waits for an A or B press, then closes the message.
-	.macro randomdexmsgbox
-	randomdexmessage
+	@ Prints a dex message for the specified species, waits for an A or B press, then closes the message.
+	.macro dexmsgbox species:req, censorName:req
+	dexmessage \species, \censorName
 	waitbuttonpress
-	closerandomdexmessage
+	closedexmessage
+	.endm
+
+	@ Compares gStringVar2 with the specified species name and writes TRUE/FALSE to VAR_RESULT.
+	.macro checkspeciesguess species:req
+	callnative ScrCmd_checkspeciesguess, requests_effects=1
+	.2byte \species
 	.endm
 
 	@ Creates a Pokémon with the modernFatefulEncounter bit set for an encounter
@@ -3091,7 +3107,7 @@
 	goto_if_ne VAR_RESULT, 0, \declineTradeJump
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
-	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, \declineTradeJump
+	goto_if_eq VAR_0x8004, PARTY_MON_CANCEL, \declineTradeJump
 	specialvar VAR_0x800B, GetTradeSpecies
 	goto_if_ne VAR_0x800B, VAR_0x8009, \wrongMonJump
 	special CreateInGameTradePokemon
@@ -3528,14 +3544,6 @@
 	.byte \memorySlot
 	.endm
 
-	@ Buffers the message for the memory in \memorySlot for the Pokémon at \slot
-	@ Message is buffered into gStringVar4 due to limitations with other strings
-	.macro buffermemorymessage slot:req, memorySlot=0
-	callnative BufferMemoryMessage
-	.2byte \slot
-	.byte \memorySlot
-	.endm
-
 	@ Sets the \memory for the Pokémon at \slot
 	.macro setmemory memory:req, partySlot:req
 	callnative SetMemory
@@ -3549,11 +3557,69 @@
 	.byte \memory
 	.endm
 
-	@ Buffers the OT name for the Pokémon at \slot
-	.macro bufferoriginaltrainername stringVarId:req, partySlot:req
-	callnative BufferOriginalTrainerName
-	stringvar \stringVarId
-	.2byte \partySlot
-	.endm
-
 @ END OF ZATSU'S MEMORY READER
+
+	@ Opens a UI that has the player choose a number of Pokemon (bringSize) in their party
+	@ to battle against a trainer(s) that will also pick the same number of Pokemon to battle.
+	@ This mimics Battle Stadium behavior in official titles (Scarlet/Violet, Sword/Shield, etc.)
+	@ which is also used for tournament settings like VGC.
+	.macro bringxpicky battleType:req, bringSize:req, pickSize:req, trainer_a: req, lose_text_a:req, trainer_b = TRAINER_NONE, lose_text_b=NULL, partnerId=PARTNER_NONE
+	.if B_FLAG_BXPY == 0 || B_FLAG_BXPY > FLAGS_COUNT
+		.error "bringxpicky B_FLAG_BXPY must be assigned to a flag for the feature to function"
+	.endif
+	.if \battleType > BXPY_BATTLE_DOUBLE
+		.error "bringxpicky battleType (\battleType) must be either BXPY_BATTLE_SINGLE (\BXPY_BATTLE_SINGLE) or BXPY_BATTLE_DOUBLE (\BXPY_BATTLE_DOUBLE)"
+	.endif
+	.if \battleType == BXPY_BATTLE_SINGLE && \trainer_b != TRAINER_NONE
+		.error "bringxpicky battleType (\battleType) must be BXPY_BATTLE_DOUBLE (\BXPY_BATTLE_DOUBLE) when trainer_b (\trainer_b) is defined"
+	.endif
+	.if \battleType == BXPY_BATTLE_SINGLE && \partnerId != PARTNER_NONE
+		.error "bringxpicky battleType (\battleType) must be BXPY_BATTLE_DOUBLE (\BXPY_BATTLE_DOUBLE) when partnerId (\partnerId) is defined"
+	.endif
+	.if \bringSize < 1
+		.error "bringxpicky bringSize (\bringSize) is less than 1"
+	.endif
+	.if \bringSize > PARTY_SIZE
+		.error "bringxpicky bringSize (\bringSize) is greater than \PARTY_SIZE"
+	.endif
+	.if \bringSize < \pickSize
+		.error "bringxpicky bringSize (\bringSize) is less than pickSize (\pickSize)"
+	.endif
+	.if \pickSize < 1
+		.error "bringxpicky pickSize (\pickSize) is less than 1"
+	.endif
+	.if \pickSize > PARTY_SIZE
+		.error "bringxpicky pickSize (\pickSize) is greater than \PARTY_SIZE"
+	.endif
+	.if \trainer_a == TRAINER_NONE || \trainer_a > TRAINERS_COUNT
+		.error "bringxpicky trainer_a (\trainer_a) must be a valid trainer Id"
+	.endif
+	.if \trainer_b != TRAINER_NONE && \lose_text_b == NULL
+		.error "bringxpicky trainer_b must have valid lose text"
+	.endif
+	.if \trainer_b >= TRAINERS_COUNT
+		.error "bringxpicky trainer_b (\trainer_b) must be a valid trainer Id"
+	.endif
+	.if \trainer_b == TRAINER_NONE && \lose_text_b != NULL
+		.error "bringxpicky trainer_b (\trainer_b) must be a valid trainer Id"
+	.endif
+	.if \partnerId >= PARTNER_COUNT
+		.error "bringxpicky partnerId (\partnerId) must be a valid partner Id"
+	.endif
+	callnative BXPY_TryHealBeforeBattle
+	setvar VAR_BXPY_PICK_SIZE, \pickSize
+	setvar VAR_BXPY_BRING_SIZE, \bringSize
+	setvar VAR_BXPY_PARTNER, \partnerId
+	call BXPY_Script_CheckErrors
+    fadescreen FADE_TO_BLACK
+	callnative ScrCmd_bringxpicky, requests_effects=1
+	.2byte \battleType
+	.2byte \bringSize
+	.2byte \pickSize
+	.2byte \trainer_a
+	.4byte \lose_text_a
+	.2byte \trainer_b
+	.4byte \lose_text_b
+	.2byte \partnerId
+	waitstate
+	.endm

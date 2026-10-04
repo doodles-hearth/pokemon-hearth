@@ -1,0 +1,73 @@
+script EventScript_SilhouetteNerd {
+	lock
+	// faceplayer
+
+	if(flag(FLAG_DAILY_MON_SILHOUETTE))
+	{
+		setspeaker(SP_NAME_PKMN_NERD)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Come back tomorrow if you want to\nchallenge the king again."
+		))
+		closemessage
+		release
+		end
+	}
+
+	setspeaker(SP_NAME_PKMN_NERD)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}You have the look of a Pokémon Wielder.\p"
+		"How do I know?\p"
+		"You can tell a lot about somebody\nfrom a glance!\p"
+		"They call me the Pokémon Nerd,\nbecause I can identify a\lWild Pokemon in a flash.\p"
+		"Think you can challenge me?\p"
+        "I'll show you a Pokémon and you\ntell me what Pokémon it is."
+	))
+	closemessage
+
+	specialvar(VAR_TEMP_1, GetRandomRegionalSpecies)
+	showmonsilhouette(VAR_TEMP_1, 10, 3)
+    waitbuttonpress
+	hidemonpic
+
+	setspeaker(SP_NAME_PKMN_NERD)
+	msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Well? Who was that Pokémon?")
+	closemessage
+
+	special(EnterSpeciesGuess)
+	checkspeciesguess(VAR_TEMP_1)
+
+	if(var(VAR_RESULT) == 1)
+	{
+		playse(SE_PIN)
+
+		waitse
+		waitmovement(0)
+		setspeaker(SP_NAME_PKMN_NERD)
+		waitse
+		playse(SE_SUCCESS)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Not bad kid.\p"
+			"I knew you were a true Pokémon\nWielder… like me."
+		))
+		closemessage
+		incrementgamestat(GAME_STAT_SOLVED_SILHOUETTE)
+		setflag(FLAG_DAILY_MON_SILHOUETTE_WON)
+	}
+	else
+	{
+		waitse
+		playse(SE_FAILURE)
+		applymovement(VAR_LAST_TALKED, moves(emote_upset))
+		setspeaker(SP_NAME_PKMN_NERD)
+		msgbox(format(
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Heh…\p"
+			"Sorry kid.\nBut that's not right.\p"
+			"Come back when you've honed\nyour skills."
+		))
+	}
+
+	setflag(FLAG_DAILY_MON_SILHOUETTE)
+
+	release
+	end
+}
