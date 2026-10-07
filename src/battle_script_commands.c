@@ -1041,6 +1041,11 @@ static void Cmd_printattackstring(void)
 
     PrepareStringBattle(STRINGID_USEDMOVE, gBattlerAttacker);
     gBattleCommunication[MSG_DISPLAY] = MSG_DISPLAY_CONTINUE;
+    if (gBattleMoveEffects[GetMoveEffect(gCurrentMove)].twoTurnEffect
+     && !gBattleMons[gBattlerAttacker].volatiles.multipleTurns)
+    {
+        gBattleCommunication[MSG_DISPLAY] = MSG_DISPLAY_WAIT;
+    }
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
@@ -3276,13 +3281,14 @@ static void Cmd_openpartyscreen(void)
 
         hitmarkerFaintBits = gHitMarker >> 28;
 
-        gBattlerFainted = 0;
-        while (!((1u << gBattlerFainted) & hitmarkerFaintBits)
-               && gBattlerFainted < gBattlersCount)
-            gBattlerFainted++;
+        u32 fainted = 0;
+        while (fainted < gBattlersCount && !((1u << fainted) & hitmarkerFaintBits))
+            fainted++;
 
-        if (gBattlerFainted == gBattlersCount)
+        if (fainted == gBattlersCount)
             gBattlescriptCurrInstr = failInstr;
+        else
+            gBattlerFainted = fainted;
     }
     else
     {
@@ -3470,6 +3476,9 @@ static void Cmd_switchineffects(void)
 static void Cmd_switchinevents(void)
 {
     CMD_ARGS();
+
+    assertf(gBattlerFainted < MAX_BATTLERS_COUNT, "invalid gBattlerFainted: %d", gBattlerFainted);
+
     while (gBattleStruct->eventState.switchIn < SWITCH_IN_EVENTS_COUNT)
     {
         if (DoSwitchInEvents())
@@ -5178,7 +5187,7 @@ static void Cmd_twoturnmoveschargestringandanimation(void)
 
     // TODO: saved string id is not needed
     gBattleScripting.savedStringId = GetMoveTwoTurnAttackStringId(gCurrentMove);
-    if (B_UPDATED_MOVE_DATA < GEN_5 || MoveHasChargeTurnAdditionalEffect(gCurrentMove))
+    if (MoveHasChargeTurnAdditionalEffect(gCurrentMove))
         gBattlescriptCurrInstr = cmd->animationThenStringPtr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;
@@ -8590,9 +8599,6 @@ static void Cmd_tryoverwriteability(void)
     }
     else
     {
-        if (gBattleMons[gBattlerTarget].volatiles.neutralizingGas)
-            gSpecialStatuses[gBattlerTarget].neutralizingGasRemoved = TRUE;
-
         RemoveAbilityFlags(gBattlerTarget);
         gBattleScripting.abilityPopupOverwrite = gBattleMons[gBattlerTarget].ability;
         OverwriteBattlerAbility(gBattlerTarget, GetMoveOverwriteAbility(gCurrentMove));
@@ -9673,7 +9679,11 @@ void BS_TryWindRiderPower(void)
         switch (ability)
         {
         case ABILITY_WIND_RIDER:
-            AbilityBattleEffects(ABILITYEFFECT_ON_SWITCHIN, battler, ABILITY_WIND_RIDER, MOVE_NONE, TRUE);
+            // Starting Status Tailwind causes the Wind Rider boost to go off twice
+            if (gBattleStruct->eventState.beforeFirstTurn != FIRST_TURN_EVENTS_STARTING_STATUS)
+            {            
+                AbilityBattleEffects(ABILITYEFFECT_ON_SWITCHIN, battler, ABILITY_WIND_RIDER, MOVE_NONE, TRUE);
+            }
             break;
         case ABILITY_WIND_POWER:
             gBattlerAbility = battler;
@@ -11212,7 +11222,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
     switch (gBattlerFainted)
     {
     case B_BATTLER_0:
-        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
         {
             gBattleScripting.battler = battler;
             BattleScriptPush(cmd->nextInstr);
@@ -11222,7 +11232,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11237,7 +11247,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         }
         break;
     case B_BATTLER_2:
-        if (ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_DOWN))
+        if (ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_DEFENDER_LOSES_FIRST_MON))
         {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11247,7 +11257,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11257,7 +11267,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
             else
             {
                 gBattleScripting.battler = tempBattler;
-                if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+                if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
                 {
                     gBattleScripting.battler = battler;
                     BattleScriptPush(cmd->nextInstr);
@@ -11273,7 +11283,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         }
         break;
     case B_BATTLER_1:
-        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_DOWN)))
+        if ((ShouldDoTrainerSlide(B_BATTLER_1, TRAINER_SLIDE_DEFENDER_LOSES_FIRST_MON)))
         {
             gBattleScripting.battler = battler;
             BattleScriptPush(cmd->nextInstr);
@@ -11283,7 +11293,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11298,7 +11308,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         }
         break;
     case B_BATTLER_3:
-        if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_DEFENDER_TAKES_FIRST_DOWN)))
+        if ((ShouldDoTrainerSlide(B_BATTLER_3, TRAINER_SLIDE_DEFENDER_LOSES_FIRST_MON)))
         {
             gBattleScripting.battler = battler;
             BattleScriptPush(cmd->nextInstr);
@@ -11308,7 +11318,7 @@ void BS_TryTrainerSlideMsgFirstOff(void)
         else
         {
             gBattleScripting.battler = tempBattler;
-            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_LANDS_FIRST_DOWN)))
+            if ((ShouldDoTrainerSlide(B_BATTLER_2, TRAINER_SLIDE_ATTACKER_FAINTS_FIRST_MON)))
             {
                 gBattleScripting.battler = battler;
                 BattleScriptPush(cmd->nextInstr);
@@ -11330,12 +11340,8 @@ void BS_TryTrainerSlideMsgFirstOff(void)
 void BS_TryTrainerSlideMsgLastOn(void)
 {
     NATIVE_ARGS(u8 battler);
-    enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
 
-    if (battler >= MAX_BATTLERS_COUNT) // Edge case for double KO cases where gBattlerFainted == MAX_BATTLERS_COUNT so GetBattlerForBattleScript returns 6
-    {
-        gBattlescriptCurrInstr = cmd->nextInstr;
-    }
+    enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
     enum BattlerId tempBattler = gBattleScripting.battler;
 
     switch (gBattleScripting.battler)
@@ -11627,18 +11633,32 @@ void BS_TryToClearPrimalWeather(void)
 
 void BS_TryEndNeutralizingGas(void)
 {
-    NATIVE_ARGS();
-    if (gSpecialStatuses[gBattlerTarget].neutralizingGasRemoved)
+    NATIVE_ARGS(u8 battler);
+    enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
+
+    if (gSpecialStatuses[battler].neutralizingGasRemoved)
     {
-        gSpecialStatuses[gBattlerTarget].neutralizingGasRemoved = FALSE;
-        gBattleMons[gBattlerTarget].volatiles.neutralizingGas = FALSE;
-        if (!IsNeutralizingGasOnField())
+        if (gBattleMons[battler].volatiles.neutralizingGas)
         {
             UpdateTruantTogglesOnNeutralizingGasEnd();
-            BattleScriptPush(cmd->nextInstr);
-            gBattlescriptCurrInstr = BattleScript_NeutralizingGasExits;
-            return;
+            gBattleMons[battler].volatiles.neutralizingGas = FALSE;
+            if (!IsNeutralizingGasOnField())
+            {
+                // Other Abilities resume before this battler gains its replacement
+                // so we have to keep the old Ability during their effects and restore the
+                // new one when this command resumes, before its switch-in effects run.
+                gBattleMons[battler].ability = ABILITY_NEUTRALIZING_GAS;
+                BattleScriptPush(gBattlescriptCurrInstr);
+                gBattlescriptCurrInstr = BattleScript_NeutralizingGasExits;
+                return;
+            }
         }
+        else if (!gBattleMons[battler].volatiles.gastroAcid)
+        {
+            gBattleMons[battler].ability = gBattleMons[battler].volatiles.overwrittenAbility;
+        }
+
+        gSpecialStatuses[battler].neutralizingGasRemoved = FALSE;
     }
 
     gBattlescriptCurrInstr = cmd->nextInstr;

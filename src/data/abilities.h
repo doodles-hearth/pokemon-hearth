@@ -280,7 +280,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_ILLUMINATE] =
     {
         .name = _("Illuminate"),
-        .description = 
+        .description =
         #if B_ILLUMINATE_EFFECT >= GEN_9
             COMPOUND_STRING("Accuracy can't be lowered."),
         #else
@@ -2545,12 +2545,6 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("No special ability."),
     },
 
-    [ABILITY_AURA_GUARD] =
-    {
-        .name = _("Aura Guard"),
-        .description = COMPOUND_STRING("Halves damage from contact."),
-    },
-
     [ABILITY_SPICY_SPRAY] =
     {
         .name = _("Spicy Spray"),
@@ -2563,5 +2557,11 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Ups and resists sound."),
         .aiRating = 2,
         .breakable = TRUE,
+    },
+
+    [ABILITY_AURA_GUARD] =
+    {
+        .name = _("Aura Guard"),
+        .description = COMPOUND_STRING("Halves damage from contact."),
     },
 };
