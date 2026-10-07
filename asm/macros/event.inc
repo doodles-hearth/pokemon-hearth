@@ -930,11 +930,13 @@
 	.endm
 
 	@ Acts like a msgbox, but you can chain them
-	.macro msgboxcontig text:req
+	.macro msgboxcontig text:req, mute = FALSE
 	message \text
 	waitmessage
 	waitbuttonpress
+	.if \mute == 0
 	playse SE_SELECT
+	.endif
 	.endm
 
 	@ Closes the current message box.

@@ -304,13 +304,20 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
 
     delay(48)
 
+    playse(SE_PIN)
+    applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(emote_sad, delay_16 * 6))
+    msgboxcontig(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Oh gosh, he fell in!\nOh no! It's my fault!\l"
+        "Oh gosh, what if it digests him?!"
+    )
+    waitmovementall
+
     applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(walk_in_place_fast_down))
     applymovement(LOCALID_PLAYER, moves(face_up))
 
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Please, young Wielder, help!"
+        "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}I'm claustrophobic!\nI cannot go in there!\pPlease, please help, young Wielder!"
     )
-    waitmovementall
     closemessage
 
     applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(face_left))

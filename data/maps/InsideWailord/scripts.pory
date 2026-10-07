@@ -34,10 +34,11 @@ script InsideWailord_EventScript_XiaoHuo {
 script InsideWailord_EventScript_FollowerXiaoHuo {
     lock
     faceplayer
-    msgbox(
+    message(
         "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}C'mon, let's explore further back!\p"
         "Huh? You have something you need to\ndo outside first?"
     )
+    waitmessage
 
     mcdialogueB(
         "I'll be right back.",
