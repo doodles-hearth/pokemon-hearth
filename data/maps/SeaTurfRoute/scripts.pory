@@ -413,41 +413,19 @@ script SeaTurfRoute_EventScript_Taro {
 script SeaTurfRoute_EventScript_Kumo {
     trainerbattle_single(
 		TRAINER_KARU,
-		"{CREATE_MUGSHOT MUGSHOT_TWIN_M 0}",
+		"",
 		""
 	)
-	msgbox(("{CREATE_MUGSHOT MUGSHOT_TWIN_M 0}{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
+	msgbox(("{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
 	end
 }
 
 script SeaTurfRoute_EventScript_Kuma {
     trainerbattle_single(
 		TRAINER_KARU,
-		"{CREATE_MUGSHOT MUGSHOT_TWIN_F 0}",
+		"",
 		""
 	)
-	msgbox(("{CREATE_MUGSHOT MUGSHOT_TWIN_F 0}{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
+	msgbox(("{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
     end
-}
-
-script OrchardPath_EventScript_Gako {
-	trainerbattle_double(
-		TRAINER_YANG_BO,
-		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
-		"We only lost because Gako's busy\npretending to be a Croconaw!",
-		"{SPEAKER NAME_TWIN_GEN}Croco, naw.\n(You need two Pokémon to battle us.)"
-	)
-	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
-	end
-}
-
-script OrchardPath_EventScript_Gen {
-	trainerbattle_double(
-		TRAINER_YANG_BO,
-		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
-		"We only lost because Gako's busy\npretending to be a Croconaw!",
-		"{SPEAKER NAME_TWIN_GAKO}You need two Pokémon to battle us."
-	)
-	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
-	end
 }
