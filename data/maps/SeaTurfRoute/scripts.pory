@@ -363,9 +363,13 @@ script SeaTurfRoute_EventScript_XiaoHuoMom {
             setflag(FLAG_GOT_WAILMER_DOLL)
         }
     } else {
+        waitse
+        playse(SE_PIN)
+        applymovement(VAR_LAST_TALKED, moves(emote_sad, delay_16 * 6))
         msgbox(
-            "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Please, young Wielder, help!"
+            "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Please, help Xiao Huo!\nHe's such a reckless child!"
         )
+        waitmessage
         closemessage
 
         applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_left))
@@ -383,4 +387,67 @@ script SeaTurfRoute_EventScript_FallDownHole {
     waitse
     warpfall(MAP_INSIDE_WAILORD, WARP_ID_EXIT_WAILORD)
     releaseall
+}
+
+script SeaTurfRoute_EventScript_Toyo {
+    trainerbattle_single(
+		TRAINER_KARU,
+		"{CREATE_MUGSHOT MUGSHOT_COOK 0}No! Don't bite me!\nI have no food!",
+		"Sorry darling, I'm a little jittery!"
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_COOK 0}{SPEAKER NAME_COOK}Cooking for the festival is stressful!\nPeople are vo-ra-cious!"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script SeaTurfRoute_EventScript_Taro {
+    trainerbattle_single(
+		TRAINER_KARU,
+		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}Piss off.\nThis is my fishing spot.",
+		"Gee, alright, we can share!"
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_FISHERMAN}This pool's too far down for me to\ncast my line anyway…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+// TODO EVA ICI
+script SeaTurfRoute_EventScript_Kumo {
+    trainerbattle_single(
+		TRAINER_KARU,
+		"{CREATE_MUGSHOT MUGSHOT_TWIN_M 0}",
+		""
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_TWIN_M 0}{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script SeaTurfRoute_EventScript_Kuma {
+    trainerbattle_single(
+		TRAINER_KARU,
+		"{CREATE_MUGSHOT MUGSHOT_TWIN_F 0}",
+		""
+	)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_TWIN_F 0}{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
+    end
+}
+
+script OrchardPath_EventScript_Gako {
+	trainerbattle_double(
+		TRAINER_YANG_BO,
+		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
+		"We only lost because Gako's busy\npretending to be a Croconaw!",
+		"{SPEAKER NAME_TWIN_GEN}Croco, naw.\n(You need two Pokémon to battle us.)"
+	)
+	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
+	end
+}
+
+script OrchardPath_EventScript_Gen {
+	trainerbattle_double(
+		TRAINER_YANG_BO,
+		("{SPEAKER NAME_TWIN_GEN}Croco-Croconaw!\n(Check out our rare Pokémon!)\p{SPEAKER NAME_TWIN_GAKO}Please excuse my absolute nerd of\na brother…"),
+		"We only lost because Gako's busy\npretending to be a Croconaw!",
+		"{SPEAKER NAME_TWIN_GAKO}You need two Pokémon to battle us."
+	)
+	msgbox(("{SPEAKER NAME_TWIN_GEN}Croco, Croco, Croconaw!\p{SPEAKER NAME_TWIN_GAKO}Brother, I beg, this is\nembarrassing…"), MSGBOX_AUTOCLOSE)
+	end
 }

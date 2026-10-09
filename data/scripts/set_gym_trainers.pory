@@ -58,7 +58,7 @@ script PetalburgCity_Gym_SetGymTrainers {
 	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_DUMMY)
-	settrainerflag(TRAINER_BERKE)
+	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_DUMMY)
 	settrainerflag(TRAINER_DUMMY)
@@ -66,41 +66,41 @@ script PetalburgCity_Gym_SetGymTrainers {
 }
 
 script FortreeCity_Gym_SetGymTrainers {
-	settrainerflag(TRAINER_JARED)
-	settrainerflag(TRAINER_FLINT)
-	settrainerflag(TRAINER_ASHLEY)
-	settrainerflag(TRAINER_EDWARDO)
-	settrainerflag(TRAINER_HUMBERTO)
-	settrainerflag(TRAINER_DARIUS)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
 	return
 }
 
 script MossdeepCity_Gym_SetGymTrainers {
-	settrainerflag(TRAINER_PRESTON)
-	settrainerflag(TRAINER_VIRGIL)
-	settrainerflag(TRAINER_BLAKE)
-	settrainerflag(TRAINER_HANNAH)
-	settrainerflag(TRAINER_SAMANTHA)
-	settrainerflag(TRAINER_MAURA)
-	settrainerflag(TRAINER_SYLVIA)
-	settrainerflag(TRAINER_NATE)
-	settrainerflag(TRAINER_KATHLEEN)
-	settrainerflag(TRAINER_CLIFFORD)
-	settrainerflag(TRAINER_MACEY)
-	settrainerflag(TRAINER_NICHOLAS)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
 	return
 }
 
 script SootopolisCity_Gym_SetGymTrainers {
-	settrainerflag(TRAINER_ANDREA)
-	settrainerflag(TRAINER_CRISSY)
-	settrainerflag(TRAINER_BRIANNA)
-	settrainerflag(TRAINER_CONNIE)
-	settrainerflag(TRAINER_BRIDGET)
-	settrainerflag(TRAINER_OLIVIA)
-	settrainerflag(TRAINER_TIFFANY)
-	settrainerflag(TRAINER_BETHANY)
-	settrainerflag(TRAINER_ANNIKA)
-	settrainerflag(TRAINER_DAPHNE)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
+	settrainerflag(TRAINER_DUMMY)
 	return
 }

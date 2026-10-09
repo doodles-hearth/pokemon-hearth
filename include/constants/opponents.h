@@ -78,7 +78,7 @@
 #define TRAINER_GAKO_GEN                     71
 #define TRAINER_MASUO                        72
 #define TRAINER_SANI                         73
-#define TRAINER_BERKE                        74
+#define TRAINER_YANG_BO                    74
 #define TRAINER_BRAXTON                      75
 #define TRAINER_VINCENT                      76
 #define TRAINER_LEROY                        77

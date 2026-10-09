@@ -1603,14 +1603,12 @@ Level: 19
 - Mega Drain
 - Poison Sting
 
-=== TRAINER_BERKE ===
-Name: BERKE
-Class: Cooltrainer
-Pic: Cooltrainer M
-Gender: Male
-Music: Cool
-Items: Hyper Potion
-Battle Type: Singles
+=== TRAINER_YANG_BO ===
+Name: Yang & Bo
+Class: Twins
+Pic: Twins
+Music: Twins
+Battle Type: Doubles
 AI: Basic Trainer
 
 Vigoroth
@@ -2184,7 +2182,7 @@ Level: 25
 === TRAINER_XIAO_HUO ===
 Name: Xiao Huo
 Class: Dojo Master
-Pic: Leader Yutaka
+Pic: Leader Xiao Huo
 Gender: Male
 Music: Male
 Items: Supergiri
