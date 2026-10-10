@@ -1535,6 +1535,14 @@
 	.2byte \animation
 	.endm
 
+	@ Plays the field move animation for the specified species.
+	.macro showfieldmovemon species:req, shiny=FALSE
+	setfieldeffectargument 0, \species
+	setfieldeffectargument 1, \shiny
+	dofieldeffect FLDEFF_FIELD_MOVE_SHOW_MON
+	waitfieldeffect FLDEFF_FIELD_MOVE_SHOW_MON
+	.endm
+
 	@ Sets which healing location (HEAL_LOCATION_*) the player will return to if all of the Pokemon in their party faint.
 	.macro setrespawn heallocation:req
 	.byte SCR_OP_SETRESPAWN
