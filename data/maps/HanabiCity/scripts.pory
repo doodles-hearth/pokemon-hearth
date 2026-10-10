@@ -106,3 +106,12 @@ script HanabiCity_EventScript_SawXiaoHuo {
 	closemessage
 	release
 }
+
+script HanabiCity_EventScript_Natsuki {
+    lock
+
+	// TODO Natsuki dialogue
+	// One of the only times where Natsuki is calm and composed
+
+	release
+}
