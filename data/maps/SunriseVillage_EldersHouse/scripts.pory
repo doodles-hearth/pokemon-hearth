@@ -140,7 +140,7 @@ script SunriseVillage_EldersHouse_EventScript_DistributionCutscene {
 	playse(SE_PIN)
 	applymovement(LOCALID_ELDER_KABAS_HOUSE_RIVAL, moves(emote_heart))
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah! Cool…")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Whoa! Cool…")
 	waitmessage
 	closemessage
 	delay(30)

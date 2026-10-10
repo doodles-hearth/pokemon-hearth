@@ -306,6 +306,7 @@ const u16 gObjectEventPal_Hana[] = INCGFX_U16("graphics/trainers/palettes/leader
 const u32 gObjectEventPic_Yutaka[] = INCGFX_U32("graphics/object_events/pics/people/gym_leaders/yutaka.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u16 gObjectEventPal_Yutaka[] = INCGFX_U16("graphics/trainers/front_pics/leader_yutaka.png", ".gbapal");
 const u32 gObjectEventPic_Masamune[] = INCGFX_U32("graphics/object_events/pics/people/gym_leaders/masamune.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_XiaoHuo[] = INCGFX_U32("graphics/object_events/pics/people/gym_leaders/xiao_huo.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_Flannery[] = INCGFX_U32("graphics/object_events/pics/people/gym_leaders/flannery.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Norman[] = INCGFX_U32("graphics/object_events/pics/people/gym_leaders/norman.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_Winona[] = INCGFX_U32("graphics/object_events/pics/people/gym_leaders/winona.png", ".4bpp", "-mwidth 2 -mheight 4");

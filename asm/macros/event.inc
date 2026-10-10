@@ -517,6 +517,14 @@
 	formatwarp \map, \a, \b, \c
 	.endm
 
+	@ Warps the player to the specified map using a falling effect.
+	@ Warp commands can be given either the id of which warp location to go to on the destination map
+	@ or a pair of x/y coordinates to go to directly on the destination map.
+	.macro warpfall map:req, a, b, c
+	.byte SCR_OP_WARPFALL
+	formatwarp \map, \a, \b, \c
+	.endm
+
 	@ Sets the warp destination to be used later.
 	@ Warp commands can be given either the id of which warp location to go to on the destination map
 	@ or a pair of x/y coordinates to go to directly on the destination map.
@@ -919,6 +927,16 @@
 	.macro message text:req
 	.byte SCR_OP_MESSAGE
 	.4byte \text
+	.endm
+
+	@ Acts like a msgbox, but you can chain them
+	.macro msgboxcontig text:req, mute = FALSE
+	message \text
+	waitmessage
+	waitbuttonpress
+	.if \mute == 0
+	playse SE_SELECT
+	.endif
 	.endm
 
 	@ Closes the current message box.

@@ -2113,3 +2113,14 @@ const struct Tileset gTileset_snow =
     .metatileAttributes = gMetatileAttributes_snow,
     .callback = NULL,
 };
+
+const struct Tileset gTileset_InsideWailord =
+{
+    .isCompressed = TRUE,
+    .isSecondary = TRUE,
+    .tiles = gTilesetTiles_InsideWailord,
+    .palettes = gTilesetPalettes_InsideWailord,
+    .metatiles = gMetatiles_InsideWailord,
+    .metatileAttributes = gMetatileAttributes_InsideWailord,
+    .callback = NULL,
+};

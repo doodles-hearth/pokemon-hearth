@@ -363,7 +363,7 @@
 #define FLAG_RECEIVED_TM_SUNNY_DAY           0x141
 #define FLAG_SPOKE_TO_NATSUKI_MAGURO         0x142
 #define FLAG_HIDE_NATSUKI_MAGURO             0x143
-#define FLAG_WONDER_CARD_UNUSED_8            0x144
+#define FLAG_HIDE_WAIL_XIAO_HUO              0x144
 #define FLAG_WONDER_CARD_UNUSED_9            0x145
 #define FLAG_WONDER_CARD_UNUSED_10           0x146
 #define FLAG_WONDER_CARD_UNUSED_11           0x147
@@ -924,7 +924,7 @@
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_1           0x360
 #define FLAG_HIDE_BATTLE_TOWER_MULTI_BATTLE_PARTNER_ALT_2           0x361
 #define FLAG_HIDE_PETALBURG_GYM_WALLY                               0x362
-#define FLAG_UNKNOWN_0x363                                          0x363 // Set, however has no purpose.
+#define FLAG_HIDE_XIAO_HUO_DOJO                                     0x363
 #define FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN                           0x364
 #define FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY          0x365
 #define FLAG_HIDE_LANETTES_HOUSE_LANETTE                            0x366

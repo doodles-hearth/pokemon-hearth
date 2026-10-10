@@ -3,7 +3,6 @@
   "name": "MtKazan_Antechamber",
   "layout": "LAYOUT_MT_KAZAN_ANTECHAMBER",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MT_KAZAN_EXTERIOR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -26,5 +25,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

@@ -25,6 +25,7 @@
 	.align 2
 gScriptCmdTable::
 	.endif
+
 	script_cmd_table_entry SCR_OP_NOP                           ScrCmd_nop,                         requests_effects=1
 	script_cmd_table_entry SCR_OP_NOP1                          ScrCmd_nop1,                        requests_effects=1
 	script_cmd_table_entry SCR_OP_END                           ScrCmd_end,                         requests_effects=1
@@ -263,6 +264,7 @@ gScriptCmdTable::
 	script_cmd_table_entry SCR_OP_GETFLASHLEVEL                 ScrCmd_getflashlevel,               requests_effects=1
 	script_cmd_table_entry SCR_OP_GETBRAILLESTRINGWIDTH         ScrCmd_getbraillestringwidth,       requests_effects=1
 	script_cmd_table_entry SCR_OP_GETLEADMONSPECIES             ScrCmd_getleadmonspecies,           requests_effects=1
+	script_cmd_table_entry SCR_OP_WARPFALL					    ScrCmd_warpfall,    				requests_effects=1
 
 	.if ALLOCATE_SCRIPT_CMD_TABLE
 gScriptCmdTableEnd::

@@ -137,6 +137,9 @@ const u16 gTrainerPalette_LeaderHana[] = INCGFX_U16("graphics/trainers/palettes/
 const u32 gTrainerFrontPic_LeaderYutaka[] = INCGFX_U32("graphics/trainers/front_pics/leader_yutaka.png", ".4bpp.smol");
 const u16 gTrainerPalette_LeaderYutaka[] = INCGFX_U16("graphics/trainers/front_pics/leader_yutaka.png", ".gbapal");
 
+const u32 gTrainerFrontPic_LeaderXiaoHuo[] = INCGFX_U32("graphics/trainers/front_pics/leader_xiao_huo.png", ".4bpp.smol");
+const u16 gTrainerPalette_LeaderXiaoHuo[] = INCGFX_U16("graphics/trainers/front_pics/leader_xiao_huo.png", ".gbapal");
+
 const u32 gTrainerFrontPic_LeaderFlannery[] = INCGFX_U32("graphics/trainers/front_pics/leader_flannery.png", ".4bpp.smol");
 const u16 gTrainerPalette_LeaderFlannery[] = INCGFX_U16("graphics/trainers/front_pics/leader_flannery.png", ".gbapal");
 
@@ -1336,6 +1339,10 @@ const struct TrainerPicInfo gTrainerPicInfo[TRAINER_PIC_COUNT] =
  	[TRAINER_PIC_LEADER_YUTAKA] = 
 	{
 		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderYutaka, gTrainerPalette_LeaderYutaka)
+	},
+ 	[TRAINER_PIC_LEADER_XIAO_HUO] = 
+	{
+		.frontPic = TRAINER_FRONT_PIC(gTrainerFrontPic_LeaderXiaoHuo, gTrainerPalette_LeaderXiaoHuo)
 	},
  	[TRAINER_PIC_SCHOOL_KID_M_ORANGE] = 
 	{

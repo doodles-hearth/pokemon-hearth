@@ -81,7 +81,7 @@ script YifuCity_Refuge_2F_EventScript_NumelTrade {
             YifuCity_Refuge_2F_EventScript_DeclineTrade,
             YifuCity_Refuge_2F_EventScript_NotRequestedMon,
 			(
-				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}Woah!\nIt's bigger than I thought! Amazing!!\p"
+				"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}Whoa!\nIt's bigger than I thought! Amazing!!\p"
 				"Please, take good care of my girl\nLuo Luo, okay?"
 			)
         )
