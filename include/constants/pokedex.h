@@ -1285,9 +1285,6 @@ enum NationalDexOrder
     F(DONDOZO) \
     F(TATSUGIRI) \
     F(LAPRAS) \
-    F(HORSEA) \
-    F(SEADRA) \
-    F(KINGDRA) \
     F(SKRELP) \
     F(DRAGALGE) \
     F(CORSOLA) \
@@ -1308,8 +1305,6 @@ enum NationalDexOrder
     F(NACLI) \
     F(NACLSTACK) \
     F(GARGANACL) \
-    F(BIDOOF) \
-    F(BIBAREL) \
     F(WOOPER) \
     F(QUAGSIRE) \
     F(BARBOACH) \
@@ -1387,9 +1382,6 @@ enum NationalDexOrder
     F(AEGISLASH) \
     F(DARUMAKA) \
     F(DARMANITAN) \
-    F(CHIMCHAR) \
-    F(MONFERNO) \
-    F(INFERNAPE) \
     F(TORCHIC) \
     F(COMBUSKEN) \
     F(BLAZIKEN) \

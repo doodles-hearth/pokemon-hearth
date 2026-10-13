@@ -583,14 +583,20 @@ script SakuTown_EventScript_MonHues {
 	release
 }
 
-script SakuTown_EventScript_Cherrim {
+script SakuTown_EventScript_Bonsly {
 	lock
+	waitse
 	faceplayer
-	setseenmon(SPECIES_CHERRIM)
-	playmoncry(SPECIES_CHERRIM, CRY_MODE_NORMAL)
-	setspeakertomonname(SPECIES_CHERRIM)
-	msgbox(format("Weee!"))
-	waitmoncry
+	delay(32)
+	playmoncry(SPECIES_BONSLY, CRY_MODE_NORMAL)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, delay_16 * 6))
+	waitmovementall
+	msgbox(
+		"It looks like a plant, but it's\nactually a Pokémon!"
+	)
+	closemessage
+
+	setseenmon(SPECIES_BONSLY)
 	release
 }
 

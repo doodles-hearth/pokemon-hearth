@@ -11,11 +11,38 @@ mapscripts HanabiCity_MapScripts {
 script HanabiCity_EventScript_Dolls {
     lock
 	faceplayer
+	if (!flag(FLAG_RECEIVED_SECRET_POWER)) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I'm still prepping up my stand.\nCome back later!"
+		)
+		closemessage
+		release
+		end
+	}
+
+	if (var(VAR_WAILORD_QUEST_STATE) == 7 && !flag(FLAG_GOT_WAILMER_DOLL)) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Hey! Aren't you the kid who helped\nXiao Huo cure that beached Wailord?\p"
+			"Thank you for your service!\nHere, I think this is a fitting reward!"
+		)
+		closemessage
+
+		givedecoration(DECOR_WAILMER_DOLL)
+
+		setflag(FLAG_GOT_WAILMER_DOLL)
+
+		msgboxcontig(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Keep doing what you're doing!\p"
+			"Anyway…"
+		)
+	}
+
 	// TODO
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I sell dolls!"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I sell Dolls!"
 	)
 	closemessage
+
 	release
 }
 
@@ -53,7 +80,7 @@ script HanabiCity_EventScript_FoodAddict {
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_1 0}{SPEAKER NAME_GIRL}Oh gosh! I want all the dolls!\nI want those delicious skewers!\p"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_1 0}{SPEAKER NAME_GIRL}Oh gosh! I want all the Dolls!\nI want those delicious skewers!\p"
 		"Eep! I want to fold a Porigami!\nLeave some of everything for me!"
 	)
 

@@ -106,7 +106,7 @@
 #define TRAINER_XIAO_HUO                     99
 #define TRAINER_WAIL_CROBAT_BOSS            100
 #define TRAINER_WAIL_GOLBAT_ADMIN           101
-#define TRAINER_BROOKE_3                    102
+#define TRAINER_NEGAI                       102
 #define TRAINER_BROOKE_4                    103
 #define TRAINER_BROOKE_5                    104
 #define TRAINER_PATRICIA                    105

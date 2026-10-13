@@ -95,7 +95,7 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .unlockType = BADGE_UNLOCK,
         .moveID = MOVE_STRENGTH,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
-        .arg16 = { FLAG_TO_BADGE(FLAG_BADGE04_GET), ITEM_SECRET_STRENGTH },
+        .arg16 = { FLAG_TO_BADGE(FLAG_BADGE05_GET), ITEM_SECRET_STRENGTH },
     },
 
     [FIELD_MOVE_SURF] =
@@ -104,7 +104,7 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .unlockType = BADGE_UNLOCK,
         .moveID = MOVE_SURF,
         .partyMsgID = PARTY_MSG_CANT_SURF_HERE,
-        .arg16 = { FLAG_TO_BADGE(FLAG_BADGE05_GET), ITEM_SECRET_SURF },
+        .arg16 = { FLAG_TO_BADGE(FLAG_BADGE04_GET), ITEM_SECRET_SURF },
     },
 
     [FIELD_MOVE_FLY] =

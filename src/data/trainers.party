@@ -2240,27 +2240,22 @@ Level: 27
 - Odor Sleuth
 - Heart Stamp
 
-=== TRAINER_BROOKE_3 ===
-Name: BROOKE
-Class: Cooltrainer
-Pic: Cooltrainer F
+=== TRAINER_NEGAI ===
+Name: Negai
+Class: Gardener
+Pic: Gardener
 Gender: Female
-Music: Cool
-Items: Hyper Potion
+Music: Female
 Battle Type: Singles
+Items: Uumegiri
 AI: Basic Trainer
 
-Pelipper
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-Numel
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
-
-Roselia
-Level: 29
-IVs: 14 HP / 14 Atk / 14 Def / 14 SpA / 14 SpD / 14 Spe
+Honestree
+Level: 25
+- Leafage
+- Rock Tomb
+- Ingrain
+- Growth
 
 === TRAINER_BROOKE_4 ===
 Name: BROOKE

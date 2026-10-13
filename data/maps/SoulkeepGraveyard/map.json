@@ -3,7 +3,6 @@
   "name": "SoulkeepGraveyard",
   "layout": "LAYOUT_SOULKEEP_GRAVEYARD",
   "music": "MUS_DUMMY",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SOULKEEP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -164,5 +163,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

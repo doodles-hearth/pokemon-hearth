@@ -1,13 +1,21 @@
 const FLAG_HIDE_XIAO_HUO_SEATURF = FLAG_TEMP_1
 const FLAG_HIDE_CROBATS_AND_CO = FLAG_TEMP_2
+const FLAG_ACCESS_WAILORD = FLAG_TEMP_3
+const FLAG_HIDE_XIAO_HUO_MOM = FLAG_TEMP_4
 
 mapscripts SeaTurfRoute_MapScripts {
     MAP_SCRIPT_ON_TRANSITION {
         if (var(VAR_WAILORD_QUEST_STATE) != 3) {
             setflag(FLAG_HIDE_XIAO_HUO_SEATURF)
         }
+        if (var(VAR_WAILORD_QUEST_STATE) >= 3) {
+            setflag(FLAG_ACCESS_WAILORD)
+        }
         if (var(VAR_WAILORD_QUEST_STATE) != 6) {
             setflag(FLAG_HIDE_CROBATS_AND_CO)
+        }
+        if (var(VAR_WAILORD_QUEST_STATE) == 7) {
+            setflag(FLAG_HIDE_XIAO_HUO_MOM)
         }
     }
     MAP_SCRIPT_ON_FRAME_TABLE [
@@ -15,8 +23,38 @@ mapscripts SeaTurfRoute_MapScripts {
     ]
 }
 
+script SeaTurfRoute_EventScript_Wailord {
+    lock
+    msgbox(
+        "It's an enormous marine Pokémon!"
+    )
+    setseenmon(SPECIES_WAILORD)
+    closemessage
+
+    delay(32)
+
+    playmoncry(SPECIES_WAILORD, CRY_MODE_WEAK)
+	setvar(VAR_0x8004, 0)  // vertical pan
+	setvar(VAR_0x8005, 2)  // horizontal pan
+	setvar(VAR_0x8006, 20) // num shakes
+	setvar(VAR_0x8007, 2)  // shake delay
+	special(ShakeCamera)
+    waitstate
+    waitmoncry
+
+    delay(32)
+
+    msgbox(
+        "It somehow looks in pain."
+    )
+    closemessage
+
+    release
+}
+
 script SeaTurfRoute_EventScript_EscapingWailord {
     lockall
+    setvar(VAR_WAILORD_QUEST_STATE, 7)
 
     destroyfollowernpc
     
@@ -140,16 +178,25 @@ script SeaTurfRoute_EventScript_EscapingWailord {
 	call(Common_EventScript_PlayGymBadgeFanfare)
 
     msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}Aaand you can have this cool Scroll\nfor a festive Pokémon move!"
+    )
+    closemessage
+
+    // TODO EVA
+    // giveitem(ITEM_TM_FIRE_PUNCH)
+
+    msgbox(
         "{CREATE_MUGSHOT MUGSHOT_HOT_LITTLE_BOY 0}{SPEAKER NAME_XIAO_HUO}This turned into a whole thing, huh?\p"
         "I'm going back home.\nTalk to my mom before going!\lShe'll give you a little something too!"
     )
     closemessage
 
+    delay(32)
+
     playse(SE_LEDGE)
     applymovement(LOCALID_SEATURF_DRAMPA, moves(
         face_left
-        delay_16
-        lock_anim
+        delay_16 * 3
         walk_fast_right * 3
         walk_fast_down * 2
         walk_fast_left * 4
@@ -158,7 +205,8 @@ script SeaTurfRoute_EventScript_EscapingWailord {
         walk_faster_right * 12
     ))
     applymovement(LOCALID_XIAO_HUO_SEATURF_2, moves(
-        jump_left,
+        jump_left
+        delay_16 * 2
         walk_fast_right * 3
         walk_fast_down * 2
         walk_fast_left * 4
@@ -171,8 +219,6 @@ script SeaTurfRoute_EventScript_EscapingWailord {
     waitmovementall
 
     delay(48)
-
-    setvar(VAR_WAILORD_QUEST_STATE, 7)
 
     setflag(FLAG_BADGE04_GET)
     setmemoryall(MEMORY_BEAT_DOJO)
@@ -191,10 +237,11 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Left {
 
     playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(
+        walk_down,
         face_left,
         emote_exclamation_mark,
         delay_16 * 6,
-        walk_down * 3,
+        walk_down * 2,
         walk_left * 10
     ))
     waitmovementall
@@ -205,14 +252,17 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Left {
 script SeaTurfRoute_EventScript_ChasingXiaoHuo_Right {
     lockall
 
-    playse(SE_PIN)
     applymovement(LOCALID_PLAYER, moves(
+        walk_down,
         face_left,
         emote_exclamation_mark,
         delay_16 * 6,
-        walk_down * 3,
+        walk_down * 2,
         walk_left * 11
     ))
+    delay(16)
+    playse(SE_PIN)
+
     waitmovementall
 
     goto(SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2)
@@ -336,6 +386,7 @@ script SeaTurfRoute_EventScript_ChasingXiaoHuo_Part2 {
     waitmovementall
     special(RemoveCameraObject)
 
+    setseenmon(SPECIES_WAILORD)
     setvar(VAR_WAILORD_QUEST_STATE, 4)
 
     releaseall
@@ -346,21 +397,55 @@ script SeaTurfRoute_EventScript_XiaoHuoMom {
     faceplayer
 
     # TODO EVA dialogue
-    if (flag(FLAG_SAVED_WAILORD)) {
-        if (flag(FLAG_GOT_WAILMER_DOLL)) {
+    if (var(VAR_WAILORD_QUEST_STATE) == 7) {
+        if (checkitem(ITEM_SECRET_SURF)) {
             msgbox(
                 "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Thanks again!"
             )
             closemessage    
         } else {
             msgbox(
-                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}You saved Xiao Huo! Take this!"
+                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Thank you so much for helping\nXiao Huo. What a relief!\p"
+                "Huh? He said I'd give you a reward?\nHuff… That child drives me nuts!\p"
+                "Alright, let me think…"
             )
             closemessage
 
-            givedecoration(DECOR_WAILMER_DOLL)
+            playse(SE_PIN)
+            applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(emote_exclamation_mark, delay_16 * 6))
+            waitse
+            waitmovementall
 
-            setflag(FLAG_GOT_WAILMER_DOLL)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}You came here on foot, didn't you?\p"
+                "What if I told you you could continue\nyour adventure sailing the oceans?"
+            )
+            closemessage
+
+            giveitem(ITEM_SECRET_SURF)
+
+			msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}This is a very old technique,\ncreated by the first Wielders.\p"
+				"It lets you ride your Pokémon on water\nusing an array of moves.\lLike this one!"
+			)
+			closemessage
+
+			giveitem(ITEM_TM_SPLASH)
+
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}I hope this will be useful to you.\p"
+                "On behalf of Xiao Huo and Wailord…\nThank you!"
+			)
+			closemessage
+
+            if (var(VAR_FACING) == DIR_WEST) {
+                applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(walk_up, walk_right * 10))
+            } else {
+                applymovement(LOCALID_XIAO_HUO_MOM_SEATURF, moves(walk_right * 9))
+            }
+            waitmovementall
+            removeobject(LOCALID_XIAO_HUO_MOM_SEATURF)
+            setflag(FLAG_HIDE_XIAO_HUO_MOM)
         }
     } else {
         waitse
@@ -409,23 +494,57 @@ script SeaTurfRoute_EventScript_Taro {
 	end
 }
 
-// TODO EVA ICI
-script SeaTurfRoute_EventScript_Kumo {
-    trainerbattle_single(
-		TRAINER_KARU,
-		"",
-		""
+script SeaTurfRoute_EventScript_YangBo {
+	trainerbattle_double(
+		TRAINER_YANG_BO,
+		"{SPEAKER NAME_TWIN_YANG}Our ma sends us off to the coast for\nfish and seashells everyday.\p"
+        "{SPEAKER NAME_TWIN_BO}Our legs are super strong, and so are\nour Pokémon!",
+		"Aw man, you smoked last week's catch!",
+		"{SPEAKER NAME_TWIN_YANG}If you wanna battle…\p"
+        "{SPEAKER NAME_TWIN_BO}…You'll need at\nleast two Pokémon!"
 	)
-	msgbox(("{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
+	msgbox(
+        "{SPEAKER NAME_TWIN_YANG}It's not always easy, you know?\p"
+        "{SPEAKER NAME_TWIN_BO}Sometimes we fight Wattrel that try\nto steal our seashells!",
+        MSGBOX_AUTOCLOSE
+    )
 	end
 }
 
-script SeaTurfRoute_EventScript_Kuma {
+script SeaTurfRoute_EventScript_Keita {
     trainerbattle_single(
 		TRAINER_KARU,
-		"",
-		""
+		"Huff… This route is more tiring than\nI'd anticipated…",
+		"At least I got to rest a little!"
 	)
-	msgbox(("{SPEAKER NAME_TWIN}"), MSGBOX_AUTOCLOSE)
-    end
+	msgbox(
+        "{SPEAKER NAME_TRAVELER}How do you just spring up and down\nwithout looking tired?\p"
+        "Ah, to be young again!",
+        MSGBOX_AUTOCLOSE
+    )
+	end
+}
+
+script SeaTurfRoute_EventScript_Yang {
+    lock
+    
+    msgbox(
+        "{SPEAKER NAME_LITTLE_GIRL}Darnit… Can't find any Krabby today…"
+    )
+    closemessage
+
+    release
+}
+
+script SeaTurfRoute_EventScript_Bo {
+    lock
+
+    faceplayer
+    
+    msgbox(
+        "{SPEAKER NAME_LITTLE_BOY}We're catching fish and seashells\nfor our ma!"
+    )
+    closemessage
+
+    release
 }
