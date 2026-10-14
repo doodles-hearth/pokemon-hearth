@@ -574,6 +574,7 @@ gSongTable::
 	song ph_trap_blend, MUSIC_PLAYER_SE2, 2
 	song mus_test_eva, MUSIC_PLAYER_BGM, 0
 	song mus_soulkeep, MUSIC_PLAYER_BGM, 0
+	song mus_vs_dojo_master, MUSIC_PLAYER_BGM, 0
 	song ph_trap_held, MUSIC_PLAYER_SE2, 2
 	song ph_trap_solo, MUSIC_PLAYER_SE2, 2
 	song ph_face_blend, MUSIC_PLAYER_SE2, 2
