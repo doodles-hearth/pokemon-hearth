@@ -70,3 +70,32 @@ EVs: 252 Atk / 252 SpA / 6 SpD
 - Work Up
 - Screech
 
+=== PARTNER_XIAO_HUO ===
+Name: Xiao Huo
+Class: Dojo Master
+Pic: Samurai
+Gender: Male
+Music: Male
+AI: Smartish Trainer
+
+Darumaka (M)
+Level: 25
+- Rage
+- Work Up
+- Fire Punch
+- Facade
+
+Drifblim (F)
+Level: 28
+- Ominous Wind
+- Will O Wisp
+- Hex
+- Flame Wheel
+
+Drampa (M)
+Level: 26
+- Dragon Rage
+- Glare
+- Fire Fang
+- Aqua Jet
+

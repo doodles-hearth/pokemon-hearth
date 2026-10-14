@@ -47,7 +47,7 @@ script MaguroHarbor_House1_EventScript_PokedexRiddler {
 		waitse
 		playse(SE_SUCCESS)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Woah, you… You solved my riddle!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SEASIDE_FAT_GUY 0}Whoa, you… You solved my riddle!\p"
 			"Could you… be a true Pokémon Nerd?\p"
 			"You have bested me today. Feel the rush of pure knowledge coursing through your veins?\p"
 			"Your Pokémon… They will gain more experience today.\p"

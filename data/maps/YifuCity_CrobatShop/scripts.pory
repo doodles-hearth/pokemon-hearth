@@ -262,7 +262,7 @@ script YifuCity_CrobatShop_Customer1 {
 	setspeaker(SP_NAME_MAN)
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}Woah! So I was buying illegal items? That's wild!"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}Whoa! So I was buying illegal items? That's wild!"
 		))
 	} else {
 		msgbox(format(

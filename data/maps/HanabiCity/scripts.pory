@@ -1,19 +1,55 @@
-mapscripts HanabiCity_MapScripts {}
+const FLAG_HIDE_XIAO_HUO_HANABI = FLAG_TEMP_1
+
+mapscripts HanabiCity_MapScripts {
+	MAP_SCRIPT_ON_TRANSITION {
+        if (var(VAR_WAILORD_QUEST_STATE) != 2) {
+            setflag(FLAG_HIDE_XIAO_HUO_HANABI)
+        }
+    }
+}
 
 script HanabiCity_EventScript_Dolls {
     lock
 	faceplayer
+	if (!flag(FLAG_RECEIVED_SECRET_POWER)) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I'm still prepping up my stand.\nCome back later!"
+		)
+		closemessage
+		release
+		end
+	}
+
+	if (var(VAR_WAILORD_QUEST_STATE) == 7 && !flag(FLAG_GOT_WAILMER_DOLL)) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Hey! Aren't you the kid who helped\nXiao Huo cure that beached Wailord?\p"
+			"Thank you for your service!\nHere, I think this is a fitting reward!"
+		)
+		closemessage
+
+		givedecoration(DECOR_WAILMER_DOLL)
+
+		setflag(FLAG_GOT_WAILMER_DOLL)
+
+		msgboxcontig(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_2 0}{SPEAKER NAME_WOMAN}Keep doing what you're doing!\p"
+			"Anyway…"
+		)
+	}
+
+	// TODO
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I sell dolls!"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_WOMAN_1 0}{SPEAKER NAME_WOMAN}I sell Dolls!"
 	)
 	closemessage
+
 	release
 }
 
 script HanabiCity_EventScript_Mart {
     lock
 	faceplayer
-	message(("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Hi, hello! This is where you'll find all\nyour usual items for Wielders."))
+	message(("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Hi, hello! This is where you'll\nfind all your usual Wielder items."))
 	waitmessage
 	pokemart(HanabiCity_Mart)
 	msgbox("{CREATE_MUGSHOT MUGSHOT_CLERK 0}{SPEAKER NAME_SHOPKEEPER}Come again! Enjoy the festival!")
@@ -44,12 +80,14 @@ script HanabiCity_EventScript_FoodAddict {
 	applymovement(VAR_LAST_TALKED, moves(emote_sad))
 
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_1 0}{SPEAKER NAME_GIRL}Oh gosh! I want all the dolls!\nI want those delicious skewers!\p"
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_1 0}{SPEAKER NAME_GIRL}Oh gosh! I want all the Dolls!\nI want those delicious skewers!\p"
 		"Eep! I want to fold a Porigami!\nLeave some of everything for me!"
 	)
 
 	waitmovement
 
+	// TODO EVA Porigami
+	setnamedmon(SPECIES_PORYGON)
 	closemessage
 	release
 }
@@ -62,5 +100,45 @@ script HanabiCity_EventScript_BalloonKid {
 		"I bet I can float around if I hold my\nbreath!"
 	)
 	closemessage
+	release
+}
+
+script HanabiCity_EventScript_XiaoHuoRunsDown {
+    lockall
+
+    applymovement(LOCALID_XIAO_HUO_HANABI, moves(
+        walk_fast_down * 3
+    ))
+    playse(SE_FLEE)
+    waitmovement(0)
+    removeobject(LOCALID_XIAO_HUO_HANABI)
+    setflag(FLAG_HIDE_XIAO_HUO_HANABI)
+    setvar(VAR_WAILORD_QUEST_STATE, 3)
+
+    releaseall
+}
+
+script HanabiCity_EventScript_SawXiaoHuo {
+	lock
+	faceplayer
+	if (var(VAR_WAILORD_QUEST_STATE) == 3) {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 0}{SPEAKER NAME_MAN}Xiao Huo almost ran me over on his\nway to the coast…"
+		)
+	} else {
+		msgbox(
+			"{CREATE_MUGSHOT MUGSHOT_HOT_MAN_2 0}{SPEAKER NAME_MAN}I'm going to spend too much money\nat the festival, sigh…"
+		)
+	}
+	closemessage
+	release
+}
+
+script HanabiCity_EventScript_Natsuki {
+    lock
+
+	// TODO Natsuki dialogue
+	// One of the only times where Natsuki is calm and composed
+
 	release
 }

@@ -11,5 +11,3 @@ voice_group snow
 	voice_square_1_alt 60, 0, 0, 1, 0, 1, 5, 1
    	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_shamisen, 255, 200, 255, 250
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_shakuhachi, 255, 127, 231, 127 
-
- 

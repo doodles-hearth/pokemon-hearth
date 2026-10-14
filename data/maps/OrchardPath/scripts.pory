@@ -478,3 +478,20 @@ script OrchardPath_EventScript_Masuo {
 	closemessage
 	end
 }
+
+script OrchardPath_EventScript_Negai {
+	trainerbattle_single(
+		TRAINER_NEGAI,
+		"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}I've been praised for my gardening\nskills!",
+		"Okay, but you're impressed, right?"
+	)
+	msgbox(format(
+		"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_GARDENER}I encouraged my Honestree\neveryday.\p"
+		"Eventually, it wished itself into\na real tree!\lThat makes me so happy!"
+	))
+	closemessage
+
+	setnamedmon(SPECIES_HONESTREE)
+	setdescribedmon(SPECIES_HONESTREE)
+	end
+}

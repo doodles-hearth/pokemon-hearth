@@ -327,7 +327,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Woah, there it goes again!\n"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Whoa, there it goes again!\n"
 		"You good, {PLAYER}?\p"
 		"Those quakes are no joke, huh.\p"
 		"Maybe the volcano's telling us\nto get to Elder Kaba's house already…?"

@@ -43,7 +43,7 @@ Route123_EventScript_BerryMastersHouseSign::
 	end
 
 Route123_EventScript_Wendy::
-	trainerbattle_single TRAINER_WENDY, Route123_Text_WendyIntro, Route123_Text_WendyDefeat
+	trainerbattle_single TRAINER_DUMMY, Route123_Text_WendyIntro, Route123_Text_WendyDefeat
 	msgbox Route123_Text_WendyPostBattle, MSGBOX_AUTOCLOSE
 	end
 

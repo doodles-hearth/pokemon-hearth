@@ -3,7 +3,6 @@
   "name": "LongTideChannelSoulkeep",
   "layout": "LAYOUT_LONG_TIDE_CHANNEL_SOULKEEP",
   "music": "MUS_ROUTE120",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_LONG_TIDE_CHANNEL_SOULKEEP",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -122,5 +121,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "LongTideChannelSoulkeep_RouteSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

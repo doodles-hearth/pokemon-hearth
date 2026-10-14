@@ -1322,6 +1322,10 @@
     {
       "id": "MAPSEC_HANABI_LAKE",
       "name": "Hanabi Lake"
+    },
+    {
+      "id": "MAPSEC_INSIDE_WAILORD",
+      "name": "Inside Wailord"
     }
   ]
 }

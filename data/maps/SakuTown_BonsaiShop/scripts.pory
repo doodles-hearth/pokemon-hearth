@@ -40,6 +40,22 @@ script SakuTown_BonsaiShop_EventScript_FlowerBasket {
 	), MSGBOX_AUTOCLOSE)
 }
 
+script SakuTown_BonsaiShop_EventScript_Honestree {
+	lock
+	waitse
+	delay(32)
+	playmoncry(SPECIES_HONESTREE, CRY_MODE_NORMAL)
+	applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark, delay_16 * 6))
+	waitmovementall
+	msgbox(
+		"It looks like a plant, but it's\nactually a Pokémon!"
+	)
+	closemessage
+
+	setseenmon(SPECIES_HONESTREE)
+	release
+}
+
 script SakuTown_BonsaiShop_EventScript_WateringCan {
 	if (flag(FLAG_RECEIVED_WAILMER_PAIL)) {
 		msgbox(format(
@@ -135,8 +151,8 @@ script SakuTown_BonsaiShop_EventScript_LittleSister {
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_LITTLE_GIRL 0}Hmm…\p"
 				"Hey, I'm actually impressed at the berry skills I'm sensing!\p"
-				"… …"
-				"Kidding!\p"
+				"… …\p"
+				"I'm kidding, it's really not that great.\p"
 				"You're getting better at it though."
 			))
 			closemessage

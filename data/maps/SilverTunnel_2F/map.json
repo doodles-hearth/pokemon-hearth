@@ -3,7 +3,6 @@
   "name": "SilverTunnel_2F",
   "layout": "LAYOUT_SILVER_TUNNEL_2F",
   "music": "MUS_GSC_PEWTER",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SILVER_TUNNEL",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -192,5 +191,6 @@
       "item": "ITEM_STAR_PIECE",
       "flag": "FLAG_HIDDEN_ITEM_SILVER_TUNNEL_STAR_PIECE"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
