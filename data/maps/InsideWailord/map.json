@@ -129,8 +129,8 @@
       "x": 16,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_WAILORD_QUEST_STATE",
+      "var_value": "5",
       "script": "InsideWailord_EventScript_NeedSurf_Left"
     },
     {
@@ -138,8 +138,8 @@
       "x": 17,
       "y": 17,
       "elevation": 0,
-      "var": "VAR_TEMP_0",
-      "var_value": "0",
+      "var": "VAR_WAILORD_QUEST_STATE",
+      "var_value": "5",
       "script": "InsideWailord_EventScript_NeedSurf"
     }
   ],

@@ -562,7 +562,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitmovement(LOCALID_KEVIN)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Boss, uh, the intruder's 'ere!"
+		"{CREATE_MUGSHOT MUGSHOT_KEVIN 0}Boss, uh, the intruder's 'ere!"
 	))
 	closemessage
 

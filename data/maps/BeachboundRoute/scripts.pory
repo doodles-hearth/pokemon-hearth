@@ -364,7 +364,7 @@ script BeachboundRoute_EventScript_Mugging {
 		waitmovement(0)
 		setspeaker(SP_NAME_CROBAT_SHADOW)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Uh… What's an allergory, boss?"
+			"{CREATE_MUGSHOT MUGSHOT_KEVIN 0}Uh… What's an allergory, boss?"
 		))
 		closemessage
 
@@ -451,7 +451,7 @@ script BeachboundRoute_EventScript_Mugging {
 	waitmovement(0)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Boss, what's a stoop?"
+		"{CREATE_MUGSHOT MUGSHOT_KEVIN 0}Boss, what's a stoop?"
 	))
 	closemessage
 
