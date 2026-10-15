@@ -22,6 +22,9 @@ static const u32 sFieldMugshotGfx_MasamuneNormal[] = INCGFX_U32("graphics/field_
 static const u32 sFieldMugshotGfx_CrobatNormal[] = INCGFX_U32("graphics/field_mugshots/crobat/normal.png", ".4bpp.smol");
 
 static const u32 sFieldMugshotGfx_ZubatNormal[] = INCGFX_U32("graphics/field_mugshots/zubat/normal.png", ".4bpp.smol");
+static const u16 sFieldMugshotPal_Zubat[] = INCGFX_U16("graphics/field_mugshots/zubat/normal.png", ".gbapal");
+
+static const u32 sFieldMugshotGfx_KevinNormal[] = INCGFX_U32("graphics/field_mugshots/kevin/normal.png", ".4bpp.smol");
 
 static const u32 sFieldMugshotGfx_ClerkNormal[] = INCGFX_U32("graphics/field_mugshots/clerk/normal.png", ".4bpp.smol");
 
@@ -272,7 +275,15 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ZubatNormal,
-            .pal = gObjectEventPal_CrobatShadowsGolbat,
+            .pal = sFieldMugshotPal_Zubat,
+        },
+    },
+    [MUGSHOT_KEVIN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_KevinNormal,
+            .pal = sFieldMugshotPal_Zubat,
         },
     },
     [MUGSHOT_INCENSE] =
