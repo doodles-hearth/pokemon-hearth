@@ -273,6 +273,12 @@ enum BattleInfoLabels
     INFO_ATK_DEF_SWAPPED,
     INFO_FLASH_FIRE,
     INFO_MICLE_BERRY,
+
+    // Custom Hearth Effects
+    INFO_SMOKE,
+    INFO_LEAVES,
+    INFO_DECAY,
+
     INFO_COUNT
 };
 

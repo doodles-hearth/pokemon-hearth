@@ -808,6 +808,24 @@ static const struct BattleInfoEffectData sBattleInfoEffects[INFO_COUNT] =
         COMPOUND_STRING("Micle Berry"),
         COMPOUND_STRING("Boosts the accuracy of the Pokémon's next move by 20%.")
     },
+
+    // Custom Hearth Effects
+    // TODO: [EVA] Add text for battle info
+    [INFO_SMOKE] = 
+    {
+        COMPOUND_STRING("TBA"),
+        COMPOUND_STRING("TBA")
+    },
+    [INFO_LEAVES] = 
+    {
+        COMPOUND_STRING("TBA"),
+        COMPOUND_STRING("TBA")
+    },
+    [INFO_DECAY] = 
+    {
+        COMPOUND_STRING("TBA"),
+        COMPOUND_STRING("TBA")
+    },
 };
 
 static const u8 sBattleInfoHpBarTiles[8 * TILE_SIZE_4BPP] = {0};
@@ -2453,7 +2471,11 @@ static enum BattleInfoLabels GetStatusEffectFromWeather(void)
     case BATTLE_WEATHER_SNOW:          return INFO_SNOW;
     case BATTLE_WEATHER_FOG:           return INFO_FOG;
     case BATTLE_WEATHER_STRONG_WINDS:  return INFO_STRONG_WINDS;
+    case BATTLE_WEATHER_SMOKE:         return INFO_SMOKE;
+    case BATTLE_WEATHER_LEAVES:        return INFO_LEAVES;
+    case BATTLE_WEATHER_DECAY:         return INFO_DECAY;
     case BATTLE_WEATHER_COUNT:         return INFO_NONE;
+        break;
     }
 
     return INFO_NONE;
