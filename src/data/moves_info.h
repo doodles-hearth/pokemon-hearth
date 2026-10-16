@@ -3783,7 +3783,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .description = COMPOUND_STRING(
             "Recovers up to half the\n"
             "user's maximum HP."),
-        .effect = EFFECT_SOFTBOILED,
+        .effect = EFFECT_RESTORE_HP,
         .power = 0,
         .type = TYPE_NORMAL,
         .accuracy = 0,
@@ -3796,6 +3796,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
         .snatchAffected = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_RESTORE_HP,
+            .argument.maxHpFraction = 2,
+        }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_BETTER_IF_FIRST : CONTEST_EFFECT_HIGHLY_APPEALING,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_CUTE : CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = COMBO_STARTER_SOFT_BOILED,
@@ -7788,8 +7792,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_ROLE_PLAY,
-            .self = TRUE, // hack so doodle works correctly
+            .moveEffect = MOVE_EFFECT_OVERWRITE_ABILITY,
+            .self = TRUE,
         }),
         .ignoresProtect = TRUE,
         .ignoresSubstitute = TRUE,
@@ -13781,7 +13785,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_STATUS,
         .zMove = { .effect = Z_EFFECT_SPDEF_UP_1 },
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_ENTRAINMENT,
+            .moveEffect = MOVE_EFFECT_OVERWRITE_ABILITY,
         }),
         .magicCoatAffected = TRUE,
         .contestEffect = CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
@@ -21591,8 +21595,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .mirrorMoveBanned = TRUE,
         .metronomeBanned = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_ROLE_PLAY,
-            .self = TRUE, // hack so doodle works correctly
+            .moveEffect = MOVE_EFFECT_OVERWRITE_ABILITY,
+            .self = TRUE,
             .onSide = TRUE,
         }),
         .battleAnimScript = gBattleAnimMove_Doodle,
@@ -23899,7 +23903,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxBefuddle,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_EFFECT_SPORE_SIDE,
+            .moveEffect = MOVE_EFFECT_RANDOM_FROM_LIST,
+            .argument.randomMoveEffects = { MOVE_EFFECT_PARALYSIS, MOVE_EFFECT_POISON, MOVE_EFFECT_SLEEP },
+            .onSide = TRUE,
         }),
     },
 
@@ -23919,7 +23925,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxVoltCrash,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_PARALYZE_SIDE,
+            .moveEffect = MOVE_EFFECT_PARALYSIS,
+            .onSide = TRUE,
         }),
     },
 
@@ -23939,7 +23946,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxGoldRush,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_CONFUSE_PAY_DAY_SIDE,
+            .moveEffect = MOVE_EFFECT_CONFUSION,
+            .onSide = TRUE,
+        },
+        {
+            .moveEffect = MOVE_EFFECT_PAYDAY,
         }),
     },
 
@@ -23959,8 +23970,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxChiStrike,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_CRIT_PLUS_SIDE,
+            .moveEffect = MOVE_EFFECT_CRIT_PLUS,
             .self = TRUE,
+            .onSide = TRUE,
         }),
     },
 
@@ -23980,7 +23992,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxTerror,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_PREVENT_ESCAPE_SIDE,
+            .moveEffect = MOVE_EFFECT_PREVENT_ESCAPE,
+            .onSide = TRUE,
         }),
     },
 
@@ -24043,7 +24056,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxCuddle,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_INFATUATE_SIDE,
+            .moveEffect = MOVE_EFFECT_ATTRACT,
+            .onSide = TRUE,
         }),
     },
 
@@ -24063,8 +24077,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxReplenish,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_RECYCLE_BERRIES,
+            .moveEffect = MOVE_EFFECT_RECYCLE,
             .self = TRUE,
+            .onSide = TRUE,
+            .chance = 50,
         }),
     },
 
@@ -24084,7 +24100,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxMalodor,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_POISON_SIDE,
+            .moveEffect = MOVE_EFFECT_POISON,
+            .onSide = TRUE,
         }),
     },
 
@@ -24104,7 +24121,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxMeltdown,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_TORMENT_SIDE,
+            .moveEffect = MOVE_EFFECT_TORMENT,
+            .onSide = TRUE,
         }),
     },
 
@@ -24311,7 +24329,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxSandblast,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SANDBLAST_SIDE,
+            .moveEffect = MOVE_EFFECT_SAND_TOMB_SIDE,
         }),
     },
 
@@ -24331,7 +24349,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxStunShock,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_POISON_PARALYZE_SIDE,
+            .moveEffect = MOVE_EFFECT_RANDOM_FROM_LIST,
+            .argument.randomMoveEffects = { MOVE_EFFECT_PARALYSIS, MOVE_EFFECT_POISON, MOVE_EFFECT_NONE },
+            .onSide = TRUE,
         }),
     },
 
@@ -24371,7 +24391,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxSmite,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_CONFUSE_SIDE,
+            .moveEffect = MOVE_EFFECT_CONFUSION,
+            .onSide = TRUE,
         }),
     },
 
@@ -24392,7 +24413,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxSnooze,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_YAWN_FOE,
+            .moveEffect = MOVE_EFFECT_YAWN,
+            .chance = 50,
         }),
     },
 
@@ -24412,8 +24434,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .battleAnimScript = gBattleAnimMove_GMaxFinale,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_HEAL_TEAM,
+            .moveEffect = MOVE_EFFECT_RESTORE_HP_DYNAMAX,
+            .argument.maxHpFraction = 6,
             .self = TRUE,
+            .onSide = TRUE,
         }),
     },
 
