@@ -266,6 +266,7 @@ static bool8 CheckConditions(int selection)
         case MENUITEM_CUSTOM_COUNT:
             return TRUE;
         }
+    [[fallthrough]];
     default:
         switch (selection)
         {

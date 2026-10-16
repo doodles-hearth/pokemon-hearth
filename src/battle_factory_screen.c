@@ -3791,6 +3791,7 @@ static void Swap_PrintActionStrings(void)
     {
     case TRUE:
         Swap_PrintActionString(gText_PkmnForSwap, 0, SWAP_WIN_ACTION_FADE);
+        [[fallthrough]];
     case FALSE:
         Swap_PrintActionString(gText_Cancel3, 24, SWAP_WIN_ACTION_FADE);
         break;
@@ -3805,6 +3806,7 @@ static void Swap_PrintActionStrings2(void)
     {
     case TRUE:
         Swap_PrintActionString(gText_PkmnForSwap, 8, SWAP_WIN_OPTIONS);
+        [[fallthrough]];
     case FALSE:
         Swap_PrintActionString(gText_Cancel3, 32, SWAP_WIN_OPTIONS);
         break;
