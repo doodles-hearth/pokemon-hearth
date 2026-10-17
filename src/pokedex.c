@@ -4552,7 +4552,7 @@ s8 GetSetPokedexFlag(enum NationalDexOrder nationalDexNo, u8 caseID)
         break;
     case FLAG_SET_CAUGHT:
         gSaveBlock1Ptr->dexCaught[index] |= mask;
-        // Catching a mon should also give its name. Intentionally fall through.
+        [[fallthrough]]; // Catching a mon should also give its name.
     case FLAG_SET_NAMED:
         gSaveBlock1Ptr->dexNamed[index] |= mask;
         break;
@@ -5601,7 +5601,8 @@ static void DrawSearchMenuItemBgHighlight(u8 searchBg, bool8 unselected, bool8 d
     case SEARCH_BG_ORDER:
     case SEARCH_BG_MODE:
         SetSearchRectHighlight(highlightFlags, sSearchMenuItems[searchBg - SEARCH_TOPBAR_COUNT].titleBgX, sSearchMenuItems[searchBg - SEARCH_TOPBAR_COUNT].titleBgY, sSearchMenuItems[searchBg - SEARCH_TOPBAR_COUNT].titleBgWidth);
-        // fall through, draw selectionBg for above
+        [[fallthrough]]; 
+    // draw selectionBg for above
     case SEARCH_BG_TYPE_SELECTION_LEFT:
     case SEARCH_BG_TYPE_SELECTION_RIGHT:
         SetSearchRectHighlight(highlightFlags, sSearchMenuItems[searchBg - SEARCH_TOPBAR_COUNT].selectionBgX, sSearchMenuItems[searchBg - SEARCH_TOPBAR_COUNT].selectionBgY, sSearchMenuItems[searchBg - SEARCH_TOPBAR_COUNT].selectionBgWidth);

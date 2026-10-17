@@ -244,6 +244,7 @@ void CB2_InitOptionMenu(void)
         PutWindowTilemap(WIN_OPTIONS);
         DrawOptionMenuTexts();
         gMain.state++;
+        [[fallthrough]];
     case 9:
         DrawBgWindowFrames();
         gMain.state++;
