@@ -1457,6 +1457,15 @@ static void HandleSetEffectWeather(struct BattleCalcValues *cv, struct SetEffect
     case MOVE_EFFECT_SNOW:
         weather = BATTLE_WEATHER_SNOW;
         break;
+    case MOVE_EFFECT_SMOKE:
+        weather = BATTLE_WEATHER_SMOKE;
+        break;
+    case MOVE_EFFECT_LEAVES:
+        weather = BATTLE_WEATHER_LEAVES;
+        break;
+    case MOVE_EFFECT_DECAY:
+        weather = BATTLE_WEATHER_DECAY;
+        break;
     default:
         break;
     }
@@ -4331,6 +4340,9 @@ static void (*const sSetEffectHandlers[])(struct BattleCalcValues *cv, struct Se
     [MOVE_EFFECT_SANDSTORM] = HandleSetEffectWeather,
     [MOVE_EFFECT_HAIL] = HandleSetEffectWeather,
     [MOVE_EFFECT_SNOW] = HandleSetEffectWeather,
+    [MOVE_EFFECT_SMOKE] = HandleSetEffectWeather,
+    [MOVE_EFFECT_LEAVES] = HandleSetEffectWeather,
+    [MOVE_EFFECT_DECAY] = HandleSetEffectWeather,
     [MOVE_EFFECT_MISTY_TERRAIN] = HandleSetEffectTerrain,
     [MOVE_EFFECT_GRASSY_TERRAIN] = HandleSetEffectTerrain,
     [MOVE_EFFECT_ELECTRIC_TERRAIN] = HandleSetEffectTerrain,
@@ -4451,6 +4463,9 @@ static inline bool32 IgnoreTargetingForMoveEffect(enum MoveEffect moveEffect) //
     case MOVE_EFFECT_RAIN:
     case MOVE_EFFECT_SANDSTORM:
     case MOVE_EFFECT_HAIL:
+    case MOVE_EFFECT_SMOKE:
+    case MOVE_EFFECT_LEAVES:
+    case MOVE_EFFECT_DECAY:
     case MOVE_EFFECT_MISTY_TERRAIN:
     case MOVE_EFFECT_GRASSY_TERRAIN:
     case MOVE_EFFECT_ELECTRIC_TERRAIN:
