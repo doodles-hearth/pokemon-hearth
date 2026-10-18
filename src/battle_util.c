@@ -5377,7 +5377,7 @@ u32 IsAbilityPreventingEscape(enum BattlerId battler)
     return 0;
 }
 
-bool32 CanBattlerEscape(enum BattlerId battler) // no ability check
+bool32 CanBattlerEscape(enum BattlerId battler)
 {
     enum Ability ability = GetBattlerAbility(battler);
     if (gBattleStruct->battlerState[battler].commanderSpecies != SPECIES_NONE)
@@ -5387,6 +5387,8 @@ bool32 CanBattlerEscape(enum BattlerId battler) // no ability check
     else if (GetConfig(B_RUN_AWAY) >= GEN_CHAMPIONS && ability == ABILITY_RUN_AWAY)
         return TRUE;
     else if (gBattleMons[battler].volatiles.escapePrevention)
+        return FALSE;
+    else if (IsBattlerJawLocked(battler))
         return FALSE;
     else if (gBattleMons[battler].volatiles.wrapped)
         return FALSE;
@@ -11811,4 +11813,18 @@ bool32 IsWholeSideAlive(enum BattlerId sideBattler)
             return FALSE;
     }
     return TRUE;
+}
+
+bool32 IsBattlerJawLocked(enum BattlerId battler)
+{
+    if (gBattleMons[battler].volatiles.jawLock != 0)
+        return TRUE;
+
+    for (enum BattlerId lockedWithBattler = 0; lockedWithBattler < gBattlersCount; lockedWithBattler++)
+    {
+        if (gBattleMons[lockedWithBattler].volatiles.jawLock & 1u << battler)
+            return TRUE;
+    }
+
+    return FALSE;
 }
