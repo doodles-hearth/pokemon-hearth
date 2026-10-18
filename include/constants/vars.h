@@ -160,6 +160,7 @@
     // 5: Xiao Huo is now following you inside Wailord
     // 6: Beat Crobat Shadows
     // 7: Got badge
+    // 8: Got Surf as a reward
 */
 #define VAR_WAILORD_QUEST_STATE                          0x405F
 #define VAR_ROUTE101_STATE                               0x4060

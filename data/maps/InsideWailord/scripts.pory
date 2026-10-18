@@ -146,7 +146,7 @@ script InsideWailord_EventScript_NeedSurf {
     setnamedmon(SPECIES_SLAKING)
     applymovement(LOCALID_WAIL_ADMIN, moves(walk_in_place_fast_up))
     msgboxcontig(
-        "{SPEAKER NAME_GOLBAT_ADMIN}I can't believe this thing ate our\nraft…"
+        "{CREATE_MUGSHOT MUGSHOT_GOLBAT_F 0}{SPEAKER NAME_GOLBAT_ADMIN}I can't believe this thing ate our\nraft…"
     )
     applymovement(LOCALID_WAIL_GRUNT2, moves(walk_in_place_fast_left))
     msgboxcontig(
@@ -175,7 +175,7 @@ script InsideWailord_EventScript_NeedSurf {
     applymovement(LOCALID_WAIL_ADMIN, moves(jump_in_place_down))
     waitmovementall
     msgboxcontig(
-        "{SPEAKER NAME_GOLBAT_ADMIN}Oh goshawott boss, it's the kid that\nblew up our ol' hideout in Yifu City!"
+        "{CREATE_MUGSHOT MUGSHOT_GOLBAT_F 0}{SPEAKER NAME_GOLBAT_ADMIN}Oh goshawott boss, it's the kid that\nblew up our ol' hideout in Yifu City!"
     )
 
     waitse

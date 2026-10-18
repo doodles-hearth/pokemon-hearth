@@ -799,9 +799,8 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_SAMURAI, moves(face_down))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(face_down))
 	waitmovement(LOCALID_GOLBAT_LEFT)
-	setspeaker(SP_NAME_GOLBAT_ADMIN)
 	msgbox((
-		"Prepare to be crushed!"
+		"{CREATE_MUGSHOT MUGSHOT_GOLBAT_M 0}{SPEAKER NAME_GOLBAT_ADMIN}Prepare to be crushed!"
 	))
 	setweather(WEATHER_NONE)
 	closemessage
@@ -844,18 +843,16 @@ script CrobatHideout_1F_LetsFight2v2 {
 			playse(SE_LEDGE)
 			applymovement(LOCALID_GOLBAT_RIGHT, moves(jump_in_place_left))
 			waitmovement(0)
-			setspeaker(SP_NAME_GOLBAT_ADMIN)
 			msgbox((
-				"Ya dumball, ya made us lose!"
+				"{CREATE_MUGSHOT MUGSHOT_GOLBAT_F 0}{SPEAKER NAME_GOLBAT_ADMIN}Ya dumball, ya made us lose!"
 			))
 			closemessage
 
 			playse(SE_LEDGE)
 			applymovement(LOCALID_GOLBAT_LEFT, moves(jump_in_place_right))
 			waitmovement(0)
-			setspeaker(SP_NAME_GOLBAT_ADMIN)
 			msgbox((
-				"Naw I didn't! 'Twas yer fault!"
+				"{CREATE_MUGSHOT MUGSHOT_GOLBAT_M 0}{SPEAKER NAME_GOLBAT_ADMIN}Naw I didn't! 'Twas yer fault!"
 			))
 			closemessage
 
@@ -863,9 +860,8 @@ script CrobatHideout_1F_LetsFight2v2 {
 			applymovement(LOCALID_GOLBAT_LEFT, moves(walk_in_place_fast_up, delay_16 * 2, walk_in_place_fast_right, delay_16))
 			waitmovement(0)
 
-			setspeaker(SP_NAME_GOLBAT_ADMIN)
 			msgbox((
-				"Nevermind that! Let's scram!"
+				"{CREATE_MUGSHOT MUGSHOT_GOLBAT_M 0}{SPEAKER NAME_GOLBAT_ADMIN}Nevermind that! Let's scram!"
 			))
 			closemessage
 
