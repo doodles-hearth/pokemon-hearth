@@ -112,7 +112,7 @@
     #define EVENING_HOUR_END         22
 
     #define NIGHTTIME_HOUR_BEGIN     22
-    #define NIGHTTIME_HOUR_END       0
+    #define NIGHTTIME_HOUR_END       24
 #endif
 
 // TIMES_OF_DAY_COUNT must be last or things will break
