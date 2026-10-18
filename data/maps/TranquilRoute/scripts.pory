@@ -485,7 +485,7 @@ script TranquilRoute_EventScript_CrobatShadows_Cutscene {
 
 	setspeaker("Shady man")
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Alright boys, let's move."
+		"{CREATE_MUGSHOT MUGSHOT_GOLBAT_M 0}Alright boys, let's move."
 	))
 	closemessage
 
@@ -554,9 +554,9 @@ script TranquilRoute_EventScript_TravellingMerchantFirstTime {
 		"…Oh, sorry, we haven't met, have we?\nI'm not good with faces…\p"
 		"{SPEAKER NAME_OKADA}I'm Okada, the traveling merchant!\nI travel through all of Toku on foot,\lselling useful goods and rare finds!\p"
 		"I'm sold out on, well, pretty much\neverything right now…\p"
-		"But you're definitely going to see me\naround!\p"
+		"But you're definitely going to see me\naround!\l"
 		"What's your name?…\p{PLAYER}?\nNice to meet you, {PLAYER}!\p"
-		"I see; so you're a young Wielder, eh?\nMaybe we can even have a friendly\lbattle sometime!\p"
+		"So you're a young Wielder, eh?\nMaybe we can even have a friendly\lbattle sometime!\p"
 		"Now if you'll excuse me, I'm running\nlate! See you around, {PLAYER}!"
 	)
 	closemessage

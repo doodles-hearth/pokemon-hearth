@@ -104,18 +104,19 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	setspeaker(SP_NAME_NATSUKI)
 	//Pokemon buddies line should be a more starry-eyed Natsuki mugshot
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I saw several New Moon Samurai patrolling near Chii Town!\n"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I saw several New Moon Samurai\npatrolling near Chii Town!\l"
 		"They look SO cool in-person!\p"
-		"Their swords… Their helmets…\p"
-		"Their armor…\p"
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Their little Axew and Oshawott buddies…!!"
+		"Their swords… Their helmets…\nTheir armor…\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Their little Jangmo-o and Oshawott\nbuddies…!"
 	))
+	setnamedmon(SPECIES_JANGMO_O)
+	setnamedmon(SPECIES_OSHAWOTT)
 	playse(SE_PIN)
 	applymovement(LOCALID_RIVAL, moves(emote_heart))
-	msgbox(format(
-		"{PLAYER}, have YOU caught any cool Pokémon yet?\p"
-		"Oh, me?\nBoy, I'm so glad you asked!\p"
+	msgbox((
+		"{PLAYER}, have YOU caught any cool\nPokémon yet?\p"
+		"Oh, me?\nBoy, I'm so glad you asked!\l"
 		"Check these bad babies out!"
 	))
 
@@ -133,18 +134,20 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_pensive))
 	setspeaker(SP_NAME_NATSUKI)
 	//starry-eyed Natsuki mugshot again at the start
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}PAWNIARD'S SO COOL RIGHT!?!?!?\p"
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I found this lil' guy in the forest\nsurrounded by a pack of Kotora.\p"
 		"Poor thing must've been separated\nfrom his brigade…\p"
-		"I was gonna release him once he\nwas back at full strength, but I\lthink he likes traveling with me too much!"
-		"Are you doing the Dojo challenge?\nI heard Kura Town's Master is on a short trip.\p"
-		"The next Dojo after hers is in Maguro Harbor.\n"
+		"I was gonna release him once he\nwas back at full strength, but I\lthink he likes me too much!"
+		"Are you doing the Dojo challenge?\nKura Town's Master's not in right now.\p"
+		"The next Dojo after hers is in Maguro\nHarbor.\n"
 		"That's so{PAUSE 2}o{PAUSE 2}o{PAUSE 2}o{PAUSE 2}o fa{PAUSE 2}a{PAUSE 2}a{PAUSE 2}a{PAUSE 2}ar…\p"
 		"… {PAUSE 20}… {PAUSE 20}…{PAUSE 20}\p"
-		"…{PAUSE 20}Race you to the dojo!\p"
+		"…{PAUSE 20}Race you to the Dojo!\p"
 		"See ya later, Feraligatr!"
 	))
+	setnamedmon(SPECIES_PAWNIARD)
+	setnamedmon(SPECIES_KOTORA)
 
 	mcdialogue(
 		"In a while, Totodile?",

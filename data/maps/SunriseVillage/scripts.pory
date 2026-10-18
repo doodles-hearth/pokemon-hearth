@@ -41,18 +41,18 @@ script SunriseVillage_Event_FatGuy {
     setspeaker(SP_NAME_NEIGHBOR)
     if (var(VAR_SUNRISE_VILLAGE_INTRO_STATE) >= 4) {
         applymovement(VAR_LAST_TALKED, moves(emote_heart))
+        waitse
         playse(SE_PIN)
-        msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY 0}My new Pokémon is so cute, I don't feel like leaving it in its Pokéball!"
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY 0}My new Pokémon is so cute, I don't\nfeel like leaving it in its Poké Ball!"
         ))
         closemessage
         waitmovement(VAR_LAST_TALKED)
         applymovement(LOCALID_FATGUY, Common_Movement_FaceOriginalDirection)
     }
     else {
-        msgbox(format(
-            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY 0}Someone managed to fit entire Pokémon"
-            "inside these tiny balls.\p"
+        msgbox((
+            "{CREATE_MUGSHOT MUGSHOT_SUNRISE_FAT_GUY 0}Someone managed to fit entire\nPokémoninside these tiny balls.\p"
             "The power of science is staggering!"
         ))
         closemessage
@@ -63,7 +63,7 @@ script SunriseVillage_Event_FatGuy {
 
 script SunriseVillage_Event_BigSisMap_Wait {
     setspeaker("???")
-    msgbox(format(
+    msgbox((
         "{PLAYER}, wait!"
     ))
     closemessage
@@ -143,7 +143,7 @@ script SunriseVillage_Event_BigSisMap_GiveMap {
     )
    
     playse(SE_PIN)
-    applymovement(LOCALID_PLAYER, moves(emote_pensive))
+    applymovement(LOCALID_BIGSIS_MAP, moves(emote_pensive))
     bufferlivemonnickname(STR_VAR_2)
     //setspeaker(SP_NAME_BIG_SIS)
     message(
@@ -204,8 +204,6 @@ script SunriseVillage_Event_GuardForest {
         }
     }
     else {
-        playse(SE_PIN)
-        waitse
         setspeaker(SP_NAME_NEIGHBOR)
         msgbox(
         "{CREATE_MUGSHOT MUGSHOT_SUNRISE_MAN_2 0}Stop right there, kid!"
@@ -216,6 +214,8 @@ script SunriseVillage_Event_GuardForest {
         } else {
         turnobject(OBJ_EVENT_ID_PLAYER, DIR_EAST)
         }
+        playse(SE_PIN)
+        waitse
         applymovement(LOCALID_PLAYER, moves(emote_exclamation_mark))
         waitmovement(0)
         delay(60)
@@ -266,6 +266,8 @@ script SunriseVillage_Event_GuardForest_Interact {
 script SunriseVillage_Event_LittleGirl {
     lock
     faceplayer
+    waitse
+    playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_happy))
     setspeaker(SP_NAME_LITTLE_GIRL)
     msgbox(
@@ -316,6 +318,7 @@ script SunriseVillage_Event_Woman {
 script SunriseVillage_Event_Farmer {
     lock
     faceplayer
+    waitse
     playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_upset))
     setspeaker(SP_NAME_NEIGHBOR)
@@ -341,6 +344,7 @@ script SunriseVillage_Event_OldMan {
 script SunriseVillage_Event_OldWoman {
     lock
     faceplayer
+    waitse
     playse(SE_PIN)
     applymovement(VAR_LAST_TALKED, moves(emote_angry))
     setspeaker(SP_NAME_NEIGHBOR)

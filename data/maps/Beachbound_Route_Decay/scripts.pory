@@ -224,7 +224,7 @@ script BeachboundRoute_Decay_EventScript_BeanDialogue {
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(walk_in_place_fast_down))
 	waitmovement(LOCALID_BEACHBOUND_DECAY_NATSUKI)
 
-	playse(SE_PIN)
+	playse(SE_M_LICK)
 	applymovement(LOCALID_BEACHBOUND_DECAY_NATSUKI, moves(emote_sweat))
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox(format(

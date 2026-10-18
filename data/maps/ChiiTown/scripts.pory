@@ -221,8 +221,8 @@ script ChiiTown_EventScript_BattlingGirl {
 		
 		special(GetPlayerMrMrsString)
 		setspeaker(SP_NAME_LITTLE_GIRL)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Hey {STR_VAR_1}! We've been studying Pokémon battles in class. Wanna fight with us?"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Hey {STR_VAR_1}! We've been studying\nPokémon battles in class.\lWanna battle us?"
 		))
 		mcdialogueB(
 			"Sure!",
@@ -283,8 +283,8 @@ script ChiiTown_EventScript_BattlingBoy {
 		
 		special(GetPlayerMrMrsString)
 		setspeaker(SP_NAME_LITTLE_BOY)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Hello {STR_VAR_1}! We're top of our class! That means we're strong!\lWanna battle us?"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Hello {STR_VAR_1}! We're top of our class!\nThat means we're strong!\lWanna battle us?"
 		))
 		mcdialogue(
 			"Sure!",
@@ -297,14 +297,15 @@ script ChiiTown_EventScript_BattlingBoy {
 				TRAINER_MINORI,
 				format("Whaaaat?!"),
 				TRAINER_KAITO,
-				format("Well I never learned about THAT!")
+				format("Well I never learned about THAT!"),
+				
 			)
 			setflag(FLAG_BEAT_CHII_TOWN_KIDS)
 
 			special(GetPlayerMrMrsString)
 			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			setspeaker(SP_NAME_LITTLE_BOY)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Wow, {STR_VAR_1}! Can you be our sensei?\p"
 				"That way, Destroyer will be invincible!"
 			))
