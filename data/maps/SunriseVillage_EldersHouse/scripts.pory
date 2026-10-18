@@ -430,7 +430,7 @@ script SunriseVillage_EldersHouse_Event_Common_Pokeball_Starter {
 		"Explore Toku and fill its pages with\nyour findings!\p"
 		"Start by going all the way to rocky\nSilveridge, north of here.\p"
 		"Their Elder has been researching why\nthe Pokémon are acting like this.\lIt would benefit you to speak to him.\p"
-		"I also have a letter that I need to be\nsure gets to him. Not just by Chatot.\pHere; deliver this to him."
+		"I also have a letter that I need to be\nsure gets to him. Not just by Chatot!\pHere, deliver this to him."
 	)
 	waitmessage
 	closemessage
