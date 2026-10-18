@@ -1769,69 +1769,82 @@ void UpdateTimeOfDay(bool32 updateBlend)
     hours = sHoursOverride ? sHoursOverride : gLocalTime.hours;
     minutes = sHoursOverride ? 0 : gLocalTime.minutes;
 
-// TODO: [MIRIAM] Investigate if this breaks DNS
-    if (IsBetweenHours(hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END)) // night->morning
+    if (IsBetweenHours(hours, DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END)) // dead night-> night
+    {
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_NIGHT];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
+        }
+        gTimeOfDay = TIME_DEAD_NIGHT;
+    }
+    else if (IsBetweenHours(hours, EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END)) // early morning-> morning
     {
         if (updateBlend)
         {
             gTimeBlend.startBlend = gTimeOfDayBlend[TIME_NIGHT];
             gTimeBlend.endBlend = gTimeOfDayBlend[TIME_MORNING];
-            gTimeBlend.weight = TIME_BLEND_WEIGHT(DEAD_NIGHT_HOUR_BEGIN, DEAD_NIGHT_HOUR_END);
-            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2;
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
         }
-        gTimeOfDay = TIME_MORNING;
+        gTimeOfDay = TIME_EARLY_MORNING;
     }
-    else if (IsBetweenHours(hours, EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END)) // morning->dayy
+    else if (IsBetweenHours(hours, MORNING_HOUR_BEGIN, MORNING_HOUR_END)) // morning-> lunchtime
     {
         if (updateBlend)
         {
             gTimeBlend.startBlend = gTimeOfDayBlend[TIME_MORNING];
             gTimeBlend.endBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
-            gTimeBlend.weight = TIME_BLEND_WEIGHT(EARLY_MORNING_HOUR_BEGIN, EARLY_MORNING_HOUR_END);
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(MORNING_HOUR_BEGIN, MORNING_HOUR_END);
             gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
         }
         gTimeOfDay = TIME_MORNING;
     }
-    else if (IsBetweenHours(hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END)) // evening
+    else if (IsBetweenHours(hours, LUNCHTIME_HOUR_BEGIN, LUNCHTIME_HOUR_END)) // lunchtime-> afternoon
+    {
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(LUNCHTIME_HOUR_BEGIN, LUNCHTIME_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
+        }
+        gTimeOfDay = TIME_LUNCHTIME;
+    }
+    else if (IsBetweenHours(hours, AFTERNOON_HOUR_BEGIN, AFTERNOON_HOUR_END)) // afternoon -> evening
+    {
+        if (updateBlend)
+        {
+            gTimeBlend.startBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
+            gTimeBlend.endBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(AFTERNOON_HOUR_BEGIN, AFTERNOON_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
+        }
+        gTimeOfDay = TIME_AFTERNOON;
+    }
+    else if (IsBetweenHours(hours, EVENING_HOUR_BEGIN, EVENING_HOUR_END)) // morning-> lunchtime
     {
         if (updateBlend)
         {
             gTimeBlend.startBlend = gTimeOfDayBlend[TIME_LUNCHTIME];
             gTimeBlend.endBlend = gTimeOfDayBlend[TIME_EVENING];
             gTimeBlend.weight = TIME_BLEND_WEIGHT(EVENING_HOUR_BEGIN, EVENING_HOUR_END);
-            gTimeBlend.altWeight = gTimeBlend.weight / 2 + (DEFAULT_WEIGHT / 2);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
         }
         gTimeOfDay = TIME_EVENING;
     }
-    else if (IsBetweenHours(hours, NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1)) // evening->night
+    else if (IsBetweenHours(hours, NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_END)) // night-> deadnight
     {
         if (updateBlend)
         {
             gTimeBlend.startBlend = gTimeOfDayBlend[TIME_EVENING];
             gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
-            gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_BEGIN + 1);
-            gTimeBlend.altWeight = gTimeBlend.weight / 2;
+            gTimeBlend.weight = TIME_BLEND_WEIGHT(NIGHTTIME_HOUR_BEGIN, NIGHTTIME_HOUR_END);
+            gTimeBlend.altWeight = (DEFAULT_WEIGHT - gTimeBlend.weight) / 2 + (DEFAULT_WEIGHT / 2);
         }
         gTimeOfDay = TIME_NIGHT;
-    }
-    else if (IsBetweenHours(hours, NIGHTTIME_HOUR_BEGIN, DEAD_NIGHT_HOUR_END)) // night
-    {
-        if (updateBlend)
-        {
-            gTimeBlend.weight = DEFAULT_WEIGHT;
-            gTimeBlend.altWeight = 0;
-            gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend[TIME_NIGHT];
-        }
-        gTimeOfDay = TIME_NIGHT;
-    }
-    else // day
-    {
-        if (updateBlend)
-        {
-            gTimeBlend.weight = gTimeBlend.altWeight = DEFAULT_WEIGHT;
-            gTimeBlend.startBlend = gTimeBlend.endBlend = gTimeOfDayBlend [TIME_LUNCHTIME];
-        }
-        gTimeOfDay = TIME_LUNCHTIME;
     }
 }
 
