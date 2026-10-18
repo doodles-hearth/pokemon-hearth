@@ -1119,6 +1119,7 @@ static void ForEachCB_PopulateItemIcons(u32 idx, u32 col, u32 row)
                 sShopData->gridItems->iconSpriteIds[idx] = AddDecorationIconObject(sMartInfo.itemList[i], x, y, 2, GFXTAG_ITEM + idx, PALTAG_ITEM + idx);
             }
         }
+        [[fallthrough]];
         default:
         {
             if (sMartInfo.itemList[i] == ITEM_NONE)

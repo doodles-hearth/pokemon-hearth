@@ -4270,7 +4270,7 @@ static void Task_MoveDeoxysRock(u8 taskId)
         tVelocityX = SAFE_DIV(tTargetX * 16 - tCurX, tMoveSteps);
         tVelocityY = SAFE_DIV(tTargetY * 16 - tCurY, tMoveSteps);
         tState++;
-        // fallthrough
+        [[fallthrough]];
     case 1:
         if (tMoveSteps != 0)
         {

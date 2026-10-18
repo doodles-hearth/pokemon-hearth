@@ -291,7 +291,7 @@ static bool8 PrologueScreen_InitBgs(void)
     ResetBgsAndClearDma3BusyFlags(0);
     InitBgsFromTemplates(0, sPrologueScreenBgTemplates, NELEMS(sPrologueScreenBgTemplates));
 
-    ScheduleBgCopyTilemapToVram(1);
+    ScheduleBgCopyTilemapToVram(0);
 
     ShowBg(0);
     ShowBg(1);
@@ -325,6 +325,7 @@ static bool8 PrologueScreen_LoadGraphics(void)
     case 2:
         Menu_LoadStdPalAt(BG_PLTT_ID(15));
         sPrologueScreenState->loadState++;
+        [[fallthrough]];
     default:
         sPrologueScreenState->loadState = 0;
         return TRUE;
