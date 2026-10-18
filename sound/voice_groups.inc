@@ -213,4 +213,3 @@
 .include "sound/voicegroups/snow.inc"
 .include "sound/voicegroups/hanabi.inc"
 .include "sound/voicegroups/epic_route.inc"
-.include "sound/voicegroups/mus_soulkeep.inc"

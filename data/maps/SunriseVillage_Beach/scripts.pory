@@ -194,7 +194,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, look.\p"
-				"You can see Yifu City and the Shogunate\nover the horizon today.\pIsn't it incredible?"
+				"You can see Yifu City and the Palace\nover the horizon today.\pIsn't it incredible?"
 			)
 			closemessage
 			playse(SE_PIN)
@@ -236,7 +236,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Hey, look.\p"
-				"You can see Yifu City and the Shogunate\nover the horizon today."
+				"You can see Yifu City and the Palace\nover the horizon today."
 			)
 			turnobject(LOCALID_PLAYER, DIR_WEST)
 			msgbox("Isn't it incredible?") //Not sure why nametag is redrawn here, would be nice if it wasnt

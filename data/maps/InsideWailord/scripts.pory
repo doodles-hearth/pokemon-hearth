@@ -104,9 +104,7 @@ script InsideWailord_EventScript_NeedSurf {
     waitse
     waitmovement(LOCALID_WAIL_DRAMPA)
 
-    playmoncry(SPECIES_DRAMPA, CRY_MODE_NORMAL)
-    applymovement(LOCALID_WAIL_DRAMPA, moves(shake_horizontal))
-    waitmovementall
+    showfieldmovemon(SPECIES_DRAMPA)
 
     delay(24)
 
@@ -148,7 +146,7 @@ script InsideWailord_EventScript_NeedSurf {
     setnamedmon(SPECIES_SLAKING)
     applymovement(LOCALID_WAIL_ADMIN, moves(walk_in_place_fast_up))
     msgboxcontig(
-        "{SPEAKER NAME_GOLBAT_ADMIN}I can't believe this thing ate our\nraft…"
+        "{CREATE_MUGSHOT MUGSHOT_GOLBAT_F 0}{SPEAKER NAME_GOLBAT_ADMIN}I can't believe this thing ate our\nraft…"
     )
     applymovement(LOCALID_WAIL_GRUNT2, moves(walk_in_place_fast_left))
     msgboxcontig(
@@ -156,7 +154,7 @@ script InsideWailord_EventScript_NeedSurf {
     )
     applymovement(LOCALID_WAIL_KEVIN, moves(shake_horizontal))
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_KEVIN}Ah, I'm sorry, guys…"
+        "{CREATE_MUGSHOT MUGSHOT_KEVIN 0}{SPEAKER NAME_KEVIN}Ah, I'm sorry, guys…"
     )
     closemessage
 
@@ -177,7 +175,7 @@ script InsideWailord_EventScript_NeedSurf {
     applymovement(LOCALID_WAIL_ADMIN, moves(jump_in_place_down))
     waitmovementall
     msgboxcontig(
-        "{SPEAKER NAME_GOLBAT_ADMIN}Oh goshawott boss, it's the kid that\nblew up our ol' hideout in Yifu City!"
+        "{CREATE_MUGSHOT MUGSHOT_GOLBAT_F 0}{SPEAKER NAME_GOLBAT_ADMIN}Oh goshawott boss, it's the kid that\nblew up our ol' hideout in Yifu City!"
     )
 
     waitse
@@ -230,7 +228,7 @@ script InsideWailord_EventScript_NeedSurf {
     delay(16)
     applymovement(LOCALID_WAIL_KEVIN, moves(walk_in_place_fast_right))
     msgbox(
-        "{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_KEVIN}Boss, maybe they could help us git\noutta here, actually?"
+        "{CREATE_MUGSHOT MUGSHOT_KEVIN 0}{SPEAKER NAME_KEVIN}Boss, maybe they could help us git\noutta here, actually?"
     )
     closemessage
     waitmovementall

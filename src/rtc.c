@@ -506,7 +506,7 @@ void TrySetSoulkeepAmbiance(void)
     }
     else
     {
-        soulkeepMusic = MUS_RG_SEVII_67;
+        soulkeepMusic = MUS_SOULKEEP;
     }
     Overworld_SetSavedMusic(soulkeepMusic);
     PlayNewMapMusic(soulkeepMusic);

@@ -14,7 +14,7 @@ mapscripts SeaTurfRoute_MapScripts {
         if (var(VAR_WAILORD_QUEST_STATE) != 6) {
             setflag(FLAG_HIDE_CROBATS_AND_CO)
         }
-        if (var(VAR_WAILORD_QUEST_STATE) == 7) {
+        if (var(VAR_WAILORD_QUEST_STATE) == 8) {
             setflag(FLAG_HIDE_XIAO_HUO_MOM)
         }
     }
@@ -88,7 +88,7 @@ script SeaTurfRoute_EventScript_EscapingWailord {
     applymovement(LOCALID_SEATURF_KEVIN, moves(face_right))
 
     msgbox(
-        "{SPEAKER NAME_GOLBAT_ADMIN}Yessir!\nZubat… ALIGN!"
+        "{CREATE_MUGSHOT MUGSHOT_GOLBAT_F 0}{SPEAKER NAME_GOLBAT_ADMIN}Yessir!\nZubat… ALIGN!"
     )
     closemessage
 
@@ -446,6 +446,7 @@ script SeaTurfRoute_EventScript_XiaoHuoMom {
             waitmovementall
             removeobject(LOCALID_XIAO_HUO_MOM_SEATURF)
             setflag(FLAG_HIDE_XIAO_HUO_MOM)
+            setvar(VAR_WAILORD_QUEST_STATE, 8)
         }
     } else {
         waitse

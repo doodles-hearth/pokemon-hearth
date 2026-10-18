@@ -22,6 +22,15 @@ static const u32 sFieldMugshotGfx_MasamuneNormal[] = INCGFX_U32("graphics/field_
 static const u32 sFieldMugshotGfx_CrobatNormal[] = INCGFX_U32("graphics/field_mugshots/crobat/normal.png", ".4bpp.smol");
 
 static const u32 sFieldMugshotGfx_ZubatNormal[] = INCGFX_U32("graphics/field_mugshots/zubat/normal.png", ".4bpp.smol");
+static const u16 sFieldMugshotPal_Zubat[] = INCGFX_U16("graphics/field_mugshots/zubat/normal.png", ".gbapal");
+
+static const u32 sFieldMugshotGfx_ZubatFNormal[] = INCGFX_U32("graphics/field_mugshots/zubat_f/normal.png", ".4bpp.smol");
+
+static const u32 sFieldMugshotGfx_GolbatMNormal[] = INCGFX_U32("graphics/field_mugshots/golbat_m/normal.png", ".4bpp.smol");
+
+static const u32 sFieldMugshotGfx_GolbatFNormal[] = INCGFX_U32("graphics/field_mugshots/golbat_f/normal.png", ".4bpp.smol");
+
+static const u32 sFieldMugshotGfx_KevinNormal[] = INCGFX_U32("graphics/field_mugshots/kevin/normal.png", ".4bpp.smol");
 
 static const u32 sFieldMugshotGfx_ClerkNormal[] = INCGFX_U32("graphics/field_mugshots/clerk/normal.png", ".4bpp.smol");
 
@@ -272,6 +281,38 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         [EMOTE_NORMAL] =
         {
             .gfx = sFieldMugshotGfx_ZubatNormal,
+            .pal = sFieldMugshotPal_Zubat,
+        },
+    },
+    [MUGSHOT_ZUBAT_F] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ZubatFNormal,
+            .pal = sFieldMugshotPal_Zubat,
+        },
+    },
+    [MUGSHOT_KEVIN] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_KevinNormal,
+            .pal = sFieldMugshotPal_Zubat,
+        },
+    },
+    [MUGSHOT_GOLBAT_M] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_GolbatMNormal,
+            .pal = gObjectEventPal_CrobatShadowsGolbat,
+        },
+    },
+    [MUGSHOT_GOLBAT_F] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_GolbatFNormal,
             .pal = gObjectEventPal_CrobatShadowsGolbat,
         },
     },
