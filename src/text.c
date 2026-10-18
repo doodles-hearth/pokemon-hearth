@@ -1568,21 +1568,21 @@ static u16 RenderText(struct TextPrinter *textPrinter)
 
                     return RENDER_REPEAT;
                 }
-            }
             case EXT_CTRL_CODE_CREATE_MUGSHOT:
-            {
-                u32 id, emote;
-                id = *textPrinter->printerTemplate.currentChar;
-                textPrinter->printerTemplate.currentChar++;
-                emote = *textPrinter->printerTemplate.currentChar;
-                textPrinter->printerTemplate.currentChar++;
-                _CreateFieldMugshot(id, emote);
-                if (IsFieldMugshotActive())
                 {
-                    gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
-                }
+                    u32 id, emote;
+                    id = *textPrinter->printerTemplate.currentChar;
+                    textPrinter->printerTemplate.currentChar++;
+                    emote = *textPrinter->printerTemplate.currentChar;
+                    textPrinter->printerTemplate.currentChar++;
+                    _CreateFieldMugshot(id, emote);
+                    if (IsFieldMugshotActive())
+                    {
+                        gSprites[GetFieldMugshotSpriteId()].data[0] = TRUE;
+                    }
 
-                return RENDER_REPEAT;
+                    return RENDER_REPEAT;
+                }
             }
             break;
         case CHAR_PROMPT_CLEAR:
@@ -1917,6 +1917,7 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             default:
                 return 0;
             }
+            [[fallthrough]];
         case CHAR_DYNAMIC:
             if (bufferPointer == NULL)
                 bufferPointer = DynamicPlaceholderTextUtil_GetPlaceholderPtr(*++str);
@@ -1944,9 +1945,11 @@ s32 GetStringWidth(u8 fontId, const u8 *str, s16 letterSpacing)
             case EXT_CTRL_CODE_COLOR_HIGHLIGHT_SHADOW:
             case EXT_CTRL_CODE_TEXT_COLORS:
                 ++str;
+                [[fallthrough]];
             case EXT_CTRL_CODE_PLAY_BGM:
             case EXT_CTRL_CODE_PLAY_SE:
                 ++str;
+                [[fallthrough]];
             case EXT_CTRL_CODE_BACKGROUND:
             case EXT_CTRL_CODE_COLOR:
             case EXT_CTRL_CODE_SHADOW:
@@ -2131,6 +2134,7 @@ u8 RenderTextHandleBold(u8 *pixels, u8 fontId, u8 *str)
             case EXT_CTRL_CODE_PLAY_BGM:
             case EXT_CTRL_CODE_PLAY_SE:
                 ++strPos;
+                [[fallthrough]];
             case EXT_CTRL_CODE_PALETTE:
             case EXT_CTRL_CODE_PAUSE:
             case EXT_CTRL_CODE_ESCAPE:

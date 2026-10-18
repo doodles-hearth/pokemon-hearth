@@ -921,6 +921,7 @@ static bool8 Hmm_LoadGraphics(void)
             LoadPalette(HmmScrollingBgPalette, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
             LoadPalette(HmmMsgboxPal, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
             sHmmMemory->state.loadState++;
+            [[fallthrough]];
         default:
             sHmmMemory->state.loadState = 0;
             return TRUE;

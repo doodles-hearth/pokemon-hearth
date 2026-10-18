@@ -333,6 +333,7 @@ static bool8 PrecheckScreen_LoadGraphics(void)
     case 2:
         Menu_LoadStdPalAt(BG_PLTT_ID(15));
         sPrecheckScreenState->loadState++;
+        [[fallthrough]];
     default:
         sPrecheckScreenState->loadState = 0;
         return TRUE;
