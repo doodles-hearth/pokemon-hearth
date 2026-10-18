@@ -11891,6 +11891,19 @@
       "secondary_tileset": "gTileset_InsideWailord",
       "border_filepath": "data/layouts/InsideWailord/border.bin",
       "blockdata_filepath": "data/layouts/InsideWailord/map.bin"
+    },
+    {
+      "id": "LAYOUT_CUT_MASTER_HOUSE",
+      "name": "CutMasterHouse_Layout",
+      "width": 10,
+      "height": 9,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_HouseBeige",
+      "border_filepath": "data/layouts/CutMasterHouse_Layout/border.bin",
+      "blockdata_filepath": "data/layouts/CutMasterHouse_Layout/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

@@ -370,8 +370,9 @@ script SakuTown_EventScript_Man {
 	setspeaker(SP_NAME_CUSTOMER)
 	message(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_MAN_2 0}I'm choosing flowers for my wife.\p"
-		"I, uh… I didn't realize there'd be so\nmany different types.\p"
+		"I, uh… I didn't realize there'd be so\nmany different types."
 	)
+	waitmessage
 	playse(SE_M_LICK)
 	applymovement(LOCALID_BONSAI_SHOP_SHOPPER, moves(emote_sweat))
 	message("Guess I'll be here a while…")

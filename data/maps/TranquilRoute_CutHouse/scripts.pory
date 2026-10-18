@@ -197,4 +197,5 @@ script TranquilRoute_CutHouse_EventScript_SlicingMoveSign {
 		"Cross Poison{CLEAR_TO 0x4c}X-Scissor"
 		MSGBOX_SIGN
 	)
+	closemessage
 }

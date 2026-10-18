@@ -326,7 +326,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Whoa, there it goes again!\n"
 		"You good, {PLAYER}?\p"
 		"Those quakes are no joke, huh.\p"
@@ -343,8 +343,8 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 	waitmovement(0)
 
 	setspeaker(SP_NAME_NATSUKI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK! The distribution's already started!\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK\n The distribution's already started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage
