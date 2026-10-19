@@ -584,16 +584,15 @@ script MaguroHarbor_EventScript_MarketChild {
 script MaguroHarbor_EventScript_Natsuki {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_NATSUKI)
 	if(flag(FLAG_SPOKE_TO_NATSUKI_MAGURO)) {
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}You might beat the gym first, but\nI still TOTALLY won the race!"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{SPEAKER NAME_NATSUKI}You might beat the Dojo first, but\nI still TOTALLY won the race!"
 		)
 	} else {
 		msgbox(
-			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0} Bah! {PLAYER}!\n"
+			"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}{SPEAKER NAME_NATSUKI}Bah! {PLAYER}!\n"
 			"You weren't supposed to be here yet!\p"
-			"I was all ready to challenge the dojo,\nbut this old fisherman was breaking\lhis back bringing his fish to market!\p"
+			"I was all ready to challenge the Dojo…\pBut this old fisherman was breaking\nhis back bringing his fish to market!\l"
 			"I couldn't just leave him on his own!\p"
 			"Can we agree I won the race, at least?"
 		)
@@ -611,7 +610,7 @@ script MaguroHarbor_EventScript_Natsuki {
 				applymovement(LOCALID_RIVAL, moves(emote_happy))
 				msgbox("Heck yeah I did!")
 			case 1:
-				applymovement(LOCALID_RIVAL, moves(emote_question_mark))
+				applymovement(LOCALID_RIVAL, moves(emote_angry))
 				msgbox("Grrr, no fair!\pAlso, what's a Trozei!?\nI'm Natsuki!")
 		}	
 		setflag(FLAG_SPOKE_TO_NATSUKI_MAGURO)
@@ -625,11 +624,11 @@ script MaguroHarbor_EventScript_OldFisherman {
 	lock
 	faceplayer
 	if(flag(FLAG_HIDE_NATSUKI_MAGURO)) {
-		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}That lad from before told me\nhe wants to be a samurai?\p"
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}That lad from before told me\nhe wants to be a Samurai?\p"
 				"Bah! He's too good for those oafs!\p"
 				"He should be a fisherman instead!\nI'll teach him all I know!")
 	} else {
-		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}Oohoohoo!\nWhat a wonderful young lad!\p"
+		msgbox("{CREATE_MUGSHOT MUGSHOT_SEASIDE_OLD_MAN 0}{SPEAKER NAME_OLD_MAN}Oohoohoo!\nWhat a wonderful young lad!\p"
 			   "I didn't even ask him for help!\p"
 			   "He just up and started bringing\nall my 'karp to market!")
 	}
