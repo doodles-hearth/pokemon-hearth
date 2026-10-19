@@ -24,18 +24,6 @@ void LiveBaseGoAwayScript(u32 localId, u32 eventIndex, enum LiveEvent event, con
 
 // END OF BASE FUNCTIONS
 
-void LiveWoobatFlee(u32 localId, u32 eventIndex)
-{
-    u32 objectEventId = sActiveLiveEvents[eventIndex].objectEventId;
-    if (sActiveLiveEvents[eventIndex].duration == sLiveEvents[LIVE_EVENT_WOOBAT_FLEE].duration)
-        ExecuteScript(WC_WoobatFlee);
-    if (sActiveLiveEvents[eventIndex].duration == 1 || IsSourceObjectOffscreen(objectEventId))
-    {
-        RemoveObjectEventByLocalIdAndMap(localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);
-    }
-    sActiveLiveEvents[eventIndex].duration--;
-}
-
 const struct MultiSpeechBubble sSunManRant[] =
 {
     {
