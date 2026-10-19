@@ -4,7 +4,6 @@
 #include "global.h"
 #include "even_live_event.h"
 
-void LiveWoobatFlee(u32 localId, u32 eventIndex);
 void SunManRant(u32 localId, u32 eventIndex);
 void LiveSigh(u32 localId, u32 eventIndex);
 void LiveChatot(u32 localId, u32 eventIndex);
