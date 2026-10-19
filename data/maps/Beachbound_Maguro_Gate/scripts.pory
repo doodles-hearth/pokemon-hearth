@@ -11,14 +11,13 @@ mapscripts Beachbound_Maguro_Gate_MapScripts {
 
 script Beachbound_Maguro_Gate_EventScript_Guard {
 	lock
-	setspeaker(SP_NAME_SAMURAI)
 	if (var(VAR_DECAY_BEACHBOUND_ROUTE) == 1) {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Are you going to Beachbound Route? Uh, be careful, kid!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Are you going to Beachbound Route?\nUh, be careful, kid!"
 		))
 	} else {
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Ugh, I hate guard duty…\nWe're not even allowed a book…"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Ugh, I hate guard duty…\nWe're not even allowed a book…"
 		))
 	}
 	closemessage
@@ -31,7 +30,7 @@ script Beachbound_Maguro_Gate_EventScript_Umbreon {
 	setseenmon(SPECIES_UMBREON)
 	setspeakertomonname(SPECIES_UMBREON)
 	playmoncry(SPECIES_UMBREON, CRY_MODE_NORMAL)
-    msgbox(format(
+    msgbox((
         "Whew…"
     ))
     waitmoncry

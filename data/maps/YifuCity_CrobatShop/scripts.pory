@@ -295,7 +295,7 @@ script YifuCity_CrobatShop_EventScript_Samurai {
 	lock
 	faceplayer
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Shhh, don't look at me!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Shhh, don't look at me!\p"
 		"Someone tipped me off that the Crobat\nShadows have a secret hideout…\lRight under the city!\p"
 		"I'm trying to know more by standing\naround and listening!"
 	))

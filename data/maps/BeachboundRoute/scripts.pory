@@ -30,7 +30,7 @@ script(local) BeachboundRoute_EventScript_AfterCuringDecay {
 	waitmovement(LOCALID_BEACHBOUND_SAMURAI_RIGHT)
 
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Thank you for curing this whole area\nfrom the Decay!"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Thank you for curing this whole area\nfrom the Decay!"
 	)
 	closemessage
 

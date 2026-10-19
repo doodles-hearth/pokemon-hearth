@@ -439,7 +439,7 @@ script YifuCity_Refuge_EventScript_Samurai {
 	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}The Crobat Shadows must be operating from somewhere… But where?"
 	))

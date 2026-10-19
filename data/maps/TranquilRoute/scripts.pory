@@ -293,7 +293,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 	applymovement(LOCALID_TRANQUIL_RT_BLOCK_NINJA, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}You shall know defeat at the hand\nof my ninja Pokémon!\l"
 		"Nickit, use Feint Attack!"
