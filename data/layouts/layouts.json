@@ -6209,8 +6209,8 @@
       "height": 34,
       "border_width": 2,
       "border_height": 2,
-      "primary_tileset": "gTileset_DecayPrimary",
-      "secondary_tileset": "gTileset_DecayBronzong",
+      "primary_tileset": "gTileset_PorytilesPrimaryTutorial",
+      "secondary_tileset": "gTileset_Decay",
       "border_filepath": "data/layouts/Beachbound_Route_Decay/border.bin",
       "blockdata_filepath": "data/layouts/Beachbound_Route_Decay/map.bin",
       "layout_version": "emerald"
