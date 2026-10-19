@@ -651,17 +651,8 @@
     },
     {
       "type": "trigger",
-      "x": 16,
-      "y": 28,
-      "elevation": 0,
-      "var": "VAR_TEMP_2",
-      "var_value": "2",
-      "script": "KuraTown_EventScript_GuardFlagVar"
-    },
-    {
-      "type": "trigger",
-      "x": 17,
-      "y": 28,
+      "x": 19,
+      "y": 25,
       "elevation": 0,
       "var": "VAR_TEMP_2",
       "var_value": "2",
@@ -670,11 +661,65 @@
     {
       "type": "trigger",
       "x": 18,
-      "y": 29,
+      "y": 24,
       "elevation": 0,
       "var": "VAR_TEMP_2",
       "var_value": "2",
       "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_TEMP_2",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 28,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
+      "var_value": "2",
+      "script": "KuraTown_EventScript_GuardFlagVar"
+    },
+    {
+      "type": "trigger",
+      "x": 17,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
+      "var_value": "3",
+      "script": "KuraTown_EventScript_GuardStopsYou"
+    },
+    {
+      "type": "trigger",
+      "x": 16,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_SAKU_KURA_VILLAGES_STATE",
+      "var_value": "3",
+      "script": "KuraTown_EventScript_GuardStopsYou"
     }
   ],
   "bg_events": [
