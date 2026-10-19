@@ -170,9 +170,9 @@ script ChiiTown_School_EventScript_ChildWiseGlasses {
 
 	if (!flag(FLAG_SMART_GLASSES)) {
 		setspeaker(SP_NAME_SCHOOL_KID)
-		msgbox(format(
-			"Ugh, I missed a class so I have to catch up on Pokémon's attack and special attack…\p"
-			"I'm almost done though! I don't even need these anymore!"
+		msgbox((
+			"Ugh, I missed a class so I have to\ncatch up on Pokémon's abilities…\p"
+			"I'm almost done though!\nI don't even need these anymore!"
 		))
 		closemessage
 

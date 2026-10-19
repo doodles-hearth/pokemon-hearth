@@ -71,8 +71,10 @@ script ChiiTown_EventScript_WatchfulMom{
 			closemessage
 		case TIME_AFTERNOON:
 			lock
+			faceplayer
 			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm waiting to pick up my children\nafter school.\p")
 			waitmessage
+			playse(SE_PIN)
 			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
 			setspeaker("Watchful Mom")
 			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
@@ -93,7 +95,7 @@ script ChiiTown_EventScript_Shopper {
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_2 0}The town market lady sells Pokémon\nmedicine and Poké Balls now!\p"
 		"Careful, though: her ointments can't\nbe used in the middle of a battle.\p"
-		"They're super cheap though, so don't\nbe afraid to use them! It saves a run\lto the nearest Refuge!", MSGBOX_NPC)
+		"They're super cheap though, so don't\nbe afraid to use them!\lIt saves a run to the nearest Refuge!", MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
 }

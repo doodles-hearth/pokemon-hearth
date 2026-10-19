@@ -299,6 +299,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oh c'mon, {PLAYER}!\nYou've raved about wanting your\lown Pokémon for HOW many years now!?\p"
 				"Don't give me that Trubbish now!"
 			)
+			setnamedmon(SPECIES_TRUBBISH)
 	}
 	closemessage
 	delay(48)
@@ -344,7 +345,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK\n The distribution's already started!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK!\nThe distribution's already started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage
