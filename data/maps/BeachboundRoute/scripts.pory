@@ -285,10 +285,10 @@ script BeachboundRoute_EventScript_Mugging {
 		applymovement(LOCALID_BEACHBOUND_GRUNT_1, moves(walk_in_place_fast_up))
 
 		setspeaker("Shady Man")
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Quit yappin', lady!\nJust give us yer Pokémon already!"
-		))
-		closemessage
+		msgboxcontig(
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Quit yappin', lady!\nJust give us yer Pokémon already!",
+			mute=TRUE
+		)
 
 		playse(SE_PIN)
 		applymovement(LOCALID_BEACHBOUND_GRUNT_2, moves(walk_in_place_fast_up, emote_angry))
@@ -308,30 +308,28 @@ script BeachboundRoute_EventScript_Mugging {
 		waitse
 		delay(48)
 
-		setspeaker("Shady Man")
-		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Just what d'you think yer doin'?\p"
-			"Can't ya see we're in the middle of\nsomething 'ere?"
-		))
-
 		applymovement(LOCALID_BEACHBOUND_GRUNT_1, Common_Movement_FaceDown)
 		applymovement(LOCALID_BEACHBOUND_GRUNT_2, Common_Movement_FaceDown)
 		applymovement(LOCALID_BEACHBOUND_GRUNT_3, Common_Movement_FaceDown)
-		waitmovement(LOCALID_BEACHBOUND_GRUNT_1)
-		waitmovement(LOCALID_BEACHBOUND_GRUNT_2)
-		waitmovement(LOCALID_BEACHBOUND_GRUNT_3)
+
+		setspeaker("Shady Man")
+		message((
+			"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Just what d'you think yer doin'?\p"
+			"Can't ya see we're in the middle of\nsomething 'ere?"
+		))
+		waitmessage
+		waitmovementall
 
 		mcdialogue(
 			"Leave her alone!",
 			"Actually, I was just leaving!",
 			"Uh…"
 		)
-		closemessage
 
 		setspeaker("Shady Man")
 		switch (var(VAR_RESULT)) {
 			case 0:
-				msgbox((
+				msgboxcontig((
 					"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Ooh, feelin' heroic today, are we?\p"
 					"D'ya know what we do to nosy brats too\ndumb to mind their own business?\p"
 					"Ya have no self-preservation\ninstinct whatsoever, do ya?\lD'ya even know who we are?\p"
@@ -340,7 +338,7 @@ script BeachboundRoute_EventScript_Mugging {
 					"We're basically the allegory of crime!"
 				))
 			case 1:
-				msgbox((
+				msgboxcontig((
 					"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}'S a little too late fer that, don't\nya think?\p"
 					"D'ya know what we do to nosy brats too\ndumb to mind their own business?\p"
 					"Ya have no self-preservation\ninstinct whatsoever, do ya?\lD'ya even know who we are?\p"
@@ -349,7 +347,7 @@ script BeachboundRoute_EventScript_Mugging {
 					"We're basically the allegory of crime!"
 				))
 			case 2:
-				msgbox((
+				msgboxcontig((
 					"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}Got nothin' to say, huh?\p"
 					"D'ya know what we do to nosy brats too\ndumb to mind their own business?\p"
 					"Ya have no self-preservation\ninstinct whatsoever, do ya?\lD'ya even know who we are?\p"
