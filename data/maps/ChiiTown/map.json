@@ -436,6 +436,7 @@
       "dest_warp_id": "5"
     },
     {
+      "warp_id": "WARP_ID_GRINCH_HOUSE",
       "x": 24,
       "y": 23,
       "elevation": 0,

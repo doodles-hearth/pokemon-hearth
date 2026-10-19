@@ -59,7 +59,7 @@ mapscripts SakuTown_MapScripts {
 
 		if (!flag(FLAG_SAKU_KURA_REUNITED)) {
 			// Once reunited, the guards from the two villages play a board game together
-			setmetatile(19, 2, METATILE_PorytilesPrimaryTutorial_Grass, TRUE)
+			setmetatile(19, 2, METATILE_PorytilesPrimaryTutorial_Grass, FALSE)
 		}
 		
 		//Close Bonsai Shop
@@ -104,16 +104,18 @@ script SakuTown_EventScript_RivalAtSakuWall {
 
 	setspeaker(SP_NAME_NATSUKI)
 	//Pokemon buddies line should be a more starry-eyed Natsuki mugshot
-	msgbox((
+	msgboxcontig((
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I saw several New Moon Samurai\npatrolling near Chii Town!\l"
 		"They look SO cool in-person!\p"
-		"Their swords… Their helmets…\nTheir armor…\p"
+		"Their swords… Their helmets…\nTheir armor…"
+	), mute=TRUE)
+	playse(SE_PIN)
+	applymovement(LOCALID_RIVAL, moves(emote_heart))
+	msgboxcontig((
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Their little Jangmo-o and Oshawott\nbuddies…!"
 	))
 	setnamedmon(SPECIES_JANGMO_O)
 	setnamedmon(SPECIES_OSHAWOTT)
-	playse(SE_PIN)
-	applymovement(LOCALID_RIVAL, moves(emote_heart))
 	msgbox((
 		"{PLAYER}, have YOU caught any cool\nPokémon yet?\p"
 		"Oh, me?\nBoy, I'm so glad you asked!\l"
@@ -131,16 +133,16 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	}
 
 	playse(SE_PIN)
-	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_pensive))
+	applymovement(LOCALID_NATSUKI_SAKU, moves(emote_heart))
 	setspeaker(SP_NAME_NATSUKI)
 	//starry-eyed Natsuki mugshot again at the start
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}PAWNIARD'S SO COOL RIGHT!?!?!?\p"
 		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I found this lil' guy in the forest\nsurrounded by a pack of Kotora.\p"
 		"Poor thing must've been separated\nfrom his brigade…\p"
-		"I was gonna release him once he\nwas back at full strength, but I\lthink he likes me too much!"
+		"I was gonna release him once he\nwas back at full strength, but…\lI think he likes me too much!\p"
 		"Are you doing the Dojo challenge?\nKura Town's Master's not in right now.\p"
-		"The next Dojo after hers is in Maguro\nHarbor.\n"
+		"The next Dojo after hers is in Maguro\nHarbor.\p"
 		"That's so{PAUSE 2}o{PAUSE 2}o{PAUSE 2}o{PAUSE 2}o fa{PAUSE 2}a{PAUSE 2}a{PAUSE 2}a{PAUSE 2}ar…\p"
 		"… {PAUSE 20}… {PAUSE 20}…{PAUSE 20}\p"
 		"…{PAUSE 20}Race you to the Dojo!\p"
@@ -468,20 +470,18 @@ script SakuTown_EventScript_GuardStopsYou {
 	delay(20)
 
 	if (var(VAR_RESULT) == DIR_SOUTH) {
-		setspeaker(SP_NAME_GUARD)
-		msgbox(format(
-			"Are you trying to sneak in from Kura Village?\p"
-			"…Oh, you're that traveler from before. You can go through.\p"
-			"How was it? Awful, right? Welcome back to Saku Village!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_GUARD}Are you trying to sneak in from Kura\nVillage?\p"
+			"…Oh, you're that traveler from before.\nYou can go through.\p"
+			"How was it? Awful, right?\nWelcome back to Saku Village!"
 		))
 		closemessage
 		setvar(VAR_SAKU_KURA_VILLAGES_STATE, 3)
 	} else {
-		setspeaker(SP_NAME_GUARD)
-		msgbox(format(
-			"Are you trying to sneak into Kura Village?\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_GUARD}Are you trying to sneak into Kura\nVillage?\p"
 			"…Oh, you're just a traveler.\nNevermind then, you can go through.\p"
-			"Though I wouldn't recommend visiting the next village, there's really nothing interesting there."
+			"Though I wouldn't recommend visiting\nthe next village.\lThere's nothing interesting there."
 		))
 		closemessage
 		setvar(VAR_SAKU_KURA_VILLAGES_STATE, 1)
@@ -576,7 +576,7 @@ script SakuTown_EventScript_MonHues {
 		if (var(VAR_RESULT) == 0) {
 			setspeaker(SP_NAME_MAN)
 			msgbox(
-				"Huh, I don't think I've seen an Eevee at\nall, regardless of it's color. Sorry."
+				"Huh, I don't think I've seen an Eevee at\nall, regardless of its color. Sorry."
 			)
 			//ignore poryscript warning
 			closemessage

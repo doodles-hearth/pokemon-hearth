@@ -28,7 +28,7 @@ script ChiiTown_House1_EventScript_OldManTrespassing {
 	applymovement(LOCALID_OLD_MAN, Common_Movement_Delay48)
 	waitmovement(0)
 	setvar(VAR_CHII_TOWN_OLD_MAN_TRESPASS_STATE, 2)
-	warp(MAP_CHII_TOWN, 24, 21)
+	warp(MAP_CHII_TOWN, WARP_ID_GRINCH_HOUSE)
 	waitstate
 }
 

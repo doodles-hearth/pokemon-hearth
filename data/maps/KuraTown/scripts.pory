@@ -298,7 +298,8 @@ script KuraTown_EventScript_LovestruckGuy{
 	setspeaker("Lovestruck Boy")
 	msgbox(
 		(
-			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 0}I just spent the day with my girlfriend\nfrom Maguro Harbor, but I already want\ltomorrow to come to see her again!"
+			"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_1 0}I just spent the day with my girlfriend\nfrom Maguro Harbor…\p"
+			"But I already want tomorrow to come\nto see her again!"
 		),
 		MSGBOX_DEFAULT
 	)

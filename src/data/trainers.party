@@ -11353,14 +11353,21 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Growlithe
-Level: 10
+Level: 9
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Bite
 - Roar
 - Ember
 
+Pawniard
+Level: 8
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Scratch
+- Leer
+- Fury Cutter
+
 Snivy
-Level: 12
+Level: 11
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Absorb
 - Wrap
@@ -14464,8 +14471,15 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Tail Whip
 - Slam
 
+Pawniard
+Level: 8
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Scratch
+- Leer
+- Fury Cutter
+
 Cyndaquil
-Level: 12
+Level: 11
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Fire Spin
 - Defense Curl
@@ -14481,15 +14495,22 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Shroomish
-Level: 11
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Leech Seed
 - Absorb
 - Stun Spore
 - Tackle
 
+Pawniard
+Level: 8
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Scratch
+- Leer
+- Fury Cutter
+
 Squirtle
-Level: 13
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Bubble
 - Quick Attack

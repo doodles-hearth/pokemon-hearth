@@ -3,7 +3,6 @@
   "name": "ChiiTown_House1",
   "layout": "LAYOUT_HOUSE_BEIGE_HEARTH",
   "music": "MUS_HH_CHII_TOWN",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_CHII_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -62,7 +61,7 @@
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_CHII_TOWN",
-      "dest_warp_id": "3"
+      "dest_warp_id": "WARP_ID_GRINCH_HOUSE"
     }
   ],
   "coord_events": [
@@ -175,5 +174,6 @@
       "script": "ChiiTown_House1_EventScript_OldManTrespassing"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }
