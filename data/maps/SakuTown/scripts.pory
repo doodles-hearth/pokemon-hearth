@@ -161,12 +161,14 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			setnamedmon(SPECIES_TOTODILE)
+			waitse
 			playse(SE_PIN)
 			applymovement(LOCALID_NATSUKI_SAKU, moves(emote_happy))
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Yeah. Yeah!\pYou got it!"
 			))
+			closemessage
 		case 1:
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
@@ -463,7 +465,7 @@ script SakuTown_EventScript_GuardStopsYou {
 	applymovement(LOCALID_SAKU_TOWN_GUARD, Common_Movement_WalkInPlaceFasterLeft)
 	waitmovement(LOCALID_SAKU_TOWN_GUARD)
 	setspeaker(SP_NAME_GUARD)
-	msgbox(format("Hey!"))
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_GUARD}Hey!"))
 	closemessage
 	applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_FaceRight)
 	waitmovement(OBJ_EVENT_ID_PLAYER)

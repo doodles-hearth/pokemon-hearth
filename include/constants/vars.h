@@ -316,7 +316,8 @@
     // 0: The two villages hate each other
     // 1: Player has been spotted by the Saku guard
     // 2: Player has been spotted by the Kura guard
-    // 3: Player has come back from Kura and has been stopped by Saku guard again
+    // 3: Player has walked at least one step north from the Kura guard's line of view
+    // 4: Player has come back from Kura and has been stopped by Saku guard again
 */
 #define VAR_SAKU_KURA_VILLAGES_STATE                     0x40A0
 #define VAR_MOSSDEEP_SPACE_CENTER_STATE                  0x40A1
