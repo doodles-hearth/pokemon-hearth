@@ -369,7 +369,7 @@ mart ChiiTown_Mart {
 }
 
 script ChiiTown_EventScript_Samurai {
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}There's been reports of shady men\ndressed in blue loitering around here.\lBe careful when traveling!", MSGBOX_NPC)
 	closemessage

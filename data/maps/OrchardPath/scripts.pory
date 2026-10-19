@@ -9,7 +9,7 @@ mapscripts OrchardPath_MapScripts {
 
 script OrchardPath_EventScript_UumeForestSoulkeepSign {
 	msgbox(format(
-		"{UP_ARROW} Samurai Palace\n"
+		"{UP_ARROW} Guardian Palace\n"
 		"{LEFT_ARROW}{UP_ARROW} Uume Forest\l"
 		"{LEFT_ARROW} Soulkeep"
 	), MSGBOX_SIGN)
@@ -44,7 +44,7 @@ script OrchardPath_EventScript_Mami {
 script OrchardPath_EventScript_Samurai {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Please stand back. Everything is under control."))
 
 	dynmultichoice(
@@ -74,7 +74,7 @@ script OrchardPath_EventScript_Samurai {
 
 script OrchardPath_Samurai_WhatIsHappening {
 	special(GetPlayerSirMissString)
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Nothing that concerns you, {STR_VAR_1}.\p"
 		"This is just your regular, run-of-the-mill, top secret yet unimportant stuff."
@@ -102,7 +102,7 @@ script OrchardPath_Samurai_WhatIsHappening {
 }
 
 script OrchardPath_Samurai_LetMeThrough {
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}We cannot let you through, so please be on your way."
 	))
@@ -127,7 +127,7 @@ script OrchardPath_Samurai_KnowAboutDecay {
 	waitmovement(0)
 	waitse
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}You- what-\p"
 		"Ahem! I do not know of this Decay you speak of.\p"
@@ -392,7 +392,7 @@ script OrchardPath_EventScript_SignRockSmash {
 script OrchardPath_EventScript_Samurai2 {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Move along, please, nothing to see here!"))
 	closemessage
 	release

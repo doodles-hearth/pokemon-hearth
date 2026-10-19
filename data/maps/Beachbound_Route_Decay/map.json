@@ -229,7 +229,7 @@
       "night": false
     },
     {
-      "local_id": "LOCALID_BEACHBOUND_DECAY_SAMURAI",
+      "local_id": "LOCALID_BEACHBOUND_DECAY_GUARDIAN",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
       "y": 15,
@@ -291,7 +291,7 @@
       "night": false
     },
     {
-      "local_id": "LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE",
+      "local_id": "LOCALID_BEACHBOUND_DECAY_GUARDIAN_COLLEAGUE",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
       "y": 14,

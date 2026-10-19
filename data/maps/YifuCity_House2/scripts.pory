@@ -9,7 +9,7 @@ script YifuCity_House2_Seamstress {
 	faceplayer
 	setspeaker(SP_NAME_SEAMSTRESS)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}I've been working day and night on a dress for the Samurai Chief's daugther.\p"
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}I've been working day and night on a dress for the Guardian Chief's daugther.\p"
 		"This will be my greatest work!"
 	))
 	closemessage

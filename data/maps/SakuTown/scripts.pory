@@ -105,7 +105,7 @@ script SakuTown_EventScript_RivalAtSakuWall {
 	setspeaker(SP_NAME_NATSUKI)
 	//Pokemon buddies line should be a more starry-eyed Natsuki mugshot
 	msgboxcontig((
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I saw several New Moon Samurai\npatrolling near Chii Town!\l"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}I saw several New Moon Guardians\npatrolling near Chii Town!\l"
 		"They look SO cool in-person!\p"
 		"Their swords… Their helmets…\nTheir armor…"
 	), mute=TRUE)

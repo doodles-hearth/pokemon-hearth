@@ -419,7 +419,7 @@ script(local) Hotpot_Decay {
 			setspeaker(SP_NAME_NATSUKI)
 			msgbox(format(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Pfft… You wish, {PLAYER}!\p"
-				"There's nobody in Toku\nmore noble than the Samurai of\lthe New Moon Order!"
+				"There's nobody in Toku\nmore noble than the Guardians of\lthe New Moon Order!"
 			))
 			
 			waitse

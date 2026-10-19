@@ -174,13 +174,13 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	))
 	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(emote_pensive))
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_IWA 0}… … … … … …\n… … … … … …\p"
 		"Young one from Sunrise Village.\nWhat is your name? {PLAYER}?\p"
 		"You came all the way up here\non foot…\lYou have a team of capable Pokémon…\lKaba seems to trust you…\p"
-		"It is decided! Travel to Uume Forest, southeast of Tranquil Route!\p"
-		"Our fate may well be in your hands, {PLAYER}.\p"
-		"Before you leave, I have something that will make your journey easier."
+		"It is decided! Travel to Uume Forest,\nsouthwest of Tranquil Route!\p"
+		"Our fate may well be in your hands,\n{PLAYER}.\p"
+		"Before you leave, I have something\nthat will make your journey easier."
 	))
 	closemessage
 
@@ -195,10 +195,10 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	waitmovement(LOCALID_ELDER)
 
 	setspeaker(SP_NAME_ELDER_IWA)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA 0}I have been keeping this mysterious ancient relic for years.\p"
-		"We aren't sure where nor when it originated, but it lets one Pokémon mirror the experience of another.\p"
-		"It should be useful in the hands of such a promising young Wielder.\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}I have been keeping this mysterious\nancient relic for years.\p"
+		"Ilets one Pokémon mirror the\nexperience of another.\p"
+		"It should be useful in the hands of\nsuch a promising young Wielder.\p"
 		"Now go, and be swift!"
 	))
 	closemessage
@@ -213,8 +213,8 @@ script Silveridge_EldersHouse_EventScript_Elder {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_ELDER_IWA)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Go forth, young one. To Uume Forest, southeast of Tranquil Route!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_IWA 0}Go forth, young one. To Uume Forest,\nsouthwest of Tranquil Route!"
 	))
 	closemessage
 	release

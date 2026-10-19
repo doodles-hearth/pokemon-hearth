@@ -53,7 +53,7 @@ const u8 *const gSpeakerNamesTable[SP_NAME_COUNT] =
     [SP_NAME_KIMONO_GIRLS] = COMPOUND_STRING("Kimono Girls"),
 
     [SP_NAME_SHAMISEN_PLAYER] = COMPOUND_STRING("Shamisen Player"),
-    [SP_NAME_SAMURAI] = COMPOUND_STRING("Samurai"),
+    [SP_NAME_GUARDIAN] = COMPOUND_STRING("Guardian"),
     [SP_NAME_CROBAT_BOSS] = COMPOUND_STRING("Crobat Boss"),
     [SP_NAME_CROBAT_SHADOW] = COMPOUND_STRING("Crobat Shadow"),
     [SP_NAME_ZUBAT_GRUNT] = COMPOUND_STRING("Zubat Grunt"),

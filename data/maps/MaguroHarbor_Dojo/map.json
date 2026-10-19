@@ -3,7 +3,6 @@
   "name": "MaguroHarbor_Dojo",
   "layout": "LAYOUT_MAGURO_HARBOR_DOJO",
   "music": "MUS_B_PALACE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_MAGURO_HARBOR",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -143,5 +142,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MaguroHarbor_Dojo_EventScript_DojoStatue"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

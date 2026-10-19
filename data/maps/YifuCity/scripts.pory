@@ -89,12 +89,12 @@ script YifuCity_EscapedCrobatHideoutWithSamurai {
 	applymovement(LOCALID_SAMURAI_HIDEOUT, moves(walk_in_place_fast_right))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_left))
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Well, well…\nThey slipped through our fingers,\lbut they finally left the city!\p"
 		"Their hideout is now useless!\p"
-		"Thank you for giving the Samurai a hand.\lThis operation was a success!\p"
-		"You might be young, but you wouldn't\nmake a half bad Samurai yourself…\p"
+		"Thank you for giving the Guardians a\nhand.\lThis operation was a success!\p"
+		"You might be young, but you wouldn't\nmake a half bad Guardian yourself…\p"
 		"Ha ha ha ha!\p"
 		"{PLAYER}!\nI am sure we will meet again!\lUntil then, farewell!"
 	))
@@ -174,7 +174,7 @@ script YifuCity_EventScript_IDontFeelSafe {
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		msgbox(format(
 			"{CREATE_MUGSHOT MUGSHOT_UUME_MAN_1 0}I don't feel safe with those Crobat weirdos creeping around the city…\p"
-			"I can't imagine how much worse it'd be were it not for the patrolling Samurai!"
+			"I can't imagine how much worse it'd be were it not for the patrolling Guardians!"
 		))
 	}
 	closemessage
@@ -199,7 +199,7 @@ script YifuCity_EventScript_Samurai {
 	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}The Crobat Shadows' reign of terror will cease!"
 	))
@@ -210,7 +210,7 @@ script YifuCity_EventScript_Samurai {
 script YifuCity_EventScript_Samurai2 {
 	lock
 	faceplayer
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Please be vigilant! Should you witness any suspicious situation, report it immediately!"
 	))
@@ -222,7 +222,7 @@ script YifuCity_EventScript_SamuraiTalkToRobberyVictim {
 	lock
 	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_left))
 	waitmovement(0)
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Ma'am, can you describe what the thiefs looked like?"
 	))
@@ -237,7 +237,7 @@ script YifuCity_EventScript_RobberyVictim {
 	if (flag(FLAG_CLEARED_CROBAT_HIDEOUT)) {
 		faceplayer
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 0}You and the Samurai scared those crooks off? That's good…"
+			"{CREATE_MUGSHOT MUGSHOT_UUME_WOMAN_2 0}You and the Guardians scared those crooks off? That's good…"
 		))
 
 		waitse
@@ -931,7 +931,7 @@ script YifuCity_Trigger_Lockdown {
 
 		special(GetPlayerSirMissString)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
 			"You are asked to remain inside the\ncity until further notice."
 		))
 
@@ -942,8 +942,8 @@ script YifuCity_Trigger_Lockdown {
 		closemessage
 
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}A robbery has taken place near the\nPokémon Refuge!\p"
-			"We Samurai are on the cusp of cracking\ndown on the infamous Crobat Shadows!\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}A robbery has taken place near the\nPokémon Refuge!\p"
+			"We Guardians are about to crack down\non the infamous Crobat Shadows!\p"
 			"We can't risk the operation going awry,\nso we've locked down the premises.\p"
 			"Please remain calm, it'll be over\nbefore you know it."
 		))
@@ -957,7 +957,7 @@ script YifuCity_Trigger_Lockdown {
 		waitmovement(0)
 		special(GetPlayerSirMissString)
 		msgbox((
-			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
+			"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
 			"You are asked to remain inside the\ncity until further notice."
 		))
 		closemessage
@@ -975,7 +975,7 @@ script YifuCity_Trigger_CantGoThruNorth {
 	waitmovement(0)
 	special(GetPlayerSirMissString)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_SAMURAI}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}{SPEAKER NAME_GUARDIAN}Sorry {STR_VAR_1}, all exits are\ntemporarily blocked.\lNobody in or out.\p"
 		"You are asked to remain inside the\ncity until further notice."
 	))
 	closemessage
@@ -1011,7 +1011,7 @@ script YifuCity_Trigger_HarikoCriminals {
 		"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}Hello, {PLAYER}.\nAre you well, since last time?\p"
 		"Did you hear? There was a robbery,\nright here in Yifu City!\lSome people's Pokémon were stolen!\p"
 		"I heard there was a second decaying area west of here.\p"
-		"I wanted to go and see but a Samurai blocked the way.\p"
+		"I wanted to go and see but a Guardian blocked the way.\p"
 		"Let us have lunch together before you leave. Yes? Good."
 	))
 	closemessage
