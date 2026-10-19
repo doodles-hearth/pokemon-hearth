@@ -90,9 +90,10 @@ script SakuTown_House2_EventScript_EspeonsMaster {
 				"I don't know how to repay you for\nbringing her home."
 			)
 			closemessage
-			mcdialogue("Don't thank just me!")
-			delay(30)
-			mcdialogue("Someone in Kura took care of her.")
+			mcdialogue(
+				"Don't thank just me!",
+				"A lady in Kura Village…"
+			)
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}{SPEAKER NAME_BOY}Someone from Kura Village? Wow…\nI didn't know they could be so nice.\p"
 				"Maybe someday, I can thank them\nmyself!\p"
