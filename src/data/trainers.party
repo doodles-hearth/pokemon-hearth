@@ -1586,11 +1586,12 @@ Level: 25
 
 === TRAINER_SANI ===
 Name: Sani
-Class: Beauty
-Pic: Beauty
-Music: Female
+Class: Castform Sun Girl
+Pic: Castform Sun Girl
+Gender: Female
+Music: Swimmer
 Battle Type: Singles
-AI: Smartish Trainer
+AI: Basic Trainer
 
 Castform
 Level: 18
@@ -11467,7 +11468,6 @@ AI: Basic Trainer
 Munchlax (M)
 Level: 20
 - Stockpile
-- Swallow
 - Body Slam
 
 === TRAINER_HALEY_2 ===
