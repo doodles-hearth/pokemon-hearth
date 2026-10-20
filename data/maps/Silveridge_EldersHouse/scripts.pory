@@ -133,6 +133,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 
 	applymovement(LOCALID_ELDER, moves(walk_slow_left, walk_slow_right * 2, walk_slow_left, delay_16))
 	waitmovement(0)
+	playse(SE_PIN)
 	applymovement(LOCALID_ELDER, moves(emote_pensive, delay_16 * 6))
 	waitmovement(0)
 
@@ -197,7 +198,7 @@ script Silveridge_EldersHouse_EventScript_Conversation {
 	setspeaker(SP_NAME_ELDER_IWA)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_IWA 0}I have been keeping this mysterious\nancient relic for years.\p"
-		"Ilets one Pokémon mirror the\nexperience of another.\p"
+		"It lets one Pokémon mirror the\nexperience of another.\p"
 		"It should be useful in the hands of\nsuch a promising young Wielder.\p"
 		"Now go, and be swift!"
 	))

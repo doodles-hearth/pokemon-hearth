@@ -33,11 +33,15 @@ script Silveridge_House1_EventScript_FirebringerFangirl {
     lock
     faceplayer
     setspeaker(SP_NAME_GIRL)
-    msgbox((
+    msgboxcontig((
         "{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_GIRL_1 0}It gets pretty cold here when the\nwind blows strong into the valley.\p"
         "I don't know what we would do\nwithout those brave Firebringers.\p"
         "They carry live Slugma on their back all\nthe way down from Mt Kazan to here!\p"
         "Slugma cools and hardens up fast, so\nthey basically run the whole way down!\lI could never!\p"
+    ), mute=TRUE)
+    playse(SE_PIN)
+    applymovement(VAR_LAST_TALKED, moves(emote_heart))
+    msgbox((
         "Sigh… I hope a handsome Firebringer\nnotices me one day…"
     ))
     closemessage
