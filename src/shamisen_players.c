@@ -27,10 +27,10 @@ static const struct ShamisenPlayer sShamisenPlayers[SHAMISEN_PLAYERS_COUNT] =
 
 static const u16 sShamisenPlayersLocations[SHAMISEN_PLAYERS_LOCATIONS_COUNT][2] =
 {
-    {MAP_SAKU_TOWN_POKEMON_CENTER, FLAG_VISITED_SAKU_TOWN}, // TODO when refuge is built
+    {MAP_SAKU_TOWN_POKEMON_CENTER, FLAG_SAKU_KURA_REUNITED}, // TODO when refuge is built
     {MAP_MAGURO_HARBOR_REFUGE, FLAG_VISITED_MAGURO_HARBOR},
     {MAP_SILVERIDGE_REFUGE, FLAG_VISITED_SILVERIDGE},
-    {MAP_SOULKEEP_REFUGE, FLAG_VISITED_SOULKEEP}, // TODO when soulkeep is freed from ghosts
+    {MAP_SOULKEEP_REFUGE, FLAG_DEFEATED_SOULKEEP_HAUNTING},
     {MAP_YIFU_CITY_REFUGE, FLAG_VISITED_YIFU_CITY},
     {MAP_SABERSIDE_TOWN_REFUGE, FLAG_VISITED_SABERSIDE_TOWN},
 };
@@ -59,6 +59,7 @@ static void SetShamisenPlayerFlag(u32 index, u32 flagIndex, u32 value)
 
 static void SetShamisenPlayerLocation(u32 index, u8 location)
 {
+    DebugPrintf("Setting shamisen %d to location %d", index, location);
     u16 varValue = VarGet(sShamisenPlayers[index].var);
     u8 state = varValue & 0xFF;
     varValue = (location << 8) | state;
@@ -164,6 +165,7 @@ static void UpdateShamisenPlayersTalkedFlag(void)
 
 void UpdateShamisenPlayers(void)
 {
+    DebugPrintf("UpdateShamisenPlayers");
     UpdateShamisenPlayersLocations();
     UpdateShamisenPlayersTalkedFlag();
 }

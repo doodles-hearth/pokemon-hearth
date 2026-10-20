@@ -5,12 +5,19 @@ script EventScript_ShamisenPlayer {
 
 // BLUE
 script EventScript_ShamisenPlayerBlue {
-    setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
-    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
-    if (var(VAR_RESULT) == 0) {
-        call(ShamisenBlueFirstEncounter)
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY)
+    if (var(VAR_RESULT)) {
+        msgbox("Pleasant post-battle conversation")
+        closemessage
     } else {
-        call(ShamisenBlueSecondEncounter)
+        setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+        getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+        if (var(VAR_RESULT) == 0) {
+            setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE, TRUE)
+            call(ShamisenBlueFirstEncounter)
+        } else {
+            call(ShamisenBlueSecondEncounter)
+        }
     }
 }
 
@@ -37,9 +44,9 @@ script(local) ShamisenBlueBattle {
         case 0:
             trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 0 Tokens")
         case 1:
-            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 1 Tokens")
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_2, "I lost, 1 Tokens")
         case 2:
-            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 2 Tokens")
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_3, "I lost, 2 Tokens")
         case 3:
             trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "I lost, 3 Tokens")
         case 4:
@@ -99,23 +106,35 @@ script(local) ShamisenBlueDialogueAndBattle {
 
 // RED
 script EventScript_ShamisenPlayerRed {
-    setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
-    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
-    if (var(VAR_RESULT) == 0) {
-        call(ShamisenTestFirstEncounter)
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY)
+    if (var(VAR_RESULT)) {
+        msgbox("Pleasant post-battle conversation")
     } else {
-        call(ShamisenTestSecondEncounter)
+        setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+        getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+        if (var(VAR_RESULT) == 0) {
+            setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE, TRUE)
+            call(ShamisenTestFirstEncounter)
+        } else {
+            call(ShamisenTestSecondEncounter)
+        }
     }
 }
 
 // GREEN
 script EventScript_ShamisenPlayerGreen {
-    setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
-    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
-    if (var(VAR_RESULT) == 0) {
-        call(ShamisenTestFirstEncounter)
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY)
+    if (var(VAR_RESULT)) {
+        msgbox("Pleasant post-battle conversation")
     } else {
-        call(ShamisenTestSecondEncounter)
+        setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+        getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+        if (var(VAR_RESULT) == 0) {
+            setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE, TRUE)
+            call(ShamisenTestFirstEncounter)
+        } else {
+            call(ShamisenTestSecondEncounter)
+        }
     }
 }
 

@@ -17342,9 +17342,11 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Toxel Tokuan
-Level: 17
+Level: 15
 - Sing
 - Tackle
+- Acid
+- Scary Face
 
 === TRAINER_SHAMISEN_TSUZUNE_2 ===
 Name: Tsuzune
@@ -17355,7 +17357,7 @@ Music: Spiritual
 Battle Type: Singles
 AI: Smartish Trainer
 
-Toxikyu Amped
+Toxikyu Low Key
 Level: 25
 - Sing
 - Tackle

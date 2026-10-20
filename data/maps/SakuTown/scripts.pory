@@ -294,6 +294,8 @@ script SakuTown_EventScript_Scyther {
 script SakuTown_EventScript_Woman {
 	lock
 	faceplayer
+	waitse
+	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_upset))
 	setspeaker(SP_NAME_WOMAN)
 	msgbox(

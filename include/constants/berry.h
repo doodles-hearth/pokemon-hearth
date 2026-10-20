@@ -170,6 +170,7 @@ enum __attribute__((__packed__)) Flavor
 #define BERRY_TREE_ORCHARD_PATH_UUME_4 114
 #define BERRY_TREE_ORCHARD_PATH_UUME_5 115
 #define BERRY_TREE_ORCHARD_PATH_UUME_6 116
+#define BERRY_TREE_ORCHARD_PATH_UUME_7 117
 
 // Remainder are unused
 
