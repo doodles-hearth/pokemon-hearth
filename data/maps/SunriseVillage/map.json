@@ -3,7 +3,6 @@
   "name": "SunriseVillage",
   "layout": "LAYOUT_SUNRISE_VILLAGE",
   "music": "MUS_HH_SUNRISE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
   "requires_flash": false,
   "weather": "WEATHER_AUTUMN_LEAVES",
@@ -566,5 +565,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SunriseVillage_Event_TownSign"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

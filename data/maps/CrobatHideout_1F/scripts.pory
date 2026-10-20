@@ -114,12 +114,12 @@ script CrobatHideout_1F_SeenByGrunt {
 script CrobatHideout_1F_EventScript_Grunt1 {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_1,
-		format("{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}I bet yer the intruder!\nYeah, I'm smart like that!"),
+		format("{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}I bet yer the intruder!\nYeah, I'm smart like that!"),
 		format("Boss, help us!")
 	)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Whaddyawant? Ya got nothin' on us!\nErr I mean, we done nothin' wrong!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}Whaddyawant? Ya got nothin' on us!\nErr I mean, we done nothin' wrong!"
 	))
 	closemessage
 	end
@@ -159,13 +159,13 @@ script CrobatHideout_1F_EventScript_GruntDoubleGirl {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_4,
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Where d'ya think yer goin', cutie pie?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}Where d'ya think yer goin', cutie pie?"
 			),
 		format("Fine, go where ya want then, sheesh!")
 	)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Yer laughin' now, but our boss is gonna stomp on ya real good!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}Yer laughin' now, but our boss is gonna stomp on ya real good!"
 	))
 	closemessage
 	end
@@ -418,7 +418,7 @@ script CrobatHideout_1F_Trigger_4V1 {
 	applymovement(LOCALID_4V1_GRUNT_2, moves(walk_in_place_fast_up))
 	waitmovement(LOCALID_4V1_GRUNT_2)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox("{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}We're 'ere to end ya!")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}We're 'ere to end ya!")
 	closemessage
 
 	// Guardian runs in

@@ -8,25 +8,22 @@ script YifuCity_House2_Seamstress {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SEAMSTRESS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}I've been working day and night on a dress for the Guardian Chief's daugther.\p"
+	msgboxcontig((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}I've been working all week on a dress\nfor the Guardian Chief's daugther.\l"
 		"This will be my greatest work!"
 	))
-	closemessage
 
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceDown)
-	waitmovement(0)
 
-	setspeaker(SP_NAME_SEAMSTRESS)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}Tarountula, could you bring me some more of that red thread?"
+	msgbox((
+		"Tarountula, could you bring me some\nmore of that red thread?"
 	))
 	closemessage
 
-	playse(SE_PIN)
+	playmoncry(SPECIES_TAROUNTULA, CRY_MODE_NORMAL)
 	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_right, walk_right * 2, walk_up, walk_right * 2, face_up, delay_16))
 	waitmovement(0)
-	playse(SE_PIN)
+	playse(SE_LEDGE)
 	applymovement(LOCALID_TAROUNTULA, moves(jump_in_place_up, delay_16, walk_left * 2, walk_down, walk_left * 2))
 	waitmovement(0)
 
@@ -40,17 +37,20 @@ script YifuCity_House2_Model {
 	faceplayer
 	
 	if(flag(FLAG_OBTAINED_CHOICE_SCARF)) {
-		msgbox(format(
+		msgbox((
 			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}That Tarountula creeps me out…\nIt has so many legs…"
 		))
 		closemessage
 		setnamedmon(SPECIES_TAROUNTULA)
 	} else {
+		waitse
+		playse(SE_PIN)
 		applymovement(VAR_LAST_TALKED, moves(emote_sad))
 		setspeaker(SP_NAME_MODEL)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Yawn… Being a model is so tiring! My feet hurt from standing here for hours…\p"
-			"I do get some sweet free stuff though! Here, you can have this, I already have this color!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Yawn… Being a model is so tiring!\nMy feet hurt from standing for hours…\p"
+			"I do get some sweet free stuff\nthough!\p"
+			"Here, you can have this, I already\nhave this color!"
 		))
 		closemessage
 
@@ -67,11 +67,12 @@ script YifuCity_House2_Tarountula {
 	setseenmon(SPECIES_TAROUNTULA)
 	playmoncry(SPECIES_TAROUNTULA, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_TAROUNTULA)
-	msgbox(format("Thshh!"))
+	msgbox(("Thshh!"))
 	waitmoncry
 	closemessage
 
 	if (!flag(FLAG_OBTAINED_DESTINY_KNOT)) {
+		playse(SE_LEDGE)
 		applymovement(LOCALID_TAROUNTULA, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
 		waitmovement(0)
 

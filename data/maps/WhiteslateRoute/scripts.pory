@@ -56,14 +56,16 @@ script WhiteslateRoute_EventScript_ShamisenChallengeAreYouReady {
 
 script WhiteslateRoute_EventScript_ShamisenChallenge {
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}I am a traveling blind musician.\p"
+		"I was arrested by the aura of a brave\nand promising young Wielder…\p"
 		"Are you them? Why, you must be!\nThere's no other explanation!\p"
-		"We Shamisen Players sing songs about brave souls we meet on our travels.\p"
-		"To test your worth, how about I submit you to a little challenge?\p"
-		"If you manage to reach the next city's Refuge in one go, without running back to the previous towns', I will meet you there and give you a little something.\p"
-		"I know we only just met, but I believe you will succeed!\p"
-		"I can let you prepare before considering this challenge as having begun, if you wish."
+		"We Shamisen Players sing songs about\nbrave souls we meet on our travels.\p"
+		"To test your worth, how about I submit\nyou to a little challenge?\p"
+		"Reach the next city's Refuge in one go.\nNo going back to the previous towns'!\p"
+		"I will meet you there and give you a\nlittle something.\p"
+		"I know we only just met, but I believe\nyou will succeed!\p"
+		"I can let you prepare before\nbeginning this challenge, if you wish."
 	))
 
 	call(WhiteslateRoute_EventScript_ShamisenPlayerChoice)
@@ -74,7 +76,7 @@ script WhiteslateRoute_EventScript_ShamisenCallsOut {
 	waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}… … …!\p"
 		"Excuse me! Yes, you!"
 	))
@@ -88,14 +90,16 @@ script WhiteslateRoute_EventScript_ShamisenPlayer {
 	waitmovement(LOCALID_WHITESLATE_SHAMISEN_PLAYER)
 
 	setspeaker(SP_NAME_SHAMISEN_PLAYER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}I am a traveling blind musician.\nI was arrested by the aura of a brave and promising young Wielder…\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}I am a traveling blind musician.\p"
+		"I was arrested by the aura of a brave\nand promising young Wielder…\p"
 		"Are you them? Why, you must be!\nThere's no other explanation!\p"
-		"We Shamisen Players sing songs about brave souls we meet on our travels.\p"
-		"To test your worth, how about I submit you to a little challenge?\p"
-		"If you manage to reach the next city's Refuge in one go, without running back to the previous towns', I will meet you there and give you a little something.\p"
-		"I know we only just met, but I believe you will succeed!\p"
-		"I can let you prepare before considering this challenge as having begun, if you wish."
+		"We Shamisen Players sing songs about\nbrave souls we meet on our travels.\p"
+		"To test your worth, how about I submit\nyou to a little challenge?\p"
+		"Reach the next city's Refuge in one go.\nNo going back to the previous towns'!\p"
+		"I will meet you there and give you a\nlittle something.\p"
+		"I know we only just met, but I believe\nyou will succeed!\p"
+		"I can let you prepare before\nbeginning this challenge, if you wish."
 	))
 
 	call(WhiteslateRoute_EventScript_ShamisenPlayerChoice)
@@ -113,7 +117,7 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Go forth, bold young soul!\nMay luck echo your steps!"
 			))
 			closemessage
@@ -132,8 +136,8 @@ script WhiteslateRoute_EventScript_ShamisenPlayerChoice {
 			setflag(FLAG_HIDE_SHAMISEN)
 		default:
 			setspeaker(SP_NAME_SHAMISEN_PLAYER)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Understood. Come back when you are done preparing."
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Understood. Come back when you are\ndone preparing."
 			))
 			closemessage
 
@@ -164,7 +168,7 @@ script WhiteslateRoute_EventScript_Itsumi {
 		format("Oh, you do!")
 	)
 	setspeaker(SP_NAME_BREEDER)
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}I am glad we met! Your Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_BREEDER_F 0}I am glad we met!\nYour Pokémon seem so happy."), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -176,7 +180,7 @@ script WhiteslateRoute_EventScript_Ryosuke {
 	)
 	setspeaker(SP_NAME_BREEDER)
 	// TODO EVA
-	msgbox(format("{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}I heard there was a very talented masseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_BREEDER_M 0}I heard there was a very talented\nmasseur in Saberside Town.\pI want to see for myself!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -198,7 +202,7 @@ script WhiteslateRoute_EventScript_Tomomi {
 		format("Retreat! Retreat!")
 	)
 	setspeaker(SP_NAME_BEAUTY)
-	msgbox(format("Deer Pokémon are my very favorite. Such strength! Such elegance!"), MSGBOX_AUTOCLOSE)
+	msgbox(("{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Deer Pokémon are my very favorite.\nSuch strength! Such elegance!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -209,7 +213,7 @@ script WhiteslateRoute_EventScript_Yono {
 		format("Let an old woman catch her breath!…")
 	)
 	setspeaker(SP_NAME_OLD_LADY)
-	msgbox(format("Walking is good for the joints. It keeps me young!"), MSGBOX_AUTOCLOSE)
+	msgbox(("Walking is good for the joints.\nIt keeps me young!"), MSGBOX_AUTOCLOSE)
 	end
 }
 
@@ -308,6 +312,7 @@ script WhiteslateRoute_EventScript_Shuckle {
 	if (!flag(FLAG_DAILY_SHUCKLE_BERRY_JUICE)) {
 		applymovement(OBJ_EVENT_ID_PLAYER, Common_Movement_Delay48)
 		waitmovement(0)
+		playse(SE_PIN)
 		applymovement(OBJ_EVENT_ID_PLAYER, moves(emote_question_mark))
 		msgbox(format(
 			"…Oh? The Pokémon is giving you something."
@@ -323,9 +328,8 @@ script WhiteslateRoute_EventScript_Shuckle {
 
 script WhiteslateRoute_EventScript_ShuckleSign {
 	msgbox(
-		“A village of tender flower petals.”
 		"“Warning: Do not feed Shuckle\nanything other than Berries!\p"
-		"The stench from its flatulences would\nbe terrible!",
+		"The stench from its flatulences would\nbe terrible!”",
 		MSGBOX_SIGN
 	)
 }
