@@ -6,6 +6,7 @@
 .include "sound/voicegroups/drumsets/emerald_1.inc"
 .include "sound/voicegroups/drumsets/emerald_2.inc"
 .include "sound/voicegroups/drumsets/dd.inc"
+.include "sound/voicegroups/drumsets/vox.inc"
 
 
 @ key splits
@@ -213,3 +214,5 @@
 .include "sound/voicegroups/snow.inc"
 .include "sound/voicegroups/hanabi.inc"
 .include "sound/voicegroups/epic_route.inc"
+.include "sound/voicegroups/shamisen.inc"
+.include "sound/voicegroups/dojo_master.inc"

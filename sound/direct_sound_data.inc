@@ -9247,3 +9247,45 @@ DirectSoundWaveData_dp_flute_c6_16::
 	.incbin "sound/direct_sound_samples/dp_flute_c6_16.bin"
 
 	.align 2
+DirectSoundWaveData_vox_part_1::
+	.incbin "sound/direct_sound_samples/vox/part_01.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_2::
+	.incbin "sound/direct_sound_samples/vox/part_02.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_3::
+	.incbin "sound/direct_sound_samples/vox/part_03.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_4::
+	.incbin "sound/direct_sound_samples/vox/part_04.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_5::
+	.incbin "sound/direct_sound_samples/vox/part_05.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_6::
+	.incbin "sound/direct_sound_samples/vox/part_06.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_7::
+	.incbin "sound/direct_sound_samples/vox/part_07.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_8::
+	.incbin "sound/direct_sound_samples/vox/part_08.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_9::
+	.incbin "sound/direct_sound_samples/vox/part_09.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_10::
+	.incbin "sound/direct_sound_samples/vox/part_10.bin"
+
+	.align 2
+DirectSoundWaveData_vox_part_11::
+	.incbin "sound/direct_sound_samples/vox/part_11.bin"

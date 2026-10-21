@@ -4318,7 +4318,8 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_DECAY)                    \
     X(MUS_TEST_EVA)                 \
     X(MUS_SOULKEEP)                 \
-    X(MUS_VS_DOJO_MASTER)
+    X(MUS_VS_DOJO_MASTER)           \
+    X(MUS_SHAMISEN)
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
