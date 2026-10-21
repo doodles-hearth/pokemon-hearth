@@ -2,7 +2,7 @@
   "id": "MAP_STEEPSTONE_PASS_BOTTOM",
   "name": "SteepstonePassBottom",
   "layout": "LAYOUT_STEEP_STONE_PASS_BOTTOM",
-  "music": "MUS_DUMMY",
+  "music": "MUS_ROUTE110",
   "region_map_section": "MAPSEC_STEEPSTONE_PASS_BOTTOM",
   "requires_flash": false,
   "weather": "WEATHER_NONE",

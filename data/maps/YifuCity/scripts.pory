@@ -1052,17 +1052,7 @@ script YifuCity_EventScript_ChefOnBreak {
 }
 
 script YifuCity_EventScript_Nacli {
-	lock
-    faceplayer
-	setspeakertomonname(SPECIES_NACLI)
-    msgbox((
-        "Clink…"
-    ))
-	setseenmon(SPECIES_NACLI)
-    playmoncry(SPECIES_NACLI, CRY_MODE_NORMAL)
-    waitmoncry
-    release
-    end
+	mondialogue(SPECIES_NACLI, "Clink…")
 }
 
 script YifuCity_EventScript_NameRaterSign {
