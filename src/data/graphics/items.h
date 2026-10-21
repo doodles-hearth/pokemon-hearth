@@ -170,7 +170,7 @@ const u16 gItemIconPalette_Ether[] = INCGFX_U16("graphics/items/icons/medicine/e
 const u16 gItemIconPalette_Elixir[] = INCGFX_U16("graphics/items/icons/medicine/elixir.png", ".gbapal");
 
 const u32 gItemIcon_BerryJuice[] = INCGFX_U32("graphics/items/icons/berry_juice.png", ".4bpp.smol");
-const u16 gItemIconPalette_BerryJuice[] = INCGFX_U16("graphics/items/icon_palettes/berry_juice.pal", ".gbapal");
+const u16 gItemIconPalette_BerryJuice[] = INCGFX_U16("graphics/items/icons/berry_juice.png", ".gbapal");
 
 const u16 gItemIconPalette_SacredAsh[] = INCGFX_U16("graphics/items/icon_palettes/sacred_ash.pal", ".gbapal");
 
@@ -1315,7 +1315,7 @@ const u32 gItemIcon_ChoiceSpecs[] = INCGFX_U32("graphics/items/icons/choice_spec
 const u16 gItemIconPalette_ChoiceSpecs[] = INCGFX_U16("graphics/items/icon_palettes/choice_specs.pal", ".gbapal");
 
 const u32 gItemIcon_ChoiceScarf[] = INCGFX_U32("graphics/items/icons/choice_scarf.png", ".4bpp.smol");
-const u16 gItemIconPalette_ChoiceScarf[] = INCGFX_U16("graphics/items/icon_palettes/choice_scarf.pal", ".gbapal");
+const u16 gItemIconPalette_ChoiceScarf[] = INCGFX_U16("graphics/items/icons/choice_scarf.png", ".gbapal");
 
 // Status Orbs
 
@@ -1993,7 +1993,7 @@ const u32 gItemIcon_PunchingGlove[] = INCGFX_U32("graphics/items/icons/punching_
 const u16 gItemIconPalette_PunchingGlove[] = INCGFX_U16("graphics/items/icon_palettes/punching_glove.pal", ".gbapal");
 
 const u32 gItemIcon_CovertCloak[] = INCGFX_U32("graphics/items/icons/covert_cloak.png", ".4bpp.smol");
-const u16 gItemIconPalette_CovertCloak[] = INCGFX_U16("graphics/items/icon_palettes/covert_cloak.pal", ".gbapal");
+const u16 gItemIconPalette_CovertCloak[] = INCGFX_U16("graphics/items/icons/covert_cloak.png", ".gbapal");
 
 const u32 gItemIcon_LoadedDice[] = INCGFX_U32("graphics/items/icons/loaded_dice.png", ".4bpp.smol");
 const u16 gItemIconPalette_LoadedDice[] = INCGFX_U16("graphics/items/icon_palettes/loaded_dice.pal", ".gbapal");

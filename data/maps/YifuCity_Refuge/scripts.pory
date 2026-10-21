@@ -490,7 +490,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				msgbox((
 					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\p"
 					"… … …!\n…Oh, I recognize you!\p"
-					"You're that promising young Wielder\nI met on Whiteslate Route!\p"
+					"You're that promising young Wielder\nI met on Whiteslate Route!\p"	
 					"… …Yes, I feel it…\p"
 					"You traversed the Route, relying on\nyour Wielding skills and medicine…\p"
 					"Congratulations, um…{PAUSE 8}\n{FONT_SMALL}What did you say your name was?{FONT_NORMAL}\lCongratulations, {PLAYER}!\p"
@@ -504,7 +504,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				playfanfare(MUS_OBTAIN_ITEM)
 				message(format("{PLAYER} received the mysterious Egg."))
 				waitfanfare
-				giveegg(SPECIES_TOXEL, METLOC_EGG_SHAMISEN)
+				giveegg(SPECIES_TOXEL_TOKUAN, METLOC_EGG_SHAMISEN)
 
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox((
