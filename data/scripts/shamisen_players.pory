@@ -23,7 +23,10 @@ script EventScript_ShamisenPlayerBlue {
 
 script(local) ShamisenBlueFirstEncounter {
     faceplayer
-    msgbox("First encounter blue")
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_PLAYER}Hello, traveler.\nWe haven't talked before, have we?\p"
+        "My name is Tsuzune." // TODO EVAs
+    )
     closemessage
 
     call(ShamisenBlueBattle)
