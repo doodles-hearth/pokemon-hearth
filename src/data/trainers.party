@@ -2274,7 +2274,7 @@ AI: Smartish Trainer
 
 Darumaka (M)
 Level: 25
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Rage
 - Work Up
 - Fire Punch
@@ -2282,7 +2282,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Drifblim (F)
 Level: 28
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Ominous Wind
 - Will O Wisp
 - Hex
@@ -2290,7 +2290,7 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Drampa (M)
 Level: 26
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Dragon Rage
 - Glare
 - Fire Fang
@@ -2307,7 +2307,7 @@ AI: Smartish Trainer
 
 Golbat (F)
 Level: 28
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Poison Fang
 - Air Cutter
 - Astonish
@@ -2322,7 +2322,7 @@ AI: Basic Trainer
 
 Swoobat
 Level: 27
-IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 - Confusion
 - Odor Sleuth
 - Heart Stamp
@@ -6420,6 +6420,7 @@ Battle Type: Singles
 AI: Try To Faint
 
 Golbat
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 Level: 20
 
 === TRAINER_NANAMI ===
@@ -16504,6 +16505,7 @@ AI: Basic Trainer
 
 Torkoal
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rapid Spin
 - Smokescreen
 - Flame Wheel
@@ -16511,12 +16513,14 @@ Level: 17
 
 Wailmer
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rollout
 - Whirlpool
 - Mist
 
 Slowpoke
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Yawn
 - Disable
 - Headbutt
@@ -16533,12 +16537,14 @@ AI: Basic Trainer
 
 Slakoth
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Yawn
 - Feint Attack
 - Encore
 
 Barboach
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Magnitude
 - Amnesia
 - Water Gun
@@ -16554,12 +16560,14 @@ AI: Smartish Trainer
 
 Darumaka
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Incinerate
 - Rage
 - Facade
 
 Slugma
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Smog
 - Rock Throw
 - Incinerate
@@ -16581,18 +16589,21 @@ AI: Basic Trainer
 
 Shuckle
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sticky Web
 - Wrap
 - Struggle Bug
 
 Poltchageist
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stun Spore
 - Withdraw
 - Mega Drain
 
 Braixen
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Howl
 - Psybeam
 - Flame Charge
@@ -17406,12 +17417,14 @@ AI: Check Bad Move / Prefer Status Moves
 
 Kricketune
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Fury Cutter
 - Bide
 
 Growlithe
 Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Odor Sleuth
 - Bite
@@ -17427,12 +17440,14 @@ AI: Check Bad Move / Prefer Status Moves
 
 Kricketune
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Fury Cutter
 - Bide
 
 Growlithe
 Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Odor Sleuth
 - Bite
@@ -17448,12 +17463,14 @@ AI: Check Bad Move / Prefer Status Moves
 
 Kricketune
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Fury Cutter
 - Bide
 
 Growlithe
 Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Odor Sleuth
 - Bite
@@ -17471,6 +17488,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 - Acid
@@ -17487,6 +17505,7 @@ AI: Smartish Trainer
 
 Toxikyu Low Key
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17501,6 +17520,7 @@ AI: Smartish Trainer
 
 Toxikyu Amped
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17517,6 +17537,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17531,6 +17552,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17545,6 +17567,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
