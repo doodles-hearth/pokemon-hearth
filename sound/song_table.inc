@@ -571,10 +571,12 @@ gSongTable::
 	song mus_snow, MUSIC_PLAYER_BGM, 0
 	song mus_hanabi, MUSIC_PLAYER_BGM, 0
 	song mus_decay, MUSIC_PLAYER_BGM, 0
-	song ph_trap_blend, MUSIC_PLAYER_SE2, 2
+	song dummy_song_header, MUSIC_PLAYER_BGM, 0
 	song mus_test_eva, MUSIC_PLAYER_BGM, 0
 	song mus_soulkeep, MUSIC_PLAYER_BGM, 0
 	song mus_vs_dojo_master, MUSIC_PLAYER_BGM, 0
+	song mus_shamisen, MUSIC_PLAYER_BGM, 0
+	song ph_trap_blend, MUSIC_PLAYER_SE2, 2
 	song ph_trap_held, MUSIC_PLAYER_SE2, 2
 	song ph_trap_solo, MUSIC_PLAYER_SE2, 2
 	song ph_face_blend, MUSIC_PLAYER_SE2, 2
