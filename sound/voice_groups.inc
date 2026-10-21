@@ -215,3 +215,4 @@
 .include "sound/voicegroups/hanabi.inc"
 .include "sound/voicegroups/epic_route.inc"
 .include "sound/voicegroups/shamisen.inc"
+.include "sound/voicegroups/dojo_master.inc"
