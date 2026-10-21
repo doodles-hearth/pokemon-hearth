@@ -96,7 +96,7 @@ voice_group dojo_master
 	voice_square_1_alt 60, 0, 0, 1, 0, 1, 9, 0
 	voice_square_1_alt 60, 0, 0, 2, 0, 0, 15,1
 	voice_square_1_alt 60, 0, 0, 2, 0, 2, 0, 0
-   	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_shamisen, 255, 200, 255, 250
+   	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_shamisen, 255, 200, 244, 250
 	voice_programmable_wave 60, 0, ProgrammableWaveData_15, 0, 7, 15, 0 
 	voice_programmable_wave 60, 0, ProgrammableWaveData_16, 0, 7, 15, 0 
 	voice_programmable_wave 60, 0, ProgrammableWaveData_11, 0, 7, 15, 0 
