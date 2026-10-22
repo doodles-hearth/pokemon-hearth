@@ -5931,15 +5931,15 @@
     },
     {
       "id": "LAYOUT_SAKU_TOWN_POKEMON_CENTER",
-      "name": "SakuTown_PokemonCenter_Layout",
+      "name": "SakuTown_Refuge_Layout",
       "width": 20,
       "height": 13,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_Building_Generic",
       "secondary_tileset": "gTileset_Refuge",
-      "border_filepath": "data/layouts/SakuTown_PokemonCenter/border.bin",
-      "blockdata_filepath": "data/layouts/SakuTown_PokemonCenter/map.bin",
+      "border_filepath": "data/layouts/SakuTown_Refuge/border.bin",
+      "blockdata_filepath": "data/layouts/SakuTown_Refuge/map.bin",
       "layout_version": "emerald"
     },
     {
@@ -11904,6 +11904,18 @@
       "border_filepath": "data/layouts/CutMasterHouse_Layout/border.bin",
       "blockdata_filepath": "data/layouts/CutMasterHouse_Layout/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_HANABI_CITY_REFUGE",
+      "name": "HanabiCity_Refuge_Layout",
+      "width": 20,
+      "height": 13,
+      "border_width": 2,
+      "border_height": 2,
+      "primary_tileset": "gTileset_Building_Generic",
+      "secondary_tileset": "gTileset_Refuge",
+      "border_filepath": "data/layouts/HanabiCity_Refuge/border.bin",
+      "blockdata_filepath": "data/layouts/HanabiCity_Refuge/map.bin"
     }
   ]
 }

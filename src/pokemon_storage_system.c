@@ -2199,7 +2199,7 @@ static void Task_ShowPokeStorage(u8 taskId)
     switch (sStorage->state)
     {
     case 0:
-        PlaySE(SE_PC_LOGIN);
+        PlaySE(SE_FU_ZAKU);
         ComputerScreenOpenEffect(20, 0, 1);
         sStorage->state++;
         break;
@@ -3663,7 +3663,7 @@ static void Task_OnCloseBoxPressed(u8 taskId)
             SetPokeStorageTask(Task_PokeStorageMain);
             break;
         case 0:
-            PlaySE(SE_PC_OFF);
+            PlaySE(SE_FU_ZAKU);
             ClearBottomWindow();
             sStorage->state++;
             break;
@@ -3741,7 +3741,7 @@ static void Task_OnBPressed(u8 taskId)
             break;
         case 1:
         case MENU_B_PRESSED:
-            PlaySE(SE_PC_OFF);
+            PlaySE(SE_FU_ZAKU);
             ClearBottomWindow();
             sStorage->state++;
             break;

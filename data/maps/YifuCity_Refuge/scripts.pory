@@ -36,14 +36,6 @@ script YifuCity_Refuge_EventScript_Nurse {
 	end
 }
 
-script YifuCity_Refuge_EventScript_Pasture {
-	createfieldmugshot(MUGSHOT_UUME_MAN_2)
-	setvar(VAR_0x8009, MUGSHOT_UUME_MAN_2)
-	call(Common_EventScript_PcGuy)
-	release
-	end
-}
-
 script YifuCity_Refuge_EventScript_FakeNurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_CROBAT)
 	setvar(VAR_0x800A, LOCALID_WOOBAT_YIFU)

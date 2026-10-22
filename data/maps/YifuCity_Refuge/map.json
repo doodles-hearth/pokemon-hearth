@@ -78,33 +78,13 @@
       "night": false
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_UUME_MAN_2",
-      "x": 4,
-      "y": 6,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "YifuCity_Refuge_EventScript_Pasture",
-      "flag": "0",
-      "afternoon": false,
-      "deadnight": false,
-      "earlymorning": false,
-      "evening": false,
-      "lunchtime": false,
-      "morning": false,
-      "night": false
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 12,
       "y": 7,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
+      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "YifuCity_Refuge_EventScript_Samurai",
@@ -132,10 +112,10 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": true,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": true,
-      "night": true
+      "night": false
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PAWNIARD)",
@@ -152,10 +132,10 @@
       "afternoon": true,
       "deadnight": false,
       "earlymorning": true,
-      "evening": true,
+      "evening": false,
       "lunchtime": true,
       "morning": true,
-      "night": true
+      "night": false
     },
     {
       "local_id": "LOCALID_NURSE_YIFU",
@@ -201,10 +181,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT",
-      "x": 5,
+      "x": 7,
       "y": 8,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -274,10 +254,10 @@
       "afternoon": false,
       "deadnight": true,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(PAWNIARD)",
@@ -294,10 +274,10 @@
       "afternoon": false,
       "deadnight": true,
       "earlymorning": false,
-      "evening": false,
+      "evening": true,
       "lunchtime": false,
       "morning": false,
-      "night": false
+      "night": true
     },
     {
       "local_id": "LOCALID_YIFU_REFUGE_GROWLITHE",
@@ -363,8 +343,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CASTFORM_SUN_GIRL",
-      "x": 2,
-      "y": 7,
+      "x": 1,
+      "y": 8,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 2,
@@ -384,7 +364,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_SPECIES(CASTFORM)",
       "x": 1,
-      "y": 7,
+      "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 2,
@@ -420,6 +400,26 @@
       "lunchtime": false,
       "morning": false,
       "night": true
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_VALET_POKEBALLS",
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Common_EventScript_PcGuy",
+      "flag": "0",
+      "afternoon": false,
+      "deadnight": false,
+      "earlymorning": false,
+      "evening": false,
+      "lunchtime": false,
+      "morning": false,
+      "night": false
     }
   ],
   "warp_events": [
