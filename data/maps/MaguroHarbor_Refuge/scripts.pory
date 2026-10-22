@@ -16,14 +16,6 @@ script MaguroHarbor_Refuge_EventScript_Nurse {
 	end
 }
 
-script MaguroHarbor_Refuge_EventScript_Pasture {
-	createfieldmugshot(MUGSHOT_SEASIDE_MAN_2)
-	setvar(VAR_0x8009, MUGSHOT_SEASIDE_MAN_2)
-	call(Common_EventScript_PcGuy)
-	release
-	end
-}
-
 script MaguroHarbor_Refuge_EventScript_Hariko {
 	lock
 	faceplayer

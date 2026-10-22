@@ -1807,7 +1807,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/TranquilRoute_CutHouse/scripts.scr"
 
-	.include "data/maps/SakuTown_PokemonCenter/scripts.scr"
+	.include "data/maps/SakuTown_Refuge/scripts.scr"
 
 	.include "data/maps/SakuTown_BonsaiShop/scripts.scr"
 
@@ -1819,7 +1819,7 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 
 	.include "data/maps/Silveridge_House1/scripts.scr"
 
-	.include "data/maps/ChiiTown_PokemonCenter/scripts.scr"
+	.include "data/maps/ChiiTown_Refuge/scripts.scr"
 
 	.include "data/maps/KuraTown_House2/scripts.scr"
 
@@ -2078,3 +2078,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/HanabiCity_Dojo/scripts.scr"
 
 	.include "data/maps/InsideWailord/scripts.scr"
+
+	.include "data/maps/HanabiCity_Refuge/scripts.scr"
