@@ -1765,7 +1765,9 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/scripts/travelling_merchant.scr"
 	.include "data/scripts/daycare_adoption.scr"
 	.include "data/scripts/memory_reader.scr"
-	.include "data/scripts/shamisen_players.scr"
+	.include "data/scripts/shamisen_players_shy.scr"
+	.include "data/scripts/shamisen_players_loud.scr"
+	.include "data/scripts/shamisen_players_regal.scr"
 
 	.include "data/text/pokedex_rating.scr"
 
