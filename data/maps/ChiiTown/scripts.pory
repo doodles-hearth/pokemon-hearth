@@ -27,27 +27,29 @@ mapscripts ChiiTown_MapScripts {
 script ChiiTown_DrawMetatiles{
 	// Plant more flowers the more badges you have
 	if (flag(FLAG_BADGE01_GET)) {
-		setmetatile(17, 18, METATILE_SunriseVillage_RedFlowers, FALSE)
-		setmetatile(17, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(17, 21, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(17, 22, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE03_GET)) {
-		setmetatile(16, 16, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(16, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(16, 20, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE04_GET)) {
-		setmetatile(11, 20, METATILE_SunriseVillage_RedFlowers, FALSE)
-		setmetatile(15, 22, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(21, 16, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(22, 16, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE05_GET)) {
-		setmetatile(16, 22, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(16, 25, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE06_GET)) {
-		setmetatile(18, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
-		setmetatile(17, 16, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(18, 26, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(19, 26, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 	if (flag(FLAG_BADGE08_GET)) {
-		setmetatile(10, 21, METATILE_SunriseVillage_RedFlowers, FALSE)
-		setmetatile(16, 19, METATILE_SunriseVillage_RedFlowers, FALSE)
-		setmetatile(21, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(21, 26, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(22, 26, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(26, 23, METATILE_SunriseVillage_RedFlowers, FALSE)
+		setmetatile(26, 24, METATILE_SunriseVillage_RedFlowers, FALSE)
 	}
 }
 
@@ -59,11 +61,10 @@ script ChiiTown_EventScript_WatchfulMom{
 		case TIME_MORNING:
 			lock
 			faceplayer
-			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm dropping off my children to school.\p")
+			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm dropping off my children to\nschool.\p")
 			waitmessage
-			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
 			setspeaker("Watchful Mom")
-			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
+			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!")
 			waitmessage
 			waitse
 			waitmovement(0)
@@ -74,10 +75,8 @@ script ChiiTown_EventScript_WatchfulMom{
 			faceplayer
 			message("{CREATE_MUGSHOT MUGSHOT_SUNRISE_WOMAN_1 0}I'm waiting to pick up my children\nafter school.\p")
 			waitmessage
-			playse(SE_PIN)
-			applymovement(LOCALID_CHII_TOWN_WATCHFUL_MOM, moves(emote_exclamation_mark))
 			setspeaker("Watchful Mom")
-			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!") //Make inline emotes at some point
+			message("With all the recent Pokémon attacks,\nI will not let them leave my sight!")
 			waitmessage
 			waitse
 			waitmovement(0)
@@ -107,7 +106,7 @@ script ChiiTown_EventScript_Kecleon {
 	playmoncry(SPECIES_KECLEON, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_KECLEON)
 	applymovement(VAR_LAST_TALKED, moves(emote_music))
-	msgbox(format("Kleeeeh!"))
+	msgbox(("Kleeeeh!"))
 	waitmoncry
 	closemessage
 	release
@@ -120,8 +119,8 @@ script ChiiTown_EventScript_PlantingFlowers {
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_happy))
 	setspeaker(SP_NAME_LITTLE_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL 0}I'm planting flowers so that the wild Pokémon become happy again!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SUNRISE_LITTLE_GIRL 0}I'm planting flowers so that the\nwild Pokémon become happy again!"
 	))
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -140,8 +139,8 @@ script ChiiTown_EventScript_AlsoPlantingFlowers {
 
 script ChiiTown_EventScript_WatchingTheChildren {
 	setspeaker(SP_NAME_TEACHER)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Recess is great to channel the children's pent up energy."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MASQUERAIN_GIRL 0}Recess is great to channel the\nchildren's pent up energy."
 	), MSGBOX_NPC)
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
 	waitmovement(0)
@@ -152,12 +151,12 @@ script ChiiTown_EventScript_EatingBerries {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Sensei said that we should eat lots of\nberries to grow big and strong!\p"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Sensei said that we should eat lots\nof berries to grow big and strong!\p"
 		"But how are we supposed to reach\nthem if we aren't big and strong yet?", MSGBOX_DEFAULT)
 	closemessage
 
 	if(checkitem(ITEM_ORAN_BERRY, 1)){
-		msgbox(format(
+		msgbox((
 			"Give the girl an Oran Berry?"
 		))
 
@@ -170,7 +169,7 @@ script ChiiTown_EventScript_EatingBerries {
 			removeitem(ITEM_ORAN_BERRY)
 			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Oh my gosh, thank you!"
 			), MSGBOX_DEFAULT)
 			closemessage
@@ -189,8 +188,8 @@ script ChiiTown_EventScript_BerryEnthusiast {
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been eating berries just like\nSensei said, but I haven't grown yet.\p"
-		"I don't care though. They're delicious!"
+		"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}I've been eating berries like Teacher\nsaid, but I haven't grown yet.\p"
+		"I don't care though.\nThey're delicious!"
 	)
 	closemessage
 	applymovement(VAR_LAST_TALKED, Common_Movement_FaceOriginalDirection)
@@ -205,9 +204,9 @@ script ChiiTown_EventScript_BattlingGirl {
 	if (flag(FLAG_BEAT_CHII_TOWN_KIDS)) {
 		special(GetPlayerMrMrsString)
 		setspeaker(SP_NAME_LITTLE_GIRL)
-		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Wow, {STR_VAR_1}! You're super strong!!\p"
-			"I'll have to train Snuggles a whole lot more!"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Wow, {STR_VAR_1}!\nYou're super strong!!\p"
+			"I'll have to train Snuggles a whole\nlot more!"
 		))
 		closemessage
 	} else {
@@ -244,9 +243,9 @@ script ChiiTown_EventScript_BattlingGirl {
 			special(GetPlayerMrMrsString)
 			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			setspeaker(SP_NAME_LITTLE_GIRL)
-			msgbox(format(
-				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Wow, {STR_VAR_1}! You're super strong!!\p"
-				"I'll have to train Snuggles a whole lot more!"
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_F 0}Wow, {STR_VAR_1}!\nYou're super strong!!\p"
+				"I'll have to train Snuggles a whole\nlot more!"
 			))
 			closemessage
 
@@ -275,8 +274,8 @@ script ChiiTown_EventScript_BattlingBoy {
 		special(GetPlayerMrMrsString)
 		setspeaker(SP_NAME_LITTLE_BOY)
 		msgbox(format(
-			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Wow, {STR_VAR_1}! Can you be our Sensei?\p"
-			"That way, Destroyer will be invincible!"
+			"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Wow, {STR_VAR_1}!\nCan you be our Teacher?\p"
+			"That way, Destroyer will be\ninvincible!"
 		))
 		closemessage
 	} else {
@@ -308,8 +307,8 @@ script ChiiTown_EventScript_BattlingBoy {
 			applymovement(VAR_LAST_TALKED, moves(emote_heart))
 			setspeaker(SP_NAME_LITTLE_BOY)
 			msgbox((
-				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Wow, {STR_VAR_1}! Can you be our sensei?\p"
-				"That way, Destroyer will be invincible!"
+				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Wow, {STR_VAR_1}!\nCan you be our Teacher?\p"
+				"That way, Destroyer will be\ninvincible!"
 			))
 			closemessage
 
@@ -317,7 +316,7 @@ script ChiiTown_EventScript_BattlingBoy {
 		} else {
 			applymovement(VAR_LAST_TALKED, moves(emote_angry))
 			setspeaker(SP_NAME_LITTLE_BOY)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SCHOOL_KID_M 0}Fine! Go do grownup stuff!"
 			))
 			closemessage
@@ -334,7 +333,7 @@ script ChiiTown_EventScript_Mart {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_SHOPKEEPER)
-	message(format("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Welcome to Chii Town's market!\pHow may I help you?"))
+	message(("{CREATE_MUGSHOT MUGSHOT_CLERK 0}Welcome to Chii Town's market!\nHow may I help you?"))
 	waitmessage
 	pokemart(ChiiTown_Mart)
 	setspeaker(SP_NAME_SHOPKEEPER)
@@ -371,7 +370,10 @@ mart ChiiTown_Mart {
 script ChiiTown_EventScript_Samurai {
 	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}There's been reports of shady men\ndressed in blue loitering around here.\lBe careful when traveling!", MSGBOX_NPC)
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}There's been reports of shady men\ndressed in blue loitering around here.\l"
+		"Be careful when traveling!",
+		MSGBOX_NPC
+	)
 	closemessage
 }
 
@@ -390,10 +392,9 @@ script ChiiTown_EventScript_SetTrespassVar {
 }
 
 script ChiiTown_EventScript_HexManiac {
-	setspeaker(SP_NAME_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}I hate people.\p"
-		"There are fewer people outdoors after dark, so I only hang out at night."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_GIRL}I hate people.\p"
+		"There are fewer people outdoors after\ndark, so I only hang out at night."
 	), MSGBOX_NPC)
 }
 
@@ -402,7 +403,7 @@ script ChiiTown_EventScript_Deerling {
 	setseenmon(SPECIES_DEERLING_SPRING)
 	playmoncry(SPECIES_DEERLING_SPRING, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_DEERLING_SPRING)
-	msgbox(format("Hun!"))
+	msgbox(("Hun!"))
 	waitmoncry
 	closemessage
 	release
