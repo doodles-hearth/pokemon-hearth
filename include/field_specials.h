@@ -21,7 +21,7 @@ bool32 ShouldDoScottBattleFrontierCall(void);
 bool32 ShouldDoRoxanneCall(void);
 bool32 ShouldDoRivalRayquazaCall(void);
 bool32 CountSSTidalStep(u16 delta);
-enum SSTidalLocation GetSSTidalLocation(s8 *mapGroup, s8 *mapNum, s16 *x, s16 *y);
+enum SSTidalLocation GetSSTidalLocation(u8 *mapGroup, u8 *mapNum, s16 *x, s16 *y);
 void ShowScrollableMultichoice(void);
 void FrontierGamblerSetWonOrLost(bool8 won);
 u8 TryGainNewFanFromCounter(u8 incrementId);

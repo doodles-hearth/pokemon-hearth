@@ -327,7 +327,7 @@ static void CreateBattleStartTask_Debug(u8 transition, u16 song)
 #undef tState
 #undef tTransition
 
-static bool8 CheckSilphScopeInPokemonTower(u16 mapGroup, u16 mapNum)
+static bool8 CheckSilphScopeInPokemonTower(u8 mapGroup, u8 mapNum)
 {
     if (mapGroup == MAP_GROUP(MAP_POKEMON_TOWER_1F)
      && (mapNum == MAP_NUM(MAP_POKEMON_TOWER_1F)
@@ -1983,7 +1983,7 @@ static void SetRematchIdForTrainer(const struct RematchTrainer *table, u32 table
 #endif //FREE_MATCH_CALL
 }
 
-static inline bool32 DoesCurrentMapMatchRematchTrainerMap(s32 i, const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
+static inline bool32 DoesCurrentMapMatchRematchTrainerMap(s32 i, const struct RematchTrainer *table, u8 mapGroup, u8 mapNum)
 {
     return table[i].mapGroup == mapGroup && table[i].mapNum == mapNum;
 }
@@ -1994,7 +1994,7 @@ bool32 TrainerIsMatchCallRegistered(s32 i)
 }
 
 #if FREE_MATCH_CALL == FALSE
-static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u16 mapGroup, u16 mapNum)
+static bool32 UpdateRandomTrainerRematches(const struct RematchTrainer *table, u8 mapGroup, u8 mapNum)
 {
     s32 i;
 
@@ -2213,7 +2213,7 @@ static bool32 IsRematchStepCounterMaxed(void)
         return FALSE;
 }
 
-void TryUpdateRandomTrainerRematches(u16 mapGroup, u16 mapNum)
+void TryUpdateRandomTrainerRematches(u8 mapGroup, u8 mapNum)
 {
     if (IsRematchStepCounterMaxed() && UpdateRandomTrainerRematches(gRematchTable, mapGroup, mapNum) == TRUE)
         gSaveBlock1Ptr->trainerRematchStepCounter = 0;
