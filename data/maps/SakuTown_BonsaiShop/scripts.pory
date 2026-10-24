@@ -318,12 +318,13 @@ script(local) SakuTown_BonsaiShop_EventScript_Owner_DiscoverGymLeader {
 	closemessage
 
 	setspeaker(SP_NAME_HANA)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_HANA 0}Ho ho, I have been discovered…\p"
-		"You must be wondering what the Kura Village Dojo Master is doing in a Bonsai shop in Saku Village.\p"
-		"I'd prefer you don't tell anyone.\nSee, the two towns have a beef with one another.\p"
+		"You must be wondering what the Kura\nVillage Dojo Master is doing in a\nBonsai shop in Saku Village.\p"
+		"I'd prefer you don't tell anyone.\p"
+		"See, the two towns have a beef with\none another.\p"
 		"This senseless enmity pains me.\nI wish something could be done.\p"
-		"If only the villagers saw they are more similar than they are different…"
+		"If only the villagers saw they are\nmore similar than they are different…"
 	))
 
 	closemessage

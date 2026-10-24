@@ -43,8 +43,9 @@ script Silveridge_EventScript_HousesMadeOfSilverTunnelStone {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 0}See the houses around here? They were all built using the stones leftover from digging the Silver tunnel."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_WOMAN_2 0}See the houses around here?\p"
+		"They were all built using the stones\nleftover from digging Silver tunnel."
 	))
 	release
 }
@@ -120,8 +121,9 @@ script Silveridge_EventScript_AronGuy {
 	lock
 	faceplayer
 	setnamedmon(SPECIES_ARON)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 0}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\nHe's been munching on rocks ever since!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_MOUNTAIN_MAN_1 0}{SPEAKER NAME_MAN}Found this little guy in Silver Tunnel.\p"
+		"He's been munching on rocks ever\nsince!"
 	))
 	closemessage
 	release

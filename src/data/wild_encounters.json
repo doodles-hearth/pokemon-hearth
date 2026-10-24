@@ -12705,7 +12705,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -12859,7 +12859,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -13321,7 +13321,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -13436,6 +13436,91 @@
                 "min_level": 15,
                 "max_level": 17,
                 "species": "SPECIES_ABRA"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 25,
+            "mons": [
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_SURSKIT"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_MASQUERAIN"
+              },
+              {
+                "min_level": 25,
+                "max_level": 33,
+                "species": "SPECIES_WHISCASH"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_BARBOACH"
+              },
+              {
+                "min_level": 25,
+                "max_level": 33,
+                "species": "SPECIES_WHISCASH"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 8,
+                "species": "SPECIES_MAGIKARP_TOKUAN"
+              },
+              {
+                "min_level": 5,
+                "max_level": 9,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 15,
+                "max_level": 20,
+                "species": "SPECIES_BARBOACH"
+              },
+              {
+                "min_level": 15,
+                "max_level": 20,
+                "species": "SPECIES_BARBOACH"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_WHISCASH"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_GOLDEEN"
+              },
+              {
+                "min_level": 25,
+                "max_level": 30,
+                "species": "SPECIES_BARBOACH"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_SEAKING"
+              },
+              {
+                "min_level": 28,
+                "max_level": 32,
+                "species": "SPECIES_SEAKING"
               }
             ]
           }
@@ -13801,7 +13886,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -13998,7 +14083,7 @@
               {
                 "min_level": 20,
                 "max_level": 30,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 20,
@@ -14028,7 +14113,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -14048,7 +14133,7 @@
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 25,
@@ -14147,7 +14232,7 @@
               {
                 "min_level": 5,
                 "max_level": 8,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
@@ -14305,52 +14390,52 @@
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               }
             ]
           }
@@ -14553,7 +14638,7 @@
               {
                 "min_level": 8,
                 "max_level": 15,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 20,
@@ -14563,7 +14648,7 @@
               {
                 "min_level": 20,
                 "max_level": 25,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 20,
@@ -14707,7 +14792,7 @@
               {
                 "min_level": 8,
                 "max_level": 15,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 20,
@@ -14717,7 +14802,7 @@
               {
                 "min_level": 20,
                 "max_level": 25,
-                "species": "SPECIES_MAGIKARP"
+                "species": "SPECIES_MAGIKARP_TOKUAN"
               },
               {
                 "min_level": 20,
@@ -41268,58 +41353,58 @@
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MEDITITE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MEDITITE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_SINISTCHA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_FLETCHINDER"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MIGHTYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_SLUGMA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MIGHTYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_FLETCHLING"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MIGHTYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_POOCHYENA"
               }
             ]
@@ -41337,58 +41422,58 @@
                 "species": "SPECIES_SEVIPER"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_SINISTCHA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MEDITITE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MIGHTYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MEDITITE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_MIGHTYENA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_NOCTOWL"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_NOCTOWL"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_NOCTOWL"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_SINISTCHA_MASTERPIECE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 20,
+                "max_level": 23,
                 "species": "SPECIES_POOCHYENA"
               }
             ]
@@ -41528,6 +41613,40 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_KADABRA"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_KURA_TOWN",
+          "base_label": "gKuraTown",
+          "rock_smash_mons": {
+            "encounter_rate": 50,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NACLI"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NACLI"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NACLI"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NACLI"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_NACLI"
               }
             ]
           }

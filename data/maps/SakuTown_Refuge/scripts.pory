@@ -8,7 +8,7 @@ const VAR_GET_QUEST_LOG_STATE_SAKURA_LOVERS = VAR_TEMP_0
 const VAR_GET_QUEST_LOG_STATE_SAKURA_ESPEON = VAR_TEMP_1
 const VAR_GET_QUEST_LOG_STATE_SAKURA_SCYTHER = VAR_TEMP_2
 
-mapscripts SakuTown_PokemonCenter_MapScripts {
+mapscripts SakuTown_Refuge_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_SAKU_TOWN)
 
@@ -43,7 +43,7 @@ mapscripts SakuTown_PokemonCenter_MapScripts {
 		} 
 	}
 	MAP_SCRIPT_ON_FRAME_TABLE [
-		VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1: SakuTown_PokemonCenter_EventScript_ScytherQuest
+		VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 1: SakuTown_Refuge_EventScript_ScytherQuest
 	]
 }
 
@@ -62,7 +62,7 @@ script Saku_PokemonCenter_EventScript_NurseSleep {
 	release
 }
 
-script SakuTown_PokemonCenter_EventScript_Nurse {
+script SakuTown_Refuge_EventScript_Nurse {
 	// setvar(VAR_0x800B, LOCALID_NURSE)
 	// call(Common_EventScript_PkmnCenterNurse_CutTheBullshit)
 	// waitmessage
@@ -94,15 +94,7 @@ script SakuTown_PokemonCenter_EventScript_Nurse {
 	end
 }
 
-script SakuTown_PokemonCenter_EventScript_Pasture {
-	createfieldmugshot(MUGSHOT_SAKURA_MAN_2)
-	setvar(VAR_0x8009, MUGSHOT_SAKURA_MAN_2)
-	call(Common_EventScript_PcGuy)
-	release
-	end
-}
-
-script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
+script SakuTown_Refuge_EventScript_BewareOfFallingBricks {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_NURSE)
@@ -118,7 +110,7 @@ script SakuTown_PokemonCenter_EventScript_BewareOfFallingBricks {
 	end
 }
 
-script SakuTown_PokemonCenter_EventScript_ChatotPost {
+script SakuTown_Refuge_EventScript_ChatotPost {
 	lock
 	playse(SE_PIN)
 	setnamedmon(SPECIES_CHATOT)
@@ -134,7 +126,7 @@ script SakuTown_PokemonCenter_EventScript_ChatotPost {
 	end
 }
 
-script SakuTown_PokemonCenter_EventScript_ScytherQuest {
+script SakuTown_Refuge_EventScript_ScytherQuest {
 	lock
 	setvar(VAR_SAKU_KURA_QUEST_SCYTHER_STATE, 2)
 	applymovement(LOCALID_NURSE, moves(face_right))
@@ -166,7 +158,7 @@ script SakuTown_PokemonCenter_EventScript_ScytherQuest {
 	waitmovement(0)
 }
 
-script SakuTown_PokemonCenter_EventScript_Farmer1 {
+script SakuTown_Refuge_EventScript_Farmer1 {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_FARMER)
@@ -323,7 +315,7 @@ script(local) HealedScytherScript{
 	return
 }
 
-script SakuTown_PokemonCenter_EventScript_Farmer2 {
+script SakuTown_Refuge_EventScript_Farmer2 {
 	lock
 	setspeaker(SP_NAME_FARMER)
 	msgbox(format("{CREATE_MUGSHOT MUGSHOT_FARMER 0}There, there, girl…\nIt'll be okay…"))
@@ -338,7 +330,7 @@ script SakuTown_PokemonCenter_EventScript_Farmer2 {
 	release
 }
 
-script SakuTown_PokemonCenter_EventScript_Pushing {
+script SakuTown_Refuge_EventScript_Pushing {
 	delay(30)
 
 	faceplayer
@@ -352,11 +344,11 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 
 	switch(var(VAR_FACING)) {
 		case DIR_EAST:
-			applymovement(VAR_LAST_TALKED, SakuTown_PokemonCenter_Movement_PushesPlayer)
-			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_Movement_PlayerPushed)
+			applymovement(VAR_LAST_TALKED, SakuTown_Refuge_Movement_PushesPlayer)
+			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_Refuge_Movement_PlayerPushed)
 		case DIR_SOUTH:
-			applymovement(VAR_LAST_TALKED, SakuTown_PokemonCenter_Movement_PushesPlayerUp)
-			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_PokemonCenter_Movement_PlayerPushedUp)
+			applymovement(VAR_LAST_TALKED, SakuTown_Refuge_Movement_PushesPlayerUp)
+			applymovement(OBJ_EVENT_ID_PLAYER, SakuTown_Refuge_Movement_PlayerPushedUp)
 	}
 
 	playse(SE_NOT_EFFECTIVE)
@@ -365,7 +357,7 @@ script SakuTown_PokemonCenter_EventScript_Pushing {
 	waitmovement(OBJ_EVENT_ID_PLAYER)
 }
 
-script SakuTown_PokemonCenter_EventScript_Grunt1 {
+script SakuTown_Refuge_EventScript_Grunt1 {
 	lock
 	setspeaker("Shady man")
 	msgbox(format(
@@ -373,13 +365,13 @@ script SakuTown_PokemonCenter_EventScript_Grunt1 {
 	))
 	closemessage
 
-	call(SakuTown_PokemonCenter_EventScript_Pushing)
+	call(SakuTown_Refuge_EventScript_Pushing)
 
 	release
 	end
 }
 
-script SakuTown_PokemonCenter_EventScript_Grunt2 {
+script SakuTown_Refuge_EventScript_Grunt2 {
 	lock
 	setspeaker("Shady man")
 	msgbox(format(
@@ -387,13 +379,13 @@ script SakuTown_PokemonCenter_EventScript_Grunt2 {
 	))
 	closemessage
 	
-	call(SakuTown_PokemonCenter_EventScript_Pushing)
+	call(SakuTown_Refuge_EventScript_Pushing)
 
 	release
 	end
 }
 
-script SakuTown_PokemonCenter_EventScript_Grunt3 {
+script SakuTown_Refuge_EventScript_Grunt3 {
 	lock
 	setspeaker("Shady man")
 	msgbox(format(
@@ -401,32 +393,32 @@ script SakuTown_PokemonCenter_EventScript_Grunt3 {
 	))
 	closemessage
 	
-	call(SakuTown_PokemonCenter_EventScript_Pushing)
+	call(SakuTown_Refuge_EventScript_Pushing)
 
 	release
 	end
 }
 
-movement SakuTown_PokemonCenter_Movement_PlayerPushed {
+movement SakuTown_Refuge_Movement_PlayerPushed {
 	lock_facing_direction
 	jump_2_left
 	unlock_facing_direction
 }
 
-movement SakuTown_PokemonCenter_Movement_PushesPlayer {
+movement SakuTown_Refuge_Movement_PushesPlayer {
 	walk_left
 	delay_16
 	walk_right
 	face_original_direction
 }
 
-movement SakuTown_PokemonCenter_Movement_PlayerPushedUp {
+movement SakuTown_Refuge_Movement_PlayerPushedUp {
 	lock_facing_direction
 	jump_2_up
 	unlock_facing_direction
 }
 
-movement SakuTown_PokemonCenter_Movement_PushesPlayerUp {
+movement SakuTown_Refuge_Movement_PushesPlayerUp {
 	walk_up
 	delay_16
 	walk_down

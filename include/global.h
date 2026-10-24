@@ -695,8 +695,8 @@ struct SecretBase
 
 struct WarpData
 {
-    s8 mapGroup;
-    s8 mapNum;
+    u8 mapGroup;
+    u8 mapNum;
     s8 warpId;
     //u8 padding;
     s16 x, y;

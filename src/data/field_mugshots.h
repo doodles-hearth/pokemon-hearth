@@ -105,6 +105,8 @@ static const u32 sFieldMugshotGfx_CastformRainGuy[] = INCGFX_U32("graphics/field
 
 static const u32 sFieldMugshotGfx_CastformSunGirl[] = INCGFX_U32("graphics/field_mugshots/castform_sun_girl/normal.png", ".4bpp.smol");
 
+static const u32 sFieldMugshotGfx_ValetPokeballs[] = INCGFX_U32("graphics/field_mugshots/valet_pokeballs/normal.png", ".4bpp.smol");
+
 // Sunrise
 
 static const u32 sFieldMugshotGfx_BigSisNormal[] = INCGFX_U32("graphics/field_mugshots/sunrise/big_sis/normal.png", ".4bpp.smol");
@@ -487,6 +489,14 @@ static const struct MugshotGfx sFieldMugshots[MUGSHOT_COUNT][EMOTE_COUNT] =
         {
             .gfx = sFieldMugshotGfx_BattleGuyNormal,
             .pal = gObjectEventPal_Npc_Purplish,
+        },
+    },
+    [MUGSHOT_VALET_POKEBALLS] =
+    {
+        [EMOTE_NORMAL] =
+        {
+            .gfx = sFieldMugshotGfx_ValetPokeballs,
+            .pal = gObjectEventPal_Npc_Woody,
         },
     },
 

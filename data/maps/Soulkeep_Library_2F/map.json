@@ -2,8 +2,7 @@
   "id": "MAP_SOULKEEP_LIBRARY_2F",
   "name": "Soulkeep_Library_2F",
   "layout": "LAYOUT_SOULKEEP_LIBRARY_2F",
-  "music": "MUS_RG_SEVII_67",
-  "region": "REGION_HOENN",
+  "music": "MUS_SOULKEEP",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -258,5 +257,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Soulkeep_Library_1F_EventScript_SignRecipes"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

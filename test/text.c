@@ -582,8 +582,8 @@ TEST("Map names fit in popup")
     ASSUME(OW_POPUP_GENERATION == GEN_3);
     const u32 fontId = FONT_NARROWER;
     u32 widthPx = 80;
-    s8 mapGroup = 0;
-    s8 mapNum = 0;
+    u8 mapGroup = 0;
+    u8 mapNum = 0;
     u8 mapName[MAP_POPUP_STRING_BUFFER_LENGTH - MAP_POPUP_PREFIX_BUFFER_LENGTH];
     for (u32 i = 0; MAP_GROUP_COUNT[i] != 0; i++)
     {

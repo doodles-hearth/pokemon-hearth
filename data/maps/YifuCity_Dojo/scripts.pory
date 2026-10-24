@@ -900,9 +900,10 @@ script YifuCity_Dojo_EventScript_Advice {
 		msgbox((
             "{CREATE_MUGSHOT MUGSHOT_UUME_MAN_2 0}Hello, young challenger, and welcome\nto the Dance Hall Dojo!\p"
             "Got what it takes to see through the\ndancers' intoxicating moves?\p"
-            "Master Yutaka favors Dance Moves.\nA battle with her is like partaking in\la dizzying dancing showdown!\p"
+            "Master Yutaka favors Dance Moves.\p"
+            "A battle with her is like partaking in\na dizzying dancing showdown!\p"
             "Watch out though, she can be as\nabrasive as she is beautiful.\p"
-            "She probably won't appreciate you\nwalking around her Dojo with your\nclothes looking like… this…\p"
+            "She probably won't appreciate you\nwalking around her Dojo with your\lclothes looking like…{PAUSE 8} this…\p"
             "Uh, nevermind my babbling!\nGo get 'em, champ!"
 		))
 	}
@@ -1044,7 +1045,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
 
 	trainerbattle_single(
 		TRAINER_YUTAKA_1,
-		format(
+		(
             "Excuse me, what is this?\p"
             "Is there a reason for the\n"
             "accoutrement you're donning?\p"
@@ -1056,8 +1057,7 @@ script YifuCity_Dojo_EventScript_Yutaka {
             "offend you so!\l"
             "You are stronger than that!)\p"
             "Ahem… Let us move on…\p"
-            "You shall be fighting my exquisite\nassortment of Pokémon,\l"
-            "in the hopes of obtaining\lan official Token from me.\p"
+            "You shall be fighting my exquisite\nassortment of Pokémon.\p"
             "Try not to be too overwhelmed by my\nstrength and, most of all,\lby my impeccable sense of fashion.\p"
             "Let this battle begin!"
 		),

@@ -19,8 +19,8 @@ script YifuCity_BigHouse_3F_EventScript_HarikosGrandpa {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_OLD_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_COLD_OLD_MAN 0}The climate here is a lot warmer than the Icy Isles.\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_COLD_OLD_MAN 0}The climate here is a lot warmer than\nthat of the Icy Isles.\p"
 		"That's why we brought Snom with us!"
 		// TODO EVA setdescribedmon
 	))
@@ -33,8 +33,8 @@ script YifuCity_BigHouse_3F_EventScript_HarikosSister {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_COLD_LITTLE_GIRL 0}My big sister brings us food from the places she visits!\pI miss her…"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_COLD_LITTLE_GIRL 0}My big sister brings us food from the\nplaces she visits!\pI miss her…"
 	))
 	closemessage
 	release
@@ -44,8 +44,9 @@ script YifuCity_BigHouse_3F_EventScript_HarikosBrother {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_BOY)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_COLD_BOY_2 0}Where are you from? I haven't seen anyone with your hair color around here."
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_COLD_BOY_2 0}Where are you from?\p"
+		"I haven't seen anyone with your hair\ncolor around here."
 	))
 	closemessage
 	release
@@ -56,10 +57,10 @@ script YifuCity_BigHouse_3F_EventScript_Snom {
     faceplayer
 	setseenmon(SPECIES_SNOM)
     setspeakertomonname(SPECIES_SNOM)
-    msgbox(format(
+    playmoncry(SPECIES_SNOM, CRY_MODE_NORMAL)
+    msgbox((
         "Mrmr…"
     ))
-    playmoncry(SPECIES_SNOM, CRY_MODE_NORMAL)
     waitmoncry
     release
     end
@@ -69,8 +70,8 @@ script YifuCity_BigHouse_3F_EventScript_BadLuckShamisen {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_OLD_MAN)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}It's bad luck not to help out a Shamisen Player asking for help!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_MAN 0}It's bad luck not to help out a\nShamisen Player asking for help!"
 	))
 	closemessage
 	release

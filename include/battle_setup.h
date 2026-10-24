@@ -15,8 +15,8 @@
 struct RematchTrainer
 {
     u16 trainerIds[REMATCHES_COUNT];
-    u16 mapGroup;
-    u16 mapNum;
+    u8 mapGroup;
+    u8 mapNum;
 };
 
 /*
@@ -123,7 +123,7 @@ const u8 *GetTrainerWonSpeech(void);
 void UpdateRematchIfDefeated(s32 rematchTableId);
 void ClearCurrentTrainerWantRematchVsSeeker(void);
 void IncrementRematchStepCounter(void);
-void TryUpdateRandomTrainerRematches(u16 mapGroup, u16 mapNum);
+void TryUpdateRandomTrainerRematches(u8 mapGroup, u8 mapNum);
 u16 GetLastBeatenRematchTrainerId(u16 trainerId);
 bool8 ShouldTryRematchBattle(void);
 bool8 ShouldTryRematchBattleForTrainerId(u16 trainerId);

@@ -253,6 +253,7 @@ const u32 gObjectEventPic_SwimmerF[] = INCGFX_U32("graphics/object_events/pics/p
 const u32 gObjectEventPic_Traveler[] = INCGFX_U32("graphics/object_events/pics/people/woody/traveler.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_Valet[] = INCGFX_U32("graphics/object_events/pics/people/woody/valet.png", ".4bpp", "-mwidth 4 -mheight 4");
 const u32 gObjectEventPic_Burglar[] = INCGFX_U32("graphics/object_events/pics/people/woody/burglar.png", ".4bpp", "-mwidth 4 -mheight 4");
+const u32 gObjectEventPic_ValetPokeballs[] = INCGFX_U32("graphics/object_events/pics/people/woody/valet_pokeballs.png", ".4bpp", "-mwidth 4 -mheight 4");
 
 const u32 gObjectEventPic_RichBoy[] = INCGFX_U32("graphics/object_events/pics/people/rich_boy.png", ".4bpp", "-mwidth 2 -mheight 4");
 const u32 gObjectEventPic_FatMan[] = INCGFX_U32("graphics/object_events/pics/people/fat_man.png", ".4bpp", "-mwidth 4 -mheight 4");

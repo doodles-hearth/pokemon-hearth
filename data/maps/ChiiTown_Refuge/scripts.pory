@@ -1,4 +1,4 @@
-mapscripts ChiiTown_PokemonCenter_MapScripts {
+mapscripts ChiiTown_Refuge_MapScripts {
 	MAP_SCRIPT_ON_TRANSITION {
 		setrespawn(HEAL_LOCATION_CHII_TOWN)
 		gettime
@@ -29,7 +29,7 @@ mapscripts ChiiTown_PokemonCenter_MapScripts {
 	}
 }
 
-script ChiiTown_PokemonCenter_EventScript_Nurse {
+script ChiiTown_Refuge_EventScript_Nurse {
 	createfieldmugshot(MUGSHOT_SUNRISE_NURSE)
 	setvar(VAR_0x800B, LOCALID_NURSE_CHII)
 	setvar(VAR_0x800A, LOCALID_CHANSEY_CHII)
@@ -42,7 +42,7 @@ script ChiiTown_PokemonCenter_EventScript_Nurse {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_NurseSleep {
+script ChiiTown_Refuge_EventScript_NurseSleep {
 	createfieldmugshot(MUGSHOT_SUNRISE_NURSE)
 	setvar(VAR_0x8009, MUGSHOT_SUNRISE_NURSE)
 	call(Common_EventScript_PkmnCenterNurse_Sleep)
@@ -52,15 +52,7 @@ script ChiiTown_PokemonCenter_EventScript_NurseSleep {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_Pasture {
-	createfieldmugshot(MUGSHOT_SUNRISE_MAN_2)
-	setvar(VAR_0x8009, MUGSHOT_SUNRISE_MAN_2)
-	call(Common_EventScript_PcGuy)
-	release
-	end
-}
-
-script ChiiTown_PokemonCenter_EventScript_Shamisen {
+script ChiiTown_Refuge_EventScript_Shamisen {
 	lock
 	faceplayer
 	// TODO EVA battle shamisen player!
@@ -75,7 +67,7 @@ script ChiiTown_PokemonCenter_EventScript_Shamisen {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
+script ChiiTown_Refuge_EventScript_ShamisenFan {
 	lock
 	faceplayer
 	setspeaker("Shamisen Fan")
@@ -91,7 +83,7 @@ script ChiiTown_PokemonCenter_EventScript_ShamisenFan {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_Boy {
+script ChiiTown_Refuge_EventScript_Boy {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_GIRL)
@@ -103,7 +95,7 @@ script ChiiTown_PokemonCenter_EventScript_Boy {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_Mom {
+script ChiiTown_Refuge_EventScript_Mom {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_WOMAN)
@@ -116,7 +108,7 @@ script ChiiTown_PokemonCenter_EventScript_Mom {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_WhereShamisen {
+script ChiiTown_Refuge_EventScript_WhereShamisen {
 	lock
 	faceplayer
 	setspeaker("Weird man")
@@ -136,7 +128,7 @@ script ChiiTown_PokemonCenter_EventScript_WhereShamisen {
 	release
 }
 
-script ChiiTown_PokemonCenter_EventScript_IveComeALongWay {
+script ChiiTown_Refuge_EventScript_IveComeALongWay {
 	playse(SE_PIN)
 	applymovement(LOCALID_CHII_TOWN_WEARY_TRAVELLER, moves(emote_happy))
 	setspeaker("Weary traveler")
@@ -146,7 +138,7 @@ script ChiiTown_PokemonCenter_EventScript_IveComeALongWay {
 	closemessage
 }
 
-script ChiiTown_PokemonCenter_EventScript_Snorunt {
+script ChiiTown_Refuge_EventScript_Snorunt {
 	lock
 	faceplayer
 	setseenmon(SPECIES_SNORUNT)
@@ -161,7 +153,7 @@ script ChiiTown_PokemonCenter_EventScript_Snorunt {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_NeedMarket {
+script ChiiTown_Refuge_EventScript_NeedMarket {
 	playse(SE_BALL_BOUNCE_1)
 	applymovement(LOCALID_CHII_TOWN_LADY_SHOPPER, moves(emote_pensive))
 	setspeaker(SP_NAME_WOMAN)
@@ -173,7 +165,7 @@ script ChiiTown_PokemonCenter_EventScript_NeedMarket {
 	closemessage
 }
 
-script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
+script ChiiTown_Refuge_EventScript_RefugePresentation {
 	lock
 	faceplayer
 	setspeaker("Talkative man")
@@ -182,7 +174,7 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 		"You're in one of the many new Pokémon\nrefuges the Toku Council had built!\p"
 		"Since traveling's so dangerous now,\nmore people are becoming Wielders,\ljust like the Toku Council advised.\p"
 		"In turn, towns needed proper places\nfor Pokémon to rest and heal.\p"
-		"Sorry, I'll get out of your hair now.\nTalk to the nurse and her Chansey\lif you want your Pokémon to be healed!"
+		"Sorry, I'll get out of your hair now.\nTalk to the nurse and her Chansey\lif you want to heal your Pokémon!"
 	)
 	closemessage
 
@@ -206,7 +198,7 @@ script ChiiTown_PokemonCenter_EventScript_RefugePresentation {
 	end
 }
 
-script ChiiTown_PokemonCenter_EventScript_MakeNamesUp {
+script ChiiTown_Refuge_EventScript_MakeNamesUp {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_LITTLE_BOY)

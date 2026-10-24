@@ -71,9 +71,9 @@ script CrobatHideout_1F_SeenByGrunt {
 	switch(var(VAR_RESULT)) {
 		case 0:
 			setspeaker(SP_NAME_ZUBAT_GRUNT)
-			msgbox(format(
+			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}I don' know no {PLAYER}!\nThis ain't no tea party!\p"
-				"You a spy? Ya don' work with the Samurai or somethin', do ya?"
+				"You a spy? Ya don' work with the\nGuardians or somethin', do ya?"
 			))
 		case 1:
 			setspeaker(SP_NAME_ZUBAT_GRUNT)
@@ -114,12 +114,12 @@ script CrobatHideout_1F_SeenByGrunt {
 script CrobatHideout_1F_EventScript_Grunt1 {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_1,
-		format("{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}I bet yer the intruder!\nYeah, I'm smart like that!"),
+		format("{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}I bet yer the intruder!\nYeah, I'm smart like that!"),
 		format("Boss, help us!")
 	)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Whaddyawant? Ya got nothin' on us!\nErr I mean, we done nothin' wrong!"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}Whaddyawant? Ya got nothin' on us!\nErr I mean, we done nothin' wrong!"
 	))
 	closemessage
 	end
@@ -159,13 +159,13 @@ script CrobatHideout_1F_EventScript_GruntDoubleGirl {
 	trainerbattle_single(
 		TRAINER_GRUNT_CROBAT_HIDEOUT_4,
 		format(
-			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Where d'ya think yer goin', cutie pie?"
+			"{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}Where d'ya think yer goin', cutie pie?"
 			),
 		format("Fine, go where ya want then, sheesh!")
 	)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Yer laughin' now, but our boss is gonna stomp on ya real good!"
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}Yer laughin' now, but our boss is gonna stomp on ya real good!"
 	))
 	closemessage
 	end
@@ -205,7 +205,7 @@ script CrobatHideout_1F_EventScript_GruntNearReunionRoom {
 
 script CrobatHideout_1F_EventScript_Samurai {
 	lock
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Quiet! The leader of the Crobat Shadows is in the next room!\p"
 		"You're a trainer, yes? You have a wild look in your eyes… Like you're itching for a fight!\p"
@@ -418,10 +418,10 @@ script CrobatHideout_1F_Trigger_4V1 {
 	applymovement(LOCALID_4V1_GRUNT_2, moves(walk_in_place_fast_up))
 	waitmovement(LOCALID_4V1_GRUNT_2)
 	setspeaker(SP_NAME_ZUBAT_GRUNT)
-	msgbox("{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}We're 'ere to end ya!")
+	msgbox("{CREATE_MUGSHOT MUGSHOT_ZUBAT_F 0}We're 'ere to end ya!")
 	closemessage
 
-	// Samurai runs in
+	// Guardian runs in
 	addobject(LOCALID_SAMURAI)
 	applymovement(LOCALID_SAMURAI, moves(walk_fast_left * 9))
 	waitmovement(LOCALID_SAMURAI)
@@ -444,7 +444,7 @@ script CrobatHideout_1F_Trigger_4V1 {
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_up))
 	waitmovement(0)
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Excuse me!"
 	))
@@ -462,7 +462,7 @@ script CrobatHideout_1F_Trigger_4V1 {
 }
 
 script CrobatHideout_1F_SamuraiOffersHelp {
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}You sure are elusive! I finally caught up with your trail!\p"
 		"Good work finding their lair, we'd been on the lookout for a while!"
@@ -476,7 +476,7 @@ script CrobatHideout_1F_SamuraiOffersHelp {
 	waitmovement(LOCALID_SAMURAI)
 	waitse
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Oh, you were in the midst of getting\nattacked by these four delinquents,\lweren't you?\p"
 		"Let me help!\nI can handle two at a time!"
@@ -520,7 +520,7 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 	applymovement(LOCALID_SAMURAI, moves(walk_in_place_fast_left))
 	applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Nicely done!\nWhat is your name, child?\p"
 		"… … …{PLAYER}!\nI see you have skill!\p"
@@ -535,7 +535,7 @@ script CrobatHideout_1F_BattleSamuraiBackToBack {
 	callnative(UpdateFollowingPokemon)
 	fadescreenswapbuffers(FADE_FROM_BLACK)
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Right! Follow me, {PLAYER}!"
 	))
@@ -603,7 +603,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 
 	playse(SE_PIN)
 	applymovement(LOCALID_SAMURAI, moves(emote_angry))
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}I make the law here!\n"
 		"You're under arrest, you thug!\p"
@@ -662,7 +662,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	applymovement(LOCALID_4V1_GRUNT_3, moves(face_right))
 	applymovement(LOCALID_4V1_GRUNT_4, moves(face_left))
 	
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cut the chatter, you lowlife crook!\p"
 		"Your reign of terror has been going on\ntoo long!\p"
@@ -732,7 +732,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 	waitmovement(LOCALID_CROBAT_BOSS)
 	setspeaker(SP_NAME_CROBAT_BOSS)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}No fancy Samurai, no lil' privileged\nscrub are ever gonna stop us!\p"
+		"{CREATE_MUGSHOT MUGSHOT_CROBAT 0}No fancy Guardian, no lil' privileged\nscrub are ever gonna stop us!\p"
 		"We're the Crobat Shadows, and we're\nalways one step ahead of ya!\p"
 		"Kid… Careful who ya team up with."
 	))
@@ -786,7 +786,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 
 	delay(48)
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cough… cough…\nThey're gone!"
 	))
@@ -813,7 +813,7 @@ script CrobatHideout_1F_EnteredBossRoomWithSamurai {
 }
 
 script CrobatHideout_1F_LetsFight2v2 {
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Let us join forces, {PLAYER}!"
 	))
@@ -878,7 +878,7 @@ script CrobatHideout_1F_LetsFight2v2 {
 			applymovement(LOCALID_SAMURAI, moves(walk_in_place_fast_left))
 			applymovement(OBJ_EVENT_ID_PLAYER, moves(walk_in_place_fast_right))
 			waitmovement(0)
-			setspeaker(SP_NAME_SAMURAI)
+			setspeaker(SP_NAME_GUARDIAN)
 			msgbox((
 				"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}Cough… Let's get out of here!"
 			))

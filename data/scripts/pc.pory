@@ -1,17 +1,24 @@
 script Common_EventScript_PcGuy {
 	lock
 	faceplayer
-	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	if (flag(FLAG_PC_EXPLAINED)) {
+		special(GetPlayerSirMissString)
 		msgbox((
-			"{SPEAKER NAME_MAN}Need me to carry some Pokémon around\nfor you? Sure thing!"
+			"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}Need me to carry some Pokémon\naround for you, {STR_VAR_1}?"
 		))
 	} else {
 		setflag(FLAG_PC_EXPLAINED)
-		msgbox((
-			"{SPEAKER NAME_MAN}Hey there, Pokémon Wielder!\p"
+		special(GetPlayerSirMissString)
+		message((
+			"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}Hullo there, {STR_VAR_1}!\nYou're a Pokémon Wielder, right?\p"
 			"Have you ever thought, “Darn, I wish I\ncould catch this seventh Pokémon,\lbut I only have room for six?”\p"
-			"Well, today's your lucky day!\p"
+		))
+		waitmessage
+		waitse
+		playse(SE_PIN)
+		applymovement(VAR_LAST_TALKED, moves(emote_happy))
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}Well, today's your lucky day,\nyessirree!\p"
 			"I've been appointed to store Wielders'\nPokémon for them while they travel.\p"
 			"We bring your Pokémon to a pasture\nwhere they live happily while waiting\lfor you to get them back!\p"
 			"Talk to me if you ever want to send or\nretrieve your Pokémon!"
@@ -25,34 +32,61 @@ script Common_EventScript_PcGuy {
 	createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 	// Player didn't drop or retrieve mons
     if (!flag(FLAG_LAYOUT_DIFFERENT_AFTER_PC)) {
-		msgbox(format(
-			"{SPEAKER NAME_MAN}Well… saves me a trip."
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}Well… that saves me a trip!\n{FONT_SMALL}(Thank heavens!){FONT_NORMAL}"
 		))
 		closemessage
 
 		// Player dropped or retrieved mons
     } else {
+		special(GetPlayerSirMissString)
 		if (flag(FLAG_PC_GUY_DID_TRIP)) {
 			msgbox((
-				"{SPEAKER NAME_MAN}Pant… pant… Thanks for using our\nPokémon Pasture service!"
+				"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}Pant… pant… Thanks for using our\nPokémon Pasture service, {STR_VAR_1}!"
 			))
 			closemessage
 		} else {
 			setflag(FLAG_PC_GUY_DID_TRIP)
 
 			msgbox((
-				"{SPEAKER NAME_MAN}Alrighty, I'll just do a quick trip\nto the Pasture!\p"
+				"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}Alrighty, I'll just do a quick trip\nto the Pasture, {STR_VAR_1}!\p"
 				"Just a minute!"
 			))
 			closemessage
+
+			playse(SE_FLEE)
+			if(var(VAR_FACING) == DIR_WEST) {
+				applymovement(VAR_LAST_TALKED, moves(walk_faster_down, walk_faster_right * 4, walk_faster_down * 3))
+			} else {
+				applymovement(VAR_LAST_TALKED, moves(walk_faster_right * 4, walk_faster_down * 4))
+			}
+
+			waitmovementall
+			waitse
+			playse(SE_EXIT)
+			applymovement(VAR_LAST_TALKED, moves(set_invisible))
+			waitse
+			waitmovementall
+
+			delay(32)
 
 			fadescreenswapbuffers(FADE_TO_BLACK)
 			delay(120)
 			fadescreenswapbuffers(FADE_FROM_BLACK)
 
+			delay(32)
+
+			playse(SE_EXIT)
+			if(var(VAR_FACING) == DIR_WEST) {
+				applymovement(VAR_LAST_TALKED, moves(face_up, set_visible, delay_16 * 3, walk_slow_up * 3, walk_slow_left * 4, walk_slow_up, face_player, delay_16 * 3))
+			} else {
+				applymovement(VAR_LAST_TALKED, moves(face_up, set_visible, delay_16 * 3, walk_slow_up * 4, walk_slow_left * 4, face_player, delay_16 * 3))
+			}
+			waitmovementall
+
 			createfieldmugshot(VAR_0x8009, EMOTE_NORMAL)
 			msgbox((
-				"{SPEAKER NAME_MAN}PANT…{PAUSE 8} PANT…\p"
+				"{CREATE_MUGSHOT MUGSHOT_VALET_POKEBALLS 0}{SPEAKER NAME_VALET}PANT…{PAUSE 8} PANT…\p"
 				"Your…{PAUSE 8} pant…{PAUSE 8} Pokémon…{PAUSE 8} pant…{PAUSE 8}\nare all set!\p"
 				"Whew, the pasture is a liiiittle far\nfrom here!{PAUSE 8} Pant…\p"
 				"Come…{PAUSE 8} pant…{PAUSE 8} Come again!"

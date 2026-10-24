@@ -77,8 +77,8 @@ enum Species GetStaticOutbreakSpecies(enum MassOutbreakIndex outbreakIdx)
 
 u8 *GetStaticOutbreakMapName(u8 *dest, enum MassOutbreakIndex outbreakIdx)
 {
-    u16 mapGroup = MAP_GROUP(sPokeOutbreakSpeciesList[outbreakIdx].location);
-    u16 mapNum = MAP_NUM(sPokeOutbreakSpeciesList[outbreakIdx].location);
+    u8 mapGroup = MAP_GROUP(sPokeOutbreakSpeciesList[outbreakIdx].location);
+    u8 mapNum = MAP_NUM(sPokeOutbreakSpeciesList[outbreakIdx].location);
     return GetMapName(dest, Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId, 0);
 }
 

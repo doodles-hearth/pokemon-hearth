@@ -2494,6 +2494,24 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Burglar = {
     .images = sPicTable_Burglar,
 };
 
+const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_ValetPokeballs = {
+    .tileTag = TAG_NONE,
+    .paletteTag = OBJ_EVENT_PAL_TAG_WOODY,
+    .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
+    .size = 512,
+    .width = 32,
+    .height = 32,
+    .paletteSlot = PALSLOT_NPC_4,
+    .shadowSize = SHADOW_SIZE_M,
+    .inanimate = FALSE,
+    .tracks = TRACKS_FOOT,
+    .compressionMode = OBJECT_EVENT_COMPRESSION_NONE,
+    .oam = &gObjectEventBaseOam_32x32,
+    .subspriteTables = sOamTables_32x32,
+    .anims = sAnimTable_Standard,
+    .images = sPicTable_ValetPokeballs,
+};
+
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RayquazaStill = {
     .tileTag = TAG_NONE,
     .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,

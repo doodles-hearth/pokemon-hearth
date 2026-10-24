@@ -58,26 +58,23 @@ script IncenseShop_EventScript_Shopkeeper {
 
 	if (flag(FLAG_TALKED_TO_INCENSE_SHOP_KEEPER)) {
 		applymovement(VAR_LAST_TALKED, moves(emote_sleep))
-		setspeaker(SP_NAME_SHOPKEEPER)
-		msgbox(format(
-			"… … … … … …\n… … … ZzzZz…"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_INCENSE 0}{SPEAKER NAME_SHOPKEEPER}… … … … … …\n… … … ZzzZz…"
 		))
 		closemessage
 
 		delay(30)
 		faceplayer
 
-		msgbox(format(
-			"… … …I'm awake! I'm awake!\p"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_INCENSE 0}{SPEAKER NAME_SHOPKEEPER}… … …I'm awake! I'm awake!\p"
 			"{FONT_SMALL}Yawn{FONT_NORMAL}… Welcome to the Incense Shop…"
 		))
-		closemessage
 
 		call(IncenseShop_EventScript_OpenMart)
 	} else {
-		setspeaker(SP_NAME_SHOPKEEPER)
-		msgbox(format(
-			"… … … … … …\n… … … … … …"
+		msgbox((
+			"{CREATE_MUGSHOT MUGSHOT_INCENSE 0}{SPEAKER NAME_SHOPKEEPER}… … … … … …\n… … … … … …"
 		))
 
 		mcdialogue(
@@ -85,14 +82,12 @@ script IncenseShop_EventScript_Shopkeeper {
 			"Hello?",
 			"… … …"
 		)
-		closemessage
 
 		switch(var(VAR_RESULT)) {
 			case 0:
 			case 1:
-				setspeaker(SP_NAME_SHOPKEEPER)
-				msgbox(format(
-					"… … … … … …\n… … … … … …\l"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_INCENSE 0}{SPEAKER NAME_SHOPKEEPER}… … … … … …\n… … … … … …\l"
 					"… … …ZzzZZz…\p"
 					"… … … … … …\n… … … Huh?"
 				))
@@ -101,11 +96,10 @@ script IncenseShop_EventScript_Shopkeeper {
 				faceplayer
 				delay(30)
 
-				setspeaker(SP_NAME_SHOPKEEPER)
-				msgbox(format(
-					"…Oh, yes hello, welcome…\n{FONT_SMALL}Yawn{FONT_NORMAL}… …to the Incense Shop…\p"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_INCENSE 0}{SPEAKER NAME_SHOPKEEPER}…Oh, yes hello, welcome…\n{FONT_SMALL}Yawn{FONT_NORMAL}… …to the Incense Shop…\p"
 					"I'm sorry, the Incense in the air\nmakes me a little sleepy…\p"
-					"We sell a variety of Balms and Incenses each with its unique effects…\p"
+					"We sell a variety of Balms and Incenses\neach with its unique effects…\p"
 					"Feel free to {FONT_SMALL}-yawn-{FONT_NORMAL} peruse…"
 				))
 				closemessage
@@ -130,9 +124,8 @@ script IncenseShop_EventScript_OpenMart {
 		pokemart(IncenseShop_Mart_1)
 	}
 
-	setspeaker(SP_NAME_SHOPKEEPER)
-	msgbox(format(
-		"Please come again…\p"
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_INCENSE 0}{SPEAKER NAME_SHOPKEEPER}Please come again…\p"
 		"… … … … … …\n… … … … … …\p"
 		"…ZzzZZzzzZZZZzzZZZz…"
 	), MSGBOX_DEFAULT)

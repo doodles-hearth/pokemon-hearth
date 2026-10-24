@@ -3,7 +3,6 @@
   "name": "CrobatHideout_1F",
   "layout": "LAYOUT_CROBAT_HIDEOUT_1F",
   "music": "MUS_AQUA_MAGMA_HIDEOUT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_CROBAT_HIDEOUT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -85,7 +84,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "4",
       "script": "CrobatHideout_1F_EventScript_GruntDoubleGirl",
       "flag": "FLAG_TEMP_6",
       "afternoon": false,
@@ -879,5 +878,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CrobatHideout_1F_EventScript_PosterReunionRoom"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
