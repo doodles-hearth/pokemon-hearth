@@ -264,7 +264,7 @@ bool8 UpdateVsSeekerStepCounter(void)
     return FALSE;
 }
 
-void MapResetTrainerRematches(u16 mapGroup, u16 mapNum)
+void MapResetTrainerRematches(u8 mapGroup, u8 mapNum)
 {
     if (!I_VS_SEEKER_CHARGING) return;
 

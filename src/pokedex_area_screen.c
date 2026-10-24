@@ -118,8 +118,8 @@ EWRAM_DATA u8 gAreaTimeOfDay = 0;
 
 static void FindMapsWithMon(enum Species);
 static void BuildAreaGlowTilemap(void);
-static void SetAreaHasMon(u16, u16);
-static void SetSpecialMapHasMon(u16, u16);
+static void SetAreaHasMon(u8, u8);
+static void SetSpecialMapHasMon(u8, u8);
 static mapsec_u16_t GetRegionMapSectionId(u8, u8);
 static bool8 MapHasSpecies(const struct WildEncounterTypes *, u32, enum Species);
 static bool8 MonListHasSpecies(const struct WildPokemonInfo *, enum Species, u16);
@@ -375,7 +375,7 @@ static void FindMapsWithMon(enum Species species)
     }
 }
 
-static void SetAreaHasMon(u16 mapGroup, u16 mapNum)
+static void SetAreaHasMon(u8 mapGroup, u8 mapNum)
 {
     if (sPokedexAreaScreen->numOverworldAreas < MAX_AREA_HIGHLIGHTS)
     {
@@ -386,7 +386,7 @@ static void SetAreaHasMon(u16 mapGroup, u16 mapNum)
     }
 }
 
-static void SetSpecialMapHasMon(u16 mapGroup, u16 mapNum)
+static void SetSpecialMapHasMon(u8 mapGroup, u8 mapNum)
 {
     int i;
 
