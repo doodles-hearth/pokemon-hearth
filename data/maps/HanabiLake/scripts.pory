@@ -25,3 +25,27 @@ script HanabiLake_EventScript_XiaoHuoRunsAway {
 
     releaseall
 }
+
+script HanabiLake_EventScript_LoverBoy {
+	lock
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_heart))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_BOY_1 0}{SPEAKER NAME_BOY}I'd die for you…\nI love you so so so so so much…"
+	)
+	closemessage
+	release
+}
+
+script HanabiLake_EventScript_LoverGirl {
+	lock
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_heart))
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}I wanna get married and have kids…\nEven though we met like, an hour ago…"
+	)
+	closemessage
+	release
+}

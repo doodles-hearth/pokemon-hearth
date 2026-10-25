@@ -1275,7 +1275,8 @@
   ],
   "gMapGroup_IndoorHanabi": [
     "HanabiCity_Dojo",
-    "HanabiCity_Refuge"
+    "HanabiCity_Refuge",
+    "HanabiCity_House1"
   ],
   "gMapGroup_IndoorRoute124": [
     "Route124_DivingTreasureHuntersHouse"

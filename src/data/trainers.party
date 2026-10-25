@@ -1673,11 +1673,28 @@ Music: Twins
 Battle Type: Doubles
 AI: Basic Trainer
 
-Vigoroth
+Krabby
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
-- Focus Energy
-- Slash
+- Metal Claw
+- Leer
+- Vise Grip
+- Bubble Beam
+
+Dwebble
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bug Bite
+- Stealth Rock
+- Rock Polish
+- Feint Attack
+
+Wattrel
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Uproar
+- Pluck
+- Spark
 
 === TRAINER_BRAXTON ===
 Name: BRAXTON
@@ -2273,7 +2290,7 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Darumaka (M)
-Level: 25
+Level: 27
 IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Rage
 - Work Up
@@ -2289,9 +2306,9 @@ IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Flame Wheel
 
 Drampa (M)
-Level: 26
+Level: 29
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
-- Dragon Rage
+- Dragon Breath
 - Glare
 - Fire Fang
 - Aqua Jet
@@ -2306,7 +2323,7 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Golbat (F)
-Level: 28
+Level: 31
 IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Poison Fang
 - Air Cutter
@@ -2321,7 +2338,7 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Swoobat
-Level: 27
+Level: 29
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 - Confusion
 - Odor Sleuth
@@ -6410,18 +6427,32 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Disable
 - Bite
 
-=== TRAINER_ADMIN_CROBAT_HIDEOUT_1 ===
-Name: Grunt
-Class: Zubat
-Pic: Zubat Grunt M
+=== TRAINER_TOYO ===
+Name: Toyo
+Class: Cook
+Pic: Cook
 Gender: Male
-Music: Aqua
+Music: Hiker
 Battle Type: Singles
-AI: Try To Faint
+AI: Basic Trainer
 
-Golbat
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
-Level: 20
+Venonat Tokuan
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Clefairy
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Encore
+- Magical Leaf
+- Copycat
+
+Naclstack
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Headbutt
+- Salt Cure
+- Mud Shot
 
 === TRAINER_NANAMI ===
 Name: Nanami
@@ -6447,83 +6478,123 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Helping Hand
 - Electroweb
 
-=== TRAINER_QUINCY ===
-Name: QUINCY
-Class: Cooltrainer
+=== TRAINER_TARO ===
+Name: Taro
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Cramorant
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stockpile
+- Belch
+- Spit Up
+- Fury Attack
+
+Wailmer
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Whirlpool
+- Brine
+- Rollout
+- Mist
+
+=== TRAINER_KEITA ===
+Name: Keita
+Class: Hiker
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Slaking
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Attract
-- Ice Beam
-- Thunderbolt
-- Flamethrower
+Ponyta
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fire Spin
+- Stomp
+- Tail Whip
 
-Dusclops
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Skill Swap
-- Protect
-- Will O Wisp
-- Toxic
+Pidgey
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Feather Dance
+- Twister
+- Gust
+- Quick Attack
 
-=== TRAINER_KATELYNN ===
-Name: KATELYNN
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Gardevoir
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Skill Swap
-- Psychic
-- Thunderbolt
-- Calm Mind
-
-Slaking
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Earthquake
-- Shadow Ball
+Pidgeotto
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Whirlwind
 - Aerial Ace
-- Brick Break
+- Quick Attack
 
-=== TRAINER_JAYLEN ===
-Name: JAYLEN
-Class: Youngster
-Pic: Youngster
+
+=== TRAINER_MINORI ===
+Name: Minori
+Class: Farmer
+Pic: Farmer
 Gender: Male
-Music: Male
+Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Trapinch
-Level: 19
+Venonat Tokuan
+Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DILLON ===
-Name: DILLON
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Check Bad Move
-
-Aron
-Level: 19
+Venonat Tokuan
+Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_JOSETSU ===
+Name: Josetsu
+Class: Artist
+Pic: Artist
+Gender: Male
+Music: Rich
+Battle Type: Singles
+AI: Smartish Trainer
+
+Swablu
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Refresh
+- Round
+- Disarming Voice
+
+Smeargle
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Servine
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Mega Drain
+- Twister
+- Leaf Tornado
 
 === TRAINER_TOSHIO_2 ===
 Name: Toshio
@@ -11552,8 +11623,8 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mach Punch
 - Leech Seed
 
-=== TRAINER_MINORI ===
-Name: Minori
+=== TRAINER_YUNA ===
+Name: Yuna
 Class: School Kid
 Pic: School Kid F
 Gender: Female

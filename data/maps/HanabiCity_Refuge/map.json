@@ -119,11 +119,12 @@
   ],
   "warp_events": [
     {
+      "warp_id": "WARP_ID_HANABI_REFUGE_EXIT",
       "x": 13,
       "y": 11,
       "elevation": 0,
-      "dest_map": "MAP_MAGURO_HARBOR",
-      "dest_warp_id": "4"
+      "dest_map": "MAP_HANABI_CITY",
+      "dest_warp_id": "WARP_ID_HANABI_REFUGE"
     }
   ],
   "coord_events": [],

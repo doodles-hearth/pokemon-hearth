@@ -2080,3 +2080,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/InsideWailord/scripts.scr"
 
 	.include "data/maps/HanabiCity_Refuge/scripts.scr"
+
+	.include "data/maps/HanabiCity_House1/scripts.scr"

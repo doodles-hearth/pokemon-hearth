@@ -6,7 +6,7 @@ script PuddlePath_EventScript_Farmer {
 	lock
 	faceplayer
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_FARMER}You're in what's probably the most\nfertile stretch of land in all of Toku.\p"
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_FARMER}You're in what's probably the most\nfertile stretch of land in Toku.\p"
 		"The forest enriches the soil, and the\nwater is rich with volcanic ashes.\p"
 		"Farmers from both Soulkeep and\nHanabi City share the land."
 	))
@@ -36,4 +36,51 @@ script PuddlePath_EventScript_DirectionsToBottomSign {
 	msgbox((
 		"{DOWN_ARROW} This way to Orchard Path"
 	), MSGBOX_SIGN)
+}
+
+script PuddlePath_EventScript_Minori {
+	trainerbattle_single(
+		TRAINER_MINORI,
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Damn Venonat, nibblin' on our crops!",
+		"And they're not even useful in battle!",
+		PuddlePath_EventScript_Minori_PostBattle
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_FARMER}I volunteered to catch all the\nVenonat that were ruinin' our crops.\p"
+		"But there are just too many!\nHave you seen the price of Poké Balls?",
+		MSGBOX_AUTOCLOSE
+	)
+	end
+}
+
+script PuddlePath_EventScript_Minori_PostBattle {
+	setnamedmon(SPECIES_VENONAT_TOKUAN)
+}
+
+script PuddlePath_EventScript_Josetsu {
+	trainerbattle_single(
+		TRAINER_JOSETSU,
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}NO! I was painting the sky's reflection,\nand your ripples are RUINING it!",
+		"Just… Just stop stomping your big\nfeet around!!"
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_ARTIST 0}{SPEAKER NAME_ARTIST}Sigh… Plein air is tough…",
+		MSGBOX_AUTOCLOSE
+	)
+	end
+}
+
+
+
+script PuddlePath_EventScript_Takeru {
+	trainerbattle_single(
+		TRAINER_JOSETSU,
+		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Aha! I can tell you're confused by my\nhypnotizing movements!",
+		"Aha! I can tell you were bluffing!"
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}Stuff stuff blah blah", // TODO EVA ICI
+		MSGBOX_AUTOCLOSE
+	)
+	end
 }

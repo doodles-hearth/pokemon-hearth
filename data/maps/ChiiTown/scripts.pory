@@ -233,7 +233,7 @@ script ChiiTown_EventScript_BattlingGirl {
 
 		if(var(VAR_RESULT) == 0) {
 			trainerbattle_two_trainers(
-				TRAINER_MINORI,
+				TRAINER_YUNA,
 				format("Whaaaat?!"),
 				TRAINER_KAITO,
 				format("Well I never learned about THAT!")
@@ -295,7 +295,7 @@ script ChiiTown_EventScript_BattlingBoy {
 
 		if(var(VAR_RESULT) == 0) {
 			trainerbattle_two_trainers(
-				TRAINER_MINORI,
+				TRAINER_YUNA,
 				format("Whaaaat?!"),
 				TRAINER_KAITO,
 				format("Well I never learned about THAT!"),
