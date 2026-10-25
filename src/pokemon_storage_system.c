@@ -6624,8 +6624,8 @@ static void TrySetCursorFistAnim(void)
 // a Pokémon that knows a required field move.
 struct
 {
-    s8 mapGroup;
-    s8 mapNum;
+    u8 mapGroup;
+    u8 mapNum;
     u16 move;
 } static const sRestrictedReleaseMoves[] =
 {

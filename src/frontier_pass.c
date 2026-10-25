@@ -1569,7 +1569,7 @@ static void Task_HandleFrontierMap(u8 taskId)
     tState++;
 }
 
-static u8 MapNumToFrontierFacilityId(u16 mapNum) // id + 1, zero means not a frontier map number
+static u8 MapNumToFrontierFacilityId(u8 mapNum) // id + 1, zero means not a frontier map number
 {
     // In Battle Tower
     if ((mapNum >= MAP_NUM(MAP_BATTLE_FRONTIER_BATTLE_TOWER_LOBBY) && mapNum <= MAP_NUM(MAP_BATTLE_FRONTIER_BATTLE_TOWER_BATTLE_ROOM))
@@ -1648,7 +1648,7 @@ static void InitFrontierMapSprites(void)
     if (id == MAPSEC_DUMMY)
     /* if (id == MAPSEC_BATTLE_FRONTIER || id == MAPSEC_ARTISAN_CAVE) */
     {
-        s8 mapNum = gSaveBlock1Ptr->location.mapNum;
+        u8 mapNum = gSaveBlock1Ptr->location.mapNum;
 
         if (mapNum == MAP_NUM(MAP_BATTLE_FRONTIER_OUTSIDE_WEST)
             || (mapNum == MAP_NUM(MAP_BATTLE_FRONTIER_OUTSIDE_EAST) && (x = 55)))

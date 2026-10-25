@@ -1796,7 +1796,7 @@ static void DebugSelectionStep_UpdateMapGroup(u8 taskId, u8 digits, u32 min, u32
 
 static void DebugSelectionStep_UpdateMapNum(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    u16 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
+    u8 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     ConvertIntToDecimalStringN(gStringVar3, max, STR_CONV_MODE_LEADING_ZEROS, digits);
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Map: {STR_VAR_2} / {STR_VAR_3}"));
@@ -1807,14 +1807,14 @@ static void DebugSelectionStep_UpdateMapNum(u8 taskId, u8 digits, u32 min, u32 m
 
 static u32 DebugSelectionStep_GetLastMapNum(u8 taskId)
 {
-    u16 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
+    u8 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
     return (MAP_GROUP_COUNT[mapGroup] - 1);
 }
 
 static void DebugSelectionStep_UpdateWarp(u8 taskId, u8 digits, u32 min, u32 max)
 {
-    u16 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 2);
-    u16 mapNum = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
+    u8 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 2);
+    u8 mapNum = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
     ConvertIntToDecimalStringN(gStringVar2, gTasks[taskId].tInput, STR_CONV_MODE_LEADING_ZEROS, digits);
     ConvertIntToDecimalStringN(gStringVar3, max, STR_CONV_MODE_LEADING_ZEROS, digits);
     StringExpandPlaceholders(gStringVar1, COMPOUND_STRING("Warp: {STR_VAR_2} / {STR_VAR_3}"));
@@ -1825,8 +1825,8 @@ static void DebugSelectionStep_UpdateWarp(u8 taskId, u8 digits, u32 min, u32 max
 
 static u32 DebugSelectionStep_GetLastWarp(u8 taskId)
 {
-    u16 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 2);
-    u16 mapNum = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
+    u8 mapGroup = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 2);
+    u8 mapNum = DebugSelection_GetData(taskId, gTasks[taskId].tStep - 1);
     u32 count = Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->events->warpCount;
     return (count - 1);
 }

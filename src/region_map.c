@@ -1171,7 +1171,7 @@ static void InitMapBasedOnPlayerLocation(void)
         }
         break;
     case MAP_TYPE_SECRET_BASE:
-        mapHeader = Overworld_GetMapHeaderByGroupAndId((u16)gSaveBlock1Ptr->dynamicWarp.mapGroup, (u16)gSaveBlock1Ptr->dynamicWarp.mapNum);
+        mapHeader = Overworld_GetMapHeaderByGroupAndId(gSaveBlock1Ptr->dynamicWarp.mapGroup, gSaveBlock1Ptr->dynamicWarp.mapNum);
         sRegionMap->mapSecId = mapHeader->regionMapSectionId;
         sRegionMap->playerIsInCave = TRUE;
         mapWidth = mapHeader->mapLayout->width;
@@ -1270,8 +1270,8 @@ static void RegionMap_InitializeStateBasedOnSSTidalLocation(void)
 {
     u16 y;
     u16 x;
-    s8 mapGroup;
-    s8 mapNum;
+    u8 mapGroup;
+    u8 mapNum;
     u16 dimensionScale;
     s16 xOnMap;
     s16 yOnMap;

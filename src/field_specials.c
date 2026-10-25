@@ -346,7 +346,7 @@ bool32 CountSSTidalStep(u16 delta)
     return TRUE;
 }
 
-enum SSTidalLocation GetSSTidalLocation(s8 *mapGroup, s8 *mapNum, s16 *x, s16 *y)
+enum SSTidalLocation GetSSTidalLocation(u8 *mapGroup, u8 *mapNum, s16 *x, s16 *y)
 {
     u16 *varCruiseStepCount = GetVarPointer(VAR_CRUISE_STEP_COUNT);
 
