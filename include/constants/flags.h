@@ -476,7 +476,7 @@
 #define FLAG_REGISTERED_DRAKE                (TRAINER_REGISTERED_FLAGS_START + REMATCH_DRAKE)
 #define FLAG_REGISTERED_WALLACE              (TRAINER_REGISTERED_FLAGS_START + REMATCH_WALLACE)
 
-#define FLAG_UNUSED_0x1AA                    0x1AA // Unused Flag
+#define FLAG_RESCUED_GRUNT_FROM_SEWERS       0x1AA
 #define FLAG_UNUSED_0x1AB                    0x1AB // Unused Flag
 
 #define FLAG_DEFEATED_DEOXYS                 0x1AC
@@ -590,10 +590,10 @@
 #define FLAG_HIDDEN_ITEM_QUARRY_STARDUST                     (FLAG_HIDDEN_ITEMS_START + 0x1C)
 #define FLAG_HIDDEN_ITEM_QUARRY_SABLEYE_GEM                  (FLAG_HIDDEN_ITEMS_START + 0x1D)
 #define FLAG_HIDDEN_ITEM_WHITESLATE_ROUTE_MAX_ETHER          (FLAG_HIDDEN_ITEMS_START + 0x1E)
-#define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_1_KEY             (FLAG_HIDDEN_ITEMS_START + 0x1F)
-#define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_2_KEY             (FLAG_HIDDEN_ITEMS_START + 0x20)
-#define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_4_KEY             (FLAG_HIDDEN_ITEMS_START + 0x21)
-#define FLAG_HIDDEN_ITEM_ABANDONED_SHIP_RM_6_KEY             (FLAG_HIDDEN_ITEMS_START + 0x22)
+#define FLAG_HIDDEN_ITEM_PUDDLE_PATH_REVIVAL_HERB            (FLAG_HIDDEN_ITEMS_START + 0x1F)
+#define FLAG_HIDDEN_ITEM_PUDDLE_PATH_HYPERGIRI               (FLAG_HIDDEN_ITEMS_START + 0x20)
+#define FLAG_HIDDEN_ITEM_PUDDLE_PATH_MIFAN_BERRY             (FLAG_HIDDEN_ITEMS_START + 0x21)
+#define FLAG_HIDDEN_ITEM_PUDDLE_PATH_ULTRA_BALL              (FLAG_HIDDEN_ITEMS_START + 0x22)
 #define FLAG_HIDDEN_ITEM_SS_TIDAL_LOWER_DECK_LEFTOVERS       (FLAG_HIDDEN_ITEMS_START + 0x23)
 #define FLAG_HIDDEN_ITEM_UNDERWATER_124_CALCIUM              (FLAG_HIDDEN_ITEMS_START + 0x24)
 #define FLAG_HIDDEN_ITEM_BEACHBOUND_ROUTE_POTION             (FLAG_HIDDEN_ITEMS_START + 0x25)
@@ -1086,10 +1086,10 @@
 #define FLAG_ITEM_QUARRY_DUSK_BALL                                  0x400
 #define FLAG_ITEM_WHITESLATE_SECRET_CAVE_DREAM_BALL                 0x401
 #define FLAG_ITEM_ORCHARD_PATH_HEART_SCALE                          0x402
-#define FLAG_ITEM_ROUTE_119_LEAF_STONE                              0x403
+#define FLAG_ITEM_PUDDLE_PATH_LEAF_STONE                            0x403
 #define FLAG_ITEM_ROUTE_119_RARE_CANDY                              0x404
-#define FLAG_ITEM_ROUTE_119_HYPER_POTION_1                          0x405
-#define FLAG_ITEM_ROUTE_120_NUGGET                                  0x406
+#define FLAG_ITEM_PUDDLE_PATH_PROTEIN                               0x405
+#define FLAG_ITEM_PUDDLE_PATH_UNUSED                                0x406 // UNUSED
 #define FLAG_ITEM_ROUTE_120_FULL_HEAL                               0x407
 #define FLAG_ITEM_ROUTE_123_CALCIUM                                 0x408
 #define FLAG_ITEM_YIFU_CITY_HEAL_BALL                               0x409
@@ -1102,7 +1102,7 @@
 #define FLAG_ITEM_PETALBURG_CITY_ETHER                              0x410
 #define FLAG_ITEM_RUSTBORO_CITY_X_DEFEND                            0x411
 #define FLAG_ITEM_LILYCOVE_CITY_MAX_REPEL                           0x412
-#define FLAG_ITEM_MOSSDEEP_CITY_NET_BALL                            0x413
+#define FLAG_ITEM_PUDDLE_PATH_NET_BALL                              0x413
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_TM_IRON_TAIL                   0x414
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_FULL_HEAL                      0x415
 #define FLAG_ITEM_METEOR_FALLS_1F_1R_MOON_STONE                     0x416

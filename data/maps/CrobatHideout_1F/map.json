@@ -96,8 +96,9 @@
       "night": false
     },
     {
+      "local_id": "LOCALID_YIFU_HIDEOUT_SEWERS_GRUNT",
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 59,
+      "x": 57,
       "y": 27,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -105,8 +106,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0",
+      "script": "CrobatHideout_1F_EventScript_GruntSewers",
+      "flag": "FLAG_RESCUED_GRUNT_FROM_SEWERS",
       "afternoon": false,
       "deadnight": false,
       "earlymorning": false,
@@ -680,6 +681,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CrobatHideout_1F_EventScript_CounterfeitItems",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
+      "x": 18,
+      "y": 2,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "CrobatHideout_1F_EventScript_CounterfeitItems",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -689,6 +703,22 @@
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_CROBAT_SHOP",
       "dest_warp_id": "1"
+    },
+    {
+      "warp_id": "WARP_ID_YIFU_HIDEOUT_EXIT_LEFT",
+      "x": 64,
+      "y": 33,
+      "elevation": 0,
+      "dest_map": "MAP_YIFU_CITY",
+      "dest_warp_id": "WARP_ID_YIFU_HIDEOUT_LEFT"
+    },
+    {
+      "warp_id": "WARP_ID_YIFU_HIDEOUT_EXIT_RIGHT",
+      "x": 65,
+      "y": 33,
+      "elevation": 0,
+      "dest_map": "MAP_YIFU_CITY",
+      "dest_warp_id": "WARP_ID_YIFU_HIDEOUT_RIGHT"
     }
   ],
   "coord_events": [
@@ -848,8 +878,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 18,
-      "y": 2,
+      "x": 13,
+      "y": 5,
       "elevation": 0,
       "item": "ITEM_ULTRA_BALL_KNOCKOFF",
       "flag": "FLAG_HIDDEN_ITEM_CROBAT_HIDEOUT_ULTRO_BALL"

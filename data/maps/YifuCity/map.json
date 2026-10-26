@@ -1305,6 +1305,22 @@
       "elevation": 0,
       "dest_map": "MAP_YIFU_CITY_CLOTHING_SHOP",
       "dest_warp_id": "0"
+    },
+    {
+      "warp_id": "WARP_ID_YIFU_HIDEOUT_RIGHT",
+      "x": 52,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_CROBAT_HIDEOUT_1F",
+      "dest_warp_id": "WARP_ID_YIFU_HIDEOUT_EXIT_RIGHT"
+    },
+    {
+      "warp_id": "WARP_ID_YIFU_HIDEOUT_LEFT",
+      "x": 51,
+      "y": 21,
+      "elevation": 0,
+      "dest_map": "MAP_CROBAT_HIDEOUT_1F",
+      "dest_warp_id": "WARP_ID_YIFU_HIDEOUT_EXIT_LEFT"
     }
   ],
   "coord_events": [

@@ -946,3 +946,86 @@ script CrobatHideout_1F_EventScript_CounterfeitItems {
 		"The shelves are brimming with\ncounterfeit items…", MSGBOX_SIGN
 	)
 }
+
+script CrobatHideout_1F_EventScript_GruntSewers {
+	lock
+	faceplayer
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_exclamation_mark, delay_16 * 6))
+	waitmovementall
+	waitse
+	playse(SE_LEDGE)
+	applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
+
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Oh, goshawott! Someone, finally!!\p"
+		"I forgot the hideout password so\nI tried gettin' in through the canal…\p"
+		"But I can't swim! I couldn't git back\nout an' my colleagues forgot me here!\p"
+	)
+	waitmessage
+	waitmovementall
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_sad))
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Please please please rescue this poor\ncrimi-{PAUSE 8} uh, lawful citizen!"
+	)
+	waitmessage
+
+	mcdialogue(
+		"Alright…", "I can't say no…"
+	)
+
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_heart))
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Yer an angel! Ya deserve a reward!\n{FONT_SMALL}What've I got in my pockets…{FONT_NORMAL}\p"
+	)
+	waitmessage
+	waitse
+	playse(SE_PIN)
+	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
+
+	message(
+		"Let's see, a piece of lint…\n"
+		"46 cents…\l"
+		"A weird-lookin' Scroll…\l"
+		"An old Fishcake… {FONT_SMALL}(Ew…){FONT_NORMAL}\l"
+		"A pebble kinda shaped like a Wooloo…\l"
+		"My Entei Statuette…\l"
+		"A paper scrap with the password on it…\p"
+		"A-{PAUSE 8}\n… … … …Wait a second…\p"
+	)
+	waitmessage
+	waitse
+	playse(SE_LEDGE)
+	applymovement(VAR_LAST_TALKED, moves(lock_facing_direction, jump_in_place_down, unlock_facing_direction))
+	waitmovementall
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}Aw, MAN! I had the password right 'ere,\nall this time!\p"
+		"This is so dang embarrassin'!\nDontcha tell anyone!\p"
+		"Here, ya can have this Scroll!\n's not like I can read it, anyway!"
+	)
+	closemessage
+
+	giveitem(ITEM_TM_SURF)
+
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}{SPEAKER NAME_ZUBAT_GRUNT}An' now if ya don' mind, let's git the\nheck outta here!"
+	)
+	closemessage
+
+	delay(32)
+
+	fadescreen(FADE_TO_BLACK)
+	playse(SE_EXIT)
+	setflag(FLAG_RESCUED_GRUNT_FROM_SEWERS)
+	removeobject(LOCALID_YIFU_HIDEOUT_SEWERS_GRUNT)
+	delay(48)
+	fadescreen(FADE_FROM_BLACK)
+
+	release
+}

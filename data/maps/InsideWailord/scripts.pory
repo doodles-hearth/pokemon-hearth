@@ -321,6 +321,7 @@ script InsideWailord_EventScript_NeedSurf {
         setvar(VAR_WAILORD_QUEST_STATE, 6)
         warp(MAP_SEA_TURF_ROUTE, WARP_ID_ENTER_WAILORD)
     } else {
+        // TODO EVA
         fadescreenswapbuffers(FADE_TO_BLACK)
         special(HealPlayerParty)
         warpsilent(MAP_SEA_TURF_ROUTE, WARP_ID_ENTER_WAILORD)
