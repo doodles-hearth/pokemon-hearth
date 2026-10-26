@@ -477,17 +477,21 @@ script SeaTurfRoute_EventScript_FallDownHole {
 
 script SeaTurfRoute_EventScript_Toyo {
     trainerbattle_single(
-		TRAINER_KARU,
+		TRAINER_TOYO,
 		"{CREATE_MUGSHOT MUGSHOT_COOK 0}No! Don't bite me!\nI have no food!",
 		"Sorry darling, I'm a little jittery!"
 	)
-	msgbox(("{CREATE_MUGSHOT MUGSHOT_COOK 0}{SPEAKER NAME_COOK}Cooking for the festival is stressful!\nPeople are vo-ra-cious!"), MSGBOX_AUTOCLOSE)
+	msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_COOK 0}{SPEAKER NAME_COOK}Cooking for the festival is\n"
+        "stressful! People are vo-{PAUSE 8}ra-{PAUSE 8}cious!",
+        MSGBOX_AUTOCLOSE
+    )
 	end
 }
 
 script SeaTurfRoute_EventScript_Taro {
     trainerbattle_single(
-		TRAINER_KARU,
+		TRAINER_TARO,
 		"{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}Piss off.\nThis is my fishing spot.",
 		"Gee, alright, we can share!"
 	)
@@ -514,7 +518,7 @@ script SeaTurfRoute_EventScript_YangBo {
 
 script SeaTurfRoute_EventScript_Keita {
     trainerbattle_single(
-		TRAINER_KARU,
+		TRAINER_KEITA,
 		"Huff… This route is more tiring than\nI'd anticipated…",
 		"At least I got to rest a little!"
 	)

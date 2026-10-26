@@ -116,7 +116,7 @@ script KuraTown_Dojo_EventScript_Hana {
 				"I'd prefer you don't tell anyone.\nI'm sure you know of our village's row.\p"
 				"But, to more pressing matters…\p"
 				"A Pokémon battle isn't too unlike\nbeautiful flora.\p"
-				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\l{PAUSE 30}And power like the mightiest trees.\p"
+				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\lAnd power like the mightiest trees.\p"
 				"Show me all the grace, strength and\npower you are capable of!",
 			format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,
@@ -130,7 +130,7 @@ script KuraTown_Dojo_EventScript_Hana {
 				"{CREATE_MUGSHOT MUGSHOT_HANA 0}Welcome to my humble Dojo. I am Hana.\nDid you enjoy my little maze?\p"
 				"Growing bonsai and battling with my\nPokémon are my favorite pastimes.\lWith this Dojo, I can do both!\p"
 				"A Pokémon battle isn't too unlike\nbeautiful flora.\p"
-				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\l{PAUSE 30}And power like the mightiest trees.\p"
+				"It has grace like a budding flower…\n{PAUSE 30}Strength like the deepest roots…\lAnd power like the mightiest trees.\p"
 				"Show me all the grace, strength and\npower you are capable of!",
 				format("Ho ho ho…"),
 			KuraTown_Dojo_EventScript_HanaDefeated,

@@ -143,9 +143,6 @@ SINGLE_BATTLE_TEST("Chloroblast is not affected by Reckless", s16 damage)
         PARAMETRIZE { move = MOVE_SEED_FLARE; } // 120 power
     }
 
-    // TODO EVA prevent tests from failing
-    ASSUME(B_UPDATED_MOVE_DATA > GEN_6);
-
     GIVEN {
         ASSUME(GetMovePower(MOVE_CHLOROBLAST) == GetMovePower(move));
         PLAYER(SPECIES_WOBBUFFET);

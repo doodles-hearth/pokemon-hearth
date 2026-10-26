@@ -281,7 +281,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Heh, getting cold feet right as your\ndream is coming true?\p"
 				"It's gonna be awesome!\p"
 				"We'll finally get to go out into the\nworld and blaze our own trails!\p"
-				"I can even become a sa-"
+				"I can even become a Gua-"
 				
 			)
 			closemessage
@@ -291,14 +291,16 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 			waitmovement(0)
 			delay(48)
 			setspeaker(SP_NAME_NATSUKI)
-			msgbox(format("{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ahhhh, I've already rattled your ear off about that enough this past week!\p"
-			"I'm getting ahead of myself now."
+			msgbox((
+				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Ahhhh, I've already rattled your ear\noff about that enough this past week!\p"
+				"I'm getting ahead of myself now."
 			))
 		case 2:
 			msgbox(
 				"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}Oh c'mon, {PLAYER}!\nYou've raved about wanting your\lown Pokémon for HOW many years now!?\p"
 				"Don't give me that Trubbish now!"
 			)
+			setnamedmon(SPECIES_TRUBBISH)
 	}
 	closemessage
 	delay(48)
@@ -344,7 +346,7 @@ script SunriseVillage_Beach_EventScript_RivalSpeech {
 
 	setspeaker(SP_NAME_NATSUKI)
 	msgbox((
-		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK\n The distribution's already started!\p"
+		"{CREATE_MUGSHOT MUGSHOT_NATSUKI 0}MUK!\nThe distribution's already started!\p"
 		"Let's go, {PLAYER}!!"
 	))
 	closemessage
@@ -544,9 +546,4 @@ movement SunriseVillage_Beach_Movement_RivalSeesDistribution {
 movement SunriseVillage_Beach_Movement_RivalRaces {
 	walk_faster_right * 9
 	step_end
-}
-
-script WC_WoobatFlee {
-	playmoncry(SPECIES_WOOBAT, CRY_MODE_NORMAL)
-	applymovement(LOCALID_FLEEING_WOOBAT, moves(walk_down * 6))
 }

@@ -17,24 +17,33 @@ script KuraTown_House3_EventScript_Lady {
 
 			mcdialogue("I'm looking for an Eevee?")
 
-			msgbox(
+			message(
 				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_MRS_YARI}Ah, yes! She came rushing into my\nhome during that nasty storm.\p"
-				"This is her now; she seems to have\ntaken on a nice shiny coat!"
 			)
+			waitmessage
+			applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_left))
+			message(
+				"This is her now. She seems to have\ntaken on a nice shiny coat!"
+			)
+			waitmessage
+			waitmovement
 
 			mcdialogue("She belongs to someone…")
 			delay(90)
-			mcdialogue("I need to bring her back to Saku Town.")
+			mcdialogue("I need to bring her back.")
 
-			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_MRS_YARI}Oh dear…{PAUSE 8} is that so?"
+			faceplayer
+
+			message(
+				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_MRS_YARI}Oh dear…{PAUSE 8} is that so?\p"
 			)
+			waitmessage
 
 			applymovement(LOCALID_OMAI_YARI, moves(walk_in_place_fast_left))
 			waitmovement(0)
 
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_MRS_YARI}Well, little one, it's time we parted\nways…\p"
+				"{CREATE_MUGSHOT MUGSHOT_GARDENER 0}{SPEAKER NAME_MRS_YARI}Well, little one, it's time we\nparted ways…\p"
 				"I'd be lying if I said I wouldn't\nmiss you dearly."
 			)
 			closemessage

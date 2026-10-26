@@ -326,12 +326,12 @@
 #define TRAINER_TAKESHI                     319
 #define TRAINER_IZUMI                       320
 #define TRAINER_REN                         321
-#define TRAINER_ADMIN_CROBAT_HIDEOUT_1      322 // UNUSED!
+#define TRAINER_TOYO                        322
 #define TRAINER_NANAMI                      323
-#define TRAINER_QUINCY                      324
-#define TRAINER_KATELYNN                    325
-#define TRAINER_JAYLEN                      326
-#define TRAINER_DILLON                      327
+#define TRAINER_TARO                        324
+#define TRAINER_KEITA                       325
+#define TRAINER_MINORI                      326
+#define TRAINER_JOSETSU                     327
 #define TRAINER_TOSHIO_2                    328
 #define TRAINER_TOSHIO_3                    329
 #define TRAINER_TOSHIO_4                    330
@@ -607,9 +607,9 @@
 #define TRAINER_RIVAL_SAKU_SQUIRTLE         600
 #define TRAINER_MAXIE_MAGMA_HIDEOUT         601
 #define TRAINER_MAXIE_MT_CHIMNEY            602
-#define TRAINER_CHIKAO                       603
-#define TRAINER_MUSASHI_1                     604
-#define TRAINER_MINORI                      605
+#define TRAINER_CHIKAO                      603
+#define TRAINER_MUSASHI_1                   604
+#define TRAINER_YUNA                        605
 #define TRAINER_JUNKO                       606
 #define TRAINER_HALEY_2                     607
 #define TRAINER_HALEY_3                     608

@@ -8,6 +8,26 @@ mapscripts HanabiCity_MapScripts {
     }
 }
 
+script HanabiCity_EventScript_LookingForDojo {
+	lockall
+	faceplayer
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}You look like a Wielder…\nI bet you're looking for the Dojo!\p"
+	)
+	waitmessage
+	applymovement(VAR_LAST_TALKED, moves(walk_in_place_fast_up))
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}It's on the outskirts of the city,\nover there.\p"
+	)
+	waitmessage
+	faceplayer
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_GIRL_2 0}{SPEAKER NAME_GIRL}The Dojo Leader, Xiao Huo, does\nfirework experiments on the lake."
+	)
+	closemessage
+	releaseall
+}
+
 script HanabiCity_EventScript_Dolls {
     lock
 	faceplayer
@@ -140,5 +160,32 @@ script HanabiCity_EventScript_Natsuki {
 	// TODO Natsuki dialogue
 	// One of the only times where Natsuki is calm and composed
 
+	release
+}
+
+script HanabiCity_EventScript_Tourist {
+	lock
+	faceplayer
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_WOMAN_2 0}{SPEAKER NAME_WOMAN}People come from all around Toku\nfor the Hanabi Festival!"
+	)
+	closemessage
+	release
+}
+
+script HanabiCity_EventScript_CityOfLove {
+	lock
+	faceplayer
+	message(
+		"{CREATE_MUGSHOT MUGSHOT_HOT_FAT_GUY 0}{SPEAKER NAME_GUY}They say Hanabi is the city of\nlovers.\p"
+	)
+	waitmessage
+	waitse
+	playse(SE_M_LICK)
+	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
+	msgbox(
+		"Can't say I've had had much luck on\nthat front, though…"
+	)
+	closemessage
 	release
 }

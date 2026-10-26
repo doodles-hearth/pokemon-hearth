@@ -34,6 +34,7 @@ script KuraTown_House2_EventScript_Ashii {
 }
 
 script(local) AshiiScript_FirstEncounter {
+	waitse
 	applymovement(LOCALID_ASHII, moves(emote_pensive))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_SAKURA_GIRL_2 0}{SPEAKER NAME_GIRL}Sigh… Oh, Tama…\nWhy must life be so complicated?"

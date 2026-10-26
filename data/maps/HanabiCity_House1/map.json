@@ -1,0 +1,29 @@
+{
+  "id": "MAP_HANABI_CITY_HOUSE1",
+  "name": "HanabiCity_House1",
+  "layout": "LAYOUT_HOUSE_HARDWOOD_HEARTH",
+  "music": "MUS_HANABI",
+  "region_map_section": "MAPSEC_HANABI_CITY",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "warp_id": "WARP_ID_HANABI_HOUSE1_EXIT",
+      "x": 4,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_HANABI_CITY",
+      "dest_warp_id": "WARP_ID_HANABI_HOUSE1"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": []
+}

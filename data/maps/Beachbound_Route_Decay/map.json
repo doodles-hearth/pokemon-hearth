@@ -2,7 +2,7 @@
   "id": "MAP_BEACHBOUND_ROUTE_DECAY",
   "name": "Beachbound_Route_Decay",
   "layout": "LAYOUT_BEACHBOUND_ROUTE_DECAY",
-  "music": "MUS_ABANDONED_SHIP",
+  "music": "MUS_DECAY",
   "region_map_section": "MAPSEC_BEACHBOUND_ROUTE",
   "requires_flash": false,
   "weather": "WEATHER_DECAY",
@@ -229,7 +229,7 @@
       "night": false
     },
     {
-      "local_id": "LOCALID_BEACHBOUND_DECAY_SAMURAI",
+      "local_id": "LOCALID_BEACHBOUND_DECAY_GUARDIAN",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
       "y": 15,
@@ -291,7 +291,7 @@
       "night": false
     },
     {
-      "local_id": "LOCALID_BEACHBOUND_DECAY_SAMURAI_COLLEAGUE",
+      "local_id": "LOCALID_BEACHBOUND_DECAY_GUARDIAN_COLLEAGUE",
       "graphics_id": "OBJ_EVENT_GFX_SAMURAI",
       "x": 39,
       "y": 14,

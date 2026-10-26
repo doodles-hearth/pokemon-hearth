@@ -432,8 +432,8 @@ void BufferMatchCallNameAndDesc(struct PokenavMatchCallEntry *matchCallEntry, u8
 
 mapsec_u8_t GetMatchTableMapSectionId(int rematchIndex)
 {
-    int mapGroup = gRematchTable[rematchIndex].mapGroup;
-    int mapNum = gRematchTable[rematchIndex].mapNum;
+    u8 mapGroup = gRematchTable[rematchIndex].mapGroup;
+    u8 mapNum = gRematchTable[rematchIndex].mapNum;
     return Overworld_GetMapHeaderByGroupAndId(mapGroup, mapNum)->regionMapSectionId;
 }
 

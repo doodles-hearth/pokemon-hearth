@@ -446,6 +446,7 @@ AI: Basic Trainer
 
 Houndour
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leer
 - Odor Sleuth
 - Bite
@@ -565,6 +566,7 @@ AI: Basic Trainer
 
 Mightyena
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Scary Face
 - Snarl
 - Assurance
@@ -580,6 +582,7 @@ AI: Check Bad Move
 
 Bayleef
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Powder
 - Magical Leaf
 - Growl
@@ -595,6 +598,7 @@ AI: Try To Faint
 
 Makuhita
 Level: 10
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rock Smash
 
 === TRAINER_DAICHI ===
@@ -608,6 +612,7 @@ AI: Basic Trainer
 
 Shuckle @ Oran Berry
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Ability: Gluttony
 - Constrict
 - Bide
@@ -615,6 +620,7 @@ Ability: Gluttony
 
 Cherrim @ Coba Berry
 Level: 22
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Natural Gift
 - Magical Leaf
 - Sunny Day
@@ -630,6 +636,7 @@ AI: Basic Trainer
 
 Onix
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Dragon Breath
 - Stealth Rock
 - Smack Down
@@ -645,6 +652,7 @@ AI: Basic Trainer
 
 Sandy (Sandslash) (F)
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rapid Spin
 - Rollout
 - Magnitude
@@ -661,6 +669,7 @@ AI: Basic Trainer
 
 Carbink @ Star Piece
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Coloration: 0
 - Guard Split
 - Stealth Rock
@@ -668,12 +677,14 @@ Coloration: 0
 
 Carbink
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Coloration: 80
 - Reflect
 - Rock Throw
 
 Carbink
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Coloration: 40
 Shiny: Yes
 - Sharpen
@@ -695,6 +706,7 @@ Level: 25
 
 Clefairy @ Moon Stone
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Wake Up Slap
 - Metronome
 - Encore
@@ -710,6 +722,7 @@ AI: Basic Trainer
 
 Thievul
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sucker Punch
 - Assurance
 - Tail Whip
@@ -725,10 +738,12 @@ AI: Basic Trainer
 
 Ditto
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Transform
 
 Noibat
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Air Cutter
 - Leech Life
 - Agility
@@ -744,6 +759,7 @@ AI: Basic Trainer
 
 Masquerain
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stun Spore
 - Air Cutter
 - Quick Attack
@@ -751,6 +767,7 @@ Level: 26
 
 Ninetales
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Hex
 - Fire Spin
 - Extrasensory
@@ -766,17 +783,20 @@ AI: Check Bad Move
 
 Hoppip
 Level: 7
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tail Whip
 - Tackle
 
 Nidoran (M)
 Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leer
 - Peck
 - Focus Energy
 
 Ralts
 Level: 6
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Confusion
 - Double Team
 
@@ -814,12 +834,14 @@ AI: Check Bad Move
 
 Shuppet
 Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Screech
 - Shadow Sneak
 - Spite
 
 Gastly
 Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Hypnosis
 - Night Shade
 - Mean Look
@@ -836,6 +858,7 @@ AI: Basic Trainer
 
 Diglett
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Dig
 - Astonish
 - Magnitude
@@ -843,6 +866,7 @@ Level: 18
 
 Sandshrew
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Sting
 - Fury Swipes
 - Rollout
@@ -859,12 +883,14 @@ AI: Basic Trainer
 
 Nidorino
 Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Sting
 - Fury Attack
 - Helping Hand
 
 Vulpix
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Baby Doll Eyes
 - Fire Spin
 - Feint Attack
@@ -880,12 +906,14 @@ AI: Basic Trainer
 
 Nidorina
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Helping Hand
 - Fury Swipes
 - Tail Whip
 
 Happiny
 Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sweet Kiss
 - Double Slap
 - Refresh
@@ -922,18 +950,21 @@ AI: Basic Trainer
 
 Poochyena
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Odor Sleuth
 - Howl
 - Bite
 
 Nickit
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thief
 - Beat Up
 - Tail Whip
 
 Thievul
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Quick Attack
 - Hone Claws
 - Assurance
@@ -949,6 +980,7 @@ AI: Check Bad Move
 
 Deerling Spring
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sand Attack
 - Double Kick
 - Camouflage
@@ -956,12 +988,14 @@ Level: 17
 
 Deerling Autumn
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leech Seed
 - Feint Attack
 - Aromatherapy
 
 Stantler
 Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stomp
 - Astonish
 - Sand Attack
@@ -978,6 +1012,7 @@ AI: Prefer Status Moves / Try To Faint / Check Bad Move
 
 Kricketune (M)
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Screech
 - Struggle Bug
 - Slash
@@ -985,6 +1020,7 @@ Level: 25
 
 Kricketune (M)
 Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fury Cutter
 - Facade
 - Sing
@@ -992,6 +1028,7 @@ Level: 24
 
 Nincada (F)
 Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fury Cutter
 - Facade
 - Sing
@@ -1088,6 +1125,7 @@ AI: Check Bad Move
 
 Poltchageist
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Life Dew
 - Astonish
 - Foul Play
@@ -1095,6 +1133,7 @@ Level: 20
 
 Sudowoodo
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Low Kick
 - Mimic
 - Rock Throw
@@ -1110,6 +1149,7 @@ AI: Basic Trainer
 
 Gastly
 Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mean Look
 - Night Shade
 - Curse
@@ -1117,6 +1157,7 @@ Level: 21
 
 Litwick
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Will O Wisp
 - Fire Spin
 - Smog
@@ -1132,6 +1173,7 @@ AI: Basic Trainer
 
 Torkoal
 Level: 28
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Curse
 - Lava Plume
 - Body Slam
@@ -1147,7 +1189,7 @@ AI: Basic Trainer
 
 Sandslash
 Level: 30
-IVs: 8 HP / 8 Atk / 8 Def / 8 SpA / 8 SpD / 8 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Dig
 - Slash
 - Sand Attack
@@ -1164,7 +1206,7 @@ AI: Basic Trainer
 
 Sandslash
 Level: 33
-IVs: 9 HP / 9 Atk / 9 Def / 9 SpA / 9 SpD / 9 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Dig
 - Slash
 - Sand Attack
@@ -1181,7 +1223,7 @@ AI: Basic Trainer
 
 Sandslash
 Level: 36
-IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Dig
 - Slash
 - Sand Attack
@@ -1198,11 +1240,11 @@ AI: Basic Trainer
 
 Magnemite
 Level: 17
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Whismur
 Level: 17
-IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GOTETSU ===
 Name: Gotetsu
@@ -1215,11 +1257,11 @@ AI: Basic Trainer
 
 Magnemite
 Level: 27
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Loudred
 Level: 27
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TETSUO ===
 Name: Tetsuo
@@ -1232,11 +1274,11 @@ AI: Basic Trainer
 
 Magneton
 Level: 30
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Loudred
 Level: 30
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_TETSU ===
 Name: Tetsu
@@ -1249,11 +1291,11 @@ AI: Basic Trainer
 
 Magneton
 Level: 33
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Loudred
 Level: 33
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GABBY_AND_TY_5 ===
 Name: GABBY & TY
@@ -1308,12 +1350,14 @@ AI: Basic Trainer
 
 Bellsprout
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stun Spore
 - Wrap
 - Vine Whip
 
 Cherrim
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mega Drain
 - Growth
 
@@ -1328,12 +1372,14 @@ AI: Check Bad Move
 
 Drowzee
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Poison Gas
 - Confusion
 - Disable
 
 Spinda
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Feint Attack
 - Psybeam
 - Copycat
@@ -1349,12 +1395,14 @@ AI: Check Bad Move
 
 Zangoose
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Pursuit
 - Fury Cutter
 - Leer
 
 Seviper
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
 - Poison Tail
 - Wrap
@@ -1439,12 +1487,14 @@ AI: Basic Trainer
 
 Raitora
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thunder Fang
 - Bite
 - Helping Hand
 
 Steenee
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Double Slap
 - Play Nice
 - Magical Leaf
@@ -1461,6 +1511,7 @@ AI: Basic Trainer
 
 Pelipper
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Pursuit
 - Water Pulse
 - Tailwind
@@ -1476,7 +1527,7 @@ AI: Basic Trainer
 
 Mawile (F)
 Level: 27
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Vise Grip
 - Fake Tears
 - Bite
@@ -1493,7 +1544,7 @@ AI: Basic Trainer
 
 Vigoroth
 Level: 33
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Counter
 - Chip Away
 - Uproar
@@ -1501,6 +1552,7 @@ IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
 Thievul
 Level: 33
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sucker Punch
 - Nasty Plot
 - Quick Attack
@@ -1516,6 +1568,7 @@ AI: Basic Trainer
 
 Phantump
 Level: 28
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Curse
 - Leech Seed
 - Feint Attack
@@ -1531,6 +1584,7 @@ AI: Basic Trainer
 
 Roselia
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leech Seed
 - Giga Drain
 - Toxic Spikes
@@ -1545,12 +1599,14 @@ AI: Basic Trainer
 
 Bayleef
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Natural Gift
 - Reflect
 - Poison Powder
 
 Croconaw
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Ice Fang
 - Flail
 - Leer
@@ -1565,6 +1621,7 @@ AI: Smartish Trainer
 
 Shadowl
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thief
 - Dream Eater
 - Hypnosis
@@ -1572,6 +1629,7 @@ Level: 26
 
 Stantler
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Take Down
 - Calm Mind
@@ -1579,6 +1637,7 @@ Level: 26
 
 Seviper
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Lick
 - Poison Fang
 - Venom Drench
@@ -1586,20 +1645,23 @@ Level: 25
 
 === TRAINER_SANI ===
 Name: Sani
-Class: Beauty
-Pic: Beauty
-Music: Female
+Class: Castform Sun Girl
+Pic: Castform Sun Girl
+Gender: Female
+Music: Swimmer
 Battle Type: Singles
-AI: Smartish Trainer
+AI: Basic Trainer
 
 Castform
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Ember
 - Sunny Day
 - Headbutt
 
 Roselia
 Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mega Drain
 - Poison Sting
 
@@ -1611,11 +1673,28 @@ Music: Twins
 Battle Type: Doubles
 AI: Basic Trainer
 
-Vigoroth
+Krabby
 Level: 26
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Focus Energy
-- Slash
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Metal Claw
+- Leer
+- Vise Grip
+- Bubble Beam
+
+Dwebble
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Bug Bite
+- Stealth Rock
+- Rock Polish
+- Feint Attack
+
+Wattrel
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Uproar
+- Pluck
+- Spark
 
 === TRAINER_BRAXTON ===
 Name: BRAXTON
@@ -1934,12 +2013,14 @@ AI: Basic Trainer
 
 Lombre
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bubble Beam
 - Nature Power
 - Water Sport
 
 Castform
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rain Dance
 - Powder Snow
 - Headbutt
@@ -1956,6 +2037,7 @@ AI: Basic Trainer
 
 Braixen
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Spin
 - Sunny Day
 - Psybeam
@@ -1963,6 +2045,7 @@ Level: 26
 
 Jumpluff
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leech Seed
 - Bullet Seed
 - Fairy Wind
@@ -2007,12 +2090,14 @@ AI: Smartish Trainer
 
 Numel
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Magnitude
 - Lava Plume
 - Focus Energy
 
 Darumaka
 Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Uproar
 - Fire Punch
 - Rage
@@ -2029,6 +2114,7 @@ AI: Smartish Trainer
 
 Clefairy
 Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sunny Day
 - Fire Punch
 - Sweet Kiss
@@ -2036,12 +2122,14 @@ Level: 24
 
 Numel
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Flame Burst
 - Earth Power
 - Focus Energy
 
 Growlithe
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Take Down
 - Flame Wheel
 - Reversal
@@ -2057,6 +2145,7 @@ AI: Basic Trainer
 
 Vulpix
 Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Hex
 - Fire Spin
 - Feint Attack
@@ -2064,6 +2153,7 @@ Level: 24
 
 Kotora
 Level: 24
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
 - Fire Fang
 - Roar
@@ -2071,6 +2161,7 @@ Level: 24
 
 Darumaka
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rollout
 - Work Up
 - Incinerate
@@ -2087,6 +2178,7 @@ AI: Smartish Trainer
 
 Drifloon
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Will O Wisp
 - Sunny Day
 - Ominous Wind
@@ -2094,6 +2186,7 @@ Level: 25
 
 Quilava
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Defense Curl
 - Flame Wheel
 - Quick Attack
@@ -2109,6 +2202,7 @@ AI: Basic Trainer
 
 Solrock
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rock Slide
 - Fire Spin
 - Rock Polish
@@ -2116,6 +2210,7 @@ Level: 25
 
 Growlithe
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Roar
 - Leer
@@ -2131,12 +2226,14 @@ AI: Smartish Trainer
 
 Numel
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Flame Burst
 - Focus Energy
 - Growl
 
 Drifloon
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Flame Burst
 - Astonish
 - Minimize
@@ -2152,6 +2249,7 @@ AI: Smartish Trainer
 
 Solrock @ Sun Stone
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Psywave
 - Embargo
 - Fire Spin
@@ -2168,12 +2266,14 @@ AI: Smartish Trainer
 
 Vulpix
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Spin
 - Payback
 - Quick Attack
 
 Darumaka
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Headbutt
 - Facade
 - Incinerate
@@ -2190,7 +2290,8 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Darumaka (M)
-Level: 25
+Level: 27
+IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Rage
 - Work Up
 - Fire Punch
@@ -2198,14 +2299,16 @@ Level: 25
 
 Drifblim (F)
 Level: 28
+IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Ominous Wind
 - Will O Wisp
 - Hex
 - Flame Wheel
 
 Drampa (M)
-Level: 26
-- Dragon Rage
+Level: 29
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Dragon Breath
 - Glare
 - Fire Fang
 - Aqua Jet
@@ -2220,8 +2323,8 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Golbat (F)
-Level: 28
-IVs: 13 HP / 13 Atk / 13 Def / 13 SpA / 13 SpD / 13 Spe
+Level: 31
+IVs: 20 HP / 20 Atk / 20 Def / 20 SpA / 20 SpD / 20 Spe
 - Poison Fang
 - Air Cutter
 - Astonish
@@ -2235,7 +2338,8 @@ Battle Type: Singles
 AI: Basic Trainer
 
 Swoobat
-Level: 27
+Level: 29
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 - Confusion
 - Odor Sleuth
 - Heart Stamp
@@ -2252,6 +2356,7 @@ AI: Basic Trainer
 
 Honestree
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leafage
 - Rock Tomb
 - Ingrain
@@ -3485,14 +3590,14 @@ AI: Basic Trainer
 
 Fomantis
 Level: 17
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Growth
 - Sunny Day
 - Razor Leaf
 
 Bonsly
 Level: 18
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fake Tears
 - Mimic
 - Rock Throw
@@ -3687,11 +3792,11 @@ AI: Check Bad Move
 
 Bounsweet
 Level: 24
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Skiploom
 Level: 25
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_GRUNT_AQUA_HIDEOUT_7 ===
 Name: GRUNT
@@ -3734,7 +3839,7 @@ AI: Check Bad Move
 
 Skiploom
 Level: 26
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mega Drain
 - Aerial Ace
 - Stun Spore
@@ -3742,14 +3847,14 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 Kirlia
 Level: 25
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Lucky Chant
 - Magical Leaf
 - Confusion
 
 Oricorio Sensu
 Level: 24
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Baton Pass
 - Double Slap
 - Feather Dance
@@ -5129,7 +5234,7 @@ AI: Smartish Trainer
 
 Surskit @ Oran Berry
 Level: 14
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Nature Power
 - String Shot
 - Pounce
@@ -5143,7 +5248,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 Lombre
 Level: 15
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Nature Power
 - Mega Drain
 - Fake Out
@@ -5168,7 +5273,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 Squirtle
 Level: 20
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Water Sport
 - Rain Dance
 - Bubble Beam
@@ -5176,13 +5281,13 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 Bonsly
 Level: 18
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Mimic
 - Low Kick
 - Rock Tomb
 - Flail
 
-Grotle @ Sitrus Berry
+Grotle @ Oran Berry
 Level: 18
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Mega Drain
@@ -5202,7 +5307,7 @@ AI: Smartish Trainer
 
 Oricorio Sensu
 Level: 23
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Wing Attack
 - Feather Dance
 - Mirror Move
@@ -5210,7 +5315,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Leavanny Tokuan
 Level: 23
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - String Shot
 - Shock Wave
 - X-Scissor
@@ -5218,7 +5323,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Kirlia
 Level: 24
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 - Disarming Voice
 - Double Team
 - Heal Pulse
@@ -5226,7 +5331,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 Tsareena
 Level: 25
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 23 HP / 23 Atk / 23 Def / 23 SpA / 23 SpD / 23 Spe
 - Stomp
 - Teeter Dance
 - Sweet Scent
@@ -6286,6 +6391,7 @@ AI: Check Bad Move
 
 Surskit
 Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Absorb
 - Sweet Scent
 - Rain Dance
@@ -6293,12 +6399,14 @@ Level: 13
 
 Feebas
 Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rain Dance
 - Water Gun
 - Flail
 
 Goldeen
 Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Nature Power
 - Peck
 - Fury Attack
@@ -6314,21 +6422,37 @@ AI: Check Bad Move
 
 Psyduck Tokuan
 Level: 13
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Confusion
 - Disable
 - Bite
 
-=== TRAINER_ADMIN_CROBAT_HIDEOUT_1 ===
-Name: Grunt
-Class: Zubat
-Pic: Zubat Grunt M
+=== TRAINER_TOYO ===
+Name: Toyo
+Class: Cook
+Pic: Cook
 Gender: Male
-Music: Aqua
+Music: Hiker
 Battle Type: Singles
-AI: Try To Faint
+AI: Basic Trainer
 
-Golbat
-Level: 20
+Venonat Tokuan
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Clefairy
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Encore
+- Magical Leaf
+- Copycat
+
+Naclstack
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Headbutt
+- Salt Cure
+- Mud Shot
 
 === TRAINER_NANAMI ===
 Name: Nanami
@@ -6341,96 +6465,136 @@ AI: Check Bad Move
 
 Steenee
 Level: 25
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Play Nice
 - Magical Leaf
 - Rapid Spin
 
 Swadloon Tokuan
 Level: 25
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - String Shot
 - Struggle Bug
 - Helping Hand
 - Electroweb
 
-=== TRAINER_QUINCY ===
-Name: QUINCY
-Class: Cooltrainer
+=== TRAINER_TARO ===
+Name: Taro
+Class: Fisherman
+Pic: Fisherman
+Gender: Male
+Music: Hiker
+Battle Type: Singles
+AI: Check Bad Move
+
+Cramorant
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Stockpile
+- Belch
+- Spit Up
+- Fury Attack
+
+Wailmer
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Whirlpool
+- Brine
+- Rollout
+- Mist
+
+=== TRAINER_KEITA ===
+Name: Keita
+Class: Hiker
 Pic: Cooltrainer M
 Gender: Male
 Music: Cool
 Items: Full Restore
 Battle Type: Singles
-AI: Basic Trainer
+AI: Smartish Trainer
 
-Slaking
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Attract
-- Ice Beam
-- Thunderbolt
-- Flamethrower
+Ponyta
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Fire Spin
+- Stomp
+- Tail Whip
 
-Dusclops
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Skill Swap
-- Protect
-- Will O Wisp
-- Toxic
+Pidgey
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Feather Dance
+- Twister
+- Gust
+- Quick Attack
 
-=== TRAINER_KATELYNN ===
-Name: KATELYNN
-Class: Cooltrainer
-Pic: Cooltrainer F
-Gender: Female
-Music: Cool
-Items: Full Restore
-Battle Type: Singles
-AI: Basic Trainer
-
-Gardevoir
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Skill Swap
-- Psychic
-- Thunderbolt
-- Calm Mind
-
-Slaking
-Level: 43
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
-- Earthquake
-- Shadow Ball
+Pidgeotto
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Whirlwind
 - Aerial Ace
-- Brick Break
+- Quick Attack
 
-=== TRAINER_JAYLEN ===
-Name: JAYLEN
-Class: Youngster
-Pic: Youngster
+
+=== TRAINER_MINORI ===
+Name: Minori
+Class: Farmer
+Pic: Farmer
 Gender: Male
-Music: Male
+Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Trapinch
-Level: 19
+Venonat Tokuan
+Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-=== TRAINER_DILLON ===
-Name: DILLON
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
-Battle Type: Singles
-AI: Check Bad Move
-
-Aron
-Level: 19
+Venonat Tokuan
+Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Venonat Tokuan
+Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+=== TRAINER_JOSETSU ===
+Name: Josetsu
+Class: Artist
+Pic: Artist
+Gender: Male
+Music: Rich
+Battle Type: Singles
+AI: Smartish Trainer
+
+Swablu
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Refresh
+- Round
+- Disarming Voice
+
+Smeargle
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+
+Servine
+Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Mega Drain
+- Twister
+- Leaf Tornado
 
 === TRAINER_TOSHIO_2 ===
 Name: Toshio
@@ -6443,12 +6607,14 @@ AI: Basic Trainer
 
 Naclstack (F)
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rock Throw
 - Smack Down
 - Iron Defense
 
 Raitora (M)
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Nuzzle
 - Bite
 - Roar
@@ -6456,6 +6622,7 @@ Level: 25
 
 Nidoran (M)
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Focus Energy
 - Poison Sting
 - Fury Attack
@@ -6471,6 +6638,7 @@ AI: Basic Trainer
 
 Raitora (M)
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Nuzzle
 - Bite
 - Roar
@@ -6478,6 +6646,7 @@ Level: 27
 
 Nidorino (M)
 Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Focus Energy
 - Poison Sting
 - Double Kick
@@ -6485,6 +6654,7 @@ Level: 27
 
 Naclstack (F)
 Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mud Shot
 - Smack Down
 - Rock Polish
@@ -6501,6 +6671,7 @@ AI: Smartish Trainer
 
 Nidorino (M)
 Level: 30
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Focus Energy
 - Toxic Spikes
 - Double Kick
@@ -6508,12 +6679,14 @@ Level: 30
 
 Raitora (M)
 Level: 29
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thunder Fang
 - Bite
 - Volt Switch
 
 Naclstack (F)
 Level: 33
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rock Slide
 - Smack Down
 - Rock Polish
@@ -6530,6 +6703,7 @@ AI: Smartish Trainer
 
 Garganacl (F)
 Level: 38
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rock Slide
 - Salt Cure
 - Stealth Rock
@@ -6537,6 +6711,7 @@ Level: 38
 
 Nidorino (M)
 Level: 35
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thrash
 - Toxic Spikes
 - Fury Attack
@@ -6544,6 +6719,7 @@ Level: 35
 
 Raitora (M)
 Level: 35
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thunder Fang
 - Electrify
 - Crunch
@@ -8164,14 +8340,14 @@ AI: Basic Trainer
 
 Budew
 Level: 17
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stun Spore
 - Mega Drain
 - Leech Seed
 
 Cherubi
 Level: 17
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sunny Day
 - Magical Leaf
 
@@ -8186,7 +8362,7 @@ AI: Basic Trainer
 
 Nuzleaf
 Level: 18
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Growth
 - Fake Out
 - Razor Leaf
@@ -8194,7 +8370,7 @@ IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 Wooper
 Level: 18
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mud Sport
 - Water Gun
 - Slam
@@ -8210,14 +8386,14 @@ AI: Check Bad Move
 
 Cramorant
 Level: 26
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stockpile
 - Swallow
 - Spit Up
 
 Krabby
 Level: 26
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Metal Claw
 - Leer
 - Bubble Beam
@@ -9156,12 +9332,14 @@ AI: Basic Trainer
 
 Dwebble
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bug Bite
 - Stealth Rock
 - Feint Attack
 
 Naclstack
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Salt Cure
 - Mud Shot
 - Rock Polish
@@ -9708,6 +9886,7 @@ AI: Basic Trainer
 
 Houndoom
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Smog
 - Odor Sleuth
@@ -10900,11 +11079,13 @@ AI: Check Bad Move
 
 Magikarp
 Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bounce
 - Splash
 
 Surskit
 Level: 12
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - String Shot
 - Quick Attack
 - Bubble
@@ -10920,14 +11101,14 @@ AI: Basic Trainer
 
 Cherrim
 Level: 17
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sunny Day
 - Magical Leaf
 - Morning Sun
 
 Skiploom
 Level: 17
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 Ability: Chlorophyll
 - Poison Powder
 - Synthesis
@@ -10945,7 +11126,7 @@ AI: Basic Trainer
 
 Cherrim
 Level: 19
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sunny Day
 - Magical Leaf
 - Swift
@@ -10961,7 +11142,7 @@ AI: Basic Trainer
 
 Castform
 Level: 17
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rain Dance
 - Headbutt
 - Water Gun
@@ -11353,14 +11534,21 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Growlithe
-Level: 10
+Level: 9
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Bite
 - Roar
 - Ember
 
+Pawniard
+Level: 8
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Scratch
+- Leer
+- Fury Cutter
+
 Snivy
-Level: 12
+Level: 11
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Absorb
 - Wrap
@@ -11423,18 +11611,20 @@ AI: Basic Trainer
 
 Hariyama
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Focus Energy
 - Vital Throw
 - Fake Out
 
 Breloom
 Level: 26
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Headbutt
 - Mach Punch
 - Leech Seed
 
-=== TRAINER_MINORI ===
-Name: Minori
+=== TRAINER_YUNA ===
+Name: Yuna
 Class: School Kid
 Pic: School Kid F
 Gender: Female
@@ -11444,6 +11634,7 @@ AI: Check Bad Move
 
 Snuggles (Deerling Summer)
 Level: 3
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Growl
 - Tackle
 - Camouflage
@@ -11459,8 +11650,8 @@ AI: Basic Trainer
 
 Munchlax (M)
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stockpile
-- Swallow
 - Body Slam
 
 === TRAINER_HALEY_2 ===
@@ -11546,12 +11737,14 @@ AI: Check Bad Move
 
 Misdreavus
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Spite
 - Hex
 - Psywave
 
 Misdreavus
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Confuse Ray
 - Mean Look
 - Astonish
@@ -11633,12 +11826,14 @@ AI: Basic Trainer
 
 Woobat (M)
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Heart Stamp
 - Attract
 - Wing Attack
 
 Zubat
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Swift
 - Bite
 - Confuse Ray
@@ -12223,11 +12418,11 @@ AI: Check Bad Move
 
 Bounsweet
 Level: 22
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 Steenee
 Level: 24
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DANIELLE ===
 Name: DANIELLE
@@ -13270,6 +13465,7 @@ AI: Check Bad Move
 
 Destroyer (Deerling Spring)
 Level: 5
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Leech Seed
 - Bullet Seed
 
@@ -13285,7 +13481,7 @@ AI: Smartish Trainer
 
 Bean (Slowpoke) (M)
 Level: 14
-IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Protect
 - Water Pulse
 - Confusion
@@ -13848,12 +14044,14 @@ Multi Party: Half
 
 Golbat
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Wing Attack
 - Bite
 - Astonish
 
 Swoobat
 Level: 23
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Amnesia
 - Attract
 - Heart Stamp
@@ -14088,6 +14286,7 @@ AI: Check Bad Move
 
 Woobat (F)
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Heart Stamp
 - Odor Sleuth
 - Attract
@@ -14095,6 +14294,7 @@ Level: 20
 
 Nickit
 Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Nasty Plot
 - Assurance
 - Quick Attack
@@ -14110,12 +14310,14 @@ AI: Basic Trainer
 
 Mightyena
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Bite
 - Roar
 - Howl
 
 Thievul
 Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Thief
 - Snarl
 - Beat Up
@@ -14131,6 +14333,7 @@ AI: Basic Trainer
 
 Woobat
 Level: 19
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Wing Attack
 - Assurance
 - Imprison
@@ -14138,6 +14341,7 @@ Level: 19
 
 Houndour
 Level: 20
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Ember
 - Smog
 - Howl
@@ -14153,6 +14357,7 @@ AI: Check Bad Move
 
 Golbat
 Level: 21
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Mean Look
 - Air Cutter
 - Astonish
@@ -14168,12 +14373,14 @@ AI: Basic Trainer
 
 Zubat
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Astonish
 - Wing Attack
 - Screech
 
 Golbat
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Air Cutter
 - Supersonic
 - Bite
@@ -14464,8 +14671,15 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Tail Whip
 - Slam
 
+Pawniard
+Level: 8
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Scratch
+- Leer
+- Fury Cutter
+
 Cyndaquil
-Level: 12
+Level: 11
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Fire Spin
 - Defense Curl
@@ -14481,15 +14695,22 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Shroomish
-Level: 11
+Level: 10
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Leech Seed
 - Absorb
 - Stun Spore
 - Tackle
 
+Pawniard
+Level: 8
+IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
+- Scratch
+- Leer
+- Fury Cutter
+
 Squirtle
-Level: 13
+Level: 12
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 - Bubble
 - Quick Attack
@@ -16355,6 +16576,7 @@ AI: Basic Trainer
 
 Torkoal
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rapid Spin
 - Smokescreen
 - Flame Wheel
@@ -16362,12 +16584,14 @@ Level: 17
 
 Wailmer
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Rollout
 - Whirlpool
 - Mist
 
 Slowpoke
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Yawn
 - Disable
 - Headbutt
@@ -16384,12 +16608,14 @@ AI: Basic Trainer
 
 Slakoth
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Yawn
 - Feint Attack
 - Encore
 
 Barboach
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Magnitude
 - Amnesia
 - Water Gun
@@ -16405,12 +16631,14 @@ AI: Smartish Trainer
 
 Darumaka
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Incinerate
 - Rage
 - Facade
 
 Slugma
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Smog
 - Rock Throw
 - Incinerate
@@ -16432,18 +16660,21 @@ AI: Basic Trainer
 
 Shuckle
 Level: 18
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sticky Web
 - Wrap
 - Struggle Bug
 
 Poltchageist
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stun Spore
 - Withdraw
 - Mega Drain
 
 Braixen
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Howl
 - Psybeam
 - Flame Charge
@@ -17257,12 +17488,14 @@ AI: Check Bad Move / Prefer Status Moves
 
 Kricketune
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Fury Cutter
 - Bide
 
 Growlithe
 Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Odor Sleuth
 - Bite
@@ -17278,12 +17511,14 @@ AI: Check Bad Move / Prefer Status Moves
 
 Kricketune
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Fury Cutter
 - Bide
 
 Growlithe
 Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Odor Sleuth
 - Bite
@@ -17299,12 +17534,14 @@ AI: Check Bad Move / Prefer Status Moves
 
 Kricketune
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Fury Cutter
 - Bide
 
 Growlithe
 Level: 16
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Fire Fang
 - Odor Sleuth
 - Bite
@@ -17321,9 +17558,12 @@ Battle Type: Singles
 AI: Smartish Trainer
 
 Toxel Tokuan
-Level: 17
+Level: 15
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
+- Acid
+- Scary Face
 
 === TRAINER_SHAMISEN_TSUZUNE_2 ===
 Name: Tsuzune
@@ -17334,8 +17574,9 @@ Music: Spiritual
 Battle Type: Singles
 AI: Smartish Trainer
 
-Toxikyu Amped
+Toxikyu Low Key
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17350,6 +17591,7 @@ AI: Smartish Trainer
 
 Toxikyu Amped
 Level: 25
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17366,6 +17608,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17380,6 +17623,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 
@@ -17394,6 +17638,7 @@ AI: Smartish Trainer
 
 Toxel Tokuan
 Level: 17
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Sing
 - Tackle
 

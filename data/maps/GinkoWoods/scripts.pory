@@ -157,9 +157,9 @@ script GinkoWoods_EventScript_Hariko {
 			applymovement(LOCALID_GINKO_HARIKO, moves(emote_pensive, delay_16 * 6))
 			waitmovement(LOCALID_GINKO_HARIKO)
 			msgbox(
-				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…Oh. I am blocking your path. I see.\p"
+				"{CREATE_MUGSHOT MUGSHOT_HARIKO 0}…Oh. I am blocking your path.\nI see.\p"
 				"I got carried away, have I not?\nThat… tends to happen.\p"
-				"{SPEAKER NAME_HARIKO}I am Hariko. And what is your name?\p"
+				"{SPEAKER NAME_HARIKO}I am Hariko.\nAnd what is your name?\p"
 				"{PLAYER}.\nIt has been nice chatting with you.\p"
 				"I am moving now, so that you can go\nthrough.\p"
 				"I will see you around.{PAUSE 8}\nOkay. {PAUSE 8} Bye!"

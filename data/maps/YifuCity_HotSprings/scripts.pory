@@ -16,7 +16,8 @@ script YifuCity_HotSprings_EventScript_OldWoman {
 script YifuCity_HotSprings_EventScript_OldWoman2 {
 	lock
 	setspeaker(SP_NAME_OLD_LADY)
-	playse(SE_PIN)
+	waitse
+	playse(SE_NOTE_C)
 	applymovement(LOCALID_HOT_SPRINGS_OLD_WOMAN_2, moves(emote_music))
 	msgbox(format(
 		"{CREATE_MUGSHOT MUGSHOT_UUME_OLD_WOMAN 0}The scorching water is heaven for this old skin…"

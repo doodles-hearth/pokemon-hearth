@@ -293,7 +293,7 @@ script TranquilRoute_EventScript_WhiteslateRoadblock {
 	applymovement(LOCALID_TRANQUIL_RT_BLOCK_NINJA, moves(walk_in_place_fast_down))
 	waitmovement(0)
 
-	setspeaker(SP_NAME_SAMURAI)
+	setspeaker(SP_NAME_GUARDIAN)
 	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}You shall know defeat at the hand\nof my ninja Pokémon!\l"
 		"Nickit, use Feint Attack!"
@@ -360,7 +360,7 @@ script TranquilRoute_EventScript_BerryWoman {
 		closemessage
 	}
 	else {
-		playse(SE_PIN)
+		playse(SE_NOTE_D)
 		applymovement(LOCALID_TRANQUIL_BERRYWOMAN, moves(emote_music, delay_16 * 6, face_player))
 		waitmovement(0)
 		setspeaker(SP_NAME_WOMAN)
@@ -423,20 +423,20 @@ script TranquilRoute_EventScript_BerryWoman {
 
 script TranquilRoute_EventScript_Mareep {
 	lock
-	setseenmon(SPECIES_MAREEP)
-	playmoncry(SPECIES_MAREEP, CRY_MODE_NORMAL)
-	setspeakertomonname(SPECIES_MAREEP)
-	msgbox(format("Beeeeeh…"))
+	setseenmon(SPECIES_WOOLOO)
+	playmoncry(SPECIES_WOOLOO, CRY_MODE_NORMAL)
+	setspeakertomonname(SPECIES_WOOLOO)
+	msgbox(("Beeeeeh…"))
 	waitmoncry
 	release
 }
 
 script TranquilRoute_EventScript_Mareep2 {
 	lock
-	setseenmon(SPECIES_MAREEP)
-	playmoncry(SPECIES_MAREEP, CRY_MODE_WEAK)
-	setspeakertomonname(SPECIES_MAREEP)
-	msgbox(format("Baaaaah…"))
+	setseenmon(SPECIES_WOOLOO)
+	playmoncry(SPECIES_WOOLOO, CRY_MODE_WEAK)
+	setspeakertomonname(SPECIES_WOOLOO)
+	msgbox(("Baaaaah…"))
 	waitmoncry
 	release
 }

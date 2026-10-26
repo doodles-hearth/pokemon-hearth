@@ -112,7 +112,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
-      "x": 59,
+      "x": 41,
       "y": 15,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_WALK_DOWN_AND_UP",

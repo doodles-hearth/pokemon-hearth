@@ -1,0 +1,212 @@
+// Don't touch this script
+script EventScript_ShamisenPlayer {
+    callnative(StartShamisenPlayerScript)
+}
+
+// BLUE - the shy one
+script EventScript_ShamisenPlayerBlue {
+    lock
+    faceplayer
+    getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY)
+    if (var(VAR_RESULT)) {
+        // TODO EVA Find a way to play MUS_SHAMISEN if it's not playing already
+        msgbox("{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_PLAYER}Aa ee ooh, eeh aa ee oo aa eee aa ooh…")
+        closemessage
+    } else {
+        getshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE)
+        if (var(VAR_RESULT) == 0) {
+            call(ShamisenBlueFirstEncounter)
+        } else {
+            call(ShamisenBlueSecondEncounter)
+        }
+    }
+    release
+}
+
+script(local) ShamisenBlueFirstEncounter {
+    msgbox(
+        "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_PLAYER}… … … … … …\p"
+        "Uh… I can feel you looking at me, it's\nembarrassing…\p"
+        "I-I can play some music if you beat me\nin a battle…\p"
+        "{FONT_SMALL}…And if you stop staring at me…{FONT_NORMAL}"
+    )
+    mcdialogueB(
+        "Let's battle!",
+        "I don't feel like it."
+    )
+    closemessage
+
+    if (var(VAR_RESULT) == 0) {
+        call(ShamisenBlueBattle)
+
+        setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_TODAY, TRUE)
+
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_PLAYER}… … … … … …\p"
+            "{SPEAKER NAME_SHAMISEN_TSUZUNE}Your name is {PLAYER}?\nI'm… Tsuzune.\p"
+            "A-are you sure you want to hear me\nsing?\lGosh, this is awkward…\p"
+            "Okay… Here goes…"
+        )
+        closemessage
+
+        playbgm(MUS_SHAMISEN, TRUE)
+
+        setshamisenplayerflag(SHAMISEN_PLAYER_FLAG_TALKED_BEFORE, TRUE)
+    } else {
+        msgbox(
+            "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_PLAYER}…Forget I said anything… Please…\n{FONT_SMALL}Gosh…{FONT_NORMAL}"
+        )
+        closemessage
+    }
+}
+
+script(local) ShamisenBlueSecondEncounter {
+    call(ShamisenBlueDialogueAndBattle)
+}
+
+script(local) ShamisenBlueBattle {
+    specialvar(VAR_RESULT, GetNumberOfBadges)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+        case 1:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_2, "… … …")
+        case 2:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_3, "… … …")
+        case 3:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+        case 4:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+        case 5:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+        case 6:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+        case 7:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+        case 8:
+            trainerbattle_no_intro(TRAINER_SHAMISEN_TSUZUNE_1, "… … …")
+    }
+}
+
+script(local) ShamisenBlueDialogueAndBattle {
+    specialvar(VAR_RESULT, GetNumberOfBadges)
+    switch (var(VAR_RESULT)) {
+        case 0:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "Oh… Is it you again?\p"
+                "Do you… Want another battle?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}You beat me again…\p"
+                "I'll uh…\nI'll just be here playing some music…\l{FONT_SMALL}And avoiding social interaction…{FONT_NORMAL}"
+            )
+        case 1:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "{PLAYER}? A-are you there?\p"
+                "Are you looking for another battle?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}You're stronger than before…\p"
+                "… … … … … …\p"
+                "If you'll excuse me…\nI think I'll just play a song now…"
+            )
+        case 2:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "Oh… It's you…\p"
+                "You want to battle?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}Oh, I lost…\nIt's okay…\p"
+                "Y-you're not here just to hear me\nsing, are you?"
+            )
+        case 3:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "You're here again, {PLAYER}…\p"
+                "Y-you have three Tokens?\nAnd you still want to battle me?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … …I guess I need to train more…\n"
+                "{FONT_SMALL}I'm a bit of an embarrassment…{FONT_NORMAL}\p"
+                "A song? You want a song?\nGosh, I'll try my best then…"
+            )
+        case 4:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "Oh, good evening, {PLAYER}…\p"
+                "You've challenged the Hanabi City\nDojo…?\l{FONT_SMALL}Impressive…{FONT_NORMAL}\p"
+                "W-we should battle, then…"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … …The outcome isn't surprising…\n"
+                "I got a little flustered…\p"
+                "I-I'll play a little music…\nIf it doesn't bother you, that is…"
+            )
+        case 5:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "Hi, {PLAYER}…\p"
+                "Tonight's a slow night…\nWe uh, could have a little battle…?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}Well done, {PLAYER}…\nYou uh, have a nice battling style…\p"
+                "L-let me play my shamisen for a little…"
+            )
+        case 6:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "{PLAYER}…\n{FONT_SMALL}I've been waiting for you…{FONT_NORMAL}\p"
+                "I have been training my Pokémon…\nD-do you want to see?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … …That was fun…\p"
+                "Do you want to hear my song again?\n{FONT_NORMAL}I'll sing it just for you…{FONT_NORMAL}"
+            )
+        case 7:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "{PLAYER}?\nIt's been a while, {PLAYER}…\p"
+                "Y-you haven't forgotten about me,\nhave you?\p"
+                "Please, let's have a little battle…"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}I… I really enjoyed this moment…\n{FONT_SMALL}Gosh, so embarrassing!{FONT_NORMAL}\p"
+                "Let me sing for you a while…"
+            )
+        case 8:
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}… … … … … …\p"
+                "I'm so glad you're here tonight…\n{PLAYER}…\p"
+                "Wow, you collected all the Tokens…\nYou're a wonderful Wielder…\p"
+                "I hope you won't be bored fighting me…\nWant to have a short battle?"
+            )
+            mcdialogueB("Yes!", "No.")
+            call(ShamisenBlueBattle)
+            msgbox(
+                "{CREATE_MUGSHOT MUGSHOT_SHAMISEN_BLUE 0}{SPEAKER NAME_SHAMISEN_TSUZUNE}What you share with your Pokémon…\nIt's truly amazing…\p"
+                "I'm glad I've met you, {PLAYER}.\nThis song… I sing it for you."
+            )
+    }
+    closemessage
+
+    playbgm(MUS_SHAMISEN, FALSE)
+}

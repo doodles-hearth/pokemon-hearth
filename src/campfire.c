@@ -41,8 +41,8 @@ static const s8 sFacingOffset[5][2] =
 
 struct CampfireDailyEvents
 {
-    s8 mapGroup;
-    s8 mapNum;
+    u8 mapGroup;
+    u8 mapNum;
     u16 campfireVar;
 };
 

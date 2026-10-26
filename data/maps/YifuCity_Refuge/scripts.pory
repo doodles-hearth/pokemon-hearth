@@ -36,14 +36,6 @@ script YifuCity_Refuge_EventScript_Nurse {
 	end
 }
 
-script YifuCity_Refuge_EventScript_Pasture {
-	createfieldmugshot(MUGSHOT_UUME_MAN_2)
-	setvar(VAR_0x8009, MUGSHOT_UUME_MAN_2)
-	call(Common_EventScript_PcGuy)
-	release
-	end
-}
-
 script YifuCity_Refuge_EventScript_FakeNurse {
 	setvar(VAR_0x800B, LOCALID_NURSE_CROBAT)
 	setvar(VAR_0x800A, LOCALID_WOOBAT_YIFU)
@@ -319,9 +311,10 @@ script YifuCity_Refuge_EventScript_FakeValet {
 		closemessage
 	} else {
 		setspeaker(SP_NAME_VALET)
-		msgbox(format(
+		message(format(
 			"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}G'day brat, I mean loyal customer!\nWanna book a room?\lOnly ¥2500 for one day!"
 		))
+		waitmessage
 
 		showmoneybox(18, 0)
 
@@ -335,7 +328,7 @@ script YifuCity_Refuge_EventScript_FakeValet {
 			switch(var(VAR_RESULT)) {
 				case 0:
 					setspeaker(SP_NAME_VALET)
-					msgbox(format(
+					message(format(
 						"{CREATE_MUGSHOT MUGSHOT_ZUBAT 0}Don't just stand there then, gimme the money!"
 					))
 					playse(SE_SHOP)
@@ -396,9 +389,11 @@ script YifuCity_Refuge_EventScript_ListenToShamisen {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_BOY)
+	waitse
+	playse(SE_M_LICK)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Whew… I've walked all day…\nI am spent!"
+		"{CREATE_MUGSHOT MUGSHOT_SAKURA_BOY_2 0}Whew… I've walked all day…\nI'm spent!"
 	))
 	closemessage
 	release
@@ -409,9 +404,9 @@ script YifuCity_Refuge_EventScript_Traveler {
 	lock
 	faceplayer
 	setspeaker(SP_NAME_TRAVELER)
-	msgbox(format(
-		"I come from a place high up in the mountains, where the Pokémon are as tough as the rocky landscape.\p"
-		"My Pawniard hones its claws on the hardest stones to keep them sharp."
+	msgbox((
+		"I come from a place where Pokémon are\nas tough as the rocky landscape.\p"
+		"My Pawniard hones its claws on the\nhardest stones to keep them sharp."
 	))
 	closemessage
 
@@ -427,7 +422,7 @@ script YifuCity_Refuge_EventScript_Bisharp {
 	setseenmon(SPECIES_PAWNIARD)
 	playmoncry(SPECIES_PAWNIARD, CRY_MODE_NORMAL)
 	setspeakertomonname(SPECIES_PAWNIARD)
-	msgbox(format("Kshhh."))
+	msgbox(("Kshhh."))
 	waitmoncry
 	closemessage
 	release
@@ -439,9 +434,9 @@ script YifuCity_Refuge_EventScript_Samurai {
 	waitse
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_pensive))
-	setspeaker(SP_NAME_SAMURAI)
-	msgbox(format(
-		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}The Crobat Shadows must be operating from somewhere… But where?"
+	setspeaker(SP_NAME_GUARDIAN)
+	msgbox((
+		"{CREATE_MUGSHOT MUGSHOT_SAMURAI 0}The Crobat Shadows must be operating\nfrom somewhere… But where?"
 	))
 	closemessage
 	release
@@ -455,7 +450,7 @@ script YifuCity_Refuge_EventScript_GotTrashedByDojo {
 	playse(SE_PIN)
 	applymovement(VAR_LAST_TALKED, moves(emote_sweat))
 	setspeaker(SP_NAME_MAN)
-	msgbox(format(
+	msgbox((
 		"{CREATE_MUGSHOT MUGSHOT_BATTLE_GUY 0}Arrgh…\p"
 		"This city's Dojo is all girls, so I\nthought it was gonna be super easy…\p"
 		"I got obliterated…"
@@ -478,9 +473,8 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 		case ROUTE_CHALLENGE_STATE_SUCCESS:
 			if (flag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)) {
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Ah, so have you made space in your party for the Egg I wanted to give you?\p"
-					"Which of these Eggs do you favor?"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Ah, you made space in your party!\nCareful, here it is…"
 				))
 			} else {
 				setflag(FLAG_TALKED_TO_ROUTE_SHAMISEN_NO_SPACE_FOR_EGG)
@@ -488,43 +482,13 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				msgbox((
 					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hello, traveler.\n… … …\p"
 					"… … …!\n…Oh, I recognize you!\p"
-					"You're that promising young Wielder\nI met on Whiteslate Route!\p"
+					"You're that promising young Wielder\nI met on Whiteslate Route!\p"	
 					"… …Yes, I feel it…\p"
 					"You traversed the Route, relying on\nyour Wielding skills and medicine…\p"
-					"Congratulations, um…\n{FONT_SMALL}What did you say your name was?{FONT_NORMAL}\lCongratulations, {PLAYER}!\p"
+					"Congratulations, um…{PAUSE 8}\n{FONT_SMALL}What did you say your name was?{FONT_NORMAL}\lCongratulations, {PLAYER}!\p"
 					"As I hoped, you have proven worthy\nof our songs!\p"
-					"I carry three Pokémon Eggs.\nI want you to have one.\lI know it would be in good hands!\p"
-					"Which of these Eggs do you favor?"
+					"I carry this mysterious Egg.\nI want you to have it!"
 				))
-			}
-
-			mcdialogue(
-				"The warm Egg!",
-				"The wet Egg!",
-				"The mossy Egg!"
-			)
-			closemessage
-
-			specialvar(VAR_0x8000, GetPlayerTrainerIdOnesDigit)
-			switch(var(VAR_RESULT)) {
-				case 0:
-					if (var(VAR_0x8000) <= 4) {
-						setvar(VAR_TEMP_0, SPECIES_CHIMCHAR)
-					} else {
-						setvar(VAR_TEMP_0, SPECIES_TORCHIC)
-					}
-				case 1:
-					if (var(VAR_0x8000) <= 4) {
-						setvar(VAR_TEMP_0, SPECIES_TOTODILE)
-					} else {
-						setvar(VAR_TEMP_0, SPECIES_OSHAWOTT)
-					}
-				case 2:
-					if (var(VAR_0x8000) <= 4) {
-						setvar(VAR_TEMP_0, SPECIES_CHIKORITA)
-					} else {
-						setvar(VAR_TEMP_0, SPECIES_BULBASAUR)
-					}
 			}
 
 			// Give egg if there's room in party
@@ -532,7 +496,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				playfanfare(MUS_OBTAIN_ITEM)
 				message(format("{PLAYER} received the mysterious Egg."))
 				waitfanfare
-				giveegg(VAR_TEMP_0, METLOC_EGG_SHAMISEN)
+				giveegg(SPECIES_TOXEL_TOKUAN, METLOC_EGG_SHAMISEN)
 
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
 				msgbox((
@@ -546,8 +510,8 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 				setroutechallengestate(ROUTE_CHALLENGE_WHITESLATE_YIFU, ROUTE_CHALLENGE_STATE_SUCCESS_CONFIRMED)
 			} else {
 				setspeaker(SP_NAME_SHAMISEN_PLAYER)
-				msgbox(format(
-					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, but wait, you don't have enough room for the Egg!\p"
+				msgbox((
+					"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Oh, but wait, you don't have enough\nroom for the Egg!\p"
 					"I'll wait for you to make some."
 				))
 				closemessage
@@ -578,7 +542,7 @@ script YifuCity_Refuge_EventScript_RouteShamisen {
 						"{CREATE_MUGSHOT MUGSHOT_SHAMISEN_RED 0}Hmmmm… … …\n… … …\p"
 						"You aren't telling the truth,\nare you?\n"
 						"You're deceiving yourself, do you\nnot feel it in your heart?\p"
-						"Don't be too sad about not succeeding.\p"
+						"Don't be too sad about not\nsucceeding.\p"
 						"Honesty beats pride. You'll get other\nopportunities to prove yourself!\p"
 						"Rest here a while, and prepare well\nfor your next journey!"
 					))
@@ -666,6 +630,7 @@ script YifuCity_Refuge_EventScript_SunnyDay {
 
 		closemessage
 
+		setnamedmon(SPECIES_CASTFORM)
 		giveitem(ITEM_TM_SUNNY_DAY)
 		setflag(FLAG_RECEIVED_TM_SUNNY_DAY)
 	}
