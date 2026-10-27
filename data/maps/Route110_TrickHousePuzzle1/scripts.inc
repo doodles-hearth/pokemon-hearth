@@ -27,7 +27,7 @@ Route110_TrickHousePuzzle1_EventScript_Sally::
 	end
 
 Route110_TrickHousePuzzle1_EventScript_Eddie::
-	trainerbattle_single TRAINER_EDDIE, Route110_TrickHousePuzzle1_Text_EddieIntro, Route110_TrickHousePuzzle1_Text_EddieDefeat
+	trainerbattle_single TRAINER_DUMMY, Route110_TrickHousePuzzle1_Text_EddieIntro, Route110_TrickHousePuzzle1_Text_EddieDefeat
 	msgbox Route110_TrickHousePuzzle1_Text_EddiePostBattle, MSGBOX_AUTOCLOSE
 	end
 

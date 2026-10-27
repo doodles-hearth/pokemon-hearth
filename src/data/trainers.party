@@ -6725,22 +6725,30 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Crunch
 - Volt Switch
 
-=== TRAINER_EDDIE ===
-Name: EDDIE
-Class: Youngster
-Pic: Youngster
-Gender: Male
-Music: Male
+=== TRAINER_EMI ===
+Name: Emi
+Class: Lass
+Pic: Lass
+Gender: Female
+Music: Female
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Zigzagoon
-Level: 14
+Sudowoodo
+Level: 27
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Mimic
+- Fake Tears
+- Copycat
+- Feint Attack
 
-Zigzagoon
-Level: 16
+Chatot
+Level: 28
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Mimic
+- Taunt
+- Mirror Move
+- Chatter
 
 === TRAINER_TIMMY ===
 Name: TIMMY
@@ -11654,22 +11662,25 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Stockpile
 - Body Slam
 
-=== TRAINER_HALEY_2 ===
-Name: HALEY
-Class: Lass
-Pic: Lass
-Gender: Female
-Music: Female
+=== TRAINER_TAMIYA ===
+Name: Tamiya
+Class: Farmer
+Pic: Farmer
+Gender: Male
+Music: Hiker
 Battle Type: Singles
-AI: Check Bad Move
+AI: Basic Trainer
 
-Lombre
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Scyther
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
+- Pursuit
+- False Swipe
+- Fury Cutter
 
-Shroomish
-Level: 26
-IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+Venonat Tokuan
+Level: 27
+IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_HALEY_3 ===
 Name: HALEY

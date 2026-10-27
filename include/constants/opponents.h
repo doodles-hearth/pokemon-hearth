@@ -336,7 +336,7 @@
 #define TRAINER_TOSHIO_3                    329
 #define TRAINER_TOSHIO_4                    330
 #define TRAINER_TOSHIO_5                    331
-#define TRAINER_EDDIE                       332
+#define TRAINER_EMI                         332
 #define TRAINER_KARU                        333
 #define TRAINER_TIMMY                       334
 #define TRAINER_WALLACE                     335
@@ -611,7 +611,7 @@
 #define TRAINER_MUSASHI_1                   604
 #define TRAINER_YUNA                        605
 #define TRAINER_JUNKO                       606
-#define TRAINER_HALEY_2                     607
+#define TRAINER_TAMIYA                      607
 #define TRAINER_HALEY_3                     608
 #define TRAINER_HALEY_4                     609
 #define TRAINER_HALEY_5                     610

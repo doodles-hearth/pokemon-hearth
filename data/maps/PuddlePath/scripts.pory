@@ -70,16 +70,27 @@ script PuddlePath_EventScript_Josetsu {
 	end
 }
 
-
-
-script PuddlePath_EventScript_Takeru {
+script PuddlePath_EventScript_Emi {
 	trainerbattle_single(
-		TRAINER_JOSETSU,
-		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}Aha! I can tell you're confused by my\nhypnotizing movements!",
-		"Aha! I can tell you were bluffing!"
+		TRAINER_EMI,
+		"{CREATE_MUGSHOT MUGSHOT_LASS 0}Why are you copying me?\pWhy are you repeating what I say?",
+		"Fine, fine, I'll stop!"
 	)
 	msgbox(
-		"{CREATE_MUGSHOT MUGSHOT_NINJA_BOY 0}{SPEAKER NAME_NINJA_BOY}Stuff stuff blah blah", // TODO EVA ICI
+		"{CREATE_MUGSHOT MUGSHOT_LASS 0}{SPEAKER NAME_LASS}My family say I'm annoying because\nI copy them all the time…",
+		MSGBOX_AUTOCLOSE
+	)
+	end
+}
+
+script PuddlePath_EventScript_Tamiya {
+	trainerbattle_single(
+		TRAINER_TAMIYA,
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}Pull weeds! Protect crops!\n Catch pests! Harvest Crops!",
+		"Maybe I need a break…"
+	)
+	msgbox(
+		"{CREATE_MUGSHOT MUGSHOT_FARMER 0}{SPEAKER NAME_FARMER}I wish I could go on a nice, long,\nDRY vacation…",
 		MSGBOX_AUTOCLOSE
 	)
 	end
