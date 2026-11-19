@@ -616,7 +616,7 @@ void InheritIVs(struct Pokemon *egg, struct DayCare *daycare)
 {
     u32 i, iv;
     u32 slot = 0;
-    enum Stat powerStat = 0;
+    enum Stat powerStat = STAT_HP;
     u32 start = 0;
     u32 powerItemCount = 0;
     u8 selectedIvs[5] = {0};
