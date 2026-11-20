@@ -44,7 +44,7 @@ script MemoryGirl_EventScript_BeginConversation {
 
     special(ChoosePartyMon)
 
-    if (var(CHOSEN_SLOT) == PARTY_MON_CANCEL)
+    if (var(CHOSEN_SLOT) == PARTY_SLOT_CANCEL)
     {
         msgbox(
             "{CREATE_MUGSHOT MUGSHOT_HEX_MANIAC 0}{SPEAKER NAME_MEMORY_GIRL}You're no fun!"

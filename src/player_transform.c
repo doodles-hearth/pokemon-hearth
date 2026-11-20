@@ -43,7 +43,7 @@ void CB2_TransformPlayerToPokemonFromParty()
     u8 index;
     index = GetCursorSelectionMonId();
     if (index >= PARTY_SIZE) {
-        index = PARTY_MON_CANCEL;
+        index = PARTY_SLOT_CANCEL;
     }
     else {
         gSaveBlock1Ptr->playerTransformPokemonIndex = index;
@@ -122,7 +122,7 @@ void TransformPlayer(struct ScriptContext* ctx)
 {
     bool32 defer = ScriptReadByte(ctx);
     u16 value = VarGet(gSpecialVar_0x8004);
-    if (value != PARTY_MON_CANCEL) {
+    if (value != PARTY_SLOT_CANCEL) {
         if (defer) {
             gPlayerTransformPokemon = &gParties[B_TRAINER_PLAYER][value];
             SetPlayerTransformFlags();

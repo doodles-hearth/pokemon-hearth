@@ -265,7 +265,7 @@ script MaguroHarbor_EventScript_FishPokemonSalesmanSelling {
 		switch (var(VAR_RESULT)) {
 			case 0:
 				special(ChoosePartyMon)
-				if (var(VAR_0x8004) == PARTY_MON_CANCEL) {
+				if (var(VAR_0x8004) == PARTY_SLOT_CANCEL) {
 					msgbox(("{CREATE_MUGSHOT MUGSHOT_FISHERMAN 0}{SPEAKER NAME_SHOPKEEPER}Ah c'mon, don't waste my time!"))
 					closemessage
 				} else {
