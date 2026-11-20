@@ -140,7 +140,7 @@ void FillPartnerParty(u16 trainerId)
 
 enum TrainerClassID GetPartnerClass(u16 trainerId)
 {
-    enum TrainerClassID trainerClass;
+    enum TrainerClassID trainerClass = 0;
     switch (GetPartnerType(trainerId))
     {
     case PRESET_PARTNER:
