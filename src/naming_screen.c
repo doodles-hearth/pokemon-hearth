@@ -2146,7 +2146,6 @@ static const struct NamingScreenTemplate sSpeciesGuessScreenTemplate =
     .iconFunction = 6,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 35,
     .title = sText_SpeciesGuess,
 };
 

@@ -289,7 +289,7 @@ string generate_map_events_text(Json map_data) {
                      << json_to_string(obj_event, "trainer_type") << ", "
                      << trainerSightOr << ", "
                      << script << ", "
-                     << json_to_string(obj_event, "flag") << "\n";
+                     << json_to_string(obj_event, "flag") << ","
                      << json_to_string(obj_event, "afternoon", false, true) << ", "
                      << json_to_string(obj_event, "deadnight", false, true) << ", "
                      << json_to_string(obj_event, "earlymorning", false, true) << ", "

@@ -107,9 +107,7 @@ EventScript_SmashRock:: @ fallthrough
 	callnative rockSmashRNG
 	goto_if_eq VAR_RESULT, ROCK_SMASH_ENCOUNTER, EventScript_RockSmashWildEncounter
 	goto_if_eq VAR_RESULT, ROCK_SMASH_ITEM, EventScript_RockSmashItem
-EventScript_EndSmash::
-	releaseall
-	end
+	goto EventScript_EndSmash
 
 EventScript_RockSmashWildEncounter::
 	special RockSmashWildEncounter
