@@ -46,7 +46,7 @@ void HealPlayerParty(void)
         HealPlayerBoxes();
 
     // Recharge Tera Orb, if possible.
-    if (!IsTeraOrbCharged() && CheckBagHasItem(ITEM_TERA_ORB, 1))
+    if (!IsTeraOrbCharged() && HasPlayerUnlockedGimmick(GIMMICK_TERA))
         FlagSet(B_FLAG_TERA_ORB_CHARGED);
 
     FailActiveRouteChallenges();
@@ -83,7 +83,7 @@ u8 ScriptGiveEgg(enum Species species, u8 specialLoc)
 // TODO verify that this is really always the same output as the script special variant
 u8 HasEnoughMonsForDoubleBattle2(void)
 {
-    return GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS; 
+    return GetMonsStateToDoubles() == PLAYER_HAS_TWO_USABLE_MONS;
 }
 
 void HasEnoughMonsForDoubleBattle(void)

@@ -8775,7 +8775,7 @@ bool32 CanMegaEvolve(enum BattlerId battler)
     // Check if Player has a Mega Ring.
     if (!TESTING
         && (position == B_POSITION_PLAYER_LEFT || (!HasAnyBattleFlags(BATTLE_TYPE_MULTI) && position == B_POSITION_PLAYER_RIGHT))
-        && !CheckBagHasItem(ITEM_MEGA_RING, 1))
+        && !HasPlayerUnlockedGimmick(GIMMICK_MEGA))
         return FALSE;
 
     // Check if Trainer has already Mega Evolved.
@@ -8816,7 +8816,7 @@ bool32 CanUltraBurst(enum BattlerId battler)
     // Check if Player has a Z-Ring
     if (!TESTING && (position == B_POSITION_PLAYER_LEFT
         || (!HasAnyBattleFlags(BATTLE_TYPE_MULTI) && position == B_POSITION_PLAYER_RIGHT))
-        && !CheckBagHasItem(ITEM_Z_POWER_RING, 1))
+        && !HasPlayerUnlockedGimmick(GIMMICK_ULTRA_BURST))
         return FALSE;
 
     // Check if Trainer has already Ultra Bursted.
@@ -10175,9 +10175,9 @@ void TryDeactivateSleepClause(enum BattlerId battler, enum PartySlot indexInPart
 bool32 IsSleepClauseActiveForSide(enum BattleSide battlerSide)
 {
     // If monCausingSleepClause[battlerSide].partyIndex == PARTY_SLOT_NONE, Sleep Clause is not active for the given side.
-    // If monCausingSleepClause[battlerSide].partyIndex < PARTY_SLOT_NONE, it means it is storing the index of the mon that is causing Sleep Clause to be active,
+    // If monCausingSleepClause[battlerSide].partyIndex < PARTY_SIZE, it means it is storing the index of the mon that is causing Sleep Clause to be active,
     // from which it follows that Sleep Clause is active.
-    return (IsSleepClauseEnabled() && (gBattleStruct->monCausingSleepClause[battlerSide].partyIndex < PARTY_SLOT_NONE));
+    return (IsSleepClauseEnabled() && (gBattleStruct->monCausingSleepClause[battlerSide].partyIndex < PARTY_SIZE));
 }
 
 bool32 IsSleepClauseEnabled(void)
@@ -10260,7 +10260,7 @@ bool32 IsPlayerMultiPartyFullTeam(void)
     return (gBattleTestRunnerState->data.partySizes[B_TRAINER_PLAYER] == PARTY_SIZE);
 #else
     u32 selectedCount = 0;
-    for (enum PartySlot slot = PARTY_SLOT_0; slot < PARTY_SLOT_NONE; slot++)
+    for (enum PartySlot slot = PARTY_SLOT_0; slot < PARTY_SIZE; slot++)
     {
         if (gSelectedOrderFromParty[slot])
         {

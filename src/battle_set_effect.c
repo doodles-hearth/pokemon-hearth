@@ -367,7 +367,7 @@ static void HandleSetEffectRemoveArgType(struct BattleCalcValues *cv, struct Set
 
 static void HandleSetEffectRecharge(struct BattleCalcValues *cv, struct SetEffect *se)
 {
-    if (B_SKIP_RECHARGE == GEN_1 && !IsBattlerAlive(cv->battlerDef))  // Skip recharge if gen 1 and foe is KO'd
+    if (GetConfig(B_SKIP_RECHARGE) == GEN_1 && !IsBattlerAlive(gBattlerTarget))  // Skip recharge if gen 1 and foe is KO'd
         return;
 
     gBattleMons[se->effectBattler].volatiles.rechargeTimer = 2;
@@ -570,12 +570,9 @@ static void HandleSetEffectCelebrate(struct BattleCalcValues *cv, struct SetEffe
     BattleScriptPushAndSet(se->script, BattleScript_WaitMessage);
 }
 
-static void HandleSetEffectCoreEnforcer(struct BattleCalcValues *cv, struct SetEffect *se)
+static void SetGastroAcid(struct BattleCalcValues *cv, struct SetEffect *se)
 {
-    if (!HasBattlerActedThisTurn(se->effectBattler)
-     || BattlerJustSwitchedIn(se->effectBattler)
-     || NoAliveMonsForEitherParty()
-     || gBattleMons[se->effectBattler].volatiles.gastroAcid
+    if (gBattleMons[se->effectBattler].volatiles.gastroAcid
      || gAbilitiesInfo[gBattleMons[se->effectBattler].ability].cantBeSuppressed)
     {
         SetEffectFail(BattleScript_ButItFailedRet, cv->isStatusMove);
@@ -593,7 +590,21 @@ static void HandleSetEffectCoreEnforcer(struct BattleCalcValues *cv, struct SetE
 
         RemoveRuinAbilityFlags(se->effectBattler);
         gBattleMons[se->effectBattler].volatiles.gastroAcid = TRUE;
+        ResetTruantToggleOnAbilitySuppression(se->effectBattler);
         BattleScriptPushAndSet(se->script, BattleScript_MoveEffectGastroAcid);
+    }
+}
+
+static void HandleSetEffectCoreEnforcer(struct BattleCalcValues *cv, struct SetEffect *se)
+{
+    if (!HasBattlerActedThisTurn(se->effectBattler)
+     || BattlerJustSwitchedIn(se->effectBattler))
+    {
+        SetEffectFail(BattleScript_ButItFailedRet, cv->isStatusMove);
+    }
+    else
+    {
+        SetGastroAcid(cv, se);
     }
 }
 
@@ -3077,28 +3088,7 @@ static void HandleSetEffectPowerTrick(struct BattleCalcValues *cv, struct SetEff
 
 static void HandleSetEffectGastroAcid(struct BattleCalcValues *cv, struct SetEffect *se)
 {
-    if (gBattleMons[se->effectBattler].volatiles.gastroAcid
-     || gAbilitiesInfo[gBattleMons[se->effectBattler].ability].cantBeSuppressed)
-    {
-        SetEffectFail(BattleScript_ButItFailedRet, cv->isStatusMove);
-    }
-    else if (GetBattlerHoldEffectIgnoreAbility(se->effectBattler) == HOLD_EFFECT_ABILITY_SHIELD)
-    {
-        SetEffectFail(BattleScript_ButItFailedRet, cv->isStatusMove);
-        if (!cv->onlyChecking)
-            RecordItemEffectBattle(se->effectBattler, HOLD_EFFECT_ABILITY_SHIELD);
-    }
-    else if (!cv->onlyChecking)
-    {
-        if (gBattleMons[se->effectBattler].volatiles.neutralizingGas)
-            gSpecialStatuses[se->effectBattler].neutralizingGasRemoved = TRUE;
-
-        RemoveRuinAbilityFlags(se->effectBattler);
-        gBattleMons[se->effectBattler].volatiles.gastroAcid = TRUE;
-        ResetTruantToggleOnAbilitySuppression(se->effectBattler);
-        BattleScriptPushAndSet(se->script, BattleScript_MoveEffectGastroAcid);
-    }
-
+    SetGastroAcid(cv, se);
 }
 
 static void HandleSetEffectLuckyChant(struct BattleCalcValues *cv, struct SetEffect *se)

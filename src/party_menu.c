@@ -7802,7 +7802,7 @@ static bool8 TrySwitchInPokemon(void)
         SetMonPreventsSwitchingString();
         return FALSE;
     }
-    
+
     if (IsHalfTeamMultiBattle() && (battler & BIT_FLANK)) // Half-team multi partner mon
     {
         newSlot = GetBattleSlotFromBattlePartyId(gBattlerPartyIndexes[battler] + MULTI_PARTY_SIZE);
@@ -8089,7 +8089,7 @@ static void UpdatePartyToBattleOrder(void)
         enum PartySlot battlePartyId = GetPartyIdFromBattleSlot(i);
         u8 srcMenuId = battlePartyId;
 
-        if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && battlePartyId < PARTY_SLOT_NONE)
+        if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && battlePartyId < PARTY_SIZE)
             srcMenuId = multiBattlePartyIdToMenuId[battlePartyId];
 
         GetPartyAndSlotFromPartyMenuId(srcMenuId, &srcParty, &srcPartySlot);
@@ -8132,7 +8132,7 @@ static void UpdatePartyToFieldOrder(void)
         enum PartySlot battlePartyId = GetPartyIdFromBattleSlot(i);
         u8 dstMenuId = battlePartyId;
 
-        if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && battlePartyId < PARTY_SLOT_NONE)
+        if (gPartyMenu.layout == PARTY_LAYOUT_MULTI && battlePartyId < PARTY_SIZE)
             dstMenuId = multiBattlePartyIdToMenuId[battlePartyId];
 
         GetPartyAndSlotFromPartyMenuId(dstMenuId, &dstParty, &dstPartySlot);
