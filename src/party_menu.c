@@ -57,6 +57,7 @@
 #include "pokerus.h"
 #include "region_map.h"
 #include "reshow_battle_screen.h"
+#include "safari_zone.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "sound.h"
@@ -4405,6 +4406,11 @@ bool32 SetUpFieldMove_Fly(void)
 {
     if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
         return FALSE;
+
+    if (GetSafariZoneFlag() && CannotEscapeSafari())
+    {
+        return FALSE;
+    }
 
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
         return TRUE;

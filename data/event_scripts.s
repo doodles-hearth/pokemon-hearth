@@ -62,6 +62,7 @@
 #include "constants/rtc.h"
 #include "constants/roulette.h"
 #include "constants/route_challenge.h"
+#include "constants/safaris.h"
 #include "constants/script_menu.h"
 #include "constants/seagallop.h"
 #include "constants/secret_bases.h"

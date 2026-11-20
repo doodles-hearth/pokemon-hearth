@@ -50,6 +50,7 @@
 #include "rotating_tile_puzzle.h"
 #include "rtc.h"
 #include "fake_rtc.h"
+#include "safari_zone.h"
 #include "script.h"
 #include "script_menu.h"
 #include "script_movement.h"
@@ -3801,6 +3802,29 @@ bool8 ScrCmd_closedoormetatile(struct ScriptContext *ctx)
     {
         MapGridSetMetatileIdAt(doorTopX, doorTopY, doortoptile | MAPGRID_IMPASSABLE); //TOP HALF OF DOOR
         MapGridSetMetatileIdAt(doorTopX, doorTopY + 1, doorbottile | MAPGRID_IMPASSABLE); //BOTTOM HALF OF DOOR
+    }
+    return FALSE;
+}
+
+bool8 ScrCmd_safari_enter(struct ScriptContext * ctx)
+{
+    u8 value = ScriptReadByte(ctx);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+    EnterSafariMode(value);
+    return FALSE;
+}
+
+bool8 ScrCmd_safari_exit(struct ScriptContext * ctx)
+{
+    u8 doWarp = ScriptReadByte(ctx);
+
+    ExitSafariMode();
+    if (doWarp)
+    {
+        DoWarp();
+        ResetInitialPlayerAvatarState();
+        return TRUE;
     }
     return FALSE;
 }
