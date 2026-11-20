@@ -49,6 +49,7 @@ static enum Move GetMeFirstMove(void);
 static bool32 ShouldApplyAfterHitEffects(enum BattlerId battlerAtk, enum BattlerId effectBattler);
 static bool32 CanApplyAdditionalEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, const struct AdditionalEffect *additionalEffect);
 static void TryTriggerAdditionalEffect(struct BattleCalcValues *cv, const struct AdditionalEffect *additionalEffect, enum BattlerId effectBattler);
+static bool32 IsDamageMoveSelfStatChange(bool32 self, enum MoveEffect moveEffect);
 
 static bool32 ShouldApplyProtectLikeEffects(enum BattlerId battlerDef, struct BattleCalcValues *cv);
 static bool32 ShouldPrintCritMessage(enum BattlerId battler);
@@ -3996,6 +3997,13 @@ static void TryTriggerAdditionalEffect(struct BattleCalcValues *cv, const struct
     }
 }
 
+static bool32 IsDamageMoveSelfStatChange(bool32 isSelf, enum MoveEffect moveEffect)
+{
+    if (!isSelf)
+        return FALSE;
+    return moveEffect == MOVE_EFFECT_STAT_MINUS || moveEffect == MOVE_EFFECT_STAT_PLUS;
+}
+
 static enum MoveEndResult MoveEndAdditionalEffects(struct BattleCalcValues *cv)
 {
     u32 numAdditionalEffects = GetMoveAdditionalEffectCount(cv->move);
@@ -4025,7 +4033,7 @@ static enum MoveEndResult MoveEndAdditionalEffects(struct BattleCalcValues *cv)
             case FALSE:
                 if (!CanApplyAdditionalEffect(cv->battlerAtk, effectBattler, additionalEffect)
                  || !ShouldApplyAfterHitEffects(cv->battlerAtk, effectBattler)
-                 || (additionalEffect->moveEffect == MOVE_EFFECT_STAT_MINUS && additionalEffect->self)
+                 || IsDamageMoveSelfStatChange(additionalEffect->self, additionalEffect->moveEffect)
                  || (effectBattler == cv->battlerAtk) != additionalEffect->self)
                 {
                     gBattleStruct->additionalEffectsCounter++;
@@ -4063,7 +4071,7 @@ static enum MoveEndResult MoveEndAdditionalEffects(struct BattleCalcValues *cv)
     return MOVEEND_RESULT_CONTINUE;
 }
 
-static enum MoveEndResult MoveEndAdditionalEffectsLowerStatsAttacker(struct BattleCalcValues *cv)
+static enum MoveEndResult MoveEndAdditionalEffectsChangeStatsAttacker(struct BattleCalcValues *cv)
 {
     u32 numAdditionalEffects = GetMoveAdditionalEffectCount(cv->move);
 
@@ -4080,7 +4088,7 @@ static enum MoveEndResult MoveEndAdditionalEffectsLowerStatsAttacker(struct Batt
         // Various checks for if this move effect can be applied this turn
         if (!CanApplyAdditionalEffect(cv->battlerAtk, cv->battlerAtk, additionalEffect)
          || !ShouldApplyAfterHitEffects(cv->battlerAtk, cv->battlerAtk)
-         || !(additionalEffect->moveEffect == MOVE_EFFECT_STAT_MINUS && additionalEffect->self))
+         || !IsDamageMoveSelfStatChange(additionalEffect->self, additionalEffect->moveEffect))
         {
             gBattleStruct->additionalEffectsCounter++;
             return MOVEEND_RESULT_BREAK; // recall the same state
@@ -6174,7 +6182,7 @@ static enum MoveEndResult (*const sMoveEndHandlers[])(struct BattleCalcValues *c
     [MOVEEND_ENDURE_DAMAGE_MESSAGE_OPPOSING_SIDE] = MoveEndEndureDamageMessage,
     [MOVEEND_PROTECT_LIKE_EFFECTS_OPPOSING_SIDE] = MoveEndProtectLikeEffect,
     [MOVEEND_ADDITIONAL_EFFECTS_OPPOSING_SIDE] = MoveEndAdditionalEffects,
-    [MOVEEND_ADDITIONAL_EFFECTS_LOWER_STATS_ATTACKER] = MoveEndAdditionalEffectsLowerStatsAttacker,
+    [MOVEEND_ADDITIONAL_EFFECTS_CHANGE_STATS_ATTACKER] = MoveEndAdditionalEffectsChangeStatsAttacker,
     [MOVEEND_ABSORB_OPPOSING_SIDE] = MoveEndAbsorb,
     [MOVEEND_STATUS_IMMUNITY_ABILITIES_OPPOSING_SIDE] = MoveEndStatusImmunityAbilities,
     [MOVEEND_TARGET_VISIBLE_OPPOSING_SIDE] = MoveEndTargetVisible,
