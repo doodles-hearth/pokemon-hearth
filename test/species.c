@@ -171,7 +171,7 @@ TEST("Species' overworld sprites have correct number of frames for animTable")
     for (enum Species j = SPECIES_NONE; j < NUM_SPECIES; j++)
     {
         if (IsSpeciesEnabled(j))
-            PARAMETRIZE_LABEL("ID:%d - %S", j, GetSpeciesName(j)) { species = j; }
+            PARAMETRIZE_LABEL("ID:%d - %S", j, GetSpeciesName(j, SKIP_NAME_CHECK)) { species = j; }
     }
 
     {
