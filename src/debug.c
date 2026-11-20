@@ -4855,8 +4855,6 @@ void DebugNative_Party_SetFriendship(void)
     }
 }
 
-#undef tFriendship
-
 static void DebugSelectionStep_UpdatePokerusStrain(u8 taskId, u8 digits, u32 min, u32 max)
 {
     StringCopy(gStringVar1, COMPOUND_STRING("Strain:"));
@@ -5020,9 +5018,7 @@ void DebugNative_Player_ChooseColour(void)
     }
 }
 
-#undef tStrain
 #undef tPartyId
-
 #undef tMenuTaskId
 #undef tWindowId
 #undef tSubWindowId
