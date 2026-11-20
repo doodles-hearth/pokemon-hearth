@@ -1684,7 +1684,7 @@ static void Cmd_getexp(void)
     CMD_ARGS(u8 battler);
 
     enum HoldEffect holdEffect;
-    s32 i; // also used as stringId
+    s32 stringId;
     enum PartySlot *expMonId = &gBattleStruct->expGetterMonId;
     u32 currLvl;
 
@@ -1723,7 +1723,7 @@ static void Cmd_getexp(void)
             s32 viaSentIn = 0;
             s32 viaExpShare = 0;
 
-            for (i = 0; i < PARTY_SIZE; i++)
+            for (u32 i = 0; i < PARTY_SIZE; i++)
             {
                 if (!IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
                     continue;
@@ -1738,12 +1738,12 @@ static void Cmd_getexp(void)
                 }
             }
             // Get order of mons getting exp: 1. all mons via sent in, 2. all mons via exp share
-            for (enum PartySlot partyMon = PARTY_SLOT_0; partyMon < PARTY_SLOT_NONE; partyMon++)
+            for (enum PartySlot partyMon = 0; partyMon < PARTY_SIZE; partyMon++)
             {
                 if ((1u << partyMon) & sentInBits)
                     gBattleStruct->expGettersOrder[orderId++] = partyMon;
             }
-            for (enum PartySlot partyMon = PARTY_SLOT_0; partyMon < PARTY_SLOT_NONE; partyMon++)
+            for (enum PartySlot partyMon = 0; partyMon < PARTY_SIZE; partyMon++)
             {
                 if (!((1u << partyMon) & sentInBits) && (1u << partyMon) & expShareBits)
                     gBattleStruct->expGettersOrder[orderId++] = partyMon;
@@ -1856,16 +1856,16 @@ static void Cmd_getexp(void)
 
                     if (IsTradedMon(&gParties[B_TRAINER_PLAYER][*expMonId]))
                     {
-                        i = STRINGID_ABOOSTED;
+                        stringId = STRINGID_ABOOSTED;
                     }
                     else
                     {
-                        i = STRINGID_EMPTYSTRING4;
+                        stringId = STRINGID_EMPTYSTRING4;
                     }
 
                     PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, 0, *expMonId);
                     // buffer 'gained' or 'gained a boosted'
-                    PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
+                    PREPARE_STRING_BUFFER(gBattleTextBuff2, stringId);
                     PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleStruct->battlerExpReward);
 
                     if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
@@ -3897,6 +3897,10 @@ static void Cmd_removeitem(void)
      && GetMoveEffect(gCurrentMove) != EFFECT_CORROSIVE_GAS)
         GetBattlerPartyState(battler)->usedHeldItem = itemId; // Remember if switched out
 
+    if (GetItemPocket(itemId) == POCKET_BERRIES && GetBattlerAbility(battler) == ABILITY_CUD_CHEW)
+    {
+        gBattleMons[battler].volatiles.cudChewTimer = 2;
+    }
     gBattleMons[battler].item = ITEM_NONE;
     gBattleStruct->battlerState[battler].canPickupItem = TRUE;
     gBattleStruct->adrenalineOrbActivated = FALSE;
@@ -4385,6 +4389,7 @@ static void RemoveAllTerrains(void)
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_COUNT;  // failsafe
 
     gFieldTimers.terrain = B_TERRAIN_NONE;
+    gFieldTimers.terrainTimer = 0;
     TryToRevertMimicryAndFlags();
 }
 
@@ -6094,34 +6099,9 @@ static void Cmd_givecaughtmon(void)
     case GIVECAUGHTMON_GIVE_AND_SHOW_MSG:
     {
         struct Pokemon *caughtMon = GetBattlerMon(GetCatchingBattler());
-        if (B_RESTORE_HELD_BATTLE_ITEMS >= GEN_9)
-        {
-            struct LostItem *lostItem = GetLostItemState(B_TRAINER_OPPONENT_A, gBattlerPartyIndexes[GetCatchingBattler()]);
-            assertf(lostItem->originalItem < ITEMS_COUNT, "Unresolved bug detected:\n"
-                "please report the following\n"
-                "with as much detail as you can"
-                "to the RHH discord server\n"
-                "enemy party size %d\n"
-                "lost item data %d %d\n"
-                "caughtBattler %d %d\n"
-                "caughtBattlerIndex %d\n",
-                gPartiesCount[B_TRAINER_OPPONENT_A],
-                lostItem->originalItem, lostItem->bitfield,
-                GetCatchingBattler(), gBattlerTarget,
-                gBattlerPartyIndexes[GetCatchingBattler()]
-            ) {
-                lostItem->originalItem = ITEM_NONE;
-            }
-
-            if (lostItem->originalItem != ITEM_NONE && GetItemPocket(lostItem->originalItem) != POCKET_BERRIES)
-            {
-                u32 data = lostItem->originalItem;
-                SetMonData(caughtMon, MON_DATA_HELD_ITEM, &data);  // Restore non-berry items
-            }
-        }
 
         enum PartySlot emptySlot;
-        for (emptySlot = PARTY_SLOT_0; emptySlot < PARTY_SLOT_NONE; emptySlot++)
+        for (emptySlot = PARTY_SLOT_0; emptySlot < PARTY_SIZE; emptySlot++)
         {
             if (GetMonData(&gParties[B_TRAINER_PLAYER][emptySlot], MON_DATA_SPECIES) == SPECIES_NONE)
                 break;
