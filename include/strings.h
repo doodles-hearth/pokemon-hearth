@@ -1333,6 +1333,7 @@ extern const u8 gText_First_PM[];
 extern const u8 gText_Second_PM[];
 extern const u8 gText_Third_PM[];
 extern const u8 gText_Fourth[];
+extern const u8 gText_Fifth[];
 extern const u8 gText_Able2[];
 extern const u8 gText_NotAble[];
 extern const u8 gText_Able3[];

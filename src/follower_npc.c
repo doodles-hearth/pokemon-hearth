@@ -1173,7 +1173,7 @@ void SetFollowerNPCSprite(u32 spriteIndex)
     }
 }
 
-static void ChooseFirstThreeEligibleMons(void)
+static void ChooseFirstEligibleMons(void)
 {
     u32 i;
     u32 count = 0;
@@ -1190,7 +1190,7 @@ static void ChooseFirstThreeEligibleMons(void)
             count++;
         }
 
-        if (count == 3)
+        if (count == MULTI_PARTY_SIZE)
             break;
     }
 }
@@ -1691,10 +1691,10 @@ void PrepareForFollowerNPCBattle(void)
     // Load the partner party if the NPC follower should participate.
     if (HasAnyBattleFlags(BATTLE_TYPE_INGAME_PARTNER) && FollowerNPCIsBattlePartner())
     {
-        if (!AreMultiPartiesFullTeams())
+        if (AreMultiPartiesHalfTeams())
         {
             SavePlayerParty();
-            ChooseFirstThreeEligibleMons();
+            ChooseFirstEligibleMons();
             ReducePlayerPartyToSelectedMons();
             VarSet(VAR_0x8004, FRONTIER_UTIL_FUNC_SET_DATA);
             VarSet(VAR_0x8005, FRONTIER_DATA_SELECTED_MON_ORDER);
@@ -1707,7 +1707,7 @@ void PrepareForFollowerNPCBattle(void)
 
 void RestorePartyAfterFollowerNPCBattle(void)
 {
-    if (!AreMultiPartiesFullTeams())
+    if (!IsPlayerMultiPartyFullTeam())
     {
         VarSet(VAR_0x8004, FRONTIER_UTIL_FUNC_SAVE_PARTY);
         CallFrontierUtilFunc();

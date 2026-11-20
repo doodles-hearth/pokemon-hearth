@@ -287,10 +287,10 @@ struct Pokemon* GetBattlerMon(enum BattlerId battler)
 
 bool32 IsHalfTeamMultiBattle(void)
 {
-    return (IsMultiBattle() && !AreMultiPartiesFullTeams());
+    return (IsMultiBattle() && AreMultiPartiesHalfTeams());
 }
 
 bool32 IsFullTeamMultiBattle(void)
 {
-    return (IsMultiBattle() && AreMultiPartiesFullTeams());
+    return (IsMultiBattle() && !AreMultiPartiesHalfTeams());
 }

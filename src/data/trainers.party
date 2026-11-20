@@ -14576,7 +14576,8 @@ Class: Pkmn Breeder
 Pic: Pokemon Breeder M
 Gender: Male
 Music: Male
-Battle Type: Singles
+Double Battle: No
+Multi Party: Half
 AI: Check Bad Move
 
 Makuhita
@@ -14609,7 +14610,8 @@ Class: Pkmn Breeder
 Pic: Pokemon Breeder F
 Gender: Female
 Music: Female
-Battle Type: Singles
+Double Battle: No
+Multi Party: Half
 AI: Check Bad Move
 
 Poochyena

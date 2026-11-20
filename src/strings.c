@@ -330,6 +330,7 @@ const u8 gText_Learned[] = _("Learned");
 const u8 gText_Have[] = _("Have");
 const u8 gText_DontHave[] = _("Don't have");
 const u8 gText_Fourth[] = _("Fourth");
+const u8 gText_Fifth[] = _("Fifth");
 const u8 gText_PkmnCantParticipate[] = _("That Pokémon can't participate.{PAUSE_UNTIL_PRESS}");
 const u8 gText_CancelParticipation[] = _("Cancel participation?");
 const u8 gText_CancelBattle[] = _("Cancel the battle?");
