@@ -30,23 +30,13 @@ static bool32 IsWalkingOnDecay() // helper function to check if the player is on
     return MapGridGetMetatileBehaviorAt(gSaveBlock1Ptr->pos.x + MAP_OFFSET, gSaveBlock1Ptr->pos.y + MAP_OFFSET) == MB_DECAY;
 }
 
-static bool32 IsMonValidSpecies(struct Pokemon *pokemon)
-{
-    enum Species species = GetMonData(pokemon, MON_DATA_SPECIES_OR_EGG);
-    if (species == SPECIES_NONE || species == SPECIES_EGG)
-        return FALSE;
-
-    return TRUE;
-}
-
 static bool32 AllMonsFainted(void)
 {
-    int i;
-    struct Pokemon *pokemon = gParties[B_TRAINER_PLAYER];
-
-    for (i = 0; i < PARTY_SIZE; i++, pokemon++)
+    for (enum PartySlot slot = 0; slot < PARTY_SIZE; slot++)
     {
-        if (IsMonValidSpecies(pokemon) && GetMonData(pokemon, MON_DATA_HP) != 0)
+        struct Pokemon *pokemon = &gParties[B_TRAINER_PLAYER][slot];
+
+        if (IsMonValidAndAliveForBattle(pokemon))
             return FALSE;
     }
     return TRUE;
@@ -65,9 +55,9 @@ static void FaintFromFieldPoison(u8 partyIdx)
     StringGet_Nickname(gStringVar1);
 }
 
-static void FaintFromDecay(u8 partyIdx)
+static void FaintFromDecay(enum PartySlot slot)
 {
-    struct Pokemon *pokemon = &gParties[B_TRAINER_PLAYER][partyIdx];
+    struct Pokemon *pokemon = &gParties[B_TRAINER_PLAYER][slot];
     u32 status = STATUS1_NONE;
 
     AdjustFriendship(pokemon, FRIENDSHIP_EVENT_FAINT_FIELD_PSN);
@@ -75,17 +65,17 @@ static void FaintFromDecay(u8 partyIdx)
     SetMonData(pokemon, MON_DATA_STATUS, &status);
     GetMonData(pokemon, MON_DATA_NICKNAME, gStringVar1);
     StringGet_Nickname(gStringVar1);
-    sFaintedFromDecayMask &= ~(1 << partyIdx);
+    sFaintedFromDecayMask &= ~(1 << slot);
 }
 
-static bool32 MonFaintedFromPoison(u8 partyIdx)
+static bool32 MonFaintedFromPoison(enum PartySlot slot)
 {
-    if(sFaintedFromDecayMask & (1 <<partyIdx))
+    if(sFaintedFromDecayMask & (1 << slot))
         return FALSE;
 
-    struct Pokemon *pokemon = &gParties[B_TRAINER_PLAYER][partyIdx];
+    struct Pokemon *pokemon = &gParties[B_TRAINER_PLAYER][slot];
 
-    if (IsMonValidSpecies(pokemon) && GetMonData(pokemon, MON_DATA_HP) == ((OW_POISON_DAMAGE < GEN_4) ? 0 : 1) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
+    if (IsMonValidForBattle(pokemon) && GetMonData(pokemon, MON_DATA_HP) == ((OW_POISON_DAMAGE < GEN_4) ? 0 : 1) && GetAilmentFromStatus(GetMonData(pokemon, MON_DATA_STATUS)) == AILMENT_PSN)
         return TRUE;
 
     return FALSE;
@@ -96,7 +86,7 @@ static bool32 MonFaintedFromDecay(u8 partyIdx)
     struct Pokemon *pokemon = &gParties[B_TRAINER_PLAYER][partyIdx];
 
     if (
-        IsMonValidSpecies(pokemon) &&
+        IsMonValidForBattle(pokemon) &&
         GetMonData(pokemon, MON_DATA_HP) == 0 &&
         (sFaintedFromDecayMask & (1 << partyIdx))
     )

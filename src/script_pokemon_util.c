@@ -247,7 +247,7 @@ void ReducePlayerPartyToSelectedMons(void)
     CpuFill32(0, party, sizeof party);
 
     // copy the selected Pokémon according to the order.
-    for (int i = 0; i < PARTY_SIZE; i++)
+    for (enum PartySlot i = 0; i < PARTY_SIZE; i++)
     {
         if (gSelectedOrderFromParty[i]) // as long as the order keeps going (did the player select 1 mon? 2? 3?), do not stop
         {
@@ -258,7 +258,7 @@ void ReducePlayerPartyToSelectedMons(void)
     CpuFill32(0, gParties[B_TRAINER_PLAYER], sizeof gParties[B_TRAINER_PLAYER]);
 
     // overwrite with the order copied to.
-    for (int i = 0; i < PARTY_SIZE; i++)
+    for (enum PartySlot i = 0; i < PARTY_SIZE; i++)
     {
         gParties[B_TRAINER_PLAYER][i] = party[i];
     }

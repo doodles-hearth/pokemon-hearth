@@ -1860,7 +1860,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
         {
             u8 count = 0;
             for (i = 0; i < lastId; i++)
-                if (IsValidForBattle(&party[i]))
+                if (IsMonValidAndAliveForBattle(&party[i]))
                     count++;
 
             if (count < 2)
@@ -1874,7 +1874,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
 
         for (i = 0; i < lastId; i++)
         {
-            if (IsValidForBattle(&party[i])
+            if (IsMonValidAndAliveForBattle(&party[i])
              && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
              && i != gBattleStruct->monToSwitchIntoId[flankId] && i != playerId[gBattleStruct->monToSwitchIntoId])
                 break;
@@ -1895,7 +1895,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
 
             for (i = 0; i < lastId; i++)
             {
-                if (IsValidForBattle(&party[i])
+                if (IsMonValidAndAliveForBattle(&party[i])
                  && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
                  && i != gBattleStruct->monToSwitchIntoId[flankId] && i != playerId[gBattleStruct->monToSwitchIntoId])
                     break;
@@ -1906,7 +1906,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
         {
             for (i = 0; i < lastId; i++)
             {
-                if (IsValidForBattle(&party[i]))
+                if (IsMonValidAndAliveForBattle(&party[i]))
                     break;
             }
             return (i == lastId);
@@ -1916,7 +1916,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
     {
         for (i = 0; i < lastId; i++)
         {
-            if (IsValidForBattle(&party[i]))
+            if (IsMonValidAndAliveForBattle(&party[i]))
                 break;
         }
         return (i == lastId);
@@ -1925,7 +1925,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
     {
         for (i = 0; i < lastId; i++)
         {
-            if (IsValidForBattle(&party[i]))
+            if (IsMonValidAndAliveForBattle(&party[i]))
                 break;
         }
         return (i == lastId);
@@ -1950,7 +1950,7 @@ bool32 HasNoMonsToSwitch(enum BattlerId battler, enum PartySlot partyIdBattlerOn
 
         for (i = 0; i < lastId; i++)
         {
-            if (IsValidForBattle(&party[i])
+            if (IsMonValidAndAliveForBattle(&party[i])
              && i != partyIdBattlerOn1 && i != partyIdBattlerOn2
              && i != gBattleStruct->monToSwitchIntoId[flankId] && i != playerId[gBattleStruct->monToSwitchIntoId])
                 break;

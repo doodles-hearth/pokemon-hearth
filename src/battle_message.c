@@ -4,6 +4,7 @@
 #include "battle_ai_record.h"
 #include "battle_controllers.h"
 #include "battle_message.h"
+#include "battle_partner.h"
 #include "battle_setup.h"
 #include "battle_special.h"
 #include "battle_z_move.h"
@@ -2538,7 +2539,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
                 stringPtr = sText_TheGhostAppeared;
             else if (HasAnyBattleFlags(BATTLE_TYPE_LEGENDARY))
                 stringPtr = sText_LegendaryPkmnAppeared;
-            else if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))
+            else if (IsDoubleBattle() && IsMonValidAndAliveForBattle(GetBattlerMon(GetBattlerAtPosition(B_POSITION_OPPONENT_RIGHT))))
                 stringPtr = sText_TwoWildPkmnAppeared;
             else if (HasAnyBattleFlags(BATTLE_TYPE_CATCH_TUTORIAL))
                 stringPtr = sText_WildPkmnAppearedPause;
@@ -2549,7 +2550,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
     case STRINGID_INTROSENDOUT: // poke first send-out
         if (IsOnPlayerSide(battler))
         {
-            if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetPartnerBattler(battler))))
+            if (IsDoubleBattle() && IsMonValidAndAliveForBattle(GetBattlerMon(GetPartnerBattler(battler))))
             {
                 if (HasAnyBattleFlags(BATTLE_TYPE_MULTI) && (HasAnyBattleFlags(BATTLE_TYPE_RECORDED_LINK) || HasAnyBattleFlags(BATTLE_TYPE_LINK)))
                 {
@@ -2582,7 +2583,7 @@ void BufferStringBattle(enum StringID stringID, enum BattlerId battler)
         else
         {
             gBattleStruct->shouldPrintFullName = TRUE;
-            if (IsDoubleBattle() && IsValidForBattle(GetBattlerMon(GetPartnerBattler(battler))))
+            if (IsDoubleBattle() && IsMonValidAndAliveForBattle(GetBattlerMon(GetPartnerBattler(battler))))
             {
                 if (HasAnyBattleFlags(BATTLE_TYPE_RECORDED_LINK) && IsMultiVsOneOpponentBattle())
                     stringPtr = sText_LinkTrainerSentOutTwoPkmn;
@@ -3108,7 +3109,7 @@ static const u8 *BattleStringGetPlayerName(u8 *text, enum BattlerId battler)
         }
         else if (HasAnyBattleFlags(BATTLE_TYPE_INGAME_PARTNER))
         {
-            GetFrontierTrainerName(text, gPartnerTrainerId);
+            GetInGamePartnerName(text, gPartnerTrainerId);
             toCpy = text;
         }
         else
@@ -3587,13 +3588,13 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 }
                 break;
             case B_TXT_PARTNER_CLASS:
-                toCpy = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                toCpy = gTrainerClasses[GetPartnerClass(gPartnerTrainerId)].name;
                 break;
             case B_TXT_PARTNER_NAME:
                 break;
             case B_TXT_PARTNER_NAME_WITH_CLASS:
                 toCpy = textStart;
-                classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                classString = gTrainerClasses[GetPartnerClass(gPartnerTrainerId)].name;
                 while (classString[classLength] != EOS)
                 {
                     textStart[classLength] = classString[classLength];
@@ -3620,7 +3621,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                 {
                 case B_POSITION_PLAYER_RIGHT:
                     if (HasAnyBattleFlags(BATTLE_TYPE_INGAME_PARTNER))
-                        toCpy = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                        toCpy = gTrainerClasses[GetPartnerClass(gPartnerTrainerId)].name;
                     break;
                 case B_POSITION_OPPONENT_LEFT:
                     toCpy = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
@@ -3655,7 +3656,7 @@ u32 BattleStringExpandPlaceholders(const u8 *src, u8 *dst, u32 dstSize)
                     {
                     case B_POSITION_PLAYER_RIGHT:
                         if (HasAnyBattleFlags(BATTLE_TYPE_INGAME_PARTNER))
-                            classString = gTrainerClasses[GetFrontierOpponentClass(gPartnerTrainerId)].name;
+                            classString = gTrainerClasses[GetPartnerClass(gPartnerTrainerId)].name;
                         break;
                     case B_POSITION_OPPONENT_LEFT:
                         classString = BattleStringGetOpponentClassByTrainerId(TRAINER_BATTLE_PARAM.opponentA);
