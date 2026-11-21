@@ -6171,7 +6171,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_FOOT,
-            sAnimTable_Following_Asym,
+            sAnimTable_Following,
             gOverworldPalette_RotomWash,
             gShinyOverworldPalette_RotomWash
         )

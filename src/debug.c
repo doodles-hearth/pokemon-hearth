@@ -414,6 +414,7 @@ extern const u8 Debug_ShowExpansionVersion[];
 extern const u8 Debug_EventScript_EWRAMCounters[];
 extern const u8 Debug_Follower_NPC_Event_Script[];
 extern const u8 Debug_Follower_NPC_Not_Enabled[];
+extern const u8 Debug_EventScript_Mining_Minigame[];
 extern const u8 Debug_EventScript_Steven_Multi[];
 extern const u8 Debug_EventScript_WallyTutorial[];
 extern const u8 Debug_EventScript_PrintTimeOfDay[];
@@ -618,6 +619,7 @@ static const struct DebugMenuOption sDebugMenu_Actions_Utilities[] =
     { COMPOUND_STRING("Follower NPC…"),             DebugAction_OpenSubMenu, sDebugMenu_Actions_FollowerNPCMenu },
     { COMPOUND_STRING("Test Species Randomizer"),   DebugAction_Selection_Init, &sSpeciesGeneratorSelection },
     { COMPOUND_STRING("Test Item Randomizer"),      DebugAction_Selection_Init, &sItemGeneratorSelection },
+    { COMPOUND_STRING("Mining Minigame"),           DebugAction_ExecuteScript, Debug_EventScript_Mining_Minigame },
     { COMPOUND_STRING("Wally Tutorial"),            DebugAction_ExecuteScript, Debug_EventScript_WallyTutorial },
     { COMPOUND_STRING("Steven Multi"),              DebugAction_ExecuteScript, Debug_EventScript_Steven_Multi },
     { NULL }
@@ -1375,6 +1377,12 @@ static void DebugSelectionStep_ReturnToTrainersMenu(u8 taskId)
     Debug_DestroyMenu(taskId);
     Debug_RemoveCallbackMenu();
     Debug_ShowMenu(DebugTask_HandleMenuInput_General, sDebugMenu_Actions_Trainers);
+}
+
+static void DebugSelectionStep_ReturnToFollowersMenu(u8 taskId)
+{
+    Debug_RemoveCallbackMenu();
+    DebugAction_OpenSubMenu(taskId, sDebugMenu_Actions_FollowerNPCMenu_Create);
 }
 
 static u32 Debug_GenerateListTrainerMenu(const struct DebugMenuOption *items)
@@ -3494,6 +3502,7 @@ static bool32 DebugSelection_GiveComplexPokemon_OnComplete(u8 taskId)
 
     u8 evs[NUM_STATS];
     ResolveEVs(rawEvs, evs, FALSE);
+
     for (u32 i = 0; i < NUM_STATS; i++)
     {
         SetMonData(&mon, MON_DATA_HP_EV + i, &evs[i]);
@@ -4059,6 +4068,21 @@ static void DebugAction_Sound_MUS_SelectId(u8 taskId)
     }
 }
 
+static bool32 DebugSelection_FollowerPartner_Complete(u8 taskId) 
+{
+    SetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER, DebugSelection_GetData(taskId, 0));
+    Debug_DestroyMenu_Full(taskId);
+    return TRUE;
+}
+
+static const struct DebugSelection sFollowerPartnerSelection = {
+    .onInit = DebugSelection_Partner_Init,
+    .onCancel = DebugSelectionStep_ReturnToFollowersMenu,
+    .onComplete = DebugSelection_FollowerPartner_Complete,
+    .steps = {&sPartnerSelectionStep},
+    .maxSteps = 1,
+};
+
 static const u32 gDebugFollowerNPCGraphics[] =
 {
     OBJ_EVENT_GFX_RIVAL_BRENDAN_NORMAL,
@@ -4074,12 +4098,9 @@ static void DebugAction_CreateFollowerNPC(u8 taskId)
     u32 input = ListMenu_ProcessInput(gTasks[taskId].tMenuTaskId);
     u32 gfx = gDebugFollowerNPCGraphics[input];
 
-    Debug_DestroyMenu_Full(taskId);
-    LockPlayerFieldControls();
     DestroyFollowerNPC();
-    SetFollowerNPCData(FNPC_DATA_BATTLE_PARTNER, PARTNER_STEVEN);
     CreateFollowerNPC(gfx, FNPC_ALL, Debug_Follower_NPC_Event_Script);
-    UnlockPlayerFieldControls();
+    DebugAction_Selection_Init(taskId, &sFollowerPartnerSelection);
 }
 
 static void DebugAction_DestroyFollowerNPC(u8 taskId)
@@ -4855,8 +4876,6 @@ void DebugNative_Party_SetFriendship(void)
     }
 }
 
-#undef tFriendship
-
 static void DebugSelectionStep_UpdatePokerusStrain(u8 taskId, u8 digits, u32 min, u32 max)
 {
     StringCopy(gStringVar1, COMPOUND_STRING("Strain:"));
@@ -5020,9 +5039,7 @@ void DebugNative_Player_ChooseColour(void)
     }
 }
 
-#undef tStrain
 #undef tPartyId
-
 #undef tMenuTaskId
 #undef tWindowId
 #undef tSubWindowId
@@ -5031,7 +5048,7 @@ void DebugNative_Player_ChooseColour(void)
 
 static void DebugAction_Party_ClearPokerus(u8 taskId)
 {
-    for (u32 i = 0; i < PARTY_SIZE; i++)
+    for (enum PartySlot i = 0; i < PARTY_SIZE; i++)
     {
         if (!GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES))
             continue;

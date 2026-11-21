@@ -282,7 +282,7 @@ static bool8 GiveMonTravellerRibbon(struct Pokemon *mon)
     {
         hasTravellerRibbon = 1;
         SetMonData(mon, MON_DATA_TRAVELLER_RIBBON, &hasTravellerRibbon);
-        if (GetRibbonCount(mon) > NUM_CUTIES_RIBBONS)
+        if (GetMonData(mon, MON_DATA_RIBBON_COUNT) > NUM_CUTIES_RIBBONS)
             TryPutSpotTheCutiesOnAir(mon, MON_DATA_TRAVELLER_RIBBON);
         FlagSet(FLAG_SYS_RIBBON_GET);
         return TRUE;
@@ -303,7 +303,7 @@ static bool8 GiveMonHistoricRibbon(struct Pokemon *mon)
     {
         hasHistoricRibbon = 1;
         SetMonData(mon, MON_DATA_HISTORIC_RIBBON, &hasHistoricRibbon);
-        if (GetRibbonCount(mon) > NUM_CUTIES_RIBBONS)
+        if (GetMonData(mon, MON_DATA_RIBBON_COUNT) > NUM_CUTIES_RIBBONS)
             TryPutSpotTheCutiesOnAir(mon, MON_DATA_HISTORIC_RIBBON);
         FlagSet(FLAG_SYS_RIBBON_GET);
         return TRUE;
@@ -311,6 +311,8 @@ static bool8 GiveMonHistoricRibbon(struct Pokemon *mon)
 
     return FALSE;
 }
+
+
 
 static void QueueMemoryGirlLine(enum MemoryGirlLine line)
 {

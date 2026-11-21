@@ -150,7 +150,6 @@ struct NamingScreenTemplate
     u8 iconFunction;
     u8 addGenderIcon;
     u8 initialPage;
-    u8 unused;
     const u8 *title;
 };
 
@@ -344,7 +343,6 @@ static bool8 MainState_MoveToOKButton(void);
 static bool8 MainState_PressedOKButton(void);
 static bool8 MainState_FadeOut(void);
 static bool8 MainState_Exit(void);
-static void DisplaySentToPCMessage(void);
 static bool8 MainState_WaitSentToPCMessage(void);
 static bool8 MainState_StartPageSwap(void);
 static bool8 MainState_WaitPageSwap(void);
@@ -385,7 +383,6 @@ static void LoadGfx(void);
 static void CreateHelperTasks(void);
 static void LoadPalettes(void);
 static void DrawBgTilemap(u8, const void *);
-static void NamingScreen_Dummy(u8, u8);
 static void DrawTextEntry(void);
 static void PrintKeyboardKeys(u8, u8);
 static void DrawKeyboardPageOnDeck(void);
@@ -632,8 +629,6 @@ static bool8 MainState_FadeIn(void)
     DrawBgTilemap(1, gNamingScreenKeyboardUpper_Tilemap);
     PrintKeyboardKeys(sNamingScreen->windows[WIN_KB_PAGE_2], KEYBOARD_LETTERS_LOWER);
     PrintKeyboardKeys(sNamingScreen->windows[WIN_KB_PAGE_1], KEYBOARD_LETTERS_UPPER);
-    NamingScreen_Dummy(2, KEYBOARD_LETTERS_LOWER);
-    NamingScreen_Dummy(1, KEYBOARD_LETTERS_UPPER);
     DrawTextEntry();
     DrawTextEntryBox();
     PrintControls();
@@ -706,33 +701,6 @@ static bool8 MainState_Exit(void)
         FREE_AND_SET_NULL(sNamingScreen);
     }
     return FALSE;
-}
-
-static UNUSED void DisplaySentToPCMessage(void)
-{
-    u8 stringToDisplay = 0;
-
-    if (!IsDestinationBoxFull())
-    {
-        StringCopy(gStringVar1, GetBoxNamePtr(VarGet(VAR_PC_BOX_TO_SEND_MON)));
-        StringCopy(gStringVar2, sNamingScreen->destBuffer);
-    }
-    else
-    {
-        StringCopy(gStringVar1, GetBoxNamePtr(VarGet(VAR_PC_BOX_TO_SEND_MON)));
-        StringCopy(gStringVar2, sNamingScreen->destBuffer);
-        StringCopy(gStringVar3, GetBoxNamePtr(GetPCBoxToSendMon()));
-        stringToDisplay = 2;
-    }
-
-    if (FlagGet(FLAG_SYS_PC_LANETTE))
-        stringToDisplay++;
-
-    StringExpandPlaceholders(gStringVar4, sTransferredToPCMessages[stringToDisplay]);
-    DrawDialogueFrame(0, FALSE);
-    gTextFlags.canABSpeedUpPrint = TRUE;
-    AddTextPrinterParameterized2(0, FONT_NORMAL, gStringVar4, GetPlayerTextSpeedDelay(), 0, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
-    CopyWindowToVram(0, COPYWIN_FULL);
 }
 
 static bool8 MainState_WaitSentToPCMessage(void)
@@ -1922,16 +1890,7 @@ static void BufferCharacter(u8 ch)
 
 static void SaveInputText(void)
 {
-    u8 i;
-
-    for (i = 0; i < sNamingScreen->template->maxChars; i++)
-    {
-        if (sNamingScreen->textBuffer[i] != CHAR_SPACE && sNamingScreen->textBuffer[i] != EOS)
-        {
-            StringCopyN(sNamingScreen->destBuffer, sNamingScreen->textBuffer, sNamingScreen->template->maxChars + 1);
-            break;
-        }
-    }
+    StringCopyN(sNamingScreen->destBuffer, sNamingScreen->textBuffer, sNamingScreen->template->maxChars + 1);
 }
 
 static void LoadGfx(void)
@@ -1960,11 +1919,6 @@ static void LoadPalettes(void)
 static void DrawBgTilemap(u8 bg, const void *src)
 {
     CopyToBgTilemapBuffer(bg, src, 0, 0);
-}
-
-static void NamingScreen_Dummy(u8 bg, u8 page)
-{
-
 }
 
 static void DrawTextEntry(void)
@@ -2064,7 +2018,6 @@ static void DrawKeyboardPageOnDeck(void)
 
     DrawBgTilemap(bg, sNextKeyboardPageTilemaps[sNamingScreen->currentPage]);
     PrintKeyboardKeys(windowId, CurrentPageToNextKeyboardId());
-    NamingScreen_Dummy(bg, CurrentPageToNextKeyboardId());
     CopyBgTilemapBufferToVram(bg_);
 }
 
@@ -2131,27 +2084,6 @@ static bool8 IsWideLetter(u8 character)
     return FALSE;
 }
 
-// Debug? Arguments aren't sensible for non-player screens.
-static void UNUSED Debug_NamingScreenPlayer(void)
-{
-    DoNamingScreen(NAMING_SCREEN_PLAYER, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldWithOpenMenu);
-}
-
-static void UNUSED Debug_NamingScreenBox(void)
-{
-    DoNamingScreen(NAMING_SCREEN_BOX, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldWithOpenMenu);
-}
-
-static void UNUSED Debug_NamingScreenCaughtMon(void)
-{
-    DoNamingScreen(NAMING_SCREEN_CAUGHT_MON, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldWithOpenMenu);
-}
-
-static void UNUSED Debug_NamingScreenNickname(void)
-{
-    DoNamingScreen(NAMING_SCREEN_NICKNAME, gSaveBlock2Ptr->playerName, gSaveBlock2Ptr->playerGender, 0, 0, CB2_ReturnToFieldWithOpenMenu);
-}
-
 void NameRival(void)
 {
     if (gSaveBlock2Ptr->playerGender == MALE)
@@ -2173,7 +2105,6 @@ static const struct NamingScreenTemplate sPlayerNamingScreenTemplate =
     .iconFunction = 1,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 35,
     .title = COMPOUND_STRING("YOUR NAME?"),
 };
 
@@ -2184,7 +2115,6 @@ static const struct NamingScreenTemplate sPCBoxNamingTemplate =
     .iconFunction = 2,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 19,
     .title = COMPOUND_STRING("BOX NAME?"),
 };
 
@@ -2195,7 +2125,6 @@ static const struct NamingScreenTemplate sMonNamingScreenTemplate =
     .iconFunction = 3,
     .addGenderIcon = TRUE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 35,
     .title = COMPOUND_STRING("{STR_VAR_1}'s nickname?"),
 };
 
@@ -2206,7 +2135,6 @@ static const struct NamingScreenTemplate sWaldaWordsScreenTemplate =
     .iconFunction = 4,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 11,
     .title = COMPOUND_STRING("Tell him the words."),
 };
 
@@ -2218,7 +2146,6 @@ static const struct NamingScreenTemplate sSpeciesGuessScreenTemplate =
     .iconFunction = 6,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 35,
     .title = sText_SpeciesGuess,
 };
 
@@ -2237,7 +2164,6 @@ static const struct NamingScreenTemplate sCodeScreenTemplate =
     .iconFunction = 5,
     .addGenderIcon = FALSE,
     .initialPage = KBPAGE_LETTERS_UPPER,
-    .unused = 35,
     .title = COMPOUND_STRING("Enter code:"),
 };
 

@@ -267,6 +267,17 @@ string generate_map_events_text(Json map_data) {
 
             // If no type field is present, assume it's a regular object event.
             if (type == "" || type == "object") {
+                string script = json_to_string(obj_event, "script");
+                string trainerSightOr = json_to_string(obj_event, "trainer_sight_or_berry_tree_id");
+                if (script == "EventScript_RockSmash")
+                {
+                    string rockSmashItemTable = json_to_string(obj_event, "rock_smash_item_table", true);
+                    if (rockSmashItemTable == "")
+                        rockSmashItemTable = "ROCK_SMASH_ITEM_TABLE_COUNT";
+                    trainerSightOr = trainerSightOr + " | (" + rockSmashItemTable + " << 8)";
+                }
+
+
                 text << "\tobject_event " << i + 1 << ", "
                      << json_to_string(obj_event, "graphics_id") << ", "
                      << json_to_string(obj_event, "x") << ", "
@@ -276,9 +287,9 @@ string generate_map_events_text(Json map_data) {
                      << json_to_string(obj_event, "movement_range_x") << ", "
                      << json_to_string(obj_event, "movement_range_y") << ", "
                      << json_to_string(obj_event, "trainer_type") << ", "
-                     << json_to_string(obj_event, "trainer_sight_or_berry_tree_id") << ", "
-                     << json_to_string(obj_event, "script") << ", "
-                     << json_to_string(obj_event, "flag") << ", "
+                     << trainerSightOr << ", "
+                     << script << ", "
+                     << json_to_string(obj_event, "flag") << ","
                      << json_to_string(obj_event, "afternoon", false, true) << ", "
                      << json_to_string(obj_event, "deadnight", false, true) << ", "
                      << json_to_string(obj_event, "earlymorning", false, true) << ", "
