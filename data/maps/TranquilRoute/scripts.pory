@@ -652,7 +652,7 @@ script TranquilRoute_DirectionSign {
 }
 
 
-script TranquilRoute_DirectionSign {
+script TranquilRoute_CutHouseSign {
 	msgbox(format(
 		"Cut Master"
 	), MSGBOX_SIGN)
