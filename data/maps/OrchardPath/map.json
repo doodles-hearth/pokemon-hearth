@@ -575,8 +575,8 @@
     },
     {
       "type": "sign",
-      "x": 57,
-      "y": 12,
+      "x": 52,
+      "y": 11,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "OrchardPath_EventScript_GuardHouseSign"

@@ -888,7 +888,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_CROBAT_SHADOWS_GRUNT_M",
-      "x": 16,
+      "x": 15,
       "y": 62,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -1585,7 +1585,7 @@
     {
       "type": "sign",
       "x": 14,
-      "y": 60,
+      "y": 61,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "YifuCity_EventScript_NameRaterSign"
@@ -1648,8 +1648,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 1,
-      "y": 62,
+      "x": 6,
+      "y": 60,
       "elevation": 0,
       "item": "ITEM_DUSK_BALL",
       "flag": "FLAG_HIDDEN_ITEM_YIFU_CITY_DUSK_BALL"

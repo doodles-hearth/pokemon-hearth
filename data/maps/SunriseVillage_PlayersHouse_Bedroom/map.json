@@ -3,7 +3,6 @@
   "name": "SunriseVillage_PlayersHouse_Bedroom",
   "layout": "LAYOUT_SUNRISE_VILLAGE_PLAYERS_HOUSE_BEDROOM",
   "music": "MUS_HH_SUNRISE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_SUNRISE_VILLAGE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -187,7 +186,7 @@
   ],
   "warp_events": [
     {
-      "x": 6,
+      "x": 2,
       "y": 8,
       "elevation": 0,
       "dest_map": "MAP_SUNRISE_VILLAGE_PLAYERS_HOUSE_LR",
@@ -224,7 +223,7 @@
     },
     {
       "type": "trigger",
-      "x": 6,
+      "x": 2,
       "y": 8,
       "elevation": 0,
       "var": "FLAG_PICKED_UP_BAG",
@@ -249,5 +248,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SunriseVillage_EventScript_PlayerPc"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }
