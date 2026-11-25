@@ -650,3 +650,10 @@ script TranquilRoute_DirectionSign {
 		), MSGBOX_SIGN)
 	}
 }
+
+
+script TranquilRoute_CutHouseSign {
+	msgbox(format(
+		"Cut Master"
+	), MSGBOX_SIGN)
+}
